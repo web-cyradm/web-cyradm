@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-05-25 00:34+0200\n"
+"POT-Creation-Date: 2003-05-29 16:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: adminuser.php:15 browse.php:60 browseaccounts.php:28 catchall.php:58
 #: change_password.php:13 change_password.php:27 change_password.php:37
 #: deleteaccount.php:70 deleteadminuser.php:68 deletedomain.php:11
-#: deleteemail.php:52 editaccount.php:25 editadminuser.php:167
+#: deleteemail.php:56 editaccount.php:25 editadminuser.php:167
 #: editdomain.php:31 editdomain.php:61 forwardalias.php:10 forwardalias.php:27
 #: newaccount.php:20 newadminuser.php:133 newadminuser.php:161
 #: newadminuser.php:196 newdomain.php:230 newemail.php:9 vacation.php:9
@@ -75,12 +75,12 @@ msgstr ""
 msgid "Delete adminuser"
 msgstr ""
 
-#: adminuser.php:134 editadminuser.php:68 menu.inc.php:125 newadminuser.php:75
+#: adminuser.php:134 editadminuser.php:68 menu.inc.php:127 newadminuser.php:75
 #: newadminuser.php:188
 msgid "Superuser"
 msgstr ""
 
-#: adminuser.php:136 editadminuser.php:78 menu.inc.php:127 newadminuser.php:79
+#: adminuser.php:136 editadminuser.php:78 menu.inc.php:129 newadminuser.php:79
 #: newadminuser.php:190
 msgid "Domain Master"
 msgstr ""
@@ -93,19 +93,19 @@ msgstr ""
 msgid "Add administrator"
 msgstr ""
 
-#: auth.inc.php:62
+#: auth.inc.php:65
 msgid "Web-cyradm is for authorized users only."
 msgstr ""
 
-#: auth.inc.php:63
+#: auth.inc.php:66
 msgid "Make sure you entered the right password."
 msgstr ""
 
-#: auth.inc.php:64
+#: auth.inc.php:67
 msgid "Push the back button in your browser to try again."
 msgstr ""
 
-#: auth.inc.php:65
+#: auth.inc.php:68
 msgid " Your attempt to login has been stored."
 msgstr ""
 
@@ -251,27 +251,27 @@ msgstr ""
 msgid "Cancelled"
 msgstr ""
 
-#: change_password.php:58
+#: change_password.php:59
 msgid "Password changed"
 msgstr ""
 
-#: change_password.php:61
+#: change_password.php:62
 msgid "Failure in changing password."
 msgstr ""
 
-#: change_password.php:64 editadminuser.php:150
+#: change_password.php:65 editadminuser.php:150
 msgid "New passwords are not equal. Password not changed"
 msgstr ""
 
-#: change_password.php:81
+#: change_password.php:79
 msgid "Change password for account"
 msgstr ""
 
-#: change_password.php:99
+#: change_password.php:97
 msgid "New password"
 msgstr ""
 
-#: change_password.php:109
+#: change_password.php:107
 msgid "Confirm new password"
 msgstr ""
 
@@ -288,7 +288,7 @@ msgid "with all its defined Emailadresses"
 msgstr ""
 
 #: deleteaccount.php:56 deleteadminuser.php:62 deletedomain.php:78
-#: deleteemail.php:45
+#: deleteemail.php:49
 msgid "Action cancelled, nothing deleted"
 msgstr ""
 
@@ -353,7 +353,15 @@ msgstr ""
 msgid "Do you really want to delete the emailadress for user"
 msgstr ""
 
-#: deleteemail.php:60
+#: deleteemail.php:38
+msgid "Yes, delete"
+msgstr ""
+
+#: deleteemail.php:43
+msgid "Cancel"
+msgstr ""
+
+#: deleteemail.php:64
 msgid "Emailadress deleted."
 msgstr ""
 
@@ -433,19 +441,19 @@ msgstr ""
 msgid "Your are not allowed to change domains!"
 msgstr ""
 
-#: failed.php:61
+#: failed.php:60
 msgid "Login failed"
 msgstr ""
 
-#: failed.php:66 login.php:45
+#: failed.php:65 login.php:45
 msgid "This is only for authorized users"
 msgstr ""
 
-#: failed.php:71 logout.php:55 timeout.php:32
+#: failed.php:70 logout.php:55 timeout.php:32
 msgid "If you like to login click"
 msgstr ""
 
-#: failed.php:73 logout.php:57 timeout.php:35
+#: failed.php:72 logout.php:57 timeout.php:34
 msgid "here"
 msgstr ""
 
@@ -508,12 +516,38 @@ msgstr ""
 msgid "migrate.php exists! please delete or rename it"
 msgstr ""
 
+#: index.php:130
+msgid "web-cyradm has not yet been configured"
+msgstr ""
+
+#: index.php:133
+msgid "Configuration steps:"
+msgstr ""
+
+#: index.php:135
+msgid "copy the config file that comes with the distribution: "
+msgstr ""
+
+#: index.php:138
+msgid "Edit the file config/conf.php to match your systems configuration"
+msgstr ""
+
+#: index.php:140
+msgid ""
+"Further information about how to configure Web-cyradm can be found at the "
+"following website:"
+msgstr ""
+
 #: login.php:44
 msgid "Welcome to Web-cyradm"
 msgstr ""
 
 #: login.php:46
 msgid "Please authenticate yourself"
+msgstr ""
+
+#: login.php:78
+msgid "Select language"
 msgstr ""
 
 #: logout.php:45
@@ -552,23 +586,23 @@ msgstr ""
 msgid "logout"
 msgstr ""
 
-#: menu.inc.php:84
+#: menu.inc.php:85
 msgid "Search"
 msgstr ""
 
-#: menu.inc.php:107
+#: menu.inc.php:109
 msgid "Logged in as user"
 msgstr ""
 
-#: menu.inc.php:119
+#: menu.inc.php:121
 msgid "Your role is"
 msgstr ""
 
-#: menu.inc.php:137
+#: menu.inc.php:139
 msgid "Current domain is"
 msgstr ""
 
-#: menu.inc.php:143
+#: menu.inc.php:145
 msgid "No domain selected"
 msgstr ""
 
@@ -596,11 +630,11 @@ msgstr ""
 msgid "Sorry, the username already exists"
 msgstr ""
 
-#: newaccount.php:225
+#: newaccount.php:227
 msgid "Account successfully added to the Database"
 msgstr ""
 
-#: newaccount.php:238
+#: newaccount.php:240
 msgid "Account succesfully added to the IMAP Subsystem"
 msgstr ""
 
@@ -658,8 +692,8 @@ msgstr ""
 msgid "Emailadress"
 msgstr ""
 
-#: newemail.php:92 search.php:249 aliases.php:60 editalias.php:71
-#: editemail.php:107
+#: newemail.php:92 search.php:249 aliases.php:60 editemail.php:107
+#: editalias.php:71
 msgid "Destination"
 msgstr ""
 
@@ -695,11 +729,15 @@ msgstr ""
 msgid "Setting individual Quota for user"
 msgstr ""
 
-#: setquota.php:63
+#: setquota.php:52
+msgid "Submit"
+msgstr ""
+
+#: setquota.php:64
 msgid "Quote for user"
 msgstr ""
 
-#: setquota.php:67
+#: setquota.php:68
 msgid "changed to"
 msgstr ""
 
@@ -753,6 +791,14 @@ msgstr ""
 msgid "Remove vacation notice"
 msgstr ""
 
+#: validate.inc.php:103
+msgid "Quota exeedes the maximum allowed qutoa for this domain."
+msgstr ""
+
+#: validate.inc.php:107
+msgid "Security violation detected, attempt logged"
+msgstr ""
+
 #: forwardaccount.php:69
 msgid "Forward for account"
 msgstr ""
@@ -781,44 +827,24 @@ msgstr ""
 msgid "from the alias"
 msgstr ""
 
-#: deletealias.php:41
+#: deletealias.php:24
+msgid "Yes"
+msgstr ""
+
+#: deletealias.php:43
 msgid "Please confirm you want to remove the alias"
 msgstr ""
 
-#: deletealias.php:69
+#: deletealias.php:71
 msgid "Removed"
 msgstr ""
 
-#: deletealias.php:69
+#: deletealias.php:71
 msgid "from"
 msgstr ""
 
-#: deletealias.php:77
+#: deletealias.php:79
 msgid "Removed the alias"
-msgstr ""
-
-#: editalias.php:58
-msgid "Editing alias"
-msgstr ""
-
-#: editalias.php:62
-msgid "Delete this alias"
-msgstr ""
-
-#: editalias.php:95
-msgid "Cannot remove from account"
-msgstr ""
-
-#: editalias.php:99
-msgid "Remove destination"
-msgstr ""
-
-#: editalias.php:119
-msgid "This alias has no destinations"
-msgstr ""
-
-#: editalias.php:136
-msgid "New destination&nbsp"
 msgstr ""
 
 #: newalias.php:8
@@ -835,18 +861,30 @@ msgid ""
 "off!"
 msgstr ""
 
-#: Submit and cancel buttons 	 
-msgid "Yes, delete" 	 
+#: editalias.php:21
+msgid "There was an error adding $dest to $alias: "
 msgstr ""
 
-msgid "Yes"
+#: editalias.php:58
+msgid "Editing alias"
 msgstr ""
 
-msgid "Submit"
+#: editalias.php:62
+msgid "Delete this alias"
 msgstr ""
 
-msgid "Cancel"
+#: editalias.php:95
+msgid "Cannot remove from account"
 msgstr ""
 
+#: editalias.php:99 editalias.php:103
+msgid "Remove destination"
+msgstr ""
 
+#: editalias.php:119
+msgid "This alias has no destinations"
+msgstr ""
 
+#: editalias.php:136
+msgid "New destination"
+msgstr ""

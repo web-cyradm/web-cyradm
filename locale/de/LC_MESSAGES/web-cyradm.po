@@ -6,12 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: web-cyradm\n"
-"POT-Creation-Date: 2003-05-25 00:34+0200\n"
+"POT-Creation-Date: 2003-05-29 16:28+0200\n"
 "PO-Revision-Date: 2003-05-25 00:58+0200\n"
 "Last-Translator: Luc de Louw <luc@delouw.ch>\n"
 "Language-Team:  <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.2beta2\n"
 
@@ -22,7 +22,7 @@ msgstr "Liste der Administratoren"
 #: adminuser.php:15 browse.php:60 browseaccounts.php:28 catchall.php:58
 #: change_password.php:13 change_password.php:27 change_password.php:37
 #: deleteaccount.php:70 deleteadminuser.php:68 deletedomain.php:11
-#: deleteemail.php:52 editaccount.php:25 editadminuser.php:167
+#: deleteemail.php:56 editaccount.php:25 editadminuser.php:167
 #: editdomain.php:31 editdomain.php:61 forwardalias.php:10 forwardalias.php:27
 #: newaccount.php:20 newadminuser.php:133 newadminuser.php:161
 #: newadminuser.php:196 newdomain.php:230 newemail.php:9 vacation.php:9
@@ -75,12 +75,12 @@ msgstr "Administrator &auml;ndern"
 msgid "Delete adminuser"
 msgstr "Administrator l&ouml;schen"
 
-#: adminuser.php:134 editadminuser.php:68 menu.inc.php:125 newadminuser.php:75
+#: adminuser.php:134 editadminuser.php:68 menu.inc.php:127 newadminuser.php:75
 #: newadminuser.php:188
 msgid "Superuser"
 msgstr "Superuser"
 
-#: adminuser.php:136 editadminuser.php:78 menu.inc.php:127 newadminuser.php:79
+#: adminuser.php:136 editadminuser.php:78 menu.inc.php:129 newadminuser.php:79
 #: newadminuser.php:190
 msgid "Domain Master"
 msgstr "Dom&auml;nen Administrator"
@@ -93,20 +93,20 @@ msgstr "Kein Konto gefunden"
 msgid "Add administrator"
 msgstr "Administrator hinzuf&uuml;gen"
 
-#: auth.inc.php:62
+#: auth.inc.php:65
 msgid "Web-cyradm is for authorized users only."
 msgstr "Nur f&uuml;r berechtigte Benutzer."
 
-#: auth.inc.php:63
+#: auth.inc.php:66
 msgid "Make sure you entered the right password."
 msgstr "Stellen Sie sicher, dass Sie das richtige Passwort eingegeben haben."
 
-#: auth.inc.php:64
+#: auth.inc.php:67
 msgid "Push the back button in your browser to try again."
 msgstr ""
 "Klicken Sie \"Zur&uuml;ck\" in Ihrem Browser und probieren Sie es nochmal."
 
-#: auth.inc.php:65
+#: auth.inc.php:68
 msgid " Your attempt to login has been stored."
 msgstr "Ihr Loginversuch wurde gespeichert."
 
@@ -144,7 +144,7 @@ msgstr "Konten"
 
 #: browse.php:87 menu.inc.php:63 search.php:79
 msgid "Aliases"
-msgstr "Ãœbergeordnete E-Mailadressen"
+msgstr "Übergeordnete E-Mailadressen"
 
 #: browseaccounts.php:16
 msgid "Browse accounts for domain"
@@ -252,27 +252,27 @@ msgstr "Datenbankfehler"
 msgid "Cancelled"
 msgstr "Abgebrochen"
 
-#: change_password.php:58
+#: change_password.php:59
 msgid "Password changed"
 msgstr "Passwort ge;auml;ndert"
 
-#: change_password.php:61
+#: change_password.php:62
 msgid "Failure in changing password."
 msgstr "Fehler beim Passwort &auml;ndern."
 
-#: change_password.php:64 editadminuser.php:150
+#: change_password.php:65 editadminuser.php:150
 msgid "New passwords are not equal. Password not changed"
 msgstr "Neues Password nicht best&auml;tigt. Passwort wurde nicht gewechselt"
 
-#: change_password.php:81
+#: change_password.php:79
 msgid "Change password for account"
 msgstr "Neues Passwort f&uuml;r Konto"
 
-#: change_password.php:99
+#: change_password.php:97
 msgid "New password"
 msgstr "Neues Passwort"
 
-#: change_password.php:109
+#: change_password.php:107
 msgid "Confirm new password"
 msgstr "Passwort best&auml;tigen"
 
@@ -289,7 +289,7 @@ msgid "with all its defined Emailadresses"
 msgstr "mit all seinen definierten E-Mail-Addressen l&ouml;schen"
 
 #: deleteaccount.php:56 deleteadminuser.php:62 deletedomain.php:78
-#: deleteemail.php:45
+#: deleteemail.php:49
 msgid "Action cancelled, nothing deleted"
 msgstr "Befehl abgebrochen, keine Daten gel&ouml;scht"
 
@@ -362,7 +362,15 @@ msgstr ""
 "M&ouml;chten Sie diese Emailadresse f&uuml;r das nachstehende Konto wirklich "
 "l&ouml;schen:"
 
-#: deleteemail.php:60
+#: deleteemail.php:38
+msgid "Yes, delete"
+msgstr "Ja, l&ouml;schen"
+
+#: deleteemail.php:43
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: deleteemail.php:64
 msgid "Emailadress deleted."
 msgstr "E-Mail-Adresse gelÃ¶scht"
 
@@ -424,11 +432,11 @@ msgstr "Pr&auml;fix"
 
 #: editdomain.php:117 newdomain.php:70
 msgid "Allow Free Names"
-msgstr "Frei wÃ¤hlbare Kontonamen"
+msgstr "Frei wählbare Kontonamen"
 
 #: editdomain.php:135 newdomain.php:84
 msgid "Allow Free Mail Addresses"
-msgstr "Frei wÃ¤hlbare E-mailadressen"
+msgstr "Frei wählbare E-mailadressen"
 
 #: editdomain.php:153 newdomain.php:97
 msgid "Maximum Accounts"
@@ -442,19 +450,19 @@ msgstr "Standard Speicherplatz in KB"
 msgid "Your are not allowed to change domains!"
 msgstr "Sie haben keine Berechtigung um Dom&auml;en zu bearbeiten"
 
-#: failed.php:61
+#: failed.php:60
 msgid "Login failed"
 msgstr "Login fehlgeschlagen"
 
-#: failed.php:66 login.php:45
+#: failed.php:65 login.php:45
 msgid "This is only for authorized users"
 msgstr "Nur f&uuml;r berechtigte Benutzer"
 
-#: failed.php:71 logout.php:55 timeout.php:32
+#: failed.php:70 logout.php:55 timeout.php:32
 msgid "If you like to login click"
 msgstr "Zum wieder anmelden klicken Sie"
 
-#: failed.php:73 logout.php:57 timeout.php:35
+#: failed.php:72 logout.php:57 timeout.php:34
 msgid "here"
 msgstr "hier"
 
@@ -517,6 +525,29 @@ msgstr "Weiterleitung entfernen"
 msgid "migrate.php exists! please delete or rename it"
 msgstr "migrate.php existiert! Bitte lÃ¶schen oder umbenennen.."
 
+#: index.php:130
+msgid "web-cyradm has not yet been configured"
+msgstr "Web-cyradm wurde noch nocht eingerichtet"
+
+#: index.php:133
+msgid "Configuration steps:"
+msgstr "Einrichtungsschritte:"
+
+#: index.php:135
+msgid "copy the config file that comes with the distribution: "
+msgstr "Kopieren Sie die mitgelieferte Konfigurationsdatei:"
+
+#: index.php:138
+msgid "Edit the file config/conf.php to match your systems configuration"
+msgstr "Passen Sie die Datei config/conf.php Ihrer Systemkonfiguration an"
+
+#: index.php:140
+msgid ""
+"Further information about how to configure Web-cyradm can be found at the "
+"following website:"
+msgstr "Weitere Informationen zur Einrichtung von Web-cyradm können auf "
+"der folgenden Webseite gefunden werden:"
+
 #: login.php:44
 msgid "Welcome to Web-cyradm"
 msgstr "Willkommen bei Web-cyradm"
@@ -524,6 +555,10 @@ msgstr "Willkommen bei Web-cyradm"
 #: login.php:46
 msgid "Please authenticate yourself"
 msgstr "Bitte melden Sie sich an"
+
+#: login.php:78
+msgid "Select language"
+msgstr "Sprachauswahl"
 
 #: logout.php:45
 msgid "Thank you for using Web-cyradm"
@@ -561,23 +596,23 @@ msgstr "Start"
 msgid "logout"
 msgstr "Abmelden"
 
-#: menu.inc.php:84
+#: menu.inc.php:85
 msgid "Search"
 msgstr "Suchen"
 
-#: menu.inc.php:107
+#: menu.inc.php:109
 msgid "Logged in as user"
 msgstr "Angemeldet als Benutzer"
 
-#: menu.inc.php:119
+#: menu.inc.php:121
 msgid "Your role is"
 msgstr "Sie sind"
 
-#: menu.inc.php:137
+#: menu.inc.php:139
 msgid "Current domain is"
 msgstr "Aktuelle Dom&auml;ne ist"
 
-#: menu.inc.php:143
+#: menu.inc.php:145
 msgid "No domain selected"
 msgstr "Noch keine Dom&auml;ne gew&auml;hlt"
 
@@ -605,11 +640,11 @@ msgstr "Speicherplatzbegrenzung"
 msgid "Sorry, the username already exists"
 msgstr "Kontenname bereits vergeben"
 
-#: newaccount.php:225
+#: newaccount.php:227
 msgid "Account successfully added to the Database"
 msgstr "Konto erfolgreich der Datenbank hinzugef&uuml;gt"
 
-#: newaccount.php:238
+#: newaccount.php:240
 msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Konto erfolgreich dem IMAP Subsystem hinzugef&uuml;gt"
 
@@ -669,14 +704,14 @@ msgstr "Neue E-Mail-Addresse f&uuml;r Konto"
 msgid "Emailadress"
 msgstr "E-Mail-Adresse"
 
-#: newemail.php:92 search.php:249 aliases.php:60 editalias.php:71
-#: editemail.php:107
+#: newemail.php:92 search.php:249 aliases.php:60 editemail.php:107
+#: editalias.php:71
 msgid "Destination"
 msgstr "Ziel"
 
 #: search.php:42
 msgid "Total domains matching"
-msgstr "Anzahl DomÃ¤nen gefunden"
+msgstr "Anzahl Domänen gefunden"
 
 #: search.php:104
 msgid "Total users matching"
@@ -706,13 +741,17 @@ msgstr "E-Mail-Adresse l&ouml;schen"
 msgid "Setting individual Quota for user"
 msgstr "Speicherplatz f&uuml;r Konto"
 
-#: setquota.php:63
-msgid "Quote for user"
-msgstr "Speicherplatzbegrenzung fÃ¼r Konto"
+#: setquota.php:52
+msgid "Submit"
+msgstr "Abschicken"
 
-#: setquota.php:67
+#: setquota.php:64
+msgid "Quote for user"
+msgstr "Speicherplatzbegrenzung für Konto"
+
+#: setquota.php:68
 msgid "changed to"
-msgstr "geÃ¤ndert:"
+msgstr "geändert:"
 
 #: timeout.php:27
 msgid "Your session timed out"
@@ -732,7 +771,7 @@ msgstr "Fehler beim Bearbeiten der Abwesenheitsmeldung"
 
 #: vacation.php:89
 msgid "Vacation notice unset"
-msgstr "Abwesenheitsmeldung gelÃ¶scht"
+msgstr "Abwesenheitsmeldung gelöscht"
 
 #: vacation.php:91
 msgid "Failure in unseting vacation notice"
@@ -764,6 +803,16 @@ msgstr "Abwesenheitsmeldung festlegen"
 msgid "Remove vacation notice"
 msgstr "Abwesenheitsmeldung entfernen"
 
+#: validate.inc.php:103
+msgid "Quota exeedes the maximum allowed qutoa for this domain."
+msgstr "Gewünschter Speichplatz überschreitet den maximal Zulässigen Wert für diese Domäne "
+
+#: validate.inc.php:107
+msgid "Security violation detected, attempt logged"
+msgstr ""
+"Sicherheits&uuml;berschreitung entdeckt, Aktion abgebrochen. Ihr Versuch "
+"wurde geloggt."
+
 #: forwardaccount.php:69
 msgid "Forward for account"
 msgstr "Weiterleitung f&uuml;r Konto"
@@ -774,7 +823,7 @@ msgstr "Weiterleitung an (eine E-Mailadresse pro Linie)"
 
 #: aliases.php:5
 msgid "Browse aliases for domain"
-msgstr "Aliase anzeigen fÃ¼r DomÃ¤ne"
+msgstr "Aliase anzeigen für Domäne"
 
 #: aliases.php:44
 msgid "Total aliases"
@@ -782,31 +831,53 @@ msgstr "Anzahl Aliases"
 
 #: aliases.php:49
 msgid "Add new alias"
-msgstr "Alias hinzufÃ¼gen"
+msgstr "Alias hinzufügen"
 
 #: deletealias.php:22
 msgid "Please confirm you want to remove"
-msgstr "Bitte bestÃ¤tigen Sie das LÃ¶schen von"
+msgstr "Bitte bestätigen Sie das Löschen von"
 
 #: deletealias.php:22
 msgid "from the alias"
 msgstr "von Alias"
 
-#: deletealias.php:41
+#: deletealias.php:24
+msgid "Yes"
+msgstr "Ja"
+
+#: deletealias.php:43
 msgid "Please confirm you want to remove the alias"
-msgstr "Bitte bestÃ¤tigen Sie die Entfernung von Alias"
+msgstr "Bitte bestätigen Sie die Entfernung von Alias"
 
-#: deletealias.php:69
+#: deletealias.php:71
 msgid "Removed"
-msgstr "GelÃ¶scht"
+msgstr "Gelöscht"
 
-#: deletealias.php:69
+#: deletealias.php:71
 msgid "from"
 msgstr "von"
 
-#: deletealias.php:77
+#: deletealias.php:79
 msgid "Removed the alias"
-msgstr "Alias gelÃ¶scht"
+msgstr "Alias gelöscht"
+
+#: newalias.php:8
+msgid "Add new alias to domain"
+msgstr "Neuer Alias für Domäne"
+
+#: editemail.php:40
+msgid "Successfully changed"
+msgstr "Erfolgreich ge&auml;ndert"
+
+#: editemail.php:62
+msgid ""
+"You can't edit this email address with 'Allow Free Mail Addressess' set to "
+"off!"
+msgstr "E-mail Adresse kann nicht geändert werden"
+
+#: editalias.php:21
+msgid "There was an error adding $dest to $alias: "
+msgstr "Beim hinzufügen von $dest zu $alias ist ein Fehler aufgetreten: "
 
 #: editalias.php:58
 msgid "Editing alias"
@@ -818,43 +889,16 @@ msgstr "E-Mail-Adresse l&ouml;schen"
 
 #: editalias.php:95
 msgid "Cannot remove from account"
-msgstr "Kann nicht gelÃ¶scht werden"
+msgstr "Kann nicht gelöscht werden"
 
-#: editalias.php:99
+#: editalias.php:99 editalias.php:103
 msgid "Remove destination"
-msgstr "Ziel lÃ¶schen"
+msgstr "Ziel löschen"
 
 #: editalias.php:119
 msgid "This alias has no destinations"
 msgstr "Dieser Alias hat kein Ziel"
 
 #: editalias.php:136
-msgid "New destination&nbsp"
+msgid "New destination"
 msgstr "Neues Ziel"
-
-#: newalias.php:8
-msgid "Add new alias to domain"
-msgstr "Neuer Alias fÃ¼r DomÃ¤ne"
-
-#: editemail.php:40
-msgid "Successfully changed"
-msgstr "Erfolgreich ge&auml;ndert"
-
-#: editemail.php:62
-msgid ""
-"You can't edit this email address with 'Allow Free Mail Addressess' set to "
-"off!"
-msgstr "E-mail Adresse kann nicht geÃ¤ndert werden"
-
-#: Submit and cancel buttons
-msgid "Yes, delete"
-msgstr "Ja, l&ouml;schen"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "Submit"
-msgstr "Abschicken"
-
-msgid "Cancel"
-msgstr "Abbrechen"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: web-cyradm\n"
-"POT-Creation-Date: 2002-08-18 13:51+0200\n"
+"POT-Creation-Date: 2003-05-29 16:28+0200\n"
 "PO-Revision-Date: 2003-05-15 HO:MI+ZONE\n"
 "Last-Translator: Carlo Landmeter <carlo@giga-byte.nl>\n"
 "Language-Team: Nederlands <LL@li.org>\n"
@@ -14,246 +14,322 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: adminuser.php:12
+#: adminuser.php:7
 msgid "Browse admins"
 msgstr "Browse admins"
 
-#: adminuser.php:24
+#: adminuser.php:15 browse.php:60 browseaccounts.php:28 catchall.php:58
+#: change_password.php:13 change_password.php:27 change_password.php:37
+#: deleteaccount.php:70 deleteadminuser.php:68 deletedomain.php:11
+#: deleteemail.php:56 editaccount.php:25 editadminuser.php:167
+#: editdomain.php:31 editdomain.php:61 forwardalias.php:10 forwardalias.php:27
+#: newaccount.php:20 newadminuser.php:133 newadminuser.php:161
+#: newadminuser.php:196 newdomain.php:230 newemail.php:9 vacation.php:9
+#: vacation.php:24 validate.inc.php:36 lib/crypto.php:35 lib/crypto.php:63
+#: lib/crypto.php:84 lib/crypto.php:126 lib/crypto.php:146
+#: forwardaccount.php:22 editemail.php:9 editemail.php:32
+msgid "Database error"
+msgstr "Database fout"
+
+#: adminuser.php:25
 msgid "Total administrators"
 msgstr "Totaal aantal administrators"
 
-#: adminuser.php:27
+#: adminuser.php:31
 msgid "Add administator"
 msgstr "Administrator toevoegen"
 
-#: adminuser.php:35 adminuser.php:39 browseaccounts.php:49
-#: browseaccounts.php:53
+#: adminuser.php:53 browseaccounts.php:72 search.php:125 search.php:129
+#: aliases.php:50 editalias.php:63
 msgid "Previous 10 entries"
 msgstr "Vorige 10 entries"
 
-#: adminuser.php:43 adminuser.php:47 browseaccounts.php:57
-#: browseaccounts.php:61
+#: adminuser.php:57 browseaccounts.php:76 search.php:132 search.php:136
+#: aliases.php:51 editalias.php:64
 msgid "Next 10 entries"
 msgstr "Volgende 10 entries"
 
-#: adminuser.php:53 browse.php:16 browseaccounts.php:69 editaccount.php:31
+#: adminuser.php:66 browse.php:14 browseaccounts.php:85 editaccount.php:44
+#: search.php:46 search.php:143 search.php:247 aliases.php:58 editalias.php:70
 msgid "action"
 msgstr "handeling"
 
-#: adminuser.php:54
+#: adminuser.php:70
 msgid "Adminname"
 msgstr "Admin naam"
 
-#: adminuser.php:55 browseaccounts.php:72 editaccount.php:34 login.php:89
-#: newaccount.php:96
-msgid "Password"
-msgstr "Wachtwoord"
-
-#: adminuser.php:56
+#: adminuser.php:74
 msgid "domain"
 msgstr "domein"
 
-#: adminuser.php:57
+#: adminuser.php:78
 msgid "admin type"
 msgstr "admin type"
 
-#: adminuser.php:81
+#: adminuser.php:107
 msgid "Edit adminuser"
 msgstr "Edit admin gebruiker"
 
-#: adminuser.php:82
+#: adminuser.php:113
 msgid "Delete adminuser"
 msgstr "Verwijder admin gebruiker"
 
-#: adminuser.php:108
+#: adminuser.php:134 editadminuser.php:68 menu.inc.php:127 newadminuser.php:75
+#: newadminuser.php:188
+msgid "Superuser"
+msgstr "Super gebruiker"
+
+#: adminuser.php:136 editadminuser.php:78 menu.inc.php:129 newadminuser.php:79
+#: newadminuser.php:190
+msgid "Domain Master"
+msgstr "Domein Master"
+
+#: adminuser.php:150
 msgid "No accounts fount"
 msgstr "Geen accounts gevonden"
 
-#: adminuser.php:112
+#: adminuser.php:157
 msgid "Add administrator"
 msgstr "Voeg administrator toe"
 
-#: auth.inc.php:99
+#: auth.inc.php:65
 msgid "Web-cyradm is for authorized users only."
 msgstr "Web-cyradm is alleen toegankelijk voor geautoriseerde gebruikers."
 
-#: auth.inc.php:100
+#: auth.inc.php:66
 msgid "Make sure you entered the right password."
 msgstr "Weet zeker dat u het goede wachtwoord ingevuld hebt."
 
-#: auth.inc.php:101
+#: auth.inc.php:67
 msgid "Push the back button in your browser to try again."
 msgstr "Klik de terug knop in uw browser om nogmaals te proberen"
 
-#: auth.inc.php:102
-msgid "Your attempt to login has been stored."
+#: auth.inc.php:68
+#, fuzzy
+msgid " Your attempt to login has been stored."
 msgstr "Uw poging om in te loggen is opgeslagen"
 
-#: browse.php:12
+#: browse.php:7
 msgid "Browse domains"
 msgstr "Browse domeinen"
 
-#: browse.php:17
+#: browse.php:18 search.php:47
 msgid "domainname"
 msgstr "Domeinnaam"
 
-#: browse.php:21
+#: browse.php:25 search.php:51
 msgid "prefix"
 msgstr "voorvoegsel"
 
-#: browse.php:24
+#: browse.php:32 search.php:54
 msgid "max Accounts"
 msgstr "max Accounts"
 
-#: browse.php:25
+#: browse.php:36 search.php:55
 msgid "default quota per user"
 msgstr "standaard quota per gebruiker"
 
-#: browse.php:56
+#: browse.php:84 search.php:76
 msgid "Edit Domain"
 msgstr "Edit Domein"
 
-#: browse.php:57
+#: browse.php:85 search.php:77
 msgid "Delete Domain"
 msgstr "Verwijder Domein"
 
-#: browse.php:58 deletedomain.php:29 menu.inc.php:42
+#: browse.php:86 deletedomain.php:45 menu.inc.php:54 search.php:78
 msgid "accounts"
 msgstr "accounts"
 
-#: browseaccounts.php:20
+#: browse.php:87 menu.inc.php:63 search.php:79
+msgid "Aliases"
+msgstr ""
+
+#: browseaccounts.php:16
 msgid "Browse accounts for domain"
 msgstr "Browse accounts van domein"
 
-#: browseaccounts.php:38 newaccount.php:48
+#: browseaccounts.php:42 newaccount.php:62
 msgid "Total accounts"
 msgstr "Totaal aantal accounts"
 
-#: browseaccounts.php:41 browseaccounts.php:147
+#: browseaccounts.php:43
+msgid "Displaying from position:"
+msgstr ""
+
+#: browseaccounts.php:49 browseaccounts.php:236 search.php:117 search.php:233
 msgid "Add new account"
 msgstr "Voeg een nieuwe gebruiker toe"
 
-#: browseaccounts.php:70 editaccount.php:32 newaccount.php:86
+#: browseaccounts.php:90 editaccount.php:48 newaccount.php:130 search.php:144
+#: search.php:248 aliases.php:59 newalias.php:28
 msgid "Email address"
 msgstr "Email adres"
 
-#: browseaccounts.php:71 editaccount.php:33 login.php:79
+#: browseaccounts.php:90 editaccount.php:57 login.php:55 search.php:145
 msgid "Username"
 msgstr "Gebruikersnaam"
 
-#: browseaccounts.php:73 editaccount.php:35
+#: browseaccounts.php:91
+#, fuzzy
+msgid "Last login"
+msgstr "Inloggen mislukt"
+
+#: browseaccounts.php:91 editaccount.php:62 search.php:146
 msgid "Quota used"
 msgstr "Gebruikte Quota"
 
-#: browseaccounts.php:93
+#: browseaccounts.php:130
+msgid "n/a"
+msgstr ""
+
+#: browseaccounts.php:140 search.php:165
 msgid "Edit account"
 msgstr "Bewerk account"
 
-#: browseaccounts.php:94
-msgid "Delete account"
-msgstr "Verwijder account"
-
-#: browseaccounts.php:95
-msgid "Set quota"
-msgstr "Verander quota"
-
-#: browseaccounts.php:96
-msgid "Set catch all"
-msgstr "Ontvang alles"
-
-#: browseaccounts.php:99
+#: browseaccounts.php:145
 msgid "Change Password"
 msgstr "Verander wachtwoord"
 
-#: browseaccounts.php:100
-msgid "Vacation"
-msgstr "Vakantie"
-
-#: browseaccounts.php:101
+#: browseaccounts.php:149 editaccount.php:52 editaccount.php:85
 msgid "Forward"
 msgstr "Doorsturen"
 
-#: browseaccounts.php:126 editaccount.php:76
+#: browseaccounts.php:153 search.php:166
+msgid "Delete account"
+msgstr "Verwijder account"
+
+#: browseaccounts.php:157 search.php:167
+msgid "Set quota"
+msgstr "Verander quota"
+
+#: browseaccounts.php:161 search.php:168
+msgid "Set catch all"
+msgstr "Ontvang alles"
+
+#: browseaccounts.php:175 search.php:184
+#, fuzzy
+msgid "Forwards"
+msgstr "Doorsturen"
+
+#: browseaccounts.php:212 editaccount.php:146 search.php:211
 msgid "out of"
 msgstr "zonder"
 
-#: browseaccounts.php:130 editaccount.php:80
+#: browseaccounts.php:215 search.php:214
+msgid "Unable to retrieve quota"
+msgstr ""
+
+#: browseaccounts.php:218 editaccount.php:149 search.php:217
 msgid "Quota not set"
 msgstr "Geen quota ingesteld"
 
-#: browseaccounts.php:143
+#: browseaccounts.php:230 search.php:229
 msgid "No accounts found"
 msgstr "Geen accounts gevonden"
 
-#: catchall.php:13
+#: catchall.php:7
 msgid "Define a Account for receiving undefined adresses for domain"
-msgstr "Stel een account in voor het ontvangen van alle niet bestaande email adressen van het domein"
+msgstr ""
+"Stel een account in voor het ontvangen van alle niet bestaande email "
+"adressen van het domein"
 
-#: catchall.php:24
+#: catchall.php:16
 msgid "Do you really want to define the user"
 msgstr "Weet u zeker dat u de gebruiker"
 
-#: catchall.php:24
+#: catchall.php:20
 msgid "to receive all undefined emailadresses"
-msgstr "wilt instellen om alle niet bestaande email adressen te laten ontvangen"
+msgstr ""
+"wilt instellen om alle niet bestaande email adressen te laten ontvangen"
 
-#: catchall.php:54 newadminuser.php:76
+#: catchall.php:67 newadminuser.php:178
 msgid "successfully added to Database"
 msgstr "succesvol aan database toegevoegd"
 
-#: catchall.php:57 editdomain.php:25 editemail.php:36 newemail.php:29 newdomain.php:113
+#: catchall.php:73 editdomain.php:50 newdomain.php:248 newemail.php:38
+#: editemail.php:47
 msgid "Database error, please try again"
 msgstr "Database fout, Probeer opnieuw"
 
-#: change_password.php:60
-msgid "Change password for account"
-msgstr "Verander wachtwoord voor account"
+#: catchall.php:80
+#, fuzzy
+msgid "Cancelled"
+msgstr "Annuleren"
 
-#:change_password.php:72
-msgid "New password"
-msgstr "Nieuw wachtwoord"
-
-#:change_password.php:76
-msgid "Confirm new password"
-msgstr "Bevestig nieuw wachtwoord"
-
-#: change_password.php:29
+#: change_password.php:59
 msgid "Password changed"
 msgstr "wachtwoord verandert"
 
-#: change_password.php:32
+#: change_password.php:62
 msgid "Failure in changing password."
 msgstr "Fout tijdens veranderen van wachtwoord"
 
-#: change_password.php:35
+#: change_password.php:65 editadminuser.php:150
 msgid "New passwords are not equal. Password not changed"
 msgstr "Nieuwe wachtwoorden zijn niet identiek. wachtwoord niet verandert"
 
-#: deleteaccount.php:19
+#: change_password.php:79
+msgid "Change password for account"
+msgstr "Verander wachtwoord voor account"
+
+#: change_password.php:97
+msgid "New password"
+msgstr "Nieuw wachtwoord"
+
+#: change_password.php:107
+msgid "Confirm new password"
+msgstr "Bevestig nieuw wachtwoord"
+
+#: deleteaccount.php:12
 msgid "Delete an Account from the System"
 msgstr "Verwijder een accound uit het systeem"
 
-#: deleteaccount.php:21
+#: deleteaccount.php:16
 msgid "Do you really want to delete the user "
 msgstr "Weet u zeker dat u deze gebruiker wil verwijderen?"
 
-#: deleteaccount.php:21
+#: deleteaccount.php:20
 msgid "with all its defined Emailadresses"
 msgstr "Met alle gedefinieerde email adressen"
 
-#: deleteaccount.php:40 deletedomain.php:47 deleteemail.php:39
+#: deleteaccount.php:56 deleteadminuser.php:62 deletedomain.php:78
+#: deleteemail.php:49
 msgid "Action cancelled, nothing deleted"
 msgstr "Actie geschrapt, niets verwijdert"
 
-#: deleteadminuser.php:12
+#: deleteaccount.php:87
+#, fuzzy
+msgid "User deleted"
+msgstr "Ja, Verwijder"
+
+#: deleteaccount.php:98 deletedomain.php:169
+msgid ""
+"Security violation detected, action cancelled. Your attempt has been logged."
+msgstr ""
+"Veiligheids overtreding gedetecteerd, handeling geanuleert. Uw poging is "
+"gelogt"
+
+#: deleteadminuser.php:11
 msgid "Delete an Admin account from the System"
 msgstr "Verwijder een admin accound uit het systeem"
 
-#: deleteadminuser.php:14
+#: deleteadminuser.php:15
 msgid "Do you really want to delete the Domain supervisor"
 msgstr "Weet u zeker dat u de Domein supervisor wil verwijderen"
 
-#: deletedomain.php:24
+#: deleteadminuser.php:79
+msgid "Admin user deleted"
+msgstr ""
+
+#: deleteadminuser.php:92 editadminuser.php:175 newadminuser.php:207
+#, fuzzy
+msgid "Security violation detected, nothing deleted, attempt has been logged"
+msgstr ""
+"Veiligheids overtreding gedetecteerd, handeling geanuleert. Uw poging is "
+"gelogt"
+
+#: deletedomain.php:22
 msgid "Delete a Domain from the System"
 msgstr "Verwijder een domein uit het systeem"
 
@@ -261,367 +337,599 @@ msgstr "Verwijder een domein uit het systeem"
 msgid "Do you really want to delete the Domain"
 msgstr "Weet u zeker dat u het domein wil verwijderen"
 
-#: deletedomain.php:26
+#: deletedomain.php:31
 msgid "with all its defined accounts, admins, and emailadresses"
 msgstr "met al zijn gedefinieerde accounts, admins, en email adressen"
 
-#: deletedomain.php:27
+#: deletedomain.php:37
 msgid "This can take a while depending on how many account have to be deleted"
-msgstr "Dit kan een tijdje duren afhankelijk van het aantal accounts dat verwijderd moet worden"
+msgstr ""
+"Dit kan een tijdje duren afhankelijk van het aantal accounts dat verwijderd "
+"moet worden"
 
-#: deletedomain.php:29
+#: deletedomain.php:41
 msgid "Your action will delete"
 msgstr "Uw actie verwijdert"
 
-#: deletedomain.php:94
+#: deletedomain.php:148
 msgid "Domain"
 msgstr "domein"
 
-#: deletedomain.php:94
+#: deletedomain.php:152
 msgid "successfully deleted"
 msgstr "succesvol verwijderd"
 
-#: deleteemail.php:17
-msgid "Delete an emailadress from the System"
+#: deleteemail.php:10
+#, fuzzy
+msgid "Delete emailadress from the System"
 msgstr "Verwijder een email adres uit het systeem"
 
-#: deleteemail.php:19
+#: deleteemail.php:17
 msgid "Do you really want to delete the emailadress for user"
 msgstr "Weet u zeker dat u het email adres wil verwijderen van gebruiker"
 
-#: editaccount.php:17
-msgid "Email adresses defined for user"
-msgstr "Email adres gedefinieerd voor gebruiker"
-
-#: editaccount.php:25
-msgid "New email address"
-msgstr "Nieuw email adres"
-
-#: editaccount.php:52
-msgid "Edit Emailadress"
-msgstr "Bewerkt Emailadres"
-
-#: editaccount.php:53
-msgid "Delete Emailadress"
-msgstr "Verwijder Email adres"
-
-#: editadminuser.php:5
-msgid "Change admin user for domain"
-msgstr "Verander admin gebruiker voor domein"
-
-#: editadminuser.php:81
-msgid "successfully changed Database...."
-msgstr "Succesvol de database verandert...."
-
-#: editadminuser.php:84 newadminuser.php:79
-msgid "Database error"
-msgstr "Database fout"
-
-#: editdomain.php:21 editemail.php:32
-msgid "Successfully changed"
-msgstr "Succesvol verandert"
-
-#: editdomain.php:89
-msgid "Your are not allowed to change domains!"
-msgstr "U bent niet bevoegd domeinen te veranderen"
-
-#: editemail.php:63 newemail.php:53
-msgid "Emailadress"
-msgstr "Email adres"
-
-#: editemail.php:68 newemail.php:58
-msgid "Destination"
-msgstr "Bestemming"
-
-#: login.php:68
-msgid "Welcome to Web-cyradm"
-msgstr "Welkom bij Web-cyradm"
-
-#: login.php:69
-msgid "This is only for authorized users"
-msgstr "Alleen voor geautoriseerde gebruikers"
-
-#: login.php:70
-msgid "Please authenticate yourself"
-msgstr "Verifieer uzelf AUB"
-
-#: logout.php:32
-msgid "Thank you for using Web-cyradm"
-msgstr "Bedankt voor het gebruiken van Web-cyradm"
-
-#: logout.php:34
-msgid "You are logged out"
-msgstr "U bent uitgelogd"
-
-#: logout.php:36 timeout.php:67
-msgid "If you like to login click"
-msgstr "Als u wil inloggen klik"
-
-#: logout.php:36 timeout.php:67
-msgid "here"
-msgstr "hier"
-
-#: menu.inc.php:23
-msgid "Domainmasters menu"
-msgstr "Domein masters menu"
-
-#: menu.inc.php:27
-msgid "add new domain"
-msgstr "Voeg nieuw domein toe"
-
-#: menu.inc.php:30
-msgid "browse domains"
-msgstr "browse domeinen"
-
-#: menu.inc.php:33
-msgid "adminusers"
-msgstr "admin gebruiker"
-
-#: menu.inc.php:45
-msgid "home"
-msgstr "home"
-
-#: menu.inc.php:48
-msgid "logout"
-msgstr "uitloggen"
-
-#: menu.inc.php:53
-msgid "Search"
-msgstr "Zoeken"
-
-#: menu.inc.php:69
-msgid "Logged in as user"
-msgstr "ingelogd als gebruiker"
-
-#: menu.inc.php:74
-msgid "Your role is"
-msgstr "Uw rol is"
-
-#: menu.inc.php:76
-msgid "Superuser"
-msgstr "Super gebruiker"
-
-#: menu.inc.php:79
-msgid "Domain Master"
-msgstr "Domein Master"
-
-#: newaccount.php:14
-msgid "Add new Account to domain"
-msgstr "Voeg nieuw Account toe aan domein"
-
-#: newaccount.php:27
-msgid "transport is not cyrus, unable to create account"
-msgstr "transport is niet cyrus, onmogelijk account toe te voegen"
-
-#: newaccount.php:43
-msgid "Sorry, no more account allowed for domain"
-msgstr "Sorry, niet meer accounts toegelaten voor domein"
-
-#: newaccount.php:43
-msgid "Maximum allowed accounts is"
-msgstr "Maximum aantal toegelaten accounts is"
-
-#: newaccount.php:79
-msgid "Accountname"
-msgstr "Account naam"
-
-#: newaccount.php:91
-msgid "Quota"
-msgstr "Quota"
-
-#: newaccount.php:101
-msgid "Confirm Password"
-msgstr "Bevestig wachtwoord"
-
-#: newaccount.php:139
-msgid "Account successfully added to the Database"
-msgstr "Account succesvol toegevoegd aan Database"
-
-#: newaccount.php:153
-msgid "Account succesfully added to the IMAP Subsystem"
-msgstr "Account succesvol toegevoegd aan het IMAP subsysteem"
-
-#: newadminuser.php:6
-msgid "Add new admin user for domain"
-msgstr "Voeg nieuwe admin toe aan domein"
-
-#: newadminuser.php:8
-msgid "Please select a domain first"
-msgstr "Selecteer eerst een domein"
-
-#: newadminuser.php:30
-msgid "Admin Type"
-msgstr "Admin Type"
-
-#: newadminuser.php:34
-msgid "Select \"Superuser\" for all domains"
-msgstr "Selecteer \"Supergebruiker\" voor alle domeinen"
-
-#: newdomain.php:17
-msgid "Add new domain"
-msgstr "Voeg nieuw domein toe"
-
-#: newdomain.php:29
-msgid "Domainname"
-msgstr "Domeinnaam"
-
-#: newdomain.php:35
-msgid "Prefix"
-msgstr "Voorvoegsel"
-
-#: newdomain.php:44
-msgid "Maximum Accounts"
-msgstr "Maximum Accounts"
-
-#: newdomain.php:41
-msgid "Default Quota in Kilobytes"
-msgstr "Standaard Quota in Kilobytes"
-
-#: newdomain.php:47
-msgid "Standart Mailboxes"
-msgstr "Standaard Postvak"
-
-#: newdomain.php:51
-msgid "emailadress where the default aliases should be mapped (empty means no mapping)"
-msgstr "emailadres waar van de standaard aliases gemapped moeten worden (leeg is geen mapping)"
-
-#: newdomain.php:59
-msgid "Mail transport"
-msgstr "Mail transport"
-
-#: newdomain.php:60
-msgid "Leave this as is, unless you know what you are doing"
-msgstr "Laat dit zo staan, tenzij u weet wat u aan het doen bent"
-
-#: newdomain.php:125
-msgid "You are not allowed to add new domains"
-msgstr "U bent niet bevoegd een domein toe te voegen"
-
-#: newemail.php:25
-msgid "Successfully added"
-msgstr "Succesvol toegevoegd"
-
-#: newemail.php:41
-msgid "New emailadress for user"
-msgstr "Nieuw emailadres voor gebruiker"
-
-#: setquota.php:25
-msgid "Setting individual Quota for user"
-msgstr "Instellen van individuele Quota voor gebruiker"
-
-#: timeout.php:65
-msgid "Your session timed out"
-msgstr "Uw sessie is verlopen"
-
-
-
-#: Submit and cancel buttons
+#: deleteemail.php:38
 msgid "Yes, delete"
 msgstr "Ja, Verwijder"
 
-msgid "Yes"
-msgstr "Ja"
-
-msgid "Submit"
-msgstr "Verzenden"
-
+#: deleteemail.php:43
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: Error messages
+#: deleteemail.php:64
+#, fuzzy
+msgid "Emailadress deleted."
+msgstr "Email adres"
 
-#: editdomain.php:61
-msgid "Not yet supported, change will be ignored"
-msgstr "Nog niet ondersteunt, verandering wordt genegeerd"
+#: editaccount.php:15
+msgid "Email adresses defined for user"
+msgstr "Email adres gedefinieerd voor gebruiker"
 
-#: deleteaccount.php:64 editadminuser.php:94 newadminuser.php:89
-msgid "Security violation detected, action cancelled. Your attempt has been logged."
-msgstr "Veiligheids overtreding gedetecteerd, handeling geanuleert. Uw poging is gelogt"
+#: editaccount.php:36
+msgid "New email address"
+msgstr "Nieuw email adres"
 
-#: failed.php:49
+#: editaccount.php:84
+msgid "Edit Emailadress"
+msgstr "Bewerkt Emailadres"
+
+#: editaccount.php:86
+msgid "Vacation"
+msgstr "Vakantie"
+
+#: editaccount.php:87
+msgid "Delete Emailadress"
+msgstr "Verwijder Email adres"
+
+#: editadminuser.php:7
+msgid "Change admin user for domain"
+msgstr "Verander admin gebruiker voor domein"
+
+#: editadminuser.php:45 newaccount.php:100 newadminuser.php:54
+msgid "Accountname"
+msgstr "Account naam"
+
+#: editadminuser.php:55 newadminuser.php:69
+msgid "Admin Type"
+msgstr "Admin Type"
+
+#: editadminuser.php:86 login.php:65 newaccount.php:132 newadminuser.php:89
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: editadminuser.php:101 newaccount.php:133 newadminuser.php:104
+msgid "Confirm Password"
+msgstr "Bevestig wachtwoord"
+
+#: editadminuser.php:165
+msgid "successfully changed Database...."
+msgstr "Succesvol de database verandert...."
+
+#: editdomain.php:40
+#, fuzzy
+msgid "Successfully changed domain"
+msgstr "Succesvol verandert"
+
+#: editdomain.php:86 newdomain.php:33
+msgid "Domainname"
+msgstr "Domeinnaam"
+
+#: editdomain.php:100 newdomain.php:51
+msgid "Prefix"
+msgstr "Voorvoegsel"
+
+#: editdomain.php:117 newdomain.php:70
+msgid "Allow Free Names"
+msgstr ""
+
+#: editdomain.php:135 newdomain.php:84
+#, fuzzy
+msgid "Allow Free Mail Addresses"
+msgstr "Nieuw email adres"
+
+#: editdomain.php:153 newdomain.php:97
+msgid "Maximum Accounts"
+msgstr "Maximum Accounts"
+
+#: editdomain.php:167 newdomain.php:112
+msgid "Default Quota in Kilobytes"
+msgstr "Standaard Quota in Kilobytes"
+
+#: editdomain.php:196
+msgid "Your are not allowed to change domains!"
+msgstr "U bent niet bevoegd domeinen te veranderen"
+
+#: failed.php:60
 msgid "Login failed"
 msgstr "Inloggen mislukt"
 
-#:forwardaccount.php:41
-msgid "Forward for account"
-msgstr "Doorsturen voor account"
+#: failed.php:65 login.php:45
+msgid "This is only for authorized users"
+msgstr "Alleen voor geautoriseerde gebruikers"
 
-#: forwardalias.php:102
-msgid "Forward for emailadress"
-msgstr "Doorsturen voor email adres"
+#: failed.php:70 logout.php:55 timeout.php:32
+msgid "If you like to login click"
+msgstr "Als u wil inloggen klik"
 
-#: forwardsalias.php:52
+#: failed.php:72 logout.php:57 timeout.php:34
+msgid "here"
+msgstr "hier"
+
+#: forwardalias.php:62 forwardaccount.php:45
 msgid "Forward set"
 msgstr "Doorsturen ingestelt"
 
-#: forwardalias.php:53
+#: forwardalias.php:64
 msgid "Failure in setting forward"
 msgstr "Instellen van doorsturen mislukt"
 
-#: forwardsalias.php:54
+#: forwardalias.php:67
 msgid "Wrong password"
 msgstr "Verkeerde wachtwoord"
 
-#: forwardsalias.php:68
+#: forwardalias.php:83 forwardalias.php:91 forwardalias.php:97
+#: forwardalias.php:101 forwardaccount.php:49
 msgid "Forwarding removed"
-msgstr "Doorsturen verwijderd" 
+msgstr "Doorsturen verwijderd"
 
-#: forwardsalias.php:69
+#: forwardalias.php:85 forwardalias.php:93
 msgid "Failure in removing forwarding"
 msgstr "Fout in het verwijderen van Doorsturen"
 
-#: forwardalias.php:149
-msgid "Set forwarding to"
-msgstr "Verander doorsturing naar"
-
-#: forwardalias.php:151
-msgid "Keep a copy in the user's mailbox"
-msgstr "Bewaar een kopie in de gebruikers postvak"
-
-#: forwardalias.php:152
-msgid "Remove forwarding"
-msgstr "Verwijder Doorsturen"
-
-#: vacation.php:120
-msgid "Vacation message for emailadress"
-msgstr "Vakantie boodschap voor email adres"
-
-#: vacation.php:132
-msgid "Set vacation notice"
-msgstr "Stel vakantie notificatie in"
-
-#: vacation.php:134
-msgid "Remove vacation notice"
-msgstr "Verwijder vakantie notificatie"
-
-#: vacation.php:58
-msgid "Vacation notice set"
-msgstr "Vakantie notificatie ingesteld"
-
-#: vacation.php:59
-msgid "Failed to activate vacation"
-msgstr "Activering van vakantie notificatie mislukt"
-
-#: vacation.php:62
-msgid "Failure in modifying vacation notice"
-msgstr "Fout in modificatie vakantie notificatie"
-
-#: vacation.php:65 vacation.php:88 forwards.php:71
+#: forwardalias.php:105 vacation.php:73 vacation.php:101
 msgid "Failed to login"
 msgstr "Inloggen mislukt"
 
-#: vacation.php:78
+#: forwardalias.php:117 vacation.php:113
+msgid "Not possible"
+msgstr "Niet mogelijk"
+
+#: forwardalias.php:146
+msgid ""
+"You can't forward this email address with 'Allow Free Mail Addressess' set "
+"to off!"
+msgstr ""
+
+#: forwardalias.php:155
+msgid "Forward for emailadress"
+msgstr "Doorsturen voor email adres"
+
+#: forwardalias.php:198
+msgid "Set forwarding to"
+msgstr "Verander doorsturing naar"
+
+#: forwardalias.php:198
+msgid "(Seperate multiple values with ,)"
+msgstr ""
+
+#: forwardalias.php:204 forwardaccount.php:117
+msgid "Keep a copy in the user's mailbox"
+msgstr "Bewaar een kopie in de gebruikers postvak"
+
+#: forwardalias.php:209 forwardaccount.php:131
+msgid "Remove forwarding"
+msgstr "Verwijder Doorsturen"
+
+#: index.php:23
+msgid "migrate.php exists! please delete or rename it"
+msgstr ""
+
+#: index.php:130
+msgid "web-cyradm has not yet been configured"
+msgstr ""
+
+#: index.php:133
+msgid "Configuration steps:"
+msgstr ""
+
+#: index.php:135
+msgid "copy the config file that comes with the distribution: "
+msgstr ""
+
+#: index.php:138
+msgid "Edit the file config/conf.php to match your systems configuration"
+msgstr ""
+
+#: index.php:140
+msgid ""
+"Further information about how to configure Web-cyradm can be found at the "
+"following website:"
+msgstr ""
+
+#: login.php:44
+msgid "Welcome to Web-cyradm"
+msgstr "Welkom bij Web-cyradm"
+
+#: login.php:46
+msgid "Please authenticate yourself"
+msgstr "Verifieer uzelf AUB"
+
+#: login.php:78
+msgid "Select language"
+msgstr ""
+
+#: logout.php:45
+msgid "Thank you for using Web-cyradm"
+msgstr "Bedankt voor het gebruiken van Web-cyradm"
+
+#: logout.php:50
+msgid "You are logged out"
+msgstr "U bent uitgelogd"
+
+#: menu.inc.php:14
+#, fuzzy
+msgid "Superusers Menu"
+msgstr "Super gebruiker"
+
+#: menu.inc.php:18
+msgid "Domainmasters menu"
+msgstr "Domein masters menu"
+
+#: menu.inc.php:26
+msgid "add new domain"
+msgstr "Voeg nieuw domein toe"
+
+#: menu.inc.php:33
+msgid "browse domains"
+msgstr "browse domeinen"
+
+#: menu.inc.php:40
+msgid "adminusers"
+msgstr "admin gebruiker"
+
+#: menu.inc.php:70
+msgid "home"
+msgstr "home"
+
+#: menu.inc.php:77
+msgid "logout"
+msgstr "uitloggen"
+
+#: menu.inc.php:85
+msgid "Search"
+msgstr "Zoeken"
+
+#: menu.inc.php:109
+msgid "Logged in as user"
+msgstr "ingelogd als gebruiker"
+
+#: menu.inc.php:121
+msgid "Your role is"
+msgstr "Uw rol is"
+
+#: menu.inc.php:139
+#, fuzzy
+msgid "Current domain is"
+msgstr "browse domeinen"
+
+#: menu.inc.php:145
+msgid "No domain selected"
+msgstr ""
+
+#: newaccount.php:7
+msgid "Add new Account to domain"
+msgstr "Voeg nieuw Account toe aan domein"
+
+#: newaccount.php:37
+msgid "transport is not cyrus, unable to create account"
+msgstr "transport is niet cyrus, onmogelijk account toe te voegen"
+
+#: newaccount.php:49
+msgid "Sorry, no more account allowed for domain"
+msgstr "Sorry, niet meer accounts toegelaten voor domein"
+
+#: newaccount.php:54
+msgid "Maximum allowed accounts is"
+msgstr "Maximum aantal toegelaten accounts is"
+
+#: newaccount.php:131
+msgid "Quota"
+msgstr "Quota"
+
+#: newaccount.php:190
+msgid "Sorry, the username already exists"
+msgstr ""
+
+#: newaccount.php:227
+msgid "Account successfully added to the Database"
+msgstr "Account succesvol toegevoegd aan Database"
+
+#: newaccount.php:240
+msgid "Account succesfully added to the IMAP Subsystem"
+msgstr "Account succesvol toegevoegd aan het IMAP subsysteem"
+
+#: newadminuser.php:7
+msgid "Add new admin user for domain"
+msgstr "Voeg nieuwe admin toe aan domein"
+
+#: newadminuser.php:22
+msgid "Please select a domain first"
+msgstr "Selecteer eerst een domein"
+
+#: newadminuser.php:82
+msgid "Select \"Superuser\" for all domains"
+msgstr "Selecteer \"Supergebruiker\" voor alle domeinen"
+
+#: newdomain.php:9
+msgid "Add new domain"
+msgstr "Voeg nieuw domein toe"
+
+#: newdomain.php:135
+#, fuzzy
+msgid "Standard Mailboxes"
+msgstr "Standaard Postvak"
+
+#: newdomain.php:141
+msgid ""
+"emailadress where the default aliases should be mapped (empty means no "
+"mapping)"
+msgstr ""
+"emailadres waar van de standaard aliases gemapped moeten worden (leeg is "
+"geen mapping)"
+
+#: newdomain.php:158
+msgid "Mail transport"
+msgstr "Mail transport"
+
+#: newdomain.php:161
+msgid "Leave this as is, unless you know what you are doing"
+msgstr "Laat dit zo staan, tenzij u weet wat u aan het doen bent"
+
+#: newdomain.php:182
+msgid "Parameter"
+msgstr ""
+
+#: newdomain.php:238 newemail.php:28
+msgid "Successfully added"
+msgstr "Succesvol toegevoegd"
+
+#: newdomain.php:266
+msgid "You are not allowed to add new domains"
+msgstr "U bent niet bevoegd een domein toe te voegen"
+
+#: newemail.php:50
+msgid "New emailadress for user"
+msgstr "Nieuw emailadres voor gebruiker"
+
+#: newemail.php:71 editemail.php:89
+msgid "Emailadress"
+msgstr "Email adres"
+
+#: newemail.php:92 search.php:249 aliases.php:60 editemail.php:107
+#: editalias.php:71
+msgid "Destination"
+msgstr "Bestemming"
+
+#: search.php:42
+#, fuzzy
+msgid "Total domains matching"
+msgstr "Totaal aantal administrators"
+
+#: search.php:104
+msgid "Total users matching"
+msgstr ""
+
+#: search.php:112
+msgid "Displaying from position"
+msgstr ""
+
+#: search.php:239
+msgid "Total aliases matching"
+msgstr ""
+
+#: search.php:241
+#, fuzzy
+msgid "No aliases found"
+msgstr "Geen accounts gevonden"
+
+#: search.php:267 aliases.php:85
+#, fuzzy
+msgid "Edit Alias"
+msgstr "Bewerkt Emailadres"
+
+#: search.php:268 aliases.php:86
+#, fuzzy
+msgid "Delete Alias"
+msgstr "Verwijder Email adres"
+
+#: setquota.php:20
+msgid "Setting individual Quota for user"
+msgstr "Instellen van individuele Quota voor gebruiker"
+
+#: setquota.php:52
+msgid "Submit"
+msgstr "Verzenden"
+
+#: setquota.php:64
+#, fuzzy
+msgid "Quote for user"
+msgstr "Geen quota ingesteld"
+
+#: setquota.php:68
+msgid "changed to"
+msgstr ""
+
+#: timeout.php:27
+msgid "Your session timed out"
+msgstr "Uw sessie is verlopen"
+
+#: vacation.php:65
+msgid "Vacation notice set"
+msgstr "Vakantie notificatie ingesteld"
+
+#: vacation.php:67
+msgid "Failed to activate vacation"
+msgstr "Activering van vakantie notificatie mislukt"
+
+#: vacation.php:70
+msgid "Failure in modifying vacation notice"
+msgstr "Fout in modificatie vakantie notificatie"
+
+#: vacation.php:89
+#, fuzzy
+msgid "Vacation notice unset"
+msgstr "Vakantie notificatie ingesteld"
+
+#: vacation.php:91
 msgid "Failure in unseting vacation notice"
 msgstr "Uitzetten van vakantie notificatie mislukt"
 
-#: vacation.php:82
+#: vacation.php:95
 msgid "Vacation notice removed"
 msgstr "Vakantie notificatie verwijderd"
 
-#: vacation.php:84
+#: vacation.php:97
 msgid "Failure in removing vacation notice"
 msgstr "Verwijderen van de vakantie notificatie mislukt"
 
-#: vacation:93 forwardalias:75
-msgid "Not possible"
-msgstr "Niet mogelijk"
+#: vacation.php:136
+msgid ""
+"You can't set Vacation Message for this email address with 'Allow Free Mail "
+"Addressess' set to off!"
+msgstr ""
+
+#: vacation.php:146
+msgid "Vacation message for emailadress"
+msgstr "Vakantie boodschap voor email adres"
+
+#: vacation.php:168
+msgid "Set vacation notice"
+msgstr "Stel vakantie notificatie in"
+
+#: vacation.php:172
+msgid "Remove vacation notice"
+msgstr "Verwijder vakantie notificatie"
+
+#: validate.inc.php:103
+msgid "Quota exeedes the maximum allowed qutoa for this domain."
+msgstr ""
+
+#: validate.inc.php:107
+#, fuzzy
+msgid "Security violation detected, attempt logged"
+msgstr ""
+"Veiligheids overtreding gedetecteerd, handeling geanuleert. Uw poging is "
+"gelogt"
+
+#: forwardaccount.php:69
+msgid "Forward for account"
+msgstr "Doorsturen voor account"
+
+#: forwardaccount.php:85
+#, fuzzy
+msgid "Set forwarding to (one adress per line)"
+msgstr "Verander doorsturing naar"
+
+#: aliases.php:5
+#, fuzzy
+msgid "Browse aliases for domain"
+msgstr "Browse accounts van domein"
+
+#: aliases.php:44
+#, fuzzy
+msgid "Total aliases"
+msgstr "Totaal aantal administrators"
+
+#: aliases.php:49
+#, fuzzy
+msgid "Add new alias"
+msgstr "Voeg nieuw domein toe"
+
+#: deletealias.php:22
+msgid "Please confirm you want to remove"
+msgstr ""
+
+#: deletealias.php:22
+msgid "from the alias"
+msgstr ""
+
+#: deletealias.php:24
+msgid "Yes"
+msgstr "Ja"
+
+#: deletealias.php:43
+msgid "Please confirm you want to remove the alias"
+msgstr ""
+
+#: deletealias.php:71
+msgid "Removed"
+msgstr ""
+
+#: deletealias.php:71
+msgid "from"
+msgstr ""
+
+#: deletealias.php:79
+msgid "Removed the alias"
+msgstr ""
+
+#: newalias.php:8
+#, fuzzy
+msgid "Add new alias to domain"
+msgstr "Voeg nieuwe admin toe aan domein"
+
+#: editemail.php:40
+msgid "Successfully changed"
+msgstr "Succesvol verandert"
+
+#: editemail.php:62
+msgid ""
+"You can't edit this email address with 'Allow Free Mail Addressess' set to "
+"off!"
+msgstr ""
+
+#: editalias.php:21
+msgid "There was an error adding $dest to $alias: "
+msgstr ""
+
+#: editalias.php:58
+#, fuzzy
+msgid "Editing alias"
+msgstr "Bewerkt Emailadres"
+
+#: editalias.php:62
+#, fuzzy
+msgid "Delete this alias"
+msgstr "Verwijder Email adres"
+
+#: editalias.php:95
+#, fuzzy
+msgid "Cannot remove from account"
+msgstr "Verander wachtwoord voor account"
+
+#: editalias.php:99 editalias.php:103
+#, fuzzy
+msgid "Remove destination"
+msgstr "Bestemming"
+
+#: editalias.php:119
+msgid "This alias has no destinations"
+msgstr ""
+
+#: editalias.php:136
+#, fuzzy
+msgid "New destination"
+msgstr "Bestemming"
+
+#~ msgid "Not yet supported, change will be ignored"
+#~ msgstr "Nog niet ondersteunt, verandering wordt genegeerd"

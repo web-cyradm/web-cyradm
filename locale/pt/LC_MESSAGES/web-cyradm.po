@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: web-cyradm 0.5.3-1\n"
-"POT-Creation-Date: 2003-05-25 00:34+0200\n"
+"POT-Creation-Date: 2003-05-29 16:28+0200\n"
 "PO-Revision-Date: 2003-05-26 11:13+0000\n"
 "Last-Translator: Michelle Ribeiro <michelle@cipsga.org.br>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -18,7 +18,7 @@ msgstr "Administradores"
 #: adminuser.php:15 browse.php:60 browseaccounts.php:28 catchall.php:58
 #: change_password.php:13 change_password.php:27 change_password.php:37
 #: deleteaccount.php:70 deleteadminuser.php:68 deletedomain.php:11
-#: deleteemail.php:52 editaccount.php:25 editadminuser.php:167
+#: deleteemail.php:56 editaccount.php:25 editadminuser.php:167
 #: editdomain.php:31 editdomain.php:61 forwardalias.php:10 forwardalias.php:27
 #: newaccount.php:20 newadminuser.php:133 newadminuser.php:161
 #: newadminuser.php:196 newdomain.php:230 newemail.php:9 vacation.php:9
@@ -71,12 +71,12 @@ msgstr "Editar usuário administrador"
 msgid "Delete adminuser"
 msgstr "Remover usuário administrador"
 
-#: adminuser.php:134 editadminuser.php:68 menu.inc.php:125 newadminuser.php:75
+#: adminuser.php:134 editadminuser.php:68 menu.inc.php:127 newadminuser.php:75
 #: newadminuser.php:188
 msgid "Superuser"
 msgstr "Super usuário"
 
-#: adminuser.php:136 editadminuser.php:78 menu.inc.php:127 newadminuser.php:79
+#: adminuser.php:136 editadminuser.php:78 menu.inc.php:129 newadminuser.php:79
 #: newadminuser.php:190
 msgid "Domain Master"
 msgstr "Usuário master do domínio"
@@ -89,19 +89,19 @@ msgstr "Nenhuma conta encontrada"
 msgid "Add administrator"
 msgstr "Adicionar administrador"
 
-#: auth.inc.php:62
+#: auth.inc.php:65
 msgid "Web-cyradm is for authorized users only."
 msgstr "Web-cyradm - somente para usuários autorizados "
 
-#: auth.inc.php:63
+#: auth.inc.php:66
 msgid "Make sure you entered the right password."
 msgstr "Certifique-se de que informou a senha correta."
 
-#: auth.inc.php:64
+#: auth.inc.php:67
 msgid "Push the back button in your browser to try again."
 msgstr "Pressione o botão Voltar em seu navegador para tentar novamente."
 
-#: auth.inc.php:65
+#: auth.inc.php:68
 msgid " Your attempt to login has been stored."
 msgstr "Sua tentativa de login foi registrada."
 
@@ -249,27 +249,27 @@ msgstr "Erro na base de dados. Por favor, tente novamente"
 msgid "Cancelled"
 msgstr "Cancelado"
 
-#: change_password.php:58
+#: change_password.php:59
 msgid "Password changed"
 msgstr "Senha alterada"
 
-#: change_password.php:61
+#: change_password.php:62
 msgid "Failure in changing password."
 msgstr "Falha na alteração de senha."
 
-#: change_password.php:64 editadminuser.php:150
+#: change_password.php:65 editadminuser.php:150
 msgid "New passwords are not equal. Password not changed"
 msgstr "As senhas não conferem. Senha não alterada"
 
-#: change_password.php:81
+#: change_password.php:79
 msgid "Change password for account"
 msgstr "Alterar senha da conta"
 
-#: change_password.php:99
+#: change_password.php:97
 msgid "New password"
 msgstr "Nova senha"
 
-#: change_password.php:109
+#: change_password.php:107
 msgid "Confirm new password"
 msgstr "Confirmar nova senha"
 
@@ -286,7 +286,7 @@ msgid "with all its defined Emailadresses"
 msgstr "com todos os seus endereços de e-mail"
 
 #: deleteaccount.php:56 deleteadminuser.php:62 deletedomain.php:78
-#: deleteemail.php:45
+#: deleteemail.php:49
 msgid "Action cancelled, nothing deleted"
 msgstr "Ação cancelada, nada apagado"
 
@@ -355,7 +355,17 @@ msgstr "Remover endereço de e-mail do sistema"
 msgid "Do you really want to delete the emailadress for user"
 msgstr "Você realmente quer remover o e-mail do usuário"
 
-#: deleteemail.php:60
+#: deleteemail.php:38
+#, fuzzy
+msgid "Yes, delete"
+msgstr "Usuário removido"
+
+#: deleteemail.php:43
+#, fuzzy
+msgid "Cancel"
+msgstr "Cancelado"
+
+#: deleteemail.php:64
 msgid "Emailadress deleted."
 msgstr "E-mail removido"
 
@@ -435,19 +445,19 @@ msgstr "Quota padrão em Kb"
 msgid "Your are not allowed to change domains!"
 msgstr "Você não tem permissão para alterar domínios!"
 
-#: failed.php:61
+#: failed.php:60
 msgid "Login failed"
 msgstr "Logon falhou"
 
-#: failed.php:66 login.php:45
+#: failed.php:65 login.php:45
 msgid "This is only for authorized users"
 msgstr "Somente para usuários autorizados"
 
-#: failed.php:71 logout.php:55 timeout.php:32
+#: failed.php:70 logout.php:55 timeout.php:32
 msgid "If you like to login click"
 msgstr "Para logar-se novamente clique"
 
-#: failed.php:73 logout.php:57 timeout.php:35
+#: failed.php:72 logout.php:57 timeout.php:34
 msgid "here"
 msgstr "aqui"
 
@@ -482,8 +492,8 @@ msgstr "Impossível"
 
 #: forwardalias.php:146
 msgid ""
-"You can't forward this email address with 'Allow Free Mail Addressess' set to "
-"off!"
+"You can't forward this email address with 'Allow Free Mail Addressess' set "
+"to off!"
 msgstr ""
 "Você não pode redirecionar este e-mail com a opção `Não restringir endereços "
 "de e-mail`desabilitada!"
@@ -512,6 +522,28 @@ msgstr "Remover redirecionamento"
 msgid "migrate.php exists! please delete or rename it"
 msgstr "migrate.php já existe! Por favor, remova ou renomeio-o"
 
+#: index.php:130
+msgid "web-cyradm has not yet been configured"
+msgstr ""
+
+#: index.php:133
+msgid "Configuration steps:"
+msgstr ""
+
+#: index.php:135
+msgid "copy the config file that comes with the distribution: "
+msgstr ""
+
+#: index.php:138
+msgid "Edit the file config/conf.php to match your systems configuration"
+msgstr ""
+
+#: index.php:140
+msgid ""
+"Further information about how to configure Web-cyradm can be found at the "
+"following website:"
+msgstr ""
+
 #: login.php:44
 msgid "Welcome to Web-cyradm"
 msgstr "Bem-vindo ao web-cyradm"
@@ -519,6 +551,10 @@ msgstr "Bem-vindo ao web-cyradm"
 #: login.php:46
 msgid "Please authenticate yourself"
 msgstr "Por favor, autentique-se."
+
+#: login.php:78
+msgid "Select language"
+msgstr ""
 
 #: logout.php:45
 msgid "Thank you for using Web-cyradm"
@@ -556,19 +592,23 @@ msgstr "home"
 msgid "logout"
 msgstr "sair"
 
-#: menu.inc.php:107
+#: menu.inc.php:85
+msgid "Search"
+msgstr "Procurar"
+
+#: menu.inc.php:109
 msgid "Logged in as user"
 msgstr "Logado como usuário"
 
-#: menu.inc.php:119
+#: menu.inc.php:121
 msgid "Your role is"
 msgstr "Perfil"
 
-#: menu.inc.php:137
+#: menu.inc.php:139
 msgid "Current domain is"
 msgstr "Domínio atual é"
 
-#: menu.inc.php:143
+#: menu.inc.php:145
 msgid "No domain selected"
 msgstr "Nenhum domínio selecionado"
 
@@ -596,11 +636,11 @@ msgstr "Quota"
 msgid "Sorry, the username already exists"
 msgstr "O nome de usuário já existe"
 
-#: newaccount.php:225
+#: newaccount.php:227
 msgid "Account successfully added to the Database"
 msgstr "Conta adicionada com sucesso a base de dados"
 
-#: newaccount.php:238
+#: newaccount.php:240
 msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Conta adicionada com sucesso ao subsistema IMAP"
 
@@ -660,8 +700,8 @@ msgstr "Novo e-mail para usuário"
 msgid "Emailadress"
 msgstr "E-mail"
 
-#: newemail.php:92 search.php:249 aliases.php:60 editalias.php:71
-#: editemail.php:107
+#: newemail.php:92 search.php:249 aliases.php:60 editemail.php:107
+#: editalias.php:71
 msgid "Destination"
 msgstr "Destino"
 
@@ -697,11 +737,15 @@ msgstr "Remover alias"
 msgid "Setting individual Quota for user"
 msgstr "Definir quota individual para usuário"
 
-#: setquota.php:63
+#: setquota.php:52
+msgid "Submit"
+msgstr "Enviar"
+
+#: setquota.php:64
 msgid "Quote for user"
 msgstr "Quota para usuário"
 
-#: setquota.php:67
+#: setquota.php:68
 msgid "changed to"
 msgstr "alterado para"
 
@@ -757,6 +801,16 @@ msgstr "Configurar auto-resposta"
 msgid "Remove vacation notice"
 msgstr "Remover auto-resposta"
 
+#: validate.inc.php:103
+msgid "Quota exeedes the maximum allowed qutoa for this domain."
+msgstr ""
+
+#: validate.inc.php:107
+#, fuzzy
+msgid "Security violation detected, attempt logged"
+msgstr ""
+"Violação de segurança detectada, nada apagado. Sua tentativa foi registrada."
+
 #: forwardaccount.php:69
 msgid "Forward for account"
 msgstr "Redirecionamento de conta"
@@ -785,45 +839,25 @@ msgstr "Por favor, confirme a remoção"
 msgid "from the alias"
 msgstr "do alias"
 
-#: deletealias.php:41
+#: deletealias.php:24
+msgid "Yes"
+msgstr "Sim"
+
+#: deletealias.php:43
 msgid "Please confirm you want to remove the alias"
 msgstr "Por favor, confirme a remoção do alias"
 
-#: deletealias.php:69
+#: deletealias.php:71
 msgid "Removed"
 msgstr "Removido"
 
-#: deletealias.php:69
+#: deletealias.php:71
 msgid "from"
 msgstr "de"
 
-#: deletealias.php:77
+#: deletealias.php:79
 msgid "Removed the alias"
 msgstr "Alias removido"
-
-#: editalias.php:58
-msgid "Editing alias"
-msgstr "Editar alias"
-
-#: editalias.php:62
-msgid "Delete this alias"
-msgstr "Remover este alias"
-
-#: editalias.php:95
-msgid "Cannot remove from account"
-msgstr "Não foi possível remover da conta"
-
-#: editalias.php:99
-msgid "Remove destination"
-msgstr "Remover destino"
-
-#: editalias.php:119
-msgid "This alias has no destinations"
-msgstr "Este alias não tem destino"
-
-#: editalias.php:136
-msgid "New destination&nbsp"
-msgstr "Novo destino&nbsp"
 
 #: newalias.php:8
 msgid "Add new alias to domain"
@@ -841,14 +875,34 @@ msgstr ""
 "Você não pode editar este endereço de e-mail com a opção `Não restringir "
 "endereços de e-mail` desabilitada!"
 
-msgid "Search"
-msgstr "Procurar"
+#: editalias.php:21
+msgid "There was an error adding $dest to $alias: "
+msgstr ""
 
-msgid "Yes"
-msgstr "Sim"
+#: editalias.php:58
+msgid "Editing alias"
+msgstr "Editar alias"
 
-msgid "Submit"
-msgstr "Enviar"
+#: editalias.php:62
+msgid "Delete this alias"
+msgstr "Remover este alias"
 
-msgid "Not yet supported, change will be ignored"
-msgstr "Não suportado ainda, mudanças serão ignoradas"
+#: editalias.php:95
+msgid "Cannot remove from account"
+msgstr "Não foi possível remover da conta"
+
+#: editalias.php:99 editalias.php:103
+msgid "Remove destination"
+msgstr "Remover destino"
+
+#: editalias.php:119
+msgid "This alias has no destinations"
+msgstr "Este alias não tem destino"
+
+#: editalias.php:136
+#, fuzzy
+msgid "New destination"
+msgstr "Novo destino&nbsp"
+
+#~ msgid "Not yet supported, change will be ignored"
+#~ msgstr "Não suportado ainda, mudanças serão ignoradas"
