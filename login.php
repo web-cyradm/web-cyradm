@@ -105,13 +105,13 @@ foreach ($nls['aliases'] as $l){
 		print "<option selected=\"selected\"";
 		print " value=\"$l\">";
 		print $nls['languages'][$l];
-		print "</option>";
+		print "</option>\n";
 	}
 	else {
 		print "<option";
 		print " value=\"$l\">";
 		print $nls['languages'][$l];
-		print "</option>";
+		print "</option>\n";
 	}
 }
 
