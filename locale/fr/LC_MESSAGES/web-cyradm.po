@@ -1,13 +1,16 @@
-# web-cyradm 0.5.3 French translation.
 # Copyright (C) 2003 Free Software Foundation, Inc.
-# JEUDY RaphaÃ«l <raphael.jeudy@fastorama.com>, 2002,2003.
+# JEUDY Raphaël <raphael.jeudy@fastorama.com>, 2002,2003.
+# JEUDY Raphaël <raphael.jeudy@fastorama.com>, 2003.
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: web-cyradm v0.5.4-rc2\n"
+"Report-Msgid-Bugs-To: <raphael.jeudy@fastorama.com>\n"
 "POT-Creation-Date: 2003-08-10 16:56+0200\n"
-"PO-Revision-Date: 2003-10-07 18:00+0200\n"
-"Last-Translator: JEUDY RaphaÃ«l <raphael.jeudy@fastorama.com>\n"
-"Language-Team: French <raphael.jeudy@fastorama.com>\n"
+"PO-Revision-Date: 2003-10-20 12:54+0200\n"
+"Last-Translator:  <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,7 +35,7 @@ msgstr "Erreur avec la base de donn&eacute;es"
 
 #: CVS/Base/browseaccounts.php:48 browseaccounts.php:48 newaccount.php:68
 msgid "Total accounts"
-msgstr "Comptes total"
+msgstr "Comptes au total"
 
 #: CVS/Base/browseaccounts.php:49 adminuser.php:36 browseaccounts.php:49
 msgid "Displaying from position:"
@@ -72,7 +75,7 @@ msgstr "Nom d'utilisateur"
 
 #: CVS/Base/browseaccounts.php:97 browseaccounts.php:97
 msgid "Last login"
-msgstr "Derni&eagrave;re connexion"
+msgstr "Derni&egrave;re connexion"
 
 #: CVS/Base/browseaccounts.php:97 browseaccounts.php:97 editaccount.php:68
 #: search.php:152
@@ -89,7 +92,7 @@ msgstr "Editer le compte"
 
 #: CVS/Base/browseaccounts.php:151 browseaccounts.php:151
 msgid "Change Password"
-msgstr "Canger le mot de passe"
+msgstr "Changer le mot de passe"
 
 #: CVS/Base/browseaccounts.php:155 browseaccounts.php:155 editaccount.php:58
 #: editaccount.php:91
@@ -110,12 +113,12 @@ msgstr "Tout r&eacute;cup&eacute;rer"
 
 #: CVS/Base/browseaccounts.php:181 browseaccounts.php:181 search.php:190
 msgid "Forwards"
-msgstr "Redirections"
+msgstr "Redirection(s)"
 
 #: CVS/Base/browseaccounts.php:218 browseaccounts.php:218 editaccount.php:152
 #: search.php:217
 msgid "out of"
-msgstr "de"
+msgstr "sur"
 
 #: CVS/Base/browseaccounts.php:221 browseaccounts.php:221 search.php:220
 msgid "Unable to retrieve quota"
@@ -259,7 +262,7 @@ msgstr "Supprimer ce domaine"
 
 #: browse.php:92 deletedomain.php:51 menu.inc.php:59 search.php:84
 msgid "accounts"
-msgstr "Comptes"
+msgstr "compte(s)"
 
 #: browse.php:93 menu.inc.php:68 search.php:85
 msgid "Aliases"
@@ -268,16 +271,15 @@ msgstr "Alias"
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
 msgstr ""
-"Definir un compte pour de r&eacute;cup&eacute;ration pour les adresses "
-"inexistantes"
+"Definir un compte de r&eacute;cup&eacute;ration pour les adresses inexistantes du domaine"
 
 #: catchall.php:38
 msgid "Do you really want to define the user"
-msgstr "Voulez vous vraiment d&eacute;finir cet utilisateur"
+msgstr "Voulez vous vraiment d&eacute;finir l'utilisateur"
 
 #: catchall.php:42
 msgid "to receive all undefined emailadresses"
-msgstr "pour recevoir les mails envoy&eacute;s sur des adresses inexistantes"
+msgstr "pour recevoir les mails envoy&eacute;s sur les adresses inexistantes"
 
 #: catchall.php:46
 msgid "The currently defined user"
@@ -293,7 +295,7 @@ msgstr "L'utilisateur"
 
 #: catchall.php:74
 msgid "is allready defined to receive all undefined Emails."
-msgstr "est d&eacute;j&eagrave; d&eacute;fini pour recevoir les messages envoy&eacute;s sur des adresses inexistantes."
+msgstr "est d&eacute;j&agrave; d&eacute;fini pour recevoir les messages envoy&eacute;s sur les adresses inexistantes."
 
 #: catchall.php:76
 msgid "Do you want to remove the function \"catch all\" for the account"
@@ -396,7 +398,7 @@ msgstr "Supprimer un domaine du syst&egrave;me"
 
 #: deletedomain.php:32
 msgid "Do you really want to delete the Domain"
-msgstr "Voulez vous vraiment supprimer ce domaine"
+msgstr "Voulez vous vraiment supprimer le domaine"
 
 #: deletedomain.php:37
 msgid "with all its defined accounts, admins, and emailadresses"
@@ -448,7 +450,7 @@ msgstr "depuis"
 
 #: deletealias.php:85
 msgid "Removed the alias"
-msgstr "Supprimer l'alias"
+msgstr "Suppression de l'alias"
 
 #: editaccount.php:21
 msgid "Email adresses defined for user"
@@ -560,7 +562,7 @@ msgstr "Maximum de comptes"
 
 #: editdomain.php:173 newdomain.php:117
 msgid "Default Quota in Kilobytes"
-msgstr "Quota par d&eacute;fault en Kilobytes"
+msgstr "Quota par d&eacute;faut en Kilobytes"
 
 #: editdomain.php:202
 msgid "Your are not allowed to change domains!"
@@ -600,7 +602,7 @@ msgstr "ici"
 
 #: forwardalias.php:68 forwardaccount.php:51
 msgid "Forward set"
-msgstr "Redirection faite"
+msgstr "Redirection fix&eacute;e"
 
 #: forwardalias.php:70
 msgid "Failure in setting forward"
@@ -709,11 +711,11 @@ msgstr "Menu super utilisateurs"
 
 #: menu.inc.php:23
 msgid "Domainmasters menu"
-msgstr "Menu pour administrateurs de domaines"
+msgstr "Menu pour les administrateurs de domaines"
 
 #: menu.inc.php:31
 msgid "add new domain"
-msgstr "ajouter un domaine"
+msgstr "Ajouter un domaine"
 
 #: menu.inc.php:38
 msgid "browse domains"
@@ -878,7 +880,7 @@ msgstr "Pas d'alias trouv&eacute;s"
 
 #: setquota.php:26
 msgid "Setting individual Quota for user"
-msgstr "Fix&eacute; le quota individuellement"
+msgstr "D&eacute;finir le quota pour"
 
 #: setquota.php:58
 msgid "Submit"
@@ -886,11 +888,11 @@ msgstr "Envoyer"
 
 #: setquota.php:70
 msgid "Quote for user"
-msgstr "Quote pour l'utilisateur"
+msgstr "Quota pour l'utilisateur"
 
 #: setquota.php:74
 msgid "changed to"
-msgstr "chang&eacute; vers"
+msgstr "fix&eacute; &agrave;"
 
 #: timeout.php:33
 msgid "Your session timed out"
