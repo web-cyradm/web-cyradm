@@ -23,22 +23,22 @@ msgid "Total administrators"
 msgstr "Administratörer"
 
 #: adminuser.php:27
-msgid "Add administator"
+ msgid "Add administator"
 msgstr "Ny administratör"
 
 #: adminuser.php:35 adminuser.php:39 browseaccounts.php:49
 #: browseaccounts.php:53
-msgid "Previous 10 entries"
-msgstr "Bak 10 rader"
-
+ msgid "Previous 10 entries"
+msgstr "Föregående 10 poster"
+ 
 #: adminuser.php:43 adminuser.php:47 browseaccounts.php:57
 #: browseaccounts.php:61
 msgid "Next 10 entries"
-msgstr "Fram 10 rader"
+msgstr "Nästa 10 poster"
 
 #: adminuser.php:53 browse.php:16 browseaccounts.php:69 editaccount.php:31
 msgid "action"
-msgstr "uppgift"
+msgstr "åtgärd"
 
 #: adminuser.php:54
 msgid "Adminname"
@@ -72,7 +72,7 @@ msgstr "Inga konton funna"
 #: adminuser.php:112
 msgid "Add administrator"
 msgstr "Ny administratör"
-
+ 
 #: auth.inc.php:99
 msgid "Web-cyradm is for authorized users only."
 msgstr "Web-cyradm är endast till för auktoriserade användare."
@@ -83,7 +83,7 @@ msgstr "Försäkra dig om att du matat in rätt lösenord."
 
 #: auth.inc.php:101
 msgid "Push the back button in your browser to try again."
-msgstr "Använd Bakåt-knappen i din webbläsare och försök igen."
+msgstr "Använd bakåt-knappen i din webbläsare och försök igen."
 
 #: auth.inc.php:102
 msgid "Your attempt to login has been stored."
@@ -91,7 +91,7 @@ msgstr "Ditt inloggningsförsök har lagrats."
 
 #: browse.php:12
 msgid "Browse domains"
-msgstr "Bläddra domäner"
+msgstr "Bläddra igenom domäner"
 
 #: browse.php:17
 msgid "domainname"
@@ -123,7 +123,7 @@ msgstr "konton"
 
 #: browseaccounts.php:20
 msgid "Browse accounts for domain"
-msgstr "Bläddra konton efter domän"
+msgstr "Bläddra bland konton efter domän"
 
 #: browseaccounts.php:38 newaccount.php:48
 msgid "Total accounts"
@@ -163,7 +163,7 @@ msgstr "Sätt fånga-allt"
 
 #: browseaccounts.php:99
 msgid "Change Password"
-msgstr "Ändra lösnord"
+msgstr "Ändra lösenord"
 
 #: browseaccounts.php:100
 msgid "Vacation"
@@ -227,7 +227,7 @@ msgstr "Kunde inte ändra lösenord."
 
 #: change_password.php:35
 msgid "New passwords are not equal. Password not changed"
-msgstr "Nya lösnord stämmer inte överens. Lösenord oförändrat"
+msgstr "Nya lösenord stämmer inte överens. Lösenordet oförändrat"
 
 #: deleteaccount.php:19
 msgid "Delete an Account from the System"
@@ -243,7 +243,7 @@ msgstr "med alla dess definierade e-postadresser"
 
 #: deleteaccount.php:40 deletedomain.php:47 deleteemail.php:39
 msgid "Action cancelled, nothing deleted"
-msgstr "Uppgift avbruten, inget raderat"
+msgstr "Åtgärd avbruten, inget raderat"
 
 #: deleteadminuser.php:12
 msgid "Delete an Admin account from the System"
@@ -251,7 +251,7 @@ msgstr "Ta bort ett admin-konto från systemet"
 
 #: deleteadminuser.php:14
 msgid "Do you really want to delete the Domain supervisor"
-msgstr "Vill du verkligen radera domänens administrator"
+msgstr "Vill du verkligen radera domänens administratör"
 
 #: deletedomain.php:24
 msgid "Delete a Domain from the System"
@@ -287,7 +287,7 @@ msgstr "Radera en e-postadress från systemet"
 
 #: deleteemail.php:19
 msgid "Do you really want to delete the emailadress for user"
-msgstr "Vill du verkligen ta bort en e-postadress från användaren"
+msgstr "Vill du verkligen ta bort e-postadressen från användaren"
 
 #: editaccount.php:17
 msgid "Email adresses defined for user"
@@ -311,7 +311,7 @@ msgstr "Ändra admin-användare för domänen"
 
 #: editadminuser.php:81
 msgid "successfully changed Database...."
-msgstr "Ändrade databasen..."
+msgstr "Ändingar i databasen lyckades..."
 
 #: editadminuser.php:84 newadminuser.php:79
 msgid "Database error"
@@ -343,7 +343,7 @@ msgstr "Detta är bara till för auktoriserade användare"
 
 #: login.php:70
 msgid "Please authenticate yourself"
-msgstr "Bevisa din auktoritet" 
+msgstr "Bevisa din autenticitet"
 
 #: logout.php:32
 msgid "Thank you for using Web-cyradm"
@@ -367,23 +367,23 @@ msgstr "Domänadmins meny"
 
 #: menu.inc.php:27
 msgid "add new domain"
-msgstr "Ny domän"
+msgstr "ny domän"
 
 #: menu.inc.php:30
 msgid "browse domains"
-msgstr "Lista domäner"
+msgstr "lista domäner"
 
 #: menu.inc.php:33
 msgid "adminusers"
-msgstr "Admin-användare"
+msgstr "admin-användare"
 
 #: menu.inc.php:45
 msgid "home"
-msgstr "Hem"
+msgstr "hem"
 
 #: menu.inc.php:48
 msgid "logout"
-msgstr "Logga ut"
+msgstr "logga ut"
 
 #: menu.inc.php:53
 msgid "Search"
@@ -391,7 +391,7 @@ msgstr "Sök"
 
 #: menu.inc.php:69
 msgid "Logged in as user"
-msgstr "Loggade in som"
+msgstr "Loggade in som användare"
 
 #: menu.inc.php:74
 msgid "Your role is"
@@ -407,19 +407,19 @@ msgstr "Domänadmin"
 
 #: newaccount.php:14
 msgid "Add new Account to domain"
-msgstr "Nytt konto i domän"
+msgstr "Nytt konto i domänen"
 
 #: newaccount.php:27
 msgid "transport is not cyrus, unable to create account"
-msgstr "cyrus är inte transport, kan inte skapa konto"
+msgstr "Annat transportmedium än Cyrus, kan inte skapa kontot"
 
 #: newaccount.php:43
 msgid "Sorry, no more account allowed for domain"
-msgstr "Du får inte skapa fler konton för domänen"
+msgstr "Tyvärr, fler konton tillåts inte för domänen"
 
 #: newaccount.php:43
 msgid "Maximum allowed accounts is"
-msgstr "Maximalt tillåtna konton är"
+msgstr "Maximalt antal konton är"
 
 #: newaccount.php:79
 msgid "Accountname"
@@ -435,11 +435,11 @@ msgstr "Bekräfta lösenord"
 
 #: newaccount.php:139
 msgid "Account successfully added to the Database"
-msgstr "Konton har laggts till i databas"
+msgstr "Kontot har laggts till i databas"
 
 #: newaccount.php:153
 msgid "Account succesfully added to the IMAP Subsystem"
-msgstr "Konto har laggts till i IMAP servern"
+msgstr "Kontot har laggts till i IMAP servern"
 
 #: newadminuser.php:6
 msgid "Add new admin user for domain"
@@ -451,7 +451,7 @@ msgstr "Skapa en domän först"
 
 #: newadminuser.php:30
 msgid "Admin Type"
-msgstr "Admin typ"
+msgstr "Admintyp"
 
 #: newadminuser.php:34
 msgid "Select \"Superuser\" for all domains"
@@ -479,7 +479,7 @@ msgstr "Standardkvot i kilobyte"
 
 #: newdomain.php:47
 msgid "Standart Mailboxes"
-msgstr "Standard brevlådor"
+msgstr "Standardbrevlådor"
 
 #: newdomain.php:51
 msgid "emailadress where the default aliases should be mapped (empty means no mapping)"
@@ -491,7 +491,7 @@ msgstr "E-post transport"
 
 #: newdomain.php:60
 msgid "Leave this as is, unless you know what you are doing"
-msgstr "Lämna det som det är såvida du inte vet vad du gör"
+msgstr "Lämna detta som det är, såvida du inte vet vad du gör"
 
 #: newdomain.php:125
 msgid "You are not allowed to add new domains"
@@ -532,11 +532,11 @@ msgstr "Avbryt"
 
 #: editdomain.php:61
 msgid "Not yet supported, change will be ignored"
-msgstr "Stöds ej än, förändring kommer att ignoreras"
+msgstr "Stöds ej än, förändringen kommer att ignoreras"
 
 #: deleteaccount.php:64 editadminuser.php:94 newadminuser.php:89
 msgid "Security violation detected, action cancelled. Your attempt has been logged."
-msgstr "Säkerhets-övertramp, avbryter. Ditt försök har loggats"
+msgstr "Säkerhetsbrott, åtgärden avbruten. Ditt försök har loggats"
 
 #: failed.php:49
 msgid "Login failed"
