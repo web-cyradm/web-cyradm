@@ -3,6 +3,17 @@
 <title>Web-cyradm</title>
 <link rel="stylesheet" href="css/web-cyradm.css" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<?php
+
+// Specify location of translation tables
+bindtextdomain("browse", "./locale");
+
+// Choose domain
+textdomain("browse");
+
+?>
+
 <script>
 <!--
 function setfocus() {
@@ -51,10 +62,9 @@ function entsub() {
                   <td>&nbsp;</td>
                   <td colspan="4">
                     <p align="center"><font face="Verdana,Geneva,Arial,Helvetica,sans-serif" color="#000000" size="2">
-                     Your session timed out </p>
+                     <?php print _("Your session timed out") ?> </p>
 		     <p align=center><font face=Verdana,Geneva,Arial,Helvetica,sans-serif size=2 color=#000000>	
-		     If you like to login click <a class="navi" href=index.php>here</a></font></p>
-		
+		     <?php print _("If you like to login click") ?> <a class="navi" href=index.php><?php print _("here") ?></a></font></p>
                       </font></p><br>                    
                   </td>
                 </tr>
