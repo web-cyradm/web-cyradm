@@ -49,16 +49,16 @@ textdomain("browseaccounts");
 			print "<td class=\"navi\"><a href=\"#\">"._("Previous 10 entries")."</a></td>";
 		}
 		else {
-			print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$prev\">
-			"._("Previous 10 entries")."</a></td>"; 	
+			print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$prev\">".
+			 _("Previous 10 entries") ."</a></td>"; 	
 		}
 
 		if ($next>$total){
 			print "<td class=\"navi\"><a href=\"#\">"._("Next 10 entries")."</a></td>";
 		}
 		else {
-			print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next\">
-			"._("Next 10 entries")."</a></td>";
+			print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next\">".
+			_("Next 10 entries")."</a></td>";
 		}
 		print "</tr></table><p>";
 

@@ -3,7 +3,15 @@
         <td valign="top"> 
 
 <?php
-print "<h3>Add new Account to domain <font color=red>$domain</font></h3>";
+
+// Specify location of translation tables
+bindtextdomain("newaccount", "./locale");
+
+// Choose domain
+textdomain("newaccount");
+
+
+print "<h3>"._("Add new Account to domain")." <font color=red>$domain</font></h3>";
 
 $query1="SELECT * from domain WHERE domain_name='$domain'";
 //$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
@@ -37,7 +45,7 @@ if (!$confirmed){
 	}
 	else{
 
-	print "<p>Total accounts: ".$cnt2."<p>";
+	print "<p>"._("Total accounts").": ".$cnt2."<p>";
 
         if (!$DOMAIN_AS_PREFIX) {
 		if ($cnt2>0){
@@ -68,35 +76,35 @@ if (!$confirmed){
 		if (!$DOMAIN_AS_PREFIX) {
 			print "<input type=\"hidden\" name=\"username\" value=\"$nextaccount\">";
 			print "<tr>\n";
-			print "<td>Accountname</td>\n";
+			print "<td>"._("Accountname")."</td>\n";
 			print "<td>$nextaccount</td>\n";
 			print "</tr>\n";
 		}
 	?>
 
 		<tr>
-			<td>Email address</td>
+			<td><?php print _("Email address") ?></td>
 			<td><input class="inputfield" type="text" name="email" onFocus="this.style.backgroundColor='#aaaaaa'">@<?php print $domain?>
 		</tr>
 
 		<tr>
-			<td>Quota</td>
+			<td><?php print _("Quota") ?></td>
 			<td><input class="inputfield" type="text" name="quota" value="<?php print $row[3]; ?>" onFocus="this.style.backgroundColor='#888888'"></td>
 		</tr>
 
 		<tr>
-			<td>Password</td>
+			<td><?php print _("Password") ?></td>
 			<td><input class="inputfield" type="password" name="password" onFocus="this.style.backgroundColor='#cccccc'"></td>
 		</tr>
 
 		<tr>
-			<td>Confirm Password</td>
+			<td><?php print _("Confirm Password") ?></td>
 			<td><input class="inputfield" type="password" name="confirm_password" onFocus="this.style.backgroundColor='#cccccc'"></td>
 		</tr>
 	
 		<tr>
 			<td></td>
-			<td><input class="inputfield" type="submit"></td>
+			<td><input class="inputfield" type="submit" value="<?php print _("Submit") ?>"></td>
 		</tr>
 	
 
@@ -128,7 +136,7 @@ else{
 	$result2=$handle->query($query4);
 
 	if ($result and $result2){
-		print "Account successfully added to Database....</br>";
+		print _("Account successfully added to Database")."...</br>";
 	}
 
 	$cyr_conn = new cyradm;
@@ -142,7 +150,7 @@ else{
 	}
 
 	if ($result){
-		print "Account succesfully added to IMAP Subsystem";
+		print _("Account succesfully added to IMAP Subsystem");
 	}
 
 	if ($DOMAIN_AS_PREFIX) {
@@ -153,11 +161,6 @@ else{
 		print $cyr_conn->setacl("user.$username","$CYRUS_USERNAME","lrswipcda");
 		$result=$cyr_conn->setmbquota("user.".$username,"$quota");
 	}
-
-	print $result;
-
-
-
 
 
 }
