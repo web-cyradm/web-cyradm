@@ -15,7 +15,7 @@ else{
 
 		?>
 
-		<form action="index.php" action="get">
+		<form action="index.php" method="get">
 		<input type="hidden" name="action" value="newadminuser">
 		<input type="hidden" name="confirmed" value="true">
 		<input type="hidden" name="domain" value="<?php print $domain ?>">
