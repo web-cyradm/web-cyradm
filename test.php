@@ -270,7 +270,7 @@ if (isset($_GET['mode'])) {
     <?php } ?>
     <li>Mail::RFC822 - <?php status($pearmail); ?></li>
     <?php if ($pear && !$pearmail) { ?>
-        <li><font color="red">Make sure you're using a recent version of PEAR which includes the Mail class. This is not a problem</font></li>
+       <li><font color="red">Make sure you are using a recent version of PEAR which includes the Mail class. This is not a problem</font></li>
     <?php } ?>
     <li>DB - <?php status($peardb); ?></li>
     <?php if ($pear && !$peardb) {
