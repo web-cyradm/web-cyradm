@@ -1,6 +1,6 @@
 <?php
 
-include WC_BASE . "/config.inc.php";
+include WC_BASE . "/config/conf.php";
 include WC_BASE . "/lib/nls.php";
 
 $browserlang=explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
