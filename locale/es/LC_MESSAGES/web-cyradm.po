@@ -2,7 +2,6 @@
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -28,9 +27,8 @@ msgstr "Explorar cuentas"
 #: newemail.php:15 vacation.php:15 vacation.php:30 validate.inc.php:58
 #: lib/crypto.php:30 lib/crypto.php:110 lib/crypto.php:149
 #: forwardaccount.php:28 delete_catchall.php:23 deleteemail.php:62
-#, fuzzy
 msgid "Database error"
-msgstr "Error en base de datos. Por favor reintentenlo."
+msgstr "Error en la base de datos"
 
 #: CVS/Base/browseaccounts.php:48 browseaccounts.php:48 newaccount.php:68
 msgid "Total accounts"
@@ -90,7 +88,6 @@ msgid "Edit account"
 msgstr "Editar cuenta"
 
 #: CVS/Base/browseaccounts.php:151 browseaccounts.php:151
-#, fuzzy
 msgid "Change Password"
 msgstr "Cambio de Clave"
 
@@ -166,7 +163,6 @@ msgid "Delete adminuser"
 msgstr "Suprimir administrador"
 
 #: adminuser.php:144
-#, fuzzy
 msgid "All domains"
 msgstr "Todos los Dominios"
 
@@ -193,17 +189,14 @@ msgid "Add administrator"
 msgstr "Añadir administrador"
 
 #: aliases.php:11
-#, fuzzy
 msgid "Browse aliases for domain"
 msgstr "Explorar alias del dominio"
 
 #: aliases.php:50
-#, fuzzy
 msgid "Total aliases"
 msgstr "Total alias"
 
 #: aliases.php:55
-#, fuzzy
 msgid "Add new alias"
 msgstr "Añadir nuevo alias"
 
@@ -213,17 +206,14 @@ msgid "Destination"
 msgstr "Destino"
 
 #: aliases.php:91 search.php:273
-#, fuzzy
 msgid "Edit Alias"
 msgstr "Editar Alias"
 
 #: aliases.php:92 search.php:274
-#, fuzzy
 msgid "Delete Alias"
 msgstr "Borrar Alias"
 
 #: auth.inc.php:70
-#, fuzzy
 msgid "Web-cyradm is for authorized users only."
 msgstr "Solo usuarios autorizados."
 
@@ -292,7 +282,6 @@ msgid "The currently defined user"
 msgstr "El usuario actualmente definido"
 
 #: catchall.php:46
-#, fuzzy
 msgid "will not receiving any undefined emailadresses anymore"
 msgstr "no se recibirá más cualquiera direccion de email sin definir"
 
@@ -301,7 +290,6 @@ msgid "The user"
 msgstr "El usuario"
 
 #: catchall.php:74
-#, fuzzy
 msgid "is allready defined to receive all undefined Emails."
 msgstr "esta preparado para recibir todos los email sin definir."
 
@@ -319,12 +307,10 @@ msgid "Database error, please try again"
 msgstr "Error en base de datos. Por favor reintentenlo"
 
 #: catchall.php:140 delete_catchall.php:44
-#, fuzzy
 msgid "Cancelled"
 msgstr "Cancelar"
 
 #: change_password.php:53
-#, fuzzy
 msgid "Password changed"
 msgstr "Clave de acceso"
 
@@ -341,12 +327,10 @@ msgid "Change password for account"
 msgstr "Cambiar la clave de la cuenta"
 
 #: change_password.php:91
-#, fuzzy
 msgid "New password"
 msgstr "Nueva clave"
 
 #: change_password.php:101
-#, fuzzy
 msgid "Confirm new password"
 msgstr "Confirme la nueva clave"
 
@@ -372,7 +356,6 @@ msgid "Action cancelled, nothing deleted"
 msgstr "Acción cancelada, nada borrado"
 
 #: deleteaccount.php:100
-#, fuzzy
 msgid "User deleted"
 msgstr "Usuario borrado"
 
@@ -382,12 +365,10 @@ msgid ""
 msgstr "Detectada violación de seguridad, acción cancelada. Se ha registrado su tentativa "
 
 #: deleteadminuser.php:17
-#, fuzzy
 msgid "Delete an Admin account from the System"
 msgstr "Borrar una cuenta de administrador del sistema"
 
 #: deleteadminuser.php:21
-#, fuzzy
 msgid "Do you really want to delete the Domain supervisor"
 msgstr "Desea borrar el administrador del dominio"
 
@@ -472,7 +453,6 @@ msgid "Edit Emailadress"
 msgstr "Editar email"
 
 #: editaccount.php:92
-#, fuzzy
 msgid "Vacation"
 msgstr "Vacaciones"
 
@@ -489,7 +469,6 @@ msgid "Accountname"
 msgstr "Nombre de la cuenta"
 
 #: editadminuser.php:52 newadminuser.php:51
-#, fuzzy
 msgid "Admin Type"
 msgstr "Tipo administrador"
 
@@ -506,7 +485,6 @@ msgid "No Domain assigned yet"
 msgstr "Ningún dominio asignado todavía"
 
 #: editadminuser.php:165
-#, fuzzy
 msgid "Add new domain to this admin"
 msgstr "Añadir nuevo dominio a este administrador"
 
@@ -523,12 +501,10 @@ msgid "There was an error adding $dest to $alias: "
 msgstr "Hay un error añadiendo $dest to $alias: "
 
 #: editalias.php:64
-#, fuzzy
 msgid "Editing alias"
 msgstr "Editar alias"
 
 #: editalias.php:68
-#, fuzzy
 msgid "Delete this alias"
 msgstr "Borrar este alias"
 
@@ -537,7 +513,6 @@ msgid "Cannot remove from account"
 msgstr "No se puede borrar desde la cuenta"
 
 #: editalias.php:105 editalias.php:109
-#, fuzzy
 msgid "Remove destination"
 msgstr "Borrar destino"
 
@@ -546,12 +521,10 @@ msgid "This alias has no destinations"
 msgstr "Este alias no tiene destino"
 
 #: editalias.php:142
-#, fuzzy
 msgid "New destination"
 msgstr "Nuevo destino"
 
 #: editdomain.php:46
-#, fuzzy
 msgid "Successfully changed domain"
 msgstr "Modificación de dominio realizada"
 
@@ -568,7 +541,6 @@ msgid "Allow Free Names"
 msgstr "Permitir Nombres Libres"
 
 #: editdomain.php:141 newdomain.php:90
-#, fuzzy
 msgid "Allow Free Mail Addresses"
 msgstr "Permitir direcciones de email libres"
 
@@ -622,7 +594,6 @@ msgid "Failure in setting forward"
 msgstr "Fallo al cambiar el reenvio"
 
 #: forwardalias.php:73
-#, fuzzy
 msgid "Wrong password"
 msgstr "Clave errónea"
 
@@ -649,7 +620,6 @@ msgid ""
 msgstr "Tu no puedes reenviar este email con 'Permitir direcciones de correo libre' desactivado!"
 
 #: forwardalias.php:161
-#, fuzzy
 msgid "Forward for emailadress"
 msgstr "Reenvio para email"
 
@@ -715,7 +685,6 @@ msgid "You are logged out"
 msgstr "Sesión finalizada"
 
 #: menu.inc.php:19
-#, fuzzy
 msgid "Superusers Menu"
 msgstr "Menú de Super Usuario"
 
@@ -756,7 +725,6 @@ msgid "Your role is"
 msgstr "Su perfil es"
 
 #: menu.inc.php:144
-#, fuzzy
 msgid "Current domain is"
 msgstr "El dominio actual es"
 
@@ -773,12 +741,10 @@ msgid "transport is not cyrus, unable to create account"
 msgstr "el transporte no es cyrus, no es posible crear la cuenta"
 
 #: newaccount.php:55
-#, fuzzy
 msgid "Sorry, no more account allowed for domain"
 msgstr "Lo siento, no mas cuentas permitidas para el dominio"
 
 #: newaccount.php:60
-#, fuzzy
 msgid "Maximum allowed accounts is"
 msgstr "Nº Maximo de cuentas"
 
@@ -799,7 +765,6 @@ msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Cuenta añadida al subsistema IMAP"
 
 #: newadminuser.php:13
-#, fuzzy
 msgid "Add new administrator"
 msgstr "Añadir nuevos administrador"
 
@@ -820,17 +785,14 @@ msgid "Username already exist"
 msgstr "El nombre de usuario ya existe"
 
 #: newalias.php:15
-#, fuzzy
 msgid "Add new alias to domain"
 msgstr "Añadir nuevo alias al dominio"
 
 #: newalias.php:55
-#, fuzzy
 msgid "Sorry, no more alias allowed for domain"
 msgstr "Lo siento, no se permiten mas alias para el dominio"
 
 #: newalias.php:60
-#, fuzzy
 msgid "Maximum allowed aliases is"
 msgstr "Nº Maximo de alias es"
 
@@ -872,7 +834,6 @@ msgid "New emailadress for user"
 msgstr "Nuevo email para el usuario"
 
 #: search.php:48
-#, fuzzy
 msgid "Total domains matching"
 msgstr "Total administradores"
 
@@ -889,7 +850,6 @@ msgid "Total aliases matching"
 msgstr "Total alias"
 
 #: search.php:247
-#, fuzzy
 msgid "No aliases found"
 msgstr "No existen alias"
 
@@ -902,7 +862,6 @@ msgid "Submit"
 msgstr "Enviar"
 
 #: setquota.php:70
-#, fuzzy
 msgid "Quote for user"
 msgstr "Cuota por usuario"
 
@@ -969,7 +928,6 @@ msgid "Quota exeedes the maximum allowed qutoa for this domain."
 msgstr "Cuota excede al máximo permitido para este dominio."
 
 #: forwardaccount.php:77
-#, fuzzy
 msgid "Forward for account"
 msgstr "Reenvio para la cuenta"
 
@@ -978,12 +936,10 @@ msgid "Set forwarding to (one adress per line)"
 msgstr "Colocar reenvio a (una direccion por linea)"
 
 #: delete_catchall.php:31
-#, fuzzy
 msgid "successfully deleted from the Database"
 msgstr "Borrado del base de datos"
 
 #: deleteemail.php:16
-#, fuzzy
 msgid "Delete emailadress from the System"
 msgstr "Email borrado del sistema"
 
@@ -993,21 +949,18 @@ msgstr "Desea borrar el email del usuario"
 
 #: deleteemail.php:44
 msgid "Yes, delete"
-msgstr "Si, Suprima"
+msgstr "Si, borrar"
 
 #: deleteemail.php:49
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: deleteemail.php:70
-#, fuzzy
 msgid "Emailadress deleted."
 msgstr "Email borrado"
 
-#, fuzzy
 #~ msgid "successfully changed Database...."
-#~ msgstr "modificado de la base de datos"
+#~ msgstr "modificado en la base de datos...."
 
-#, fuzzy
 #~ msgid "Add new admin user for domain"
-#~ msgstr "Añadir nueva cuenta para el dominio"
+#~ msgstr "Añadir nueva cuenta de administrador para el dominio"

@@ -96,7 +96,7 @@ for( $c = 0; $c < $num_alias; $c++ )
 	<?php
 	
 	$query3 = "SELECT dest FROM virtual WHERE alias = '$alias'";
-	//$result3 = $handle->query( $query3 );
+	#$result3 = $handle->query( $query3 );
 	$result3 = $handle->limitQuery( $query3, 0, 3 );
 	$num_dest = $result3->numRows( $result3 );
 	for( $d = 0; $d < $num_dest; $d++ )
