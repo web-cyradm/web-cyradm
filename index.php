@@ -28,7 +28,8 @@ define('WC_BASE', dirname(__FILE__));
 $wc_configured = @file_exists(WC_BASE . '/config/conf.php');
 
 if ($wc_configured){
-	include "DB.php";
+	#include "DB.php";
+	require "DB.php";
 	include WC_BASE . "/config/conf.php";
 	include WC_BASE . "/lib/nls.php";
 	include WC_BASE . "/lib/crypto.php";
