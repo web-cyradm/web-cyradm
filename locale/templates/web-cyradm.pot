@@ -393,6 +393,24 @@ msgstr ""
 msgid "Change admin user for domain"
 msgstr ""
 
+#: newadminuser.php:6
+msgid "Add new admin user for domain"
+msgstr ""
+
+#: newadminuser.php:8
+msgid "Please select a domain first"
+msgstr ""
+
+#: newadminuser.php:30
+msgid "Admin Type"
+msgstr ""
+
+
+#: newadminuser.php:34
+msgid "Select \"Superuser\" for all domains"
+msgstr ""
+
+
 
 #: Submit and cancel buttons
 msgid "Yes, delete"
