@@ -37,7 +37,7 @@ msgstr "Aktualna liczba kont"
 
 #: CVS/Base/browseaccounts.php:49 adminuser.php:36 browseaccounts.php:49
 msgid "Displaying from position:"
-msgstr ""
+msgstr "Wy¶wietlanie z pozycji:"
 
 #: CVS/Base/browseaccounts.php:55 CVS/Base/browseaccounts.php:242
 #: browseaccounts.php:55 browseaccounts.php:242 search.php:123 search.php:239
@@ -72,9 +72,8 @@ msgid "Username"
 msgstr "Nazwa konta"
 
 #: CVS/Base/browseaccounts.php:97 browseaccounts.php:97
-#, fuzzy
 msgid "Last login"
-msgstr "B³±d podczas logowania"
+msgstr "B³±d pologowania"
 
 #: CVS/Base/browseaccounts.php:97 browseaccounts.php:97 editaccount.php:68
 #: search.php:152
@@ -83,7 +82,7 @@ msgstr "U¿yta pojemno¶æ konta"
 
 #: CVS/Base/browseaccounts.php:136 browseaccounts.php:136
 msgid "n/a"
-msgstr ""
+msgstr "n/a"
 
 #: CVS/Base/browseaccounts.php:146 browseaccounts.php:146 search.php:171
 msgid "Edit account"
@@ -111,7 +110,6 @@ msgid "Set catch all"
 msgstr "Ustaw domy¶lne"
 
 #: CVS/Base/browseaccounts.php:181 browseaccounts.php:181 search.php:190
-#, fuzzy
 msgid "Forwards"
 msgstr "Przeka¿"
 
@@ -122,7 +120,7 @@ msgstr "z"
 
 #: CVS/Base/browseaccounts.php:221 browseaccounts.php:221 search.php:220
 msgid "Unable to retrieve quota"
-msgstr ""
+msgstr "Nie mo¿liwe uzyskanie informacji o pojemno¶ci konta"
 
 #: CVS/Base/browseaccounts.php:224 browseaccounts.php:224 editaccount.php:155
 #: search.php:223
@@ -166,13 +164,12 @@ msgid "Delete adminuser"
 msgstr "Usuniêcie konta administratora"
 
 #: adminuser.php:144
-#, fuzzy
 msgid "All domains"
-msgstr "Domena"
+msgstr "Wszystkie domena"
 
 #: adminuser.php:148
 msgid "None"
-msgstr ""
+msgstr "¯aden"
 
 #: adminuser.php:158 editadminuser.php:65 menu.inc.php:132 newadminuser.php:57
 #: newadminuser.php:207
@@ -193,19 +190,16 @@ msgid "Add administrator"
 msgstr "Dodaj konto administratora"
 
 #: aliases.php:11
-#, fuzzy
 msgid "Browse aliases for domain"
 msgstr "Przegl±daj konta w domenie"
 
 #: aliases.php:50
-#, fuzzy
 msgid "Total aliases"
-msgstr "Liczba administratorów"
+msgstr "Liczba aliasów"
 
 #: aliases.php:55
-#, fuzzy
 msgid "Add new alias"
-msgstr "Dodaj now± domenê"
+msgstr "Dodaj nowy alias"
 
 #: aliases.php:66 editalias.php:77 editemail.php:113 newemail.php:98
 #: search.php:255
@@ -213,14 +207,12 @@ msgid "Destination"
 msgstr "Adres docelowy"
 
 #: aliases.php:91 search.php:273
-#, fuzzy
 msgid "Edit Alias"
-msgstr "Edytuj adres"
+msgstr "Edytuj Alias"
 
 #: aliases.php:92 search.php:274
-#, fuzzy
 msgid "Delete Alias"
-msgstr "Usuñ adres"
+msgstr "Usuñ Alias"
 
 #: auth.inc.php:70
 msgid "Web-cyradm is for authorized users only."
@@ -235,7 +227,6 @@ msgid "Push the back button in your browser to try again."
 msgstr "Wci¶nij przycisk 'Wstecz' w swojej przegl±darce by spróbowaæ ponownie"
 
 #: auth.inc.php:73
-#, fuzzy
 msgid " Your attempt to login has been stored."
 msgstr "Twoja próba logowania zosta³a zapisana w systemie."
 
@@ -273,7 +264,7 @@ msgstr "Konta"
 
 #: browse.php:93 menu.inc.php:68 search.php:85
 msgid "Aliases"
-msgstr ""
+msgstr "Aliasy"
 
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
@@ -291,25 +282,23 @@ msgstr "aby otrzymywa³o wszystkie ¼le zaadresowane wiadomo¶ci"
 
 #: catchall.php:46
 msgid "The currently defined user"
-msgstr ""
+msgstr "Obecnie wybrany u¿ytkownik"
 
 #: catchall.php:46
-#, fuzzy
 msgid "will not receiving any undefined emailadresses anymore"
-msgstr "aby otrzymywa³o wszystkie ¼le zaadresowane wiadomo¶ci"
+msgstr "nie bêdzie odbieraæ ¿adnych wiadomo¶ci ze ¼le podanym adresem email"
 
 #: catchall.php:74
 msgid "The user"
-msgstr ""
+msgstr "U¿ytkownik"
 
 #: catchall.php:74
-#, fuzzy
 msgid "is allready defined to receive all undefined Emails."
-msgstr "aby otrzymywa³o wszystkie ¼le zaadresowane wiadomo¶ci"
+msgstr "zosta³o ju¿ zdefiniowane jako domy¶lne konto dla tej domeny."
 
 #: catchall.php:76
 msgid "Do you want to remove the function \"catch all\" for the account"
-msgstr ""
+msgstr "Czy chcesz usun±æ opcjê \"przejmuj wszystko\" dla konta"
 
 #: catchall.php:127 newadminuser.php:197
 msgid "successfully added to Database"
@@ -321,9 +310,8 @@ msgid "Database error, please try again"
 msgstr "B³±d bazy danych, spróbuj ponownie"
 
 #: catchall.php:140 delete_catchall.php:44
-#, fuzzy
 msgid "Cancelled"
-msgstr "Anuluj"
+msgstr "Anulowano"
 
 #: change_password.php:53
 msgid "Password changed"
@@ -351,7 +339,7 @@ msgstr "Potwierd¼ nowe has³o"
 
 #: change_password.php:121 newaccount.php:243
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Has³a nie s± identyczne"
 
 #: deleteaccount.php:25
 msgid "Delete an Account from the System"
@@ -371,9 +359,8 @@ msgid "Action cancelled, nothing deleted"
 msgstr "Akcja przerwana, nic nie zosta³o usuniête"
 
 #: deleteaccount.php:100
-#, fuzzy
 msgid "User deleted"
-msgstr "Tak, usun±æ"
+msgstr "U¿ytkownik usuniêty"
 
 #: deleteaccount.php:111 deletedomain.php:175
 msgid ""
@@ -390,17 +377,15 @@ msgstr "Czy chcesz usun±æ administratora domeny"
 
 #: deleteadminuser.php:90 editadminuser.php:276
 msgid "At least one Superuser is needed for Web-cyradm"
-msgstr ""
+msgstr "Przynajmniej jeden Administrator g³ówny jest potrzebny dla Web-cyradm"
 
 #: deleteadminuser.php:103
-#, fuzzy
 msgid "Admin user deleted"
-msgstr "Nie wybrano ¿adnej domeny"
+msgstr "Konto administratora zosta³o usuniête"
 
 #: deleteadminuser.php:116 editadminuser.php:299 newadminuser.php:226
-#, fuzzy
 msgid "Security violation detected, nothing deleted, attempt has been logged"
-msgstr "Akcja przerwana. Twoja próba zosta³a zapisana w systemie."
+msgstr "Odnotowano nie legaln± próbê u¿ycia systemu, nic nie zostanie usuniête."
 
 #: deletedomain.php:28
 msgid "Delete a Domain from the System"
@@ -436,11 +421,11 @@ msgstr "prawid³owo usuniête"
 
 #: deletealias.php:28
 msgid "Please confirm you want to remove"
-msgstr ""
+msgstr "Potwierd¼ chêæ usuniêcia"
 
 #: deletealias.php:28
 msgid "from the alias"
-msgstr ""
+msgstr "z aliasu"
 
 #: deletealias.php:30
 msgid "Yes"
@@ -448,19 +433,19 @@ msgstr "Tak"
 
 #: deletealias.php:49
 msgid "Please confirm you want to remove the alias"
-msgstr ""
+msgstr "Potwierd¼ chêæ usuniêcia aliasu"
 
 #: deletealias.php:77
 msgid "Removed"
-msgstr ""
+msgstr "Usuniête"
 
 #: deletealias.php:77
 msgid "from"
-msgstr ""
+msgstr "z"
 
 #: deletealias.php:85
 msgid "Removed the alias"
-msgstr ""
+msgstr "Usuniêto alias"
 
 #: editaccount.php:21
 msgid "Email adresses defined for user"
@@ -503,58 +488,50 @@ msgid "Confirm Password"
 msgstr "Potwierd¼ has³o"
 
 #: editadminuser.php:155
-#, fuzzy
 msgid "No Domain assigned yet"
-msgstr "Nie wybrano ¿adnej domeny"
+msgstr "Nie przypisano jak dot±d ¿adnej domeny"
 
 #: editadminuser.php:165
-#, fuzzy
 msgid "Add new domain to this admin"
-msgstr "Dodaj nowego administratora dla domeny"
+msgstr "Dodaj now± domenê dla tego administratora"
 
 #: editadminuser.php:223
 msgid "No such domain, create domain first"
-msgstr ""
+msgstr "Brak domeny, utwórz najpierw domenê"
 
 #: editadminuser.php:231
 msgid "Admin already repsonsible for the domain"
-msgstr ""
+msgstr "Administrator zosta³ ju¿ przypisany dla tej domeny"
 
 #: editalias.php:27
 msgid "There was an error adding $dest to $alias: "
-msgstr ""
+msgstr "Wyst±pi³ b³±d podczas dodawania $dest do $alias: "
 
 #: editalias.php:64
-#, fuzzy
 msgid "Editing alias"
-msgstr "Edytuj adres"
+msgstr "Edytuj alias"
 
 #: editalias.php:68
-#, fuzzy
 msgid "Delete this alias"
-msgstr "Usuñ adres"
+msgstr "Usuñ ten alias"
 
 #: editalias.php:101
-#, fuzzy
 msgid "Cannot remove from account"
-msgstr "Zmiana has³a dla konta"
+msgstr "Nie mo¿na usun±æ z konta"
 
 #: editalias.php:105 editalias.php:109
-#, fuzzy
 msgid "Remove destination"
-msgstr "Adres docelowy"
+msgstr "Usuñ adres docelowy"
 
 #: editalias.php:125
 msgid "This alias has no destinations"
-msgstr ""
+msgstr "Alias nie posiada miejsca docelowego"
 
 #: editalias.php:142
-#, fuzzy
 msgid "New destination"
 msgstr "Adres docelowy"
 
 #: editdomain.php:46
-#, fuzzy
 msgid "Successfully changed domain"
 msgstr "Poprawnie zmienione"
 
@@ -568,12 +545,11 @@ msgstr "Prefix"
 
 #: editdomain.php:123 newdomain.php:73
 msgid "Allow Free Names"
-msgstr ""
+msgstr "Zezwalaj na dowolne nazwy"
 
 #: editdomain.php:141 newdomain.php:90
-#, fuzzy
 msgid "Allow Free Mail Addresses"
-msgstr "Nowy adres email"
+msgstr "Zezwalaj na Dowolny Adres Email"
 
 #: editdomain.php:159 newdomain.php:102
 msgid "Maximum Accounts"
@@ -595,7 +571,8 @@ msgstr "Poprawnie zmienione"
 msgid ""
 "You can't edit this email address with 'Allow Free Mail Addressess' set to "
 "off!"
-msgstr ""
+msgstr "Nie mo¿esz edytowaæ adresu email bez aktywnej opcji 'Zezwalaj na dowolne "
+"adresy email'"
 
 #: editemail.php:95 newemail.php:77
 msgid "Emailadress"
@@ -650,7 +627,8 @@ msgstr "Nie mo¿liwe"
 msgid ""
 "You can't forward this email address with 'Allow Free Mail Addressess' set "
 "to off!"
-msgstr ""
+msgstr "Nie mo¿esz ustawiæ przekierowania adresu bez opcji 'Zezwalaj na dowolne "
+"adresy email'"
 
 #: forwardalias.php:161
 msgid "Forward for emailadress"
@@ -662,7 +640,7 @@ msgstr "Ustaw przekaz na"
 
 #: forwardalias.php:204
 msgid "(Seperate multiple values with ,)"
-msgstr ""
+msgstr "(Rozdzielaj warto¶ci znakiem ,)"
 
 #: forwardalias.php:210 forwardaccount.php:125
 msgid "Keep a copy in the user's mailbox"
@@ -674,29 +652,30 @@ msgstr "Usuñ przekaz"
 
 #: index.php:23
 msgid "migrate.php exists! please delete or rename it"
-msgstr ""
+msgstr "migrate.php istnieje! usuñ go lub zmieñ nazwê"
 
 #: index.php:138
 msgid "web-cyradm has not yet been configured"
-msgstr ""
+msgstr "web-cyradm nie zosta³ "
 
 #: index.php:141
 msgid "Configuration steps:"
-msgstr ""
+msgstr "Etapy konfiguracji:"
 
 #: index.php:143
 msgid "copy the config file that comes with the distribution: "
-msgstr ""
+msgstr "skopiuj plik konfiguracyjny za³±czony do dystrybucji: "
 
 #: index.php:146
 msgid "Edit the file config/conf.php to match your systems configuration"
-msgstr ""
+msgstr "W celu dopasowania konfiguracji swojego systemu edytuj plik config/conf.php"
 
 #: index.php:148
 msgid ""
 "Further information about how to configure Web-cyradm can be found at the "
 "following website:"
-msgstr ""
+msgstr "Wiêcej informacji na temat konfiguracji Web-cyradm mo¿na znale¼æ "
+"na stronie:"
 
 #: login.php:50
 msgid "Welcome to Web-cyradm"
@@ -708,7 +687,7 @@ msgstr "Wprowad¼ dane swojego konta"
 
 #: login.php:84
 msgid "Select language"
-msgstr ""
+msgstr "Wybierz jêzyk"
 
 #: logout.php:52
 msgid "Thank you for using Web-cyradm"
@@ -719,9 +698,8 @@ msgid "You are logged out"
 msgstr "Zosta³e¶ wylogowany"
 
 #: menu.inc.php:19
-#, fuzzy
 msgid "Superusers Menu"
-msgstr "Administrator g³ówny"
+msgstr "Menu Administratorów g³ównych"
 
 #: menu.inc.php:23
 msgid "Domainmasters menu"
@@ -790,7 +768,7 @@ msgstr "Pojemno¶æ"
 
 #: newaccount.php:196
 msgid "Sorry, the username already exists"
-msgstr ""
+msgstr "Taki u¿ytkownik ju¿ istnieje"
 
 #: newaccount.php:221
 msgid "Account successfully added to the Database"
@@ -801,7 +779,6 @@ msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Konto poprawnie dodane do subsystemu IMAP"
 
 #: newadminuser.php:13
-#, fuzzy
 msgid "Add new administrator"
 msgstr "Dodaj konto administratora"
 
@@ -811,40 +788,36 @@ msgstr "Wybierz \"Administrator g³ówny\" dla wszystkich domen"
 
 #: newadminuser.php:132
 msgid "You must provide a username"
-msgstr ""
+msgstr "Musisz wprowadziæ nazwê u¿ytkownika"
 
 #: newadminuser.php:145
 msgid "Passwords are empty or not equal."
-msgstr ""
+msgstr "Pola has³a s± puste lub nie pasuj± do siebie."
 
 #: newadminuser.php:157
 msgid "Username already exist"
-msgstr ""
+msgstr "Nazwa u¿ytkownika ju¿ istnieje"
 
 #: newalias.php:15
-#, fuzzy
 msgid "Add new alias to domain"
-msgstr "Dodaj nowego administratora dla domeny"
+msgstr "Dodaj nowy alias dla domeny"
 
 #: newalias.php:55
-#, fuzzy
 msgid "Sorry, no more alias allowed for domain"
 msgstr ""
-"Przepraszamy, nie ma mo¿liwo¶ci utworzenia kolejnych kont dla tej domeny"
+"Przepraszamy, nie ma mo¿liwo¶ci utworzenia kolejnych aliasów dla tej domeny"
 
 #: newalias.php:60
-#, fuzzy
 msgid "Maximum allowed aliases is"
-msgstr "Maksymalna liczba kont"
+msgstr "Maksymalna dopuszczalna liczba aliasów wynosi"
 
 #: newdomain.php:15
 msgid "Add new domain"
 msgstr "Dodaj now± domenê"
 
 #: newdomain.php:140
-#, fuzzy
 msgid "Standard Mailboxes"
-msgstr "Standardowe skrzynki"
+msgstr "Standardowe Skrzynki"
 
 #: newdomain.php:146
 msgid ""
@@ -864,7 +837,7 @@ msgstr "Nie zmieniaj tego dopóki nie wiesz do czego to s³u¿y"
 
 #: newdomain.php:187
 msgid "Parameter"
-msgstr ""
+msgstr "Parametr"
 
 #: newdomain.php:245 newemail.php:34
 msgid "Successfully added"
@@ -879,26 +852,24 @@ msgid "New emailadress for user"
 msgstr "Nowy adres email dla u¿ytkownika"
 
 #: search.php:48
-#, fuzzy
 msgid "Total domains matching"
-msgstr "Liczba administratorów"
+msgstr "Wynik odpowiadaj±cych domen"
 
 #: search.php:110
 msgid "Total users matching"
-msgstr ""
+msgstr "Wynik odpowiadaj±cych u¿ytkowników"
 
 #: search.php:118
 msgid "Displaying from position"
-msgstr ""
+msgstr "Wy¶wietlanie z pozycji"
 
 #: search.php:245
 msgid "Total aliases matching"
-msgstr ""
+msgstr "Wynik odpowiadaj±cych aliasów"
 
 #: search.php:247
-#, fuzzy
 msgid "No aliases found"
-msgstr "Nie znaleziono ¿adnych kont"
+msgstr "Nie znaleziono ¿adnych aliasów"
 
 #: setquota.php:26
 msgid "Setting individual Quota for user"
@@ -909,13 +880,12 @@ msgid "Submit"
 msgstr "Zatwierd¼"
 
 #: setquota.php:70
-#, fuzzy
 msgid "Quote for user"
-msgstr "Pojemno¶æ nie ustalona"
+msgstr "Pojemno¶æ konta dla u¿ytkownika"
 
 #: setquota.php:74
 msgid "changed to"
-msgstr ""
+msgstr "zmieniono na"
 
 #: timeout.php:33
 msgid "Your session timed out"
@@ -934,9 +904,8 @@ msgid "Failure in modifying vacation notice"
 msgstr "B³±d modyfikacji noty wakacyjnej"
 
 #: vacation.php:95
-#, fuzzy
 msgid "Vacation notice unset"
-msgstr "Nota wakacyjna ustawiona"
+msgstr "Nota wakacyjna nie ustawiona"
 
 #: vacation.php:97
 msgid "Failure in unseting vacation notice"
@@ -955,6 +924,8 @@ msgid ""
 "You can't set Vacation Message for this email address with 'Allow Free Mail "
 "Addressess' set to off!"
 msgstr ""
+"Nie mo¿esz ustaliæ Noty Wakacyjnej dla tego adresu email bez opcji 'Zezwalaj na "
+"dowolne adresy email'"
 
 #: vacation.php:152
 msgid "Vacation message for emailadress"
@@ -970,36 +941,32 @@ msgstr "Usuñ notê wakacyjn±"
 
 #: validate.inc.php:74 validate.inc.php:87 validate.inc.php:134
 #: validate.inc.php:249
-#, fuzzy
 msgid "Security violation detected, attempt logged"
-msgstr "Akcja przerwana. Twoja próba zosta³a zapisana w systemie."
+msgstr "Akcja przerwana, Twoja próba zosta³a zapisana w systemie."
 
 #: validate.inc.php:130
 msgid "Quota exeedes the maximum allowed qutoa for this domain."
-msgstr ""
+msgstr "Osi±gniêto maksymaln± dopuszczaln± liczbê kont dla tej domeny."
 
 #: forwardaccount.php:77
 msgid "Forward for account"
 msgstr "Przekaz dla konta"
 
 #: forwardaccount.php:93
-#, fuzzy
 msgid "Set forwarding to (one adress per line)"
-msgstr "Ustaw przekaz na"
+msgstr "Ustaw przekaz na (poszczególne adresy w odrêbnych liniach)"
 
 #: delete_catchall.php:31
-#, fuzzy
 msgid "successfully deleted from the Database"
-msgstr "poprawnie dodane do bazy danych"
+msgstr "poprawnie usuniête z bazy danych"
 
 #: deleteemail.php:16
-#, fuzzy
 msgid "Delete emailadress from the System"
 msgstr "Usuñ adres email z systemu"
 
 #: deleteemail.php:23
 msgid "Do you really want to delete the emailadress for user"
-msgstr "Czy usun±c adres email dla tego u¿ytkownika"
+msgstr "Czy usun±æ adres email dla tego u¿ytkownika"
 
 #: deleteemail.php:44
 msgid "Yes, delete"
@@ -1010,9 +977,8 @@ msgid "Cancel"
 msgstr "Anuluj"
 
 #: deleteemail.php:70
-#, fuzzy
 msgid "Emailadress deleted."
-msgstr "Adres email"
+msgstr "Adres email usuniêty."
 
 #~ msgid "successfully changed Database...."
 #~ msgstr "zmiany wprowadzone poprawnie do bazy danych...."
