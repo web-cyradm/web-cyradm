@@ -71,7 +71,7 @@ msgid "max Accounts"
 msgstr "最大用户数"
 #: browse.php:25
 msgid "default quota per user"
-msgstr "缺省用户邮箱容量上限"
+msgstr "用户缺省邮箱容量上限"
 #: browse.php:56
 msgid "Edit Domain"
 msgstr "编辑域信息"
@@ -80,7 +80,7 @@ msgid "Delete Domain"
 msgstr "删除域"
 #: browse.php:58 deletedomain.php:29 menu.inc.php:42
 msgid "accounts"
-msgstr "账号"
+msgstr "账号信息"
 #: browseaccounts.php:20
 msgid "Browse accounts for domain"
 msgstr "浏览域中的用户"
@@ -176,7 +176,7 @@ msgid "Do you really want to delete the emailadress for user"
 msgstr "你确定要删除该用户的这个邮件地址吗？"
 #: editaccount.php:17
 msgid "Email adresses defined for user"
-msgstr "为此用户设置的邮件地址"
+msgstr "为此用户设定的邮件地址"
 #: editaccount.php:25
 msgid "New email address"
 msgstr "新邮件地址"
@@ -230,7 +230,7 @@ msgid "adminusers"
 msgstr "管理员"
 #: menu.inc.php:45
 msgid "home"
-msgstr "根"
+msgstr "首页"
 #: menu.inc.php:48
 msgid "logout"
 msgstr "注销"

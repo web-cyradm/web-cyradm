@@ -6,6 +6,7 @@ $session_ok= $HTTP_SESSION_VARS['session_ok'];
 
 $login = $HTTP_POST_VARS['login'];
 $password = $HTTP_POST_VARS['password'];
+$LANG = $HTTP_POST_VARS['LANG'];
 function authenticate($user, $pw) {
 	include ("config.inc.php");
         include_once("DB.php");
@@ -56,6 +57,7 @@ if ($login!="" and $password!="") {
 
          	session_register("session_ok");
 		session_register("user");
+		session_register("LANG");
 		$SID=session_id();
 		$query="UPDATE adminuser SET SID='$SID' WHERE username='$user'";
 		$result=$handle->query($query);

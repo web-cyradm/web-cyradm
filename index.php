@@ -1,10 +1,37 @@
 <?php
+
+include ("config.inc.php");
 session_start();
 $session_ok= $HTTP_SESSION_VARS['session_ok'];
-if ($session_ok) {
-include ("config.inc.php");
-include ("DB.php");
+$LANG=$HTTP_SESSION_VARS['LANG'];
+if ($LANG==""){
+	$LANG=$DEFAULTLANG;
+	$LANG=$HTTP_GET_VARS['LANG'];
+}
+
+if ($LANG==""){
+        $LANG=$DEFAULTLANG;
+//        $LANG=$HTTP_GET_VARS['LANG'];
+}
+
 include ("header.inc.php");
+
+setlocale(LC_MESSAGES, "$LANG");
+putenv("LANG=$LANG");
+putenv("LANGUAGE=$LANG");
+
+setlocale(LC_ALL, $LANG);
+
+// Specify location of translation tables
+bindtextdomain("web-cyradm", "./locale");
+
+// Choose domain
+textdomain("web-cyradm");
+
+
+if ($session_ok) {
+include ("DB.php");
+include ("session.php");
 include ("validate.inc.php");
 include ("menu.inc.php");
 include ("lib/cyradm.php");

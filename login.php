@@ -1,12 +1,15 @@
+<!--
 <html>
 <head>
 <title>Web-cyradm</title>
 <link rel="stylesheet" href="css/web-cyradm.css" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
+-->
+
 <?php
 
-include ("config.inc.php");
+//include ("config.inc.php");
 
 ?>
 
@@ -23,6 +26,7 @@ function entsub() {
 // --></script>
 </head>
 
+<!--
 <body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload=setfocus()>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" height="15%">
@@ -36,8 +40,9 @@ function entsub() {
   </tr>
 
 </table>
-
+-->
 <form name="form1" method="post" action="auth.inc.php">
+<input type="hidden" name="LANG" value="<?php print $LANG ?>">
 <table width="100%" border="0" height="80%">
   <tr>
     <td align="center" valign="middle"> 

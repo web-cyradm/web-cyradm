@@ -1,4 +1,5 @@
 <?php
+/*
 session_start();
 
 $sess_timeout = $SESS_TIMEOUT; // seconds
@@ -26,6 +27,9 @@ else {
   }
 }
 
+
+*/
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- #####################################  Begin header ############################################ -->
@@ -35,7 +39,7 @@ else {
 <title>web-cyradm</title>
 
 <?php 
-if (getenv(LANG)=="zh_CN"){
+if ($LANG=="zh_CN"){
 
 	print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=GB2312\">";
 }

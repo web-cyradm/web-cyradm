@@ -1,10 +1,10 @@
 <?php
 
 // Specify location of translation tables
-bindtextdomain("web-cyradm", "./locale");
+//bindtextdomain("web-cyradm", "./locale");
 
 // Choose domain
-textdomain("web-cyradm");
+//textdomain("web-cyradm");
 
 
 ################# Temporary fix for PHP 4.2.0 a better solution has to found #######################
