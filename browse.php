@@ -1,22 +1,29 @@
 <!-- ############################## Start browse.php ###################################### -->
-	   <tr>
-        <td width="10">&nbsp; </td>
-        <td valign="top"><h3>Browse domains</h3>  
+<?php
 
-<table border=0>
-<tbody>
-<tr>
-<th colspan=3>actions</th>
-<th>domainname</th>
-<?php
+// Specify location of translation tables
+bindtextdomain("browse", "./locale");
+
+// Choose domain
+textdomain("browse");
+
+print "<tr>";
+print "<td width=\"10\">&nbsp; </td>";
+print "<td valign=\"top\"><h3>"._("Browse domains")."</h3>";  
+print "<table border=0>";
+print "<tbody>";
+print "<tr>";
+print "<th colspan=3>". _("actions")."</th>";
+print "<th>". _("domainname")."</th>";
+
+
 if (!$DOMAIN_AS_PREFIX ) {
-	print "<th>prefix</th>";
+	print "<th>"._("prefix")."</th>";
 }
-?>
-<th>max Accounts</th>
-<th>default quota per user</th>
-</tr>
-<?php
+
+print "<th>"._("max Accounts")."</th>";
+print "<th>"._("default quota per user")."</th>";
+print "</tr>";
 
 if (!isset($allowed_domains)){
 	$query="SELECT * FROM domain ORDER BY domain_name";
@@ -46,9 +53,9 @@ else{
   $domain=$row[0];
 
   print "<tr class=\"$cssrow\"> \n";
-  print "<td><a href=\"index.php?action=editdomain&domain=$domain\">Edit domain</a></td>\n";
-  print "<td><a href=\"index.php?action=deletedomain&domain=$domain\">Delete Domain</a></td>\n";
-  print "<td><a href=\"index.php?action=accounts&domain=$domain\">accounts</a></td>\n";
+  print "<td><a href=\"index.php?action=editdomain&domain=$domain\">". gettext("Edit Domain")."</a></td>\n";
+  print "<td><a href=\"index.php?action=deletedomain&domain=$domain\">". _("Delete Domain")."</a></td>\n";
+  print "<td><a href=\"index.php?action=accounts&domain=$domain\">". _("accounts")."</a></td>\n";
   print "<td>";
   print $domain;
   print "</td>\n<td>";

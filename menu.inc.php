@@ -1,6 +1,13 @@
 
 
 <?php
+
+// Specify location of translation tables
+bindtextdomain("menu", "./locale");
+
+// Choose domain
+textdomain("menu");
+
 print "<!-- ############################## Begin Menu ############################################ -->";
 
 ############### Root menu first ##########
@@ -13,17 +20,17 @@ print "<tr>\n";
 
 if ($admintype==0){
 
-	print "<td colspan=\"7\">Superusers Menu</td><td colspan=\"3\">Supervisors menu</td></tr><tr>";
+	print "<td colspan=\"7\">Superusers Menu</td><td colspan=\"3\">"._("Supervisors menu")."</td></tr><tr>";
 
 
 	print "<td class=\"rootnavi\" width\"20\">";
-	print "<a href=\"index.php?action=newdomain&domain=new\">add&nbsp;new&nbsp;domain</a></td>\n";
+	print "<a href=\"index.php?action=newdomain&domain=new\">"._("add new domain")."</a></td>\n";
 
 	print "<td>&nbsp;</td><td class=\"rootnavi\">";
-	print "<a href=\"index.php?action=browse&domain=$domain\">domains</a></td>\n";
+	print "<a href=\"index.php?action=browse&domain=$domain\">"._("browse domains")."</a></td>\n";
 
 	print "<td>&nbsp;</td><td class=\"rootnavi\">";
-	print "<a href=\"index.php?action=adminuser&domain=$domain\">adminusers</a></td>\n";
+	print "<a href=\"index.php?action=adminuser&domain=$domain\">"._("adminusers")."</a></td>\n";
 
 	print "<td>&nbsp;</td><td>&nbsp;</td>";
 
