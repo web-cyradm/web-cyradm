@@ -22,8 +22,9 @@ class password{
 		include ("config.inc.php");
 		include ("DB.php");
 
-		switch ($encryption){
+		switch (strval($encryption)){
 		case "crypt":
+		case "1":
 			/* First get the encrypted password out of the database to have the salt */
 
 		        $query = "SELECT password FROM $table WHERE username ='$username'";
@@ -46,6 +47,7 @@ class password{
 		break;		
 	
 		case "plain":
+		case "0":
 			$query = "SELECT password FROM $table WHERE username ='$username'";
 			$handle=DB::connect ($DSN,true);
 			$result = $handle->query($query);
@@ -53,10 +55,10 @@ class password{
 
 			$dbinput = $row['password'];
 
-			print $dbinput;
+//			print $dbinput;
 
 			if ($dbinput == $userinput){
-				return true;
+							return true;
 			}
 			else {
 				return false;
