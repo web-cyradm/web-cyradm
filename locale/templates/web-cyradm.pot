@@ -173,7 +173,7 @@ msgstr ""
 msgid "successfully added to Database"
 msgstr ""
 
-#: catchall.php:57 editemail.php:36 newemail.php:29
+#: catchall.php:57 editdomain.php:25 editemail.php:36 newemail.php:29
 msgid "Database error, please try again"
 msgstr ""
 
@@ -243,6 +243,10 @@ msgstr ""
 
 #: editaccount.php:53
 msgid "Delete Emailadress"
+msgstr ""
+
+#: editdomain.php:21
+msgid "Successfully changed"
 msgstr ""
 
 #: editemail.php:32
@@ -426,6 +430,10 @@ msgid "Cancel"
 msgstr ""
 
 #: Error messages
+
+#: editdomain.php:61
+msgid "Not yet supported, change will be ignored"
+msgstr ""
 
 #: deleteaccount.php:64
 msgid "Security violation detected, action cancelled. Your attempt has been logged."
