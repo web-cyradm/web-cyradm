@@ -123,7 +123,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							if ($type==0){
 								print "<p>";
 								print "<h4>";
-								print "Responsible for all domains";
+								print _("Responsible for all domains");
 								print "</h4>";
 								print "</td></tr>";
 
@@ -131,7 +131,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							else if ($type !=0 && $cnt>0){
 								print "<p>";
 								print "<h4>";
-								print "Responsible for the following domains:";
+								print _("Responsible for the following domains:");
 								print "</h4>";
 								print "</td></tr><tr>";
 								for ($i=0;$i<$cnt;$i++){
