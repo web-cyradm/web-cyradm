@@ -11,8 +11,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 <?php
 
-session_name('web-cyradm-session');
-session_start();
+$_SESSION = array();
 //print session_id();
 if(session_destroy()){
 /*
