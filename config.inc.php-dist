@@ -9,10 +9,13 @@ $CYRUS_PASSWORD="secret";
 
 # The MySQL stuff to be replaced after all files have PEAR implemented
 
-$MYSQL_HOST="localhost";
-$MYSQL_DB="mail";
-$MYSQL_USER="mail";
-$MYSQL_PASSWD="secret";
+# Now it is disabled to be sure all of the DB stauff is really converted to PEAR::DB
+# but not yet removed
+
+#$MYSQL_HOST="localhost";
+#$MYSQL_DB="mail";
+#$MYSQL_USER="mail";
+#$MYSQL_PASSWD="secret";
 
 /* DB_TYPE
 
