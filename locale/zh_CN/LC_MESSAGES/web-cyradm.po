@@ -593,6 +593,11 @@ msgstr "设置自动回复"
 msgid "Remove vacation notice"
 msgstr "取消自动回复"
 
+#: vacation.php:58
+#, fuzzy
+msgid "Vacation notice set"
+msgstr "自动回复已取消"
+
 #: vacation.php:59
 msgid "Failed to activate vacation"
 msgstr "启动自动回复失败"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -11,12 +11,12 @@ msgstr ""
 "Last-Translator: Adrian Forschner <a.forschner@web.de>\n"
 "Language-Team: italian <web-cyradm@test.delouw.ch>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: adminuser.php:12
 msgid "Browse admins"
-msgstr "Naviga l´administratzione"
+msgstr "Naviga ladministratzione"
 
 #: adminuser.php:24
 msgid "Total administrators"
@@ -72,6 +72,23 @@ msgstr "Nessuna casella di posta trovata"
 #: adminuser.php:112
 msgid "Add administrator"
 msgstr "Aggingi Amministratore"
+
+#: auth.inc.php:99
+#, fuzzy
+msgid "Web-cyradm is for authorized users only."
+msgstr "Questo e solo per utenti autorizzati"
+
+#: auth.inc.php:100
+msgid "Make sure you entered the right password."
+msgstr ""
+
+#: auth.inc.php:101
+msgid "Push the back button in your browser to try again."
+msgstr ""
+
+#: auth.inc.php:102
+msgid "Your attempt to login has been stored."
+msgstr ""
 
 #: browse.php:12
 msgid "Browse domains"
@@ -145,6 +162,19 @@ msgstr "Setta quota"
 msgid "Set catch all"
 msgstr "Setta catch tutto"
 
+#: browseaccounts.php:99
+#, fuzzy
+msgid "Change Password"
+msgstr "Conferma password"
+
+#: browseaccounts.php:100
+msgid "Vacation"
+msgstr ""
+
+#: browseaccounts.php:101
+msgid "Forward"
+msgstr ""
+
 #: browseaccounts.php:126 editaccount.php:76
 msgid "out of"
 msgstr "fuori di"
@@ -159,7 +189,9 @@ msgstr "nessuna casella di posta trovata"
 
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
-msgstr "Definisci una casella di posta per ricevere le email con suffisso non esistente per questo dominio"
+msgstr ""
+"Definisci una casella di posta per ricevere le email con suffisso non "
+"esistente per questo dominio"
 
 #: catchall.php:24
 msgid "Do you really want to define the user"
@@ -169,13 +201,41 @@ msgstr "Vuoi veramente definire questo utente"
 msgid "to receive all undefined emailadresses"
 msgstr "per ricevere tutte le email con suffisso sbagliato"
 
-#: catchall.php:54
+#: catchall.php:54 newadminuser.php:76
 msgid "successfully added to Database"
 msgstr "Aggunto con sucesso all database"
 
-#: catchall.php:57 editemail.php:36 newemail.php:29
+#: catchall.php:57 editdomain.php:25 editemail.php:36 newemail.php:29
+#: newdomain.php:113
 msgid "Database error, please try again"
 msgstr "Errore nell database riprova"
+
+#: change_password.php:60
+msgid "Change password for account"
+msgstr ""
+
+#: change_password.php:72
+#, fuzzy
+msgid "New password"
+msgstr "Password"
+
+#: change_password.php:76
+#, fuzzy
+msgid "Confirm new password"
+msgstr "Conferma password"
+
+#: change_password.php:29
+#, fuzzy
+msgid "Password changed"
+msgstr "Password"
+
+#: change_password.php:32
+msgid "Failure in changing password."
+msgstr ""
+
+#: change_password.php:35
+msgid "New passwords are not equal. Password not changed"
+msgstr ""
 
 #: deleteaccount.php:19
 msgid "Delete an Account from the System"
@@ -193,6 +253,16 @@ msgstr "Tutti indirizzi email definiti"
 msgid "Action cancelled, nothing deleted"
 msgstr "Atzione cancellata  perfavore riprova"
 
+#: deleteadminuser.php:12
+#, fuzzy
+msgid "Delete an Admin account from the System"
+msgstr "Casella di posta cancellata dall systema"
+
+#: deleteadminuser.php:14
+#, fuzzy
+msgid "Do you really want to delete the Domain supervisor"
+msgstr "Vuoi veramente cancellare questo dominio"
+
 #: deletedomain.php:24
 msgid "Delete a Domain from the System"
 msgstr "Dominio cancellato dall sistema"
@@ -203,11 +273,15 @@ msgstr "Vuoi veramente cancellare questo dominio"
 
 #: deletedomain.php:26
 msgid "with all its defined accounts, admins, and emailadresses"
-msgstr "Tutte la casella di posta sono definite tutti amministatori e indirizzi email definiti"
+msgstr ""
+"Tutte la casella di posta sono definite tutti amministatori e indirizzi "
+"email definiti"
 
 #: deletedomain.php:27
 msgid "This can take a while depending on how many account have to be deleted"
-msgstr "Questo pou durare qualche  istante  dipende dalle casella di posta che hai da cancellare"
+msgstr ""
+"Questo pou durare qualche  istante  dipende dalle casella di posta che hai "
+"da cancellare"
 
 #: deletedomain.php:29
 msgid "Your action will delete"
@@ -245,9 +319,27 @@ msgstr "edita indirizzo email"
 msgid "Delete Emailadress"
 msgstr "cancella indirizzo email"
 
-#: editemail.php:32
+#: editadminuser.php:5
+msgid "Change admin user for domain"
+msgstr ""
+
+#: editadminuser.php:81
+#, fuzzy
+msgid "successfully changed Database...."
+msgstr "Aggunto con sucesso all database"
+
+#: editadminuser.php:84 newadminuser.php:79
+#, fuzzy
+msgid "Database error"
+msgstr "Errore nell database riprova"
+
+#: editdomain.php:21 editemail.php:32
 msgid "Successfully changed"
 msgstr "cambiato con sucesso"
+
+#: editdomain.php:89
+msgid "Your are not allowed to change domains!"
+msgstr ""
 
 #: editemail.php:63 newemail.php:53
 msgid "Emailadress"
@@ -333,6 +425,20 @@ msgstr "Master dell dominio"
 msgid "Add new Account to domain"
 msgstr "Aggungi nuova casella di posta all dominio"
 
+#: newaccount.php:27
+msgid "transport is not cyrus, unable to create account"
+msgstr ""
+
+#: newaccount.php:43
+#, fuzzy
+msgid "Sorry, no more account allowed for domain"
+msgstr "Naviga caselle di posta per dominio"
+
+#: newaccount.php:43
+#, fuzzy
+msgid "Maximum allowed accounts is"
+msgstr "Massimo caselle di posta"
+
 #: newaccount.php:79
 msgid "Accountname"
 msgstr "nome casella di posta"
@@ -353,6 +459,24 @@ msgstr "Casella di posta aggunta con sucesso all database"
 msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Casella di posta aggunta con sucesso all sottosistema IMAP"
 
+#: newadminuser.php:6
+#, fuzzy
+msgid "Add new admin user for domain"
+msgstr "Aggungi nuova casella di posta all dominio"
+
+#: newadminuser.php:8
+msgid "Please select a domain first"
+msgstr ""
+
+#: newadminuser.php:30
+#, fuzzy
+msgid "Admin Type"
+msgstr "Tipo di amministratzione"
+
+#: newadminuser.php:34
+msgid "Select \"Superuser\" for all domains"
+msgstr ""
+
 #: newdomain.php:17
 msgid "Add new domain"
 msgstr "Aggungi nuovo dominio"
@@ -369,9 +493,31 @@ msgstr "prefisso (prefisso@xxxx.it)"
 msgid "Maximum Accounts"
 msgstr "Massimo caselle di posta"
 
-#: newdomain.php:48
+#: newdomain.php:41
 msgid "Default Quota in Kilobytes"
 msgstr "Quota  predefinita  in Kilobytes vale per tutte le caselle di posta"
+
+#: newdomain.php:47
+msgid "Standart Mailboxes"
+msgstr ""
+
+#: newdomain.php:51
+msgid ""
+"emailadress where the default aliases should be mapped (empty means no "
+"mapping)"
+msgstr ""
+
+#: newdomain.php:59
+msgid "Mail transport"
+msgstr ""
+
+#: newdomain.php:60
+msgid "Leave this as is, unless you know what you are doing"
+msgstr ""
+
+#: newdomain.php:125
+msgid "You are not allowed to add new domains"
+msgstr ""
 
 #: newemail.php:25
 msgid "Successfully added"
@@ -402,4 +548,102 @@ msgstr "spedisci"
 msgid "Cancel"
 msgstr "cancella"
 
+#: Error messages editdomain.php:61
+msgid "Not yet supported, change will be ignored"
+msgstr ""
 
+#: deleteaccount.php:64 editadminuser.php:94 newadminuser.php:89
+msgid ""
+"Security violation detected, action cancelled. Your attempt has been logged."
+msgstr ""
+
+#: failed.php:49
+msgid "Login failed"
+msgstr ""
+
+#: forwardaccount.php:41
+#, fuzzy
+msgid "Forward for account"
+msgstr "Totale  caselle di posta"
+
+#: forwardalias.php:102
+#, fuzzy
+msgid "Forward for emailadress"
+msgstr "nuovo indirizzo email"
+
+#: forwardsalias.php:52
+msgid "Forward set"
+msgstr ""
+
+#: forwardalias.php:53
+msgid "Failure in setting forward"
+msgstr ""
+
+#: forwardsalias.php:54
+#, fuzzy
+msgid "Wrong password"
+msgstr "Conferma password"
+
+#: forwardsalias.php:68
+msgid "Forwarding removed"
+msgstr ""
+
+#: forwardsalias.php:69
+msgid "Failure in removing forwarding"
+msgstr ""
+
+#: forwardalias.php:149
+msgid "Set forwarding to"
+msgstr ""
+
+#: forwardalias.php:151
+msgid "Keep a copy in the user's mailbox"
+msgstr ""
+
+#: forwardalias.php:152
+msgid "Remove forwarding"
+msgstr ""
+
+#: vacation.php:120
+msgid "Vacation message for emailadress"
+msgstr ""
+
+#: vacation.php:132
+msgid "Set vacation notice"
+msgstr ""
+
+#: vacation.php:134
+msgid "Remove vacation notice"
+msgstr ""
+
+#: vacation.php:58
+msgid "Vacation notice set"
+msgstr ""
+
+#: vacation.php:59
+msgid "Failed to activate vacation"
+msgstr ""
+
+#: vacation.php:62
+msgid "Failure in modifying vacation notice"
+msgstr ""
+
+#: vacation.php:65 vacation.php:88 forwards.php:71
+msgid "Failed to login"
+msgstr ""
+
+#: vacation.php:78
+msgid "Failure in unseting vacation notice"
+msgstr ""
+
+#: vacation.php:82
+msgid "Vacation notice removed"
+msgstr ""
+
+#: vacation.php:84
+msgid "Failure in removing vacation notice"
+msgstr ""
+
+#: vacation:93 forwardalias:75
+msgid "Not possible"
+msgstr ""

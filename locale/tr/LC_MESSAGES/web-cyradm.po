@@ -187,7 +187,9 @@ msgstr "Hesap bulunamadı"
 
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
-msgstr "Tanımsız hesapların postalarını yakalaması için bir hesap belirleyin. Etki alanı:"
+msgstr ""
+"Tanımsız hesapların postalarını yakalaması için bir hesap belirleyin. Etki "
+"alanı:"
 
 #: catchall.php:24
 msgid "Do you really want to define the user"
@@ -201,7 +203,8 @@ msgstr "kullanıcısını tanımlamak istediğinizden emin misiniz?"
 msgid "successfully added to Database"
 msgstr "Veri tabanına başarıyla eklendi"
 
-#: catchall.php:57 editdomain.php:25 editemail.php:36 newemail.php:29 newdomain.php:113
+#: catchall.php:57 editdomain.php:25 editemail.php:36 newemail.php:29
+#: newdomain.php:113
 msgid "Database error, please try again"
 msgstr "Veri tabanı hatası, lütfen tekrar deneyin"
 
@@ -209,11 +212,11 @@ msgstr "Veri tabanı hatası, lütfen tekrar deneyin"
 msgid "Change password for account"
 msgstr "Hesap şifresini değiştir"
 
-#:change_password.php:72
+#: change_password.php:72
 msgid "New password"
 msgstr "Yeni şifre"
 
-#:change_password.php:76
+#: change_password.php:76
 msgid "Confirm new password"
 msgstr "Yeni şifreyi onayla"
 
@@ -482,8 +485,12 @@ msgid "Standart Mailboxes"
 msgstr "Standart Postakutusu"
 
 #: newdomain.php:51
-msgid "emailadress where the default aliases should be mapped (empty means no mapping)"
-msgstr "Varsayılan Lakabın eşleştirileceği eposta adresi (boş bırakılırsa eşleştirme yapılmayacak)"
+msgid ""
+"emailadress where the default aliases should be mapped (empty means no "
+"mapping)"
+msgstr ""
+"Varsayılan Lakabın eşleştirileceği eposta adresi (boş bırakılırsa eşleştirme "
+"yapılmayacak)"
 
 #: newdomain.php:59
 msgid "Mail transport"
@@ -526,20 +533,22 @@ msgstr "Gönder"
 msgid "Cancel"
 msgstr "İptal"
 
-#: Error messages
-#: editdomain.php:61
+#: Error messages editdomain.php:61
 msgid "Not yet supported, change will be ignored"
 msgstr "Henüz desteklenmiyor, değişiklik gözardı edilecek"
 
 #: deleteaccount.php:64 editadminuser.php:94 newadminuser.php:89
-msgid "Security violation detected, action cancelled. Your attempt has been logged."
-msgstr "Güvenlik ihlali belirlendi, işlem iptal edildi. Denemeniz günlük dosyasına kaydedildi."
+msgid ""
+"Security violation detected, action cancelled. Your attempt has been logged."
+msgstr ""
+"Güvenlik ihlali belirlendi, işlem iptal edildi. Denemeniz günlük dosyasına "
+"kaydedildi."
 
 #: failed.php:49
 msgid "Login failed"
 msgstr "Giriş başarısız"
 
-#:forwardaccount.php:41
+#: forwardaccount.php:41
 msgid "Forward for account"
 msgstr "Hesap yönlendir"
 
@@ -591,6 +600,11 @@ msgstr "Tatil mesajı belirle"
 msgid "Remove vacation notice"
 msgstr "Tatil mesajını kaldır"
 
+#: vacation.php:58
+#, fuzzy
+msgid "Vacation notice set"
+msgstr "Tatil mesajı kaldırıldı"
+
 #: vacation.php:59
 msgid "Failed to activate vacation"
 msgstr "Tatil mesajı ayarlanırken hata oluştu"
@@ -618,4 +632,3 @@ msgstr "Tatil mesajı kaldırılırken hata oluştu"
 #: vacation:93 forwardalias:75
 msgid "Not possible"
 msgstr "Kullanılamaz "
-

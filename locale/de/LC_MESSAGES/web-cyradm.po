@@ -83,7 +83,8 @@ msgstr "Stellen Sie sicher, dass Sie das richtige Passwort eingegeben haben."
 
 #: auth.inc.php:101
 msgid "Push the back button in your browser to try again."
-msgstr "Klicken Sie \"Zur&uuml;ck\" in Ihrem Browser und probieren Sie es nochmal."
+msgstr ""
+"Klicken Sie \"Zur&uuml;ck\" in Ihrem Browser und probieren Sie es nochmal."
 
 #: auth.inc.php:102
 msgid "Your attempt to login has been stored."
@@ -268,7 +269,9 @@ msgstr "mit allen definierten Konten, Administratoren wirklich l&ouml;schen"
 
 #: deletedomain.php:27
 msgid "This can take a while depending on how many account have to be deleted"
-msgstr "Abh&auml;ngig von der Datenmenge die gel&ouml;scht werden muss, kann dies eine Weile dauern"
+msgstr ""
+"Abh&auml;ngig von der Datenmenge die gel&ouml;scht werden muss, kann dies "
+"eine Weile dauern"
 
 #: deletedomain.php:29
 msgid "Your action will delete"
@@ -288,7 +291,9 @@ msgstr "L&ouml;schen einer Emailadresse"
 
 #: deleteemail.php:19
 msgid "Do you really want to delete the emailadress for user"
-msgstr "M&ouml;chten Sie diese Emailadresse f&uuml;r das nachstehende Konto wirklich l&ouml;schen:"
+msgstr ""
+"M&ouml;chten Sie diese Emailadresse f&uuml;r das nachstehende Konto wirklich "
+"l&ouml;schen:"
 
 #: editaccount.php:17
 msgid "Email adresses defined for user"
@@ -406,14 +411,6 @@ msgstr "Superuser"
 msgid "Domain Master"
 msgstr "Dom&auml;nen Administrator"
 
-#: menu.inc.php:83
-msgid "Current domain is"
-msgstr "Aktuelle Dom&auml;ne"
-
-#: menu.inc.php:85
-msgid "No domain selected"
-msgstr "Noch keine Dom&auml;ne gew&auml;hlt"
-
 #: newaccount.php:14
 msgid "Add new Account to domain"
 msgstr "Konto hinzuf&uuml;gen"
@@ -491,8 +488,12 @@ msgid "Standart Mailboxes"
 msgstr "Standardmailboxen"
 
 #: newdomain.php:51
-msgid "emailadress where the default aliases should be mapped (empty means no mapping)"
-msgstr "E-Mail-Adresse an welche die Standardaliases weitergeleitet werden sollen (leer f&uuml;r keine Weiterleitung)"
+msgid ""
+"emailadress where the default aliases should be mapped (empty means no "
+"mapping)"
+msgstr ""
+"E-Mail-Adresse an welche die Standardaliases weitergeleitet werden sollen "
+"(leer f&uuml;r keine Weiterleitung)"
 
 #: newdomain.php:59
 msgid "Mail transport"
@@ -540,8 +541,11 @@ msgid "Not yet supported, change will be ignored"
 msgstr "(Noch nicht unterst&uuml;tzt, wird ignoriert)"
 
 #: deleteaccount.php:64 editadminuser.php:94 newadminuser.php:89
-msgid "Security violation detected, action cancelled. Your attempt has been logged."
-msgstr "Sicherheits&uuml;berschreitung entdeckt, Aktion abgebrochen. Ihr Versuch wurde geloggt."
+msgid ""
+"Security violation detected, action cancelled. Your attempt has been logged."
+msgstr ""
+"Sicherheits&uuml;berschreitung entdeckt, Aktion abgebrochen. Ihr Versuch "
+"wurde geloggt."
 
 #: failed.php:49
 msgid "Login failed"
@@ -630,3 +634,9 @@ msgstr "Fehler beim Entfernen der Abwesenheitsmeldung"
 #: vacation:93 forwardalias:75
 msgid "Not possible"
 msgstr "Nicht m&ouml;glich"
+
+#~ msgid "Current domain is"
+#~ msgstr "Aktuelle Dom&auml;ne"
+
+#~ msgid "No domain selected"
+#~ msgstr "Noch keine Dom&auml;ne gew&auml;hlt"

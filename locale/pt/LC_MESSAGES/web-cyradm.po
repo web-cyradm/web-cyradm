@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: adminuser.php:12
@@ -72,6 +72,23 @@ msgstr "Nenhuma conta encontrada"
 #: adminuser.php:112
 msgid "Add administrator"
 msgstr "Adicionar administrador"
+
+#: auth.inc.php:99
+#, fuzzy
+msgid "Web-cyradm is for authorized users only."
+msgstr "Somente para usuarios autorizados"
+
+#: auth.inc.php:100
+msgid "Make sure you entered the right password."
+msgstr ""
+
+#: auth.inc.php:101
+msgid "Push the back button in your browser to try again."
+msgstr ""
+
+#: auth.inc.php:102
+msgid "Your attempt to login has been stored."
+msgstr ""
 
 #: browse.php:12
 msgid "Browse domains"
@@ -145,6 +162,20 @@ msgstr "Definir quota"
 msgid "Set catch all"
 msgstr "Definir receber todas"
 
+#: browseaccounts.php:99
+#, fuzzy
+msgid "Change Password"
+msgstr "Confirme Senha"
+
+#: browseaccounts.php:100
+#, fuzzy
+msgid "Vacation"
+msgstr "acao"
+
+#: browseaccounts.php:101
+msgid "Forward"
+msgstr ""
+
 #: browseaccounts.php:126 editaccount.php:76
 msgid "out of"
 msgstr "de"
@@ -159,7 +190,9 @@ msgstr "Nenhuma conta encontrada"
 
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
-msgstr "Define uma conta para receber mensagens para enderecos nao definidos para o dominio"
+msgstr ""
+"Define uma conta para receber mensagens para enderecos nao definidos para o "
+"dominio"
 
 #: catchall.php:24
 msgid "Do you really want to define the user"
@@ -169,13 +202,41 @@ msgstr "Voce realmente quer definir o usuario ?"
 msgid "to receive all undefined emailadresses"
 msgstr "para receber todas mensagens para enderecos de email nao definidos ?"
 
-#: catchall.php:54
+#: catchall.php:54 newadminuser.php:76
 msgid "successfully added to Database"
 msgstr "Adicionado ao banco de dados com sucesso"
 
-#: catchall.php:57 editemail.php:36 newemail.php:29
+#: catchall.php:57 editdomain.php:25 editemail.php:36 newemail.php:29
+#: newdomain.php:113
 msgid "Database error, please try again"
 msgstr "Erro no banco de dados, por favor tente novamente"
+
+#: change_password.php:60
+msgid "Change password for account"
+msgstr ""
+
+#: change_password.php:72
+#, fuzzy
+msgid "New password"
+msgstr "Senha"
+
+#: change_password.php:76
+#, fuzzy
+msgid "Confirm new password"
+msgstr "Confirme Senha"
+
+#: change_password.php:29
+#, fuzzy
+msgid "Password changed"
+msgstr "Senha"
+
+#: change_password.php:32
+msgid "Failure in changing password."
+msgstr ""
+
+#: change_password.php:35
+msgid "New passwords are not equal. Password not changed"
+msgstr ""
 
 #: deleteaccount.php:19
 msgid "Delete an Account from the System"
@@ -193,6 +254,16 @@ msgstr "com todos enderecos de email dele ?"
 msgid "Action cancelled, nothing deleted"
 msgstr "Acao cancelada, nada apagado"
 
+#: deleteadminuser.php:12
+#, fuzzy
+msgid "Delete an Admin account from the System"
+msgstr "Apaga a conta do sistema"
+
+#: deleteadminuser.php:14
+#, fuzzy
+msgid "Do you really want to delete the Domain supervisor"
+msgstr "Voce quer realmente apagar o Dominio"
+
 #: deletedomain.php:24
 msgid "Delete a Domain from the System"
 msgstr "Apaga um Dominio do sistema"
@@ -207,7 +278,9 @@ msgstr "com todas contas, administradores e email's dele ?"
 
 #: deletedomain.php:27
 msgid "This can take a while depending on how many account have to be deleted"
-msgstr "Isto pode demorar um pouco dependendo de quantas contas terao que ser apagadas"
+msgstr ""
+"Isto pode demorar um pouco dependendo de quantas contas terao que ser "
+"apagadas"
 
 #: deletedomain.php:29
 msgid "Your action will delete"
@@ -245,9 +318,27 @@ msgstr "Editar email"
 msgid "Delete Emailadress"
 msgstr "apagar email"
 
-#: editemail.php:32
+#: editadminuser.php:5
+msgid "Change admin user for domain"
+msgstr ""
+
+#: editadminuser.php:81
+#, fuzzy
+msgid "successfully changed Database...."
+msgstr "Adicionado ao banco de dados com sucesso"
+
+#: editadminuser.php:84 newadminuser.php:79
+#, fuzzy
+msgid "Database error"
+msgstr "Erro no banco de dados, por favor tente novamente"
+
+#: editdomain.php:21 editemail.php:32
 msgid "Successfully changed"
 msgstr "Trocado com sucesso"
+
+#: editdomain.php:89
+msgid "Your are not allowed to change domains!"
+msgstr ""
 
 #: editemail.php:63 newemail.php:53
 msgid "Emailadress"
@@ -333,6 +424,20 @@ msgstr "Administrador de Dominio"
 msgid "Add new Account to domain"
 msgstr "Adicionar nova conta no dominio"
 
+#: newaccount.php:27
+msgid "transport is not cyrus, unable to create account"
+msgstr ""
+
+#: newaccount.php:43
+#, fuzzy
+msgid "Sorry, no more account allowed for domain"
+msgstr "Navegar"
+
+#: newaccount.php:43
+#, fuzzy
+msgid "Maximum allowed accounts is"
+msgstr "Maximo de Contas"
+
 #: newaccount.php:79
 msgid "Accountname"
 msgstr "Nome da conta"
@@ -353,6 +458,24 @@ msgstr "Conta adicionada com sucesso ao banco de dados"
 msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Conta adicionada com sucesso ao sistema IMAP"
 
+#: newadminuser.php:6
+#, fuzzy
+msgid "Add new admin user for domain"
+msgstr "Adicionar nova conta no dominio"
+
+#: newadminuser.php:8
+msgid "Please select a domain first"
+msgstr ""
+
+#: newadminuser.php:30
+#, fuzzy
+msgid "Admin Type"
+msgstr "tipo de administrador"
+
+#: newadminuser.php:34
+msgid "Select \"Superuser\" for all domains"
+msgstr ""
+
 #: newdomain.php:17
 msgid "Add new domain"
 msgstr "Adicionar novo dominio"
@@ -369,9 +492,31 @@ msgstr "Prefixo"
 msgid "Maximum Accounts"
 msgstr "Maximo de Contas"
 
-#: newdomain.php:48
+#: newdomain.php:41
 msgid "Default Quota in Kilobytes"
 msgstr "Quota Padrao em Kb"
+
+#: newdomain.php:47
+msgid "Standart Mailboxes"
+msgstr ""
+
+#: newdomain.php:51
+msgid ""
+"emailadress where the default aliases should be mapped (empty means no "
+"mapping)"
+msgstr ""
+
+#: newdomain.php:59
+msgid "Mail transport"
+msgstr ""
+
+#: newdomain.php:60
+msgid "Leave this as is, unless you know what you are doing"
+msgstr ""
+
+#: newdomain.php:125
+msgid "You are not allowed to add new domains"
+msgstr ""
 
 #: newemail.php:25
 msgid "Successfully added"
@@ -402,4 +547,102 @@ msgstr "OK"
 msgid "Cancel"
 msgstr "Cancelar"
 
+#: Error messages editdomain.php:61
+msgid "Not yet supported, change will be ignored"
+msgstr ""
 
+#: deleteaccount.php:64 editadminuser.php:94 newadminuser.php:89
+msgid ""
+"Security violation detected, action cancelled. Your attempt has been logged."
+msgstr ""
+
+#: failed.php:49
+msgid "Login failed"
+msgstr ""
+
+#: forwardaccount.php:41
+#, fuzzy
+msgid "Forward for account"
+msgstr "Total de contas"
+
+#: forwardalias.php:102
+#, fuzzy
+msgid "Forward for emailadress"
+msgstr "Novo endereco de email"
+
+#: forwardsalias.php:52
+msgid "Forward set"
+msgstr ""
+
+#: forwardalias.php:53
+msgid "Failure in setting forward"
+msgstr ""
+
+#: forwardsalias.php:54
+#, fuzzy
+msgid "Wrong password"
+msgstr "Confirme Senha"
+
+#: forwardsalias.php:68
+msgid "Forwarding removed"
+msgstr ""
+
+#: forwardsalias.php:69
+msgid "Failure in removing forwarding"
+msgstr ""
+
+#: forwardalias.php:149
+msgid "Set forwarding to"
+msgstr ""
+
+#: forwardalias.php:151
+msgid "Keep a copy in the user's mailbox"
+msgstr ""
+
+#: forwardalias.php:152
+msgid "Remove forwarding"
+msgstr ""
+
+#: vacation.php:120
+msgid "Vacation message for emailadress"
+msgstr ""
+
+#: vacation.php:132
+msgid "Set vacation notice"
+msgstr ""
+
+#: vacation.php:134
+msgid "Remove vacation notice"
+msgstr ""
+
+#: vacation.php:58
+msgid "Vacation notice set"
+msgstr ""
+
+#: vacation.php:59
+msgid "Failed to activate vacation"
+msgstr ""
+
+#: vacation.php:62
+msgid "Failure in modifying vacation notice"
+msgstr ""
+
+#: vacation.php:65 vacation.php:88 forwards.php:71
+msgid "Failed to login"
+msgstr ""
+
+#: vacation.php:78
+msgid "Failure in unseting vacation notice"
+msgstr ""
+
+#: vacation.php:82
+msgid "Vacation notice removed"
+msgstr ""
+
+#: vacation.php:84
+msgid "Failure in removing vacation notice"
+msgstr ""
+
+#: vacation:93 forwardalias:75
+msgid "Not possible"
+msgstr ""
