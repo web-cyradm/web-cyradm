@@ -2,7 +2,7 @@
         <td width="10">&nbsp; </td>
         <td valign="top"> 
 <?php
-print "<h3>change admin user for domain $domain</h3>";
+print "<h3>"._("Change admin user for domain")." <font color=red>". $domain. "</font></h3>";
 if (!$domain or $domain=="new"){
 	print "Please select a domain first";
 }
