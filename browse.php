@@ -26,11 +26,11 @@ if (!$orderby){
 			$query2 = "SELECT * FROM domain ORDER BY domain_name";
 		} 
 		else {
-			$allowed_domains = '';
+			$domains = '';
 			foreach ($_SESSION['allowed_domains'] as $allowed_domain) {
-			$allowed_domains .= $allowed_domain."' OR domain_name='";
+			$domains .= $allowed_domain."' OR domain_name='";
 		 }
-		$query2 = "SELECT * FROM domain WHERE domain_name='$allowed_domains' ORDER BY domain_name";
+		$query2 = "SELECT * FROM domain WHERE domain_name='$domains' ORDER BY domain_name";
 		}
 
 	        $result2 = $handle->query($query2);
@@ -43,11 +43,11 @@ if (!$orderby){
 					#$query = "SELECT * FROM domain ORDER BY domain_name";
 					$query = "SELECT * FROM domain ORDER BY $orderby";
 				} else {
-					$allowed_domains = '';
+					$domains = '';
 					foreach ($_SESSION['allowed_domains'] as $allowed_domain) {
-						$allowed_domains .= $allowed_domain."' OR domain_name='";
+						$domains .= $allowed_domain."' OR domain_name='";
 					}
-					$query = "SELECT * FROM domain WHERE domain_name='$allowed_domains' ORDER BY $orderby";
+					$query = "SELECT * FROM domain WHERE domain_name='$domains' ORDER BY $orderby";
 				}
 
 				$result = $handle->limitQuery($query,$row_pos,$_SESSION['maxdisplay']);
@@ -61,7 +61,7 @@ if (!$orderby){
                 <table cellspacing="2" cellpadding="0">
                         <tr>
 				<?php 
-				if ($admintype==0){
+				if ($_SESSION['admintype']==0){
 					?>
 	                                <td class="navi">
         	                                <a href="index.php?action=newdomain&domain=new"><?php print _("Add new domain");?></a>
