@@ -316,6 +316,19 @@ if (! empty($action)){
 			$authorized = TRUE;
 		}
 		break;
+##################################### Check input if changeadminpasswd ###############################
+	case "changeadminpasswd":
+		if (! empty($confirmed)){
+			$pwd=new password;
+			$result=$pwd->check("adminuser",$_SESSION['user'],$_POST['old_password'],$CRYPT);
+			if ($result) {
+				$authorized = TRUE;
+			} else {
+				$authorized = FALSE;
+				$err_msg = "Password incorrect";
+			}
+		}
+		break;
 ######################################## Check on catch all setting ##################################
 	case "catch":
 	case "delete_catchall";
