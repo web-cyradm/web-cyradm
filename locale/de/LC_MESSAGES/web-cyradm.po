@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: adminuser.php:12
@@ -331,7 +331,7 @@ msgstr "Dom&auml;nen Administrator"
 
 #: newaccount.php:14
 msgid "Add new Account to domain"
-msgstr "Konto hinzuf&uml;gen"
+msgstr "Konto hinzuf&uuml;gen"
 
 #: newaccount.php:79
 msgid "Accountname"
@@ -355,11 +355,19 @@ msgstr "Konto erfolgreich dem IMAP Subsystem hinzugef&uuml;gt"
 
 #: newadminuser.php:6
 msgid "Add new admin user for domain"
-msgstr "F&uuml;ge neuen Administrator hinzu an Domain"
+msgstr "F&uuml;ge neuen Administrator hinzu an Dom&auml;ne"
 
 #: newadminuser.php:8
 msgid "Please select a domain first"
 msgstr "Bitte erst eine Dom&auml;ne ausw&auml;hlen"
+
+#: newadminuser.php:30
+msgid "Admin Type"
+msgstr "Administratorentyp"
+
+#: newadminuser.php:34
+msgid "Select \"Superuser\" for all domains"
+msgstr "\"Superuser\" selektieren f&uuml;r alle Dom&auml;nen"
 
 #: newdomain.php:17
 msgid "Add new domain"
