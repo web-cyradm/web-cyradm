@@ -1,64 +1,93 @@
 <?php
-#
-# lib for crypting passwords
-#
-#
-#  Copyright (C) 2002 by Luc de Louw
+#  lib for handling crypted passwords
+#  Part of the web-cyradm project 
 # 
-#  License: GNU GLP
+#  See http://www.web-cyradm.org
 #
+#  Copyright (C) 2002 by Luc de Louw <luc@delouw.ch>
+#
+#  License: GNU GPL
+#
+class password{
 
+	var $table;
+	var $username;
+	var $userinput;
+	var $newpassword;
+	var $encryption;
 
-// Used for login
+	var $checked;
 
-function checkpassword ($table, $username, $userinput, $encryption){
+	// Check if supplied password is valid
 
-	include ("config.inc.php");
-	include ("DB.php");
+	function check($table, $username, $userinput, $encryption){
+		include ("config.inc.php");
+		include ("DB.php");
 
-	switch ($encryption){
-	case "crypt":
+		switch ($encryption){
+		case "crypt":
 
-		/* First get the encrypted password out of the database to have the salt */
-	        $query = "SELECT password from $table where username ='$username'";
-		$handle=DB::connect ($DSN,true);
-       		$result = $handle->query($query);
-		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+			/* First get the encrypted password out of the database to have the salt */
+
+		        $query = "SELECT password FROM $table WHERE username ='$username'";
+			$handle=DB::connect ($DSN,true);
+	       		$result = $handle->query($query);
+			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		
-		$dbinput = $row['password'];
+			$dbinput = $row['password'];
 
-		// The salt used is the encrypted password
-		
-		if ($dbinput == crypt($userinput,$dbinput)){
-			return true;
-		}
-		else {
-			return false;
-		}
-
-		break;		
-	}
-}
-
-// Updates only checked passowrd
-
-function updatepassword($table,$username,$userinput,$newpassword, $encryption){
-
-	if (checkpassword($table, $username, $userinput, $encryption)){
-		print "Okay Password will be changed";
-	}
-
-	else {
-		return false;
-	}
+			// The salt used is the encrypted password
+			print "<br>From DB: ".$dbinput."<br>";	
+			print "userinput: ".crypt($userinput,$dbinput)."<p>";
 	
+			if ($dbinput == crypt($userinput,$dbinput)){
+				return true;
+			}
+			else {
+				return false;
+			}
+
+			break;		
+		}
+	}
+
+	/* This function sets the new password without checking an old password.
+	   If you use this function be sure to first check the old password supplied by the
+	   user by doing: return =$pwd->check($table,$username,$userinput,$encryption);
+	*/
+
+	function update($table,$username,$newpassword,$encryption){
+		include ("config.inc.php");
+
+		switch ($encryption){
+		case "crypt":
+
+			// Encrypt the cleartext password supplied
+			$newpassword=crypt($newpassword,substr($newpassword,0,2));
+	
+			$query="UPDATE $table SET password='$newpassword' WHERE username='$username'";
+			$handle=DB::connect ($DSN,true);
+			$result = $handle->query($query);
+			
+			if ($result){	
+				print $newpassword;
+				return true;
+			}
+			
+		}
+	}
+
+	function encrypt($password,$encryption){
+		switch ($encryption){
+                case "crypt":
+			$password=crypt($newpassword,substr($password,0,2));
+			return $password;
+		}
+	}
+		
+
+
 
 }
-
-// Ignores old password and set an new one
-
-function setpassword ($table, $username, $newpassword,$encryption){
-}
-
 
 ?>
