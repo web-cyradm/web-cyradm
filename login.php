@@ -96,12 +96,16 @@ function selectLang()
 foreach ($nls['aliases'] as $l){
 
 	if ($l == $LANG){
-		print "<option selected>";
+		print "<option selected";
 	}
 	else{
-		print "<option>";
+		print "<option";
 	}
-	print $l;
+
+	print " value=\"$l\">";
+	print $nls['languages'][$l];
+	
+//	print $l;
 	print "</option>";
 }
 

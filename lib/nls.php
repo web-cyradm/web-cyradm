@@ -34,6 +34,48 @@ $nls['aliases']['tr'] = 'tr_TR';
 //$nls['aliases']['uk'] = 'uk_UA';
 $nls['aliases']['zh'] = 'zh_CN';
 
+$nls['languages']['ar_OM'] = 'Arabic (&#x0627;&#x0644;&#x0639;&#x0631;&#x0628;&#x064a;&#x0629;)';
+$nls['languages']['bg_BG'] = 'Bulgarian (&#x0411;&#x044a;&#x043b;&#x0433;&#x0430;&#x0440;&#x0441;&#x043a;&
+#x0438;)';
+$nls['languages']['ca_ES'] = 'Catal&agrave;';
+$nls['languages']['zh_CN'] = 'Chinese (Simplified) (&#x7b80;&#x4f53;&#x4e2d;&#x6587;)';
+$nls['languages']['zh_TW'] = 'Chinese (Traditional) (&#x7e41;&#x9ad4;&#x4e2d;&#x6587;)';
+$nls['languages']['cs_CZ'] = 'Czech (&#x010c;esky)';
+$nls['languages']['da_DK'] = 'Dansk';
+$nls['languages']['de_DE'] = 'Deutsch';
+$nls['languages']['en_GB'] = 'English (GB)';
+$nls['languages']['en_US'] = 'English (US)';
+$nls['languages']['es_ES'] = 'Espa&ntilde;ol';
+$nls['languages']['et_EE'] = 'Eesti';
+$nls['languages']['fr_FR'] = 'Fran&ccedil;ais';
+$nls['languages']['el_GR'] = 'Greek (&#x0395;&#x03bb;&#x03bb;&#x03b7;&#x03bd;&#x03b9;&#x03ba;&#x03ac;)';
+$nls['languages']['is_IS'] = '&Iacute;slenska';
+$nls['languages']['it_IT'] = 'Italiano';
+$nls['languages']['ja_JP'] = 'Japanese (&#x65e5;&#x672c;&#x8a9e;)';
+$nls['languages']['ko_KR'] = 'Korean (&#xd55c;&#xad6d;&#xc5b4;)';
+$nls['languages']['lv_LV'] = 'Latvie&#x0161;u';
+$nls['languages']['lt_LT'] = 'Lietuvi&#x0161;kai';
+$nls['languages']['hu_HU'] = 'Magyar';
+$nls['languages']['nl_NL'] = 'Nederlands';
+$nls['languages']['nb_NO'] = 'Norsk bokm&aring;l';
+$nls['languages']['nn_NO'] = 'Norsk nynorsk';
+$nls['languages']['pl_PL'] = 'Polski';
+$nls['languages']['pt_PT'] = 'Portugu&ecirc;s';
+$nls['languages']['pt_BR'] = 'Portugu&ecirc;s Brasileiro';
+$nls['languages']['ro_RO'] = 'Romani';
+$nls['languages']['ru_RU'] = 'Russian (&#x0420;&#x0443;&#x0441;&#x0441;&#x043a;&#x0438;&#x0439;) (Windows)
+';
+$nls['languages']['ru_RU.KOI8-R'] = 'Russian (&#x0420;&#x0443;&#x0441;&#x0441;&#x043a;&#x0438;&#x0439;) (K
+OI8-R)';
+$nls['languages']['sk_SK'] = 'Slovak (Sloven&#x010d;ina)';
+$nls['languages']['sl_SI'] = 'Slovenian (Sloven&#x0161;&#x010d;ina)';
+$nls['languages']['fi_FI'] = 'Suomea';
+$nls['languages']['sv_SE'] = 'Svenska';
+$nls['languages']['th_TH'] = 'Thai (&#x0e44;&#x0e17;&#x0e22;)';
+$nls['languages']['tr_TR'] = 'T&uuml;rk&ccedil;e';
+$nls['languages']['uk_UA'] = 'Ukranian (&#x0423;&#x043a;&#x0440;&#x0430;&#x0457;&#x043d;&#x0441;&#x044c;&#
+x043a;&#x0430;)';
+
 
 /**
  ** Charsets
