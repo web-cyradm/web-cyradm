@@ -1,9 +1,5 @@
 <?php
-define('WC_BASE', dirname(__FILE__));
-$ref=WC_BASE."/index.php";
-if ($ref!=$_SERVER['SCRIPT_FILENAME']){
-	header("Location: index.php");
-}
+if (!defined('WC_BASE')) define('WC_BASE', dirname(__FILE__));
 
 include WC_BASE . "/config/conf.php";
 include WC_BASE . "/lib/crypto.php";

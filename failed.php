@@ -1,9 +1,6 @@
 <?php
-$ref=WC_BASE."/index.php";
-if ($ref!=$_SERVER['SCRIPT_FILENAME']){
-//	header("Location: index.php");
-}
-define('WC_BASE', dirname(__FILE__));
+if (!defined('WC_BASE')) define('WC_BASE', dirname(__FILE__));
+
 include WC_BASE . "/config/conf.php";
 include WC_BASE . "/lib/nls.php";
 
