@@ -3,6 +3,7 @@ session_start();
 $session_ok= $HTTP_SESSION_VARS['session_ok'];
 if ($session_ok) {
 include ("config.inc.php");
+include ("DB.php");
 include ("header.inc.php");
 include ("validate.inc.php");
 include ("menu.inc.php");
