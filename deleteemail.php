@@ -4,12 +4,19 @@
 
 <?php
 
+// Specify location of translation tables
+bindtextdomain("deleteemail", "./locale");
+
+// Choose domain
+textdomain("deleteemail");
+
+
 if (!$confirmed){
 
 ?>
-<h3>Delete an emailadress from the System</h3>
+<h3><?php print _("Delete an emailadress from the System") ?></h3>
 
-<h3>Do you really want to delete the emailadress for user <?php print $username ?>?</h3>
+<h3><?php print _("Do you really want to delete the emailadress for user") ?> <?php print $username ?>?</h3>
 
 <form action="index.php">
 <input type="hidden" name="action" value="deleteemail">
@@ -17,8 +24,8 @@ if (!$confirmed){
 <input type="hidden" name="domain" value="<?php print $domain?>">
 <input type="hidden" name="username" value="<?php print $username?>">
 <input type="hidden" name="alias" value="<?php print $alias?>">
-<input type="submit" name="confirmed" value="Yes, delete">
-<input type="submit" name="cancel" value="Cancel">
+<input type="submit" name="confirmed" value="<?php print _("Yes, delete") ?>">
+<input type="submit" name="cancel" value="<?php print _("Cancel") ?>">
 </form>
 
 
@@ -29,7 +36,7 @@ if (!$confirmed){
 }
 
 else if ($cancel){
-	print "<h3>Action cancelled, nothing deleted</h3>";
+	print "<h3>"._("Action cancelled, nothing deleted")."</h3>";
 	include ("editaccount.php");
 }
 
