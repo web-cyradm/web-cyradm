@@ -22,6 +22,7 @@ $_SESSION['warnlevel'] = $row['warnlevel'];
 
 $_SESSION['domain_row_pos'] = 0;
 $_SESSION['domain_orderby'] = 'domain_name';
+$_SESSION['domain_orderby_desc'] = 'ASC';
 
 ##### Getting admin privilages
 # Check if admin has any domain to administrate.
