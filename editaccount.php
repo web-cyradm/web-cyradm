@@ -22,10 +22,10 @@
         $b=0;
         print "<table border=0>";
         print "<tr>";
-        print "<th colspan=\"2\">"._("action")."</th>";
+        print "<th colspan=\"4\">"._("action")."</th>";
         print "<th>"._("Email address")."</th>";
+	print "<th>"._("Forward")."</th>";
         print "<th>"._("Username")."</th>";
-	print "<th>"._("Password")."</th>";
 	print "<th>"._("Quota used")."</th>";
         print "</tr>";
 
@@ -44,17 +44,27 @@
 	  $alias=$row['alias'];	
           print "<tr class=\"$cssrow\"> \n";
           print "<td><a href=\"index.php?action=editemail&domain=$domain&alias=$alias&username=$username\">"._("Edit Emailadress")."</a></td>";
+	  print "\n<td><a href=\"index.php?action=forwardalias&domain=$domain&alias=$alias&username=$username\">"._("Forwards")."
+</a></td>";
+
+	  print "\n<td><a href=\"index.php?action=vacation&domain=$domain&alias=$alias&username=$username\">"._("Vacation")."
+</a></td>";
+
           print "<td><a href=\"index.php?action=deleteemail&domain=$domain&alias=$alias&username=$username\">"._("Delete Emailadress")."</a></td>";
           print "<td>";
 	  print $alias;
           print "</td>\n";
 
+	  print "<td>";
+	  print "Forwared or not?\n";
+	  print "</td>";
+
 	  if ($c==0) {
 		print "<td rowspan=\"$cnt\">";
 	        print $row['dest'];
 //	        print $row['1'];
-	        print "</td>\n<td rowspan=\"$cnt\">";
-		print "******";
+//	        print "</td>\n<td rowspan=\"$cnt\">";
+//		print "******";
 	        print "</td>\n<td rowspan=\"$cnt\">";
 
 		if ($DOMAIN_AS_PREFIX) {

@@ -107,6 +107,10 @@ include ("lib/cyradm.php");
 			include ("browseaccounts.php");
 		        break;
 
+			case "editaccount":
+			include ("editaccount.php");
+		        break;
+
 			case "newaccount":
 			include ("newaccount.php");
 		        break;
@@ -131,12 +135,16 @@ include ("lib/cyradm.php");
 	        	include ("change_password.php");
 		        break;
 
-		        case"set_vacation":
-	        	include ("set_vacation.php");
+		        case"vacation":
+	        	include ("vacation.php");
 		        break;
 
-		        case"set_forwards":
-	        	include ("set_forwards.php");
+		        case"forwardalias":
+	        	include ("forwardalias.php");
+		        break;
+
+		        case"forwardaccount":
+	        	include ("forwardaccount.php");
 		        break;
 
 		        case"newemail":

@@ -58,7 +58,7 @@
 	        print "<table border=\"0\">\n";
 		print "<tbody>";
 	        print "<tr>";
-	        print "<th colspan=\"7\">"._("action")."</th>";
+	        print "<th colspan=\"6\">"._("action")."</th>";
 	        print "<th>"._("Email address")."</th>";
 	        print "<th>"._("Username")."</th>";
 //	        print "<th>"._("Password")."</th>";
@@ -98,8 +98,8 @@
 	        print "\n<tr class=\"$cssrow\">";
 		print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">"._("Edit account")."</a></td>";
 	        print "\n<td><a href=\"index.php?action=change_password&domain=$domain&alias=$alias&username=$username\">"._("Change Password")."</a></td>";
-	        print "\n<td><a href=\"index.php?action=set_vacation&domain=$domain&alias=$alias&username=$username\">"._("Set Vacation")."</a></td>";
-	        print "\n<td><a href=\"index.php?action=set_forwards&domain=$domain&alias=$alias&username=$username\">"._("Set Forwards")."</a></td>";
+//	        print "\n<td><a href=\"index.php?action=set_vacation&domain=$domain&alias=$alias&username=$username\">"._("Vacation")."</a></td>";
+	        print "\n<td><a href=\"index.php?action=forwardaccount&domain=$domain&alias=$alias&username=$username\">"._("Forward")."</a></td>";
 	        print "\n<td><a href=\"index.php?action=deleteaccount&domain=$domain&username=$username\">"._("Delete account")."</a></td>";
 	        print "\n<td><a href=\"index.php?action=setquota&domain=$domain&username=$username\">"._("Set quota")."</a></td>";
 	        print "\n<td><a href=\"index.php?action=catch&domain=$domain&username=$username\">"._("Set catch all")."</a></td>";

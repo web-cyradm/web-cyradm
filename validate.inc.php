@@ -140,7 +140,8 @@ switch ($action){
 ## FIXEM: make beter checks 
  case "change_password":
  case "set_vacation":
- case "set_forwards":
+ case "forwardaccount":
+ case "forwardalias":
 
          $query="SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
          $result=$handle->query($query);
