@@ -85,7 +85,7 @@
 	        print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">Edit account</a></td>";
 	        print "\n<td><a href=\"index.php?action=deleteaccount&domain=$domain&username=$username\">Delete account</a></td>";
 	        print "\n<td><a href=\"index.php?action=setquota&domain=$domain&username=$username\">Set Quota</a></td>";
-	        print "\n<td><a href=\"index.php?action=catch&domain=$domain&username=$username\">Set Catch all</a></td>";
+	        print "\n<td><!-- <a href=\"index.php?action=catch&domain=$domain&username=$username\">Set Catch all</a> -->Set catch all</td>";
 	        print "\n<td>";
 		$query2="SELECT * FROM virtual WHERE username='$username'"; 
 		$result2=mysql_db_query($MYSQL_DB,$query2);
