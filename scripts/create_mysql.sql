@@ -1,12 +1,12 @@
 # phpMyAdmin MySQL-Dump
-# version 2.2.2-rc1
+# version 2.2.6
 # http://phpwizard.net/phpMyAdmin/
-# http://phpmyadmin.sourceforge.net/ (download page)
+# http://www.phpmyadmin.net/ (download page)
 #
 # Host: localhost
-# Generation Time: Apr 14, 2002 at 08:06 PM
-# Server version: 3.23.44
-# PHP Version: 4.2.0RC2
+# Generation Time: Nov 04, 2002 at 01:44 AM
+# Server version: 3.23.52
+# PHP Version: 4.2.3
 # Database : `mail`
 # --------------------------------------------------------
 
@@ -59,6 +59,7 @@ CREATE TABLE domain (
   prefix varchar(30) NOT NULL default '',
   maxaccounts int(11) NOT NULL default '20',
   quota int(10) NOT NULL default '20000',
+  transport varchar(30) NOT NULL default 'cyrus',
   PRIMARY KEY  (domain_name),
   UNIQUE KEY prefix (prefix)
 ) TYPE=MyISAM;
