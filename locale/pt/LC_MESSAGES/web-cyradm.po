@@ -841,14 +841,14 @@ msgstr ""
 "Você não pode editar este endereço de e-mail com a opção `Não restringir "
 "endereços de e-mail` desabilitada!"
 
-#~ msgid "Search"
-#~ msgstr "Procurar"
+msgid "Search"
+msgstr "Procurar"
 
-#~ msgid "Yes"
-#~ msgstr "Sim"
+msgid "Yes"
+msgstr "Sim"
 
-#~ msgid "Submit"
-#~ msgstr "Enviar"
+msgid "Submit"
+msgstr "Enviar"
 
-#~ msgid "Not yet supported, change will be ignored"
-#~ msgstr "Não suportado ainda, mudanças serão ignoradas"
+msgid "Not yet supported, change will be ignored"
+msgstr "Não suportado ainda, mudanças serão ignoradas"
