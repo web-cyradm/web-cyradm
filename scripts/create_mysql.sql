@@ -15,7 +15,7 @@
 #
 
 CREATE TABLE accountuser (
-  username varchar(50) binary NOT NULL default '',
+  username varchar(255) binary NOT NULL default '',
   password varchar(30) binary NOT NULL default '',
   prefix varchar(50) NOT NULL default '',
   domain_name varchar(255) NOT NULL default '',
