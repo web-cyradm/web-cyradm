@@ -5,14 +5,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	header("Location: index.php");
 	exit();
 }
-?>
-<?php
-
-// Specify location of translation tables
-//bindtextdomain("web-cyradm", "./locale");
-
-// Choose domain
-//textdomain("web-cyradm");
 
 ################# Temporary fix for PHP 4.2.0 a better solution has to found #######################
 $user= $_SESSION['user'];
@@ -55,60 +47,69 @@ if ($_POST){
 
 # Load list of reserved Adresses into array
 $reserved=explode(",",$RESERVED);
-
+#
 $setforward = $forwardto = (isset($_POST['setforward']))?($_POST['setforward']):('');
 
-# Validate input and verify authorization of a users action
-
-$query = "SELECT * FROM domainadmin WHERE adminuser='$user'";
-$query2 = "SELECT * FROM adminuser WHERE username='$user'";
+# Connecting to database
 $handle = DB::connect($DB['DSN'],true);
 if (DB::isError($handle)) {
 	die (_("Database error"));
 }
+# This part to "THE END" should be executed once (after succesful login)
 
+# Check if admin has any domain to administrate.
+# Superuser has always 1 entry.
+$query = "SELECT * FROM domainadmin WHERE adminuser='".$_SESSION['user']."'";
 $result = $handle->query($query);
-$result2 = $handle->query($query2);
 $cnt = $result->numRows();
 
 if (!$cnt){
         print _("Security violation detected, attempt logged");
+	logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
         include WC_BASE . "/logout.php";
         die ();
 }
 
+# We check and remember admin type (superuser or domain admin).
+$query2 = "SELECT * FROM adminuser WHERE username='".$_SESSION['user']."'";
+$result2 = $handle->query($query2);
 $row = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
+$_SESSION['admintype'] = $row['type'];
 $admintype = $row['type'];
-if ($admintype != 0){
-	if (!isset($domain)) $domain='';
-//	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+
+# We check and remember list of domains for domain admin
+if ($admintype != 0){	
+	$allowed_domains = array();
+	
 	for ($i=0; $i < $cnt; $i++){
 		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);
-		$allowed_domains=$row['domain_name'];
+		$allowed_domains[] = $row['domain_name'];
 	}
-	if (!$allowed_domains){
+	$_SESSION['allowed_domains'] = $allowed_domains;
+	#Fix me: It's unnecessary (duplicated with "if (!$cnt)").
+	if (sizeof($allowed_domains)==0){
 		print _("Security violation detected, attempt logged");
 		include WC_BASE . "/logout.php";
 		die ();
 	}
-
+# THE END
 	// Check if username to be changed belong to the domain
+//	if (!isset($domain)) $domain='';
 
+//	$query3 = "SELECT * from domainadmin WHERE adminuser='".$_SESSION['user']."' AND domain_name='$domain'";
+//	$result3 = $handle->query($query3);
+//	$cnt3 = $result3->numRows();
 
-	$query3 = "SELECT * from domainadmin WHERE adminuser='$user' AND domain_name='$domain'";
-	$result3 = $handle->query($query3);
-	$cnt3 = $result3->numRows();
-
-	if (!$cnt3 AND $domain != ""){
+//	if (!$cnt3 AND $domain != ""){
+	if (!in_array($domain,$allowed_domains) AND $domain != "") {
 		print _("Security violation detected, attempt logged");
 		include WC_BASE . "/logout.php";
 		die ();
 	}
-
 }
 
 
-// Functions
+// ############################### FUNCTIONS ##################################
 
 // function ValdateEmail V0.2 2002-04-10 22:14
 function ValidateMail($email) {
@@ -142,7 +143,7 @@ function ValidPrefix($prefix) {
 	}
 	
 }
-
+//################## Validate input and verify users actions ##################
 if (! empty($action)){
 	switch ($action){
 ############################## Check deleteaccount ##################################################
@@ -359,7 +360,15 @@ if (! empty($action)){
 	case "delete_catchall";
 	case "aliases":
 	case "newalias":
+########################################## Check input if editalias ##################################
 	case "editalias":
+		# Check for reserved addresses
+		if (in_array($alias, $reserved)) {
+			$authorized = FALSE;
+			$err_msg="Reserved Emailadress, request cancelled";
+		}
+		break;		
+		
 	case "deletealias":
 	case "forwardalias":
 	case "deleteemail":
