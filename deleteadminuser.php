@@ -92,6 +92,10 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$query3 = "DELETE FROM domainadmin WHERE adminuser='$username'";
 				$hnd3 = $handle->query($query3);
 
+				# The admin also needs to be deleted from the settings table
+				$query4 = "DELETE FROM settings WHERE username='$username'";
+				$hnd4 = $handle->query($query4);
+
 				?>
 				<h3>
 					<?php print _("Admin user deleted");?>

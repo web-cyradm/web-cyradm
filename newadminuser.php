@@ -153,6 +153,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$password = $pwd->encrypt($new_password,$CRYPT);
 					$query = "INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
 					$result=$handle1->query($query);
+					$query = "INSERT INTO settings (username) VALUES ('$newadminuser')";
+					$result=$handle1->query($query);
 				}
 				else {
 					# It is not a new admin, so lets die
