@@ -1,36 +1,3 @@
-<?php
-/*
-session_start();
-
-$sess_timeout = $SESS_TIMEOUT; // seconds
-if (!isset($first)) $first = 1;
-$newid = time();
-if (($newid > $oldid+$sess_timeout) & !$first) {
-
-  $session_ok = FALSE;
-  session_register("session_ok");
-  $first = 0;
-  session_register("first");
-  $oldid = $newid;
-  session_register("oldid");
-
-  Header("Location: $base_url/");
-}
-else {
-  $first = 0;
-  session_register("first");
-  $oldid = $newid;
-  session_register("oldid");
-
-  if (!$session_ok) {
-	header ("Location: timeout.php");
-  }
-}
-
-
-*/
-
-?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- #####################################  Begin header ############################################ -->
 
@@ -53,7 +20,6 @@ else {
 
 ?>
 
-<META content="MSHTML 5.00.2920.0" name=GENERATOR>
 <link rel="stylesheet" href="css/web-cyradm.css" type="text/css">
 </head>
 <body bgColor=#ffffff leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -68,6 +34,8 @@ else {
   <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="middle" height="45">
+
+
 <!--  <tr>
         <td width="10">&nbsp; </td>
         <td valign="top"> -->
