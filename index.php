@@ -95,4 +95,3 @@ if ($_SESSION['session_ok'] === TRUE) {
 } else {
 	include ("login.php");
 }
-

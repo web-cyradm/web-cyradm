@@ -1,41 +1,57 @@
+<?php 
+
+include ("lib/nls.php");
+$charset= $nls["charsets"][$LANG];
+
+//print "Language= ".$LANG." Charset= ".$charset;
+
+if (isset($LANG)) {
+    header("Content-type: text/html; charset=$charset");
+    header('Vary: Accept-Language');
+}
+
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- #####################################  Begin header ############################################ -->
-
 <html>
 <head>
 <title>web-cyradm</title>
 
-<?php 
+<?php
+
+
+//print "Charset is". $nls["charsets"][$LANG];
 
 switch ($LANG){
-
 	case "zh_CN":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=GB2312\">";
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$charset\">";
 	break;
 
 	case "ru_RU":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=koi8-r\">";
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$charset\">";
 	break;
 
 	case "hu_HU":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-2\">";
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"$charset\">";
 	break;
 
 	case "pl_PL":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-2\">";
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$charset\">";
 	break;
 
 	case "ro_RO":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-2\">";
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$charset\">";
 	break;
 
 	case "tr_TR":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-9\">";
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$charset\">";
 	break;
 
 	default:
 		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">";
 }
+
+//print "Charset is: ".$charset;
 
 ?>
 
