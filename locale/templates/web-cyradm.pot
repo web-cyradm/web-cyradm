@@ -389,6 +389,11 @@ msgstr ""
 msgid "Your session timed out"
 msgstr ""
 
+#: editadminuser.php:5
+msgid "Change admin user for domain"
+msgstr ""
+
+
 #: Submit and cancel buttons
 msgid "Yes, delete"
 msgstr ""
