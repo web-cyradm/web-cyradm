@@ -36,20 +36,9 @@
 					if (DB::isError($handle)) {
 						die (_("Database error"));
 					}
-
-					switch($CRYPT){
-					case "crypt":
 						$pwd = new password;
 					        $new_password = $pwd->encrypt($new_password, $CRYPT);
 						$query = "update accountuser set password='$new_password' where username='$username'";
-						break;
-					case "mysql":
-						$query = "update accountuser set password=PASSWORD('$new_password') where username='$username'";
-						break;
-					default:
-						$query = "update accountuser set password='$new_password' where username='$username'";
-						break;
-					}
 					$result = $handle->query($query);
 					include WC_BASE . "/browseaccounts.php";
 				} elseif ($PASSWORD_CHANGE_METHOD=="poppassd"){

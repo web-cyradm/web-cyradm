@@ -135,25 +135,9 @@
 					$result = $handle1->query($query);
 
 					if (!$result->numRows()){
-						switch($CRYPT){
-						case "1":
-						case "crypt":
 							$pwd = new password;
 							$password = $pwd->encrypt($password,$CRYPT);
 							$query = "INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
-							break;
-
-						case "2":
-						case "sql":
-						case "mysql":
-							$query = "INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser',PASSWORD('$password'),'$newadmintype')";
-							break;
-
-						case "plain":
-							$query = "INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
-							break;
-
-						}
 					}
 
 					$handle1 = DB::connect($DB['DSN'],true);
