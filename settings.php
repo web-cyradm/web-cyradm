@@ -17,7 +17,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<?php print _("Administration Settings"); ?>
 					</a>
 				</td>
-				<td bgcolor="#FFFFFF" align="left" valign="top" width="2%">&nbsp;</td>
+				<td align="left" valign="top" width="2%">&nbsp;</td>
 				<td bgcolor="#B0C4DE" align="left" valign="top" width="49%">
 					<a href="">
 					<?php print _("Display Preferences"); ?>
@@ -29,13 +29,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<td bgcolor="#CBCBCB" align="left" valign="top" width="49%">
 					<?php print _("You can set all administrative settings."); ?>
 				</td>
-				<td bgcolor="#FFFFFF" align="left" valign="top" width="2%">&nbsp;</td>
+				<td align="left" valign="top" width="2%">&nbsp;</td>
 				<td bgcolor="#CBCBCB" align="left" valign="top" width="49%">
 					<?php print _("You can change the way that Web-cyradm displays information to you."); ?>
 				</td>
 			</tr>
 
-			<tr><td bgcolor="#FFFFFF" align="left" valign="top" height="2%">&nbsp;</td></tr>
+			<tr><td align="left" valign="top" height="2%">&nbsp;</td></tr>
 			
 			<tr>
 				<td bgcolor="#B0C4DE" align="left" valign="top" width="49%">
@@ -43,7 +43,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<?php print _("Change password"); ?>
 					</a>
 				</td>
-				<td bgcolor="#FFFFFF" align="left" valign="top" width="2%">&nbsp;</td>
+				<td align="left" valign="top" width="2%">&nbsp;</td>
 				<td bgcolor="#B0C4DE" align="left" valign="top" width="49%">
 				</td>
 			</tr>
@@ -52,7 +52,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<td bgcolor="#CBCBCB" align="left" valign="top" width="49%">
 					<?php print _("Use this to change your admin password."); ?>
 				</td>
-				<td bgcolor="#FFFFFF" align="left" valign="top" width="2%">&nbsp;</td>
+				<td align="left" valign="top" width="2%">&nbsp;</td>
 				<td bgcolor="#CBCBCB" align="left" valign="top" width="49%">
 				</td>
 			</tr>
