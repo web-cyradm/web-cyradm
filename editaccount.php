@@ -150,9 +150,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								$q_total	= $quota['qmax'];
 								$q_percent	= 100 * $q_used / $q_total;
 								
-								printf ("%d KBytes %s %d KBytes (%.2f%%)",
-									$quota['used'], _("out of"),
-									$quota['qmax'], $q_percent);
+								printf ("%d MB %s %d MB (%.2f%%)",
+									$quota['used']/1024, _("out of"),
+									$quota['qmax']/1024, $q_percent);
 							} else {
 								print _("Quota not set");
 							}
