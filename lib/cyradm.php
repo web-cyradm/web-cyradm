@@ -16,6 +16,10 @@
  - Added renamemailbox command as available with cyrus IMAP 2.2.0-Alpha
  - Added getversion to find out what version of cyrus IMAP is running
 
+ Changes by Lukasz Marciniak <landm@ibi.pl>
+ - Added geterror() to find out problems with conection to cyrus IMAP
+ - Changed imap_login() and command() to work with geterror()
+
  Last Change on $Date$
 
  $Id$
@@ -82,6 +86,9 @@ class cyradm
 			$_cmd = sprintf('. login "%s" "%s"',
 				$this->admin, $this->pass);
 			$this->command($_cmd);
+			if ($this->error_msg!="No errors"){
+				return 1;
+			}
 		}
 		return $errno;
 	}
@@ -127,10 +134,10 @@ class cyradm
 
 		if (strstr($returntext,". BAD")||(strstr($returntext,". NO"))){
 			$result[0]="$returntext";
-			$this->error_msg  = $returntext;
 
 			if (( strstr($returntext,". NO Quota") )){
-				} else {
+				$this->error_msg = "No errors";
+			} else {
 				/*
 				print "<br><font color=red><hr><H1><center><blink>ERROR: </blink>UNEXPECTED IMAP-SERVER-ERROR</center></H1><hr><br>
 				<table color=red border=0 align=center cellpadding=5 callspacing=3>
@@ -142,8 +149,12 @@ class cyradm
 				}
 				print "</table><hr><br><br></font>";
 				*/
+				$this->error_msg  = $returntext;
 				return false;
 			}
+		}
+		else {
+			$this->error_msg = "No errors";
 		}
 		return $result;  
 	}
@@ -158,6 +169,16 @@ class cyradm
 	{
 		$this->line = fgets($this->fp, 256);
 		return $this->line;
+	}
+
+	/*
+	#
+	# Getting Cyrus IMAP error
+	#
+	*/
+	function geterror()
+	{
+		return $this->error_msg;
 	}
 
 	/*
