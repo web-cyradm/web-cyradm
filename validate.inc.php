@@ -67,6 +67,13 @@ if (DB::isError($handle)) {
 
 $result = $handle->query($query);
 $result2 = $handle->query($query2);
+
+if (!$cnt){
+        print _("Security violation detected, attempt logged");
+        include WC_BASE . "/logout.php";
+        die ();
+}
+
 $cnt = $result->numRows();
 $row = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 $admintype = $row['type'];
