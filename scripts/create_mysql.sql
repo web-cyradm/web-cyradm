@@ -102,6 +102,16 @@ CREATE TABLE virtual (
   UNIQUE KEY alias (alias)
 ) TYPE=MyISAM;
 
+CREATE TABLE log (
+  id int(11) NOT NULL auto_increment,
+  msg text NOT NULL,
+  user varchar(255) NOT NULL default '',
+  host varchar(255) NOT NULL default '',
+  time datetime NOT NULL default '2000-00-00 00:00:00',
+  pid varchar(255) NOT NULL default '',
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
 INSERT INTO adminuser (username, password) VALUES ('admin', ENCRYPT('test'));
 INSERT INTO domainadmin (domain_name,adminuser) VALUES ('*','admin');
 INSERT INTO accountuser (username, password) VALUES ('cyrus', ENCRYPT('secret'));
