@@ -40,6 +40,7 @@ $tparam=$_GET['tparam'];
 $mode=$_GET['mode'];
 $forwards=$_GET['forwards'];
 $metoo=$_GET['metoo'];
+$freenames=$_GET['freenames'];
 
 # Validate input and verify authorization of a users action
 

@@ -8,8 +8,19 @@ if ($admintype==0){
 
 	if ($confirmed){
 
-	        $query="UPDATE domain SET domain_name='$newdomain', maxaccounts='$maxaccounts',quota='$quota' WHERE domain_name='$domain'";
-	
+// START Andreas Kreisl : freenames
+		if (isSet($freenames)){
+                	$freenames="YES";
+                }
+                else{
+                	$freenames="NO";
+                }
+
+
+
+	        $query="UPDATE domain SET domain_name='$newdomain', maxaccounts='$maxaccounts',quota='$quota',freenames='$freenames' WHERE domain_name='$domain'";
+// END Andreas Kreisl : freenames
+
 		$query2="UPDATE accountuser SET domain_name='$newdomain' WHERE domain_name='$domain'";
 
 	        $handle=DB::connect ($DSN,true);
@@ -47,7 +58,10 @@ if ($admintype==0){
 	        $domain=$row['domain_name'];
 	        $prefix=$row['prefix'];
 	        $maxaccounts=$row['maxaccounts'];
-	        $quota=$row['quota'];
+	        $quota=$row['quota']; 
+// START Andreas Kreisl : freenames
+	        $freenames=$row['freenames']; 
+// END Andreas Kreisl : freenames
 
 	        ?>
 
@@ -65,12 +79,21 @@ if ($admintype==0){
 		<td><input class="inputfield" type="text" size="30" name=newdomain value="<?php print $domain?>"></td>
 	        </tr>
 
-<!--
 	        <tr>
 	        <td><?php print _("Prefix"). " ". _("(Not yet supported, change will be ignored)") ?></td>
 	        <td><input class="inputfield" type="text" size="30"  value="<?php print $prefix ?>"></td>
 	        </tr>
--->
+
+
+<?php // START Andreas Kreisl : freenames ?>
+	        <tr>
+	        <td>Allow Free Names</td>
+	        <td><input class="inputfield" type="checkbox" name=freenames <?php if($freenames=="YES") echo "CHECKED"; ?>></td>
+	        </tr>
+<?php // END Andreas Kreisl : freenames ?>
+
+
+
 
 	        <tr>
 	        <td width=150><?php print _("Maximum Accounts") ?></td>

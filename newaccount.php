@@ -21,6 +21,9 @@ $row=$result1->fetchRow($result1,$c,'prefix');
 $prefix=$row[1];
 $maxaccounts=$row[2];
 $transport=$row[4];
+// START Andreas Kreisl : freenames
+$freenames=$row[5];
+// END Andreas Kreisl : freenames
 
 if ($transport != "cyrus"){
 	die (_("transport is not cyrus, unable to create account"));
@@ -42,14 +45,25 @@ if (!$confirmed){
 	print "<p>"._("Total accounts").": ".$cnt2."<p>";
 
         if (!$DOMAIN_AS_PREFIX) {
-		if ($cnt2>0){
-		$row2=$result2->fetchRow($result2,$cnt2-1,'username');
-		$lastaccount=$row2[0];
-		}
 
-		if ($cnt2=0){
-			$lastaccount=$prefix."0000";
-		}	
+// START Andreas Kreisl : freenames
+                if ($freenames=="YES"){
+                        $lastaccount= sprintf("%04d",$cnt2);
+                        $lastaccount=$prefix.$lastaccount;
+                }
+                else{
+                        if ($cnt2>0){
+                        $row2=$result2->fetchRow($result2,$cnt2-1,'username');
+//                      $lastaccount=mysql_result($result2,$cnt2-1,"username");
+                        $lastaccount=$row2[0];
+                        }
+
+                        if ($cnt2=0){
+                        $lastaccount=$prefix."0000";
+                        }
+                }
+// END Andreas Kreisl : freenames
+
 
 		$test = ereg ("[0-9][0-9][0-9][0-9]$",$lastaccount,$result_array);
 		$next= $result_array[0]+1;
@@ -67,10 +81,17 @@ if (!$confirmed){
 	<table>	
 	<?php
 		if (!$DOMAIN_AS_PREFIX) {
-			print "<input type=\"hidden\" name=\"username\" value=\"$nextaccount\">";
 			print "<tr>\n";
 			print "<td>"._("Accountname")."</td>\n";
-			print "<td>$nextaccount</td>\n";
+// START Andreas Kreisl : freenames
+			if ($freenames=="YES"){
+			echo "<td><input class=\"inputfield\" type=\"text\" name=\"username\" value=\"$nextaccount\" onFocus=\"this.style.backgroundColor='#aaaaaa'\">";
+			}
+			else{
+				print "<input type=\"hidden\" name=\"username\" value=\"$nextaccount\">";
+				print "<td>$nextaccount</td>\n";
+			}
+// END Andreas Kreisl : freenames
 			print "</tr>\n";
 		}
 	?>

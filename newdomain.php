@@ -26,8 +26,14 @@ if ($admintype==0){
 				if (!$DOMAIN_AS_PREFIX) {
 					print "<tr>\n";
 				        print "<td>"._("Prefix")."</td>\n";
-					print "<td><input type=\"text\" size=\"8\" name=\"prefix\"></td>\n";
+					print "<td><input class=\"inputfield\" type=\"text\" size=\"8\" name=\"prefix\"></td>\n";
 					print "</tr>\n";
+// START Andreas Kreisl : freenames
+					print "<tr>\n";
+				        print "<td>Allow Free Names</td>\n";
+					print "<td><input class=\"inputfield\" type=\"checkbox\" name=\"freenames\"></td>\n";
+					print "</tr>\n";
+// END Andreas Kreisl : freenames
 				}
 				else {
 					print "<input type=\"hidden\" name=\"prefix\" value=\"to-be-overwritten-by-domain\">\n";
@@ -98,9 +104,17 @@ if ($admintype==0){
 			else{
 				$trans=$transport;
 			}
+// START Andreas Kreisl : freenames
+			if (isSet($freenames)){
+				$freenames="YES";
+			}
+			else{
+				$freenames="NO";
+			}
 
-			$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, transport) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$trans')";
+			$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, transport,freenames) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$trans', '$freenames')";
 
+// END Andreas Kreisl : freenames
 		        $handle=DB::connect ($DSN,true);
                         if (DB::isError($handle)) {
                                 die (_("Database error"));
