@@ -53,6 +53,9 @@ $SESS_TIMEOUT = 1000;
 # The default quota sets the default quota for new domains
 $DEFAULT_QUOTA = 20000;
 
+# On what quota level mark accounts on accounts list (in %)
+$QUOTA_WARN_LEVEL = 90;
+
 # Defines if passwords are encrypted or not.
 # Valid Values:
 #  - plain 0 No encription is used

@@ -214,9 +214,17 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								$q_total = $quota['qmax'];
 								if (! $q_total == 0){
 									$q_percent = 100*$q_used/$q_total;
+
+									if ($q_percent >= $QUOTA_WARN_LEVEL){
+										printf ("<font color=red>");
+									}
+
 									printf ("%d KBytes %s %d KBytes (%.2f%%)",
 										$quota['used'], _("out of"),
 										$quota['qmax'], $q_percent);
+									if ($q_percent >= $QUOTA_WARN_LEVEL){
+                                                                                printf ("</font>");
+                                                                        }
 								} else {
 									print _("Unable to retrieve quota");
 								}
