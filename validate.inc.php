@@ -10,7 +10,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 $user= $_SESSION['user'];
 
 $_get_vars = array(
-	'adminuser', 'newadminuser', 'admintype', 'newadmintype', 'newusername',
+	'adminuser', 'newadminuser', 'newadmintype', 'newusername',
 	'type', 'newtype', 'domain', 'prefix', 'action', 'row_pos', 'username',
 	'password', 'new_password', 'confirm_password', 'quota', 'maxaccounts',
 	'newdomain', 'email', 'alias', 'dest', 'newalias', 'newdest', 'confirmed',
@@ -55,54 +55,11 @@ $handle =& DB::connect($DB['DSN'],true);
 if (DB::isError($handle)) {
 	die (_("Database error"));
 }
-# This part to "THE END" was moved to init.php
-/*
-# Check if admin has any domain to administrate.
-# Superuser has always 1 entry.
-$query = "SELECT * FROM domainadmin WHERE adminuser='".$_SESSION['user']."'";
-$result = $handle->query($query);
-$cnt = $result->numRows();
-
-if (!$cnt){
-        print _("Security violation detected, attempt logged");
-	logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
-        include WC_BASE . "/logout.php";
-        die ();
-}
-
-# We check and remember admin type (superuser or domain admin).
-$query2 = "SELECT * FROM adminuser WHERE username='".$_SESSION['user']."'";
-$result2 = $handle->query($query2);
-$row = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
-$_SESSION['admintype'] = $row['type'];
-$admintype = $row['type'];
-*/
 # We check and remember list of domains for domain admin
 if ($_SESSION['admintype'] != 0){	
-/*	$allowed_domains = array();
-	
-	for ($i=0; $i < $cnt; $i++){
-		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);
-		$allowed_domains[] = $row['domain_name'];
-	}
-	$_SESSION['allowed_domains'] = $allowed_domains;
-	#Fix me: It's unnecessary (duplicated with "if (!$cnt)").
-	if (sizeof($allowed_domains)==0){
-		print _("Security violation detected, attempt logged");
-		include WC_BASE . "/logout.php";
-		die ();
-	}
-*/
-# THE END
-	// Check if username to be changed belong to the domain
-//	if (!isset($domain)) $domain='';
+	if (!isset($domain)) $domain='';
 
-//	$query3 = "SELECT * from domainadmin WHERE adminuser='".$_SESSION['user']."' AND domain_name='$domain'";
-//	$result3 = $handle->query($query3);
-//	$cnt3 = $result3->numRows();
-
-//	if (!$cnt3 AND $domain != ""){
-	if (!in_array($domain,$allowed_domains) AND $domain != "") {
+	if (isset($domain) AND $domain != "" AND !in_array($domain,$_SESSION['allowed_domains'])) {
 		print _("Security violation detected, attempt logged");
 		include WC_BASE . "/logout.php";
 		die ();
