@@ -121,6 +121,7 @@ class password{
 
 		switch ($encryption){
                 case "crypt":
+			case "crypt":
 			case "1":
 			$password=crypt($password,substr(md5(rand()),0,2));
 			break;

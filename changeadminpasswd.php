@@ -90,7 +90,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$pwd = new password;
 			$new_password = $pwd->encrypt($_POST['new_password'], $CRYPT);
 			# If the new_password field is not empty and the password matches, update the password
-			$query = "UPDATE adminuser SET password='".$_POST['new_password']."' WHERE username='".$_SESSION['user']."' AND password='".$_POST['old_password']."'";
+			$query = "UPDATE adminuser SET password='".$new_password."' WHERE username='".$_SESSION['user']."'";
 			$result =& $handle->query($query);
 			if (DB::isError($result) || $handle->affectedRows()==0) {
 				print _("Database error");
