@@ -52,9 +52,12 @@ $cnt=$result->numRows();
 $row=$result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 $admintype=$row['type'];
 if ($admintype!=0){
- $row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
- $allowed_domains=$row['domain_name'];
- $domain=$row['domain_name'];
+	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+	$allowed_domains=$row['domain_name'];
+	if (!$allowed_domains){
+		include("logout.php");	
+	}
+	$domain=$row['domain_name'];
 }
 
 
