@@ -107,7 +107,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
                                         <th>
                                                 <!-- <?php print _("domainname");?> -->
-                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=domain_name\">"._("domainname")."</a>";?>
+                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=domain_name\">"._("domainname")."</a><img src=\"images/arrow_sort_desc.png\" border=\"0\">";?>
                                         </th>
 
                                         <?php
