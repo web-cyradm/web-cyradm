@@ -35,15 +35,49 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<td>
 						<select size="1" name="style">
 						<?php
-							foreach ($TEMPLATE as $style){
+							foreach ($TEMPLATE as $temp){
 								print "<option";
-								$_SESSION['style'] == $style?print " selected=\"selected\"":"";
-								print " value=\"$style\">";
-								print $style;
+								if ($_SESSION['style'] == $temp) {
+									echo " selected";
+								}
+								print " value=\"$temp\">";
+								print $temp;
 								print "</option>\n";
 							}
 						?>
 						</select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<?php print _("Number of domains displayed on page");?>
+					</td>
+
+					<td>
+						<input
+						class="inputfield"
+						type="text"
+						name="maxdisplay";
+						size="4"
+						value="<?php print $_SESSION['maxdisplay'];?>"
+						>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<?php print _("Quota usage warn level");?>
+					</td>
+
+					<td>
+						<input
+						class="inputfield"
+						type="text"
+						name="warnlevel";
+						size="4"
+						value="<?php print $_SESSION['warnlevel'];?>"
+						>
 					</td>
 				</tr>
 				
@@ -62,14 +96,20 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	}
 	else { // if (!isset($_GET['confirmed']))
 		if ($authorized){
+			if ($_SESSION['style'] != $_GET['style']) {
+				print "<center><a class=\"navi\" href=\"index.php?action=settings\">";
+				print _("Reload page");
+				print "</a></center>";
+			}
 			$_SESSION['style'] = $_GET['style'];
+			$_SESSION['maxdisplay'] = $_GET['maxdisplay'];
+			$_SESSION['warnlevel'] = $_GET['warnlevel'];
+			$query = "UPDATE `settings` SET `style`='".$_SESSION['style']."', maxdisplay='".$_SESSION['maxdisplay']."', warnlevel='".$_SESSION['warnlevel']."' WHERE username='".$_SESSION['user']."'";
+			$handle->query($query);
 		}
 		else {
 			print "<h3>".$err_msg."</h3>";
 		}
-		print "<center><a class=\"navi\" href=\"index.php?action=settings\">";
-		print _("Reload page");
-		print "</a></center>";
 		echo "</td></tr>\n";
 		include WC_BASE . "/settings.php";
 	}
