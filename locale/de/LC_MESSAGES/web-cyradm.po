@@ -91,7 +91,7 @@ msgstr "Maximale Anzahl Konti"
 
 #: browse.php:25
 msgid "default quota per user"
-msgstr "Standart Specherplatz pro Konto"
+msgstr "Standart Speicherplatz pro Konto"
 
 #: browse.php:56
 msgid "Edit Domain"
@@ -159,7 +159,7 @@ msgstr "Keine Konti gefunden"
 
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
-msgstr "Definieren eines Kontos als Sammelkonto f&uuml; Dom&auml;ne"
+msgstr "Definieren eines Kontos als Sammelkonto f&uuml;r Dom&auml;ne"
 
 #: catchall.php:24
 msgid "Do you really want to define the user"
@@ -191,7 +191,7 @@ msgstr "mit all seinen definierten Emailaddressen l&ouml;schen"
 
 #: deleteaccount.php:40 deletedomain.php:47 deleteemail.php:39
 msgid "Action cancelled, nothing deleted"
-msgstr "Bafehl abgebrochen, keine Daten gel&ouml;scht"
+msgstr "Befehl abgebrochen, keine Daten gel&ouml;scht"
 
 #: deletedomain.php:24
 msgid "Delete a Domain from the System"
@@ -227,15 +227,15 @@ msgstr "L&ouml;schen einer Emailadresse"
 
 #: deleteemail.php:19
 msgid "Do you really want to delete the emailadress for user"
-msgstr "M&ouml;chten Sie diese Emailaddresse f&uuml;r das Konto wirklich l&ouml;schen"
+msgstr "M&ouml;chten Sie diese Emailadresse f&uuml;r das Konto wirklich l&ouml;schen"
 
 #: editaccount.php:17
 msgid "Email adresses defined for user"
-msgstr "Definierte Emailaddressen f&uuml;r das Konto"
+msgstr "Definierte Emailadressen f&uuml;r das Konto"
 
 #: editaccount.php:25
 msgid "New email address"
-msgstr "Emailaddresse hinzuf&uuml;gen"
+msgstr "Emailadresse hinzuf&uuml;gen"
 
 #: editaccount.php:52
 msgid "Edit Emailadress"
@@ -243,7 +243,7 @@ msgstr "Emailadresse &auml;ndern"
 
 #: editaccount.php:53
 msgid "Delete Emailadress"
-msgstr "Emailaddresse l&ouml;schen"
+msgstr "Emailadresse l&ouml;schen"
 
 #: editemail.php:32
 msgid "Successfully changed"
@@ -251,7 +251,7 @@ msgstr "Erfolgreich ge&auml;ndert"
 
 #: editemail.php:63 newemail.php:53
 msgid "Emailadress"
-msgstr "Emailaddresse"
+msgstr "Emailadresse"
 
 #: editemail.php:68 newemail.php:58
 msgid "Destination"
@@ -271,7 +271,7 @@ msgstr "Bitte authentifizieren Sie sich"
 
 #: logout.php:32
 msgid "Thank you for using Web-cyradm"
-msgstr "Danke das Sie Web-cyram benutzt haben"
+msgstr "Danke das Sie Web-cyradm benutzt haben"
 
 #: logout.php:34
 msgid "You are logged out"
@@ -352,6 +352,14 @@ msgstr "Konto erfolgreich der Datenbank hinzugef&uuml;gt"
 #: newaccount.php:153
 msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Konto erfolgreich dem IMAP Subsystem hinzugef&uuml;gt"
+
+#: newadminuser.php:6
+msgid "Add new admin user for domain"
+msgstr "F&uuml;ge neuen Administrator hinzu an Domain"
+
+#: newadminuser.php:8
+msgid "Please select a domain first"
+msgstr "Bitte erst eine Dom&auml;ne ausw&auml;hlen"
 
 #: newdomain.php:17
 msgid "Add new domain"
