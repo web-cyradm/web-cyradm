@@ -28,6 +28,7 @@ define('WC_BASE', dirname(__FILE__));
 $wc_configured = @file_exists(WC_BASE . '/config/conf.php');
 
 if ($wc_configured){
+	include "DB.php";
 	include WC_BASE . "/config/conf.php";
 	include WC_BASE . "/lib/nls.php";
 	include WC_BASE . "/lib/crypto.php";
@@ -78,7 +79,6 @@ if ($wc_configured){
 	textdomain("web-cyradm");
 
 	if ($_SESSION['session_ok'] === TRUE) {
-		include "DB.php";
 		require WC_BASE . "/validate.inc.php";
 		require WC_BASE . "/menu.inc.php";
 		require WC_BASE . "/lib/cyradm.php";

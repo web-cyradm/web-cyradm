@@ -13,6 +13,16 @@ if (isset($LANG)) {
     header('Vary: Accept-Language');
     header('Content-type: text/html; charset=' . $charset);
 }
+$handle=DB::connect($DB['DSN'], true);
+$query = "SELECT `style` from adminuser WHERE username='$user'";
+$result = $handle->query($query);
+$settingsrow = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+$style = $settingsrow['style'];
+if (!$style){
+	$style="web-cyradm";
+}
+
+
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -63,7 +73,7 @@ switch ($LANG){
 */
 ?>
 
-		<link rel="stylesheet" href="css/web-cyradm.css" type="text/css">
+		<link rel="stylesheet" href="css/<?php print $style;?>.css" type="text/css">
 	</head>
 
 <?php
