@@ -35,6 +35,7 @@ CREATE TABLE domain (
   prefix varchar(255) UNIQUE NOT NULL default '',
   maxaccounts int NOT NULL default 20,
   quota int NOT NULL default '20000',
+  domainquota int NOT NULL default '0',
   transport varchar(255) NOT NULL default 'cyrus',
   freenames varchar(3) CHECK (freenames='YES' OR freenames='NO' ) DEFAULT 'NO' NOT NULL,
   freeaddress varchar(3) CHECK (freeaddress='YES' OR freeaddress='NO' ) DEFAULT 'NO' NOT NULL

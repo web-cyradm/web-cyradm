@@ -59,6 +59,7 @@ CREATE TABLE domain (
   prefix varchar(50) NOT NULL default '',
   maxaccounts int(11) NOT NULL default '20',
   quota int(10) NOT NULL default '20000',
+  domainquota int(10) NOT NULL default '0',
   transport varchar(255) NOT NULL default 'cyrus',
   freenames enum('YES','NO') NOT NULL default 'NO',
   freeaddress enum('YES','NO') NOT NULL default 'NO',
