@@ -7,8 +7,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 }
 
 ################# Temporary fix for PHP 4.2.0 a better solution has to found #######################
-$user= $_SESSION['user'];
-
 $_get_vars = array(
 	'adminuser', 'newadminuser', 'newadmintype', 'newusername',
 	'type', 'newtype', 'domain', 'prefix', 'action', 'row_pos', 'username',

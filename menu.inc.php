@@ -126,7 +126,7 @@ if (! isset($domain)){
 				</td>
 
 				<td style="font-weight: bold;">
-					<?php echo $user;?>
+					<?php echo $_SESSION['user'];?>
 				</td>
 
 				<td>
