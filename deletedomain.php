@@ -4,6 +4,12 @@
 
 <?php
 
+// Specify location of translation tables
+bindtextdomain("deletedomain", "./locale");
+
+// Choose domain
+textdomain("deletedomain");
+
 if ($admintype==0){
 
 	$handle=DB::connect($DSN, true);
@@ -15,19 +21,19 @@ if ($admintype==0){
 	if (!$confirmed){
 
 		?>
-		<h3>Delete a Domain from the System</h3>
+		<h3><?php print _("Delete a Domain from the System") ?></h3>
 
-		<h3>Do you really want to delete the Domain <font color=red><?php print $domain ?></font> with all its defined accounts, admins, and emailadresses?</h3>
-		This can take a while depending on how many account have to be deleted<p>
+		<h3><?php print _("Do you really want to delete the Domain")?> <font color=red><?php print $domain ?></font> <?php print _("with all its defined accounts, admins, and emailadresses")?>?</h3>
+		<?php print _("This can take a while depending on how many account have to be deleted")?><p>
 
-		<font color="red">Your action will delete <?php print $cnt1 ?> accounts </font><p>
+		<font color="red"><?php print _("Your action will delete")." " ?> <?php print $cnt1 ."&nbsp;"._("accounts")?> </font><p>
 
 		<form action="index.php">
 		<input type="hidden" name="action" value="deletedomain">
 		<input type="hidden" name="confirmed" value="true">
 		<input type="hidden" name="domain" value="<?php print $domain?>">
-		<input type="submit" name="confirmed" value="Yes, delete">
-		<input type="submit" name="cancel" value="Cancel">
+		<input type="submit" name="confirmed" value="<?php print _("Yes, delete")?>">
+		<input type="submit" name="cancel" value="<?php print _("Cancel")?>">
 		</form>
 
 
@@ -38,7 +44,7 @@ if ($admintype==0){
 	}
 
 	else if ($cancel){
-		print "<h3>Action cancelled, nothing deleted</h3>";
+		print "<h3>"._("Action cancelled, nothing deleted")."</h3>";
 	}
 
 	else{
