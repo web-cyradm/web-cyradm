@@ -37,6 +37,7 @@ if ($wc_configured){
 	} else {
 		$browserlang = 'en_EN';
 	}
+	require_once WC_BASE . "/session.php";
 
 	// 1nd) If there is a language setting in the session, use this instead
 	// 2st) Try to get the language from the browser

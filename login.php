@@ -19,7 +19,7 @@ function entsub() {
 </table>
 <!-- -->
 <form name="form1" method="post" action="auth.inc.php">
-<input type="hidden" name="LANG" value="<?php print $LANG ?>">
+<!-- <input type="hidden" name="LANG" value="<?php print $LANG ?>"> -->
 <table width="100%" border="0" style="height: 80%;">
   <tr>
     <td align="center" valign="middle"> 
@@ -73,6 +73,33 @@ function entsub() {
                   </td>
                   <td width="10"></td>
                 </tr>
+		<tr>
+		<td></td>
+		<td><font color="#999999"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><?php print _("Select language")?></td>
+		<td>
+<select size="1" name="LANG">
+
+<?php
+
+foreach ($nls['aliases'] as $l){
+
+	if ($l == $DEFAULTLANG){
+		print "<option selected>";
+	}
+	else{
+		print "<option>";
+	}
+	print $l;
+	print "</option>";
+}
+
+?>
+
+ </select> 
+</form>
+
+		</td>
+		</tr>
                 <tr> 
                   <td colspan="5">&nbsp;</td>
                 </tr>
