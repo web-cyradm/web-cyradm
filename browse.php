@@ -5,6 +5,11 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	header("Location: index.php");
 	exit();
 }
+
+if (!$orderby){
+	$orderby="domain_name";
+}
+
 ?>
 <!-- ############################## Start browse.php ###################################### -->
 <tr>
@@ -41,14 +46,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<?php
 
 				if (! isset($_SESSION['allowed_domains'])) {
-					$query = "SELECT * FROM domain ORDER BY domain_name";
+					#$query = "SELECT * FROM domain ORDER BY domain_name";
+					$query = "SELECT * FROM domain ORDER BY $orderby";
 				} else {
 					$allowed_domains = '';
 					foreach ($_SESSION['allowed_domains'] as $allowed_domain) {
 						$allowed_domains .= $allowed_domain."' OR domain_name='";
 					}
-					$query = "SELECT * FROM domain WHERE domain_name='$allowed_domains' ORDER BY domain_name";
-//					print $query;
+					$query = "SELECT * FROM domain WHERE domain_name='$allowed_domains' ORDER BY $orderby";
 				}
 
 				$result = $handle->limitQuery($query,$row_pos,$_SESSION['maxdisplay']);
@@ -72,14 +77,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
                                 if ($row_pos < $_SESSION['maxdisplay']){
 					print "<td class=\"navi\"><a href=\"#\">"._("Previous entries")."</a></td>";
                                 } else {
-					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$prev\">"._("Previous entries") ."</a></td>";		
+					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$prev&orderby=$orderby\">"._("Previous entries") ."</a></td>";		
                                 }
 
 				if ($next>$total){
 					print "<td class=\"navi\"><a href=\"#\">"._("Next 10 entries")."</a></td>";
 				}
 				else {
-					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next\">". _("Next entries")."</a></td>";
+					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next&orderby=$orderby\">". _("Next entries")."</a></td>";
 				}
                                 ?>
 
@@ -103,7 +108,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
                                         if (! $DOMAIN_AS_PREFIX){
                                                 ?>
                                                 <th>
-                                                        <?php print _("prefix");?>
+                                                        <?php print "<a href=\"index.php?action=browse&orderby=prefix&row_pos=$row_pos\">"._("prefix")."</a>";?>
                                                 </th>
                                                 <?php
                                         }

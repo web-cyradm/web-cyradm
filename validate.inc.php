@@ -16,7 +16,7 @@ $_get_vars = array(
 	'newdomain', 'email', 'alias', 'dest', 'newalias', 'newdest', 'confirmed',
 	'cancel', 'searchstring', 'transport', 'tparam', 'mode', 'forwards',
 	'metoo', 'vacation_text', 'freenames', 'freeaddress', 'LANG', 'delete_catchall',
-	'resp_domain', 'newdomain'
+	'resp_domain', 'newdomain','oderby'
 );
 
 $_post_vars = array(
