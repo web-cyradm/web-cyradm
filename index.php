@@ -31,6 +31,7 @@ if ($wc_configured){
 	include WC_BASE . "/config/conf.php";
 	include WC_BASE . "/lib/nls.php";
 	include WC_BASE . "/lib/crypto.php";
+	include WC_BASE . "/lib/log.php";
 
 	if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
 		$browserlang = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
