@@ -6,17 +6,20 @@
 <title>web-cyradm</title>
 
 <?php 
-if ($LANG=="zh_CN"){
 
-	print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=GB2312\">";
+switch ($LANG){
+
+	case "zh_CN":
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=GB2312\">";
+	break;
+
+	case "ru_RU":
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=koi8-r\">";
+	break;
+
+	default:
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=8859-1\">";
 }
-
-else {
-	print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=8859-1\">";
-
-}
-
-
 
 ?>
 
