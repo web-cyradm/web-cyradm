@@ -24,24 +24,29 @@ class password{
 		include WC_BASE . "/config/conf.php";
 		include "DB.php";
 
-		switch (strval($encryption)){
-		case "crypt":
-		case "1":
-			/* First get the encrypted password out of the database to have the salt */
-
 		        $query = "SELECT password FROM $table WHERE username ='$username'";
 			$handle=DB::connect ($DB['DSN'],true);
+
 			if (DB::isError($handle)) {
 				die (_("Database error"));
 			}
 		
 	       		$result = $handle->query($query);
-
-
 			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 
-			$dbinput=$row['password'];
+		$dbinput = $row['password'];
 			
+		switch (strval($encryption)){
+		default:
+			if ($dbinput == $userinput){
+				return true;
+			}
+			else {
+				return false;
+			}
+		break;
+		case "crypt":
+		case "1":
 			// The salt used is the encrypted password
 	
 			if ($dbinput == crypt($userinput,$dbinput)){
@@ -50,59 +55,27 @@ class password{
 			else {
 				return false;
 			}
-
 		break;		
-
-		case "mysql":
-		case "sql":
+		case "md5":
 		case "2":
-			$query = "SELECT * FROM $table WHERE username='$username' AND password=PASSWORD('$userinput')";
-			$handle=DB::connect ($DB['DSN'],true);
-
-			if (DB::isError($handle)) {
-				die (_("Database error"));
-			}
-
-			$result = $handle->query($query);
-			$cnt=$result->numRows($result);
-
-			if ($cnt> 0){
+			if ($dbinput == md5($userinput)){
 				return true;
 			}
 			else {
 				return false;
 			}
-
 		break;
-	
-		case "plain":
-		case "0":
-			$query = "SELECT password FROM $table WHERE username ='$username'";
-			$handle=DB::connect ($DB['DSN'],true);
-
-			if (DB::isError($handle)) {
-                                die (_("Database error"));
-                        }
-
-			$result = $handle->query($query);
-			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-
-			$dbinput = $row['password'];
-
-			if ($dbinput == $userinput){
+		// For compatibility with older web-cyradm
+		case "mysql":
+		case "3":
+			if ($dbinput == $this->mysql_password($userinput)){
 							return true;
 			}
 			else {
 				return false;
 			}
 
-		break;
-
-
-
 		}
-
-		
 	}
 
 	/* This function sets the new password without checking an old password.
@@ -115,60 +88,74 @@ class password{
 
 		switch ($encryption){
 		case "crypt":
-
-			// Encrypt the cleartext password supplied
+			case "1":
 			$newpassword=crypt($newpassword,substr($newpassword,0,2));
-	
-			$query="UPDATE $table SET password='$newpassword' WHERE username='$username'";
-			$handle=DB::connect ($DB['DSN'],true);
-
-			if (DB::isError($handle)) {
-                                die (_("Database error"));
-                        }
-
-
-			$result = $handle->query($query);
-			
-			if ($result){	
-				return true;
-			}
-
 		break;
-
-		case "sql":
-		case "sql":
+			case "md5":
                 case "2":
+				$newpassword=md5($newpassword);
+			break;
+			case "mysql":
+		// for compatibility with older web-cyradm
+			case "3":
+				$newpassword==$this->mysql_password($newpassword);;
+			break;
+
+		}
+		// If no encryption specified plain is used
 			
-			$query="UPDATE $table SET password=PASSWORD('$newpassword') WHERE username='$username'";
+		$query="UPDATE $table SET password='$newpassword' WHERE username='$username'";
 			$handle=DB::connect ($DB['DSN'],true);
 
 			if (DB::isError($handle)) {
                                 die (_("Database error"));
                         }
 
-
 			$result = $handle->query($query);
 			
 			if ($result){	
 				return true;
 			}
-
-			
-		}
 	}
 
 	function encrypt($password,$encryption){
 
 		switch ($encryption){
                 case "crypt":
+			case "1":
 			$password=crypt($password,substr($password,0,2));
-			return $password;
+			break;
+			case "md5":
+			case "2":
+				$password=md5($password);
+			break;
+		// for compatibility with older web-cyradm
+			case "mysql":
+			case "3":
+				$password=$this->mysql_password($password);
 		}
-	}
 		
+		// Encrypt should always return something - on plaintext unchanged input
+		return $password;
+	}
+	function mysql_password($input){
+	        include_once WC_BASE . "/config/conf.php";
+		include_once "DB.php";
+		global $DB;
+		
+		$query = "SELECT PASSWORD('" . $input . "')";
+		$handle=DB::connect ($DB['DSN'],true);
 
+		if (DB::isError($handle)) {
+                        die (_("Database error"));
+            	}
 
+		$result = $handle->query($query);
+		$row=$result->fetchRow(DB_FETCHMODE_ORDERED, 0);
 
+		$password = $row[0];
+		return $password;
+	}
 }
 
 ?>

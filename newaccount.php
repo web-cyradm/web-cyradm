@@ -191,22 +191,9 @@
 			       "</h3><br>";
 			include WC_BASE . "/browseaccounts.php";
 		    } else {
-		    	$query3="INSERT INTO accountuser (username, password, prefix, domain_name) VALUES ('" . $username . "',";
-			switch($CRYPT){
-			case "crypt":
 				$pwd = new password;
 			        $password = $pwd->encrypt($password, $CRYPT);
-				$query3 .= "'$password'";
-				break;
-			case "mysql":
-				$query3 .= "PASSWORD('$password')";
-				break;
-			default:
-				$query3 .= "'$password'";
-				break;
-			}
-
-			$query3 .= ",'" . $prefix . "','" . $domain . "')";
+		    	$query3="INSERT INTO accountuser (username, password, prefix, domain_name) VALUES ('" . $username . "','" . $password . "','" . $prefix . "','" . $domain . "')";
 
 			$cyr_conn = new cyradm;
 			$error=$cyr_conn -> imap_login();
