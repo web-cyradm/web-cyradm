@@ -63,7 +63,7 @@ else{
 			/* This is temporary needed, because mysql uses proprietary crypto, thus 
 			Admin password must be stored plaintext */
 
-			if $CRYPT=="mysql" {
+			if ($CRYPT=="mysql") {
 				$CRYPT="plain";
 			}
 
