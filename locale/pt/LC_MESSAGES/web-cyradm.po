@@ -1,0 +1,405 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2002-08-18 13:51+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: adminuser.php:12
+msgid "Browse admins"
+msgstr "Administradores"
+
+#: adminuser.php:24
+msgid "Total administrators"
+msgstr "Total de administradores"
+
+#: adminuser.php:27
+msgid "Add administator"
+msgstr "Adicionar Administrador"
+
+#: adminuser.php:35 adminuser.php:39 browseaccounts.php:49
+#: browseaccounts.php:53
+msgid "Previous 10 entries"
+msgstr "Ultimas 10 entradas"
+
+#: adminuser.php:43 adminuser.php:47 browseaccounts.php:57
+#: browseaccounts.php:61
+msgid "Next 10 entries"
+msgstr "Proximas 10 entradas"
+
+#: adminuser.php:53 browse.php:16 browseaccounts.php:69 editaccount.php:31
+msgid "action"
+msgstr "acao"
+
+#: adminuser.php:54
+msgid "Adminname"
+msgstr "Administrador"
+
+#: adminuser.php:55 browseaccounts.php:72 editaccount.php:34 login.php:89
+#: newaccount.php:96
+msgid "Password"
+msgstr "Senha"
+
+#: adminuser.php:56
+msgid "domain"
+msgstr "dominio"
+
+#: adminuser.php:57
+msgid "admin type"
+msgstr "tipo de administrador"
+
+#: adminuser.php:81
+msgid "Edit adminuser"
+msgstr "Editar administrador"
+
+#: adminuser.php:82
+msgid "Delete adminuser"
+msgstr "Apagar administrador"
+
+#: adminuser.php:108
+msgid "No accounts fount"
+msgstr "Nenhuma conta encontrada"
+
+#: adminuser.php:112
+msgid "Add administrator"
+msgstr "Adicionar administrador"
+
+#: browse.php:12
+msgid "Browse domains"
+msgstr "Dominios"
+
+#: browse.php:17
+msgid "domainname"
+msgstr "Nome do dominio"
+
+#: browse.php:21
+msgid "prefix"
+msgstr "prefixo"
+
+#: browse.php:24
+msgid "max Accounts"
+msgstr "maximo de contas"
+
+#: browse.php:25
+msgid "default quota per user"
+msgstr "quota padrao por usuario"
+
+#: browse.php:56
+msgid "Edit Domain"
+msgstr "Editar Dominio"
+
+#: browse.php:57
+msgid "Delete Domain"
+msgstr "Apagar Dominio"
+
+#: browse.php:58 deletedomain.php:29 menu.inc.php:42
+msgid "accounts"
+msgstr "contas"
+
+#: browseaccounts.php:20
+msgid "Browse accounts for domain"
+msgstr "Navegar"
+
+#: browseaccounts.php:38 newaccount.php:48
+msgid "Total accounts"
+msgstr "Total de contas"
+
+#: browseaccounts.php:41 browseaccounts.php:147
+msgid "Add new account"
+msgstr "Adicionar nova conta"
+
+#: browseaccounts.php:70 editaccount.php:32 newaccount.php:86
+msgid "Email address"
+msgstr "Email"
+
+#: browseaccounts.php:71 editaccount.php:33 login.php:79
+msgid "Username"
+msgstr "Nome do usuario"
+
+#: browseaccounts.php:73 editaccount.php:35
+msgid "Quota used"
+msgstr "Quota usada"
+
+#: browseaccounts.php:93
+msgid "Edit account"
+msgstr "Editar conta"
+
+#: browseaccounts.php:94
+msgid "Delete account"
+msgstr "Apagar conta"
+
+#: browseaccounts.php:95
+msgid "Set quota"
+msgstr "Definir quota"
+
+#: browseaccounts.php:96
+msgid "Set catch all"
+msgstr "Definir receber todas"
+
+#: browseaccounts.php:126 editaccount.php:76
+msgid "out of"
+msgstr "de"
+
+#: browseaccounts.php:130 editaccount.php:80
+msgid "Quota not set"
+msgstr "Quota nao definida"
+
+#: browseaccounts.php:143
+msgid "No accounts found"
+msgstr "Nenhuma conta encontrada"
+
+#: catchall.php:13
+msgid "Define a Account for receiving undefined adresses for domain"
+msgstr "Define uma conta para receber mensagens para enderecos nao definidos para o dominio"
+
+#: catchall.php:24
+msgid "Do you really want to define the user"
+msgstr "Voce realmente quer definir o usuario ?"
+
+#: catchall.php:24
+msgid "to receive all undefined emailadresses"
+msgstr "para receber todas mensagens para enderecos de email nao definidos ?"
+
+#: catchall.php:54
+msgid "successfully added to Database"
+msgstr "Adicionado ao banco de dados com sucesso"
+
+#: catchall.php:57 editemail.php:36 newemail.php:29
+msgid "Database error, please try again"
+msgstr "Erro no banco de dados, por favor tente novamente"
+
+#: deleteaccount.php:19
+msgid "Delete an Account from the System"
+msgstr "Apaga a conta do sistema"
+
+#: deleteaccount.php:21
+msgid "Do you really want to delete the user "
+msgstr "Voce quer realmente apagar o usuario"
+
+#: deleteaccount.php:21
+msgid "with all its defined Emailadresses"
+msgstr "com todos enderecos de email dele ?"
+
+#: deleteaccount.php:40 deletedomain.php:47 deleteemail.php:39
+msgid "Action cancelled, nothing deleted"
+msgstr "Acao cancelada, nada apagado"
+
+#: deletedomain.php:24
+msgid "Delete a Domain from the System"
+msgstr "Apaga um Dominio do sistema"
+
+#: deletedomain.php:26
+msgid "Do you really want to delete the Domain"
+msgstr "Voce quer realmente apagar o Dominio"
+
+#: deletedomain.php:26
+msgid "with all its defined accounts, admins, and emailadresses"
+msgstr "com todas contas, administradores e email's dele ?"
+
+#: deletedomain.php:27
+msgid "This can take a while depending on how many account have to be deleted"
+msgstr "Isto pode demorar um pouco dependendo de quantas contas terao que ser apagadas"
+
+#: deletedomain.php:29
+msgid "Your action will delete"
+msgstr "Sua acao vai apagar"
+
+#: deletedomain.php:94
+msgid "Domain"
+msgstr "Dominio"
+
+#: deletedomain.php:94
+msgid "successfully deleted"
+msgstr "Apagado com sucesso"
+
+#: deleteemail.php:17
+msgid "Delete an emailadress from the System"
+msgstr "Apaga um email do sistema"
+
+#: deleteemail.php:19
+msgid "Do you really want to delete the emailadress for user"
+msgstr "Voce quer realmente apagar o email para o usuario"
+
+#: editaccount.php:17
+msgid "Email adresses defined for user"
+msgstr "Enderecos de email para o usuario"
+
+#: editaccount.php:25
+msgid "New email address"
+msgstr "Novo endereco de email"
+
+#: editaccount.php:52
+msgid "Edit Emailadress"
+msgstr "Editar email"
+
+#: editaccount.php:53
+msgid "Delete Emailadress"
+msgstr "apagar email"
+
+#: editemail.php:32
+msgid "Successfully changed"
+msgstr "Trocado com sucesso"
+
+#: editemail.php:63 newemail.php:53
+msgid "Emailadress"
+msgstr "Email"
+
+#: editemail.php:68 newemail.php:58
+msgid "Destination"
+msgstr "Destino"
+
+#: login.php:68
+msgid "Welcome to Web-cyradm"
+msgstr "Bem-Vindo ao Web-cyradm"
+
+#: login.php:69
+msgid "This is only for authorized users"
+msgstr "Somente para usuarios autorizados"
+
+#: login.php:70
+msgid "Please authenticate yourself"
+msgstr "Por favor, autentique-se."
+
+#: logout.php:32
+msgid "Thank you for using Web-cyradm"
+msgstr "Obrigado por usar Web-cyradm"
+
+#: logout.php:34
+msgid "You are logged out"
+msgstr "Voce nao esta mais logado"
+
+#: logout.php:36 timeout.php:67
+msgid "If you like to login click"
+msgstr "Se voce quer logar novamente clique"
+
+#: logout.php:36 timeout.php:67
+msgid "here"
+msgstr "aqui"
+
+#: menu.inc.php:23
+msgid "Domainmasters menu"
+msgstr "Menu Dominios Master"
+
+#: menu.inc.php:27
+msgid "add new domain"
+msgstr "Adicionar Novo Dominio"
+
+#: menu.inc.php:30
+msgid "browse domains"
+msgstr "Dominios"
+
+#: menu.inc.php:33
+msgid "adminusers"
+msgstr "administradores"
+
+#: menu.inc.php:45
+msgid "home"
+msgstr "Home"
+
+#: menu.inc.php:48
+msgid "logout"
+msgstr "Sair"
+
+#: menu.inc.php:53
+msgid "Search"
+msgstr "Procurar"
+
+#: menu.inc.php:69
+msgid "Logged in as user"
+msgstr "Logado como usuario"
+
+#: menu.inc.php:74
+msgid "Your role is"
+msgstr "Seu perfil e"
+
+#: menu.inc.php:76
+msgid "Superuser"
+msgstr "Super Usuario"
+
+#: menu.inc.php:79
+msgid "Domain Master"
+msgstr "Administrador de Dominio"
+
+#: newaccount.php:14
+msgid "Add new Account to domain"
+msgstr "Adicionar nova conta no dominio"
+
+#: newaccount.php:79
+msgid "Accountname"
+msgstr "Nome da conta"
+
+#: newaccount.php:91
+msgid "Quota"
+msgstr "Quota"
+
+#: newaccount.php:101
+msgid "Confirm Password"
+msgstr "Confirme Senha"
+
+#: newaccount.php:139
+msgid "Account successfully added to the Database"
+msgstr "Conta adicionada com sucesso ao banco de dados"
+
+#: newaccount.php:153
+msgid "Account succesfully added to the IMAP Subsystem"
+msgstr "Conta adicionada com sucesso ao sistema IMAP"
+
+#: newdomain.php:17
+msgid "Add new domain"
+msgstr "Adicionar novo dominio"
+
+#: newdomain.php:29
+msgid "Domainname"
+msgstr "Nome do dominio"
+
+#: newdomain.php:35
+msgid "Prefix"
+msgstr "Prefixo"
+
+#: newdomain.php:44
+msgid "Maximum Accounts"
+msgstr "Maximo de Contas"
+
+#: newdomain.php:48
+msgid "Default Quota in Kilobytes"
+msgstr "Quota Padrao em Kb"
+
+#: newemail.php:25
+msgid "Successfully added"
+msgstr "Adicionado com sucesso"
+
+#: newemail.php:41
+msgid "New emailadress for user"
+msgstr "Novo email para usuario"
+
+#: setquota.php:25
+msgid "Setting individual Quota for user"
+msgstr "Definir quota individual para usuario"
+
+#: timeout.php:65
+msgid "Your session timed out"
+msgstr "Sua secao expirou"
+
+#: Submit and cancel buttons
+msgid "Yes, delete"
+msgstr "Sim, apague"
+
+msgid "Yes"
+msgstr "Sim"
+
+msgid "Submit"
+msgstr "OK"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+
