@@ -857,4 +857,4 @@ msgid "Submit"
 msgstr "Abschicken"
 
 msgid "Cancel"
-msgstr "Abgebrochen"
+msgstr "Abbrechen"
