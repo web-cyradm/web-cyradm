@@ -70,7 +70,7 @@ function entsub() {
                   </td>
                   <td><font color="#999999"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><?php print _("Password") ?></font></b></font></td>
                   <td> 
-                    <input type="password" name="password" onkeypress="return entsub()">
+                    <input type="password" name="login_password" onkeypress="return entsub()">
                   </td>
                   <td > 
                     <div align="right">

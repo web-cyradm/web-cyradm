@@ -15,7 +15,7 @@ $method=getenv('REQUEST_METHOD');
 $session_ok = $_SESSION['session_ok'];
 
 $login = $_POST['login'];
-$password = $_POST['password'];
+$password = $_POST['login_password'];
 $LANG = $_POST['LANG'];
 
 if ($login && $password){
