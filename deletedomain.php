@@ -93,7 +93,7 @@ if ($admintype==0){
 	}
 }
 else{
-	print "<h3>Yor are not allowed to delete domains!</h3>";
+	print "<h3>"._("Security violation detected, action cancelled. Your attempt has been logged.")."</h3>";
 }
 
 ?>

@@ -61,7 +61,7 @@ include ("browseaccounts.php");
 }
 else{
 
-	print "<h3>Security violation detected, nothing deleted, attempt has been logged.</h3>";
+	print "<h3>"._("Security violation detected, action cancelled. Your attempt has been logged.")."</h3>";
 }
 
 ?>
