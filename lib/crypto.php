@@ -21,7 +21,7 @@ class password{
 
 	function check($table, $username, $userinput, $encryption){
 		include WC_BASE . "/config/conf.php";
-		include "DB.php";
+		if (!class_exists("DB")) include "DB.php";
 
 		        $query = "SELECT password FROM $table WHERE username ='$username'";
 			$handle=DB::connect ($DB['DSN'],true);
