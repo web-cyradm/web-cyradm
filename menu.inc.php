@@ -20,7 +20,7 @@ print "<tr>\n";
 
 if ($admintype==0){
 
-	print "<td colspan=\"7\">Superusers Menu</td><td colspan=\"3\">"._("Supervisors menu")."</td></tr><tr>";
+	print "<td colspan=\"7\">Superusers Menu</td><td colspan=\"3\">"._("Domainmasters menu")."</td></tr><tr>";
 
 
 	print "<td class=\"rootnavi\" width\"20\">";
@@ -39,18 +39,18 @@ if ($admintype==0){
 ################ And the supervisors menu #####
 
 print "<td class=\"navi\">";
-print "<a href=\"index.php?action=accounts&domain=$domain\">accounts</a></td>\n";
+print "<a href=\"index.php?action=accounts&domain=$domain\">"._("accounts")."</a></td>\n";
 
 print "<td>&nbsp;</td><td class=\"navi\">";
-print "<a href=\"index.php\">home</a></td>\n";
+print "<a href=\"index.php\">"._("home")."</a></td>\n";
 
 print "<td>&nbsp;</td><td class=\"navi\">";
-print "<a href=\"index.php?action=logout&domain=$domain\">logout</a></td>\n";
+print "<a href=\"index.php?action=logout&domain=$domain\">"._("logout")."</a></td>\n";
 
 print "<form action=\"search.php\" method=\"get\">";
 
 print "<td>&nbsp;</td><td class=\"navi\">";
-print "<a href=\"#\">Search:&nbsp;</a>";
+print "<a href=\"#\">"._("Search").":</a>";
 print "<input class=\"inputfield\" type=\"text\" name=\"$searchstring\">";
 print "</form>";
 
@@ -66,17 +66,17 @@ print "<td valign=\"top\" height=\"60\">";
 print "<table border=\"0\" cellspacing=\"2\" cellpadding=\"2\" class=\"header\">";
 print "<tr>";
 print "<td>-&gt;</td>";
-print "<td>Logged in as user: </td>";
+print "<td>"._("Logged in as user").": </td>";
 print "<td><b>$user</b></td>";
 print "</tr>";
 print "<tr>";
 print "<td>-&gt;</td>";
-print "<td>Your role is: </td>";
+print "<td>"._("Your role is").": </td>";
 if ($admintype==0){
-        print "<td><b><font color=\"red\">superuser</font></b></td>";
+        print "<td><b><font color=\"red\">"._("Superuser")."</font></b></td>";
 }
 else if ($admintype==1){
-        print "<td><b><font color=\"red\">Domain Supervisor</font></b></td>";
+        print "<td><b><font color=\"red\">"._("Domain Master")."</font></b></td>";
 }
 ?>
 </tr>
