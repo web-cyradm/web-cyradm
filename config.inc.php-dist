@@ -7,12 +7,35 @@ $CYRUS_PORT="143";
 $CYRUS_USERNAME="cyrus";
 $CYRUS_PASSWORD="secret";
 
-# The MySQL stuff
+# The MySQL stuff to be replaced after all files have PEAR implemented
 
 $MYSQL_HOST="localhost";
 $MYSQL_DB="mail";
 $MYSQL_USER="mail";
 $MYSQL_PASSWD="secret";
+
+/* DB_TYPE
+
+ Possible Values are:
+ o mysql
+ o pgsql
+
+ To operate a mailsystem with postgreSQL you will need a patch for
+ Postfix.
+ 
+ Other Databases needs to be supported by PAM and postfix
+
+*/
+
+
+$DB_TYPE="mysql";
+
+$DB_HOST="localhost";
+$DB_NAME="mail";
+$DB_USER="mail";
+$DB_PASSWD="secret";
+
+$DSN="$DB_TYPE://$DB_USER:$DB_PASSWD@$DB_HOST/$DB_NAME";
 
 
 # The default timeout in seconds for a session, after that you have to login again
