@@ -254,7 +254,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
                                                         print "<tr><td>sieve</td><td><img src=\"images/checked.png\" alt=\"yes\" border=0></td></tr>";
                                                 }
 						else{
-							print "sieve<img src=\"images/false.png\" alt=\"no\" border=0><br>";
+							print "<tr><td>sieve</td><td><img src=\"images/false.png\" alt=\"no\" border=0></td></tr>";
 						}
 
 						?>
