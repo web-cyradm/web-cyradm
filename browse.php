@@ -101,29 +101,32 @@ if (!$orderby){
                                         </th>
 
                                         <th>
-                                                <?php print _("domainname");?>
+                                                <!-- <?php print _("domainname");?> -->
+                                                <?php print "<a href=\"index.php?action=browse&row_pos=$row_pos&orderby=domain_name\">".("domainname")."</a>";?>
                                         </th>
 
                                         <?php
                                         if (! $DOMAIN_AS_PREFIX){
                                                 ?>
                                                 <th>
-                                                        <?php print "<a href=\"index.php?action=browse&orderby=prefix&row_pos=$row_pos\">"._("prefix")."</a>";?>
+                                                        <?php print "<a href=\"index.php?action=browse&row_pos=$row_pos&orderby=prefix\">"._("prefix")."</a>";?>
                                                 </th>
                                                 <?php
                                         }
                                         ?>
 
                                         <th>
-                                                <?php print _("max Accounts");?>
+                                                <?php print "<a href=\"index.php?action=browse&row_pos=$row_pos&orderby=maxaccounts\">".("max Accounts")."</a>";?>
                                         </th>
 
                                         <th>
-                                                <?php print _("Domain quota");?>
+                                                <!-- <?php print _("Domain quota");?> -->
+                                                <?php print "<a href=\"index.php?action=browse&row_pos=$row_pos&orderby=domainquota\">".("Domain quota")."</a>";?>
                                         </th>
 
                                         <th>
-                                                <?php print _("default quota per user");?>
+                                                <!-- <?php print _("default quota per user");?> -->
+                                                <?php print "<a href=\"index.php?action=browse&row_pos=$row_pos&orderby=quota\">".("default quota per user")."</a>";?>
                                         </th>
                                 </tr>
 
