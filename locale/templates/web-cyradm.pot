@@ -425,4 +425,10 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+#: Error messages
+
+#: deleteaccount.php:64
+msgid "Security violation detected, action cancelled. Your attempt has been logged."
+msgstr ""
+
 
