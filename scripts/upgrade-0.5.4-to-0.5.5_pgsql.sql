@@ -4,3 +4,12 @@ ALTER TABLE domain ADD domainquota int;
 ALTER TABLE domain SET DEFAULT '0';
 UPDATE domain SET domainquota = DEFAULT;
 ALTER TABLE domain ALTER COLUMN domainquota SET NOT NULL;
+
+CREATE TABLE settings (
+  username varchar(50) PRIMARY KEY,
+  style varchar(50) NOT NULL default 'default',
+  maxdisplay int NOT NULL default 15,
+  warnlevel int NOT NULL default 90
+);
+
+INSERT INTO settings (username) SELECT username FROM adminuser;
