@@ -73,6 +73,8 @@ if ($admintype==0){
 			}
 
 		}
+
+		# Finally the domain must be removed from the domainadmin table
 	
 		$query6="SELECT * FROM domainadmin WHERE domain_name='$domain'";
 		$result6=$handle->query($query6);
@@ -80,11 +82,17 @@ if ($admintype==0){
                 for ($i=0;$i<$cnt6;$i++){
 			$row=$result6->fetchRow($i);
 			$username=$row['adminuser'];
-                        $query7="DELETE FROM adminuser where username='$username'";
-                        $result7=$handle->query($query7);
+			print $username;
+			$query7="SELECT * FROM domainadmin where adminuser='$username'";
+			$result7=$handle->query($query7);
+			$cnt7=$result7->numRows();
+			print $cnt7;
+			if ($cnt7==1){
+                        	$query7="DELETE FROM adminuser where username='$username'";
+			}
+                        $query8="DELETE FROM domainadmin where domain_name='$domain'";
+                        $result8=$handle->query($query8);
                 } 
-		$query8="DELETE FROM domainadmin WHERE domain_name='$domain'";
-                $hnd8=$handle->query($query8); 
 	print "<h3>". _("Domain")." ".$domain." ". _("successfully deleted")."</h3>";
 
 	include ("browse.php");
