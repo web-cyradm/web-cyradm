@@ -170,7 +170,7 @@ msgstr "Alle Dom&auml;nen"
 
 #: adminuser.php:148
 msgid "None"
-msgstr ""
+msgstr "Keine"
 
 #: adminuser.php:158 editadminuser.php:65 menu.inc.php:132 newadminuser.php:57
 #: newadminuser.php:207
@@ -282,7 +282,7 @@ msgstr "als Sammeladresse einrichten"
 
 #: catchall.php:46
 msgid "The currently defined user"
-msgstr ""
+msgstr "Der aktuell definierte Benutzer"
 
 #: catchall.php:46
 msgid "will not receiving any undefined emailadresses anymore"
@@ -290,7 +290,7 @@ msgstr "Sammeladresse entfernen"
 
 #: catchall.php:74
 msgid "The user"
-msgstr ""
+msgstr "Der Benutzer"
 
 #: catchall.php:74
 msgid "is allready defined to receive all undefined Emails."
@@ -298,7 +298,7 @@ msgstr "ist bereits als Sammeladresse definiert"
 
 #: catchall.php:76
 msgid "Do you want to remove the function \"catch all\" for the account"
-msgstr ""
+msgstr "Möchten Sie die \"catch all\" Funktion dem Konto entziehen"
 
 #: catchall.php:127 newadminuser.php:197
 msgid "successfully added to Database"
@@ -339,7 +339,7 @@ msgstr "Passwort best&auml;tigen"
 
 #: change_password.php:121 newaccount.php:243
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Passörter stimmen nicht überein"
 
 #: deleteaccount.php:25
 msgid "Delete an Account from the System"
@@ -379,7 +379,7 @@ msgstr "M&ouml;chten Sie den Dom&auml;nenadministrator wirklich l&ouml;schen"
 
 #: deleteadminuser.php:90 editadminuser.php:276
 msgid "At least one Superuser is needed for Web-cyradm"
-msgstr ""
+msgstr "Web-cyradm benötigt mindestens ein Superuser"
 
 #: deleteadminuser.php:103
 msgid "Admin user deleted"
@@ -499,11 +499,11 @@ msgstr "Neue Domäne diesem Administrator zuweisen"
 
 #: editadminuser.php:223
 msgid "No such domain, create domain first"
-msgstr ""
+msgstr "Domäne unbekannt, bitte erst Domäne anlegen"
 
 #: editadminuser.php:231
 msgid "Admin already repsonsible for the domain"
-msgstr ""
+msgstr "Administrator ist dieser Domäne breits zugeordnet"
 
 #: editalias.php:27
 msgid "There was an error adding $dest to $alias: "
@@ -788,11 +788,11 @@ msgstr "\"Superuser\" selektieren f&uuml;r alle Dom&auml;nen"
 
 #: newadminuser.php:132
 msgid "You must provide a username"
-msgstr ""
+msgstr "Sie müssen einen Benutzernamen angeben"
 
 #: newadminuser.php:145
 msgid "Passwords are empty or not equal."
-msgstr ""
+msgstr "Passwörter stimmen nicht überein, oder ist leer"
 
 #: newadminuser.php:157
 msgid "Username already exist"
@@ -982,12 +982,3 @@ msgstr "Abbrechen"
 #: deleteemail.php:70
 msgid "Emailadress deleted."
 msgstr "E-Mail-Adresse gelöscht"
-
-#~ msgid "successfully changed Database...."
-#~ msgstr "Datenbank erfolgreich ge&auml;ndert"
-
-#~ msgid "Add new admin user for domain"
-#~ msgstr "F&uuml;ge neuen Administrator f&uuml;r Dom&auml;ne hinzu"
-
-#~ msgid "Please select a domain first"
-#~ msgstr "Bitte erst eine Dom&auml;ne ausw&auml;hlen"
