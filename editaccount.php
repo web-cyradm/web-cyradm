@@ -25,7 +25,7 @@
         print "<th colspan=\"4\">"._("action")."</th>";
         print "<th>"._("Email address")."</th>";
 	print "<th>"._("Forward")."</th>";
-        print "<th>"._("Username")."</th>";
+//        print "<th>"._("Username")."</th>";
 	print "<th>"._("Quota used")."</th>";
         print "</tr>";
 
@@ -60,12 +60,13 @@
 	  print "</td>";
 
 	  if ($c==0) {
-		print "<td rowspan=\"$cnt\">";
-	        print $row['dest'];
+//		print "<td rowspan=\"$cnt\">";
+//	        print $row['dest'];
 //	        print $row['1'];
 //	        print "</td>\n<td rowspan=\"$cnt\">";
 //		print "******";
-	        print "</td>\n<td rowspan=\"$cnt\">";
+//	        print "</td>\n<td rowspan=\"$cnt\">";
+		print "<td rowspan=\"$cnt\">";
 
 		if ($DOMAIN_AS_PREFIX) {
 			$quota= $cyr_conn->getquota("user/$username");
@@ -78,7 +79,7 @@
                 	$q_total=$quota[qmax];
                 	$q_percent=100*$q_used/$q_total;
                 	print $quota[used]." Kilobytes "._("out of")." ";
-                	print $quota[qmax]." Kilobytes (".$q_percent." %)";
+			print $quota[qmax]." Kbytes (".sprintf("%.2f",$q_percent)." %)";
           	}
 		else{
 			print _("Quota not set");
