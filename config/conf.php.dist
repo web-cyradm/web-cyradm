@@ -47,6 +47,15 @@ $DB['DSN'] = sprintf('%s://%s:%s@%s+%s/%s', 	$DB['TYPE'], $DB['USER'],
 # Where should web-cyradm write its log to?
 $LOG_DIR = "/var/log/web-cyradm/";
 
+/* Log level
+Possible values are (from quiet to verbose):
+ ERR	- only internal errors
+ WARN	- failed login, security violation
+ INFO	- all login and logout
+ DEBUG	- all possible information
+*/
+$LOG_LEVEL = "INFO";
+
 # The default timeout in seconds for a session, after that you have to login again
 $SESS_TIMEOUT = 1000;
 
