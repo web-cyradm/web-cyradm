@@ -50,7 +50,7 @@
 	  $alias=$row['alias'];	
           print "<tr class=\"$cssrow\"> \n";
           print "<td><a href=\"index.php?action=editemail&domain=$domain&alias=$alias&username=$username\">"._("Edit Emailadress")."</a></td>";
-          print "<td><a href=\"index.php?action=deleteemail&domain=$domain&alias=$alias&username=$username\">".("Delete Emailadress")."</a></td>";
+          print "<td><a href=\"index.php?action=deleteemail&domain=$domain&alias=$alias&username=$username\">"._("Delete Emailadress")."</a></td>";
           print "<td>";
 	  print $alias;
           print "</td>\n";
