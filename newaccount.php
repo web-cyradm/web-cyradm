@@ -190,8 +190,17 @@
 			} else {
 				$seperator	= '.';
 			}
-
-			$query3="INSERT INTO accountuser (username, password, prefix, 
+		    // check to see if there's an account with the same username
+		    $query3="select * from accountuser where username='$username'";
+		    $result3=$handle->query($query3);
+		    $cnt3=$result3->numRows();
+		    if ($cnt3!=0) {
+			print "<h3>" . 
+			       _("Sorry, the username already exists") . 
+			       "</h3><br>";
+			include WC_BASE . "/browseaccounts.php";
+		    } else {
+		    	$query3="INSERT INTO accountuser (username, password, prefix, 
 				 domain_name) VALUES ('" . $username . "',";
 			switch($CRYPT){
 			case "crypt":
@@ -246,6 +255,7 @@
 			print $cyr_conn->setacl("user" . $seperator . $username, $CYRUS['ADMIN'], "lrswipcda");
 			$result = $cyr_conn->setmbquota("user" . $seperator . $username, $quota);
 			include WC_BASE . "/browseaccounts.php";
+		    }
 		}
 		?>
 	</td>
