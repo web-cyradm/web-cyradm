@@ -5,12 +5,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	header("Location: index.php");
 	exit();
 }
-
-if (!$orderby){
-	$orderby="domain_name";
-}
-
-
 ?>
 <!-- ############################## Start browse.php ###################################### -->
 <tr>
@@ -22,38 +16,39 @@ if (!$orderby){
 		</h3>
 		<?php
 		$row_pos = (empty($row_pos))?(0):($row_pos);
-		if (! isset($_SESSION['allowed_domains'])) {
-			$query2 = "SELECT * FROM domain ORDER BY domain_name";
-		} 
-		else {
-			$domains = '';
-			foreach ($_SESSION['allowed_domains'] as $allowed_domain) {
-			$domains .= $allowed_domain."' OR domain_name='";
-		 }
-		$query2 = "SELECT * FROM domain WHERE domain_name='$domains' ORDER BY domain_name";
-		}
+//		if (! isset($_SESSION['allowed_domains'])) {
+//			$query2 = "SELECT * FROM domain ORDER BY domain_name";
+//		} 
+//		else {
+//			$domains = '';
+//			foreach ($_SESSION['allowed_domains'] as $allowed_domain) {
+//			$domains .= $allowed_domain."' OR domain_name='";
+//		 }
+//		$query2 = "SELECT * FROM domain WHERE domain_name='$domains' ORDER BY domain_name";
+//		}
 
-	        $result2 = $handle->query($query2);
-        	$total=$result2->numRows($result2);
+//	        $result2 = $handle->query($query2);
+//        	$total=$result2->numRows($result2);
 ?>
 <!-- 		<table border="1" width="98%"> -->
 				<?php
 
 				if (! isset($_SESSION['allowed_domains'])) {
 					#$query = "SELECT * FROM domain ORDER BY domain_name";
-					$query = "SELECT * FROM domain ORDER BY $orderby";
+					$query = "SELECT * FROM domain ORDER BY ".$_GET['orderby'];
 				} else {
 					$domains = '';
 					foreach ($_SESSION['allowed_domains'] as $allowed_domain) {
 						$domains .= $allowed_domain."' OR domain_name='";
 					}
-					$query = "SELECT * FROM domain WHERE domain_name='$domains' ORDER BY $orderby";
+					$query = "SELECT * FROM domain WHERE domain_name='$domains' ORDER BY".$_GET['orderby'];
 				}
 
-				$result = $handle->limitQuery($query,$row_pos,$_SESSION['maxdisplay']);
+				$result = $handle->query($query);
+//				$result = $handle->limitQuery($query,$row_pos,$_SESSION['maxdisplay']);
 				$cnt    = $result->numRows($result);
 
-				print _("Total Domains")." ".$total;
+				print _("Total Domains")." ".$cnt;
 				print "<br>"._("Displaying from position:")." $row_pos";
 				
 				?>
@@ -73,16 +68,16 @@ if (!$orderby){
                                 $next = $row_pos + $_SESSION['maxdisplay'];
 
                                 if ($row_pos < $_SESSION['maxdisplay']){
-					print "<td class=\"navi\"><a href=\"#\">"._("Previous entries")."</a></td>";
+//					print "<td class=\"navi\"><a href=\"#\">"._("Previous entries")."</a></td>";
                                 } else {
-					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$prev&orderby=$orderby\">"._("Previous entries") ."</a></td>";		
+					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$prev&orderby=".$_GET['orderby']."\">"._("Previous entries") ."</a></td>";		
                                 }
 
-				if ($next>$total){
-					print "<td class=\"navi\"><a href=\"#\">"._("Next entries")."</a></td>";
+				if ($next>$cnt){
+//					print "<td class=\"navi\"><a href=\"#\">"._("Next entries")."</a></td>";
 				}
 				else {
-					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next&orderby=$orderby\">". _("Next entries")."</a></td>";
+					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next&orderby=".$_GET['orderby']."\">". _("Next entries")."</a></td>";
 				}
                                 ?>
 
@@ -132,7 +127,7 @@ if (!$orderby){
 <?php
 				
 
-				for ($c=0; $c < $cnt; $c++){
+				for ($c=$row_pos; $c < (($next>$cnt)?($cnt):($next)); $c++){
 					if ($c%2==0){
 						$cssrow="row1";
 					} else {
