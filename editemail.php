@@ -55,12 +55,12 @@ if ($authorized){
 
 	        <tr>
 	        <td><?php print _("Emailadress") ?></td>
-		<td><input type="text" size="30" name=newalias value="<?php print $alias?>">@<?php print $domain?></td>
+		<td><input class="inputfield" type="text" size="30" name=newalias value="<?php print $alias?>">@<?php print $domain?></td>
 	        </tr>
 
 	        <tr>
 	        <td width=150><?php print _("Destination") ?></td>
-	        <td><input type="text" size="30" name=dest value="<?php print $dest ?>"> </td>
+	        <td><input class="inputfield" type="text" size="30" name=dest value="<?php print $dest ?>"> </td>
 	        </tr>
 
 

@@ -97,15 +97,15 @@ if ($authorized){
 
 		<tr>
 		<td width=150><?php print _("New password")?>:</td>
-		<td><input type="password" size='30' name=new_password></td>
+		<td><input class="inputfield" type="password" size='30' name=new_password></td>
 		</tr>
 		<tr>
 		<td width=150><?php print _("Confirm new password")?>:</td>
-		<td><input type='password' size='30' name=confirm_password></td>
+		<td><input class="inputfield" type='password' size='30' name=confirm_password></td>
 		</tr>
 
 	        <tr><td>
-	        <input type="submit" value="<?php print _("Submit")?>"> 
+	        <input class="button" type="submit" value="<?php print _("Submit")?>"> 
 	        </td></tr>
 
 	        </table>
