@@ -7,10 +7,10 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 include WC_BASE . "/config/conf.php";
 include WC_BASE . "/lib/crypto.php";
+include WC_BASE . "/lib/log.php";
 
 session_name('web-cyradm-session');
 session_start();
-$method=getenv('REQUEST_METHOD');
 
 $session_ok = $_SESSION['session_ok'];
 
@@ -20,49 +20,30 @@ $LANG = $_POST['LANG'];
 
 if ($login && $password){
      // Log access
-     $fp = fopen($LOG_DIR . "web-cyradm-login.log", "a");
-     $date = date("d/M/Y H:i:s");
-     fwrite($fp, sprintf("LOGIN : %s %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $login, $date, $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"));
-     fclose($fp);
+     logger(sprintf("LOGIN : %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $login, $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"));
 
      $pwd=new password;
      $result=$pwd->check("adminuser",$login,$password,$CRYPT);
 
      if ($result){
-         
+    	     
           // Log successfull login
-          $fp = fopen($LOG_DIR . "web-cyradm-login.log", "a");
-          $date = date("d/M/Y H:i:s");
-	  fwrite($fp, sprintf("PASS : %s %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $login, $date, $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"));
-          fclose($fp);
+	  logger(sprintf("PASS : %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $login, $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"));
 
           $_SESSION['session_ok'] = TRUE;
-          $user = $login;
-
-	  $_SESSION['user'] = $user;
+	  $_SESSION['user'] = $login;
 	  $_SESSION['LANG'] = $LANG;
-
-	  /*
-          session_register("session_ok");
-          session_register("user");
-          session_register("LANG");
-	  */
 
           header ("Location: index.php");
 
-          //print "Authentication sucessful";
-          break;
      } else {
           // Log login failure
-          $fp = fopen($LOG_DIR . "web-cyradm-login.log", "a");
-          $date = date("d/M/Y H:i:s");
-	  fwrite($fp, sprintf("FAIL : %s %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $login, $date, $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"));
-          fclose($fp);
-          unset($_SESSION['session_ok']);
-          //session_unregister("session_ok");
+	  logger(sprintf("FAIL : %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $login, $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+	  
+	   $_SESSION = array();
+	   
 	   #include ("failed.php");
 	   header ("Location: failed.php");
-	   die();
 	
      }
 } else {
