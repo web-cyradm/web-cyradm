@@ -88,9 +88,10 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	else { // if (!isset($_POST['confirmed']))
 		if ($authorized){
 			$pwd = new password;
+			$old_password = $pwd->encrypt($_POST['old_password'], $CRYPT);
 			$new_password = $pwd->encrypt($_POST['new_password'], $CRYPT);
 			# If the new_password field is not empty and the password matches, update the password
-			$query = "UPDATE adminuser SET password='".$new_password."' WHERE username='".$_SESSION['user']."'";
+			$query = "UPDATE adminuser SET password='".$new_password."' WHERE username='".$_SESSION['user']."' AND password='".$old_password."'";
 			$result =& $handle->query($query);
 			if (DB::isError($result) || $handle->affectedRows()==0) {
 				print _("Database error");
