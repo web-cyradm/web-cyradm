@@ -72,9 +72,13 @@ CLASS="SECT1"
 ><A
 NAME="INSTALL">3. Getting and installing the software</H1
 ><P
->	Most of the software is included in your Linux distribution. SuSE is shipping Cyrus as far as I know since 7.1.
-	Since SuSE 8.1, cyrus-imap 2.1 and sasl2 is included, but not yet tested for this setup.
-	Redhat does not ship any cyrus software (7.3). </P
+>	Most of the software is included in your Linux distribution. I. e. SuSE is shipping Cyrus as 
+	far as I know since 7.1.
+	Since SuSE 8.1, cyrus-imap 2.1 and sasl2 is included, and works. It is still recommended to compile
+	Cyrus by yourself. SuSE does not ship a MySQL enabled Postifx.
+	</P
+><P
+>Please let me know about other distributions, especially Debian.</P
 ><DIV
 CLASS="SECT2"
 ><H2
@@ -86,7 +90,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN201">3.1.1. Download</H3
+NAME="AEN244">3.1.1. Download</H3
 ><P
 >		Origin-Site: <A
 HREF="http://www.mysql.com/downloads/"
@@ -100,7 +104,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN205">3.1.2. Building and installing</H3
+NAME="AEN248">3.1.2. Building and installing</H3
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -112,8 +116,8 @@ COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >cd /usr/local
-tar -xvzf mysql-3.23.51.tar.gz
-cd mysql-3.23.51
+tar -xvzf mysql-3.23.56.tar.gz
+cd mysql-3.23.56
 
 ./configure \
 --prefix=/usr/local/mysql \
@@ -134,7 +138,7 @@ ln -s /usr/local/mysql/lib/mysql /usr/lib/mysql</PRE
 ></TR
 ></TABLE
 ><P
->For security-improvement add a mysql-user on your system i.e. "mysql", then</P
+>For security-improvement add a mysql-user on your system i.e. »mysql«, then</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -151,13 +155,7 @@ CLASS="SCREEN"
 ></TR
 ></TABLE
 ><P
->and change the line user=root to user=mysql in the file <TT
-CLASS="FILENAME"
->/usr/local/mysql/bin/safe_mysqld</TT
->
-	</P
-><P
->	you may wish to start mysql automatically at boottime, copy 
+>	You may wish to start MySQL automatically at boottime, copy 
 	<TT
 CLASS="FILENAME"
 >/usr/local/mysql/share/mysql/mysql.server</TT
@@ -172,18 +170,18 @@ CLASS="FILENAME"
 CLASS="FILENAME"
 >/etc/init.d/</TT
 >. 
-	Further you need to add Symlinks to <TT
+	Further you need to add symbolic links to <TT
 CLASS="FILENAME"
 >/etc/init.d/rc3.d</TT
 > 
 	for SuSE and <TT
 CLASS="FILENAME"
 >/etc/rc.d/rc3.d</TT
->
+> for Redhat.
 	</P
 ><P
->	The following example is for SuSE Linux and should be easily changed for Redhat and other Linux distributions and
-	commercial Unixes.
+>	The following example is for SuSE Linux and should be easily changed for Redhat and other Linux 
+	distributions and commercial Unixes.
 	</P
 ><TABLE
 BORDER="1"
@@ -209,24 +207,26 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="BERKELEY-DB">3.2. Getting and installing Berkely DB</H2
+NAME="BERKELEY-DB">3.2. Getting and installing Berkeley DB</H2
 ><P
->	The Berkely DB is a requirement for building Cyrus-SASL and Cyrus-IMAP. Some Systems comes with recent versions but without 
-	the header files installed. Please see your distributors CD/DVD to check if you can install the headerfiles from a package.
+>	The Berkeley DB is a requirement for building Cyrus-SASL and Cyrus-IMAP. Some Systems comes with 
+	recent versions but without the header files installed. Please see your distributors CD/DVD 
+	to check if you can install the header files from a package. Usually this package is called bdb-devel.
 	</P
 ><P
->The version that comes with GNU/Debian Linux is out of Date, you will need to compile most recent version instead.
-	If you allready installed Berkely DB on your Debian Box, please fist uninstall the software to prevent conflicts.
+>The version that comes with GNU/Debian Linux is out of Date, you will need to compile most 
+	recent version instead. If you already installed Berkely DB on your Debian Box, please 
+	fist uninstall the software to prevent conflicts.
 	</P
 ><P
->It is also very important, that Cyrus-SASL and Cyrus-IMAP ist compiled with the same version of Berkely DB
-	of else you can run into problems</P
+>It is also very important, that Cyrus-SASL and Cyrus-IMAP is compiled with the same version of 
+	Berkely DB of else you can run into problems</P
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN226">3.2.1. Download Berkely DB</H3
+NAME="AEN267">3.2.1. Download Berkely DB</H3
 ><P
 >	Origin-Site: <A
 HREF="http://www.sleepycat.com/update/snapshot/db-4.0.14.tar.gz"
@@ -240,7 +240,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN230">3.2.2. Builing and installing Berkeley DB</H3
+NAME="AEN271">3.2.2. Building and installing Berkeley DB</H3
 ><P
 ><TABLE
 BORDER="1"
@@ -260,7 +260,6 @@ make
 make install
 
 echo /usr/local/bdb/lib &#62;&#62; /etc/ld.so.conf
-
 ldconfig</PRE
 ></FONT
 ></TD
@@ -274,39 +273,27 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="CYRUS-INSTALL">3.3. Getting and installing Cyrus SASL and IMAP</H2
-><P
->	Building Cyrus SASL and IMAP from source is not a easy task. There are some prerequisites to be fulfilled, and lots 
-	of difficult authentication related stuff to be considered.
-	</P
+NAME="AEN275">3.3. Getting and installing OpenSSL</H2
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN237">3.3.1. Download Cyrus SASL and Cyrus IMAP</H3
+NAME="AEN277">3.3.1. Download OpenSSL</H3
 ><P
->	Origin-Site: <A
-HREF="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-sasl-2.1.9.tar.gz"
+>Origin-Site
+<A
+HREF="http://www.openssl.org"
 TARGET="_top"
->ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-sasl-2.1.9.tar.gz</A
->
-	</P
-><P
->Origin-Site: <A
-HREF="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-imapd-2.1.9.tar.gz"
-TARGET="_top"
->ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-imapd-2.1.9.tar.gz</A
->
-
-	</P
+>http://www.openssl.org</A
+></P
 ></DIV
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN243">3.3.2. Building and installing Cyrus SASL</H3
+NAME="AEN281">3.3.2. Building and installing</H3
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -317,8 +304,158 @@ WIDTH="100%"
 COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
->tar -xvzf cyrus-sasl-2.1.9.tar.gz
-cd cyrus-sasl-2.1.9
+>cd /usr/local
+tar -xvzf openssl-0.9.7a.tar.gz
+
+cd openssl-0.9.7a
+
+./config shared
+
+make
+make test
+make install
+
+echo "/usr/local/ssl/lib" &#62;&#62; /etc/ld.so.conf
+ldconfig</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="TIP"
+><P
+></P
+><TABLE
+CLASS="TIP"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="CENTER"
+><B
+>Select your CPU to improve speed</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>By default the Makefile generates code for the i486 CPU. You can change this by editing the
+<TT
+CLASS="FILENAME"
+>Makefile</TT
+> after running <B
+CLASS="COMMAND"
+>config </B
+><TT
+CLASS="OPTION"
+>shared</TT
+>.
+Search for <TT
+CLASS="OPTION"
+>-m486</TT
+> and replace it i.e with <TT
+CLASS="OPTION"
+>-march=athlon</TT
+></P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="CYRUS-INSTALL">3.4. Getting and installing Cyrus SASL and IMAP</H2
+><P
+>	Building Cyrus SASL and IMAP from source is not a easy task. There are some prerequisites to be 
+	fulfilled, and lots of difficult authentication related stuff to be considered.
+	</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN295">3.4.1. Download Cyrus SASL and Cyrus IMAP</H3
+><P
+>	Origin-Site: <A
+HREF="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-sasl-2.1.12.tar.gz"
+TARGET="_top"
+>	ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-sasl-2.1.12.tar.gz</A
+>
+	</P
+><P
+>Origin-Site: <A
+HREF="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-imapd-2.1.12.tar.gz"
+TARGET="_top"
+>	ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-imapd-2.1.12.tar.gz</A
+>
+
+	</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN301">3.4.2. Create the cyrus user</H3
+><P
+>On most systems there is no cyrus user and mailgroup per default. Check for a free UID, usually daemons are running with UID
+less that 100. As example I'm using UID 96 like SuSE has in the default <TT
+CLASS="FILENAME"
+>/etc/passwd</TT
+>.</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>groupadd mail
+useradd -u 96 -d /usr/cyrus -g mail cyrus
+passwd cyrus</PRE
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN306">3.4.3. Building and installing Cyrus SASL</H3
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>tar -xvzf cyrus-sasl-2.1.12.tar.gz
+cd cyrus-sasl-2.1.12
 
 ./configure \
 --enable-anon \
@@ -329,8 +466,8 @@ cd cyrus-sasl-2.1.9
 --with-pam \
 --with-dblib=berkeley \
 --with-bdb-libdir=/usr/local/bdb/lib \
---with-bdb-incdir=/usr/local/bdb/inlude \
---with-openssl-dir=/usr/local/ssl \
+--with-bdb-incdir=/usr/local/bdb/include \
+--with-openssl=/usr/local/ssl \
 --with-plugindir=/usr/local/lib/sasl2
 
 
@@ -343,6 +480,7 @@ cd saslauthd
 make testsaslauthd
 cp testsaslauthd /usr/local/bin
 
+echo /usr/local/lib/sasl2 &#62;&#62; /etc/ld.so.conf
 ldconfig</PRE
 ></FONT
 ></TD
@@ -356,20 +494,18 @@ CLASS="FILENAME"
 <TT
 CLASS="FILENAME"
 >/usr/lib/sasl2</TT
->. So it is a good idea to create a symlink:
+>. So it is a good idea to create a symbolic link:
  <B
 CLASS="COMMAND"
 >ln -s /usr/local/lib/sasl2 /usr/lib/sasl2</B
 >.</P
-><P
->The testsaslauthd program allows you to test the saslauthd, description follows later.</P
 ></DIV
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN251">3.3.3. Building Cyrus-IMAP</H3
+NAME="AEN313">3.4.4. Building Cyrus-IMAP</H3
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -380,8 +516,8 @@ WIDTH="100%"
 COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
->tar -xvzf cyrus-imapd-2.1.9.tar.gz
-cd cyrus-imapd-2.1.9
+>tar -xvzf cyrus-imapd-2.1.12.tar.gz
+cd cyrus-imapd-2.1.12
 
 export CPPFLAGS="-I/usr/include/et" 
 
@@ -389,8 +525,11 @@ export CPPFLAGS="-I/usr/include/et"
 --with-sasl=/usr/local/lib \
 --with-perl \
 --with-auth=unix \
+--with-dbdir=/usr/local/bdb \
+--with-bdb-libdir=/usr/local/bdb/lib \
+--with-bdb-incdir=/usr/local/bdb/include \
 --with-openssl=/usr/local/ssl \
---without-ucdsnmp
+--without-ucdsnmp \
 
 make depend
 make
@@ -405,13 +544,14 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="ATSRTUPSCRIPT">3.3.4. Automatic startup script</H3
+NAME="STARTUPSCRIPT">3.4.5. Automatic startup script</H3
 ><P
->If you wish to start the Cyrus IMAP daemon automatically after booting, you need a startupscript. Place the following script 
-in <TT
+>If you wish to start the Cyrus IMAP daemon automatically after booting, you need a startupscript. 
+Place the following script in <TT
 CLASS="FILENAME"
 >/etc/init.d/</TT
-> for Redhat it is <TT
+> for Redhat it is 
+<TT
 CLASS="FILENAME"
 >/etc/rc.d/init.d</TT
 > instead of <TT
@@ -499,8 +639,6 @@ ln -s /etc/rc.d/init.d/cyrus /etc/rc.d/rc3.d/K10cyrus</PRE
 ></TD
 ></TR
 ></TABLE
-><P
->Attn the distributors: W H E N  will all distributors use the same paths for the init script? thanks!</P
 ></DIV
 ></DIV
 ><DIV
@@ -508,13 +646,13 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="POSTFIX-INSTALL">3.4. Getting and installing Postfix</H2
+NAME="POSTFIX-INSTALL">3.5. Getting and installing Postfix</H2
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN269">3.4.1. Download</H3
+NAME="AEN330">3.5.1. Download</H3
 ><P
 >                Origin-Site: <A
 HREF="http://www.postfix.org/ftp-sites.html"
@@ -522,21 +660,16 @@ TARGET="_top"
 >http://www.postfix.org/ftp-sites.html</A
 >
                 </P
-><P
->If you want to use SMTP authentication, you need to download the latest snapshot release, version 1.1.11 
-	does NOT work with sasl2. Use 1.1.11-20020928 or newer.
-
-        </P
 ></DIV
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN274">3.4.2. Creating a User-ID (UID) and Group-ID (GID) for postfix</H3
+NAME="AEN334">3.5.2. Creating a User-ID (UID) and Group-ID (GID) for postfix</H3
 ><P
 >        Before you can build and install postfix you have to be sure a »postfix« and a »postdrop« groups and users
-        exists on the System. First check for the groups. You can check this
+        exists on the system. First check for the groups. You can check this
         by <B
 CLASS="COMMAND"
 >grep postfix /etc/group</B
@@ -574,12 +707,50 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN281">3.4.3. Building and installing</H3
+NAME="AEN341">3.5.3. Building and installing</H3
 ><P
 >        The following screen shows what you have to do, if you installed MySQL from source as described above.
         If you installed MySQL from a binary package such as rpm or deb, then you have to change the
         include and library-flags to -I/usr/include/mysql and -L/usr/lib/mysql.
         </P
+><DIV
+CLASS="CAUTION"
+><P
+></P
+><TABLE
+CLASS="CAUTION"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/caution.gif"
+HSPACE="5"
+ALT="Caution"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="CENTER"
+><B
+>Old MTA needs to be uninstalled</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>It is important, that you are uninstalling any sendmail version from RPM based Systems.
+	I suggest to remove sendmail, and install Postfix instead. At least SuSE RPMs need a MTA.
+	After installing the Postfix-RPM, just over-install Postfix by further following the HOWTO</P
+></TD
+></TR
+></TABLE
+></DIV
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -590,15 +761,16 @@ WIDTH="100%"
 COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
->tar -xvzf postfix-1.1.11-20020928.tar.gz
+>tar -xvzf postfix-2.0.7.tar.gz
 
-cd postfix-1.1.11-20020928
+cd postfix-2.0.7
 
 make makefiles 'CCARGS=-DHAS_MYSQL \
 -I/usr/local/mysql/include/mysql -DUSE_SASL_AUTH \
--I/usr/local/include/sasl' 'AUXLIBS=-L/usr/local/mysql/lib/mysql \
--lmysqlclient -lz -lm -L/usr/local/lib -lsasl2'
-
+-I/usr/local/include/sasl -I/usr/local/bdb/include' \
+'AUXLIBS=-L/usr/local/mysql/lib/mysql \
+-lmysqlclient -lz -lm -L/usr/local/lib -lsasl2 -L/usr/local/bdb/lib'
+make
 make install</PRE
 ></FONT
 ></TD
@@ -608,14 +780,34 @@ make install</PRE
 >During <B
 CLASS="COMMAND"
 >make install</B
-> a few question are asked. Just pressing <B
+> a few question are asked. Just pressing 
+	<B
 CLASS="KEYCAP"
 >Enter</B
-> should
-        match your needs. For Redhat users it could be useful to enter <TT
+> should match your needs. For Redhat users it could be useful to 
+	enter <TT
 CLASS="FILENAME"
 >/usr/local/share/man</TT
 ></P
+><P
+>Now you need to create some sybolic links to start Postfix automatically on system startup. The sample is 
+	for SuSE Linux, please consult your vendors manual for other distributions.</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>ln -s /usr/sbin/postfix /etc/init.d/rc3.d/S14postfix
+ln -s /usr/sbin/postfix /etc/init.d/rc3.d/K07postfix</PRE
+></FONT
+></TD
+></TR
+></TABLE
 ></DIV
 ></DIV
 ><DIV
@@ -623,13 +815,41 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="PAM-MYSQL-INSTALL">3.5. Getting and installing pam_mysql</H2
+NAME="PAM-INSTALL">3.6. Getting and installing PAM</H2
+><P
+>PAM is on almost all ditributions installed by default. I'm not descibing here how compile PAM
+        by yourself, because it could break your system. I'll describe instead, how install the RPM. the version
+        could be vary.</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>rpm -i pam-devel.rpm</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>Experianced Debian users: Please provide me information how to install pam-devel, thanks</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="PAM-MYSQL-INSTALL">3.7. Getting and installing pam_mysql</H2
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN291">3.5.1. Download</H3
+NAME="AEN361">3.7.1. Download</H3
 ><P
 >Origin-Site: <A
 HREF="http://sourceforge.net/projects/pam-mysql/"
@@ -643,16 +863,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN295">3.5.2. Installing</H3
-><P
->	If you compiled MySQL by yourself, you need to create a symlink to the MySQL includes and libraries
-	</P
-><P
->Additionally there is a bug in the <TT
-CLASS="FILENAME"
->Makefile</TT
-> which you need to correct.
-	Edit the file and replace as follow:</P
+NAME="AEN365">3.7.2. Installing</H3
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -663,13 +874,48 @@ WIDTH="100%"
 COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
->old:
+>tar -xvzf pam_mysql-0.5.tar.gz
 
-export LD_D=gcc -shared -Xlinker -x -L/usr/lib/mysql
-
-new: 
-
-export LD_D=gcc -shared -Xlinker -x -L/usr/lib/mysql -lz</PRE
+cd pam_mysql</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>Depending if you compiled mysql by yourself or not, 
+	check the <TT
+CLASS="FILENAME"
+>Makefile</TT
+> and enter the correct path to your mysql libs and add the 
+	compiler flag <TT
+CLASS="VARNAME"
+>CFLAGS</TT
+> <TT
+CLASS="OPTION"
+>-I/path/to/mysql/include</TT
+>.
+	</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>ifndef FULL_LINUX_PAM_SOURCE_TREE
+export DYNAMIC=-DPAM_DYNAMIC
+export CC=gcc
+export CFLAGS=-O2 -Dlinux -DLINUX_PAM \
+       -ansi -D_POSIX_SOURCE -Wall -Wwrite-strings \
+       -Wpointer-arith -Wcast-qual -Wcast-align -Wtraditional \
+       -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Winline \
+       -Wshadow -pedantic -fPIC -I/usr/local/mysql/include
+export MKDIR=mkdir -p
+export LD_D=gcc -shared -Xlinker -x -L/usr/local/mysql/lib/mysql -lz
+endif</PRE
 ></FONT
 ></TD
 ></TR
@@ -686,14 +932,11 @@ WIDTH="100%"
 COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
->tar -xvzf pam_mysql-0.4.7.tar.gz
-
-cd pam_mysql
-
-make
+>make
 
 cp pam_mysql.so /lib/security
 
+[[ ! -d /var/lib/mysql ]] &#38;&#38; mkdir /var/lib/mysql
 ln -s /tmp/mysql.sock /var/lib/mysql/mysql.sock</PRE
 ></FONT
 ></TD
@@ -706,13 +949,13 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="WEB-CYRADM-INSTALL">3.6. Getting and installing Web-cyradm</H2
+NAME="WEB-CYRADM-INSTALL">3.8. Getting and installing Web-cyradm</H2
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN305">3.6.1. Download</H3
+NAME="AEN377">3.8.1. Download</H3
 ><P
 >                Origin-Site: <A
 HREF="http://www.web-cyradm.org"
@@ -726,29 +969,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN309">3.6.2. Installing</H3
-><P
->Web-cyradm is written in PHP. If you don't have a webserver with php installed, I like to refer to my 
-	<A
-HREF="http://www.delouw.ch/linux/apache.phtml"
-TARGET="_top"
->Apache-Compile-HOWTO</A
->. That document describes how to
-	set up Apache with PHP and other modules</P
-><P
->I M P O R T A N T :  Since web-cyradm is under heavy development, it maybe does not work properly with
-	PHP 4.2.1 or newer. Please edit your <TT
-CLASS="FILENAME"
->/usr/local/lib/php.ini</TT
-> and set »register_globals=On« to be sure
-	it works. please report any bugs to web-cyradm@test.delouw.ch (after subscribing the list). </P
-><P
->Since web-cyradm uses PEAR for its database abstraction, you will also need a recent copy of PEAR. This is included
-	in recent PHP Versions. I strongly suggest to update PHP anyway to 4.2.3 because a lot of important bugs have been fixed.
-	</P
-><P
->An often error done is to forget to touch the logfile and change the owner to the UID that Apache use. This is 
-	usually »nobody« or »wwwrun«.</P
+NAME="AEN381">3.8.2. Installing</H3
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -761,7 +982,7 @@ COLOR="#000000"
 CLASS="SCREEN"
 >cd /usr/local/apache/htdocs
 
-tar -xvzf web-cyradm-0.5.2.tar.gz
+tar -xvzf web-cyradm-0.5.3.tar.gz
 
 touch /var/log/web-cyradm.log
 chown nobody /var/log/web-cyradm.log</PRE
@@ -770,9 +991,175 @@ chown nobody /var/log/web-cyradm.log</PRE
 ></TR
 ></TABLE
 ><P
->After unpacking web-cyradm move it to a place in your webservers DocumentRoot</P
+>After unpacking web-cyradm, move it to a place in your webservers DocumentRoot</P
 ><P
->This is all, now we need to configure the whole bunch of software</P
+>Thats all. Now you need to configure the whole bunch of software.</P
+><P
+>Web-cyradm 0.5.3 is considered stable, and was released on 2003-03-24</P
+><P
+>Since web-cyradm uses PEAR for its database abstraction layer, you also need a recent 
+	copy of PEAR. This is included in recent PHP Versions. I strongly suggest to update PHP 
+	to 4.3.1, because a lot of important bugs have been fixed.
+	</P
+><P
+>An often mistake is to forget to touch the logfile and change the owner to the 
+	UID that Apache use. This is usually »nobody« or »wwwrun«.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="MYSQL-CREATE-DB">3.8.3. Create the databases and tables</H3
+><P
+>Now we need to create the database and tables for Postfix and Web-cyradm and add a user to the
+                database.</P
+><P
+>                Web-cyradm comes with three MySQL scripts: <TT
+CLASS="FILENAME"
+>insertuser_mysql.sql</TT
+> and
+                <TT
+CLASS="FILENAME"
+>create_mysql.sql</TT
+>.
+                The first inserts the Database user to the database »mysql« and creates the database »mail«. The
+                second creates the needed tables and populates the database with an initial admin-user and the
+                cyrus user.</P
+><P
+>The third script is used for upgrading from Web-cyradm 0.5.2 to 0.5.3.</P
+><P
+>The password for the database user »mail« in this example is »secret«. Please insert whatever
+                user and password you like.</P
+><P
+>The username for the initial superuser is »admin« with the password »test«.</P
+><DIV
+CLASS="CAUTION"
+><P
+></P
+><TABLE
+CLASS="CAUTION"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/caution.gif"
+HSPACE="5"
+ALT="Caution"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="CENTER"
+><B
+>Change the default password!</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>If a malicious user wants to gain unauthorized access to a system, the first try is always
+                the default username and password supplied by the vendor. It is IMPORTANT that you are changing them
+                in the scripts before applying them.</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>After customizing the username and password, apply the scripts:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>/usr/local/mysql/bin/mysql -u root -p &#60; \
+/usr/local/apache/htdocs/web-cyradm/scripts/insertuser_mysql.sql
+
+/usr/local/mysql/bin/mysql mail -u mail -p &#60; \
+/usr/local/apache/htdocs/web-cyradm/scripts/create_mysql.sql</PRE
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="WEB-CYRADM-UPDATE">3.8.4. Upgrading from 0.5.2 to 0.5.3</H3
+><P
+>In version 0.5.3 there us a small Database enhancement done. You can upgrade your Database by
+	issuing the MySQL script that commes with the distribution.</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>mysql mail -u mail -p &#60; \ 
+scripts/upgrade-0.5.2-to-0.5.3_mysql.sql</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>Since Version 0.5.3 web-cyradm does have full support for DES crypted passwords. You can use the php-script 
+<TT
+CLASS="FILENAME"
+>migrate.php</TT
+> to convert the users passwords from plain to unix compatible crypt (DES).</P
+><DIV
+CLASS="CAUTION"
+><P
+></P
+><TABLE
+CLASS="CAUTION"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/caution.gif"
+HSPACE="5"
+ALT="Caution"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="CENTER"
+><B
+>Migration from plain to crypt cannot be undone</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Be sure to have a recent backup of your database before doing anything with the migration script.</P
+></TD
+></TR
+></TABLE
+></DIV
 ></DIV
 ></DIV
 ></DIV
