@@ -18,15 +18,17 @@
 	else{
 		$query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username LIMIT $row_pos,10";
 	}
-        $handle=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-        $result=mysql_db_query($MYSQL_DB,$query);
-        $cnt=mysql_num_rows($result);
+	$handle=DB::connect($DSN, true);
+	$result=$handle->query($query);
+	$cnt=$result->numRows($result);
 
         $query2="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username";
-        $handle=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
         $result2=mysql_db_query($MYSQL_DB,$query2);
+	$result2=$handle->query($query2);
 
-        $total=mysql_num_rows($result2);
+	
+	$total=$result2->numRows($result2);
+	
         $b=0;
 	if ($cnt!=0){
 		print "Total accounts: ".$total."<p>";
@@ -79,8 +81,10 @@
 	        	$b=0;
 	        }
 
-	        $domain= mysql_result($result,$c,'domain_name');
-	        $username= mysql_result($result,$c,'username');
+		$row=$result->fetchRow($result,$c,'domain_name');
+		$domain=$row[3];
+		$username=$row[0];
+
 	        print "\n<tr class=\"$cssrow\">";
 	        print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">Edit account</a></td>";
 	        print "\n<td><a href=\"index.php?action=deleteaccount&domain=$domain&username=$username\">Delete account</a></td>";
@@ -88,10 +92,14 @@
 	        print "\n<td><a href=\"index.php?action=catch&domain=$domain&username=$username\">Set Catch all</a></td>";
 	        print "\n<td>";
 		$query2="SELECT * FROM virtual WHERE username='$username'"; 
-		$result2=mysql_db_query($MYSQL_DB,$query2);
-	        $cnt2=mysql_num_rows($result2);
-			for ($c2=0;$c2<$cnt2;$c2++){
-			print mysql_result($result2,$c2,'alias')."<br>";
+		$result2=$handle->query($query2);
+
+		$cnt2=$result2->numRows($result2);
+		
+		for ($c2=0;$c2<$cnt2;$c2++){
+			# Print All Emailadresses found for the account
+			$row=$result2->fetchRow($result2,$c2,'alias');
+			print $row[0]."<br>";
 			}
 	
 	        print "</td>\n<td>";
