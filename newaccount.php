@@ -33,6 +33,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		$prefix		= $row['prefix'];
 		$maxaccounts	= $row['maxaccounts'];
 		$def_quota	= $row['quota'];
+		$domain_quota	= $row['domainquota'];
 		$transport	= $row['transport'];
 		// START Andreas Kreisl : freenames
 		$freenames	= $row['freenames'];
@@ -48,7 +49,40 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$query2 	= "SELECT * FROM accountuser WHERE prefix='$prefix' order by username";
 			$result2	= $handle->query($query2);
 			$cnt2		= $result2->numRows($result2);
+			
+			if ($domain_quota!=0) {
+				$used_domain_quota = 0;
+				$cyr_conn = new cyradm;
 
+				$error=$cyr_conn -> imap_login();
+
+				if ($error!=0){
+					die ("Error $error");
+				}
+
+				for ($c2 = 0; $c2 < $cnt2; $c2++){
+					$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
+					
+					$_sep = '.';
+					if ($DOMAIN_AS_PREFIX) {
+						$_sep = '/';
+					}
+					
+					$user_quota = $cyr_conn->getquota("user" . $_sep . $row2['username']);
+					
+					if ($user_quota['qmax'] != "NOT-SET"){
+						$used_domain_quota += $user_quota['qmax'];
+					}
+				}
+
+				$quota_left = $domain_quota - $used_domain_quota;
+				
+				if ($def_quota > $quota_left){
+ 					$def_quota = $quota_left;
+				}
+				$_SESSION['quota_left'] = $quota_left;
+			} // End of if ($domain_quota!=0)
+				
 			if ($cnt2+1 > $maxaccounts){
 				?>
 				<h3>
@@ -60,6 +94,19 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<?php print _("Maximum allowed accounts is");?>
 					<span style="font-weight: bolder;">
 						<?php echo $maxaccounts;?>
+					</span>
+				<?php
+			} elseif ($domain_quota!=0 && $quota_left <= 0) {
+				?>
+				<h3>
+					<?php print _("Sorry, no more disk space left for domain");?>
+					<span style="color: red;">
+						<?php echo $domain;?>
+					</span>
+					<br>
+					<?php print _("Quota is");?>
+					<span style="font-weight: bolder;">
+						<?php echo $domain_quota;?>
 					</span>
 				<?php
 			} else {
@@ -78,8 +125,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						$lastaccount = $prefix."0000";
 						if ($cnt2 > 0){
 							$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $cnt2 - 1);
-							// $row2 = $result2->fetchRow($result2,$cnt2-1,'username');
-							// $lastaccount=mysql_result($result2,$cnt2-1,"username");
 							$lastaccount = $row2['username'];
 						}
 					}
@@ -202,7 +247,28 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			       _("Sorry, the username already exists") .
 			       "</h3><br>";
 			include WC_BASE . "/browseaccounts.php";
-		} else {
+		    } else {
+			if ($domain_quota!=0){
+				// if domain_quota is set all accounts must have quotas
+				if (empty($quota)){
+					$quota = $def_quota;
+				}
+				if ($quota > $_SESSION['quota_left']){
+					$quota = $_SESSION['quota_left'];
+						?>
+						<h3>
+							<?php print _("Quota exeeded");?>
+							<span style="color: red;">
+								<?php print _("New quota is");?>:
+							</span>
+							<span style="font-weight: bolder;">
+								<?php echo $quota;?>
+							</span>
+						</h3>
+						<?php
+				}
+				unset($_SESSION['quota_left']);
+			}
 			if ($password == $confirm_password){
 				$pwd = new password;
 			        $password = $pwd->encrypt($password, $CRYPT);

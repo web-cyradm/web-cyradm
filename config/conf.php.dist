@@ -50,8 +50,12 @@ $LOG_DIR = "/var/log/web-cyradm/";
 # The default timeout in seconds for a session, after that you have to login again
 $SESS_TIMEOUT = 1000;
 
-# The default quota sets the default quota for new domains
+# The default quota sets the default quota for new accounts
 $DEFAULT_QUOTA = 20000;
+
+# The default domain quota sets the quota for new domains
+# 0 = No quota
+$DEFAULT_DOMAIN_QUOTA = 0;
 
 # On what quota level mark accounts on accounts list (in %)
 $QUOTA_WARN_LEVEL = 90;

@@ -37,6 +37,10 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<th>
 						<?php print _("max Accounts");?>
 					</th>
+					
+					<th>
+						<?php print _("max Domain quota");?>
+					</th>
 
 					<th>
 						<?php print _("default quota per user");?>
@@ -123,7 +127,18 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						</td>
 						
 						<td>
-							<!-- Quota -->
+							<!--  Max Domain Quota -->
+							<?php
+							if (! $row['domainquota'] == 0) {
+								echo $row['domainquota'];
+							} else {
+								print _("Quota not set");
+							}
+							?>
+						</td>
+						
+						<td>
+							<!-- Default Account Quota -->
 							<?php
 							echo $row['quota'];
 							?>

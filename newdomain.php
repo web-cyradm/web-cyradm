@@ -121,11 +121,25 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								<input
 								class="inputfield"
 								type="text"
-								size="5"
+								size="15"
 								name="quota"
 								value="<?php print $DEFAULT_QUOTA; ?>">
 							</td>
 						</tr>
+						
+						<tr>
+							<td>
+								<?php print _("Quota for Domain in Kilobytes");?>
+							</td>
+
+							<td>
+								<input
+                                                                class="inputfield"
+                                                                type="text"
+                                                                size="15"
+                                                                name="domainquota"
+								value="<?php print $DEFAULT_DOMAIN_QUOTA; ?>"> (0 = <?php print _("Quota not set"); ?>)
+							</td>
 						
 						<tr>
 							<td colspan="2">
@@ -227,7 +241,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					} else {
 						$freeaddress = "NO";
 					}
-					$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, transport,freenames,freeaddress) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$trans', '$freenames', '$freeaddress')";
+					$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, domainquota, transport,freenames,freeaddress) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$_GET[domainquota]', '$trans', '$freenames', '$freeaddress')";
 
 					// END Andreas Kreisl : freenames
 

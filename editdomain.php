@@ -27,7 +27,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$freeaddress="NO";
 				}
 
-				$query = "UPDATE domain SET domain_name='$newdomain', maxaccounts='$maxaccounts',quota='$quota',freenames='$freenames',freeaddress='$freeaddress',prefix='$prefix' WHERE domain_name='$domain'";
+				$query = "UPDATE domain SET domain_name='$newdomain', maxaccounts='$maxaccounts', quota='$quota', domainquota='$_GET[domainquota]', freenames='$freenames',freeaddress='$freeaddress',prefix='$prefix' WHERE domain_name='$domain'";
 				// END Andreas Kreisl : freenames
 
 				$query2 = "UPDATE accountuser SET domain_name='$newdomain' WHERE domain_name='$domain'";
@@ -73,6 +73,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$prefix = $row['prefix'];
 				$maxaccounts = $row['maxaccounts'];
 				$quota = $row['quota']; 
+				$domainquota = $row['domainquota'];
 				// START Andreas Kreisl : freenames
 				$freenames=$row['freenames']; 
 				// END Andreas Kreisl : freenames
@@ -181,6 +182,21 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								>
 							</td>
 						</tr>
+
+						<tr>
+							<td>
+								<?php print _("Quota for Domain in Kilobytes");?>
+							</td>
+							
+							<td>
+								<input class="inputfield"
+								type="text" size="15"
+								name="domainquota"
+								value="<?php print $domainquota; ?>"
+								> (0 = <?php print _("Quota not set"); ?>)
+							</td>
+							
+						<tr>
 
 						<tr>
 							<td colspan="2" align="center">
