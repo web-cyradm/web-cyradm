@@ -174,6 +174,8 @@ if (!isset($row_pos)){
 		print "\n<tr class=\"$cssrow\">";
 		print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">"._("Edit account")."</a></td>";
 		print "\n<td><a href=\"index.php?action=change_password&domain=$domain&username=$username&alias=$alias\">"._("Change Password")."</a></td>";
+		
+		print "\n<td><a href=\"index.php?action=forwardaccount&domain=$domain&username=$username&alias=$alias\">". _("Forward")."</a></td>";
 		print "\n<td><a href=\"index.php?action=deleteaccount&domain=$domain&username=$username\">"._("Delete account")."</a></td>";
 		print "\n<td><a href=\"index.php?action=setquota&domain=$domain&username=$username\">"._("Set quota")."</a></td>";
 		print "\n<td><a href=\"index.php?action=catch&domain=$domain&username=$username\">"._("Set catch all")."</a></td>";
