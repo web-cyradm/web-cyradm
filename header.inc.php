@@ -9,25 +9,11 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 include WC_BASE . "/lib/nls.php";
 $charset = isset($nls["charsets"][$LANG])?$nls["charsets"][$LANG]:'iso-8859-1';
 
-if (isset($LANG)) {
-    header('Vary: Accept-Language');
-    header('Content-type: text/html; charset=' . $charset);
-}
-$handle=DB::connect($DB['DSN'], true);
-$query = "SELECT `style` from adminuser WHERE username='$user'";
-$result = $handle->query($query);
-$settingsrow = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-$style = $settingsrow['style'];
-if (!$style){
-	$style="web-cyradm";
-}
+header('Vary: Accept-Language');
+header('Content-type: text/html; charset=' . $charset);
 
-$query = "SELECT `maxdisplay` from adminuser WHERE username='$user'";
-$result = $handle->query($query);
-$maxdisplayrow = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-$maxdisplay = $maxdisplayrow['maxdisplay'];
-if (!$maxdisplay){
-        $maxdisplay=10;
+if (!isset($_SESSION['style'])){
+	$_SESSION['style'] = "web-cyradm";
 }
 
 ?>
@@ -37,56 +23,12 @@ if (!$maxdisplay){
 <html>
 	<head>
 		<title>
-			web-cyradm
+			Web-cyradm
 		</title>
-
-<?php
-//print $LANG;
-
-/*
-//print "Charset is". $nls["charsets"][$LANG];
-
-switch ($LANG){
-	case "zh_CN":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$charset\">";
-	break;
-
-	case "ru_RU":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$charset\">";
-	break;
-
-	case "hu_HU":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"$charset\">";
-	break;
-
-	case "pl_PL":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$charset\">";
-	break;
-
-	case "ro_RO":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$charset\">";
-	break;
-
-	case "tr_TR":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$charset\">";
-	break;
-
-	default:
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">";
-}
-
-//print "Charset is: ".$charset;
-*/
-?>
-
-		<link rel="stylesheet" href="css/<?php print $style;?>.css" type="text/css">
+		<meta http-equiv="Content-Type" content="text/html; charset=<?php print $charset;?>">
+		<link rel="stylesheet" href="css/<?php print $_SESSION['style'];?>.css" type="text/css">
 	</head>
 
-<?php
-/*
-<body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-*/
-?>
 	<body style="margin: 0px;">
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="height: 100%;">
 		<tr>

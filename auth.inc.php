@@ -29,6 +29,7 @@ if ($login && $password){
           $_SESSION['session_ok'] = TRUE;
 	  $_SESSION['user'] = $login;
 	  $_SESSION['LANG'] = $LANG;
+	  $_SESSION['init'] = 'init';
 
           header ("Location: index.php");
 

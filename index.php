@@ -64,7 +64,10 @@ if ($wc_configured){
 	if (isset($_GET['LANG'])){
 		$LANG=$_GET['LANG'];
 	}
-
+	
+	if (isset($_SESSION['init'])) {
+		include WC_BASE . "/init.php";
+	}
 	include WC_BASE . "/header.inc.php";
 
 	setlocale(LC_MESSAGES, $LANG);

@@ -55,8 +55,8 @@ $handle =& DB::connect($DB['DSN'],true);
 if (DB::isError($handle)) {
 	die (_("Database error"));
 }
-# This part to "THE END" should be executed once (after succesful login)
-
+# This part to "THE END" was moved to init.php
+/*
 # Check if admin has any domain to administrate.
 # Superuser has always 1 entry.
 $query = "SELECT * FROM domainadmin WHERE adminuser='".$_SESSION['user']."'";
@@ -76,10 +76,10 @@ $result2 = $handle->query($query2);
 $row = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 $_SESSION['admintype'] = $row['type'];
 $admintype = $row['type'];
-
+*/
 # We check and remember list of domains for domain admin
 if ($admintype != 0){	
-	$allowed_domains = array();
+/*	$allowed_domains = array();
 	
 	for ($i=0; $i < $cnt; $i++){
 		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);
@@ -92,6 +92,7 @@ if ($admintype != 0){
 		include WC_BASE . "/logout.php";
 		die ();
 	}
+*/
 # THE END
 	// Check if username to be changed belong to the domain
 //	if (!isset($domain)) $domain='';
