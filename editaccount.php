@@ -4,11 +4,17 @@
 
 <?php
 
+	// Specify location of translation tables
+	bindtextdomain("editaccount", "./locale");
+
+	// Choose domain
+	textdomain("editaccount");
+
        $cyr_conn = new cyradm;
 
        $cyr_conn -> imap_login();
 
-	print"<h3>Email adresses defined for user <font color=red>".$username."</font></h3>";
+	print"<h3>"._("Email adresses defined for user")." <font color=red>".$username."</font></h3>";
 
 	$query="select * from virtual where username='$username'";
         $handle=DB::connect($DSN, true);
@@ -16,17 +22,17 @@
         $cnt=$hnd->numRows();
 	print "<table cellspacing=\"2\" cellpadding=\"0\"><tr>";
         print "<td class=\"navi\">";
-	print "<a href=\"index.php?action=newemail&domain=$domain&username=$username\">new&nbsp;email&nbsp;address&nbsp;for&nbsp;this&nbsp;user</a>";	
+	print "<a href=\"index.php?action=newemail&domain=$domain&username=$username\">"._("New email address")."</a>";	
 	print "</td></tr></table><p>";
 
         $b=0;
         print "<table border=0>";
         print "<tr>";
-        print "<th colspan=\"2\">Actions</th>";
-        print "<th>Email address</th>";
-        print "<th>Username</th>";
-	print "<th>Password</th>";
-	print "<th>Quota used</th>";
+        print "<th colspan=\"2\">"._("Actions")."</th>";
+        print "<th>"._("Email address")."</th>";
+        print "<th>"._("Username")."</th>";
+	print "<th>"._("Password")."</th>";
+	print "<th>"._("Quota used")."</th>";
         print "</tr>";
 
 
@@ -43,8 +49,8 @@
 	  $row=$hnd->fetchRow(DB_FETCHMODE_ASSOC, $c);
 	  $alias=$row['alias'];	
           print "<tr class=\"$cssrow\"> \n";
-          print "<td><a href=\"index.php?action=editemail&domain=$domain&alias=$alias&username=$username\">Edit Emailadress</a></td>";
-          print "<td><a href=\"index.php?action=deleteemail&domain=$domain&alias=$alias&username=$username\">Delete Emailadress</a></td>";
+          print "<td><a href=\"index.php?action=editemail&domain=$domain&alias=$alias&username=$username\">"._("Edit Emailadress")."</a></td>";
+          print "<td><a href=\"index.php?action=deleteemail&domain=$domain&alias=$alias&username=$username\">".("Delete Emailadress")."</a></td>";
           print "<td>";
 	  print $alias;
           print "</td>\n";
@@ -67,11 +73,11 @@
                 	$q_used=$quota[used];
                 	$q_total=$quota[qmax];
                 	$q_percent=100*$q_used/$q_total;
-                	print $quota[used]." Kilobytes out of ";
+                	print $quota[used]." Kilobytes "._("out of")." ";
                 	print $quota[qmax]." Kilobytes (".$q_percent." %)";
           	}
 		else{
-			print "Quota not set";
+			print _("Quota not set");
 		}
 		print "</td>\n</tr>";
 	  }
