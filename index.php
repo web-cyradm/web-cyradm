@@ -1,7 +1,7 @@
 <?php
 
 if (file_exists("./migrate.php")){
-	die("migrate.php exists! please delete or rename it");
+	die(_("migrate.php exists! please delete or rename it"));
 }
 
 include ("config.inc.php");

@@ -30,7 +30,7 @@ if ($admintype==0){
 					print "</tr>\n";
 // START Andreas Kreisl : freenames
 					print "<tr>\n";
-				        print "<td>Allow Free Names</td>\n";
+				        print "<td>"._("Allow Free Names")."</td>\n";
 					print "<td><input class=\"inputfield\" type=\"checkbox\" name=\"freenames\"></td>\n";
 					print "</tr>\n";
 // END Andreas Kreisl : freenames

@@ -14,7 +14,7 @@ print "<tr>\n";
 
 if ($admintype==0){
 
-	print "<td colspan=\"7\">Superusers Menu</td><td colspan=\"3\">"._("Domainmasters menu")."</td></tr><tr>";
+	print "<td colspan=\"7\">"._("Superusers Menu")."</td><td colspan=\"3\">"._("Domainmasters menu")."</td></tr><tr>";
 
 
 	print "<td class=\"rootnavi\" width\"20\">";
