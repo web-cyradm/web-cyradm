@@ -68,6 +68,7 @@
 	        print "<th colspan=\"6\">"._("action")."</th>";
 	        print "<th>"._("Email address")."</th>";
 	        print "<th>"._("Username")."</th>";
+	        print "<th>"._("Last login")."</th>";
 	        print "<th>"._("Quota used")."</th>";
 	        print "</tr>";
 
@@ -94,6 +95,14 @@
 		$row=$result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		$alias = $row['alias'];
 
+		$query3="SELECT * FROM log WHERE user='$username' ORDER BY time DESC";
+		$result3=$handle->query($query3); 
+		$row3=$result3->fetchRow(DB_FETCHMODE_ASSOC, 0);
+		$lastlogin=$row3['time'];
+		if ($lastlogin==""){
+			$lastlogin=_("Never logged in");
+		}
+
 	        print "\n<tr class=\"$cssrow\">";
 		print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">"._("Edit account")."</a></td>";
 	        print "\n<td><a href=\"index.php?action=change_password&domain=$domain&alias=$alias&username=$username\">"._("Change Password")."</a></td>";
@@ -111,6 +120,8 @@
 	
 	        print "</td>\n<td>";
 	        print $username;
+	        print "</td>\n<td>";
+		print $lastlogin;
 	        print "</td>\n<td>";
 
 		if ($DOMAIN_AS_PREFIX) {
