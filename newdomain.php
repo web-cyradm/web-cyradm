@@ -16,7 +16,7 @@
 					<input type="hidden" name="action" value="newdomain">
 					<input type="hidden" name="confirmed" value="true">
 					<?php
-					if ($DOMAIN_AS_PREFIX){
+					if ($DOMAIN_AS_PREFIX==1){
 						?>
 						<input type="hidden"
 						name="prefix"
@@ -44,7 +44,7 @@
 						</tr>
 
 						<?php
-						if (! $DOMAIN_AS_PREFIX) {
+						if ($DOMAIN_AS_PREFIX==0) {
 							?>
 							<tr>
 								<td>
@@ -61,9 +61,6 @@
 								</td>
 							</tr>
 
-							<?php
-						} 
-						?>
 						<!-- START Andreas Kreisl : freenames -->
 						<tr>
 							<td>
@@ -79,6 +76,9 @@
 							</td>
 						</tr>
 							<!-- END Andreas Kreisl : freenames -->
+							<?php
+						} 
+						?>
 						<tr>
 							<td>
 								<?php print _("Allow Free Mail Addresses");?>
@@ -88,7 +88,6 @@
 								class="inputfield"
 								type="checkbox"
 								name="freeaddress"
-								value=""
 								>
 							</td>
 						</tr>
@@ -223,6 +222,8 @@
 						$freeaddress = "NO";
 					}
 					$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, transport,freenames,freeaddress) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$trans', '$freenames', '$freeaddress')";
+
+print $query;
 					// END Andreas Kreisl : freenames
 
 					$handle = DB::connect ($DB['DSN'],true);
