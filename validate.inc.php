@@ -30,19 +30,23 @@ $_post_vars = array(
 	'confirm_password', 'email', 'quota', 'password','newadminuser', 'newadmintype',
 	'newdomain', 'newtype', 'resp_domain');
 
-if ($_GET['action']!=""){
+if ($_GET){
+	if ($_GET['action']!=""){
 
-	foreach ($_get_vars as $_get_var){
-		if (isset($_GET[$_get_var])){
-			$$_get_var = $_GET[$_get_var];
+		foreach ($_get_vars as $_get_var){
+			if (isset($_GET[$_get_var])){
+				$$_get_var = $_GET[$_get_var];
+			}
 		}
 	}
 }
 
-if ($_POST['action']!=""){
-	foreach ($_post_vars as $_post_var){
-		if (isset($_POST[$_post_var])){
-			$$_post_var = $_POST[$_post_var];
+if ($_POST){
+	if ($_POST['action']!=""){
+		foreach ($_post_vars as $_post_var){
+			if (isset($_POST[$_post_var])){
+				$$_post_var = $_POST[$_post_var];
+			}
 		}
 	}
 }
