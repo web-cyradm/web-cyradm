@@ -1,0 +1,303 @@
+<HTML
+><HEAD
+><TITLE
+>Technologies</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Introduction"
+HREF="intro.html"><LINK
+REL="NEXT"
+TITLE="Getting and installing the software"
+HREF="install.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Postfix-Cyrus-Web-cyradm-HOWTO</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="intro.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="install.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="TECH">2. Technologies</H1
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="POSTFIX">2.1. The Postfix MTA</H2
+><P
+>	Quoting <A
+HREF="http://www.postfix.org"
+TARGET="_top"
+>www.postfix.org</A
+>
+	»Postfix attempts to be fast, easy to administer, and secure, while at the same time 
+	being sendmail compatible enough to not upset existing users. Thus, the outside has a 
+	sendmail-ish flavor, but the inside is completely different.«
+	</P
+><P
+>		<DIV
+CLASS="FIGURE"
+><A
+NAME="AEN150"><P
+><B
+>Figure 1. Postfix - the big picture</B
+></P
+><P
+><IMG
+SRC="big-picture.png"></P
+></DIV
+>
+   	</P
+><P
+>Doesn't it look impressive? - It looks much more complicated as it is. Postfix is indeed nice
+	      to configure and handle</P
+><P
+>Unlike sendmail, postfix is not one monolithic program, it is a compilation of small programs, each of
+	      it has a specialized function. At this place I don't what to go into details with program does what.
+	      If you are interested how Postfix is working, please see the documentation at 
+	      <A
+HREF="http://www.postfix.org/docs.html"
+TARGET="_top"
+>http://www.postfix.org/docs.html</A
+>
+	</P
+><P
+>In this document you will find the information what to put in the config files</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="CYRUS">2.2. Cyrus IMAP</H2
+><P
+>The Cyrus IMAP is developed and maintained by Carnegie Mellon University.</P
+><P
+>Unlike the WU-IMAPd Cyrus is using its own method to store the users mail. The data is stored 
+	in a database, this makes Cyrus so performant. Especially with lots of users and/or lot of big emails, 
+	there is nothing such fast as the Cyrus IMAP-server.</P
+><P
+>	Another very important feature is, you don't need a local Un*x user for each account. All users are 
+	authenticated by the IMAP-Server. This makes it a great solution for really huge base of users.</P
+><P
+>	User administration is done by special IMAP-commands. This allows you to either use the commandline interface, 
+	or use one of the available Webinterfaces. This Method is much more secure than a Webinterface to
+	<TT
+CLASS="FILENAME"
+> /etc/passwd</TT
+> !</P
+><P
+>Starting from Cyrus 2.1, the SASL-lib version 2 is used for authentication. 
+	So for the setup described in this HOWTO there is a tree-layer authentication implemented. Cyrus 
+	authenticates with saslauthdaemon which forwards the request
+	to pam_mysql which finally looks up the MySQL-table.</P
+><P
+>	Since CMU changed the license policy for Cyrus, this software is going to be used by much more users</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="MYSQL">2.3. MySQL Database</H2
+><P
+>MySQL is a very fast, powerful and very nice to handle Database.</P
+><P
+>Since Cyrus can authenticate its users with pam, you can use pam_mysql as a connector to the
+	Userdatebase stored in MySQL. This allows you to create a nice Webinterface for your users for changing 
+	passwords, define and delete aliases and more.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="PAM-MYSQL">2.4. pam_mysql</H2
+><P
+>pam means "Pluggable authentication module" and was originally proposed by some people at Sun.
+	In meantime a lot of modules have been developed. One of them is an interface to MySQL</P
+><P
+>With pam_mysql you to store the users password in a mysql database. Further, Postfix is able to
+	lookup aliases from a MySQL-table. At the end of the day, you have a base for all administrative tasks
+	to be done by the Sysadmin.</P
+><P
+>Further you will be able to delegate some tasks to Powerusers, e.g. creating Accounts for a particular
+	Domain. Changing passwords and creating new aliases can be delegated to the user. At the end of the day 
+	you as a Sysadmin have the time to do some more productive tasks, or write a HOWTO for the Linux 
+	Documentation Project :-)</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="WEB-CYRADM">2.5. Web-cyradm Webinterface</H2
+><P
+>                <DIV
+CLASS="FIGURE"
+><A
+NAME="AEN178"><P
+><B
+>Figure 2. Web-cyradm Domain administration</B
+></P
+><P
+><IMG
+SRC="home.png"></P
+></DIV
+>
+        </P
+><P
+>Web-cyradm is the Webinterface that allows you to perform the administrative tasks to your mailsystem
+	This Screenshot shows the domain-administration part of Web-cyradm.</P
+><P
+>Web-cyradm is written in PHP, which is often installed on webservers. Time to set up Web-cyradm takes just a
+	few minutes.</P
+><P
+>	Features:
+	<P
+></P
+><UL
+><LI
+><P
+>Administration of multiple virtual domains</P
+></LI
+><LI
+><P
+>Setting of quotas</P
+></LI
+><LI
+><P
+>Automatically create username, eigher with a defined prefix, or the domainame as postfix</P
+></LI
+><LI
+><P
+>Delegate tasks like creating new users to »Domain Masters« </P
+></LI
+><LI
+><P
+>Map useraccounts to emailadresses</P
+></LI
+></UL
+>
+	</P
+><P
+>At the time being, Web-cyradm does only have experimental support for different roles of its users. 
+	If you plan to use is as a frontend for your powerusers, please notice, that security may be a problem, the rolebased
+	stuff needs a security rewiev.
+	</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="intro.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="install.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Introduction</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Getting and installing the software</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

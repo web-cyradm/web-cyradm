@@ -1,0 +1,456 @@
+<HTML
+><HEAD
+><TITLE
+>Testing the setup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Configuring Web-cyradm"
+HREF="web-cyradm-config.html"><LINK
+REL="NEXT"
+TITLE="Further Information"
+HREF="moreinfo.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Postfix-Cyrus-Web-cyradm-HOWTO</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="web-cyradm-config.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="moreinfo.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="TEST">9. Testing the setup</H1
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="TEST-RUNNING">9.1. (Re-)Starting the daemons</H2
+><P
+>Now all the software has been installed and configured, lets do some testings now. First you have to (re-)start all
+the daemons affected </P
+><P
+></P
+><UL
+><LI
+><P
+>	<B
+CLASS="COMMAND"
+>postfix start</B
+>
+     </P
+></LI
+><LI
+><P
+>        <B
+CLASS="COMMAND"
+>/etc/init.d/cyrus start</B
+>
+     </P
+></LI
+><LI
+><P
+>        <B
+CLASS="COMMAND"
+>/etc/init.d/mysql.server start</B
+>
+     </P
+></LI
+><LI
+><P
+>        <B
+CLASS="COMMAND"
+>/usr/local/apache/bin/apachectl startssl</B
+>
+     </P
+></LI
+></UL
+><P
+>Hopefully all daemons started without any complaints...</P
+><P
+>Now you can verify if the daemons are running properly by issuing <B
+CLASS="COMMAND"
+>netstat -an|grep LISTEN</B
+></P
+><P
+>The output should look similar like that:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>bond:~ # netstat -an|grep LISTEN
+tcp        0      0 0.0.0.0:993             0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:995             0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:110             0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:143             0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:2000            0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>The port are assigned like this:</P
+><P
+></P
+><UL
+><LI
+><P
+>	993	imap-ssl
+     </P
+></LI
+><LI
+><P
+>        995     pop3-ssl
+     </P
+></LI
+><LI
+><P
+>        3306     mysql
+     </P
+></LI
+><LI
+><P
+>        110     pop3
+     </P
+></LI
+><LI
+><P
+>        143     imap
+     </P
+></LI
+><LI
+><P
+>        2000     sieve
+     </P
+></LI
+><LI
+><P
+>        80     http
+     </P
+></LI
+><LI
+><P
+>        25     smtp
+     </P
+></LI
+><LI
+><P
+>        443     https
+     </P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="TESTING-WEB-CYRADM">9.2. Testing Web-cyradm</H2
+><P
+>Now you should be able to connect to <A
+HREF="http://localhost/web-cyradm/"
+TARGET="_top"
+>http://localhost/web-cyradm/</A
+>
+Login with the credentials defined before.</P
+><P
+>Define a Domainname and some accounts. Be sure the domainname belongs to your server. If not you have to fake it by 
+enter the domain in <TT
+CLASS="FILENAME"
+>/etc/hosts</TT
+>. The Domain must also be defined as local in 
+<TT
+CLASS="FILENAME"
+>/etc/postfix/main.cf</TT
+> (mydestination = domain)</P
+><P
+>Please be sure that you are providing a unique domainprefix when adding a new domain. I.e. test for the domain
+test.org. If you dont provide such a prefix you will get a error-message</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="TESTING-POSTFIX">9.3. Testing postfix</H2
+><P
+>Now we are going to write a mail:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>telnet localhost 25
+Trying ::1...
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+220 mail ESMTP Postfix
+
+helo localhost
+250 mail
+mail from: luc at delouw.ch
+250 Ok
+rcpt to: rcpt to: luc at localhost
+250 Ok
+
+data
+354 End data with &#60;CR&#62;&#60;LF&#62;.&#60;CR&#62;&#60;LF&#62;
+some text
+.
+250 Ok: queued as B58E141D33
+
+quit</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>If you see such a message, then all seems to work fine. Be sure to specify a recipients address you previously defined 
+in the web-cyradm database</P
+><P
+>If you get an error like this:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>rcpt to: luc at localhost
+451 &#60;luc at localhost&#62;: Temporary lookup failure</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>Then either MySQL is not running, DB permission are not set properly or you 
+miss-configured <TT
+CLASS="FILENAME"
+>/etc/postfix/main.cf</TT
+></P
+><P
+>On any errors, I suggest to examine <TT
+CLASS="FILENAME"
+>/var/log/mail</TT
+>. Often you will find some hints whats went wrong.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="TESTING-CYRUS">9.4. Testing the IMAP and POP functionality</H2
+><P
+>A lot of users like to test the cyrus-IMAPd with the Command Line Interface (CLI) »cyradm« and they are failing.
+To be sucessful with cyradm, you will need to add the cyrus user to <TT
+CLASS="FILENAME"
+>/etc/sasldb2</TT
+> because »cyradm« always 
+authenticates against SASL __and__ IMAP.</P
+><P
+>To add the cyrus user to the sasldb use the command:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>saslpasswd2 -c cyrus
+Password: (enter your passwd)
+Again (for verification): (enter your password)</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>To use the »cyradm« CLI please take care that the tool does not recognize standart CLI-options like -u and similar. Please follow
+the syntax like descibed in the man page »cyradm 1« like the following example:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>bond:~ # cyradm --user cyrus --server localhost --auth plain
+Password: # This is the SASL2 password
+IMAP Password: # This is the IMAP password that you need to enter in the mysql-table »accountusers«
+localhost&#62;</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>With the cyrus command <B
+CLASS="COMMAND"
+>help</B
+> you will see all possible commands and its abbreviations</P
+><P
+>To make that kind of tests. you just need a mailclient like kmail or netscape
+(Yes of course M$-Products are working as well) but in this example I'll using kmail</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="AEN582"><P
+><B
+>Figure 3. Creating a new account</B
+></P
+><P
+><IMG
+SRC="imap-account.png"></P
+></DIV
+><P
+>If you enabled TLS/SSL, you may wish to test also the following:</P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="AEN586"><P
+><B
+>Figure 4. Testing TLS/SSL functionality</B
+></P
+><P
+><IMG
+SRC="imap-tls.png"></P
+></DIV
+><P
+>If login fails, and you are sure, you typed the right password, take care that MySQL is running</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="web-cyradm-config.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="moreinfo.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Configuring Web-cyradm</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Further Information</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,491 @@
+<HTML
+><HEAD
+><TITLE
+>Configuring Cyrus IMAP</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Configuring Postfix"
+HREF="postfix-config.html"><LINK
+REL="NEXT"
+TITLE="Configuring Web-cyradm"
+HREF="web-cyradm-config.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Postfix-Cyrus-Web-cyradm-HOWTO</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="postfix-config.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="web-cyradm-config.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="CYRUS-CONFIG">7. Configuring Cyrus IMAP</H1
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="CYRUS-CONFIGFILES">7.1. Creating the config files</H2
+><P
+>You have to create <TT
+CLASS="FILENAME"
+>/etc/imapd.conf</TT
+> and <TT
+CLASS="FILENAME"
+>/etc/cyrus.conf</TT
+>
+   </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="ETC-SERVICES">7.1.1. <TT
+CLASS="FILENAME"
+>/etc/services</TT
+></H3
+><P
+>If you like to use sieve (A Mail Filtering Language), you must change an entry
+in <TT
+CLASS="FILENAME"
+>/etc/services</TT
+>. With SuSE 8.0 take especiall care about the port for sieve, they defined the wrong port.
+Add or change the following line:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>pop3		110/tcp
+imap		143/tcp
+imaps           993/tcp
+pop3s           995/tcp 
+sieve           2000/tcp</PRE
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="ETC-IMAPD">7.1.2. <TT
+CLASS="FILENAME"
+>/etc/imapd.conf</TT
+></H3
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>postmaster: postmaster
+configdirectory: /var/imap
+partition-default: /var/spool/imap
+admins: cyrus
+allowanonymouslogin: no
+allowplaintext: yes
+sasl_mech_list: PLAIN
+servername: servername
+autocreatequota: 10000
+reject8bit: no
+quotawarn: 90
+timeout: 30
+poptimeout: 10
+dracinterval: 0
+drachost: localhost
+sasl_pwcheck_method: saslauthd
+sievedir: /usr/sieve
+sendmail: /usr/sbin/sendmail
+sieve_maxscriptsize: 32
+sieve_maxscripts: 5
+#unixhierarchysep: yes</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>Be sure »servername« contains your FQHN (Fully qualified hostname)</P
+><P
+>The parameter »unixhierarchysep: yes« is only used if you like to have usernames like »hans.mueller.somedomain.tld« see 
+<A
+HREF="web-cyradm-config.html"
+>Section 8</A
+> for more info</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="TLS">7.1.3. Creating the TLS/SSL Certificate</H3
+><P
+>If you want to enable Cyrus' TLS/SSL facilities you have to create a certificate first. This requires an 
+OpenSSL installation</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>openssl req -new -nodes -out req.pem -keyout key.pem  
+openssl rsa -in key.pem -out new.key.pem
+openssl x509 -in req.pem -out ca-cert -req \
+-signkey new.key.pem -days 999 
+
+mkdir /var/imap
+
+cp new.key.pem /var/imap/server.pem
+rm new.key.pem
+cat ca-cert &#62;&#62; /var/imap/server.pem
+
+chown cyrus:mail /var/imap/server.pem
+chmod 600 /var/imap/server.pem # Your key should be protected
+
+echo tls_ca_file: /var/imap/server.pem &#62;&#62; /etc/imapd.conf
+echo tls_cert_file: /var/imap/server.pem &#62;&#62; /etc/imapd.conf
+echo tls_key_file: /var/imap/server.pem &#62;&#62; /etc/imapd.conf&#13;</PRE
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="ETC-CYRUS-CONF">7.1.4. <TT
+CLASS="FILENAME"
+>/etc/cyrus.conf</TT
+></H3
+><P
+>The other file you need to create is <TT
+CLASS="FILENAME"
+>/etc/cyrus.conf</TT
+>
+It is the configuration file for the Cyrus master process.  It defines the startup procedures, services
+and events to be spawned by  process »master«.</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+># standard standalone server implementation
+
+START {
+  # do not delete these entries!
+  mboxlist      cmd="ctl_mboxlist -r"
+  deliver       cmd="ctl_deliver -r"
+
+  # this is only necessary if using idled for IMAP IDLE
+#  idled                cmd="idled"
+}
+
+# UNIX sockets start with a slash and are put into /var/imap/socket
+SERVICES {
+  # add or remove based on preferences
+  imap          cmd="imapd" listen="imap" prefork=0
+  imaps         cmd="imapd -s" listen="imaps" prefork=0
+  pop3          cmd="pop3d" listen="pop3" prefork=0
+  pop3s         cmd="pop3d -s" listen="pop3s" prefork=0
+  sieve         cmd="timsieved" listen="sieve" prefork=0
+
+  # at least one LMTP is required for delivery
+#  lmtp         cmd="lmtpd" listen="lmtp" prefork=0
+  lmtpunix      cmd="lmtpd" listen="/var/imap/socket/lmtp" prefork=0
+}
+
+EVENTS {
+  # this is required
+  checkpoint    cmd="ctl_mboxlist -c" period=30
+
+  # this is only necessary if using duplicate delivery suppression
+  delprune      cmd="ctl_deliver -E 3" period=1440
+}</PRE
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="CYRUS-DIRECTORIES">7.2. Creating the directories</H2
+><P
+>There must be created different directories. Additionally you should 
+change some attributes of the filesystem</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="VAR-IMAP">7.2.1. <TT
+CLASS="FILENAME"
+>/var/imap</TT
+></H3
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>cd /var
+mkdir imap
+chown cyrus:mail imap
+chmod 750 imap</PRE
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="VAR-SPOOL-IMAP">7.2.2. <TT
+CLASS="FILENAME"
+>/var/spool/imap</TT
+></H3
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>cd /var/spool
+mkdir imap
+chown cyrus:mail imap
+chmod 750 imap</PRE
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="USR-SIEVE">7.2.3. <TT
+CLASS="FILENAME"
+>/usr/sieve</TT
+></H3
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>cd /usr
+mkdir sieve
+chown cyrus:mail sieve
+chmod 750 sieve</PRE
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="OTHER-DIRS">7.2.4. The rest of the directories</H3
+><P
+>The rest of the directories can be created by the tool <B
+CLASS="COMMAND"
+>mkimap</B
+></P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>su - cyrus
+/usr/local/cyrus-imapd-2.1.5/tools/mkimap</PRE
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="CH-ATTRIB">7.3. Changing the attributes</H2
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>cd /var/imap
+
+chattr +S user quota user/* quota/*
+chattr +S /var/spool/imap /var/spool/imap/*</PRE
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="postfix-config.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="web-cyradm-config.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Configuring Postfix</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Configuring Web-cyradm</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

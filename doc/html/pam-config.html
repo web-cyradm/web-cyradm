@@ -1,0 +1,199 @@
+<HTML
+><HEAD
+><TITLE
+>Configuring PAM</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Configuring MySQL"
+HREF="mysql-config.html"><LINK
+REL="NEXT"
+TITLE="Configuring Postfix"
+HREF="postfix-config.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Postfix-Cyrus-Web-cyradm-HOWTO</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="mysql-config.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="postfix-config.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="PAM-CONFIG">5. Configuring PAM</H1
+><P
+>Now we need to get sure that PAM knows how to authenticate the Cyrus users</P
+><P
+>You have to create the file <TT
+CLASS="FILENAME"
+>/etc/pam.d/imap</TT
+> with the following entries:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>auth sufficient pam_mysql.so user=mail passwd=secret host=localhost db=mail table=accountuser usercolumn=username   passwdcolumn=password crypt=0
+
+auth sufficient pam_unix_auth.so
+
+account required pam_mysql.so user=mail passwd=secret host=localhost db=mail table=accountuser usercolumn=username passwdcolumn=password   crypt=0
+
+account  sufficient       pam_unix_acct.so</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>The lines containing pam_unix_auth.so and pam_unix_acct.so are only needed if you are 
+	migrating from wu-IMAP to cyrus. This way the users can be authenticate with its old unix-password 
+	and its new mysql-based password</P
+><P
+>If you will use Cyrus also for POP-Service just <B
+CLASS="COMMAND"
+>cp /etc/pam.d/imap /etc/pam.d/pop</B
+>
+	For user that like to use also sieve, must also make a pam module for the sieve service with the following
+	entry: <B
+CLASS="COMMAND"
+>cp /etc/pam.d/imap /etc/pam.d/sieve</B
+> Finally if you want to use SMTP authentication
+	you need to copy the same file: <B
+CLASS="COMMAND"
+>cp /etc/pam.d/imap /etc/pam.d/smtp</B
+>
+	</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>cp /etc/pam.d/imap /etc/pam.d/pop
+cp /etc/pam.d/imap /etc/pam.d/sieve
+cp /etc/pam.d/imap /etc/pam.d/smtp</PRE
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="mysql-config.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="postfix-config.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Configuring MySQL</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Configuring Postfix</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

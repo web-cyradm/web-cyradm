@@ -1,0 +1,623 @@
+<HTML
+><HEAD
+><TITLE
+>Postfix-Cyrus-Web-cyradm-HOWTO</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="NEXT"
+TITLE="Introduction"
+HREF="intro.html"></HEAD
+><BODY
+CLASS="ARTICLE"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN2">Postfix-Cyrus-Web-cyradm-HOWTO</H1
+><H3
+CLASS="AUTHOR"
+><A
+NAME="AEN4"
+>Luc de Louw</A
+></H3
+><DIV
+CLASS="AFFILIATION"
+><DIV
+CLASS="ADDRESS"
+><P
+CLASS="ADDRESS"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;luc at delouw.ch<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P
+></DIV
+></DIV
+><DIV
+CLASS="REVHISTORY"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+COLSPAN="3"
+><B
+>Revision History</B
+></TH
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.1.7</TD
+><TD
+ALIGN="LEFT"
+>2002-10-15</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>T E S T R E L E A S E !  Added Michael Muenz' hints for SMTP AUTH, corrected ca-cert related mistake, improved SGML code (more metadata), updated the software mentioned in the document.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.1.6</TD
+><TD
+ALIGN="LEFT"
+>2002-06-14</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>T E S T R E L E A S E !  Added sasl_mech_list: PLAIN to imapd.conf, added web-cyradm Mailinglist, added more
+		to web-cyradm</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.1.5</TD
+><TD
+ALIGN="LEFT"
+>2002-06-11</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>T E S T R E L E A S E ! Added new SQL query to initialize web-cyradm
+		to have full data integrity in the MySQL Database, mysql-mydestination.cf reported to be operational as
+		expected.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.1.4</TD
+><TD
+ALIGN="LEFT"
+>2002-05-15</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>T E S T R E L E A S E ! Added description what is needed in /etc/services
+		Another fix for pam_mysql compile, updated software versions.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.1.3</TD
+><TD
+ALIGN="LEFT"
+>2002-05-08</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>T E S T R E L E A S E ! Added more description for web-cyradm, fix for wrong path of the saslauthdb-socket, Fix for
+		wrong place of com_err.h, protection of the TLS/SSL private key.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.1.2</TD
+><TD
+ALIGN="LEFT"
+>2002-04-29</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>T E S T R E L E A S E ! Added describtion for Redhat users how to install the init scripts.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.1.1</TD
+><TD
+ALIGN="LEFT"
+>2002-04-29</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>T E S T R E L E A S E ! Fixed bug in configuring cyrus-IMAP (disabled unused kerberos authetication)</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.1.0</TD
+><TD
+ALIGN="LEFT"
+>2002-04-28</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>T E S T R E L E A S E ! - Initial support for building cyrus from source, dropped binary installation
+		for Cyrus, because configuration has changed with Release 2.1.x</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.0.2-draft-3</TD
+><TD
+ALIGN="LEFT"
+>2002-04-25</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>Added basic description for sieve and correct sender handling, minor fixes to db related stuff, Added mysql-lookup for
+		»mydestination« , fixed bug for building postfix with mysql support</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.0.1</TD
+><TD
+ALIGN="LEFT"
+>2002-04-07</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>Added an important fix for compiling pam_mysql</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.0.0</TD
+><TD
+ALIGN="LEFT"
+>2002-04-07</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>Initial Release</TD
+></TR
+></TABLE
+></DIV
+><DIV
+><DIV
+CLASS="ABSTRACT"
+><A
+NAME="AEN66"><P
+></P
+><P
+>	This document guides you through the installation of the Postfix mail transportation agent (MTA), 
+	the Cyrus IMAP server. The goal is a fully functional high-performance 
+	mailsystem with user-administration with Web-cyradm, a webinterface. Data like virtualusers, 
+	aliases etc. are stored in a mysql database.
+    </P
+><P
+></P
+></DIV
+></DIV
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="intro.html"
+>Introduction</A
+></DT
+><DD
+><DL
+><DT
+>1.1. <A
+HREF="intro.html#AEN76"
+>Contributors and Contacts</A
+></DT
+><DT
+>1.2. <A
+HREF="intro.html#AEN80"
+>Why I wrote this document</A
+></DT
+><DT
+>1.3. <A
+HREF="intro.html#COPYRIGHT"
+>Copyright Information</A
+></DT
+><DT
+>1.4. <A
+HREF="intro.html#DISCLAIMER"
+>Disclaimer</A
+></DT
+><DT
+>1.5. <A
+HREF="intro.html#NEWVERSIONS"
+>New Versions</A
+></DT
+><DT
+>1.6. <A
+HREF="intro.html#CREDITS"
+>Credits</A
+></DT
+><DT
+>1.7. <A
+HREF="intro.html#FEEDBACK"
+>Feedback</A
+></DT
+><DT
+>1.8. <A
+HREF="intro.html#TRANSLATIONS"
+>Translations</A
+></DT
+></DL
+></DD
+><DT
+>2. <A
+HREF="tech.html"
+>Technologies</A
+></DT
+><DD
+><DL
+><DT
+>2.1. <A
+HREF="tech.html#POSTFIX"
+>The Postfix MTA</A
+></DT
+><DT
+>2.2. <A
+HREF="tech.html#CYRUS"
+>Cyrus IMAP</A
+></DT
+><DT
+>2.3. <A
+HREF="tech.html#MYSQL"
+>MySQL Database</A
+></DT
+><DT
+>2.4. <A
+HREF="tech.html#PAM-MYSQL"
+>pam_mysql</A
+></DT
+><DT
+>2.5. <A
+HREF="tech.html#WEB-CYRADM"
+>Web-cyradm Webinterface</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="install.html"
+>Getting and installing the software</A
+></DT
+><DD
+><DL
+><DT
+>3.1. <A
+HREF="install.html#MYSQL-INSTALL"
+>Getting and installing MySQL</A
+></DT
+><DT
+>3.2. <A
+HREF="install.html#BERKELEY-DB"
+>Getting and installing Berkely DB</A
+></DT
+><DT
+>3.3. <A
+HREF="install.html#CYRUS-INSTALL"
+>Getting and installing Cyrus SASL and IMAP</A
+></DT
+><DT
+>3.4. <A
+HREF="install.html#POSTFIX-INSTALL"
+>Getting and installing Postfix</A
+></DT
+><DT
+>3.5. <A
+HREF="install.html#PAM-MYSQL-INSTALL"
+>Getting and installing pam_mysql</A
+></DT
+><DT
+>3.6. <A
+HREF="install.html#WEB-CYRADM-INSTALL"
+>Getting and installing Web-cyradm</A
+></DT
+></DL
+></DD
+><DT
+>4. <A
+HREF="mysql-config.html"
+>Configuring MySQL</A
+></DT
+><DD
+><DL
+><DT
+>4.1. <A
+HREF="mysql-config.html#MYSQL-CONFIG-SECURING"
+>Securing MySQL</A
+></DT
+><DT
+>4.2. <A
+HREF="mysql-config.html#MYSQL-CREATE-DB"
+>Create the databases and tables</A
+></DT
+></DL
+></DD
+><DT
+>5. <A
+HREF="pam-config.html"
+>Configuring PAM</A
+></DT
+><DT
+>6. <A
+HREF="postfix-config.html"
+>Configuring Postfix</A
+></DT
+><DD
+><DL
+><DT
+>6.1. <A
+HREF="postfix-config.html#POSTFIX-MASTER"
+>master.cf</A
+></DT
+><DT
+>6.2. <A
+HREF="postfix-config.html#POSTFIX-MAIN"
+>main.cf</A
+></DT
+></DL
+></DD
+><DT
+>7. <A
+HREF="cyrus-config.html"
+>Configuring Cyrus IMAP</A
+></DT
+><DD
+><DL
+><DT
+>7.1. <A
+HREF="cyrus-config.html#CYRUS-CONFIGFILES"
+>Creating the config files</A
+></DT
+><DT
+>7.2. <A
+HREF="cyrus-config.html#CYRUS-DIRECTORIES"
+>Creating the directories</A
+></DT
+><DT
+>7.3. <A
+HREF="cyrus-config.html#CH-ATTRIB"
+>Changing the attributes</A
+></DT
+></DL
+></DD
+><DT
+>8. <A
+HREF="web-cyradm-config.html"
+>Configuring Web-cyradm</A
+></DT
+><DD
+><DL
+><DT
+>8.1. <A
+HREF="web-cyradm-config.html#AEN478"
+>Cyrus setup</A
+></DT
+><DT
+>8.2. <A
+HREF="web-cyradm-config.html#AEN482"
+>Database setup</A
+></DT
+><DT
+>8.3. <A
+HREF="web-cyradm-config.html#AEN494"
+>Default Quota</A
+></DT
+><DT
+>8.4. <A
+HREF="web-cyradm-config.html#AEN497"
+>Crypted passwords</A
+></DT
+><DT
+>8.5. <A
+HREF="web-cyradm-config.html#AEN500"
+>Usernames</A
+></DT
+></DL
+></DD
+><DT
+>9. <A
+HREF="test.html"
+>Testing the setup</A
+></DT
+><DD
+><DL
+><DT
+>9.1. <A
+HREF="test.html#TEST-RUNNING"
+>(Re-)Starting the daemons</A
+></DT
+><DT
+>9.2. <A
+HREF="test.html#TESTING-WEB-CYRADM"
+>Testing Web-cyradm</A
+></DT
+><DT
+>9.3. <A
+HREF="test.html#TESTING-POSTFIX"
+>Testing postfix</A
+></DT
+><DT
+>9.4. <A
+HREF="test.html#TESTING-CYRUS"
+>Testing the IMAP and POP functionality</A
+></DT
+></DL
+></DD
+><DT
+>10. <A
+HREF="moreinfo.html"
+>Further Information</A
+></DT
+><DD
+><DL
+><DT
+>10.1. <A
+HREF="moreinfo.html#NEWSGROUPS"
+>News groups</A
+></DT
+><DT
+>10.2. <A
+HREF="moreinfo.html#MAILLISTS"
+>Mailing Lists</A
+></DT
+><DT
+>10.3. <A
+HREF="moreinfo.html#HOWTO"
+>HOWTO</A
+></DT
+><DT
+>10.4. <A
+HREF="moreinfo.html#LOCAL-RES"
+>Local Resources</A
+></DT
+><DT
+>10.5. <A
+HREF="moreinfo.html#WEB"
+>Web Sites</A
+></DT
+></DL
+></DD
+><DT
+>11. <A
+HREF="faq.html"
+>Questions and Answers</A
+></DT
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="intro.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Introduction</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

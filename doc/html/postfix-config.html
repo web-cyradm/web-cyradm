@@ -1,0 +1,499 @@
+<HTML
+><HEAD
+><TITLE
+>Configuring Postfix</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Configuring PAM"
+HREF="pam-config.html"><LINK
+REL="NEXT"
+TITLE="Configuring Cyrus IMAP"
+HREF="cyrus-config.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Postfix-Cyrus-Web-cyradm-HOWTO</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="pam-config.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="cyrus-config.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="POSTFIX-CONFIG">6. Configuring Postfix</H1
+><P
+>Postfix needs two major config files: <TT
+CLASS="FILENAME"
+>main.cf</TT
+> and <TT
+CLASS="FILENAME"
+>master.cf</TT
+>. Both needs
+	now our attention.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="POSTFIX-MASTER">6.1. master.cf</H2
+><P
+>You need to change just one line:</P
+><P
+>old: </P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>flags=R user=cyrus argv=/cyrus/bin/deliver -e -m ${extension} ${user}</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>new: </P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>flags= user=cyrus argv=/usr/cyrus/bin/deliver -r ${sender} -m ${extension} ${user}</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>	What affect that changes?
+	</P
+><P
+>	A look to the cyrus man-pages <B
+CLASS="COMMAND"
+>man deliver</B
+>clears that issue:
+	</P
+><P
+>	The Postfix default setup uses a wrong path to the cyrus deliver, this is the first change.
+	The parameter »-r« Inserts a proper return path, without that mail rejected by sieve will be sent to cyrus at yourdomain.
+	</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="POSTFIX-MAIN">6.2. main.cf</H2
+><P
+>Here you need to change some more things like hostname, relaying, alias-lookups etc.</P
+><P
+>First change hostname:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>myhostname = foo.bar.org</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>mydestination</P
+><P
+>Here you have to put all domainnames that are local (corresponding to sendmail's /etc/mail/sendmail.cw)
+If you have multiple domains separate them with comma</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>mydestination = foo.bar.org, example.com, furchbar-grausam.ch, 
+ whatever.domain.tld, mysql:/etc/postfix/mysql-mydestination.cf</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>relayhost</P
+><P
+>Here you define where to deliver outgoing mails. If you do not provide any host. mails are delivered directly 
+to the destination smtp host. Usually your relayhosts are your providers smtp-server </P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>relayhost = relay01.foobar.net relay02.foobar.net relay03.foobar.net</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>mailtransport</P
+><P
+>Here you define how the mails accepted for local delivery should be handled. In our situation mails should be 
+delivered by the cyrus delivery-program</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>mailbox_transport = cyrus</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>At the end of file you need to add:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>virtual_maps = hash:/etc/postfix/virtual, mysql:/etc/postfix/mysql-virtual.cf</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>Outgoing addresses should be rewritten from i.e test0002 at domain to user.name at virtualhost.com. This is important 
+if you like to use a webmail interface.</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>sender_canonical_maps = mysql:/etc/postfix/mysql-canonical.cf </PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>Now you need to create the file <TT
+CLASS="FILENAME"
+>/etc/postfix/mysql-virtual.cf</TT
+>: </P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>#
+# mysql config file for alias lookups on postfix
+# comments are ok.
+#
+
+# the user name and password to log into the mysql server
+hosts = localhost
+user = mail
+password = secret
+
+# the database name on the servers
+dbname = mail
+
+# the table name
+table = virtual
+
+#
+select_field = dest
+where_field = alias
+additional_conditions = and status = '1'</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>The file <TT
+CLASS="FILENAME"
+>/etc/postfix/mysql-canonical.cf</TT
+>:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+># mysql config file for canonical lookups on postfix
+# comments are ok.
+#
+
+# the user name and password to log into the mysql server
+hosts = localhost
+user = mail
+password = secret
+
+# the database name on the servers
+dbname = mail
+
+# the table name
+table = virtual
+#
+select_field = alias
+where_field = username
+# Return the first match only
+additional_conditions = and status = '1' limit 1</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>Finally the file <TT
+CLASS="FILENAME"
+>/etc/postfix/mysql-mydestination.cf</TT
+>:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+># mysql config file for local domain (like sendmail's sendmail.cw) lookups on postfix
+# comments are ok.
+#
+
+# the user name and password to log into the mysql server
+hosts = localhost
+user = mail
+password = secret
+
+# the database name on the servers
+dbname = mail
+
+# the table name
+table = domain
+#
+select_field = domain_name
+where_field = domain_name</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>SMTP Authentication with SASL and PAM</P
+><P
+>Put the following in your <TT
+CLASS="FILENAME"
+>/etc/postfix/main.cf</TT
+></P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>smtpd_sasl_auth_enable = yes
+smtpd_recipient_restrictions = permit_sasl_authenticated, check_relay_domains
+smtpd_sasl_security_options = noanonymous
+broken_sasl_auth_clients = yes</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>You also need to create the file <TT
+CLASS="FILENAME"
+>/usr/local/lib/sasl2/smtpd.conf</TT
+> with
+the following content:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>pwcheck_method: saslauthd</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>The next step is make the saslauthd socket being found by postfix:</P
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>mv /var/run/sasl2 /var/run/sasl2-old
+ln -s /var/run/saslauthd /var/run/sasl2</PRE
+></FONT
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="pam-config.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="cyrus-config.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Configuring PAM</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Configuring Cyrus IMAP</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

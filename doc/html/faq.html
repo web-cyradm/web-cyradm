@@ -1,0 +1,192 @@
+<HTML
+><HEAD
+><TITLE
+>Questions and Answers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Further Information"
+HREF="moreinfo.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Postfix-Cyrus-Web-cyradm-HOWTO</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="moreinfo.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+>&nbsp;</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="FAQ">11. Questions and Answers</H1
+><P
+>	Here I answer the questions which I got from users. If you don't find an answer feel free to contact me</P
+><P
+></P
+><UL
+><LI
+><P
+>	Q: Does web-cyradm only support users like »test0001« ? I'd like to have a more desciptive username
+	</P
+><P
+>&#13;	</P
+><P
+>	A: web-cyradm does also support usernames like »user.name.example.com« if you configure it.
+	Your need to change config.inc.php and change the value of DOMAIN_AS_PREFIX to 1. then you need to add
+	»unixhierarchysep: yes« to your <TT
+CLASS="FILENAME"
+>/etc/imapd.conf</TT
+>
+	</P
+></LI
+><LI
+><P
+>      Q: Why MySQL and not LDAP?
+     </P
+><P
+>      A: Good question. LDAP is role-based and it would be indeed a better solution for such applications. Unfortunately LDAP
+      is very hard to set up. You have to make proper schemes etc. MySQL is the way strait ahead, it is very easy to handle and 
+      versatile. There is a PAM module available for LDAP, feel free to use it.
+     </P
+></LI
+><LI
+><P
+>      Q: Why Postfix and not Qmail?
+     </P
+><P
+>      A: Lots of people like to see such a setup with Qmail. The reason why is, Mysql-support is a hack and not in the
+      included in the main source-tree. This could end up in a bad situation. Think if a security-hole is found in qmail
+      and the patch does not work with the corrected version. Postfix is supporting MySQL natively. Another (personal) reason is
+      that I find Postfix more sympatic (I don't know why)
+     </P
+></LI
+><LI
+><P
+>      Q: I got a Error: "Temporary lookup failure"
+     </P
+><P
+>      A: Postfix cannot look up the alias table. Must common failure is that MySQL is not running, or there is a authentication
+      Error. Check <TT
+CLASS="FILENAME"
+>/var/log/mail</TT
+> and <TT
+CLASS="FILENAME"
+>/usr/local/mysql/var/&#60;hostname&#62;.err</TT
+>
+      to track the error
+     </P
+></LI
+><LI
+><P
+>      Q: Does this HOWTO also work on other platforms?
+     </P
+><P
+>      A: Unsure. I personally compiled MySQL and Apache on AIX 4.3 and 5.1L (php does not run properly on AIX), 
+      Solaris 6/7/8 and HP-UX. Cyrus, pam_mysql and cyrus I never tried. On Solaris there is maybe a chance to get pam_mysql 
+      running. On AIX there is no PAM, but a similar mechanism. In short: Try it, and let me know if were successful
+     </P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="moreinfo.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Further Information</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
