@@ -161,7 +161,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				#################### Begin domain name checks and INSERT ########################
 
-				if ($newdomain){
+				if (isset($newdomain)){
 
 					# Check if the domain to be added really exists
 
@@ -177,7 +177,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					}
 				}
 
-				if ($newadmintype==0 AND !empty($newdomain)){
+				if ($newadmintype==0){
 					print $newadminuser;
 					$query2="INSERT INTO domainadmin (domain_name , adminuser) values ('*' , '$newadminuser')";
 					$result2=$handle1->query($query2);
