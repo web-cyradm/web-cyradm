@@ -23,6 +23,13 @@ CREATE TABLE adminuser (
   home varchar(255) NOT NULL default ''
 );
 
+CREATE TABLE settings (
+  username varchar(50) PRIMARY KEY,
+  style varchar(50) NOT NULL default 'default',
+  maxdisplay int NOT NULL default 15,
+  warnlevel int NOT NULL default 90
+);
+
 CREATE TABLE alias (
   alias varchar(255) PRIMARY KEY,
   dest varchar(255),
