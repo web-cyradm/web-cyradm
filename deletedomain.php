@@ -45,6 +45,7 @@ if ($admintype==0){
 		$cyr_conn = new cyradm;
 	        $cyr_conn -> imap_login();
 
+		# First Delete all stuff related to the domain from the mysql database
 	
 		$query2="DELETE FROM virtual WHERE domain_name='$domain'";
 		$hnd2=mysql_db_query($MYSQL_DB,$query2);
@@ -60,6 +61,8 @@ if ($admintype==0){
 			$username=mysql_result($result1,$i,"username");
 			$query5="DELETE FROM virtual WHERE username='$username'";
 			$result5=mysql_db_query($MYSQL_DB,$query5);
+
+			# And delete also the Usermailboxes from the cyrus system
 
                         if ($DOMAIN_AS_PREFIX){
 				print $cyr_conn -> deletemb("user/".$username);
