@@ -1,7 +1,7 @@
 <?php
 $ref=WC_BASE."/index.php";
 if ($ref!=$_SERVER['SCRIPT_FILENAME']){
-	header("Location: index.php");
+//	header("Location: index.php");
 }
 ?>
 <?php
@@ -16,7 +16,7 @@ if ($nls['aliases'][$browserlang1]){
 }
 
 
-include WC_BASE . "/header.inc.php";
+#include WC_BASE . "/header.inc.php";
 
 setlocale(LC_MESSAGES, "$LANG");
 putenv("LANG=$LANG");

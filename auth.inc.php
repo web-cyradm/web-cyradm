@@ -60,8 +60,8 @@ if ($login && $password){
           fclose($fp);
           unset($_SESSION['session_ok']);
           //session_unregister("session_ok");
-
-	   include ("failed.php");
+	   #include ("failed.php");
+	   header ("Location: failed.php");
 	   die();
 	
      }
