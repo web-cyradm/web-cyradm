@@ -21,80 +21,81 @@ if ($authorized){
 	$result=$handle->query($query);
 	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 	$password=$row['password'];
-	$daemon = new sieve("localhost","2000",$dest,$password,"");
+	//$daemon = new sieve("localhost","2000",$dest,$password,"");
+	$daemon = new sieve("localhost","2000", $user, $CYRUS_PASSWORD, $CYRUS_USERNAME);
 
 	if ($confirmed){
 
 //	        $query="UPDATE virtual SET alias='$newalias@$domain', dest='$dest' WHERE alias='$alias'";
-	  switch ($mode) {
-	  case 'set':
-	  if ($daemon->sieve_login()) {
-	    $sieve_str = new sieve_strs;
-	    $mess = $vacation_text;
-	    $mess2 = preg_replace ("/\s*$/s",'',$mess);
-	    $mess3 = preg_replace ("/\r/",'',$mess2);
-	    if (preg_match ("/subject.*\n(.*)$/iUs", $mess3, $matches)){
-	      // remove 'subject:' and trailing space.
-	      preg_match ("/subject.*(\w.*)\s*\r?\n/iU",$matches[0],$matches2);
-	      $subject = $matches2[1];
-	      $text = $matches[1];
-	    } else {
-	      $subject = 'On vacation messages';
-	      $text = $mess2;
-	    }
-	    // remove leading lines.
-	    if (preg_match ("/^\s*\n*(.*)$/s", $text, $matches)){
-	      $text = $matches[1];
-	    } else $text = '';
-	    $vacation_script = 'require "vacation"; vacation :days 1 :addresses ["'.$alias.'"] :subject "'.$subject.'" "'.$text."\";\n";
-	    $old_script = $sieve_str->get_old_script($daemon);
-	    if (preg_match ("/redirect \".*$/siU", $old_script, $matches)){
-	      $forwards_script = $matches[0];
-	    } else $forwards_script ='';
-	    $script = $vacation_script.$forwards_script;
-	    if ($daemon->sieve_sendscript('sieve', $script) ) {
-	      if ($daemon->sieve_setactivescript('sieve')) {
-	        print '<big><b>._("Vacation notice set").</b></big>';
-	      } else {
-	        print '<big><b>._("Failed to activate vacation").</b></big>';
-	      }
-	    } else {
-	      print '<big><b>._("Failure in modifying vacation notice").</b></big>';
-	    }
-	  } else {
-	    print '<big><b>._("Failed to login").</b></big><p><p>';
-	  }
-	  break;
+	switch ($mode) {
+		case 'set':
+			if ($daemon->sieve_login()) {
+				$sieve_str = new sieve_strs;
+				$mess = $vacation_text;
+				$mess2 = preg_replace ("/\s*$/s",'',$mess);
+				$mess3 = preg_replace ("/\r/",'',$mess2);
+				if (preg_match ("/subject.*\n(.*)$/iUs", $mess3, $matches)){
+					// remove 'subject:' and trailing space.
+					preg_match ("/subject.*(\w.*)\s*\r?\n/iU",$matches[0],$matches2);
+					$subject = $matches2[1];
+					$text = $matches[1];
+				} else {
+					$subject = 'On vacation messages';
+					$text = $mess2;
+				}
+				// remove leading lines.
+				if (preg_match ("/^\s*\n*(.*)$/s", $text, $matches)){
+					$text = $matches[1];
+				} else $text = '';
+					$vacation_script = 'require "vacation"; vacation :days 1 :addresses ["'.$alias.'"] :subject "'.$subject.'" "'.$text."\";\n";
+					$old_script = $sieve_str->get_old_script($daemon);
+					if (preg_match ("/redirect \".*$/siU", $old_script, $matches)){
+						$forwards_script = $matches[0];
+					} else $forwards_script ='';
+						$script = $vacation_script.$forwards_script;
+						if ($daemon->sieve_sendscript('sieve', $script) ) {
+							if ($daemon->sieve_setactivescript('sieve')) {
+								print "<big><b>"._("Vacation notice set")."</b></big>";
+							} else {
+								print "<big><b>"._("Failed to activate vacation")."</b></big>";
+							}
+						} else {
+							print "<big><b>"._("Failure in modifying vacation notice")."</b></big>";
+						}
+					} else {
+						print "<big><b>"._("Failed to login")."</b></big><p><p>";
+				}
+			break;
 
-	  case 'unset':
-	  if ($daemon->sieve_login() ){
-	    $sieve_str = new sieve_strs;
-	    $old_script = $sieve_str->get_old_script($daemon);
-	    if (preg_match ("/redirect \".*$/is",$old_script,$matches) ){
-	      $forwards_script = $matches[0];
-	      if ($daemon->sieve_sendscript('sieve', $forwards_script) ) {
-	        print '<big><b>._("Vacation notice unset").</b></big>';
-	      } else {
-	        print '<big><b>._("Failure in unseting vacation notice").</b></big>';
-	      }
-	    } else {
-	      if ($daemon->sieve_deletescript('sieve')) {
-	        print '<big><b>._("Vacation notice removed").</b></big>';
-	      } else {
-	        print '<big><b>._("Failure in removing vacation notice").</b></big>';
-	      }
-	    }
-	  } else {
-	    print '<big><b>._("Failed to login").</b></big>';
-	  }
-	  break;
+		case 'unset':
+			if ($daemon->sieve_login() ){
+				$sieve_str = new sieve_strs;
+				$old_script = $sieve_str->get_old_script($daemon);
+					if (preg_match ("/redirect \".*$/is",$old_script,$matches) ){
+						$forwards_script = $matches[0];
+						if ($daemon->sieve_sendscript('sieve', $forwards_script) ) {
+							print "<big><b>"._("Vacation notice unset")."</b></big>";
+						} else {
+							print "<big><b>"._("Failure in unseting vacation notice")."</b></big>";
+						}
+					} else {
+						if ($daemon->sieve_deletescript('sieve')) {
+							print "<big><b>"._("Vacation notice removed")."</b></big>";
+						} else {
+							print "<big><b>"._("Failure in removing vacation notice")."</b></big>";
+						}
+					}
+				} else {
+					print "<big><b>"._("Failed to login")."</b></big>";
+				}
+			break;
 
-	  default:
-	  print '<big><b>._("Not possible").</b></big>';
-	  break;
-	  }
+		default:
+			print "<big><b>"._("Not possible")."</b></big>";
+		break;
+	}
 
-	  include ("browseaccounts.php");
+	include ("browseaccounts.php");
 //	        if (!DB::isError($result)){
 //	                print "<h3>"._("Sucessfully changed")."</h3>";
 //			include ("browseaccounts.php");
@@ -158,9 +159,7 @@ if ($authorized){
 		  $vacation_script2 = preg_replace ( "/subject \"/", "Subject: ",$vacation_script );
 		  $vacation_script = preg_replace ( "/\";$/", "", $vacation_script2 );
 		  ?>
-		  <textarea name='vacation_text' rows='6' cols='55'>
-<?php print $vacation_script; ?>		  
-		  </textarea><br>
+		  <textarea name='vacation_text' rows='6' cols='55'><?php print $vacation_script; ?></textarea><br>
 		      
 		      
 	        <input type="submit" value="Submit"> 
