@@ -22,7 +22,7 @@ $_get_vars = array(
 	'newdomain', 'email', 'alias', 'dest', 'newalias', 'newdest', 'confirmed',
 	'cancel', 'searchstring', 'transport', 'tparam', 'mode', 'forwards',
 	'metoo', 'vacation_text', 'freenames', 'freeaddress', 'LANG', 'delete_catchall',
-	'newdomain'
+	'resp_domain', 'newdomain'
 );
 
 $_post_vars = array(
