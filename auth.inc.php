@@ -21,7 +21,7 @@ function authenticate($user, $pw) {
 	}
 
 	if ($username==$user and $password==$pw){
-		$auth=true;
+		$auth=TRUE;
 	}
 if ($auth){
 		return TRUE;
@@ -34,7 +34,8 @@ if ($auth){
 
 $session_ok = FALSE;
 
-if (isset($login) and isset($password)) {
+if ($login!="" and $password!="") {
+
 
   // Log access
 	$fp = fopen("/var/log/web-cyradm-login.log", "a");
