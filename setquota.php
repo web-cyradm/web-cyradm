@@ -77,23 +77,23 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 //				$cyr_conn = new cyradm;
 //				$cyr_conn->imap_login();
-				if ($domain_quota!=0) {
+				// for change bigger->smaler or none->set we don't want domain quota checks
+				if ($domain_quota!=0 && $q['qmax']<$quota && $q['qmax']!="NOT-SET") {
 					$used_domain_quota = 0;
-					
+
 					$query2 = "SELECT `username` FROM accountuser WHERE prefix='$prefix' ORDER BY `username`";
 					$result2 = $handle->query($query2);
 					$cnt2 = $result2->numRows($result2);
-					
+
 					for ($c2 = 0; $c2 < $cnt2; $c2++){
 						$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
 						$user_quota = $cyr_conn->getquota("user" . $_sep . $row2['username']);
-						
 						if ($user_quota['qmax'] != "NOT-SET"){
 							$used_domain_quota += $user_quota['qmax'];
 						}
 					}
 					$quota_left = $domain_quota - $used_domain_quota;
-					
+
 					if ($quota_left>0) {
 						if ($quota > $quota_left){
 							$quota = $quota_left;
@@ -117,11 +117,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							<span style="color: red;">
 								<?php print _("Quota exeeded");?>
 							<br>
-						       		<?php print _("Quota NOT changed");?>
+								<?php print _("Quota NOT changed");?>
 							</span>
+						</h3>
 						<?php
 					}
-				} // End of if ($domain_quota!=0)
+				} // End of if ($domain_quota!=0 && $q['qmax']<$quota && $q['qmax']!="NOT-SET")
 				else {
 					print $cyr_conn->setmbquota("user" . $_sep . $username, $quota);
 					?>
@@ -141,7 +142,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			}
 		}
 
-		print "<h3>".$err_msg."</h3>";
+//		print "<h3>".$err_msg."</h3>";
 
 		?>
 	</td>
