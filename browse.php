@@ -84,11 +84,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				if ($next>=$cnt){
 					print "<td class=\"navi\"><a>"._("Next entries")."</a></td>";
-				}
-				else {
+				} else {
 					print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=$next\">". _("Next entries")."</a></td>";
 				}
-				print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=$last\">"._("Last entry") ."</a></td>";		
+				if ($cnt > $_SESSION['maxdisplay']){
+					print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=$last\">"._("Last entry") ."</a></td>";
+				} else {
+					print "<td class=\"navi\"><a>"._("Last entry") ."</a></td>";
+				}			
                                 ?>
 
 
