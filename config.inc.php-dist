@@ -1,5 +1,8 @@
 <?php
 
+$LANG="de_CH";
+setlocale(LC_ALL, $LANG);
+
 # The Cyrus login stuff
 
 $CYRUS_HOST="localhost";
