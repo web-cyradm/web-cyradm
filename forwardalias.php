@@ -42,12 +42,12 @@ if ($authorized){
 	    $forwards_script ='';
 	    $forwardwhere = $forwards;
 	    while ( preg_match ("/(.*),(.*$)/U",$forwardwhere, $matches)){
-	      $forwards_script .= 'redirect "'.ltrim($matches[1]).'";'."\n";
+	      $forwards_script .= 'redirect "'.trim($matches[1]).'";'."\n";
 	      $forwardwhere = $matches[2];
 	    }
-	    $forwards_script .= 'redirect "'.$forwardwhere.'";';
+	    $forwards_script .= 'redirect "'.trim($forwardwhere).'";';
 	    if ($metoo == 'on') {
-	      $forwards_script .= "keep;";
+	      $forwards_script .= "\nkeep;";
 	    }
 	    $forwards_script .= "\n";
 	    $old_script = $sieve_str->get_old_script($daemon);
@@ -73,9 +73,19 @@ if ($authorized){
 	        print "<big><b>"._("Forwarding removed")."</b></big>";
 	      }else print "<big><b>"._("Failure in removing forwarding")."</b></big>";
 	    }else {
-	      if ($daemon->sieve_deletescript('sieve')) {
+	      if ($daemon->sieve_listscripts() !== FALSE){
+		if (in_array('sieve', $daemon->response)){
+	          if ($daemon->sieve_deletescript('sieve')) {
+	            print "<big><b>"._("Forwarding removed")."</b></big>";
+	          }else print "<big><b>"._("Failure in removing forwarding")."</b></big>";
+		} else {
+		  // TODO: Comeup with a better message here...
+		  print "<big><b>"._("Forwarding removed")."</b></big>";
+		}
+	      } else {
+	        // TODO: ... and comeup with a better message here.
 	        print "<big><b>"._("Forwarding removed")."</b></big>";
-	      }else print "<big><b>"._("Failure in removing forwarding")."</b></big>";
+	      }
 	    }
 	  }else print "<big><b>"._("Failed to login")."</b></big>";
 	  break;
@@ -124,10 +134,10 @@ if ($authorized){
 		      $forwards_script = $matches[0];
 		      $forwards_text = '';
 		      while ( preg_match ("/(redirect \")(.*)(\";)(.*$)/siU", $forwards_script, $matches )){
-		        $forwards_text .= $matches[2].','; 
+		        $forwards_text .= $matches[2].', '; 
 		        $forwards_script = $matches[4];
 		      }
-		      $forwards_text = rtrim ($forwards_text, ',');
+		      $forwards_text = rtrim ($forwards_text, ', ');
 		      if (preg_match ("/keep;/i", $forwards_script, $matches)){
 		        $keep = 'checked';
 		      } else $keep = '';
@@ -140,7 +150,8 @@ if ($authorized){
 		  ?>
 
 		<br>
-		<INPUT TYPE="radio" NAME="mode" VALUE="set" checked><?php print _("Set forwarding to") ?>:
+		
+		<INPUT TYPE="radio" NAME="mode" VALUE="set" checked><?php print _("Set forwarding to") . " " . _("(Seperate multiple values with ,)") ?>:
 		<INPUT class="inputfield" type='text' name='forwards' value='<?php print $forwards_text ?>' size='50' ><br>
 		<input type='checkbox' name='metoo' <?php print $keep."> "._("Keep a copy in the user's mailbox") ?><br><br>
 		<INPUT TYPE="radio" NAME="mode" VALUE="unset"><?php print _("Remove forwarding") ?><br><br><br>
