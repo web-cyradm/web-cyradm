@@ -2,6 +2,7 @@
 body {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 11px;
+	background-color: #f4f7f7;
 }
 
 A:ACTIVE,A:LINK, A:VISITED{
