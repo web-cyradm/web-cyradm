@@ -28,7 +28,7 @@ if (! isset($domain)){
 				Search
 			</tr>
 
-		</tr>
+<!-- 		</tr> -->
 
 		<tr>
 			<td class="rootnavi">

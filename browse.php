@@ -36,7 +36,7 @@ if (!$orderby){
 	        $result2 = $handle->query($query2);
         	$total=$result2->numRows($result2);
 ?>
-		<table border="1" width="98%">
+<!-- 		<table border="1" width="98%"> -->
 				<?php
 
 				if (! isset($_SESSION['allowed_domains'])) {
