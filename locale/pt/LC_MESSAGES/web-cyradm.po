@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: web-cyradm 0.5.3-1\n"
 "POT-Creation-Date: 2003-08-10 16:56+0200\n"
-"PO-Revision-Date: 2003-06-16 15:39+0000\n"
+"PO-Revision-Date: 2003-08-26 16:41+0000\n"
 "Last-Translator: Michelle Ribeiro <michelle@cipsga.org.br>\n"
 "Language-Team: Portuguese/Brazil\n"
 "MIME-Version: 1.0\n"
@@ -161,13 +161,12 @@ msgid "Delete adminuser"
 msgstr "Remover usuário administrador"
 
 #: adminuser.php:144
-#, fuzzy
 msgid "All domains"
-msgstr "domínio"
+msgstr "Todos os domínios"
 
 #: adminuser.php:148
 msgid "None"
-msgstr ""
+msgstr "Nenhum"
 
 #: adminuser.php:158 editadminuser.php:65 menu.inc.php:132 newadminuser.php:57
 #: newadminuser.php:207
@@ -280,25 +279,24 @@ msgstr "receber todas as mensagens para endereços de e-mail não definidos ?"
 
 #: catchall.php:46
 msgid "The currently defined user"
-msgstr ""
+msgstr "O usuário definido atualmente"
 
 #: catchall.php:46
-#, fuzzy
 msgid "will not receiving any undefined emailadresses anymore"
-msgstr "receber todas as mensagens para endereços de e-mail não definidos ?"
+msgstr "não irá receber e-mails com endereços indefinidos mais"
 
 #: catchall.php:74
 msgid "The user"
-msgstr ""
+msgstr "O usuário"
 
 #: catchall.php:74
-#, fuzzy
 msgid "is allready defined to receive all undefined Emails."
-msgstr "receber todas as mensagens para endereços de e-mail não definidos ?"
+msgstr ""
+"já está definido para receber todas os e-mails com endereços inexistentes."
 
 #: catchall.php:76
 msgid "Do you want to remove the function \"catch all\" for the account"
-msgstr ""
+msgstr "Você deseja remover a função \"receber todas\" da conta"
 
 #: catchall.php:127 newadminuser.php:197
 msgid "successfully added to Database"
@@ -339,7 +337,7 @@ msgstr "Confirmar nova senha"
 
 #: change_password.php:121 newaccount.php:243
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Senhas não conferem"
 
 #: deleteaccount.php:25
 msgid "Delete an Account from the System"
@@ -378,7 +376,7 @@ msgstr "Você quer realmente remover o supervisor do domínio"
 
 #: deleteadminuser.php:90 editadminuser.php:276
 msgid "At least one Superuser is needed for Web-cyradm"
-msgstr ""
+msgstr "Ao menos um super usuário é necessário para o web-cyradm"
 
 #: deleteadminuser.php:103
 msgid "Admin user deleted"
@@ -488,22 +486,20 @@ msgid "Confirm Password"
 msgstr "Confirmar senha"
 
 #: editadminuser.php:155
-#, fuzzy
 msgid "No Domain assigned yet"
-msgstr "Nenhum domínio selecionado"
+msgstr "Nenhum domínio selecionado ainda"
 
 #: editadminuser.php:165
-#, fuzzy
 msgid "Add new domain to this admin"
-msgstr "Adicionar novo alias no domínio"
+msgstr "Adicionar novo domínio para este administrador"
 
 #: editadminuser.php:223
 msgid "No such domain, create domain first"
-msgstr ""
+msgstr "Domínio não existente. Crie o domínio primeiro"
 
 #: editadminuser.php:231
 msgid "Admin already repsonsible for the domain"
-msgstr ""
+msgstr "Administrador já é responsável por este domínio"
 
 #: editalias.php:27
 msgid "There was an error adding $dest to $alias: "
@@ -628,8 +624,8 @@ msgstr "Impossível"
 
 #: forwardalias.php:152
 msgid ""
-"You can't forward this email address with 'Allow Free Mail Addressess' set "
-"to off!"
+"You can't forward this email address with 'Allow Free Mail Addressess' set to "
+"off!"
 msgstr ""
 "Você não pode redirecionar este e-mail com a opção `Não restringir endereços "
 "de e-mail`desabilitada!"
@@ -766,7 +762,7 @@ msgstr "Desculpe, não é permitido mais contas neste domínio"
 
 #: newaccount.php:60
 msgid "Maximum allowed accounts is"
-msgstr "O número máximo de contas permitidas é"
+msgstr "O número máximo de contas permitido é"
 
 #: newaccount.php:137
 msgid "Quota"
@@ -785,9 +781,8 @@ msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Conta adicionada com sucesso ao subsistema IMAP"
 
 #: newadminuser.php:13
-#, fuzzy
 msgid "Add new administrator"
-msgstr "Adicionar administrador"
+msgstr "Adicionar novo administrador"
 
 #: newadminuser.php:64
 msgid "Select \"Superuser\" for all domains"
@@ -795,14 +790,13 @@ msgstr "Selecione \"Superuser\" para todos os domínios"
 
 #: newadminuser.php:132
 msgid "You must provide a username"
-msgstr ""
+msgstr "Você deve fornecer um nome de usuário"
 
 #: newadminuser.php:145
 msgid "Passwords are empty or not equal."
-msgstr ""
+msgstr "Senhas vazias ou não conferem"
 
 #: newadminuser.php:157
-#, fuzzy
 msgid "Username already exist"
 msgstr "O nome de usuário já existe"
 
@@ -811,14 +805,12 @@ msgid "Add new alias to domain"
 msgstr "Adicionar novo alias no domínio"
 
 #: newalias.php:55
-#, fuzzy
 msgid "Sorry, no more alias allowed for domain"
-msgstr "Desculpe, não é permitido mais contas neste domínio"
+msgstr "Desculpe, não é permitido mais alias neste domínio"
 
 #: newalias.php:60
-#, fuzzy
 msgid "Maximum allowed aliases is"
-msgstr "O número máximo de contas permitidas é"
+msgstr "O número máximo de alias permitido é"
 
 #: newdomain.php:15
 msgid "Add new domain"
@@ -966,9 +958,8 @@ msgid "Set forwarding to (one adress per line)"
 msgstr "Configurar redirecionamento para(um endereço por linha)"
 
 #: delete_catchall.php:31
-#, fuzzy
 msgid "successfully deleted from the Database"
-msgstr "adicionado a base de dados com sucesso"
+msgstr "removido da base de dados com sucesso"
 
 #: deleteemail.php:16
 msgid "Delete emailadress from the System"
