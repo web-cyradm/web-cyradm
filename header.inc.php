@@ -22,7 +22,13 @@ if (!$style){
 	$style="web-cyradm";
 }
 
-
+$query = "SELECT `maxdisplay` from adminuser WHERE username='$user'";
+$result = $handle->query($query);
+$maxdisplayrow = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+$maxdisplay = $maxdisplayrow['maxdisplay'];
+if (!$maxdisplay){
+        $maxdisplay=10;
+}
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">

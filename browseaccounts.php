@@ -58,10 +58,11 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				</td>
 
 				<?php
-				$prev = $row_pos - 10;
-				$next = $row_pos + 10;
+				//$prev = $row_pos - 10;
+				$prev = $row_pos - $maxdisplay;
+				$next = $row_pos + $maxdisplay;
 				
-				if ($row_pos < 10){
+				if ($row_pos < $maxdisplay){
 					$_linkP = '#';
 				} else {
 					$_linkP = sprintf('index.php?action=accounts&amp;domain=%s&amp;row_pos=%d',
@@ -77,11 +78,11 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				?>
 				
 				<td class="navi">
-					<a href="<?php echo $_linkP;?>"><?php print _("Previous 10 entries");?></a>
+					<a href="<?php echo $_linkP;?>"><?php print _("Previous entries");?></a>
 				</td>
 
 				<td class="navi">
-					<a href="<?php echo $_linkN;?>"><?php print _("Next 10 entries");?></a>
+					<a href="<?php echo $_linkN;?>"><?php print _("Next entries");?></a>
 				</td>
 			</tr>
 		</table>
