@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# 	This script merges existing PO's with a new POT
+#
+#
+
+for i in cs da de es fr hu it nl pl pt ro ru sv tr zh_CN
+
+do
+	chmod 644 ../locale/$i/LC_MESSAGES/web-cyradm.po
+	#chmod 644 ../locale/$i/LC_MESSAGES/web-cyradm.po~
+	chmod 644 ../locale/$i/LC_MESSAGES/web-cyradm.mo
+	#rm ../locale/$i/LC_MESSAGES/web-cyradm.po~
+	msgmerge -U ../locale/$i/LC_MESSAGES/web-cyradm.po ../locale/templates/web-cyradm.pot
+	msgfmt -o ../locale/$i/LC_MESSAGES/web-cyradm.mo ../locale/$i/LC_MESSAGES/web-cyradm.po
+	echo "=============================================================================="
+	echo "Statistics for Language $i:"
+	echo ""
+	msgfmt --statistics ../locale/$i/LC_MESSAGES/web-cyradm.po -o /dev/null
+	
+
+done
