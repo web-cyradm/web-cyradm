@@ -173,7 +173,7 @@ msgstr "als Sammeladresse einrichten"
 msgid "successfully added to Database"
 msgstr "Erfolgreich in der Datenbank eingef&uuml;gt"
 
-#: catchall.php:57 editemail.php:36 newemail.php:29
+#: catchall.php:57 editdomain.php:25 editemail.php:36 newemail.php:29
 msgid "Database error, please try again"
 msgstr "Datenbankfehler"
 
@@ -245,9 +245,13 @@ msgstr "Emailadresse &auml;ndern"
 msgid "Delete Emailadress"
 msgstr "Emailadresse l&ouml;schen"
 
-#: editemail.php:32
+#: editdomain.php:21
 msgid "Successfully changed"
 msgstr "Erfolgreich ge&auml;ndert"
+
+#: editdomain.php:61
+msgid "Not yet supported, change will be ignored"
+msgstr "Noch nicht unterst&uuml;tzt, wird ignoriert"
 
 #: editemail.php:63 newemail.php:53
 msgid "Emailadress"
