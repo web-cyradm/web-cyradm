@@ -51,8 +51,8 @@
 
 	  if ($c==0) {
 		print "<td rowspan=\"$cnt\">";
-//	        print $row['dest'];
-	        print $row['1'];
+	        print $row['dest'];
+//	        print $row['1'];
 	        print "</td>\n<td rowspan=\"$cnt\">";
 		print "******";
 	        print "</td>\n<td rowspan=\"$cnt\">";
