@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: web-cyradm\n"
 "POT-Creation-Date: 2002-08-18 13:51+0200\n"
-"PO-Revision-Date: 2002-11-13 02:24+0100\n"
+"PO-Revision-Date: 2002-11-14 00:54+0100\n"
 "Last-Translator: Luc de Louw <luc@delouw.ch>\n"
 "Language-Team: Deutsch <kde-i18n-de@mail.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -290,7 +290,9 @@ msgstr "L&ouml;schen einer Emailadresse"
 
 #: deleteemail.php:19
 msgid "Do you really want to delete the emailadress for user"
-msgstr "M&ouml;chten Sie diese Emailadresse f&uuml;r das Konto wirklich l&ouml;schen"
+msgstr ""
+"M&ouml;chten Sie diese Emailadresse f&uuml;r das nachstehende Konto wirklich "
+"l&ouml;schen:"
 
 #: editaccount.php:17
 msgid "Email adresses defined for user"
@@ -476,9 +478,25 @@ msgstr "Pr&auml;fix"
 msgid "Maximum Accounts"
 msgstr "Maximale Anzahl Konti"
 
-#: newdomain.php:48
+#: newdomain.php:41
 msgid "Default Quota in Kilobytes"
 msgstr "Standart Speicherplatzbegrenzung"
+
+#: newdomain.php:47
+msgid "Standart Mailboxes"
+msgstr "Standardmailboxen"
+
+#: newdomain.php:51
+msgid "emailadress where the default aliases should be mapped (empty means no mapping)"
+msgstr "Emailadresse an welche die Standardaliases weitergeleitet werden sollen (leer für keine Weiterleitung)"
+
+#: newdomain.php:59
+msgid "Mail transport"
+msgstr "Mail Transport"
+
+#: newdomain.php:60
+msgid "Leave this as is, unless you know what you are doing"
+msgstr "Ändern Sie diese nur, wenn Sie sicher sind was Sie tun"
 
 #: newdomain.php:125
 msgid "You are not allowed to add new domains"
