@@ -15,8 +15,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<td height="5" valign="bottom" class="footer" bgcolor="#CCCCCC">&nbsp;</td>
 				
 				<td height="5" valign="bottom" class="footer" bgcolor="#CCCCCC">
-					&copy; 2002, 2003, 2004 by Luc de Louw | 
-					see <a href="http://www.web-cyradm.org"
+					&copy; 2002-2005 by Luc de Louw | 
+					 <a href="http://www.web-cyradm.org"
 					target="_new">http://www.web-cyradm.org</a> | <?php print _("translated by: ").$nls['translator']["$LANG"]; ?> | you are running web-cyradm Version <?php print $VERSION; ?>
 				</td>
 			</tr>
