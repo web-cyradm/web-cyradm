@@ -356,8 +356,21 @@ if (! empty($action)){
 			}
 		}
 		break;
+########################################## Check input if display ##################################
 	case "display":
-		$authorized = TRUE;
+		if (isset($_GET['confirmed'])) {
+			if (!is_numeric($_GET['maxdisplay']) OR $_GET['maxdisplay'] <= 0) {
+				$authorized = FALSE;
+				$err_msg = "Value incorrect";
+			}
+			elseif (!is_numeric($_GET['warnlevel']) OR $_GET['warnlevel'] < 0 OR $_GET['warnlevel'] > 100) {
+				$authorized = FALSE;
+				$err_msg = "Warn level should be beetwen 0 and 100";
+			}
+			else {
+				$authorized = TRUE;
+			}
+		}
 		break;
 ######################################## Check on catch all setting ##################################
 	case "catch":
