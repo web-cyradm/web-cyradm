@@ -112,3 +112,5 @@ $VERSION="0.5.4-CVS";
 # Define reserved Emailadresses (Separated by comma):
 $RESERVED="postmaster,root";
 
+$TEMPLATE[0]="default";
+$TEMPLATE[1]="green";
