@@ -119,17 +119,17 @@ else{
        "domain_name) VALUES ('$username',";
    switch($CRYPT){
    case 1:
-       $query3 .= "ENCRYPT($password)";
+       $query3 .= "ENCRYPT('$password')";
        break;
    case 2:
-       $query3 .= "PASSWORD($password)";
+       $query3 .= "PASSWORD('$password')";
        break;
    default:
        $query3 .= "'$password'";
         }
    $query3.=",'$prefix','$domain')";
 
-	//print $query3;
+	print $query3;
 
 //	$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
 //	$result=mysql_db_query($MYSQL_DB,$query3,$handle1);
