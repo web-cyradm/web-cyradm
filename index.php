@@ -11,18 +11,24 @@ if ($nls['aliases'][$browserlang[0]]){
 
 session_start();
 $session_ok= $HTTP_SESSION_VARS['session_ok'];
+
+// Lowest prio langauge is the session setting
+
 if ($HTTP_SESSION_VARS['LANG']){
 	$LANG=$HTTP_SESSION_VARS['LANG'];
 }
+
+// if no langauge is already set, use defaultlanguage
+
 if ($LANG==""){
 	$LANG=$DEFAULTLANG;
+}
+
+// For testing porpose, http variable LANG overrides all
+
+if ($HTTP_GET_VARS['LANG']){
 	$LANG=$HTTP_GET_VARS['LANG'];
 }
-
-if ($LANG==""){
-        $LANG=$DEFAULTLANG;
-}
-
 
 include ("header.inc.php");
 
