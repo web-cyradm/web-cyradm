@@ -74,7 +74,6 @@ msgid "Add administrator"
 msgstr "Új adminisztátor"
 
 #: auth.inc.php:99
-#, fuzzy
 msgid "Web-cyradm is for authorized users only."
 msgstr "Csak hitelesített felhasználóknak"
 
@@ -163,12 +162,10 @@ msgid "Set catch all"
 msgstr "Set catch all"
 
 #: browseaccounts.php:99
-#, fuzzy
 msgid "Change Password"
 msgstr "Jelszó ismétlés"
 
 #: browseaccounts.php:100
-#, fuzzy
 msgid "Vacation"
 msgstr "tevékenység"
 
@@ -214,17 +211,14 @@ msgid "Change password for account"
 msgstr "Hozzáférés jelszavának megváltoztatása"
 
 #: change_password.php:72
-#, fuzzy
 msgid "New password"
 msgstr "Jelszó"
 
 #: change_password.php:76
-#, fuzzy
 msgid "Confirm new password"
 msgstr "Jelszó ismétlés"
 
 #: change_password.php:29
-#, fuzzy
 msgid "Password changed"
 msgstr "Jelszó"
 
@@ -253,12 +247,10 @@ msgid "Action cancelled, nothing deleted"
 msgstr "Tevékenység megszakítva, semmit nem töröltem"
 
 #: deleteadminuser.php:12
-#, fuzzy
 msgid "Delete an Admin account from the System"
 msgstr "Hozzáférés törlése a rendszerbõl"
 
 #: deleteadminuser.php:14
-#, fuzzy
 msgid "Do you really want to delete the Domain supervisor"
 msgstr "Tényleg törölni akarod a tartományt"
 
@@ -319,12 +311,10 @@ msgid "Change admin user for domain"
 msgstr "Tartomány adminfelh. megválotoztatása"
 
 #: editadminuser.php:81
-#, fuzzy
 msgid "successfully changed Database...."
 msgstr "Adatbázishoz sikeresen hozzáadva"
 
 #: editadminuser.php:84 newadminuser.php:79
-#, fuzzy
 msgid "Database error"
 msgstr "Adatbázis hiba, próbáld újra"
 
@@ -425,12 +415,10 @@ msgid "transport is not cyrus, unable to create account"
 msgstr "transport nem cyrus. Képtelen hozzáférést készíteni"
 
 #: newaccount.php:43
-#, fuzzy
 msgid "Sorry, no more account allowed for domain"
 msgstr "Tartomány hozzáférések böngészése"
 
 #: newaccount.php:43
-#, fuzzy
 msgid "Maximum allowed accounts is"
 msgstr "Max.hozzáférés"
 
@@ -455,7 +443,6 @@ msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Hozzáférést sikerült eltárolni az IMAP alrendszerbe"
 
 #: newadminuser.php:6
-#, fuzzy
 msgid "Add new admin user for domain"
 msgstr "Új hozzáférés a tartományhoz"
 
@@ -464,7 +451,6 @@ msgid "Please select a domain first"
 msgstr "Tartomány válassz elõször"
 
 #: newadminuser.php:30
-#, fuzzy
 msgid "Admin Type"
 msgstr "admin típus"
 
@@ -560,12 +546,10 @@ msgid "Login failed"
 msgstr "Bejelentkezés sikertelen"
 
 #: forwardaccount.php:41
-#, fuzzy
 msgid "Forward for account"
 msgstr "Összes hozzáférés"
 
 #: forwardalias.php:102
-#, fuzzy
 msgid "Forward for emailadress"
 msgstr "Új emailcím"
 
@@ -578,7 +562,6 @@ msgid "Failure in setting forward"
 msgstr "Hiba a továbbítás beállításában"
 
 #: forwardsalias.php:54
-#, fuzzy
 msgid "Wrong password"
 msgstr "Jelszó ismétlés"
 
