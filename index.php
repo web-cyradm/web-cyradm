@@ -79,9 +79,9 @@ if ($wc_configured){
 
 	if ($_SESSION['session_ok'] === TRUE) {
 		include "DB.php";
-		include WC_BASE . "/validate.inc.php";
-		include WC_BASE . "/menu.inc.php";
-		include WC_BASE . "/lib/cyradm.php";
+		require WC_BASE . "/validate.inc.php";
+		require WC_BASE . "/menu.inc.php";
+		require WC_BASE . "/lib/cyradm.php";
 
 //		if (empty($_GET['domain']) && (empty($_GET['action']) || (! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain', 'editadminuser', 'newadminuser', 'search'))))){
 
