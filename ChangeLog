@@ -1,3 +1,601 @@
+2003-03-24 23:01  luc
+
+	* doc/html/cyrus-config.html, doc/html/faq.html,
+	doc/html/index.html, doc/html/install.html, doc/html/intro.html,
+	doc/html/moreinfo.html, doc/html/mysql-config.html,
+	doc/html/pam-config.html, doc/html/postfix-config.html,
+	doc/html/tech.html, doc/html/test.html,
+	doc/html/web-cyradm-config.html, INSTALL: 
+	Updated documentation
+
+2003-03-24 22:59  luc
+
+	* doc/Postfix-Cyrus-Web-cyradm-HOWTO.txt: 
+	Updated Documentation
+
+2003-03-24 21:15  luc
+
+	* newadminuser.php: 
+	Correted wrong i18n string
+
+2003-03-24 21:14  luc
+
+	* editdomain.php: 
+	Disabled change of prefix, will be implemented for cyrus 2.2 in rel
+	0.5.4
+
+2003-03-24 21:13  luc
+
+	* deletedomain.php: 
+	Fixed the bug not displaying number of accounts to be deleted
+
+2003-03-24 20:46  luc
+
+	* deletedomain.php: 
+	Fixed bug deleting adminuser, inserted javascript to clear current
+	domain
+
+2003-03-24 19:40  luc
+
+	* lib/crypto.php: 
+	Deleted debug code
+
+2003-03-24 19:36  luc
+
+	* deletedomain.php: 
+	Correting deletation of adminusers
+
+2003-03-22 20:51  luc
+
+	* locale/da/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Corrected typo in danish translation
+
+2003-03-22 19:34  luc
+
+	* adminuser.php, browse.php, browseaccounts.php, catchall.php,
+	change_password.php, deleteaccount.php, deleteadminuser.php,
+	deleteemail.php, editaccount.php, editdomain.php, editemail.php,
+	forwardaccount.php, forwardalias.php, newaccount.php,
+	newadminuser.php, newdomain.php, newemail.php, search.php,
+	vacation.php, validate.inc.php, lib/crypto.php: 
+	Improved Database error handling
+
+2003-03-22 18:53  luc
+
+	* scripts/create_mysql.sql: 
+	Fixed Bug #16, added binary for case-casting
+
+2003-03-22 18:42  luc
+
+	* validate.inc.php: 
+	Fixed Bug #12
+
+2003-03-22 17:43  luc
+
+	* editadminuser.php, validate.inc.php, lib/crypto.php: 
+	Fixed bugs in adminuser update and passwd functions
+
+2003-03-13 18:45  luc
+
+	* locale/da/LC_MESSAGES/web-cyradm.mo: 
+	Added again as binary
+
+2003-03-13 18:43  luc
+
+	* locale/da/LC_MESSAGES/web-cyradm.mo: 
+	temorary remove
+
+2003-03-13 18:33  luc
+
+	* locale/da/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Updated danish translation (Kenneth Wrang)
+
+2003-03-12 23:29  luc
+
+	* locale/fr/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Updated french translation (Raphael Jeudi)
+
+2003-03-12 14:27  luc
+
+	* locale/hu/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Updated fuzzy entries
+
+2003-03-12 13:33  luc
+
+	* locale/hu/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	removed fuzzy
+
+2003-03-12 13:20  luc
+
+	* locale/hu/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Updated hugarian translation (Zoltan Levardy)
+
+2003-03-09 00:03  luc
+
+	* editadminuser.php, newaccount.php, newadminuser.php: 
+	Corrected some typos in the html code
+
+2003-03-06 21:40  luc
+
+	* validate.inc.php: 
+	Added newusername to _GET
+
+2003-03-06 21:40  luc
+
+	* newadminuser.php: 
+	Fixed syntax error
+
+2003-03-06 21:13  luc
+
+	* lib/crypto.php: 
+	Corrected typo in encryption
+
+2003-03-03 23:46  luc
+
+	* config.inc.php-dist, newadminuser.php: 
+	
+	Minor changes to cryto stuff
+
+2003-03-03 23:40  luc
+
+	* COPYRIGHT: 
+	Typo
+
+2003-02-12 21:37  luc
+
+	* scripts/: create_mysql.sql, insertuser_mysql.sql: 
+	Corrected the mysql scripts to avoid db-errors
+
+2003-02-04 14:44  luc
+
+	* locale/sv/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Added correction to swedish translation (Anders Litzell)
+
+2003-02-03 14:45  luc
+
+	* lib/nls.php, locale/sv/LC_MESSAGES/web-cyradm.mo,
+	locale/sv/LC_MESSAGES/web-cyradm.po: 
+	Added swedish NLS
+
+2003-01-29 20:43  luc
+
+	* scripts/: create_mysql.sql, upgrade-0.5.2-to-0.5.3_mysql.sql: 
+	Changed the size of the fields to be more flexible
+
+2003-01-26 18:51  luc
+
+	* editaccount.php, test.php: 
+	Minor changes needed by xgettext
+
+2003-01-10 19:37  luc
+
+	* browseaccounts.php: 
+	Deleted some old uncommented code
+
+2003-01-10 10:45  ggell
+
+	* lib/crypto.php: removes bug in lib/crypto.php problem: old values
+	for $crypt (0,1,2) were not recognized any more
+
+2002-12-24 21:48  luc
+
+	* scripts/imap2imap-copy.php: 
+	Removed testing stuff
+
+2002-12-24 21:47  luc
+
+	* scripts/imap2imap-copy.php: 
+	Added script to migrate from wu-imap to cyrus
+
+2002-12-15 00:47  luc
+
+	* index.php, migrate.php-dist: 
+	Added migration file
+
+2002-12-14 23:46  luc
+
+	* auth.inc.php, change_password.php, config.inc.php-dist,
+	index.php, newaccount.php, newadminuser.php, lib/crypto.php: 
+	Switching to crypted passwords for adminusers
+
+2002-12-14 20:19  luc
+
+	* lib/crypto.php: 
+	Switched to OO, introduced class password
+
+2002-12-14 12:43  luc
+
+	* locale/ru/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Corrected russian translation (codepage)
+
+2002-12-14 12:18  luc
+
+	* locale/: da/LC_MESSAGES/web-cyradm.mo,
+	da/LC_MESSAGES/web-cyradm.po, de/LC_MESSAGES/web-cyradm.mo,
+	de/LC_MESSAGES/web-cyradm.po, fr/LC_MESSAGES/web-cyradm.mo,
+	fr/LC_MESSAGES/web-cyradm.po, hu/LC_MESSAGES/web-cyradm.mo,
+	hu/LC_MESSAGES/web-cyradm.po, it/LC_MESSAGES/web-cyradm.mo,
+	it/LC_MESSAGES/web-cyradm.po, pl/LC_MESSAGES/web-cyradm.mo,
+	pl/LC_MESSAGES/web-cyradm.po, pt/LC_MESSAGES/web-cyradm.mo,
+	pt/LC_MESSAGES/web-cyradm.po, ro/LC_MESSAGES/web-cyradm.mo,
+	ro/LC_MESSAGES/web-cyradm.po, ru/LC_MESSAGES/web-cyradm.mo,
+	ru/LC_MESSAGES/web-cyradm.po, tr/LC_MESSAGES/web-cyradm.po,
+	zh_CN/LC_MESSAGES/web-cyradm.po: 
+	Merged all languages with the templates
+
+2002-12-14 11:50  luc
+
+	* locale/templates/web-cyradm.pot: 
+	Bugfix in msgid/msgstr pair
+
+2002-12-13 16:13  luc
+
+	* locale/pl/LC_MESSAGES/web-cyradm.mo,
+	locale/pl/LC_MESSAGES/web-cyradm.po, header.inc.php, lib/nls.php: 
+	Added polish translation (Przemyslaw Witek)
+
+2002-12-12 12:22  luc
+
+	* browseaccounts.php, deleteaccount.php, newaccount.php,
+	search.php: 
+	Fixed Bug #7 DOS in case of cyrus not running
+
+2002-12-12 10:59  luc
+
+	* doc/web-cyradm-redhat.txt: 
+	New Version (Michael Muenz)
+
+2002-12-10 14:22  luc
+
+	* change_password.php, editadminuser.php, editemail.php: 
+	CSS-Related cosmetical changes (Roland Reimann)
+
+2002-12-09 02:41  luc
+
+	* lib/crypto.php: 
+	First version of the password crypto lib
+
+2002-12-09 00:32  luc
+
+	* catchall.php, deleteaccount.php, deletedomain.php,
+	deleteemail.php, editdomain.php, editemail.php, forwardaccount.php,
+	forwardalias.php, newaccount.php, newdomain.php, setquota.php,
+	vacation.php, css/web-cyradm.css: 
+	CSS related cosmetial changes (Roland Reimann)
+
+2002-12-08 12:37  luc
+
+	* deleteadminuser.php, locale/de/LC_MESSAGES/web-cyradm.mo,
+	locale/de/LC_MESSAGES/web-cyradm.po: 
+	Added missing i18n strings, corrected german translation (Roland
+	Reimann)
+
+2002-11-29 12:22  luc
+
+	* menu.inc.php: 
+	Changed Layout to have more space on screen
+
+2002-11-29 12:01  luc
+
+	* forwardalias.php: 
+	Found another missing i18n string (allready in POT)
+
+2002-11-29 11:49  luc
+
+	* locale/zh_CN/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Applied changes to chinese translation
+
+2002-11-29 11:34  luc
+
+	* locale/: de/LC_MESSAGES/web-cyradm.mo,
+	de/LC_MESSAGES/web-cyradm.po, templates/web-cyradm.pot: 
+	Added i18n strings and german translation of it
+
+2002-11-29 11:33  luc
+
+	* menu.inc.php: 
+	Added domaindisplay (Michael Muenz)
+
+2002-11-24 23:26  luc
+
+	* forwardalias.php, validate.inc.php: 
+	Fixed wrong username variable
+
+2002-11-24 23:14  luc
+
+	* vacation.php, validate.inc.php: 
+	wrong username variable fixed
+
+2002-11-18 20:43  luc
+
+	* header.inc.php, lib/nls.php, locale/tr/LC_MESSAGES/web-cyradm.mo,
+	locale/tr/LC_MESSAGES/web-cyradm.po: 
+	Added turkish translation (Süleyman Kuran)
+
+2002-11-18 00:03  luc
+
+	* change_password.php: 
+	Empty passwords are now rejected
+
+2002-11-17 23:49  luc
+
+	* change_password.php, config.inc.php-dist, validate.inc.php: 
+	Enables change of passwd in mysql based on code from Erhard Schwenk
+
+2002-11-17 03:19  luc
+
+	* locale/de/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Corrected Typo in german translation (Erhard Schwenk)
+
+2002-11-17 03:13  luc
+
+	* editaccount.php: 
+	Deleted unneeded suff from table
+
+2002-11-14 00:54  luc
+
+	* editemail.php, forwardalias.php, newdomain.php: 
+	Added missing i18n strings (Micheal Muenz)
+
+2002-11-14 00:54  luc
+
+	* locale/de/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Updated german translations
+
+2002-11-14 00:54  luc
+
+	* locale/templates/web-cyradm.pot: 
+	Added missing i18n Strings (Micheal Muenz)
+
+2002-11-13 02:25  luc
+
+	* change_password.php, editaccount.php, forwardaccount.php,
+	forwardalias.php, vacation.php: 
+	Added the rest of the missing i18n strings
+
+2002-11-13 02:24  luc
+
+	* validate.inc.php: 
+	Changed case statements reflecting new filenames
+
+2002-11-13 02:23  luc
+
+	* locale/de/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Updated german translation from msgmerge with pot file
+
+2002-11-13 02:22  luc
+
+	* locale/templates/web-cyradm.pot: 
+	Inserted new i18n strings
+
+2002-11-12 15:59  luc
+
+	* locale/templates/web-cyradm.pot: 
+	Added more i18n strings (Michael Muenz)
+
+2002-11-12 15:49  luc
+
+	* browseaccounts.php, editaccount.php, forwardaccount.php,
+	forwardalias.php, index.php, newadminuser.php, vacation.php,
+	validate.inc.php: 
+	Added accountforwarding (Thomas Steifert), moved alias-only action
+	to the right place
+
+2002-11-08 14:10  luc
+
+	* auth.inc.php, change_password.php, deleteadminuser.php,
+	editadminuser.php, editdomain.php, newaccount.php,
+	newadminuser.php, newdomain.php: 
+	Added more i18n strings (Michael Muenz)
+
+2002-11-07 18:36  luc
+
+	* browseaccounts.php: 
+	Re-enabled "Change account"
+
+2002-11-07 18:26  luc
+
+	* locale/templates/web-cyradm.pot: 
+	More i18n strings added (Michael Muenz)
+
+2002-11-05 12:56  luc
+
+	* change_password.php, validate.inc.php, lib/poppassd.php: 
+	Support for passwdchange, forward and vacation (Leow Hock Seng)
+
+2002-11-05 12:36  luc
+
+	* validate.inc.php: 
+	Support for passwdchange, forward and vacation (Leow Hock Seng)
+
+2002-11-05 12:21  luc
+
+	* lib/: sieve-php.lib, sieve_strs.php: 
+	Support for passwdchange, forward and vacation (Leow Hock Seng)
+
+2002-11-05 12:14  luc
+
+	* browseaccounts.php: 
+	Support for passwdchange, forward and vacation (Leow Hock Seng)
+
+2002-11-05 11:15  luc
+
+	* index.php: 
+	Support for passwdchange, forward and vacation (Leow Hock Seng)
+
+2002-11-04 02:29  luc
+
+	* newaccount.php, newdomain.php: 
+	Added support for transport_maps (experimental)
+
+2002-11-04 02:18  luc
+
+	* validate.inc.php: 
+	Added transport and tparam variables
+
+2002-11-04 01:50  luc
+
+	* config.inc.php-dist: 
+	Added comments
+
+2002-11-04 01:47  luc
+
+	* scripts/create_mysql.sql: 
+	Added field "transport" to table "domain"
+
+2002-11-04 01:46  luc
+
+	* scripts/upgrade-0.5.2-to-0.5.3_mysql.sql: 
+	Added migration path for 0.5.3 (adding new field transport to table
+	domain)
+
+2002-11-04 01:45  luc
+
+	* scripts/insertuser_mysql.sql: 
+	Added creation of users incl. encrypted password
+
+2002-11-03 13:57  luc
+
+	* header.inc.php: 
+	Added correct charset for romanian and hugarian languages
+
+2002-11-03 13:03  luc
+
+	* lib/nls.php: 
+	Added correct charset for romanian
+
+2002-11-02 15:59  luc
+
+	* locale/ro/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Added romanian translation (Catalin Boiangiu)
+
+2002-11-02 15:57  luc
+
+	* validate.inc.php: 
+	Added searchstring
+
+2002-11-02 15:56  luc
+
+	* lib/nls.php: 
+	Added alias for romanian
+
+2002-10-30 20:54  luc
+
+	* editdomain.php, locale/de/LC_MESSAGES/web-cyradm.mo,
+	locale/de/LC_MESSAGES/web-cyradm.po: 
+	Some minor changed to NLS and i18n
+
+2002-10-30 20:38  luc
+
+	* locale/de/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Added missing i18n strings for german NLS (Michael Muenz)
+
+2002-10-30 20:34  luc
+
+	* locale/templates/web-cyradm.pot: 
+	Added missing i18n strings (Micheal Muenz)
+
+2002-10-30 20:21  luc
+
+	* auth.inc.php, index.php, test.php, validate.inc.php: 
+	Switched to _GET instead of HTTP_GET_VARS (Ian Newlands)
+
+2002-10-29 13:20  luc
+
+	* locale/de/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Added missing translations (Michael Muenz)
+
+2002-10-23 13:27  luc
+
+	* newaccount.php: 
+	Fixed strange behaviour if domainprefix has number at the end ->
+	regex was changed
+
+2002-10-22 22:19  luc
+
+	* footer.inc.php, timeout.php: 
+	Changed URL in footers to www.web-cyradm.org
+
+2002-10-22 22:13  luc
+
+	* auth.inc.php, failed.php: 
+	Improved handling for failed logins (Michael Muenz)
+
+2002-10-22 22:12  luc
+
+	* locale/templates/web-cyradm.pot: 
+	Added i18n string for failed.php
+
+2002-10-22 21:01  luc
+
+	* deleteaccount.php, deletedomain.php: 
+	Added missing i18n strings
+
+2002-10-22 21:00  luc
+
+	* locale/templates/web-cyradm.pot: 
+	Added a i18n string
+
+2002-10-21 20:35  luc
+
+	* doc/web-cyradm-redhat.txt: 
+	Added Red Hat Installation (Michael Muenz)
+
+2002-10-18 19:27  luc
+
+	* index.php, menu.inc.php, validate.inc.php: 
+	Enabled search function
+
+2002-10-18 19:26  luc
+
+	* search.php: 
+	Added rudimentary search facility
+
+2002-10-18 17:49  luc
+
+	* editadminuser.php: 
+	corrected i18n string
+
+2002-10-18 17:45  luc
+
+	* newadminuser.php: 
+	Added i18n strings
+
+2002-10-18 17:45  luc
+
+	* locale/templates/web-cyradm.pot: 
+	Added more forgotten i18n strings
+
+2002-10-18 17:44  luc
+
+	* locale/de/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Added new i18n strings
+
+2002-10-18 12:47  luc
+
+	* locale/de/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	Corrected typos and added string
+
+2002-10-18 12:44  luc
+
+	* editadminuser.php: 
+	Forgotten i18n string was insertes on line 5
+
+2002-10-18 12:43  luc
+
+	* locale/templates/web-cyradm.pot: 
+	Inserted forgotten i18n string from editadmin.php line 5
+
+2002-10-18 12:27  luc
+
+	* adminuser.php: 
+	corrected i18n string for action
+
+2002-10-17 22:37  luc
+
+	* ChangeLog: 
+	Updated changelog
+
 2002-10-17 22:24  luc
 
 	* newaccount.php: 
@@ -223,11 +821,6 @@
 	* config.inc.php-dist, validate.inc.php: 
 	Merged i18n bugfixes from bugfix branch
 
-2002-08-18 16:51  luc
-
-	* config.inc.php-dist, validate.inc.php: 
-	Fixed some minor bugs related to i18n
-
 2002-08-18 16:29  luc
 
 	* locale/templates/web-cyradm.pot: 
@@ -362,16 +955,10 @@
 	* validate.inc.php: 
 	Merging "cancel-button-bug" from release-2002-05-25-bugfix-branch
 
-2002-08-06 00:36  luc
-
-	* validate.inc.php: 
-	Eliminated bug which makes the "cancel" button ignored, $cancel
-	added tp HTTP_GET_VARS
-
 2002-08-05 22:54  luc
 
-	* scripts/: create.sql, create_mysql.sql, create_pgsql.sql,
-	insertuser.sql, insertuser_mysql.sql, insertuser_pgsql.sql: 
+	* scripts/: create_mysql.sql, create_pgsql.sql,
+	insertuser_mysql.sql, insertuser_pgsql.sql: 
 	Inserting pgsql-scripts and renaming the mysql stuff accordingly
 
 2002-08-05 22:34  luc
@@ -405,17 +992,6 @@
 	Merge from bugfux branch, adminuserstuff works now (and also with
 	php 4.2.1) See branch for changes
 
-2002-06-10 21:34  luc
-
-	* newadminuser.php, validate.inc.php: 
-	Changed VAR newadmin to newadminusers and added that VAR to the
-	HTTP_GET_VARS list in validate.php, means it also works with php
-	4.2.1 now
-
-2002-06-10 21:06  luc
-
-	* setquota.php: renaming VAR quotaset to quota
-
 2002-06-10 20:39  luc
 
 	* index.php: Added PEAR support for DB Access
@@ -433,21 +1009,10 @@
 	* auth.inc.php: merge from 2002-05-25-bugfix-branch, fixed serious
 	security issue
 
-2002-05-29 21:50  luc
-
-	* auth.inc.php: Fixed serious security pbrlm if isset did not
-	worked
-
 2002-05-28 21:34  luc
 
 	* config.inc.php-dist: merge from release-2002-05-25-bugfix-branch
 	to avoid php compaints about allready sent header
-
-2002-05-28 21:26  luc
-
-	* config.inc.php-dist: 
-	Removed white space at the end of the file to prevent php
-	complaints about allready sent headers
 
 2002-05-25 21:49  luc
 
@@ -560,28 +1125,18 @@
 
 2002-05-17 07:46  luc
 
-	* .cvsignore, COPYRIGHT, INSTALL, README, TO-BE-DONE,
-	adminuser.php, auth.inc.php, browse.php, browseaccounts.php,
-	config.inc.php-dist, deleteaccount.php, deleteadminuser.php,
-	deletedomain.php, deleteemail.php, editaccount.php,
-	editadminuser.php, editdomain.php, editemail.php, failed.php,
-	footer.inc.php, header.inc.php, index.php, login.php, logout.php,
-	menu.inc.php, newaccount.php, newadminuser.php, newdomain.php,
-	newemail.php, setquota.php, timeout.php, validate.inc.php,
-	welcome.php, css/web-cyradm.css, images/banner.gif, lib/cyradm.php,
-	scripts/create.sql, scripts/insertuser.sql: 
+	* .cvsignore, COPYRIGHT, README, TO-BE-DONE, welcome.php,
+	images/banner.gif, lib/cyradm.php: 
 	Initial import from web-cyradm Main tree
 
 2002-05-17 07:46  luc
 
-	* .cvsignore, COPYRIGHT, INSTALL, README, TO-BE-DONE,
-	adminuser.php, auth.inc.php, browse.php, browseaccounts.php,
-	config.inc.php-dist, deleteaccount.php, deleteadminuser.php,
-	deletedomain.php, deleteemail.php, editaccount.php,
-	editadminuser.php, editdomain.php, editemail.php, failed.php,
-	footer.inc.php, header.inc.php, index.php, login.php, logout.php,
-	menu.inc.php, newaccount.php, newadminuser.php, newdomain.php,
-	newemail.php, setquota.php, timeout.php, validate.inc.php,
-	welcome.php, css/web-cyradm.css, images/banner.gif, lib/cyradm.php,
-	scripts/create.sql, scripts/insertuser.sql: Initial revision
+	* INSTALL, adminuser.php, auth.inc.php, browse.php,
+	browseaccounts.php, config.inc.php-dist, deleteaccount.php,
+	deleteadminuser.php, deletedomain.php, deleteemail.php,
+	editaccount.php, editadminuser.php, editdomain.php, editemail.php,
+	failed.php, footer.inc.php, header.inc.php, index.php, login.php,
+	logout.php, menu.inc.php, newaccount.php, newadminuser.php,
+	newdomain.php, newemail.php, setquota.php, timeout.php,
+	validate.inc.php, css/web-cyradm.css: Initial revision
 
