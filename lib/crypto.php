@@ -8,6 +8,8 @@
 #
 #  License: GNU GPL
 #
+#  $id$
+#
 class password{
 
 	var $table;
