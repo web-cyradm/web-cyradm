@@ -80,15 +80,15 @@ msgstr "Csak hitelesített felhasználóknak"
 
 #: auth.inc.php:100
 msgid "Make sure you entered the right password."
-msgstr ""
+msgstr "Gyõzõdj meg róla, hogy a megfelelõ jelszót vitted be."
 
 #: auth.inc.php:101
 msgid "Push the back button in your browser to try again."
-msgstr ""
+msgstr "Nyomd le a vissza gombot a böngészõben és próbáld újra."
 
 #: auth.inc.php:102
 msgid "Your attempt to login has been stored."
-msgstr ""
+msgstr "A bejelentkezési próbálkozásod rögzítve."
 
 #: browse.php:12
 msgid "Browse domains"
@@ -174,7 +174,7 @@ msgstr "tevékenység"
 
 #: browseaccounts.php:101
 msgid "Forward"
-msgstr ""
+msgstr "Továbbít"
 
 #: browseaccounts.php:126 editaccount.php:76
 msgid "out of"
@@ -211,7 +211,7 @@ msgstr "Adatbázis hiba, próbáld újra"
 
 #: change_password.php:60
 msgid "Change password for account"
-msgstr ""
+msgstr "Hozzáférés jelszavának megváltoztatása"
 
 #: change_password.php:72
 #, fuzzy
@@ -230,11 +230,11 @@ msgstr "Jelszó"
 
 #: change_password.php:32
 msgid "Failure in changing password."
-msgstr ""
+msgstr "Hiba a jelszó megváltoztatása közben."
 
 #: change_password.php:35
 msgid "New passwords are not equal. Password not changed"
-msgstr ""
+msgstr "Az új jelszavak nem egyeznek. Jelszó nem változott meg"
 
 #: deleteaccount.php:19
 msgid "Delete an Account from the System"
@@ -316,7 +316,7 @@ msgstr "Emailcím törlése"
 
 #: editadminuser.php:5
 msgid "Change admin user for domain"
-msgstr ""
+msgstr "Tartomány adminfelh. megválotoztatása"
 
 #: editadminuser.php:81
 #, fuzzy
@@ -334,7 +334,7 @@ msgstr "Sikeresn megváltoztatva"
 
 #: editdomain.php:89
 msgid "Your are not allowed to change domains!"
-msgstr ""
+msgstr "Nem vagy jogosult tartományt megváltoztatni!"
 
 #: editemail.php:63 newemail.php:53
 msgid "Emailadress"
@@ -422,7 +422,7 @@ msgstr "Új hozzáférés a tartományhoz"
 
 #: newaccount.php:27
 msgid "transport is not cyrus, unable to create account"
-msgstr ""
+msgstr "transport nem cyrus. Képtelen hozzáférést készíteni"
 
 #: newaccount.php:43
 #, fuzzy
@@ -461,7 +461,7 @@ msgstr "Új hozzáférés a tartományhoz"
 
 #: newadminuser.php:8
 msgid "Please select a domain first"
-msgstr ""
+msgstr "Tartomány válassz elõször"
 
 #: newadminuser.php:30
 #, fuzzy
@@ -470,7 +470,7 @@ msgstr "admin típus"
 
 #: newadminuser.php:34
 msgid "Select \"Superuser\" for all domains"
-msgstr ""
+msgstr "Válassz \"Superuser\"-t minden tartományhoz"
 
 #: newdomain.php:17
 msgid "Add new domain"
@@ -494,25 +494,27 @@ msgstr "Alap kvóta Kbyteban"
 
 #: newdomain.php:47
 msgid "Standart Mailboxes"
-msgstr ""
+msgstr "Szabványos mailboxok"
 
 #: newdomain.php:51
 msgid ""
 "emailadress where the default aliases should be mapped (empty means no "
 "mapping)"
 msgstr ""
+"emailcím ahol az alapértelmezett álnevet kell leképezni (üres jelenti, "
+"hogy nincs leképezés)"
 
 #: newdomain.php:59
 msgid "Mail transport"
-msgstr ""
+msgstr "Levél transport"
 
 #: newdomain.php:60
 msgid "Leave this as is, unless you know what you are doing"
-msgstr ""
+msgstr "Hagyd így, hacsak nem tudod mit csinálsz"
 
 #: newdomain.php:125
 msgid "You are not allowed to add new domains"
-msgstr ""
+msgstr "Nincs jogosultságot új tartomány hozzáadni"
 
 #: newemail.php:25
 msgid "Successfully added"
@@ -545,16 +547,17 @@ msgstr "Mégsem"
 
 #: Error messages editdomain.php:61
 msgid "Not yet supported, change will be ignored"
-msgstr ""
+msgstr "Még nem támogatott, változtatás figyelmen kívül hagyása"
 
 #: deleteaccount.php:64 editadminuser.php:94 newadminuser.php:89
 msgid ""
 "Security violation detected, action cancelled. Your attempt has been logged."
 msgstr ""
+"Biztonsági ütközést érzékelt, tevékenység megszakítva. A kísérleted napolózva."
 
 #: failed.php:49
 msgid "Login failed"
-msgstr ""
+msgstr "Bejelentkezés sikertelen"
 
 #: forwardaccount.php:41
 #, fuzzy
@@ -568,11 +571,11 @@ msgstr "Új emailcím"
 
 #: forwardsalias.php:52
 msgid "Forward set"
-msgstr ""
+msgstr "Továbbítás beállítás"
 
 #: forwardalias.php:53
 msgid "Failure in setting forward"
-msgstr ""
+msgstr "Hiba a továbbítás beállításában"
 
 #: forwardsalias.php:54
 #, fuzzy
@@ -581,64 +584,64 @@ msgstr "Jelszó ismétlés"
 
 #: forwardsalias.php:68
 msgid "Forwarding removed"
-msgstr ""
+msgstr "Tovébbítás törölve"
 
 #: forwardsalias.php:69
 msgid "Failure in removing forwarding"
-msgstr ""
+msgstr "Hiba a továbbítás törlésében"
 
 #: forwardalias.php:149
 msgid "Set forwarding to"
-msgstr ""
+msgstr "Továbbítás ide"
 
 #: forwardalias.php:151
 msgid "Keep a copy in the user's mailbox"
-msgstr ""
+msgstr "Tartson egy másolatot a felh. mailboxában"
 
 #: forwardalias.php:152
 msgid "Remove forwarding"
-msgstr ""
+msgstr "Továbbítás törlése"
 
 #: vacation.php:120
 msgid "Vacation message for emailadress"
-msgstr ""
+msgstr "Szabádság üzenet emailcímhez"
 
 #: vacation.php:132
 msgid "Set vacation notice"
-msgstr ""
+msgstr "Szabadság üzenet beállítása"
 
 #: vacation.php:134
 msgid "Remove vacation notice"
-msgstr ""
+msgstr "Szabadság üzenet törlése"
 
 #: vacation.php:58
 msgid "Vacation notice set"
-msgstr ""
+msgstr "Szabadság üzenet legyen"
 
 #: vacation.php:59
 msgid "Failed to activate vacation"
-msgstr ""
+msgstr "Hiba a szabadság aktiválásánál"
 
 #: vacation.php:62
 msgid "Failure in modifying vacation notice"
-msgstr ""
+msgstr "Hiba a szabadság üzenet módosításánál"
 
 #: vacation.php:65 vacation.php:88 forwards.php:71
 msgid "Failed to login"
-msgstr ""
+msgstr "Képtelen belépni"
 
 #: vacation.php:78
 msgid "Failure in unseting vacation notice"
-msgstr ""
+msgstr "Hiba a szabadság üzenet kikapcsolásánál"
 
 #: vacation.php:82
 msgid "Vacation notice removed"
-msgstr ""
+msgstr "Szabadság üzenet törölve"
 
 #: vacation.php:84
 msgid "Failure in removing vacation notice"
-msgstr ""
+msgstr "Hiba a szabadság üzenet törlésénél"
 
 #: vacation:93 forwardalias:75
 msgid "Not possible"
-msgstr ""
+msgstr "Nem lehetséges"
