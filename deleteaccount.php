@@ -6,13 +6,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	exit();
 }
 ?>
-<?php 
-$ref=WC_BASE."/index.php";
-if ($ref!=$_SERVER['SCRIPT_FILENAME']){
-	header("Location: index.php");
-}
-
-?>
 <!-- #################### deleteaccount.php start #################### -->
 <tr>
 	<td width="10">&nbsp;</td>
@@ -21,7 +14,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		<?php
 
 		if ($authorized){
-			if (empty($confirmed)){
+			if (empty($_GET['confirmed'])){
 				?>
 				<h3>
 					<?php print _("Delete an Account from the System");?>
@@ -30,7 +23,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<h3>
 					<?php print _("Do you really want to delete the user ");?>
 					<span style="color: red;">
-						<?php echo $username;?>
+						<?php echo $_GET['username'];?>
 					</span>
 					<?php print _("with all its defined Emailadresses");?>
 				</h3>
@@ -46,12 +39,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					
 					<input type="hidden"
 					name="domain"
-					value="<?php print $domain?>">
+					value="<?php print $_GET['domain'];?>">
 					
 					<input
 					type="hidden"
 					name="username"
-					value="<?php print $username?>">
+					value="<?php print $_GET['username'];?>">
 					
 					<input class="button"
 					type="submit"
@@ -65,10 +58,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				</form>
 
 				<?php
-			} elseif (! empty($cancel)){
+			} elseif (! empty($_GET['cancel'])){
 				?>
 				<h3>
-					<?php print _("Action cancelled, nothing deleted");?>
+					<?php
+						print _("Action cancelled, nothing deleted");
+						include WC_BASE . "/browseaccounts.php";
+					?>
 				</h3>
 				<?php
 			} else {
@@ -80,31 +76,35 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					die ("Error: " . $error);
 				}
 
-				$handle=DB::connect($DB['DSN'], true);
-				if (DB::isError($handle)) {
+				$query ="DELETE FROM virtual WHERE username='".$_GET['username']."'";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
 					die (_("Database error"));
 				}
 
-				$query2 =" delete from virtual where username='$username'";
-				$hnd2 = $handle->query($query2);
+				$query = "DELETE FROM accountuser WHERE username='".$_GET['username']."'";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
+					die (_("Database error"));
+				}
 
-				$query3 = "delete from accountuser where username='$username'";
-				$hnd3 = $handle->query($query3);
-
-				$query4 = "delete from log where user='$username'";
-				$hnd4 = $handle->query($query4);
+				$query = "DELETE FROM log WHERE user='".$_GET['username']."'";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
+					die (_("Database error"));
+				}
 
 
 				if ($DOMAIN_AS_PREFIX) {
-					print $cyr_conn->deletemb("user/".$username);
+					print $cyr_conn->deletemb("user/".$_GET['username']);
 				} else {
-						print $cyr_conn->deletemb("user.".$username);
+					print $cyr_conn->deletemb("user.".$_GET['username']);
 				}
 				?>
 				<h3>
 					<?php print _("User deleted");?>:
 					<span style="color: red;">
-						<?php echo $username;?>
+						<?php echo $_GET['username'];?>
 					</span>
 				</h3>
 				<?php
@@ -113,7 +113,10 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		} else {
 			?>
 			<h3>
-				<?php print _("Security violation detected, action cancelled. Your attempt has been logged.");?>
+				<?php
+				logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+				print _("Security violation detected, action cancelled. Your attempt has been logged.");
+				?>
 			</h3>
 			<?php
 		}
