@@ -45,7 +45,7 @@ if ($authorized){
 			  $query="update accountuser set password=ENCRYPT('$new_password') where username='$username'";
 			  break;
 
-			case "md5":
+			case "mysql":
 			  $query="update accountuser set password=PASSWORD('$new_password') where username='$username'";
 			break;
 

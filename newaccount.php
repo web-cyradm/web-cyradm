@@ -141,7 +141,7 @@ else{
    case "crypt":
        $query3 .= "ENCRYPT('$password')";
        break;
-   case "md5":
+   case "mysql":
        $query3 .= "PASSWORD('$password')";
        break;
    default:
