@@ -161,8 +161,11 @@ if (! empty($action)){
 							  'domainquota', 'quota'))){
 			unset($_GET['orderby']);
 		}
-		if (isset($_GET['row_pos']) AND !is_integer($_GET['row_pos'])) {
-			unset($_GET['row_pos']);
+		if (isset($_GET['row_pos'])) {
+			settype($_GET['row_pos'],"int");
+		       	if ($_GET['row_pos'] < 0) {
+				unset($_GET['row_pos']);
+			}
 		}
 		break;
 #OK############################# Check input if accounts ##############################################
@@ -170,8 +173,11 @@ if (! empty($action)){
 		if (isset($_GET['domain']) AND !ValidDomain($_GET['domain'])) {
 			unset($_GET['domain']);
 		}
-		if (isset($_GET['row_pos']) AND !is_integer($_GET['row_pos'])) {
-			unset($_GET['row_pos']);
+		if (isset($_GET['row_pos'])) {
+			settype($_GET['row_pos'],"int");
+		       	if ($_GET['row_pos'] < 0) {
+				unset($_GET['row_pos']);
+			}
 		}
 		break;
 #OK########################### Check input if newadminuser ###############################################
@@ -335,10 +341,17 @@ if (! empty($action)){
 				$authorized = TRUE;
 			}
 		} else {
-			if (!ValidDomain($_POST['domain']) || !empty($_POST['quota']) && (!is_integer($_POST['quota']) || $_POST['quota'] < 0)) {
+			if (!ValidDomain($_POST['domain'])) {
 				$authorized = FALSE;
 				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
-			} elseif (!ValidPassword($_POST['password']) || !ValidPassword($_POST['confirm_password'])){
+			} elseif (!empty($_POST['quota'])) {
+				settype($_POST['quota'],"int");
+		       		if ($_POST['quota'] < 0) {
+					$authorized = FALSE;
+					$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+				}
+			}
+			if (!ValidPassword($_POST['password']) || !ValidPassword($_POST['confirm_password'])){
 				$authorized = FALSE;
 				$err_msg = _("Password incorrect");
 			} elseif ($_POST['password'] != $_POST['confirm_password']) {
@@ -399,7 +412,7 @@ if (! empty($action)){
 			logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
 			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 		} else {
-			# it's needed to defend 'cyrus' user
+			# it's needed to defend users from not allowed domains
 			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
@@ -420,81 +433,105 @@ if (! empty($action)){
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 		} else {
-			if (!empty($_GET['confirmed']) && empty($_GET['cancel'])) {
-				if (!is_integer($_GET['quota']) || $_GET['quota'] < 0) {
-					$authorized = FALSE;
-					$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
-				} else {
-					$query = "SELECT quota FROM domain WHERE domain_name='".$_GET['domain']."'";
-					$result = $handle->query($query);
-					if (DB::isError($result)) {
-						die (_("Database error"));
-					}
-
-					$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-					$max_quota = $row['quota'];
-
-					$query = "SELECT * FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
-					$result = $handle->query($query);
-					if (DB::isError($result)) {
-						die (_("Database error"));
-					}
-
-					if ($result->numRows()) {
-						if (!empty($_GET['quota']) && $_GET['quota'] > $max_quota && $_SESSION['admintype']!=0){
-							$authorized = FALSE;
-							$err_msg=_("Quota exeedes the maximum allowed quota for this domain.");
-						} else {
-							$authorized=TRUE;
-						}
-					} else {
+			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
+			if (!$result->numRows()){
+				$authorized = FALSE;
+				logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+			} else {
+				if (!empty($_GET['confirmed']) && empty($_GET['cancel'])) {
+					settype($_GET['quota'],"int");
+		       			if ($_GET['quota'] < 0) {
 						$authorized = FALSE;
 						$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+					} else {
+						$query = "SELECT quota FROM domain WHERE domain_name='".$_GET['domain']."'";
+						$result = $handle->query($query);
+						if (DB::isError($result)) {
+							die (_("Database error"));
+						}
+
+						$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+						$max_quota = $row['quota'];
+
+						$query = "SELECT * FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
+						$result = $handle->query($query);
+						if (DB::isError($result)) {
+							die (_("Database error"));
+						}
+
+						if ($result->numRows()) {
+							if (!empty($_GET['quota']) && $_GET['quota'] > $max_quota && $_SESSION['admintype']!=0){
+								$authorized = FALSE;
+								$err_msg=_("Quota exeedes the maximum allowed quota for this domain.");
+							} else {
+								$authorized=TRUE;
+							}
+						} else {
+							$authorized = FALSE;
+							$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+						}
 					}
+				} else {
+					$authorized=TRUE;
 				}
-			} else {
-				$authorized=TRUE;
 			}
 		}
 		break;
 ################################## Check input if newemail ################################################
 	case "newemail":
-		$query = "SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
-		$result = $handle->query($query);
-		$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-		$username2 = $row['username'];
-
-                $query2 = "select * from domain where domain_name='$domain'";
-		$result2 = $handle->query($query2);
-		$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
-		$freeaddress=$row2['freeaddress'];
-
-		if (! empty($confirmed)){
-			$valid_dest  = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $dest);
-			if ($freeaddress != "YES") {
-			    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $alias."@".$domain);
-			} else {
-			    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $alias);
-			}
-			if ($dest != $username2 and !$valid_dest){
-//			if ($dest != $username2 and !ValidateMail($dest))
-				$authorized = FALSE;
-				$err_msg = "invalid destination";
-			} elseif (!$valid_alias and isset($alias)){
-//	        	elseif (!ValidateMail($alias."@".$domain) and isset($alias))
-				$authorized = FALSE;
-				$err_msg = _("Invalid email adress");
-			} else {
-				$authorized=TRUE;
-			}
-
-			# Check for reserved addresses
-			if (in_array($alias, $reserved)) {
-				$authorized = FALSE;	
-				$err_msg="Reserved Emailadress, request cancelled";
-			}
+		if (!ValidDomain($_GET['domain']) || !ValidName($_GET['username'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 		} else {
-			$authorized = TRUE;
+			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
+			if (!$result->numRows()){
+				$authorized = FALSE;
+				logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+			} else {
+				if (!empty($_GET['confirmed']) && empty($_GET['cancel'])) {
+			                $query = "SELECT `freeaddress` FROM `domain` WHERE `domain_name`='".$_GET['domain']."'";
+					$result = $handle->query($query);
+					if (DB::isError($result)) {
+						die (_("Database error"));
+					}
+					$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+					$freeaddress = $row['freeaddress'];
+
+					$valid_dest  = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $dest);
+					if ($freeaddress != "YES") {
+					    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $alias."@".$domain);
+					} else {
+					    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $alias);
+					}
+					if ($dest != $_GET['username'] and !$valid_dest) {
+//					if ($dest != $username2 and !ValidateMail($dest))
+						$authorized = FALSE;
+						$err_msg = _("Invalid destination");
+					} elseif (isset($alias) && !$valid_alias) {
+//		  			elseif (!ValidateMail($alias."@".$domain) and isset($alias))
+						$authorized = FALSE;
+						$err_msg = _("Invalid email adress");
+					# Check for reserved addresses
+					} elseif (in_array($alias, $reserved)) {
+						$authorized = FALSE;	
+						$err_msg="Reserved Emailadress, request cancelled";
+					} else {
+						$authorized = TRUE;
+					}
+				} else {
+					$authorized=TRUE;
+				}
+			}
 		}
 		break;
 #OK############################ Check input if change_password ###############################
@@ -629,15 +666,18 @@ if (! empty($action)){
 #OK####################################### Check input if display ##################################
 	case "display":
 		if (isset($_GET['confirmed'])) {
-			if (!is_integer($_GET['maxdisplay']) OR $_GET['maxdisplay'] <= 0) {
+			settype($_GET['maxdisplay'],"int");
+			settype($_GET['account_maxdisplay'],"int");
+			settype($_GET['warnlevel'],"int");
+			if ($_GET['maxdisplay'] <= 0) {
 				$authorized = FALSE;
 				$err_msg = "Value incorrect";
 			}
-			elseif (!is_integer($_GET['account_maxdisplay']) OR $_GET['account_maxdisplay'] <= 0) {
+			elseif ($_GET['account_maxdisplay'] <= 0) {
 				$authorized = FALSE;
 				$err_msg = "Value incorrect";
 			}
-			elseif (!is_integer($_GET['warnlevel']) OR $_GET['warnlevel'] < 0 OR $_GET['warnlevel'] > 100) {
+			elseif ($_GET['warnlevel'] < 0 || $_GET['warnlevel'] > 100) {
 				$authorized = FALSE;
 				$err_msg = "Warn level should be beetwen 0 and 100";
 			}
