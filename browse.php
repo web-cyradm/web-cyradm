@@ -159,16 +159,16 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								'editdomain'	=> _("Edit Domain"),
 								'deletedomain'	=> _("Delete Domain"),
 							);
-						}
-						foreach ($_cols as $_action => $_txt){
+							foreach ($_cols as $_action => $_txt){
 							?>
-							<td>
+								<td>
 								<?php
 								printf ('<a href="index.php?action=%s&amp;domain=%s">%s</a>',
 									$_action, $row['domain_name'], $_txt);
 								?>
-							</td>
+								</td>
 							<?php
+							}
 						}
 						?>
 						<td>
