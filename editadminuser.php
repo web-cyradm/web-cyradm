@@ -289,6 +289,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					# And update the type of this admin
 					$query="UPDATE adminuser SET type='$newtype' WHERE username='$username'";
 					$result=$handle1->query($query);
+					$query="INSERT INTO domainadmin (domain_name,adminuser) VALUES ('*','$username')";
+  				 	$result=$handle1->query($query);
 				}
 
 				include WC_BASE . "/adminuser.php";
