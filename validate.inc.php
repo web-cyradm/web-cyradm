@@ -56,11 +56,30 @@ if (DB::isError($handle)) {
 	die (_("Database error"));
 }
 # We check and remember list of domains for domain admin
-if ($_SESSION['admintype'] != 0){	
+$query = "SELECT * FROM domainadmin WHERE adminuser='".$_SESSION['user']."'";
+$result = $handle->query($query);
+$cnt = $result->numRows();
+
+if (!$cnt){
+	print _("Security violation detected, attempt logged");
+	logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+	include WC_BASE . "/logout.php";
+	die ();
+}
+
+if ($_SESSION['admintype'] != 0){
+	$allowed_domains = array();
+	
+	for ($i=0; $i < $cnt; $i++){
+		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+		$allowed_domains[] = $row['domain_name'];
+	}
+	$_SESSION['allowed_domains'] = $allowed_domains;
 	if (!isset($domain)) $domain='';
 
 	if (isset($domain) AND $domain != "" AND !in_array($domain,$_SESSION['allowed_domains'])) {
 		print _("Security violation detected, attempt logged");
+		logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
 		include WC_BASE . "/logout.php";
 		die ();
 	}
