@@ -182,7 +182,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<?php
 					if ($daemon->sieve_login()){
 						$sieve_str = new sieve_strs;
-						$old_script = $sieve_str->get_old_script($daemon);
+						$old_script = utf8_decode($sieve_str->get_old_script($daemon));
 						if (preg_match("/(require \".*)(redirect \"|$)/Uis", $old_script, $matches)){
 							if (preg_match("/subject \".*/is",$matches[1],$matches2)){
 								$vacation_script = $matches2[0];

@@ -346,7 +346,7 @@ class sieve
   {
     if($this->loggedin==false)
         return false;
-    $this->script=stripslashes($script);
+    $this->script=utf8_encode(stripslashes($script));
     $len=strlen($this->script);
     fputs($this->fp, "PUTSCRIPT \"$scriptname\" \{$len+}\r\n");
     fputs($this->fp, "$this->script\r\n");
