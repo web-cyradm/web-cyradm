@@ -597,6 +597,10 @@ msgstr "Abwesenheitsmeldung installieren"
 msgid "Remove vacation notice"
 msgstr "Abwesenheitsmeldung entfernen"
 
+#: vacation.php:58
+msgid "Vacation notice set"
+msgstr "Abwesenheitsmeldung gesetzt"
+
 #: vacation.php:59
 msgid "Failed to activate vacation"
 msgstr "Fehler beim Setzen der Abwesenheitsmeldung"
