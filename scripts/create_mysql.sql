@@ -38,6 +38,19 @@ CREATE TABLE adminuser (
 # --------------------------------------------------------
 
 #
+# Table structure for table `settings`
+#
+
+CREATE TABLE settings (
+  `username` varchar(50) binary NOT NULL default '',
+  `style` varchar(50) NOT NULL default 'default',
+  `maxdisplay` int(4) NOT NULL default '15',
+  `warnlevel` int(3) NOT NULL default '90',
+  PRIMARY KEY  (username)
+) TYPE=MyISAM;
+# --------------------------------------------------------
+
+#
 # Table structure for table `alias`
 #
 
