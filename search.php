@@ -13,11 +13,14 @@ if ($error!=0){
 
 if ($admintype==0) {
     $allowed_domains="('1'='1";
+    $allowed_domains3="('1'='1";
 } else {
     $allowed_domains="(a.domain_name='";
+    $allowed_domains3="(virtual.username='";
     for ($i = 0; $i < $cnt; $i++){                                                              
 	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);                                     
 	$allowed_domains.=$row['domain_name']."' OR a.domain_name='";                                       
+	$allowed_domains3.=$row['domain_name']."' OR virtual.username='";                                       
     }
 }
 
@@ -30,9 +33,11 @@ $query2="SELECT distinct a.username, a.domain_name FROM virtual as v, accountuse
 	 $allowed_domains')
 	 ORDER BY username";
 $query3="SELECT DISTINCT alias, username FROM virtual
-		WHERE (((username LIKE '%$searchstring%') 
+		WHERE (((dest LIKE '%$searchstring%') 
 		OR (alias LIKE '%$searchstring%')) 
-		AND (dest <> username)) AND $allowed_domains')
+		AND (dest <> username) 
+		AND (username<>'') 
+		) AND $allowed_domains3')
 		ORDER BY username";	
 $result=$handle->query($query);
 $result2=$handle->query($query2);
