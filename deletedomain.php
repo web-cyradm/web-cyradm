@@ -6,6 +6,14 @@
 
 if ($admintype==0){
 
+	$handle=DB::connect($DSN, true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+	
+	$query1="SELECT * FROM accountuser WHERE domain_name='$domain' order by username";
+	$result1=$handle->query($query1);
+	$cnt1=$result1->numRows();
         
 
 	if (!$confirmed){
@@ -46,14 +54,6 @@ if ($admintype==0){
 
 		# First Delete all stuff related to the domain from the database
 
-		$handle=DB::connect($DSN, true);
-		if (DB::isError($handle)) {
-			die (_("Database error"));
-		}
-	
-		$query1="SELECT * FROM accountuser WHERE domain_name='$domain' order by username";
-		$result1=$handle->query($query1);
-		$cnt1=$result1->numRows();
 	
 		$query2="DELETE FROM virtual WHERE domain_name='$domain'";
 		$hnd2=$handle->query($query2);
