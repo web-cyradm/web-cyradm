@@ -74,11 +74,27 @@ else{
 		else if ($confirmed){
 
 			if ($new_password && $new_password==$confirm_password){
-				$pwd=new password;
-				$new_password=$pwd->encrypt($new_password,$CRYPT);
-				# If the new_password field is not empty and the password matches, update the password
-				$query="UPDATE adminuser SET password='$new_password' , type='$newtype' WHERE username='$username'";
-			}
+				switch($CRYPT){
+					case "1":
+					case "crypt":
+						$pwd=new password;
+						$new_password=$pwd->encrypt($new_password,$CRYPT);
+						# If the new_password field is not empty and the password matches, update the password
+						$query="UPDATE adminuser SET password='$new_password' , type='$newtype' WHERE username='$username'";		
+					break;
+				
+					case "2":
+					case "sql":
+					case "mysql":
+						$query="UPDATE adminuser SET password=PASSWORD('$new_password') , type='$newtype' WHERE username='$username'";
+					break;
+			
+					case "plain":
+						$query="UPDATE adminuser SET password='$new_password' , type='$newtype' WHERE username='$username'";
+					break;
+				}	
+	
+			}	
 
 			else if ($new_password!=$confirm_password){
 				die (_("New passwords are not equal. Password not changed"));

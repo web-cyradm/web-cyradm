@@ -41,8 +41,7 @@ class password{
 			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 
 			$dbinput=$row['password'];
-//			print "From DB:".$dbinput;
-//			print "userinput:".crypt($userinput,$dbinput);
+			
 			// The salt used is the encrypted password
 	
 			if ($dbinput == crypt($userinput,$dbinput)){
@@ -53,6 +52,28 @@ class password{
 			}
 
 		break;		
+
+		case "mysql":
+		case "sql":
+		case "2":
+			$query = "SELECT * FROM $table WHERE username='$username' AND password=PASSWORD('$userinput')";
+			$handle=DB::connect ($DSN,true);
+
+			if (DB::isError($handle)) {
+				die (_("Database error"));
+			}
+
+			$result = $handle->query($query);
+			$cnt=$result->numRows($result);
+
+			if ($cnt> 0){
+				return true;
+			}
+			else {
+				return false;
+			}
+
+		break;
 	
 		case "plain":
 		case "0":
@@ -67,8 +88,6 @@ class password{
 			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 
 			$dbinput = $row['password'];
-
-//			print $dbinput;
 
 			if ($dbinput == $userinput){
 							return true;
@@ -113,6 +132,27 @@ class password{
 			if ($result){	
 				return true;
 			}
+
+		break;
+
+		case "sql":
+		case "sql":
+                case "2":
+			
+			$query="UPDATE $table SET password=PASSWORD('$newpassword') WHERE username='$username'";
+			$handle=DB::connect ($DSN,true);
+
+			if (DB::isError($handle)) {
+                                die (_("Database error"));
+                        }
+
+
+			$result = $handle->query($query);
+			
+			if ($result){	
+				return true;
+			}
+
 			
 		}
 	}

@@ -58,18 +58,27 @@ else{
 
 		else if ($confirmed){
 
-			$pwd=new password;
+			switch($CRYPT){
+				case "1":
+				case "crypt":
+					$pwd=new password;
+					$password=$pwd->encrypt($password,$CRYPT);
+	
+					$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
+				break;
 
-			/* This is temporary needed, because mysql uses proprietary crypto, thus 
-			Admin password must be stored plaintext */
+				case "2":
+				case "sql":
+				case "mysql":
+					$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser',PASSWORD('$password'),'$newadmintype')";
+				break;
 
-			if ($CRYPT=="mysql") {
-				$CRYPT="plain";
+				case "plain":
+					$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
+				break;
+
 			}
 
-			$password=$pwd->encrypt($password,$CRYPT);
-	
-			$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
 
 			$handle1=DB::connect($DSN,true);
 			if (DB::isError($handle)) {
