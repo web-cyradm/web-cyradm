@@ -18,6 +18,7 @@ $result = $handle->query($query);
 $row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 $_SESSION['style'] = $row['style'];
 $_SESSION['maxdisplay'] = $row['maxdisplay'];
+$_SESSION['warnlevel'] = $row['warnlevel'];
 
 if (!$_SESSION['maxdisplay']){
 	$_SESSION['maxdisplay'] = 15;
