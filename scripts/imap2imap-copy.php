@@ -41,8 +41,6 @@ $cnt=count($headers);
 print "done\n\n";
 
 print "Numer of messages to transfer: ".$cnt."\n\n";
-$cnt=2;
-
 
 for ($i=1;$i<$cnt+1;$i++){
 
