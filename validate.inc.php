@@ -123,8 +123,8 @@ switch ($action){
  $query="SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
  $result=$handle->query($query, $handle);
 
- $valid_dest=eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$",$dest);
- $valid_alias=eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$",$alias."@".$domain);
+ $valid_dest=eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$",$dest);
+ $valid_alias=eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$",$alias."@".$domain);
  $row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
   $username2=$row['username'];
  if ($confirmed){
