@@ -1,8 +1,8 @@
 ALTER TABLE `domain` ADD `freenames` ENUM( 'YES', 'NO' ) DEFAULT 'NO' NOT NULL;
 ALTER TABLE `domain` ADD `freeaddress` ENUM( 'YES', 'NO' ) DEFAULT 'NO' NOT NULL;
 
-ALTER TABLE `virtual` DROP PRIMARY KEY
-ALTER TABLE `virtual` DROP INDEX `alias`
+ALTER TABLE `virtual` DROP PRIMARY KEY;
+ALTER TABLE `virtual` DROP INDEX `alias`;
 ALTER TABLE 'virtual' ADD INDEX (alias);
 
 CREATE TABLE log (
