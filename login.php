@@ -95,22 +95,26 @@ function selectLang()
 </script>
 
 <?php
+	if (!$LANG) {
+		print "<option selected=\"selected\">Select language</option>";
+	}
 
 foreach ($nls['aliases'] as $l){
 
 	if ($l == $LANG){
-		print "<option selected";
+		print "<option selected=\"selected\"";
+		print " value=\"$l\">";
+		print $nls['languages'][$l];
+		print "</option>";
 	}
-	else{
+	else {
 		print "<option";
+		print " value=\"$l\">";
+		print $nls['languages'][$l];
+		print "</option>";
 	}
-
-	print " value=\"$l\">";
-	print $nls['languages'][$l];
-	
-//	print $l;
-	print "</option>";
 }
+
 
 ?>
 
