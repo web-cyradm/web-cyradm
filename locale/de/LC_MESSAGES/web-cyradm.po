@@ -422,4 +422,14 @@ msgstr "Abschicken"
 msgid "Cancel"
 msgstr "Abbruch"
 
+#: Error Messages
+
+#: deleteaccount.php:64
+msgid "Security violation detected, action cancelled. Your attempt has been logged."
+msgstr "Sicherheits&uuml;berschreitung entdeckt, Aktion abgebrochen. Ihr Versuch wurde geloggt."
+
+#: failed.php:49
+msgid "Login failed"
+msgstr "Login fehlgeschlagen"
+
 
