@@ -13,7 +13,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			<span style="color: red;">
 				<?php echo $err_msg;?>
 			</span>
-			<?
+			<?php
 		} else {
 			echo "&nbsp;";
 		}
