@@ -58,14 +58,14 @@ print "</table>";
 print "</td></tr>";
 print "<tr>";
 print "<td width=\"10\">&nbsp;</td>";
-print "<td valign=\"top\" height=\"60\">";
+print "<td valign=\"top\" height=\"30\">";
 print "<table border=\"0\" cellspacing=\"2\" cellpadding=\"2\" class=\"header\">";
 print "<tr>";
 print "<td>-&gt;</td>";
 print "<td>"._("Logged in as user").": </td>";
 print "<td><b>$user</b></td>";
-print "</tr>";
-print "<tr>";
+//print "</tr>";
+//print "<tr>";
 print "<td>-&gt;</td>";
 print "<td>"._("Your role is").": </td>";
 if ($admintype==0){
@@ -74,7 +74,7 @@ if ($admintype==0){
 else if ($admintype==1){
         print "<td><b><font color=\"red\">"._("Domain Master")."</font></b></td>";
 }
-print "<tr>";
+//print "<tr>";
 print "<td>-&gt;</td>";
 print "<td>"._("Current domain is").": </td>";
 if ($domain==""){
