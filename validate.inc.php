@@ -49,7 +49,9 @@ if ($admintype != 0){
 		$allowed_domains=$row['domain_name'];
 	}
 	if (!$allowed_domains){
+		print _("Security violation detected, attempt logged");
 		include WC_BASE . "/logout.php";
+		die ();
 	}
 //	$domain=$row['domain_name'];
 
@@ -58,7 +60,9 @@ if ($admintype != 0){
 	$cnt3 = $result3->numRows();
 	
 	if (!$cnt3 AND $domain != ""){
+		print _("Security violation detected, attempt logged");
 		include WC_BASE . "/logout.php";
+		die ();
 	}
 	
 	//print $domain;

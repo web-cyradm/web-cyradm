@@ -10,7 +10,7 @@
 $nls['aliases']['da'] = 'da_DK';
 $nls['aliases']['de'] = 'de_DE';
 //$nls['aliases']['el'] = 'el_GR';
-//$nls['aliases']['en'] = 'en_US';
+$nls['aliases']['en'] = 'en_US';
 $nls['aliases']['es'] = 'es_ES';
 //$nls['aliases']['et'] = 'et_EE';
 //$nls['aliases']['fi'] = 'fi_FI';
@@ -118,7 +118,7 @@ $nls['translator']['pl_PL'] = '<a href="mailto:primo at npl.pl">Przemyslaw Witek
 $nls['translator']['pt_PT'] = '<a href="mailto:fernando at costeira.com.br">Fernando Garcia</a> and <a href="mailto:michelle at cipsga.org.br">Michelle Ribeiro</a>';
 $nls['translator']['ro_RO'] = '<a href="mailto:catalinboiangiu at SoftHome.net">Catalin Boiangiu</a>';
 $nls['translator']['ru_RU'] = '<a href="mailto:edge at gts.smtn.stavropol.ru">Andrey Kolbasenko</a> and <a href="mailto:a_mdl at mail.ru">Denis Medvedev</a>';
-$nls['translator']['sv_SE'] = '<a href="mailto:fredrik at rambrik Rambris.com"></a> and <a href="mailto:anders.litzell at telia.com">Anders Litzell</a>';
+$nls['translator']['sv_SE'] = '<a href="mailto:fredrik at rambrik Rambris.com">Fredrik Rambris</a> and <a href="mailto:anders.litzell at telia.com">Anders Litzell</a>';
 $nls['translator']['tr_TR'] = '<a href="mailto:suleymankuran at yahoo.com">Süleyman Kuran</a>';
 
 
