@@ -92,7 +92,7 @@ if ($wc_configured){
 		    empty($domain) AND !in_array($action, array('logout', 'adminuser', 'editadminuser',
 		   						'deleteadminuser', 'newadminuser',
 								'search', 'settings', 'changeadminpasswd',
-								'display'))){
+								'display','browse'))){
 			include WC_BASE . "/welcome.php";
 		} else {
 
