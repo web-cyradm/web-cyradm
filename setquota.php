@@ -48,7 +48,8 @@
 					
 					<input class="button" 
 					type="submit" 
-					value="<?php print _("Submit"); ?>"
+					value="<?php 
+					print _("Submit"); ?>"
 					>
 				</form>
 				<?php

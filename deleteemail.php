@@ -34,10 +34,14 @@
 				value="<?php print $alias?>">
 				
 				<input class="button" type="submit"
-				name="confirmed" value="<?php print _("Yes, delete");?>">
+				name="confirmed" value="
+				<?php print _("Yes, delete");?>
+				">
 				
 				<input class="button" type="submit"
-				name="cancel" value="<?php print _("Cancel");?>"> </form>
+				name="cancel" value="
+				<?php print _("Cancel");?>
+				"> </form>
 			<?php
 		} elseif (! empty($cancel)){
 			?>

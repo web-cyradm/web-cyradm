@@ -14,7 +14,7 @@ if (! isset($domain)){
 				<?php print _("Superusers Menu");?>
 			</td>
 
-			<td colspan="3">
+			<td colspan="6">
 				<?php print _("Domainmasters menu");?>
 			</td>
 
@@ -81,10 +81,12 @@ if (! isset($domain)){
 
 		<td class="navi">
 			<form action="index.php" method="get" >
-				<input type="submit" value="<?php print _("Search");?>">
+				<input type="submit" value="
+				<?php print _("Search");?>
+				">
 				<input type="hidden" name="action" value="search">
 				<input type="hidden" name="domain" value="<?php echo $domain;?>">
-				<input type="text" class="inputfield" name="searchstring" value="<?php if (isset($searchstring))  echo $searchstring; ?>">
+				<input type="text" size=10 class="inputfield" name="searchstring" value="<?php if (isset($searchstring))  echo $searchstring; ?>">
 			</form>
 		</td>
 	</tr>

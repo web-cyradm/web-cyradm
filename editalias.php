@@ -92,7 +92,7 @@ if( $num_aliases != 0 )
 		$dest = $row['dest'];
 		if( $row['username'] != $domain )
 		{
-			$action = _("Cannot remove from account")." <b>FIXME:Why not? We should think about reorganize that";
+			$action = _("Cannot remove from account");
 		}
 		else
 		{
@@ -100,7 +100,7 @@ if( $num_aliases != 0 )
 		}
 ?>
 	<tr class="<?php echo $cssrow ?>">
-		<!-- <td><a href="index.php?action=deletealias&domain=<?php echo $domain ?>&alias=<?php echo $alias ?>&dest=<?php echo $dest ?>">Remove destination</a></td> -->
+		<!-- <td><a href="index.php?action=deletealias&domain=<?php echo $domain ?>&alias=<?php echo $alias ?>&dest=<?php echo $dest ?>"> <?php print _("Remove destination") ?></a></td> -->
 		<td><?php echo $action ?></td>
 		<td><?php echo $dest ?></td>
 	</tr>
@@ -133,7 +133,8 @@ else
 	<input type="hidden" name="domain" value="<?php echo $_GET['domain'] ?>">
 	<input type="hidden" name="action" value="editalias">
 	<input type="hidden" name="alias" value="<?php echo $alias ?>">
-	<?php print _("New destination&nbsp"); ?>:<input type="text" name="dest" size="30" maxlength="50" class="inputfield" onFocus="this.style.backgroundColor='#aaaaaa'">&nbsp;
+	<?php print _("New destination") ?>:
+	<input type="text" name="dest" size="30" maxlength="50" class="inputfield" onFocus="this.style.backgroundColor='#aaaaaa'">&nbsp;
 	<input name="adddest" value="<?php print _("Submit");?>" class="button" type="submit">&nbsp;
 	<input name="reset" value="<?php echo _("Cancel");?>" class="button" type="reset">
 	</form>
