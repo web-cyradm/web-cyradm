@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Web-cyradm\n"
 "POT-Creation-Date: 2003-08-10 16:56+0200\n"
-"PO-Revision-Date: 2002-09-13 09:56+0300\n"
-"Last-Translator: Denis Medvedev <a_mdl@mail.ru>\n"
+"PO-Revision-Date: 2003-10-08 20:59+0300\n"
+"Last-Translator: Andrey Kolbasenko <egde@@gts.smtn.stavropol.ru>\n"
 "Language-Team: Russian <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=koi8-r\n"
@@ -29,7 +29,7 @@ msgstr "Просмотр счетов для домена"
 #: lib/crypto.php:30 lib/crypto.php:110 lib/crypto.php:149
 #: forwardaccount.php:28 delete_catchall.php:23 deleteemail.php:62
 msgid "Database error"
-msgstr "Ошибка базы данных, попробуйте еще раз"
+msgstr "Ошибка базы данных"
 
 #: CVS/Base/browseaccounts.php:48 browseaccounts.php:48 newaccount.php:68
 msgid "Total accounts"
@@ -37,7 +37,7 @@ msgstr "Всего счетов"
 
 #: CVS/Base/browseaccounts.php:49 adminuser.php:36 browseaccounts.php:49
 msgid "Displaying from position:"
-msgstr ""
+msgstr "Показ с позиции:"
 
 #: CVS/Base/browseaccounts.php:55 CVS/Base/browseaccounts.php:242
 #: browseaccounts.php:55 browseaccounts.php:242 search.php:123 search.php:239
@@ -72,9 +72,8 @@ msgid "Username"
 msgstr "Имя пользователя"
 
 #: CVS/Base/browseaccounts.php:97 browseaccounts.php:97
-#, fuzzy
 msgid "Last login"
-msgstr "Не удалось войти в систему"
+msgstr "Последний вход"
 
 #: CVS/Base/browseaccounts.php:97 browseaccounts.php:97 editaccount.php:68
 #: search.php:152
@@ -83,7 +82,7 @@ msgstr "Квота на ящик"
 
 #: CVS/Base/browseaccounts.php:136 browseaccounts.php:136
 msgid "n/a"
-msgstr ""
+msgstr "n/a"
 
 #: CVS/Base/browseaccounts.php:146 browseaccounts.php:146 search.php:171
 msgid "Edit account"
@@ -111,9 +110,8 @@ msgid "Set catch all"
 msgstr "Мусор ему"
 
 #: CVS/Base/browseaccounts.php:181 browseaccounts.php:181 search.php:190
-#, fuzzy
 msgid "Forwards"
-msgstr "Переслать"
+msgstr "Перенаправлений"
 
 #: CVS/Base/browseaccounts.php:218 browseaccounts.php:218 editaccount.php:152
 #: search.php:217
@@ -122,7 +120,7 @@ msgstr "из"
 
 #: CVS/Base/browseaccounts.php:221 browseaccounts.php:221 search.php:220
 msgid "Unable to retrieve quota"
-msgstr ""
+msgstr "Невозможно выяснить квоту"
 
 #: CVS/Base/browseaccounts.php:224 browseaccounts.php:224 editaccount.php:155
 #: search.php:223
@@ -166,13 +164,12 @@ msgid "Delete adminuser"
 msgstr "Удалить админа"
 
 #: adminuser.php:144
-#, fuzzy
 msgid "All domains"
-msgstr "домен"
+msgstr "Все домены"
 
 #: adminuser.php:148
 msgid "None"
-msgstr ""
+msgstr "Ни одного"
 
 #: adminuser.php:158 editadminuser.php:65 menu.inc.php:132 newadminuser.php:57
 #: newadminuser.php:207
@@ -193,19 +190,16 @@ msgid "Add administrator"
 msgstr "Добавить админа"
 
 #: aliases.php:11
-#, fuzzy
 msgid "Browse aliases for domain"
-msgstr "Просмотр счетов для домена"
+msgstr "Просмотр псевдонимов для домена"
 
 #: aliases.php:50
-#, fuzzy
 msgid "Total aliases"
-msgstr "Всего администраторов"
+msgstr "Всего псевдонимов"
 
 #: aliases.php:55
-#, fuzzy
 msgid "Add new alias"
-msgstr "Добавить новый домен"
+msgstr "Добавить новый псевдоним"
 
 #: aliases.php:66 editalias.php:77 editemail.php:113 newemail.php:98
 #: search.php:255
@@ -213,14 +207,12 @@ msgid "Destination"
 msgstr "Назначение"
 
 #: aliases.php:91 search.php:273
-#, fuzzy
 msgid "Edit Alias"
-msgstr "Редактирование E-Mail адреса"
+msgstr "Редактирование псевдонима"
 
 #: aliases.php:92 search.php:274
-#, fuzzy
 msgid "Delete Alias"
-msgstr "Удаление E-Mail адреса"
+msgstr "Удаление псевдонима"
 
 #: auth.inc.php:70
 msgid "Web-cyradm is for authorized users only."
@@ -228,16 +220,15 @@ msgstr "Только для зарегистрированных пользователей"
 
 #: auth.inc.php:71
 msgid "Make sure you entered the right password."
-msgstr "Убедитесь что вы ввели правильный пароль"
+msgstr "Убедитесь, что вы ввели верный пароль"
 
 #: auth.inc.php:72
 msgid "Push the back button in your browser to try again."
-msgstr "Для того чтобы попытаться снова нажмите кнопку back в вашем браузере"
+msgstr "Для того чтобы попытаться снова, нажмите кнопку возврата в вашем браузере"
 
 #: auth.inc.php:73
-#, fuzzy
 msgid " Your attempt to login has been stored."
-msgstr "Ваша попытка войти в систему была записана"
+msgstr "Ваша попытка входа была зафиксирована"
 
 #: browse.php:13
 msgid "Browse domains"
@@ -273,10 +264,10 @@ msgstr "счета"
 
 #: browse.php:93 menu.inc.php:68 search.php:85
 msgid "Aliases"
-msgstr ""
+msgstr "Псевдонимов"
 
 #: catchall.php:13
-msgid "Define a Account for receiving undefined adresses for domain"
+msgid "Define a Account for receiving undefined addresses for domain"
 msgstr "Определить счет для приема нераспознанных адресов для домена"
 
 #: catchall.php:38
@@ -284,30 +275,28 @@ msgid "Do you really want to define the user"
 msgstr "Вы действительно хотите определить пользователя"
 
 #: catchall.php:42
-msgid "to receive all undefined emailadresses"
-msgstr "для приема всех неопределенных адресов"
+msgid "to receive all undefined emailaddresses"
+msgstr "для приема всей почты, пришедшей на несуществующий адрес"
 
 #: catchall.php:46
 msgid "The currently defined user"
-msgstr ""
+msgstr "Текущий пользователь"
 
 #: catchall.php:46
-#, fuzzy
-msgid "will not receiving any undefined emailadresses anymore"
-msgstr "для приема всех неопределенных адресов"
+msgid "will not receiving any undefined emailaddresses anymore"
+msgstr "не будет более получать всю почту, пришедшую на несуществующие адреса"
 
 #: catchall.php:74
 msgid "The user"
-msgstr ""
+msgstr "Пользователь"
 
 #: catchall.php:74
-#, fuzzy
-msgid "is allready defined to receive all undefined Emails."
-msgstr "для приема всех неопределенных адресов"
+msgid "is already defined to receive all undefined Emails."
+msgstr "для приема почты, пришедшей на несуществующие адреса, уже определен"
 
 #: catchall.php:76
 msgid "Do you want to remove the function \"catch all\" for the account"
-msgstr ""
+msgstr "Вы хотите удалить функцию \"мусор ему\" для этого счета"
 
 #: catchall.php:127 newadminuser.php:197
 msgid "successfully added to Database"
@@ -319,21 +308,20 @@ msgid "Database error, please try again"
 msgstr "Ошибка базы данных, попробуйте еще раз"
 
 #: catchall.php:140 delete_catchall.php:44
-#, fuzzy
 msgid "Cancelled"
-msgstr "Отмена"
+msgstr "Отменено"
 
 #: change_password.php:53
 msgid "Password changed"
-msgstr "Пароль сменен "
+msgstr "Пароль изменен "
 
 #: change_password.php:56
 msgid "Failure in changing password."
-msgstr "Не получилось сменить пароль"
+msgstr "Не получилось изменить пароль"
 
 #: change_password.php:59 editadminuser.php:252
 msgid "New passwords are not equal. Password not changed"
-msgstr "Новые пароли не совпали. Смена паролей не произведена"
+msgstr "Новые пароли не идентичны. Смена паролей не произведена"
 
 #: change_password.php:72
 msgid "Change password for account"
@@ -341,15 +329,15 @@ msgstr "Сменить пароль для счета"
 
 #: change_password.php:91
 msgid "New password"
-msgstr "Пароль"
+msgstr "Новый пароль"
 
 #: change_password.php:101
 msgid "Confirm new password"
-msgstr "Подтвердить пароль"
+msgstr "Подтвердите новый пароль"
 
 #: change_password.php:121 newaccount.php:243
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Пароли не идентичны"
 
 #: deleteaccount.php:25
 msgid "Delete an Account from the System"
@@ -360,7 +348,7 @@ msgid "Do you really want to delete the user "
 msgstr "Вы действительно хотите удалить пользователя"
 
 #: deleteaccount.php:33
-msgid "with all its defined Emailadresses"
+msgid "with all its defined Emailaddresses"
 msgstr "со всеми его E-Mail адресами?"
 
 #: deleteaccount.php:69 deleteadminuser.php:68 deletedomain.php:84
@@ -370,39 +358,35 @@ msgstr "Действие отменено, ничего не удалили"
 
 # Submit and cancel buttons
 #: deleteaccount.php:100
-#, fuzzy
 msgid "User deleted"
-msgstr "Да, удалить"
+msgstr "Пользователь удален"
 
 #: deleteaccount.php:111 deletedomain.php:175
 msgid ""
 "Security violation detected, action cancelled. Your attempt has been logged."
 msgstr ""
-"Обнаружено нарушение защиты, действие отменено. Ваша попытка была "
-"запротоколирована"
+"Обнаружено нарушение защиты, действие отменено. Ваша попытка была зафиксирована"
 
 #: deleteadminuser.php:17
 msgid "Delete an Admin account from the System"
-msgstr "Удалить счет из системы"
+msgstr "Удалить Администратора из системы"
 
 #: deleteadminuser.php:21
 msgid "Do you really want to delete the Domain supervisor"
-msgstr "Вы действительно хотите удалить Домен"
+msgstr "Вы действительно хотите удалить Мастера Домена"
 
 #: deleteadminuser.php:90 editadminuser.php:276
 msgid "At least one Superuser is needed for Web-cyradm"
-msgstr ""
+msgstr "Хотя бы один Суперпользователь необходим для Web-cyradm"
 
 #: deleteadminuser.php:103
 msgid "Admin user deleted"
-msgstr ""
+msgstr "Администратор удален"
 
 #: deleteadminuser.php:116 editadminuser.php:299 newadminuser.php:226
-#, fuzzy
 msgid "Security violation detected, nothing deleted, attempt has been logged"
 msgstr ""
-"Обнаружено нарушение защиты, действие отменено. Ваша попытка была "
-"запротоколирована"
+"Обнаружено нарушение защиты, ничего не удалено. Ваша попытка была зафиксирована"
 
 #: deletedomain.php:28
 msgid "Delete a Domain from the System"
@@ -413,8 +397,8 @@ msgid "Do you really want to delete the Domain"
 msgstr "Вы действительно хотите удалить Домен"
 
 #: deletedomain.php:37
-msgid "with all its defined accounts, admins, and emailadresses"
-msgstr "со всеми его счетами, админами и E-Mail адресами?"
+msgid "with all its defined accounts, admins, and emailaddresses"
+msgstr "со всеми его счетами, админами и E-Mail адресами"
 
 #: deletedomain.php:43
 msgid "This can take a while depending on how many account have to be deleted"
@@ -422,7 +406,7 @@ msgstr "Это займет некоторое время, в зависимости от количества счетов"
 
 #: deletedomain.php:47
 msgid "Your action will delete"
-msgstr "Ваше действие будет удаление"
+msgstr "Ваше действие - удалить"
 
 #: deletedomain.php:154 newadminuser.php:101
 msgid "Domain"
@@ -434,11 +418,11 @@ msgstr "успешно удален"
 
 #: deletealias.php:28
 msgid "Please confirm you want to remove"
-msgstr ""
+msgstr "Пожалуйста, подтвердите удаление"
 
 #: deletealias.php:28
 msgid "from the alias"
-msgstr ""
+msgstr "из псевдонимов"
 
 #: deletealias.php:30
 msgid "Yes"
@@ -446,22 +430,22 @@ msgstr "Да"
 
 #: deletealias.php:49
 msgid "Please confirm you want to remove the alias"
-msgstr ""
+msgstr "Пожалуйста, подтвердите удаление псевдонима"
 
 #: deletealias.php:77
 msgid "Removed"
-msgstr ""
+msgstr "Удален"
 
 #: deletealias.php:77
 msgid "from"
-msgstr ""
+msgstr "из"
 
 #: deletealias.php:85
 msgid "Removed the alias"
-msgstr ""
+msgstr "Удален псевдоним"
 
 #: editaccount.php:21
-msgid "Email adresses defined for user"
+msgid "Email addresses defined for user"
 msgstr "Адреса E-Mail, которые имеет пользователь"
 
 #: editaccount.php:42
@@ -469,7 +453,7 @@ msgid "New email address"
 msgstr "Новый адрес E-Mail"
 
 #: editaccount.php:90
-msgid "Edit Emailadress"
+msgid "Edit Emailaddress"
 msgstr "Редактирование E-Mail адреса"
 
 #: editaccount.php:92
@@ -477,7 +461,7 @@ msgid "Vacation"
 msgstr "Cообщение о каникулах/отпуске"
 
 #: editaccount.php:93
-msgid "Delete Emailadress"
+msgid "Delete Emailaddress"
 msgstr "Удаление E-Mail адреса"
 
 #: editadminuser.php:13
@@ -498,62 +482,55 @@ msgstr "Пароль"
 
 #: editadminuser.php:100 newaccount.php:139 newadminuser.php:86
 msgid "Confirm Password"
-msgstr "Подтвердить пароль"
+msgstr "Подтвердите пароль"
 
 #: editadminuser.php:155
 msgid "No Domain assigned yet"
-msgstr ""
+msgstr "Домен не закреплен"
 
 #: editadminuser.php:165
-#, fuzzy
 msgid "Add new domain to this admin"
-msgstr "Зарегистрировать новый счет в домене"
+msgstr "Добавить новый домен этому админу"
 
 #: editadminuser.php:223
 msgid "No such domain, create domain first"
-msgstr ""
+msgstr "Нет такого домена, сперва его необходимо создать"
 
 #: editadminuser.php:231
 msgid "Admin already repsonsible for the domain"
-msgstr ""
+msgstr "Админ уже отвечает за домен"
 
 #: editalias.php:27
 msgid "There was an error adding $dest to $alias: "
-msgstr ""
+msgstr "Ошибка добавления $dest в $alias:"
 
 #: editalias.php:64
-#, fuzzy
 msgid "Editing alias"
-msgstr "Редактирование E-Mail адреса"
+msgstr "Редактирование псевдонима"
 
 #: editalias.php:68
-#, fuzzy
 msgid "Delete this alias"
-msgstr "Удаление E-Mail адреса"
+msgstr "Удаление псевдонима"
 
 #: editalias.php:101
-#, fuzzy
 msgid "Cannot remove from account"
-msgstr "Сменить пароль для счета"
+msgstr "Невозможно удалить из счета"
 
 #: editalias.php:105 editalias.php:109
-#, fuzzy
 msgid "Remove destination"
-msgstr "Назначение"
+msgstr "Удалить назначение"
 
 #: editalias.php:125
 msgid "This alias has no destinations"
-msgstr ""
+msgstr "Псевдоним не имеет назначений"
 
 #: editalias.php:142
-#, fuzzy
 msgid "New destination"
-msgstr "Назначение"
+msgstr "Новое назначение"
 
 #: editdomain.php:46
-#, fuzzy
 msgid "Successfully changed domain"
-msgstr "Успешно изменен"
+msgstr "Домен успешно изменен"
 
 #: editdomain.php:92 newdomain.php:39
 msgid "Domainname"
@@ -565,12 +542,11 @@ msgstr "Префикс"
 
 #: editdomain.php:123 newdomain.php:73
 msgid "Allow Free Names"
-msgstr ""
+msgstr "Разрешить Свободные Имена"
 
 #: editdomain.php:141 newdomain.php:90
-#, fuzzy
 msgid "Allow Free Mail Addresses"
-msgstr "Новый адрес E-Mail"
+msgstr "Разрешить Свободные E-Mail Адреса"
 
 #: editdomain.php:159 newdomain.php:102
 msgid "Maximum Accounts"
@@ -592,15 +568,16 @@ msgstr "Успешно изменен"
 msgid ""
 "You can't edit this email address with 'Allow Free Mail Addressess' set to "
 "off!"
-msgstr ""
+msgstr "Вы не сможете исправить этот адрес с отключенной опцией 'Разрешить "
+"Свободные Имена!"
 
 #: editemail.php:95 newemail.php:77
-msgid "Emailadress"
+msgid "Emailaddress"
 msgstr "E-Mail адрес"
 
 #: failed.php:66
 msgid "Login failed"
-msgstr "Неудачный вход"
+msgstr "Ошибка входа"
 
 #: failed.php:71 login.php:51
 msgid "This is only for authorized users"
@@ -647,10 +624,11 @@ msgstr "Не возможно"
 msgid ""
 "You can't forward this email address with 'Allow Free Mail Addressess' set "
 "to off!"
-msgstr ""
+msgstr "Вы не сможете сделать перенаправление этого адреса с выключенной "
+"опцией 'Разрешить Свободные E-Mail Адреса'!"
 
 #: forwardalias.php:161
-msgid "Forward for emailadress"
+msgid "Forward for emailaddress"
 msgstr "Пересылать на адрес E-Mail"
 
 #: forwardalias.php:204
@@ -659,7 +637,7 @@ msgstr "Установить пересылку на"
 
 #: forwardalias.php:204
 msgid "(Seperate multiple values with ,)"
-msgstr ""
+msgstr "(Разделите несколько значений знаком ,)"
 
 #: forwardalias.php:210 forwardaccount.php:125
 msgid "Keep a copy in the user's mailbox"
@@ -667,33 +645,34 @@ msgstr "Оставлять копию в почтовом ящике пользователя"
 
 #: forwardalias.php:215 forwardaccount.php:139
 msgid "Remove forwarding"
-msgstr "Удалить пересылку"
+msgstr "Удалить перенаправление"
 
 #: index.php:23
 msgid "migrate.php exists! please delete or rename it"
-msgstr ""
+msgstr "migrate.php существует! Пожалуйста, удалите или переименуйте его"
 
 #: index.php:138
 msgid "web-cyradm has not yet been configured"
-msgstr ""
+msgstr "web-cyradm не отконфигурирован"
 
 #: index.php:141
 msgid "Configuration steps:"
-msgstr ""
+msgstr "Шаги конфигурации:"
 
 #: index.php:143
 msgid "copy the config file that comes with the distribution: "
-msgstr ""
+msgstr "скопируйте файл конфигурации, который идет с программой"
 
 #: index.php:146
 msgid "Edit the file config/conf.php to match your systems configuration"
-msgstr ""
+msgstr "Отредактируйте файл config/conf.php в соответсвии с вашей системой"
 
 #: index.php:148
 msgid ""
 "Further information about how to configure Web-cyradm can be found at the "
 "following website:"
-msgstr ""
+msgstr "Дополнительная информация о конфигурации Web-cyradm может быть "
+"найдена на следующем вебсайте:"
 
 #: login.php:50
 msgid "Welcome to Web-cyradm"
@@ -705,20 +684,19 @@ msgstr "Пожалуйста представьтесь"
 
 #: login.php:84
 msgid "Select language"
-msgstr ""
+msgstr "Выберите язык"
 
 #: logout.php:52
 msgid "Thank you for using Web-cyradm"
-msgstr "Спасибо за пользование программой Web-cyradm"
+msgstr "Спасибо за использование программы Web-cyradm"
 
 #: logout.php:57
 msgid "You are logged out"
 msgstr "Вы покинули систему"
 
 #: menu.inc.php:19
-#, fuzzy
 msgid "Superusers Menu"
-msgstr "Суперпользователь"
+msgstr "Меню Суперпользователя"
 
 #: menu.inc.php:23
 msgid "Domainmasters menu"
@@ -757,13 +735,12 @@ msgid "Your role is"
 msgstr "Ваши права в системе"
 
 #: menu.inc.php:144
-#, fuzzy
 msgid "Current domain is"
-msgstr "просмотр доменов"
+msgstr "Текущий домен"
 
 #: menu.inc.php:150
 msgid "No domain selected"
-msgstr ""
+msgstr "Домен не выбран"
 
 #: newaccount.php:13
 msgid "Add new Account to domain"
@@ -787,7 +764,7 @@ msgstr "Квота"
 
 #: newaccount.php:196
 msgid "Sorry, the username already exists"
-msgstr ""
+msgstr "Извините, пользователь уже существует"
 
 #: newaccount.php:221
 msgid "Account successfully added to the Database"
@@ -798,9 +775,8 @@ msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Счет успешно добавлен в IMAP подсистему"
 
 #: newadminuser.php:13
-#, fuzzy
 msgid "Add new administrator"
-msgstr "Добавить админа"
+msgstr "Добавить нового админа"
 
 #: newadminuser.php:64
 msgid "Select \"Superuser\" for all domains"
@@ -808,43 +784,39 @@ msgstr "Выберите \"Суперпользователя\" для всех доменов"
 
 #: newadminuser.php:132
 msgid "You must provide a username"
-msgstr ""
+msgstr "Вы должны указать имя пользователя"
 
 #: newadminuser.php:145
 msgid "Passwords are empty or not equal."
-msgstr ""
+msgstr "Пароль пуст или не совпадает"
 
 #: newadminuser.php:157
 msgid "Username already exist"
-msgstr ""
+msgstr "Имя пользователя уже существует"
 
 #: newalias.php:15
-#, fuzzy
 msgid "Add new alias to domain"
-msgstr "Зарегистрировать новый счет в домене"
+msgstr "Зарегистрировать новый псевдоним для домена"
 
 #: newalias.php:55
-#, fuzzy
 msgid "Sorry, no more alias allowed for domain"
-msgstr "Просмотр счетов для домена"
+msgstr "Извините, нельзя назначить большее количество псевдонимов для домена"
 
 #: newalias.php:60
-#, fuzzy
 msgid "Maximum allowed aliases is"
-msgstr "Максимальное кол-во счетов"
+msgstr "Максимальное кол-во псевдонимов"
 
 #: newdomain.php:15
 msgid "Add new domain"
 msgstr "Добавить новый домен"
 
 #: newdomain.php:140
-#, fuzzy
 msgid "Standard Mailboxes"
-msgstr "Стандартные Почтовые ящики"
+msgstr "Почтовые ящики"
 
 #: newdomain.php:146
 msgid ""
-"emailadress where the default aliases should be mapped (empty means no "
+"emailaddress where the default aliases should be mapped (empty means no "
 "mapping)"
 msgstr ""
 "Почтовый адрес куда должны указывать псевдонимы по умолчанию (пусто - не "
@@ -857,11 +829,11 @@ msgstr "Почтовый транспорт"
 #: newdomain.php:166
 msgid "Leave this as is, unless you know what you are doing"
 msgstr ""
-"Оставьте это как есть, изменяйте если вы хорошо понимаете что вы делаете."
+"Оставьте это как есть, изменяйте если вы хорошо понимаете, что вы делаете."
 
 #: newdomain.php:187
 msgid "Parameter"
-msgstr ""
+msgstr "Параметр"
 
 #: newdomain.php:245 newemail.php:34
 msgid "Successfully added"
@@ -872,30 +844,28 @@ msgid "You are not allowed to add new domains"
 msgstr "Вам нельзя заводить новые домены"
 
 #: newemail.php:56
-msgid "New emailadress for user"
+msgid "New emailaddress for user"
 msgstr "Новый E-Mail адрес для пользователя"
 
 #: search.php:48
-#, fuzzy
 msgid "Total domains matching"
-msgstr "Всего администраторов"
+msgstr "Всего соответствующих доменов"
 
 #: search.php:110
 msgid "Total users matching"
-msgstr ""
+msgstr "Всего соответствующих пользователей"
 
 #: search.php:118
 msgid "Displaying from position"
-msgstr ""
+msgstr "Показ с позиции"
 
 #: search.php:245
 msgid "Total aliases matching"
-msgstr ""
+msgstr "Всего соответствующих псевдонимов "
 
 #: search.php:247
-#, fuzzy
 msgid "No aliases found"
-msgstr "Счетов не найдено"
+msgstr "Псевдонимов не найдено"
 
 #: setquota.php:26
 msgid "Setting individual Quota for user"
@@ -906,13 +876,12 @@ msgid "Submit"
 msgstr "Подтвердить"
 
 #: setquota.php:70
-#, fuzzy
 msgid "Quote for user"
-msgstr "Квота не установлена"
+msgstr "Квота для пользователя"
 
 #: setquota.php:74
 msgid "changed to"
-msgstr ""
+msgstr "именена на"
 
 #: timeout.php:33
 msgid "Your session timed out"
@@ -931,9 +900,8 @@ msgid "Failure in modifying vacation notice"
 msgstr "Не удалось модифицировать сообщение о каникулах/отпуске "
 
 #: vacation.php:95
-#, fuzzy
 msgid "Vacation notice unset"
-msgstr "Сообщение о каникулах/отпуске установлено"
+msgstr "Сообщение о каникулах/отпуске выключено"
 
 #: vacation.php:97
 msgid "Failure in unseting vacation notice"
@@ -951,10 +919,11 @@ msgstr "Не удалось удалить сообщение о каникулах/отпуске "
 msgid ""
 "You can't set Vacation Message for this email address with 'Allow Free Mail "
 "Addressess' set to off!"
-msgstr ""
+msgstr "Вы не сможете установить сообщение о каникулах/отпуске для этого "
+"e-mail адреса c отключенной опцией 'Разрешить Свободные Адреса E-Mail'!"
 
 #: vacation.php:152
-msgid "Vacation message for emailadress"
+msgid "Vacation message for emailaddress"
 msgstr "Сообщение о каникулах/отпуске для данного e-mail"
 
 #: vacation.php:174
@@ -967,37 +936,32 @@ msgstr "Удалить сообщение о каникулах/отпуске"
 
 #: validate.inc.php:74 validate.inc.php:87 validate.inc.php:134
 #: validate.inc.php:249
-#, fuzzy
 msgid "Security violation detected, attempt logged"
-msgstr ""
-"Обнаружено нарушение защиты, действие отменено. Ваша попытка была "
+msgstr "Обнаружено нарушение защиты. Ваша попытка была "
 "запротоколирована"
 
 #: validate.inc.php:130
-msgid "Quota exeedes the maximum allowed qutoa for this domain."
-msgstr ""
+msgid "Quota exeedes the maximum allowed quota for this domain."
+msgstr "Квота превышает максимально допустимую квоту для этого домена."
 
 #: forwardaccount.php:77
 msgid "Forward for account"
 msgstr "Всего счетов"
 
 #: forwardaccount.php:93
-#, fuzzy
-msgid "Set forwarding to (one adress per line)"
-msgstr "Установить пересылку на"
+msgid "Set forwarding to (one address per line)"
+msgstr "Установить пересылку на (один адрес на строку)"
 
 #: delete_catchall.php:31
-#, fuzzy
 msgid "successfully deleted from the Database"
-msgstr "успешно добавлен в базу"
+msgstr "успешно удален из базы данных"
 
 #: deleteemail.php:16
-#, fuzzy
-msgid "Delete emailadress from the System"
+msgid "Delete emailaddress from the System"
 msgstr "Удалить E-Mail адрес из системы"
 
 #: deleteemail.php:23
-msgid "Do you really want to delete the emailadress for user"
+msgid "Do you really want to delete the emailaddress for user"
 msgstr "Вы действительно хотите удалить E-Mail адрес пользователя"
 
 # Submit and cancel buttons
@@ -1010,9 +974,8 @@ msgid "Cancel"
 msgstr "Отмена"
 
 #: deleteemail.php:70
-#, fuzzy
-msgid "Emailadress deleted."
-msgstr "E-Mail адрес"
+msgid "Emailaddress deleted."
+msgstr "E-Mail адрес удален"
 
 #~ msgid "successfully changed Database...."
 #~ msgstr "успешно добавлен в базу"
