@@ -7,7 +7,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 <!-- #################### newaccount.php start #################### -->
 <tr>
 	<td width="10">&nbsp;</td>
-	<td valign="top"> 
+	<td valign="top">
 
 		<h3>
 			<?php print _("Add new Account to domain");?>:
@@ -15,7 +15,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<?php echo $domain;?>
 			</span>
 		</h3>
-		
+
 		<?php
 		require_once WC_BASE . '/config/conf.php';
 
@@ -47,7 +47,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 			$query2 	= "SELECT * FROM accountuser WHERE prefix='$prefix' order by username";
 			$result2	= $handle->query($query2);
-			$cnt2		= $result2->numRows($result2);	
+			$cnt2		= $result2->numRows($result2);
 
 			if ($cnt2+1 > $maxaccounts){
 				?>
@@ -97,7 +97,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<input type="hidden" name="confirmed" value="true">
 					<input type="hidden" name="domain" value="<?php print $domain ?>">
 
-					<table>	
+					<table>
 						<?php
 						if (!$DOMAIN_AS_PREFIX){
 							?>
@@ -175,8 +175,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					</table>
 				</form>
 				<?php
-			} // End of if ($cnt2+1 > $maxaccounts) .. else 
+			} // End of if ($cnt2+1 > $maxaccounts) .. else
 		} else {
+
+			if ($authorized!=TRUE){
+				print $err_msg;
+				die($err_msg);
+			}
+
 			if ($DOMAIN_AS_PREFIX){
 				$prefix		= $domain;
 				$username	= $email;
@@ -192,8 +198,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		    $result3=$handle->query($query3);
 		    $cnt3=$result3->numRows();
 		    if ($cnt3!=0) {
-			print "<h3>" . 
-			       _("Sorry, the username already exists") . 
+			print "<h3>" .
+			       _("Sorry, the username already exists") .
 			       "</h3><br>";
 			include WC_BASE . "/browseaccounts.php";
 		} else {
@@ -214,7 +220,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$query4 = "INSERT INTO virtual (alias, dest, username, status) values ( '" . $email . "@" . $domain . "' , '$username' , '$username' , '1')";
 
 				$result2 = $handle->query($query4);
-	
+
 				if ($result and $result2){
 					?>
 					<h3>
