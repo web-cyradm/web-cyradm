@@ -55,7 +55,7 @@ CREATE TABLE search (
 );
 
 CREATE TABLE virtual (
-  alias varchar(255) PRIMARY KEY ,
+  alias varchar(255) NOT NULL default '',
   dest varchar(255),
   username varchar(255) NOT NULL default '',
   status int NOT NULL default '1'
