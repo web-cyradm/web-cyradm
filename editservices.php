@@ -38,6 +38,12 @@ if ($cnt){
 	if ($row['sieve']){
                 $sieve_checked="checked";
         }
+	if ($row['smtpauth']){
+                $smtpauth_checked="checked";
+        }
+        if ($row['smtp']){
+                $smtp_checked="checked";
+        }
 }
 
 
@@ -66,6 +72,18 @@ if (!$confirmed){
                         <td><?php print _("Set vacation message and filter rules with sieve");?></td>
                         <td><input name="sieve" value="1" type="checkbox" <?print $sieve_checked?>></td>
                 </tr>
+
+                <tr>
+                        <td><?php print _("Send E-Mails via smtp authentication");?></td>
+                        <td><input name="smtpauth" value="1" type="checkbox" <?print $smtpauth_checked?>></td>
+                </tr>
+
+                <tr>
+                        <td><?php print _("Receive E-Mails via smtp");?></td>
+                        <td><input name="smtp" value="1" type="checkbox" <?print $smtp_checked?>></td>
+                </tr>
+
+
 
 
 	</table>
