@@ -1,9 +1,3 @@
-<?php
-$ref=WC_BASE."/index.php";
-if ($ref!=$_SERVER['SCRIPT_FILENAME']){
-	header("Location: index.php");
-}
-?>
 <!-- #################################### Start newalias.php ################################# -->
 
 <tr>
@@ -16,6 +10,53 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<?php echo $_GET['domain'];?>
 			</span>
 		</h3>
+    <?php
+                require_once WC_BASE . '/config/conf.php';
+                $query1 = "SELECT * from domain WHERE domain_name='$domain'";
+		
+                $handle = DB::connect($DB['DSN'], true);
+                if (DB::isError($handle)) {
+    	            die (_("Database error"));
+                }
+
+                $result1 = $handle->query($query1);
+
+                $row = $result1->fetchRow(DB_FETCHMODE_ORDERED, 0);
+
+	        $prefix         = $row[1];
+	        $maxaccounts    = $row[2];
+                $def_quota      = $row[3];
+                $transport      = $row[4];
+                // START Andreas Kreisl : freenames
+                $freenames      = $row[5];
+                // END Andreas Kreisl : freenames
+                $freeaddress    = $row[6];
+
+	        if ($transport != "cyrus"){
+                        die (_("transport is not cyrus, unable to create account"));
+            	}
+		
+		if (empty($confirmed)){
+		
+	        $query2         = "SELECT * FROM virtual WHERE username='$prefix' order by alias";
+		$result2        = $handle->query($query2);
+		$cnt2           = $result2->numRows($result2);
+		
+		if ($cnt2+1 > $maxaccounts){
+			?>
+			<h3>
+			    <?php print _("Sorry, no more alias allowed for domain");?>
+			    <span style="color: red;">
+				<?php echo $domain;?>
+			    </span>
+			    <br>
+			    <?php print _("Maximum allowed aliases is");?>
+			    <span style="font-weight: bolder;">
+				<?php echo $maxaccounts;?>
+			    </span>
+			<?php
+		} else {
+			?>
 
 		<form method="get" action="index.php">
 			<input type="hidden"
@@ -68,6 +109,10 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				</tr>
 			</table>
 		</form>
+		<?php
+		    }
+		}
+		?>
 	</td>
 </tr>
 
