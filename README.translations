@@ -1,0 +1,28 @@
+Currently i18n is being implemented.
+
+German partially works
+
+If you like to translate web-cyradm to your native language, you will find 
+the po-files in the directory po-templates.
+
+Here is an example how to work on that files:
+
+exchange the follwing from
+
+msgid "domainname"
+msgstr ""
+
+to:
+
+msgid "domainname"
+msgstr "Whatever domainame means in your language"
+
+if you what to create the mo-files for testing your translations
+use the following command:
+
+msgfmt -o blah.mo blah.po
+
+If you need some help, subscribe to the mailinglist web-cyradm@test.delouw.ch
+
+Thanks
+
