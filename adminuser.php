@@ -70,7 +70,6 @@ if ($admintype==0){
 		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $c);
                 $username=$row['username'];
 		$query2="SELECT * from domainadmin WHERE adminuser='$username'";
-		print $query2;
 		$result2=$handle->query($query2);
 		$cnt2=$result->numRows();
 
