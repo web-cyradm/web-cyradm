@@ -15,7 +15,7 @@
 #
 
 CREATE TABLE accountuser (
-  username varchar(50) NOT NULL default '',
+  username varchar(50) binary NOT NULL default '',
   password varchar(30) binary NOT NULL default '',
   prefix varchar(50) NOT NULL default '',
   domain_name varchar(255) NOT NULL default '',
@@ -28,7 +28,7 @@ CREATE TABLE accountuser (
 #
 
 CREATE TABLE adminuser (
-  username varchar(50) NOT NULL default '',
+  username varchar(50) binary NOT NULL default '',
   password varchar(50) binary NOT NULL default '',
   type int(11) NOT NULL default '0',
   SID varchar(255) NOT NULL default '',
