@@ -14,8 +14,8 @@ if ($authorized){
 	$dest=$row['dest'];
 	$username=$row['username'];
 
-	include ('sieve-php.lib');
-	include ('sieve_strs.php');
+	include ('lib/sieve-php.lib');
+	include ('lib/sieve_strs.php');
 	$query="select * from accountuser where username='$dest'";
 	$handle=DB::connect($DSN, true);
 	$result=$handle->query($query);
@@ -94,7 +94,6 @@ if ($authorized){
 
 		$alias = spliti("@",$alias);
 		$alias = $alias[0];
-
 		print $result_array[0];
 
 	        ?>

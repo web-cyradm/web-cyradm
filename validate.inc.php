@@ -142,7 +142,6 @@ switch ($action){
  case "set_vacation":
  case "set_forwards":
 
-  print $username;
          $query="SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
          $result=$handle->query($query);
   $valid_dest=eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$",$newdest);
