@@ -19,7 +19,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				</td>
 				<td align="left" valign="top" width="2%">&nbsp;</td>
 				<td bgcolor="#B0C4DE" align="left" valign="top" width="49%">
-					<a href="">
+					<a href="index.php?action=display">
 					<?php print _("Display Preferences"); ?>
 					</a>
 				</td>

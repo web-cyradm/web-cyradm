@@ -372,6 +372,9 @@ if (! empty($action)){
 			}
 		}
 		break;
+	case "display":
+		$authorized = TRUE;
+		break;
 ######################################## Check on catch all setting ##################################
 	case "catch":
 	case "delete_catchall";

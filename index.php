@@ -88,7 +88,7 @@ if ($wc_configured){
 
 //		if (empty($_GET['domain']) && (empty($_GET['action']) || (! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain', 'editadminuser', 'newadminuser', 'search'))))){
 
-		if (!isset($action) OR empty($domain) AND $action!="logout" AND $action !="adminuser" AND $action !="editadminuser" AND $action!="deleteadminuser" AND $action!="newadminuser" AND $action!="search" AND $action!="settings" AND $action!="changeadminpasswd"){
+		if (!isset($action) OR empty($domain) AND $action!="logout" AND $action !="adminuser" AND $action !="editadminuser" AND $action!="deleteadminuser" AND $action!="newadminuser" AND $action!="search" AND $action!="settings" AND $action!="changeadminpasswd" AND $action!="display"){
 
 			include WC_BASE . "/welcome.php";
 		} else {
@@ -107,7 +107,7 @@ if ($wc_configured){
 							    "editemail", "aliases", "newalias",
 							    "editalias", "deletealias", "search",
 							    "delete_catchall", "settings",
-							    "changeadminpasswd"))){
+							    "changeadminpasswd", "display"))){
 				include sprintf('%s/%s.php', WC_BASE, $_GET['action']);
 			}
 
