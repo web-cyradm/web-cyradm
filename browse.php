@@ -41,7 +41,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					foreach ($_SESSION['allowed_domains'] as $allowed_domain) {
 						$domains .= $allowed_domain."' OR domain_name='";
 					}
-					$query = "SELECT * FROM domain WHERE domain_name='$domains' ORDER BY".$_GET['orderby'];
+					$query = "SELECT * FROM domain WHERE domain_name='$domains' ORDER BY ".$_GET['orderby'];
 				}
 
 				$result = $handle->query($query);
