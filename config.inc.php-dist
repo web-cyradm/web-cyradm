@@ -45,9 +45,9 @@ $DEFAULT_QUOTA=20000;
 
 # Defines if passwords are encrypted or not.
 # Valid Values:
-#  - 0 No encription is used (good for debugging, not recommanded for production)
-#  - 1 shadow compatible encription (recommanded)
-#  - 2 MySQL PASSWORD cryto funtions 
+#  - 0 No encription is used
+#  - 1 Reserved (shadow compatible encription)
+#  - 2 MySQL PASSWORD cryto funtions
 $CRYPT=1;
 
 # web-cyradm is compatible with cyrus-imapd-2.0.16 (and earlier?)
@@ -60,5 +60,11 @@ $CRYPT=1;
 
 ####
 $DOMAIN_AS_PREFIX=0;
+
+# At the moment, web-cyradm supports two methods of password change:
+# - through sql
+# - poppassd
+# sql is the default
+$PASSWORD_CHANGE_METHOD="sql"; 
 
 ?>

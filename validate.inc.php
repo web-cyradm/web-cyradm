@@ -20,6 +20,7 @@ $action=$_GET['action'];
 $row_pos=$_GET['row_pos'];
 $username=$_GET['username'];
 $password=$_GET['password'];
+$new_password=$_GET['new_password'];
 $confirm_password=$_GET['confirm_password'];
 $quota=$_GET['quota'];
 $maxaccounts=$_GET['maxaccounts'];

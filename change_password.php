@@ -16,34 +16,61 @@ if ($authorized){
 
 	if ($confirmed){
 
-//	        $query="UPDATE virtual SET alias='$newalias@$domain', dest='$dest' WHERE alias='$alias'";
-	  if ($new_password == $new_password2) {
-		$query="select * from accountuser where username='$dest'";
-	        $handle=DB::connect($DSN, true);
-	        $result=$handle->query($query);
-		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-		$password=$row['password'];
-		include ('lib/poppassd.php');
-		$daemon = new poppassd;
-		if ($daemon->change_password($dest, $password, $new_password)) {
-		  print  "<em><big>"._("Password changed")."</big></em><p><p>";
-		} else {
-		  print $daemon->$err_str;
-		  print "<big>"._("Failure in changing password.")."</big><p><p>";
-		}
-	  } else {
-	    print "<b>"._("New passwords are not equal. Password not changed")."</b><p><p>";
-	  }
-	  include ("browseaccounts.php");
-//	        if (!DB::isError($result)){
-//	                print "<h3>"._("Sucessfully changed")."</h3>";
-//			include ("browseaccounts.php");
-//	        }
-//	        else{
-//	                print "<p>"._("Database error, please try again")."<p>";
-//	        }
+		if ($new_password == $confirm_password) {
+			$query="select * from accountuser where username='$dest'";
+		        $handle=DB::connect($DSN, true);
+		        $result=$handle->query($query);
+			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+			$password=$row['password'];
 
+
+			if ($PASSWORD_CHANGE_METHOD=="sql"){
+			
+
+			$handle=DB::connect($DSN, true);
+			switch($CRYPT){
+			case 1:
+			  $query="update accountuser set password=ENCRYPT('$new_password') where username='$username'";
+			  break;
+
+			case 2:
+			  $query="update accountuser set password=PASSWORD('$new_password') where username='$username'";
+			break;
+
+			default:
+			  $query="update accountuser set password='$new_password' where username='$username'";
+			}
+
+
+	
+			$result=$handle->query($query);
+
+			include ("browseaccounts.php");
+
+
+
+
+			}
+
+			else if ($PASSWORD_CHANGE_METHOD=="poppassd"){
+
+				include ('lib/poppassd.php');
+				$daemon = new poppassd;
+				if ($daemon->change_password($dest, $password, $new_password)) {
+					print  "<em><big>"._("Password changed")."</big></em><p><p>";
+				} else {
+					print $daemon->$err_str;
+					print "<big>"._("Failure in changing password.")."</big><p><p>";
+				}
+			} 
+
+		else if ($new_password != $confirm_password){
+			print "Nix da";
+			print "<b>"._("New passwords are not equal. Password not changed")."</b><p><p>";
+		}
 	}
+
+}
 
 
 
@@ -70,7 +97,7 @@ if ($authorized){
 
 		<tr>
 		<td width=150><?php print _("New password")?>:</td>
-		<td><input type="password" size='30' name=password></td>
+		<td><input type="password" size='30' name=new_password></td>
 		</tr>
 		<tr>
 		<td width=150><?php print _("Confirm new password")?>:</td>
