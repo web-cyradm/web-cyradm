@@ -15,11 +15,11 @@ $_get_vars = array(
 	'password', 'new_password', 'confirm_password', 'quota', 'maxaccounts',
 	'newdomain', 'email', 'alias', 'dest', 'newalias', 'newdest', 'confirmed',
 	'cancel', 'searchstring', 'transport', 'tparam', 'mode', 'forwards',
-	'metoo', 'vacation_text', 'freenames', 'freeaddress', 'LANG'
+	'metoo', 'vacation_text', 'freenames', 'freeaddress', 'LANG', 'delete_catchall'
 );
 
 $_post_vars = array(
-	'confirmed', 'action', 'domain', 'alias' , 'username', 'new_password', 
+	'confirmed', 'action', 'domain', 'alias' , 'username', 'new_password',
 	'confirm_password', 'email', 'quota', 'password');
 
 if ($_GET['action']!=""){
@@ -74,13 +74,13 @@ if ($admintype != 0){
 	$query3 = "SELECT * from domainadmin WHERE adminuser='$user' AND domain_name='$domain'";
 	$result3 = $handle->query($query3);
 	$cnt3 = $result3->numRows();
-	
+
 	if (!$cnt3 AND $domain != ""){
 		print _("Security violation detected, attempt logged");
 		include WC_BASE . "/logout.php";
 		die ();
 	}
-	
+
 }
 
 
@@ -141,7 +141,7 @@ if (! empty($action)){
 		$result2 = $handle->query($query2);
 		$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		$freeaddress=$row2['freeaddress'];
-		
+
 		if (! empty($confirmed)){
 			$valid_dest  = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $dest);
 			if ($freeaddress != "YES") {
@@ -169,7 +169,7 @@ if (! empty($action)){
 
 	case "editemail":
 
-	## FIXME: make beter checks 
+	## FIXME: make beter checks
 	case "change_password":
 	case "vacation":
 	case "forwardaccount":
@@ -177,19 +177,19 @@ if (! empty($action)){
 
 		$query = "SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
 		$result = $handle->query($query);
-		
+
                 $query2 = "select * from domain where domain_name='$domain'";
 		$result2 = $handle->query($query2);
 		$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		$freeaddress=$row2['freeaddress'];
-		
+
 		if (! empty($confirmed) && ! empty($newdest) && ! empty($newalias)){
 			$valid_dest = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newdest);
 			if ($freeaddress != "YES") {
 			    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias."@".$domain);
 			} else {
 			    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias);
-			}			
+			}
 			if ($newdest != $username2 and !$valid_dest){
 				$authorized=FALSE;
 				$err_msg = "invalid destination";
@@ -224,6 +224,7 @@ if (! empty($action)){
 
 ######################################## Check on catch all setting ##################################
 	case "catch":
+	case "delete_catchall";
 	case "aliases":
 	case "newalias":
 	case "editalias":
@@ -232,13 +233,9 @@ if (! empty($action)){
 	case "deleteemail":
 	case "vacation":
 
-	print $username;
-
 	$query3 = "SELECT domain_name FROM accountuser WHERE username='$username' AND domain_name='$domain'";
 	$result3 = $handle->query($query3);
 	$cnt3=$result3->numRows();
-
-	print $cnt3;
 
 	if (!$cnt3 and $username !=""){
 		print _("Security violation detected, attempt logged");
