@@ -88,11 +88,8 @@ function entsub() {
 <script language="JavaScript" type="text/javascript">
 function selectLang()
 {
-    if (document.form1.login.value == '' &&
-        document.form1.password.value == '') {
         var lang_page = 'index.php?LANG=' + document.form1.LANG[document.form1.LANG.selectedIndex].value;
         self.location = lang_page;
-    }
 }
 
 </script>
