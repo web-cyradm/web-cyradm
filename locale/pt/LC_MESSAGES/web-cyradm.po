@@ -106,7 +106,7 @@ msgstr "máximo de contas"
 
 #: browse.php:25
 msgid "default quota per user"
-msgstr "quota padrão por usuario"
+msgstr "quota padrão por usuário"
 
 #: browse.php:56
 msgid "Edit Domain"
@@ -205,7 +205,7 @@ msgstr "adicionado a base de dados com sucesso"
 #: catchall.php:57 editdomain.php:25 editemail.php:36 newemail.php:29
 #: newdomain.php:113
 msgid "Database error, please try again"
-msgstr "Erro na base de dados. Ppor favor, tente novamente"
+msgstr "Erro na base de dados. Por favor, tente novamente"
 
 #: change_password.php:60
 msgid "Change password for account"
@@ -245,7 +245,7 @@ msgstr "com todos os seus endereços de e-mail"
 
 #: deleteaccount.php:40 deletedomain.php:47 deleteemail.php:39
 msgid "Action cancelled, nothing deleted"
-msgstr "Açã cancelada, nada apagado"
+msgstr "Ação cancelada, nada apagado"
 
 #: deleteadminuser.php:12
 msgid "Delete an Admin account from the System"
@@ -474,7 +474,7 @@ msgstr "Prefixo"
 
 #: newdomain.php:44
 msgid "Maximum Accounts"
-msgstr "Maximo de Contas"
+msgstr "Máximo de Contas"
 
 #: newdomain.php:41
 msgid "Default Quota in Kilobytes"
@@ -538,7 +538,7 @@ msgstr "Não suportado ainda, mudanças serão ignoradas"
 #: deleteaccount.php:64 editadminuser.php:94 newadminuser.php:89
 msgid ""
 "Security violation detected, action cancelled. Your attempt has been logged."
-msgstr "Violação de segurança detectada, ação cancela. Sua tentativa foi logada."
+msgstr "Violação de segurança detectada, ação cancela. Sua tentativa foi registrada."
 
 #: failed.php:49
 msgid "Login failed"
