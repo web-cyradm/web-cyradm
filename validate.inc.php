@@ -171,6 +171,13 @@ if (! empty($action)){
 
 ################################## Check input if newemail ################################################
 	case "newemail":
+
+		# Wuergaround for reserved E-mail addresses (CSV without domainnames)
+		$reserved_list="postmaster,root";
+		$reserved=explode(",",$reserved_list);
+		
+		
+
 		$query = "SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
 		$result = $handle->query($query, $handle);
 		$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
@@ -198,6 +205,12 @@ if (! empty($action)){
 				$err_msg = "Invalid email adress";
 			} else {
 				$authorized=TRUE;
+			}
+
+			# Check for reserved addresses
+			if (in_array($alias, $reserved)) {
+				$authorized = FALSE;	
+				$err_msg="Reserved Emailadress, request cancelled";
 			}
 		} else {
 			$authorized = TRUE;
