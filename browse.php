@@ -8,7 +8,11 @@
 <tr>
 <th colspan=3>actions</th>
 <th>domainname</th>
-<th>prefix</th>
+<?php
+if (!$DOMAIN_AS_PREFIX ) {
+	print "<th>prefix</th>";
+}
+?>
 <th>max Accounts</th>
 <th>default quota per user</th>
 </tr>
@@ -44,8 +48,11 @@ else{
   print "<td>";
   print mysql_result($result,$c,'domain_name');
   print "</td>\n<td>";
-  print mysql_result($result,$c,'prefix');
-  print "</td>\n<td>";
+if (!$DOMAIN_AS_PREFIX) {
+	print mysql_result($result,$c,'prefix');
+	print "</td>\n<td>";
+}
+
   print mysql_result($result,$c,'maxaccounts');
   print "</td>\n<td>";
   print mysql_result($result,$c,'quota');
