@@ -75,7 +75,6 @@ if ($wc_configured){
 
 	// Choose domain
 	textdomain("web-cyradm");
-	require_once WC_BASE . "/session.php";
 
 	if ($_SESSION['session_ok'] === TRUE) {
 		include "DB.php";
