@@ -1,40 +1,3 @@
-<?php
-header("Content-Type: text/html; charset=iso-8859-1");
-?>
-<html>
-	<head>
-		<title>Web-cyradm</title>
-		<link rel="stylesheet" href="css/web-cyradm.css" type="text/css">
-
-		<script type="text/javascript">
-		<!--
-		function setfocus() {
-			document.form1.login.focus();
-		}
-		function entsub() {
-			if (window.event && window.event.keyCode == 13)
-				document.form1.submit();
-			else	
-				return true;
-		}
-		// -->
-		</script>
-	</head>
-
-	<body bgcolor="#FFFFFF" text="#000000" style="margin: 0;" onload="setfocus();">
-
-	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="height: 15%;">
-		<tr>
-			<td colspan="2" height="80" class="banner" bgcolor="#CCCCCC">
-				<img src="images/banner.gif" width="780" height="80" 
-				usemap="#Map" border="0" alt="web-cyradm banner">
-				<map name="Map">
-					<area shape="rect" coords="689,2,767,15" href="mailto:luc at delouw.ch">
-				</map>
-			</td>
-		</tr>
-	</table>
-
 	<table width="100%" border="0" style="height: 80%;">
 		<tr>
 			<td align="center" valign="middle"> 
@@ -86,19 +49,3 @@ header("Content-Type: text/html; charset=iso-8859-1");
 			</td>
 		</tr>
 	</table>
-
-	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="height: 5%;">
-		<tr>
-			<td height="20" valign="bottom" bgcolor="#CCCCCC">&nbsp;</td>
-			
-			<td height="20" valign="bottom" class="footer" bgcolor="#CCCCCC">
-				&copy;  2002 by Luc de Louw | contact <a href="mailto:luc at delouw.ch"
-				>luc at delouw.ch</a>| see
-				<a href="http://www.web-cyradm.org" target="_new">Web-cyradm</a>     
-			</td>
-		</tr>
-	</table>
-
-	</body>
-</html>
-

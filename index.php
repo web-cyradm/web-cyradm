@@ -40,22 +40,28 @@ if ($wc_configured){
 
 	require_once WC_BASE . "/session.php";
 
-	// 1st) Try to get the language from the browser
-	// 2nd) If there is a language setting in the session, use this instead
+	// 1nd) If there is a language setting in the session, use this instead
+	// 2st) Try to get the language from the browser
 	// 3rd) If none of the above is true, use the default language
-	if (isset($nls['aliases'][substr($browserlang[0], 0, 2)])){
-		// Get language from the browser
-		$LANG = $nls['aliases'][substr($browserlang[0], 0, 2)];
-	} elseif (isset($_SESSION['LANG'])){
+	if (isset($_SESSION['LANG'])){
 		// Use Language setting from session
 		$LANG = $_SESSION['LANG'];
+	}
+	elseif (isset($nls['aliases'][substr($browserlang[0], 0, 2)])){
+                // Get language from the browser
+              $LANG = $nls['aliases'][substr($browserlang[0], 0, 2)];
+	
 	} else {
 		// Fall back to default language
 		$LANG = $DEFAULTLANG;
 	}
 
 	// For testing porpose, GET variable LANG overrides all
-	$LANG = (! empty($_GET['LANG']))?($_GET['LANG']):($LANG);
+//	$LANG = (! empty($_GET['LANG']))?($_GET['LANG']):($LANG);
+
+	if (isset($_GET['LANG'])){
+		$LANG=$_GET['LANG'];
+	}
 
 	include WC_BASE . "/header.inc.php";
 
@@ -69,6 +75,7 @@ if ($wc_configured){
 
 	// Choose domain
 	textdomain("web-cyradm");
+//	require_once WC_BASE . "/session.php";
 
 	if ($_SESSION['session_ok'] === TRUE) {
 		include "DB.php";
