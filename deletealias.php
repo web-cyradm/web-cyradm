@@ -26,9 +26,7 @@ if( ! isset( $_GET['confirmed'] ) )
 	<input type="hidden" name="alias" value="<?php echo $_GET['alias'] ?>">
 	<input type="hidden" name="domain" value="<?php echo $_GET['domain'] ?>">
 	<?php print _("Please confirm you want to remove")?> <b><?php echo $_GET['dest'] ?></b> <?php print _("from the alias");?> <b><?php echo $_GET['alias'] ?></b>&nbsp;<p>
-	<input name="confirmed" class="button" value="
-	<?php print _("Yes");?>
-	" type="submit" class="inputclass">&nbsp;
+	<input name="confirmed" class="button" value="<?php print _("Yes");?>" type="submit" class="button">&nbsp;
 	<input name="no" class="button" value="<?php print _("Cancel");?>" type="button" class="inputclass" onClick="history.go(-1)">
 	</form>
 	</td>

@@ -7,7 +7,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 <!-- #################### editemail.php start #################### -->
 <tr>
 	<td width="10">&nbsp; </td>
-	<td valign="top" align="center" style="border: 0px dashed green;">
+	<td valign="top" align="left" style="border: 0px dashed green;">
 
 		<?php
                 $handle = DB::connect($DB['DSN'], true);
@@ -122,10 +122,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 
 						<tr>
-							<td colspan="2" align="center">
-								<input class="button"
-								type="submit"
-								value="<?php print _("Submit");?>">
+							<td colspan="2" align="left">
+								<input class="button" type="submit" value="<?php print _("Submit");?>">
 							</td>
 						</tr>
 

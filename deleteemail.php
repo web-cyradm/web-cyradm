@@ -39,15 +39,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<input type="hidden" name="alias"
 				value="<?php print $alias?>">
 				
-				<input class="button" type="submit"
-				name="confirmed" value="
-				<?php print _("Yes, delete");?>
-				">
+				<input class="button" type="submit" name="confirmed" value="<?php print _("Yes, delete");?>">
 				
-				<input class="button" type="submit"
-				name="cancel" value="
-				<?php print _("Cancel");?>
-				"> </form>
+				<input class="button" type="submit" name="cancel" value=" <?php print _("Cancel");?>"> </form>
 			<?php
 		} elseif (! empty($cancel)){
 			?>

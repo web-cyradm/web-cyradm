@@ -78,7 +78,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							</td>
 
 							<td>
-								<input type="text" 
+								<input  class="inputfield" type="text" 
 								size="30" name="alias"
 								<?php
 							    	    if (isset($alias)){
@@ -99,7 +99,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							</td>
 							
 							<td>
-								<input type="text"
+								<input  class="inputfield" type="text"
 								size="30" name="dest" 
 								value="<?php print $username;?>">
 							</td>
@@ -108,7 +108,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 						<tr>
 							<td>
-								<input type="submit"
+								<input class="button" type="submit"
 								value="<?php print _("Submit");?>">
 							</td>
 						</tr>
