@@ -48,7 +48,7 @@ $forwardto=$_POST['setforward'];
 # Validate input and verify authorization of a users action
 
 $query="SELECT * FROM domainadmin WHERE adminuser='$user'";
-$query2="SELECT type FROM adminuser WHERE username='$user'";
+$query2="SELECT * FROM adminuser WHERE username='$user'";
 $handle=DB::connect($DSN,true);
 if (DB::isError($handle)) {
 	die (_("Database error"));
@@ -60,12 +60,25 @@ $cnt=$result->numRows();
 $row=$result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 $admintype=$row['type'];
 if ($admintype!=0){
-	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-	$allowed_domains=$row['domain_name'];
+//	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+	for ($i=0;$i<$cnt;$i++){
+		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+		$allowed_domains=$row['domain_name'];
+	}
 	if (!$allowed_domains){
 		include("logout.php");	
 	}
-	$domain=$row['domain_name'];
+//	$domain=$row['domain_name'];
+
+	$query3="SELECT * from domainadmin WHERE adminuser='$user' AND domain_name='$domain'";
+	$result3=$handle->query($query3);
+	$cnt3=$result3->numRows();
+	
+	if (!$cnt3 AND $domain !=""){
+		include("logout.php");
+	}
+	
+	print $domain;
 }
 
 

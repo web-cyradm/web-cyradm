@@ -61,7 +61,7 @@ if ($_SESSION['session_ok'] === TRUE) {
 	include ("menu.inc.php");
 	include ("lib/cyradm.php");
 
-	if (!$_GET['domain'] and ! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain'))){
+	if (!$_GET['domain'] and ! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain', 'editadminuser'))){
 		include ("welcome.php");
 	} else {
 		if (in_array($_GET['action'], array('logout', 'browse', 'editdomain', 

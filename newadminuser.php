@@ -58,27 +58,37 @@ else{
 
 		else if ($confirmed){
 
-			switch($CRYPT){
-				case "1":
-				case "crypt":
-					$pwd=new password;
-					$password=$pwd->encrypt($password,$CRYPT);
-	
-					$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
-				break;
-
-				case "2":
-				case "sql":
-				case "mysql":
-					$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser',PASSWORD('$password'),'$newadmintype')";
-				break;
-
-				case "plain":
-					$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
-				break;
-
+			$query="SELECT * FROM adminuser WHERE username='$newadminuser'";
+			$handle1=DB::connect($DSN,true);
+			if (DB::isError($handle)) {
+				die (_("Database error"));
 			}
+			$result=$handle1->query($query);
 
+			if (!$result->numRows()){
+//				print "DEBUG: Allready defined user";
+
+				switch($CRYPT){
+					case "1":
+					case "crypt":
+						$pwd=new password;
+						$password=$pwd->encrypt($password,$CRYPT);
+	
+						$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
+					break;
+
+					case "2":
+					case "sql":
+					case "mysql":
+						$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser',PASSWORD('$password'),'$newadmintype')";
+					break;
+
+					case "plain":
+						$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
+					break;
+
+				}
+			}
 
 			$handle1=DB::connect($DSN,true);
 			if (DB::isError($handle)) {

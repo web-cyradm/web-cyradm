@@ -3,10 +3,10 @@
         <td valign="top"> 
 <?php
 print "<h3>"._("Change admin user for domain")." <font color=red>". $domain. "</font></h3>";
-if (!$domain or $domain=="new"){
-	print _("Please select a domain first");
-}
-else{
+//if (!$domain or $domain=="new"){
+//	print _("Please select a domain first");
+//}
+//else{
 
 	if ($admintype==0){
 		$handle1=DB::connect($DSN, true);
@@ -131,7 +131,7 @@ else{
 	else if ($admintype!=0){
         	print "<h3>"._("Security violation detected, nothing deleted, attempt has been logged")."</h3>";
 	}
-}
+//}
 
 ?>
 

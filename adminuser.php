@@ -8,6 +8,7 @@ print "<td valign=\"top\"><h3>"._("Browse admins")."</h3>";
 
 if ($admintype==0){
         $query="SELECT * FROM adminuser"; 
+//	$query="SELECT * FROM domainadmin";
         $handle=DB::connect($DSN, true);
 	if (DB::isError($handle)) {
 		die (_("Database error"));
@@ -50,7 +51,6 @@ if ($admintype==0){
                 print "<tr>";
                 print "<th colspan=\"2\">"._("action")."</th>";
                 print "<th>"._("Adminname")."</th>";
-                print "<th>"._("Password")."</th>";
                 print "<th>"._("domain")."</th>";
                 print "<th>"._("admin type")."</th>";
                 print "</tr>";
@@ -70,21 +70,33 @@ if ($admintype==0){
 		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $c);
                 $username=$row['username'];
 		$query2="SELECT * from domainadmin WHERE adminuser='$username'";
+		print $query2;
 		$result2=$handle->query($query2);
+		$cnt2=$result->numRows();
 
 		$row2=$result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		$domainname=$row2['domain_name'];
-                $type=$row['type'];
+	        $type=$row['type'];
                 print "\n<tr class=\"$cssrow\">";
                 print "\n<td><a href=\"index.php?action=editadminuser&username=$username&domain=$domain\">"._("Edit adminuser")."</a></td>";
                 print "\n<td><a href=\"index.php?action=deleteadminuser&username=$username&domain=$domain\">"._("Delete adminuser")."</a></td>";
                 print "</td>\n<td>";
                 print $username;
                 print "</td>\n<td>";
-//                print $row['password'];
-                print "******";
-                print "</td>\n<td>";
-		print $domainname;
+		for ($i=0;$i<$cnt2;$i++){
+
+			$query3="SELECT * FROM domainadmin WHERE username='$username'";
+//			print $query3;
+			$result3=$handle->query($query3);
+//			$row2=$result2->fetchRow(DB_FETCHMODE_ASSOC, $i);
+			$row3=$result2->fetchRow(DB_FETCHMODE_ASSOC, $i);
+			$domainname=$row3['domain_name'];
+			if ($domainname!=""){
+				print "<br>";
+			}
+
+			print $domainname;
+		}
 
                 print "</td>\n<td>";
 		if ($type==0){

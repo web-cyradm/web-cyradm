@@ -23,7 +23,18 @@ if (!isset($allowed_domains)){
 	$query="SELECT * FROM domain ORDER BY domain_name";
 }
 else{
-	$query="SELECT * FROM domain WHERE domain_name='$allowed_domains' ORDER BY domain_name";
+
+	//$query="SELECT * FROM domain WHERE domain_name='$allowed_domains' ORDER BY domain_name";
+	$query="SELECT * FROM domain WHERE domain_name='";
+	for ($i=0;$i<$cnt;$i++){
+		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+		$allowed_domains=$row['domain_name'];
+//		print "DEBUG: Allowed Domains".$allowed_domains;
+		$query.="$allowed_domains' OR domain_name='";
+		
+	}
+	$query.="' ORDER BY domain_name";
+//	print $query;
 }
 
 $handle=DB::connect($DSN, true);
