@@ -3,6 +3,19 @@
 <title>Web-cyradm</title>
 <link rel="stylesheet" href="css/web-cyradm.css" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<?php
+
+include ("config.inc.php");
+
+// Specify location of translation tables
+bindtextdomain("login", "./locale");
+
+// Choose domain
+textdomain("login");
+
+?>
+
 <script>
 <!--
 function setfocus() {
@@ -52,9 +65,9 @@ function entsub() {
                   <td>&nbsp;</td>
                   <td colspan="4">
                     <p><font face="Verdana,Geneva,Arial,Helvetica,sans-serif" color="#000000" size="2">
-		     Welcome to Web-cyradm<br>  
-                     This is only for authorized users <p>
-		     Please authenticate yourself
+		     <?php print _("Welcome to Web-cyradm") ?><br>  
+                     <?php print _("This is only for authorized users") ?> <p>
+		     <?php print _("Please authenticate yourself") ?>
 		
                       </font></p><br>                    
                   </td>
@@ -63,7 +76,7 @@ function entsub() {
                   <td></td>
                   <td nowrap> 
                     <div align="left"><font color="#999999"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2">
-                      Username</font></b></font></div>
+                      <?php print _("Username") ?></font></b></font></div>
                   </td>
                   <td colspan="3"> 
                     <input type="text" name="login">
@@ -73,13 +86,13 @@ function entsub() {
                   <td width="10"> 
                     <div align="right"><font color="#999999"><b></b></font></div>
                   </td>
-                  <td><font color="#999999"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Password</font></b></font></td>
+                  <td><font color="#999999"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><?php print _("Password") ?></font></b></font></td>
                   <td> 
                     <input type="password" name="password" onkeypress="return entsub()">
                   </td>
                   <td > 
                     <div align="right">
-<input type="submit">
+<input type="submit" value="<?php print _("Submit")?>">
 </div>
                   </td>
                   <td width="10"></td>
