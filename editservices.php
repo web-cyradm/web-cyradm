@@ -101,7 +101,7 @@ if (!$confirmed){
 }
 if ($confirmed){
 
-	$query_update="UPDATE accountuser SET imap='".$_GET['imap']."', pop='".$_GET['pop']."', sieve='".$_GET['sieve']."' WHERE username='".$_GET['username']."'";
+	$query_update="UPDATE accountuser SET imap='".$_GET['imap']."', pop='".$_GET['pop']."', sieve='".$_GET['sieve']."', smtpauth='".$_GET['smtpauth']."' WHERE username='".$_GET['username']."'";
 	$result2 = $handle->query($query_update);
 	if ($result){
 		print _("Services successfully changed");
