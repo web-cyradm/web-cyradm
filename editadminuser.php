@@ -204,7 +204,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				}
 
 				# Insert each key in the array "domain" into database again
-				if (isset($resp_domain) && sizeof($Resp_domain)>0) {
+				if (isset($resp_domain) && sizeof($resp_domain)>0) {
 					foreach ($resp_domain as $key => $r_domain){
 						$query="INSERT INTO domainadmin (domain_name,adminuser) VALUES('$key', '$username')";
 						$result=$handle1->query($query);
