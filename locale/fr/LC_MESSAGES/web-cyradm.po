@@ -1,13 +1,11 @@
 # web-cyradm 0.5.3 French translation.
-# Copyright (C) YEAR Free Software Foundation, Inc.
+# Copyright (C) 2003 Free Software Foundation, Inc.
 # JEUDY Raphaël <raphael.jeudy@fastorama.com>, 2002,2003.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: web-cyradm v0.5.3\n"
+"Project-Id-Version: web-cyradm v0.5.4-rc2\n"
 "POT-Creation-Date: 2003-08-10 16:56+0200\n"
-"PO-Revision-Date: 2003-03-12 19:00+0200\n"
+"PO-Revision-Date: 2003-10-07 18:00+0200\n"
 "Last-Translator: JEUDY Raphaël <raphael.jeudy@fastorama.com>\n"
 "Language-Team: French <raphael.jeudy@fastorama.com>\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +36,7 @@ msgstr "Comptes total"
 
 #: CVS/Base/browseaccounts.php:49 adminuser.php:36 browseaccounts.php:49
 msgid "Displaying from position:"
-msgstr ""
+msgstr "Afficher depuis la position:"
 
 #: CVS/Base/browseaccounts.php:55 CVS/Base/browseaccounts.php:242
 #: browseaccounts.php:55 browseaccounts.php:242 search.php:123 search.php:239
@@ -73,9 +71,8 @@ msgid "Username"
 msgstr "Nom d'utilisateur"
 
 #: CVS/Base/browseaccounts.php:97 browseaccounts.php:97
-#, fuzzy
 msgid "Last login"
-msgstr "Erreur d'authentification"
+msgstr "Derni&eagrave;re connexion"
 
 #: CVS/Base/browseaccounts.php:97 browseaccounts.php:97 editaccount.php:68
 #: search.php:152
@@ -84,7 +81,7 @@ msgstr "Quota utilis&eacute;"
 
 #: CVS/Base/browseaccounts.php:136 browseaccounts.php:136
 msgid "n/a"
-msgstr ""
+msgstr "n/a"
 
 #: CVS/Base/browseaccounts.php:146 browseaccounts.php:146 search.php:171
 msgid "Edit account"
@@ -112,9 +109,8 @@ msgid "Set catch all"
 msgstr "Tout r&eacute;cup&eacute;rer"
 
 #: CVS/Base/browseaccounts.php:181 browseaccounts.php:181 search.php:190
-#, fuzzy
 msgid "Forwards"
-msgstr "Redirection"
+msgstr "Redirections"
 
 #: CVS/Base/browseaccounts.php:218 browseaccounts.php:218 editaccount.php:152
 #: search.php:217
@@ -123,7 +119,7 @@ msgstr "de"
 
 #: CVS/Base/browseaccounts.php:221 browseaccounts.php:221 search.php:220
 msgid "Unable to retrieve quota"
-msgstr ""
+msgstr "Impossible de r&eacute;cup&eacute;rer le quota"
 
 #: CVS/Base/browseaccounts.php:224 browseaccounts.php:224 editaccount.php:155
 #: search.php:223
@@ -167,13 +163,12 @@ msgid "Delete adminuser"
 msgstr "Supprimer l'administrateur"
 
 #: adminuser.php:144
-#, fuzzy
 msgid "All domains"
-msgstr "domaine"
+msgstr "Tous les domaines"
 
 #: adminuser.php:148
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 #: adminuser.php:158 editadminuser.php:65 menu.inc.php:132 newadminuser.php:57
 #: newadminuser.php:207
@@ -194,19 +189,16 @@ msgid "Add administrator"
 msgstr "Ajouter un administrateur"
 
 #: aliases.php:11
-#, fuzzy
 msgid "Browse aliases for domain"
-msgstr "Parcourir les administrateurs du domaine"
+msgstr "Parcourir les alias du domaine"
 
 #: aliases.php:50
-#, fuzzy
 msgid "Total aliases"
-msgstr "Total des administrateurs"
+msgstr "Total des alias"
 
 #: aliases.php:55
-#, fuzzy
 msgid "Add new alias"
-msgstr "Ajouter un domaine"
+msgstr "Ajouter un alias"
 
 #: aliases.php:66 editalias.php:77 editemail.php:113 newemail.php:98
 #: search.php:255
@@ -214,14 +206,12 @@ msgid "Destination"
 msgstr "Destination"
 
 #: aliases.php:91 search.php:273
-#, fuzzy
 msgid "Edit Alias"
-msgstr "Editer l'adresse email"
+msgstr "Editer l'alias"
 
 #: aliases.php:92 search.php:274
-#, fuzzy
 msgid "Delete Alias"
-msgstr "Supprimer l'adresse email"
+msgstr "Supprimer l'alias"
 
 #: auth.inc.php:70
 msgid "Web-cyradm is for authorized users only."
@@ -236,9 +226,8 @@ msgid "Push the back button in your browser to try again."
 msgstr "Pressez le bouton retour de votre navigateur pour essayer à nouveau"
 
 #: auth.inc.php:73
-#, fuzzy
 msgid " Your attempt to login has been stored."
-msgstr "Votre tentative de connexion est enregistr&eacute:e"
+msgstr "Votre tentative de connexion est enregistr&eacute;e"
 
 #: browse.php:13
 msgid "Browse domains"
@@ -274,7 +263,7 @@ msgstr "Comptes"
 
 #: browse.php:93 menu.inc.php:68 search.php:85
 msgid "Aliases"
-msgstr ""
+msgstr "Alias"
 
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
@@ -292,25 +281,23 @@ msgstr "pour recevoir les mails envoy&eacute;s sur des adresses inexistantes"
 
 #: catchall.php:46
 msgid "The currently defined user"
-msgstr ""
+msgstr "L'utilisateur actuel"
 
 #: catchall.php:46
-#, fuzzy
 msgid "will not receiving any undefined emailadresses anymore"
-msgstr "pour recevoir les mails envoy&eacute;s sur des adresses inexistantes"
+msgstr "ne recevra plus les mails envoy&eacute;s sur des adresses inexistantes"
 
 #: catchall.php:74
 msgid "The user"
-msgstr ""
+msgstr "L'utilisateur"
 
 #: catchall.php:74
-#, fuzzy
 msgid "is allready defined to receive all undefined Emails."
-msgstr "pour recevoir les mails envoy&eacute;s sur des adresses inexistantes"
+msgstr "est d&eacute;j&eagrave; d&eacute;fini pour recevoir les messages envoy&eacute;s sur des adresses inexistantes."
 
 #: catchall.php:76
 msgid "Do you want to remove the function \"catch all\" for the account"
-msgstr ""
+msgstr "Voulez vous supprimer la fonction \"tout r&eacute;cup&eacute;rer\" pour le compte"
 
 #: catchall.php:127 newadminuser.php:197
 msgid "successfully added to Database"
@@ -322,9 +309,8 @@ msgid "Database error, please try again"
 msgstr "Erreur avec la base de donn&eacute;es, essayez plus tard svp"
 
 #: catchall.php:140 delete_catchall.php:44
-#, fuzzy
 msgid "Cancelled"
-msgstr "Annuler"
+msgstr "Annul&eacute;"
 
 #: change_password.php:53
 msgid "Password changed"
@@ -352,7 +338,7 @@ msgstr "Confirmez le nouveau mot de passe"
 
 #: change_password.php:121 newaccount.php:243
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Les mots de passe ne correspondent pas"
 
 #: deleteaccount.php:25
 msgid "Delete an Account from the System"
@@ -372,9 +358,8 @@ msgid "Action cancelled, nothing deleted"
 msgstr "Op&eacute;ration annul&eacute;e, aucune suppression effectu&eacute;e"
 
 #: deleteaccount.php:100
-#, fuzzy
 msgid "User deleted"
-msgstr "Oui, supprimer"
+msgstr "Utilisateur supprim&eacute;"
 
 #: deleteaccount.php:111 deletedomain.php:175
 msgid ""
@@ -393,18 +378,17 @@ msgstr "Voulez vous vraiment supprimer l'administrateur du domaine"
 
 #: deleteadminuser.php:90 editadminuser.php:276
 msgid "At least one Superuser is needed for Web-cyradm"
-msgstr ""
+msgstr "Au moins un Super Utilisateur est requis pour Web-cyradm"
 
 #: deleteadminuser.php:103
 msgid "Admin user deleted"
-msgstr ""
+msgstr "Utilisateur administrateur supprim&eacute;"
 
 #: deleteadminuser.php:116 editadminuser.php:299 newadminuser.php:226
-#, fuzzy
 msgid "Security violation detected, nothing deleted, attempt has been logged"
 msgstr ""
-"Violation de s&eacute;curit&eacute; d&eacute;tect&eacute;e, action "
-"annul&eacute;e. Votre tentative &agrave; &eacute;t&eacute; enregistr&eacute;e"
+"Violation de s&eacute;curit&eacute; d&eacute;tect&eacute;e, rien de supprim&eacute;, la tentative"
+"est enregistr&eacute;e"
 
 #: deletedomain.php:28
 msgid "Delete a Domain from the System"
@@ -440,11 +424,11 @@ msgstr "supprim&eacute; avec succ&eacute;s"
 
 #: deletealias.php:28
 msgid "Please confirm you want to remove"
-msgstr ""
+msgstr "Veuillez confirmer la suppression"
 
 #: deletealias.php:28
 msgid "from the alias"
-msgstr ""
+msgstr "depuis l'alias"
 
 #: deletealias.php:30
 msgid "Yes"
@@ -452,19 +436,19 @@ msgstr "Oui"
 
 #: deletealias.php:49
 msgid "Please confirm you want to remove the alias"
-msgstr ""
+msgstr "Veuillez confirmer la suppression de l'alias"
 
 #: deletealias.php:77
 msgid "Removed"
-msgstr ""
+msgstr "Supprim&eacute;"
 
 #: deletealias.php:77
 msgid "from"
-msgstr ""
+msgstr "depuis"
 
 #: deletealias.php:85
 msgid "Removed the alias"
-msgstr ""
+msgstr "Supprimer l'alias"
 
 #: editaccount.php:21
 msgid "Email adresses defined for user"
@@ -508,58 +492,51 @@ msgstr "Confirmez le mot de passe"
 
 #: editadminuser.php:155
 msgid "No Domain assigned yet"
-msgstr ""
+msgstr "Aucun domaine assign&eacute; actuellement"
 
 #: editadminuser.php:165
-#, fuzzy
 msgid "Add new domain to this admin"
-msgstr "Ajouter un nouveau compte administrateur au domaine"
+msgstr "Ajouter un domaine pour cet administrateur"
 
 #: editadminuser.php:223
 msgid "No such domain, create domain first"
-msgstr ""
+msgstr "Pas de domaine, veuillez en cr&eacute;er un"
 
 #: editadminuser.php:231
 msgid "Admin already repsonsible for the domain"
-msgstr ""
+msgstr "Administrateur d&eacute;jà responsable de ce domaine"
 
 #: editalias.php:27
 msgid "There was an error adding $dest to $alias: "
-msgstr ""
+msgstr "Erreur lors de l'ajout de $dest &agrave; $alias: "
 
 #: editalias.php:64
-#, fuzzy
 msgid "Editing alias"
-msgstr "Editer l'adresse email"
+msgstr "Editer l'alias"
 
 #: editalias.php:68
-#, fuzzy
 msgid "Delete this alias"
-msgstr "Supprimer l'adresse email"
+msgstr "Supprimer cet alias"
 
 #: editalias.php:101
-#, fuzzy
 msgid "Cannot remove from account"
-msgstr "Changer le mot de passe du compte"
+msgstr "Ne peut supprimer depuis le compte"
 
 #: editalias.php:105 editalias.php:109
-#, fuzzy
 msgid "Remove destination"
-msgstr "Destination"
+msgstr "Supprimer la destination"
 
 #: editalias.php:125
 msgid "This alias has no destinations"
-msgstr ""
+msgstr "Cet alias n'a pas de destinations"
 
 #: editalias.php:142
-#, fuzzy
 msgid "New destination"
-msgstr "Destination"
+msgstr "Nouvelle destination"
 
 #: editdomain.php:46
-#, fuzzy
 msgid "Successfully changed domain"
-msgstr "Changement effectu&eacute;"
+msgstr "Changement de domaine effectu&eacute;"
 
 #: editdomain.php:92 newdomain.php:39
 msgid "Domainname"
@@ -571,16 +548,15 @@ msgstr "Prefix"
 
 #: editdomain.php:123 newdomain.php:73
 msgid "Allow Free Names"
-msgstr ""
+msgstr "Autoriser les noms libres"
 
 #: editdomain.php:141 newdomain.php:90
-#, fuzzy
 msgid "Allow Free Mail Addresses"
-msgstr "Nouvelle adresse email"
+msgstr "Autoriser les adresses libres"
 
 #: editdomain.php:159 newdomain.php:102
 msgid "Maximum Accounts"
-msgstr "Nombre maximum de comptes"
+msgstr "Maximum de comptes"
 
 #: editdomain.php:173 newdomain.php:117
 msgid "Default Quota in Kilobytes"
@@ -599,6 +575,8 @@ msgid ""
 "You can't edit this email address with 'Allow Free Mail Addressess' set to "
 "off!"
 msgstr ""
+"Vous ne pouvez pas &eacute;diter cette adresse mail avec 'Adresses mail libres' set to "
+"off!"
 
 #: editemail.php:95 newemail.php:77
 msgid "Emailadress"
@@ -654,6 +632,8 @@ msgid ""
 "You can't forward this email address with 'Allow Free Mail Addressess' set "
 "to off!"
 msgstr ""
+"Vous ne pouvez rediriger cette adresse email avec 'Allow Free Mail Addressess set "
+"to off!"
 
 #: forwardalias.php:161
 msgid "Forward for emailadress"
@@ -665,7 +645,7 @@ msgstr "Rediriger vers"
 
 #: forwardalias.php:204
 msgid "(Seperate multiple values with ,)"
-msgstr ""
+msgstr "(S&eacute;parez les valeurs avec ,)"
 
 #: forwardalias.php:210 forwardaccount.php:125
 msgid "Keep a copy in the user's mailbox"
@@ -677,29 +657,31 @@ msgstr "Supprimer la redirection"
 
 #: index.php:23
 msgid "migrate.php exists! please delete or rename it"
-msgstr ""
+msgstr "Le fichier migrate.php existe! Veuillez le supprimer ou le renommer"
 
 #: index.php:138
 msgid "web-cyradm has not yet been configured"
-msgstr ""
+msgstr "web-cyradm n'est pas encore configur&eacute;"
 
 #: index.php:141
 msgid "Configuration steps:"
-msgstr ""
+msgstr "Etapes pour la configuration:"
 
 #: index.php:143
 msgid "copy the config file that comes with the distribution: "
-msgstr ""
+msgstr "copiez le fichier de configuration venant avec la distribution: "
 
 #: index.php:146
 msgid "Edit the file config/conf.php to match your systems configuration"
-msgstr ""
+msgstr "Editez le fichier config/conf.php en accord avec votre configuration syst&eagrave;me"
 
 #: index.php:148
 msgid ""
 "Further information about how to configure Web-cyradm can be found at the "
 "following website:"
 msgstr ""
+"Plus d'informations sur la configuration de Web-cyradm sont disponibles &agrave; "
+"cette adresse:"
 
 #: login.php:50
 msgid "Welcome to Web-cyradm"
@@ -711,7 +693,7 @@ msgstr "Veuillez vous identifier"
 
 #: login.php:84
 msgid "Select language"
-msgstr ""
+msgstr "Selectionnez un langage"
 
 #: logout.php:52
 msgid "Thank you for using Web-cyradm"
@@ -722,9 +704,8 @@ msgid "You are logged out"
 msgstr "Session termin&eacute;e"
 
 #: menu.inc.php:19
-#, fuzzy
 msgid "Superusers Menu"
-msgstr "Super utilisateur"
+msgstr "Menu super utilisateurs"
 
 #: menu.inc.php:23
 msgid "Domainmasters menu"
@@ -763,13 +744,12 @@ msgid "Your role is"
 msgstr "Votre fonction est"
 
 #: menu.inc.php:144
-#, fuzzy
 msgid "Current domain is"
-msgstr "Parcourir les domaines"
+msgstr "Le domaine courant est"
 
 #: menu.inc.php:150
 msgid "No domain selected"
-msgstr ""
+msgstr "Pas de domaine selectionn&eacute;"
 
 #: newaccount.php:13
 msgid "Add new Account to domain"
@@ -794,7 +774,7 @@ msgstr "Quota"
 
 #: newaccount.php:196
 msgid "Sorry, the username already exists"
-msgstr ""
+msgstr "D&eacute;sol&eacute;, ce nom d'utilisateur existe d&eacute;j&agrave;"
 
 #: newaccount.php:221
 msgid "Account successfully added to the Database"
@@ -802,13 +782,11 @@ msgstr "Compte correctement ajout&eacute;"
 
 #: newaccount.php:234
 msgid "Account succesfully added to the IMAP Subsystem"
-msgstr ""
-"Compte ajout&eacute; avec succ&eacute;s sur le sous syst&egrave;me IMAP"
+msgstr "Compte ajout&eacute; au sous syst&egrave;me IMAP"
 
 #: newadminuser.php:13
-#, fuzzy
 msgid "Add new administrator"
-msgstr "Ajouter un administrateur"
+msgstr "Ajouter un nouveal administrateur"
 
 #: newadminuser.php:64
 msgid "Select \"Superuser\" for all domains"
@@ -816,37 +794,33 @@ msgstr "Super Administrateur pour tous les domaines"
 
 #: newadminuser.php:132
 msgid "You must provide a username"
-msgstr ""
+msgstr "Vous devez fournir un nom d'utilisateur"
 
 #: newadminuser.php:145
 msgid "Passwords are empty or not equal."
-msgstr ""
+msgstr "Mots de passe vides ou diff&eacute;rents."
 
 #: newadminuser.php:157
 msgid "Username already exist"
-msgstr ""
+msgstr "Ce nom d'utilisateur existe d&eacute;j&eagrave;"
 
 #: newalias.php:15
-#, fuzzy
 msgid "Add new alias to domain"
-msgstr "Ajouter un nouveau compte administrateur au domaine"
+msgstr "Ajouter un nouvel alias au domain"
 
 #: newalias.php:55
-#, fuzzy
 msgid "Sorry, no more alias allowed for domain"
-msgstr "Nombre maximum de comptes pour le domaine atteint"
+msgstr "Nombre maximum d'alias pour le domaine atteint"
 
 #: newalias.php:60
-#, fuzzy
 msgid "Maximum allowed aliases is"
-msgstr "Maximum de comptes autoris&eacute;s :"
+msgstr "Le nombre maximum d'alias est"
 
 #: newdomain.php:15
 msgid "Add new domain"
 msgstr "Ajouter un domaine"
 
 #: newdomain.php:140
-#, fuzzy
 msgid "Standard Mailboxes"
 msgstr "Boite aux lettres standard"
 
@@ -854,7 +828,7 @@ msgstr "Boite aux lettres standard"
 msgid ""
 "emailadress where the default aliases should be mapped (empty means no "
 "mapping)"
-msgstr "Adresse email pour les alias par d&eacutefault"
+msgstr "Adresse email pour les alias par d&eacute;faut"
 
 #: newdomain.php:163
 msgid "Mail transport"
@@ -866,7 +840,7 @@ msgstr "Ne rien mettre, sauf si vous savez ce que vous faites"
 
 #: newdomain.php:187
 msgid "Parameter"
-msgstr ""
+msgstr "Parametre"
 
 #: newdomain.php:245 newemail.php:34
 msgid "Successfully added"
@@ -883,26 +857,24 @@ msgid "New emailadress for user"
 msgstr "Nouvelle adresse email pour l'utilisateur"
 
 #: search.php:48
-#, fuzzy
 msgid "Total domains matching"
-msgstr "Total des administrateurs"
+msgstr "Total des domaines correspondants"
 
 #: search.php:110
 msgid "Total users matching"
-msgstr ""
+msgstr "Total des utilisateurs correspondants"
 
 #: search.php:118
 msgid "Displaying from position"
-msgstr ""
+msgstr "Afficher depuis la position"
 
 #: search.php:245
 msgid "Total aliases matching"
-msgstr ""
+msgstr "Total des alias correspondants"
 
 #: search.php:247
-#, fuzzy
 msgid "No aliases found"
-msgstr "Pas de comptes trouv&eacute;s"
+msgstr "Pas d'alias trouv&eacute;s"
 
 #: setquota.php:26
 msgid "Setting individual Quota for user"
@@ -913,13 +885,12 @@ msgid "Submit"
 msgstr "Envoyer"
 
 #: setquota.php:70
-#, fuzzy
 msgid "Quote for user"
-msgstr "Quota non fix&eacute;"
+msgstr "Quote pour l'utilisateur"
 
 #: setquota.php:74
 msgid "changed to"
-msgstr ""
+msgstr "chang&eacute; vers"
 
 #: timeout.php:33
 msgid "Your session timed out"
@@ -938,9 +909,8 @@ msgid "Failure in modifying vacation notice"
 msgstr "Impossible de modifier la notification d'absence"
 
 #: vacation.php:95
-#, fuzzy
 msgid "Vacation notice unset"
-msgstr "Notification d'absence enregistr&eacute;e"
+msgstr "Notification d'absence non d&eacute;finie"
 
 #: vacation.php:97
 msgid "Failure in unseting vacation notice"
@@ -959,6 +929,8 @@ msgid ""
 "You can't set Vacation Message for this email address with 'Allow Free Mail "
 "Addressess' set to off!"
 msgstr ""
+"Vous ne pouvez d&eacute;finir de message d'absence pour cet email avec 'Allow Free Mail "
+"Addressess' set to off!"
 
 #: vacation.php:152
 msgid "Vacation message for emailadress"
@@ -974,34 +946,28 @@ msgstr "Supprimer la notification d'absence"
 
 #: validate.inc.php:74 validate.inc.php:87 validate.inc.php:134
 #: validate.inc.php:249
-#, fuzzy
 msgid "Security violation detected, attempt logged"
-msgstr ""
-"Violation de s&eacute;curit&eacute; d&eacute;tect&eacute;e, action "
-"annul&eacute;e. Votre tentative &agrave; &eacute;t&eacute; enregistr&eacute;e"
+msgstr "Violation de s&eacute;curit&eacute; detect&eacute;e, tentative enregistr&eacute;e"
 
 #: validate.inc.php:130
 msgid "Quota exeedes the maximum allowed qutoa for this domain."
-msgstr ""
+msgstr "Les quotas d&eacute;passent le maximum autoris&eacute; pour ce domaine."
 
 #: forwardaccount.php:77
 msgid "Forward for account"
 msgstr "Redirection pour le compte"
 
 #: forwardaccount.php:93
-#, fuzzy
 msgid "Set forwarding to (one adress per line)"
-msgstr "Rediriger vers"
+msgstr "D&eacute;finir la redirection vers (une adresse par ligne)"
 
 #: delete_catchall.php:31
-#, fuzzy
 msgid "successfully deleted from the Database"
-msgstr "Ajout termin&eacute;"
+msgstr "Suppression de la base de donn&eacute;es ok"
 
 #: deleteemail.php:16
-#, fuzzy
 msgid "Delete emailadress from the System"
-msgstr "Supprimer une adresse email"
+msgstr "Supprimer une adresse email du syst&eagrave;me"
 
 #: deleteemail.php:23
 msgid "Do you really want to delete the emailadress for user"
@@ -1016,9 +982,8 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #: deleteemail.php:70
-#, fuzzy
 msgid "Emailadress deleted."
-msgstr "Adresse email"
+msgstr "Adresse email supprim&eacute;e."
 
 #~ msgid "successfully changed Database...."
 #~ msgstr "Base de donn&eacute;es bien chang&eacute;e"
