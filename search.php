@@ -25,10 +25,9 @@ if ($_SESSION['admintype']==0) {
 } else {
     $allowed_domains="(a.domain_name='";
     $allowed_domains3="(virtual.username='";
-    for ($i = 0; $i < $cnt; $i++){                                                              
-	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);                                     
-	$allowed_domains.=$row['domain_name']."' OR a.domain_name='";                                       
-	$allowed_domains3.=$row['domain_name']."' OR virtual.username='";                                       
+    foreach($_SESSION['allowed_domains'] as $allowed_domain) {
+	$allowed_domains .= $allowed_domain."' OR a.domain_name='";                                       
+	$allowed_domains3 .= $allowed_domain."' OR virtual.username='";                                       
     }
 }
 
