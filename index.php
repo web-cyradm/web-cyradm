@@ -1,9 +1,9 @@
 <?php
 
-function getmicrotime(){ 
-    list($usec, $sec) = explode(" ",microtime()); 
-    return ((float)$usec + (float)$sec); 
-} 
+function getmicrotime(){
+    list($usec, $sec) = explode(" ",microtime());
+    return ((float)$usec + (float)$sec);
+}
 
 function get_var_dump(&$var, $name = NULL){
 	ob_start();
@@ -49,7 +49,7 @@ if ($wc_configured){
 	elseif (isset($nls['aliases'][substr($browserlang[0], 0, 2)])){
                 // Get language from the browser
               $LANG = $nls['aliases'][substr($browserlang[0], 0, 2)];
-	
+
 	} else {
 		// Fall back to default language
 		$LANG = $DEFAULTLANG;
@@ -88,10 +88,10 @@ if ($wc_configured){
 
 			include WC_BASE . "/welcome.php";
 		} else {
-		
+
 			# Only allow defined actions and include them
-			
-			if (in_array($_GET['action'], array('logout', 'browse', 'editdomain', 
+
+			if (in_array($_GET['action'], array('logout', 'browse', 'editdomain',
 							    'newdomain', "deletedomain",
 							    "adminuser", "newadminuser",
 							    "editadminuser", "deleteadminuser",
@@ -101,9 +101,9 @@ if ($wc_configured){
 							    "forwardalias", "forwardaccount",
 							    "newemail", "deleteemail",
 							    "editemail", "aliases", "newalias",
-							    "editalias", "deletealias", "search"))){
+							    "editalias", "deletealias", "search", "delete_catchall"))){
 				include sprintf('%s/%s.php', WC_BASE, $_GET['action']);
-			} 
+			}
 
 			# For password related stuff we also need to allow POST vars for some actions
 
@@ -141,9 +141,9 @@ if ($wc_configured){
 	print _("Configuration steps:");
 	print "<ul><li>";
 	print _("copy the config file that comes with the distribution: ");
-	print "<b>cp config/conf.php.dist config/conf.php</b>"; 
+	print "<b>cp config/conf.php.dist config/conf.php</b>";
 	print "</li><li>";
-	print _("Edit the file config/conf.php to match your systems configuration"); 
+	print _("Edit the file config/conf.php to match your systems configuration");
 	print "</ul>";
 	print _("Further information about how to configure Web-cyradm can be found at the following website:");
 	print "<br><a href=\"http://www.delouw.ch/linux/Postfix-Cyrus-Web-cyradm-HOWTO/html/index.html\" target=_new>Postfix-Cyrus-Web-cyradm-HOWTO</a>";
