@@ -69,7 +69,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		<table border="0" width="98%">
 			<tbody>
 				<tr>
-					<th colspan="6">
+					<th colspan="7">
 						<?php print _("action");?>
 					</th>
 
@@ -88,6 +88,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						printf ('<th>%s</th>', $_head);
 					}
 					?>
+					<th>
+						<?php print _("services");?>
+					</th>
 				</tr>
 
 				<?php
@@ -109,8 +112,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						die (_("Database error"));
 					}
 					$cnt2 = $result2->numRows($result2);
-					$row = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
-					$alias = $row['alias'];
+					$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
+					$alias = $row2['alias'];
 
 					$query3 = "SELECT * FROM log WHERE user='".$username."' ORDER BY time DESC";
 					$result3 = $handle->query($query3); 
@@ -133,6 +136,11 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						<td align="center" valign="middle">
 							<a href="index.php?action=editaccount<?php echo $_dom_user; ?>"
 							><?php print _("Edit account");?></a>
+						</td>
+
+						<td align="center" valign="middle">
+							<a href="index.php?action=editservices<?php echo $_dom_user; ?>"
+							><?php print _("Services");?></a>
 						</td>
 
 						<td align="center" valign="middle">
@@ -160,8 +168,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							<?php
 							// Print All Emailadresses found for the account
 							for ($c2 = 0; $c2 < $cnt2; $c2++){
-								$row = $result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
-								print $row['alias'] . "<br>";
+								$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
+								print $row2['alias'] . "<br>";
 							}
 				                        $query4 = "select * from virtual where alias='" . $username . "'";
 							$result4 = $handle->query($query4);
@@ -212,9 +220,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 										printf ("<font color=red>");
 									}
 
-									printf ("%d KBytes %s %d KBytes (%.2f%%)",
-										$quota['used'], _("out of"),
-										$quota['qmax'], $q_percent);
+									printf ("%d MB %s %d MB (%.2f%%)",
+										$quota['used']/1024, _("out of"),
+										$quota['qmax']/1024, $q_percent);
 									if ($q_percent >= $_SESSION['warnlevel']){
                                                                                 printf ("</font>");
                                                                         }
@@ -225,6 +233,32 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								print _("Quota not set");
 							}
 							?>
+						</td>
+						<td valign="middle">
+						<table border=0 align="center">
+						<?php
+						#print_r ($row);
+						if($row['imap']==1){
+							print "<tr><td>imap</td><td><img src=\"images/checked.png\" alt=\"yes\" border=0></td></tr>";
+						} 
+						else{
+							print "<tr><td>imap</td><td><img src=\"images/false.png\" alt=\"no\" border=0></td></tr>";
+						}
+						if($row['pop']==1){
+                                                        print "<tr><td>pop</td><td><img src=\"images/checked.png\" alt=\"yes\" border=0></td></tr>";
+                                                }
+						else{
+							print "<tr><td>pop</td><td><img src=\"images/false.png\" alt=\"no\" border=0></td></tr>";
+						}
+						if($row['sieve']==1){
+                                                        print "<tr><td>sieve</td><td><img src=\"images/checked.png\" alt=\"yes\" border=0></td></tr>";
+                                                }
+						else{
+							print "sieve<img src=\"images/false.png\" alt=\"no\" border=0><br>";
+						}
+
+						?>
+						</table>
 						</td>
 					</tr>
 					<?php
