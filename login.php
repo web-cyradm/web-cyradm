@@ -17,6 +17,16 @@ function entsub() {
   else
     return true;}
 // --></script>
+
+<script language="JavaScript" type="text/javascript">
+function selectLang()
+{
+        var lang_page = 'index.php?LANG=' + document.form1.LANG[document.form1.LANG.selectedIndex].value;
+        self.location = lang_page;
+}
+
+</script>
+
 <!-- </head> -->
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="height: 15%;">
@@ -27,7 +37,6 @@ function entsub() {
 </table>
 <!-- -->
 <form name="form1" method="post" action="auth.inc.php">
-<!-- <input type="hidden" name="LANG" value="<?php print $LANG ?>"> -->
 <table width="100%" border="0" style="height: 80%;">
   <tr>
     <td align="center" valign="middle"> 
@@ -36,11 +45,11 @@ function entsub() {
 
 
           <td bgcolor="#000000">		  
-              <table border="0" bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" width="450" style="height: 150px;">
+              <table border="0" bgcolor="#FFFFFF" cellpadding="2" cellspacing="0" width="450" style="height: 150px;">
                 <tr> 
                   <td colspan="5" bgcolor="#000666">
-			<font face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#FFFFFF" size="2">
-                    	Web-cyradm</font></b></font></td>
+			<font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF" size="2"><b>
+                    	Web-cyradm</b></font></td>
                 </tr>
                 <tr> 
                   <td colspan="5">&nbsp;</td>
@@ -59,8 +68,8 @@ function entsub() {
                 <tr> 
                   <td></td>
                   <td nowrap> 
-                    <div align="left"><font color="#999999"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2">
-                      <?php print _("Username") ?></font></b></font></div>
+                    <div align="left"><font face="Verdana, Arial, Helvetica, sans-serif" color="#999999" size="2"><b>
+                      <?php print _("Username") ?></b></font></div>
                   </td>
                   <td colspan="3"> 
                     <input type="text" name="login">
@@ -70,7 +79,7 @@ function entsub() {
                   <td width="10"> 
                     <div align="right"><font color="#999999"><b></b></font></div>
                   </td>
-                  <td><font color="#999999"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><?php print _("Password") ?></font></b></font></td>
+                  <td><font face="Verdana, Arial, Helvetica, sans-serif" color="#999999" size="2"><b><?php print _("Password") ?></b></font></td>
                   <td> 
                     <input type="password" name="login_password" onkeypress="return entsub()">
                   </td>
@@ -83,18 +92,9 @@ function entsub() {
                 </tr>
 		<tr>
 		<td></td>
-		<td><font color="#999999"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><?php print _("Select language")?></td>
+		<td><font face="Verdana, Arial, Helvetica, sans-serif" color="#999999" size="2"><b><?php print _("Select language")?></b></font></td>
 		<td>
 <select size="1" name="LANG" onchange= "selectLang()">
-
-<script language="JavaScript" type="text/javascript">
-function selectLang()
-{
-        var lang_page = 'index.php?LANG=' + document.form1.LANG[document.form1.LANG.selectedIndex].value;
-        self.location = lang_page;
-}
-
-</script>
 
 <?php
 	if (!$LANG) {
@@ -121,12 +121,11 @@ foreach ($nls['aliases'] as $l){
 ?>
 
  </select> 
-</form>
 
 		</td>
 		</tr>
                 <tr> 
-                  <td colspan="5">&nbsp;</td>
+               <td colspan="5">&nbsp;</td> 
                 </tr>
               </table>			
           </td>
@@ -136,7 +135,7 @@ foreach ($nls['aliases'] as $l){
   </tr>
 </table>
 
-</form>
+</form> 
 
 <?php
 include WC_BASE . "/footer.inc.php";

@@ -214,7 +214,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								> (0 = <?php print _("Quota not set"); ?>)
 							</td>
 							
-						<tr>
+						</tr>
 
 						<tr>
 							<td colspan="2" align="center">

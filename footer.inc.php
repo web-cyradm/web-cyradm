@@ -9,8 +9,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 */
 ?>
 <!-- ######################## beginning of footer ################ -->
-				</td>
-			</tr>
+<!-- 				</td> 
+			</tr> -->
 			<tr>
 				<td height="5%" valign="bottom" bgcolor="#CCCCCC">&nbsp;</td>
 				
