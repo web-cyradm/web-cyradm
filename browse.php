@@ -15,7 +15,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			<?php print _("Browse domains");?>
 		</h3>
 
-		<table border="0">
+		<table border="0" width="98%">
 			<tbody>
 				<tr>
 					<th colspan="4">

@@ -86,7 +86,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			</tr>
 		</table>
 
-		<table border="0">
+		<table border="0" width="98%">
 			<tbody>
 				<tr>
 					<th colspan="6">
