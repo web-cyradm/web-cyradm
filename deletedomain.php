@@ -127,8 +127,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						# we search for the adminuser 
 						# in each row
 
-						$row = $result6->fetchRow($i);
-						$username = $row['1'];
+						$row = $result6->fetchRow(DB_FETCHMODE_ASSOC,$i);
+						$username = $row['adminuser'];
 						$query7 = "SELECT * FROM domainadmin where adminuser='$username'";
 						$result7 = $handle->query($query7);
 						$cnt7 = $result7->numRows();

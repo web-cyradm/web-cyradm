@@ -80,8 +80,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						$b=0;
 					}
 
-					$row = $result->fetchRow($result,$c,'domain_name');
-					$domain = $row[0];
+					$row = $result->fetchRow(DB_FETCHMODE_ASSOC,$c);
+					$domain = $row['domain_name'];
 
 					?>
 					<tr class="<?php echo $cssrow;?>">
@@ -112,20 +112,20 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							<?php
 							if (! $DOMAIN_AS_PREFIX){
 								# Print the prefix
-								echo $row[1];
+								echo $row['prefix'];
 								echo "</td><td>";
 							}
 							?>
 							<!-- Max Account -->
 							<?php
-							echo $row[2];
+							echo $row['maxaccounts'];
 							?>
 						</td>
 						
 						<td>
 							<!-- Quota -->
 							<?php
-							echo $row[3];
+							echo $row['quota'];
 							?>
 						</td>
 					</tr>

@@ -74,9 +74,9 @@ for ($c=0;$c<$cnt;$c++){
 	}
 
 
-	$row=$result->fetchRow($result,$c,'domain_name');
+	$row=$result->fetchRow(DB_FETCHMODE_ASSOC,$c);
 
-	$domain=$row[0];
+	$domain=$row['domain_name'];
 
 	print "<tr class=\"$cssrow\"> \n";
 	print "<td><a href=\"index.php?action=editdomain&domain=$domain\">". _("Edit Domain")."</a></td>\n";
@@ -88,15 +88,15 @@ for ($c=0;$c<$cnt;$c++){
 	print "</td>\n<td>";
 	if (!$DOMAIN_AS_PREFIX) {
 	       	# Print the prefix
-	       	print $row[1];
+	       	print $row['prefix'];
 	       	print "</td>\n<td>";
 	}
 
 	# Print the maxaccount
-	print $row[2];
+	print $row['maxaccounts'];
 	print "</td>\n<td>";
 	# Print the quota
-	print $row[3];
+	print $row['quota'];
 
 	print "&nbsp;</td>\n</tr>\n";
     }

@@ -28,16 +28,16 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
                 $result1 = $handle->query($query1);
 
-                $row = $result1->fetchRow(DB_FETCHMODE_ORDERED, 0);
+		$row = $result1->fetchRow(DB_FETCHMODE_ASSOC, 0);
 
-	        $prefix         = $row[1];
-	        $maxaccounts    = $row[2];
-                $def_quota      = $row[3];
-                $transport      = $row[4];
+	        $prefix         = $row['prefix'];
+	        $maxaccounts    = $row['maxaccounts'];
+                $def_quota      = $row['quota'];
+                $transport      = $row['transport'];
                 // START Andreas Kreisl : freenames
-                $freenames      = $row[5];
+                $freenames      = $row['freenames'];
                 // END Andreas Kreisl : freenames
-                $freeaddress    = $row[6];
+                $freeaddress    = $row['freeaddress'];
 
 	        if ($transport != "cyrus"){
                         die (_("transport is not cyrus, unable to create account"));
