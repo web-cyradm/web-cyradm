@@ -18,4 +18,19 @@ $MYSQL_PASSWD="secret";
 # The default timeout in seconds for a session, after that you have to login again
 $SESS_TIMEOUT=300;
 
+# The default quota sets the default quota for new domains
+$DEFAULT_QUOTA=20000;
+
+# web-cyradm is compatible with cyrus-imapd-2.0.16 (and earlier?)
+# however, if you are using 2.1.x and wish to use email addresses 
+# with .'s in them such as 'john.doe@mydomain.com' you can set this
+# option DOMAIN_AS_PREFIX to '1'.  NOTE: you also have to add these
+# two lines to your imapd.conf file:
+#### imapd.conf: ####
+# unixhierarchysep: yes
+# altnamespace: yes
+####
+$DOMAIN_AS_PREFIX=0;
+
 ?>
+
