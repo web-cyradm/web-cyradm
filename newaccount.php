@@ -6,20 +6,30 @@
 print "<h3>Add new Account to domain <font color=red>$domain</font></h3>";
 
 $query1="SELECT * from domain WHERE domain_name='$domain'";
-$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-$result1=mysql_db_query($MYSQL_DB,$query1,$handle1);
-$prefix=mysql_result($result1,0,"prefix");
-$maxaccounts=mysql_result($result1,0,"maxaccounts");
+//$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
+//$result1=mysql_db_query($MYSQL_DB,$query1,$handle1);
 
+$handle=DB::connect($DSN, true);
+$result1=$handle->query($query1);
+
+$row=$result1->fetchRow($result1,$c,'prefix');
+
+//$prefix=mysql_result($result1,0,"prefix");
+//$maxaccounts=mysql_result($result1,0,"maxaccounts");
+
+$prefix=$row[1];
+$maxaccounts=$row[2];
 
 if (!$confirmed){
 
 	$query2="SELECT * FROM accountuser WHERE prefix='$prefix' order by username";
 
 
-	$result2=mysql_db_query($MYSQL_DB,$query2,$handle1);
-	$cnt2=mysql_num_rows($result2);
+//	$result2=mysql_db_query($MYSQL_DB,$query2,$handle1);
+//	$cnt2=mysql_num_rows($result2);
 
+	$result2=$handle->query($query2);
+	$cnt2=$result2->numRows($result2);	
 
 	if ($cnt2+1>$maxaccounts){
 
@@ -31,8 +41,9 @@ if (!$confirmed){
 
         if (!$DOMAIN_AS_PREFIX) {
 		if ($cnt2>0){
-
-		$lastaccount=mysql_result($result2,$cnt2-1,"username");
+		$row2=$result2->fetchRow($result2,$cnt2-1,'username');
+//		$lastaccount=mysql_result($result2,$cnt2-1,"username");
+		$lastaccount=$row2[0];
 		}
 
 		if ($cnt2=0){
@@ -70,7 +81,7 @@ if (!$confirmed){
 
 		<tr>
 			<td>Quota</td>
-			<td><input class="inputfield" type="text" name="quota" value="<?php print mysql_result($result1,0,"quota"); ?>" onFocus="this.style.backgroundColor='#888888'"></td>
+			<td><input class="inputfield" type="text" name="quota" value="<?php print $row[3]; ?>" onFocus="this.style.backgroundColor='#888888'"></td>
 		</tr>
 
 		<tr>
@@ -106,13 +117,17 @@ else{
 
 	//print $query3;
 
-	$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-	$result=mysql_db_query($MYSQL_DB,$query3,$handle1);
+//	$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
+//	$result=mysql_db_query($MYSQL_DB,$query3,$handle1);
+
+	$result=$handle->query($query3);
 
 	$query4="INSERT INTO virtual (alias , dest , username , status) values ('$email@$domain' , '$username' , '$username' , '1')";
-	$result2=mysql_db_query($MYSQL_DB,$query4,$handle1);
+//	$result2=mysql_db_query($MYSQL_DB,$query4,$handle1);
 
-	if ($result){
+	$result2=$handle->query($query4);
+
+	if ($result and $result2){
 		print "Account successfully added to Database....</br>";
 	}
 
