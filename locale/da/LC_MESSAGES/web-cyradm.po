@@ -162,10 +162,12 @@ msgid "Set catch all"
 msgstr "lav til maildrop"
 
 #: browseaccounts.php:99
+#, fuzzy
 msgid "Change Password"
 msgstr "Ændre Kodeord"
 
 #: browseaccounts.php:100
+#, fuzzy
 msgid "Vacation"
 msgstr "Ferie"
 
@@ -368,7 +370,7 @@ msgstr "Domæne administratorens menu"
 
 #: menu.inc.php:27
 msgid "add new domain"
-msgstr "tilføj nyt domne"
+msgstr "tilføj nyt domæne"
 
 #: menu.inc.php:30
 msgid "browse domains"
