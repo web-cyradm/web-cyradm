@@ -596,7 +596,7 @@ msgstr ""
 
 #: vacation.php:58
 msgid "Vacation notice set"
-msgid ""
+msgstr ""
 
 #: vacation.php:59
 msgid "Failed to activate vacation"
