@@ -23,6 +23,7 @@ $dest=$HTTP_GET_VARS['dest'];
 $newalias=$HTTP_GET_VARS['newalias'];
 $newdest=$HTTP_GET_VARS['newdest'];
 $confirmed=$HTTP_GET_VARS['confirmed'];
+$cancel=$HTTP_GET_VARS['cancel'];
 
 # Validate input and verify authorization of a users action
 
