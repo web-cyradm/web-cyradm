@@ -121,19 +121,6 @@ class password{
 
 		switch ($encryption){
                 case "crypt":
-<<<<<<< crypto.php
-			case "1":
-			$password=crypt($password,substr($password,0,2));
-			break;
-			case "md5":
-			case "2":
-				$password=md5($password);
-			break;
-		// for compatibility with older web-cyradm
-			case "mysql":
-			case "3":
-				$password=$this->mysql_password($password);
-=======
 			case "1":
 			$password=crypt($password,substr(md5(rand()),0,2));
 			break;
@@ -145,7 +132,6 @@ class password{
 			case "mysql":
 			case "3":
 				$password=$this->mysql_password($password);
->>>>>>> 1.11.2.2
 		}
 		
 		// Encrypt should always return something - on plaintext unchanged input
