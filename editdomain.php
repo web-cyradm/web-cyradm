@@ -9,11 +9,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td width="10">&nbsp;</td>
 	<td valign="top">
 
-		<?php
+	<?php
 
-		if ($admintype == 0){
+	if ($admintype == 0){
 
-			if (! empty($confirmed)){
+		if (! empty($confirmed)){
+			if ($authorized) {
 
 				// START Andreas Kreisl : freenames
 				if (isset($freenames)){
@@ -27,12 +28,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$freeaddress="NO";
 				}
 
-				$query = "UPDATE domain SET domain_name='$newdomain', maxaccounts='$maxaccounts', quota='$quota', domainquota='$_GET[domainquota]', freenames='$freenames',freeaddress='$freeaddress',prefix='$prefix' WHERE domain_name='$domain'";
+				$query = "UPDATE domain SET domain_name='$newdomain', maxaccounts='$maxaccounts', quota='$quota', domainquota='$_GET[domainquota]', freenames='$freenames',freeaddress='$freeaddress',prefix='$_GET[newprefix]' WHERE domain_name='$domain'";
 				// END Andreas Kreisl : freenames
 
 				$query2 = "UPDATE accountuser SET domain_name='$newdomain' WHERE domain_name='$domain'";
 
 				$query3 = "UPDATE domainadmin SET domain_name='$newdomain' WHERE domain_name='$domain'";
+
+				$query4 = "UPDATE virtual SET username='$newdomain' WHERE username='$domain'";
 
 				$handle = DB::connect ($DB['DSN'],true);
 				if (DB::isError($handle)) {
@@ -42,6 +45,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$result = $handle->query($query);
 				$result2 = $handle->query($query2);
 				$result3 = $handle->query($query3);
+				$result4 = $handle->query($query4);
 
 				if (!DB::isError($result)){
 					?>
@@ -60,10 +64,18 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					</h3>
 					<?php
 				}
-
 			}
+			else {
+				?>
+				<h3>
+					<?php echo $err_msg;?>
+				</h3>
+				<?
+			} // End of if (authorized)
 
-			if (empty($confirmed)){
+		}
+
+		if (empty($confirmed)){
 				$query = "select * from domain where domain_name='$domain'";
 				$handle = DB::connect($DB['DSN'],true);
 				if (DB::isError($handle)) {
@@ -86,7 +98,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 					<input type="hidden" name="action" value="editdomain">
 					<input type="hidden" name="confirmed" value="true">
-					<input type="hidden" name="domain" value="<?php print $domain ?>"> 
+					<input type="hidden" name="domain" value="<?php print $domain ?>">
+					<input type="hidden" name="prefix" value="<?php print $prefix ?>">
 					<input type="hidden" name="id" value="<?php print $id ?>">
 
 					<table>
@@ -114,7 +127,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								<input class="inputfield"
 								type="text"
 								size="30"
-								name="prefix" 
+								name="newprefix" 
 								value="<?php print $prefix; ?>"
 								>
 							</td>
@@ -214,15 +227,15 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					</table>
 				</form>
 				<?php
-			} // End of if (empty($confirmed))
-		} else {
-			?>
-			<h3>
-				<?php print _("Your are not allowed to change domains!");?>
-			</h3>
-			<?php
-		} // End of if ($admintype == 0)
+		} // End of if (empty($confirmed))
+	} else {
 		?>
+		<h3>
+			<?php print _("Your are not allowed to change domains!");?>
+		</h3>
+		<?php
+	} // End of if ($admintype == 0)
+	?>
 	</td>
 </tr>
 <!-- #################### editdomain.php end #################### -->
