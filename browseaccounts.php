@@ -60,7 +60,7 @@
 	        print "<table border=\"0\">\n";
 		print "<tbody>";
 	        print "<tr>";
-	        print "<th colspan=\"3\">actions</th>";
+	        print "<th colspan=\"4\">actions</th>";
 	        print "<th>Email address</th>";
 	        print "<th>Username</th>";
 	        print "<th>Password</th>";
@@ -85,6 +85,7 @@
 	        print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">Edit account</a></td>";
 	        print "\n<td><a href=\"index.php?action=deleteaccount&domain=$domain&username=$username\">Delete account</a></td>";
 	        print "\n<td><a href=\"index.php?action=setquota&domain=$domain&username=$username\">Set Quota</a></td>";
+	        print "\n<td><a href=\"index.php?action=catch&domain=$domain&username=$username\">Set Catch all</a></td>";
 	        print "\n<td>";
 		$query2="SELECT * FROM virtual WHERE username='$username'"; 
 		$result2=mysql_db_query($MYSQL_DB,$query2);
@@ -110,8 +111,8 @@
 			$q_used=$quota[used];
 			$q_total=$quota[qmax];	
 			$q_percent=100*$q_used/$q_total;
-			print $quota[used]." Kilobytes out of ";
-			print $quota[qmax]." Kilobytes (".$q_percent." %)";
+			print $quota[used]." Kbytes out of ";
+			print $quota[qmax]." Kbytes (".sprintf("%.2f",$q_percent)." %)";
 		}
 		else{
 			print "Quota not set";
