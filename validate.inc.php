@@ -47,6 +47,9 @@ if ($_POST['action']!=""){
 	}
 }
 
+# Load list of reserved Adresses into array
+$reserved=explode(",",$RESERVED);
+
 $setforward = $forwardto = (isset($_POST['setforward']))?($_POST['setforward']):('');
 
 # Validate input and verify authorization of a users action
@@ -139,6 +142,12 @@ if (! empty($action)){
 			# If the requirements are not matches, deny submission
 			$authorized=TRUE;
 		}
+		# Check for reserved addresses
+		if (in_array($email, $reserved)) {
+			$authorized = FALSE;	
+			$err_msg="Reserved Emailadress, request cancelled";
+		}
+
 	break;
 
 
@@ -171,11 +180,6 @@ if (! empty($action)){
 
 ################################## Check input if newemail ################################################
 	case "newemail":
-
-		# Wuergaround for reserved E-mail addresses (CSV without domainnames)
-		$reserved_list="postmaster,root";
-		$reserved=explode(",",$reserved_list);
-		
 		
 
 		$query = "SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
@@ -253,6 +257,11 @@ if (! empty($action)){
 			}
 		} else {
 			$authorized=TRUE;
+		}
+			# Check for reserved addresses
+		if (in_array($newalias, $reserved)) {
+			$authorized = FALSE;	
+			$err_msg="Reserved Emailadress, request cancelled";
 		}
 
 		break;
