@@ -5,7 +5,7 @@
 
 	<?php
 
-	if ($authorized){
+	if ($authorized AND $new_password == $confirm_password){
 
 		$query = "select * from virtual where alias='$alias'";
 		$handle = DB::connect($DB['DSN'], true);
@@ -111,6 +111,9 @@
 		} // End of if (! $confirmed)
 	} else {
 		// Not authorized
+		if ($new_password != $confirm_password){
+			print _("Passwords do not match");
+		}
 		?>
 		<h3>
 			<?php echo $err_msg;?>
