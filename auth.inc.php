@@ -1,5 +1,6 @@
 <?php
 include("config.inc.php");
+include ("lib/crypto.php");
 
 session_start();
 $method=getenv('REQUEST_METHOD');
@@ -10,51 +11,18 @@ $login = $_POST['login'];
 $password = $_POST['password'];
 $LANG = $_POST['LANG'];
 
-function authenticate($user, $pw)
-    {
-     include("config.inc.php");
-     include_once("DB.php");
-     global $handle;
-
-     $query="SELECT * FROM adminuser WHERE username='$user' AND password='$pw'";
-     $handle=DB::connect($DSN, true);
-     $result=$handle->query($query);
-     $cnt=$result->numRows();
-
-     if ($cnt)
-         {
-          $row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-          $username=$row['username'];
-          $password=$row['password'];
-         }
-
-     if ($username==$user and $password==$pw)
-         {
-          $auth=TRUE;
-         }
-
-     if ($auth)
-         {
-          return TRUE;
-         }
-     else
-         {
-          return FALSE;
-         }
-    }
-
-$_SESSION['session_ok'] = FALSE;
-
-if ($login && $password)
-    {
+if ($login && $password){
      // Log access
      $fp = fopen($LOG_DIR . "web-cyradm-login.log", "a");
      $date = date("d/M/Y H:i:s");
      fwrite($fp, "LOGIN : $REMOTE_ADDR $login $date $HTTP_USER_AGENT $HTTP_REFERER $REQUEST_METHOD \n");
      fclose($fp);
 
-     if (authenticate($login,$password))
-         {
+     $pwd=new password;
+     $result=$pwd->check("adminuser",$login,$password,$CRYPT);
+
+     if ($result){
+         
           // Log successfull login
           $fp = fopen($LOG_DIR . "web-cyradm-login.log", "a");
           $date = date("d/M/Y H:i:s");
@@ -67,14 +35,6 @@ if ($login && $password)
           session_register("session_ok");
           session_register("user");
           session_register("LANG");
-
-          $SID=session_id();
-
-          $query="UPDATE adminuser
-                  SET SID='$SID'
-                  WHERE username='$user'";
-
-          $result=$handle->query($query);
 
           header ("Location: index.php");
 
@@ -90,7 +50,7 @@ if ($login && $password)
           fclose($fp);
           unset($_SESSION['session_ok']);
           //session_unregister("session_ok");
-          header ("Location: failed.php");
+         header ("Location: failed.php");
          }
     }
 else

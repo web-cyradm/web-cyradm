@@ -57,6 +57,10 @@ else{
 		}
 
 		else if ($confirmed){
+
+			$pwd=new password;
+
+			$password=$pwd->encrypt($password,$CRYPT);
 	
 			$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
 

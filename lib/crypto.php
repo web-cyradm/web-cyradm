@@ -16,8 +16,6 @@ class password{
 	var $newpassword;
 	var $encryption;
 
-	var $checked;
-
 	// Check if supplied password is valid
 
 	function check($table, $username, $userinput, $encryption){
@@ -26,19 +24,17 @@ class password{
 
 		switch ($encryption){
 		case "crypt":
-
 			/* First get the encrypted password out of the database to have the salt */
 
 		        $query = "SELECT password FROM $table WHERE username ='$username'";
 			$handle=DB::connect ($DSN,true);
 	       		$result = $handle->query($query);
+
 			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-		
-			$dbinput = $row['password'];
+
+			$dbinput=$row['password'];
 
 			// The salt used is the encrypted password
-			print "<br>From DB: ".$dbinput."<br>";	
-			print "userinput: ".crypt($userinput,$dbinput)."<p>";
 	
 			if ($dbinput == crypt($userinput,$dbinput)){
 				return true;
@@ -47,8 +43,32 @@ class password{
 				return false;
 			}
 
-			break;		
+		break;		
+	
+		case "plain":
+			$query = "SELECT password FROM $table WHERE username ='$username'";
+			$handle=DB::connect ($DSN,true);
+			$result = $handle->query($query);
+			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+
+			$dbinput = $row['password'];
+
+			print $dbinput;
+
+			if ($dbinput == $userinput){
+				return true;
+			}
+			else {
+				return false;
+			}
+
+		break;
+
+
+
 		}
+
+		
 	}
 
 	/* This function sets the new password without checking an old password.
@@ -70,7 +90,6 @@ class password{
 			$result = $handle->query($query);
 			
 			if ($result){	
-				print $newpassword;
 				return true;
 			}
 			

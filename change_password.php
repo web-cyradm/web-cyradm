@@ -29,11 +29,11 @@ if ($authorized){
 
 			$handle=DB::connect($DSN, true);
 			switch($CRYPT){
-			case 1:
+			case "crypt":
 			  $query="update accountuser set password=ENCRYPT('$new_password') where username='$username'";
 			  break;
 
-			case 2:
+			case "md5":
 			  $query="update accountuser set password=PASSWORD('$new_password') where username='$username'";
 			break;
 

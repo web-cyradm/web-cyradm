@@ -124,10 +124,10 @@ else{
    $query3="INSERT INTO accountuser (username , password , prefix , " .
        "domain_name) VALUES ('$username',";
    switch($CRYPT){
-   case 1:
+   case "crypt":
        $query3 .= "ENCRYPT('$password')";
        break;
-   case 2:
+   case "md5":
        $query3 .= "PASSWORD('$password')";
        break;
    default:

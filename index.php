@@ -2,6 +2,7 @@
 
 include ("config.inc.php");
 include ("lib/nls.php");
+include ("lib/crypto.php");
 
 $browserlang=explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']); // $HTTP_ACCEPT_LANGUAGE;
 
