@@ -80,7 +80,7 @@ if (! isset($domain)){
 		<td>&nbsp;</td>
 
 		<td class="navi">
-			<a href="index.php?action=setup"><?php print _("setup");?></a>
+			<a href="index.php?action=settings"><?php print _("settings");?></a>
 		</td>
 
 		<td>&nbsp;</td>
