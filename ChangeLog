@@ -1,0 +1,559 @@
+2002-09-06 02:50  luc
+
+	* adminuser.php: 
+	
+	Corrected typo $domain -> $domainname which was leading in wrong
+	domain repsonsible (display only) 
+
+2002-09-06 01:08  luc
+
+	* locale/de/LC_MESSAGES/web-cyradm.mo: 
+	
+	Correction of typos german NLS 
+
+2002-09-06 01:05  luc
+
+	* locale/de/LC_MESSAGES/web-cyradm.po: 
+	
+	Correction of german NLS 
+
+2002-09-06 00:54  luc
+
+	* lib/nls.php, locale/da/LC_MESSAGES/web-cyradm.mo,
+	locale/da/LC_MESSAGES/web-cyradm.po: 
+	
+	Added danish NLS 
+
+2002-09-04 09:50  luc
+
+	* INSTALL: 
+	
+	Some minor changes 
+
+2002-09-02 20:57  luc
+
+	* header.inc.php: 
+	
+	Made code charset determination more flexible 
+
+2002-09-02 20:30  luc
+
+	* lib/nls.php: 
+	
+	Enabled russian 
+
+2002-09-02 13:54  luc
+
+	* locale/ru/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	
+	Added russian NLS 
+
+2002-09-01 23:46  luc
+
+	* index.php: 
+	
+	Minor NLS fixes 
+
+2002-09-01 23:28  luc
+
+	* lib/nls.php: 
+	
+	Fixed dumb typo 
+
+2002-09-01 23:18  luc
+
+	* index.php: 
+	
+	httpvariable LANG can now override othe NLS settings 
+
+2002-09-01 23:07  luc
+
+	* logout.php: 
+	
+	Added missing space 
+
+2002-09-01 23:07  luc
+
+	* logout.php: 
+	
+	Corrected stuff 
+
+2002-09-01 23:03  luc
+
+	* lib/nls.php: 
+	
+	Added NLS file for getting valid languages 
+
+2002-09-01 23:00  luc
+
+	* config.inc.php-dist, index.php: [no log message] 
+
+2002-09-01 22:43  luc
+
+	* session.php: 
+	
+	separated seesion handling 
+
+2002-09-01 21:19  luc
+
+	* config.inc.php-dist: 
+	
+	Corrected i18n stuff removed old mysql stuff 
+
+2002-09-01 21:17  luc
+
+	* header.inc.php, login.php: 
+	
+	Corrected nested tables 
+
+2002-08-29 21:03  luc
+
+	* locale/fr/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	
+	Moved the fr locales to the right place 
+
+2002-08-29 21:00  luc
+
+	* locale/de/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	
+	Moved de locales to the right place 
+
+2002-08-29 20:56  luc
+
+	* auth.inc.php, header.inc.php, index.php, login.php,
+	validate.inc.php, locale/zh_CN/LC_MESSAGES/web-cyradm.mo,
+	locale/zh_CN/LC_MESSAGES/web-cyradm.po: 
+	
+	i18n and coding changes 
+
+2002-08-24 17:45  luc
+
+	* locale/pt/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: Added
+	portugeese translation 
+
+2002-08-20 07:58  luc
+
+	* locale/hu/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	
+	Added hungarian translation 
+
+2002-08-20 07:57  luc
+
+	* header.inc.php: 
+	
+	Other small bugfix for coding, now using ISO 8859-1 at default 
+
+2002-08-20 07:44  luc
+
+	* header.inc.php: 
+	
+	Fixed coding for chinese, put charset=GB2312 in meta-tag in case of
+	LANG=zh_CN 
+
+2002-08-20 06:59  luc
+
+	* locale/zh_CN/LC_MESSAGES/: web-cyradm.mo, web-cyradm.po: 
+	
+	Added Simplified Chinese support 
+
+2002-08-18 16:53  luc
+
+	* config.inc.php-dist, validate.inc.php: 
+	
+	Merged i18n bugfixes from bugfix branch 
+
+2002-08-18 16:51  luc
+
+	* config.inc.php-dist, validate.inc.php: 
+	
+	Fixed some minor bugs related to i18n 
+
+2002-08-18 16:29  luc
+
+	* locale/templates/web-cyradm.pot: 
+	
+	Added new template 
+
+2002-08-18 16:08  luc
+
+	* adminuser.php, browse.php, browseaccounts.php, catchall.php,
+	deleteaccount.php, deletedomain.php, deleteemail.php,
+	editaccount.php, editadminuser.php, editdomain.php, editemail.php,
+	header.inc.php, login.php, logout.php, menu.inc.php,
+	newaccount.php, newdomain.php, newemail.php, setquota.php,
+	timeout.php: 
+	
+	i18n changes 
+
+2002-08-10 23:29  luc
+
+	* timeout.php: 
+	
+	Corrected i18n bug 
+
+2002-08-10 23:27  luc
+
+	* login.php: 
+	
+	Added i18n stuff 
+
+2002-08-10 23:18  luc
+
+	* timeout.php: 
+	
+	Added i18n stuff 
+
+2002-08-10 23:11  luc
+
+	* adminuser.php: 
+	
+	Added i18n stuff 
+
+2002-08-10 22:48  luc
+
+	* deletedomain.php: 
+	
+	Added i18n stuff 
+
+2002-08-10 22:13  luc
+
+	* catchall.php: 
+	
+	Added i18n stuff 
+
+2002-08-10 22:03  luc
+
+	* setquota.php: 
+	
+	Adding i18n stuff 
+
+2002-08-10 20:38  luc
+
+	* deleteemail.php: 
+	
+	Added i18n stuff 
+
+2002-08-10 20:28  luc
+
+	* editemail.php: 
+	
+	Added i18n stuff 
+
+2002-08-10 20:18  luc
+
+	* editaccount.php: 
+	
+	Corrected gettext call 
+
+2002-08-10 20:13  luc
+
+	* newemail.php: 
+	
+	Added i18n stuff 
+
+2002-08-10 19:35  luc
+
+	* editaccount.php: 
+	
+	Added i18n stuff 
+
+2002-08-10 19:23  luc
+
+	* deleteaccount.php: 
+	
+	Added i18n stuff 
+
+2002-08-10 19:02  luc
+
+	* README.translations: 
+	
+	Added a basic HOWTO for translators 
+
+2002-08-10 18:55  luc
+
+	* browseaccounts.php, newaccount.php: 
+	
+	Added i18n stuff 
+
+2002-08-10 18:09  luc
+
+	* browseaccounts.php, newdomain.php: 
+	
+	Added i18n stuff 
+
+2002-08-10 17:20  luc
+
+	* menu.inc.php: 
+	
+	i18n strings corrected 
+
+2002-08-10 16:38  luc
+
+	* browse.php, menu.inc.php: 
+	
+	Added i18n strings 
+
+2002-08-10 16:37  luc
+
+	* config.inc.php-dist: 
+	
+	Added language setting, please edit if you dont want to see the
+	german stuff 
+
+2002-08-06 22:11  luc
+
+	* config.inc.php-dist: 
+	
+	Disabled all mysql related stuff to be sure all DB related stuff is
+	now working with PEAR::DB 
+
+2002-08-06 22:09  luc
+
+	* editaccount.php: Fixed buglet which made dest disapear new [dest]
+	instead of [1] 
+
+2002-08-06 21:49  luc
+
+	* adminuser.php, browseaccounts.php, deletedomain.php,
+	editaccount.php, validate.inc.php: 
+	
+	Merging another chunks of patches from Marcus I. Ryan, Improving
+	PEAR::DB support 
+
+2002-08-06 00:41  luc
+
+	* validate.inc.php: 
+	
+	Merging "cancel-button-bug" from release-2002-05-25-bugfix-branch 
+
+2002-08-06 00:36  luc
+
+	* validate.inc.php: 
+	
+	Eliminated bug which makes the "cancel" button ignored, $cancel
+	added tp HTTP_GET_VARS 
+
+2002-08-05 22:54  luc
+
+	* scripts/: create.sql, create_mysql.sql, create_pgsql.sql,
+	insertuser.sql, insertuser_mysql.sql, insertuser_pgsql.sql: 
+	
+	Inserting pgsql-scripts and renaming the mysql stuff accordingly 
+
+2002-08-05 22:34  luc
+
+	* adminuser.php, auth.inc.php, browseaccounts.php, catchall.php,
+	config.inc.php-dist, deleteaccount.php, deleteadminuser.php,
+	deletedomain.php, deleteemail.php, editaccount.php,
+	editadminuser.php, editdomain.php, editemail.php, newadminuser.php,
+	newdomain.php, newemail.php, validate.inc.php: 
+	
+	Merged Marcus I Ryan's patches for PEAR::DB 
+
+2002-06-24 00:55  luc
+
+	* newaccount.php: Switched DB-Code to use PEAR 
+
+2002-06-24 00:28  luc
+
+	* browseaccounts.php: Switched DB-Code to use PEAR 
+
+2002-06-19 06:45  jeffbert
+
+	* editadminuser.php: can now edit name and pass 
+
+2002-06-19 06:44  jeffbert
+
+	* adminuser.php: fixed linking to domains 
+
+2002-06-10 21:38  luc
+
+	* newadminuser.php, setquota.php, validate.inc.php: 
+	
+	Merge from bugfux branch, adminuserstuff works now (and also with
+	php 4.2.1) See branch for changes 
+
+2002-06-10 21:34  luc
+
+	* newadminuser.php, validate.inc.php: 
+	
+	Changed VAR newadmin to newadminusers and added that VAR to the
+	HTTP_GET_VARS list in validate.php, means it also works with php
+	4.2.1 now 
+
+2002-06-10 21:06  luc
+
+	* setquota.php: renaming VAR quotaset to quota 
+
+2002-06-10 20:39  luc
+
+	* index.php: Added PEAR support for DB Access 
+
+2002-06-06 08:17  luc
+
+	* browse.php: Changed DB-code to use PEAR 
+
+2002-06-06 07:35  luc
+
+	* config.inc.php-dist: Implemention of PEAR Database access 
+
+2002-05-29 21:52  luc
+
+	* auth.inc.php: merge from 2002-05-25-bugfix-branch, fixed serious
+	security issue 
+
+2002-05-29 21:50  luc
+
+	* auth.inc.php: Fixed serious security pbrlm if isset did not
+	worked 
+
+2002-05-28 21:34  luc
+
+	* config.inc.php-dist: merge from release-2002-05-25-bugfix-branch
+	to avoid php compaints about allready sent header 
+
+2002-05-28 21:26  luc
+
+	* config.inc.php-dist: 
+	
+	Removed white space at the end of the file to prevent php complaints
+	about allready sent headers 
+
+2002-05-25 21:49  luc
+
+	* deletedomain.php: Added some comments 
+
+2002-05-25 21:43  luc
+
+	* catchall.php: Added some comments 
+
+2002-05-25 20:29  luc
+
+	* browseaccounts.php: re-enabled catchall after tagging
+	release-2002-05-25 
+
+2002-05-25 20:26  luc
+
+	* browseaccounts.php: Disabled catchall facility for release 
+
+2002-05-22 23:14  luc
+
+	* menu.inc.php: deleted menuentry for catchall bcause integration
+	in browseaccounts.php 
+
+2002-05-22 23:09  luc
+
+	* catchall.php, browseaccounts.php: Added catchall to browseaccount 
+
+2002-05-22 22:01  luc
+
+	* catchall.php: 
+	
+	Added catchall facillity, not sure if final solution 
+
+2002-05-22 21:59  luc
+
+	* menu.inc.php: Added catchall facillity 
+
+2002-05-22 21:32  luc
+
+	* index.php: Added catch all facillity 
+
+2002-05-22 21:30  jeffbert
+
+	* browse.php: added code to now show prefix if using
+	DOMAIN_AS_PREFIX 
+
+2002-05-22 21:29  jeffbert
+
+	* deletedomain.php: added delete domainadmin code 
+
+2002-05-22 21:14  luc
+
+	* config.inc.php-dist: Changed default timout to 600s, added const
+	CRYPT for using crypted passwd or not 
+
+2002-05-22 10:00  jeffbert
+
+	* newadminuser.php: fixed domain/admin selection 
+
+2002-05-22 10:00  jeffbert
+
+	* deleteadminuser.php: fixed delete adminuser 
+
+2002-05-22 09:59  jeffbert
+
+	* adminuser.php: fixed links to edit/delete adminusers 
+
+2002-05-22 09:58  jeffbert
+
+	* config.inc.php-dist: removed altnamespace note 
+
+2002-05-17 10:50  jeffbert
+
+	* setquota.php: added  coding and fixed form variable to get quota
+	set to work... it was being overwritten by the same variable name
+	earlier in the program so I renamed it in that part from quota to
+	quotaset 
+
+2002-05-17 10:49  jeffbert
+
+	* newdomain.php: added  coding and  code 
+
+2002-05-17 10:48  jeffbert
+
+	* newaccount.php: added  coding and fixed the setting of quotas and
+	admin rights upon account creation 
+
+2002-05-17 10:47  jeffbert
+
+	* editemail.php: fixed form value for dest, was newdest, now
+	editemail works 
+
+2002-05-17 10:46  jeffbert
+
+	* editaccount.php: reordered username/email, added pass/quota to
+	columns, changed output to group user/pass/quota into single cell
+	for multiple email addesses for the same user 
+
+2002-05-17 10:45  jeffbert
+
+	* deleteaccount.php: added  code 
+
+2002-05-17 10:44  jeffbert
+
+	* browseaccounts.php: changed order of username/email and added 
+	code 
+
+2002-05-17 10:43  jeffbert
+
+	* config.inc.php-dist: added  and 
+
+2002-05-17 07:46  luc
+
+	* .cvsignore, COPYRIGHT, INSTALL, README, TO-BE-DONE,
+	adminuser.php, auth.inc.php, browse.php, browseaccounts.php,
+	config.inc.php-dist, deleteaccount.php, deleteadminuser.php,
+	deletedomain.php, deleteemail.php, editaccount.php,
+	editadminuser.php, editdomain.php, editemail.php, failed.php,
+	footer.inc.php, header.inc.php, index.php, login.php, logout.php,
+	menu.inc.php, newaccount.php, newadminuser.php, newdomain.php,
+	newemail.php, setquota.php, timeout.php, validate.inc.php,
+	welcome.php, css/web-cyradm.css, images/banner.gif, lib/cyradm.php,
+	scripts/create.sql, scripts/insertuser.sql: Initial revision 
+
+2002-05-17 07:46  luc
+
+	* .cvsignore, COPYRIGHT, INSTALL, README, TO-BE-DONE,
+	adminuser.php, auth.inc.php, browse.php, browseaccounts.php,
+	config.inc.php-dist, deleteaccount.php, deleteadminuser.php,
+	deletedomain.php, deleteemail.php, editaccount.php,
+	editadminuser.php, editdomain.php, editemail.php, failed.php,
+	footer.inc.php, header.inc.php, index.php, login.php, logout.php,
+	menu.inc.php, newaccount.php, newadminuser.php, newdomain.php,
+	newemail.php, setquota.php, timeout.php, validate.inc.php,
+	welcome.php, css/web-cyradm.css, images/banner.gif, lib/cyradm.php,
+	scripts/create.sql, scripts/insertuser.sql: 
+	
+	Initial import from web-cyradm Main tree 
+
