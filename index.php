@@ -52,7 +52,8 @@ if ($wc_configured){
 
 	} else {
 		// Fall back to default language
-		$LANG = $DEFAULTLANG;
+		//$LANG = $DEFAULTLANG;
+		$LANG = $nls['aliases'][substr($DEFAULTLANG,0,2)];
 	}
 
 	// For testing porpose, GET variable LANG overrides all
