@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: web-cyradm 0.5.3-1\n"
 "POT-Creation-Date: 2003-05-29 16:28+0200\n"
-"PO-Revision-Date: 2003-05-26 11:13+0000\n"
+"PO-Revision-Date: 2003-06-15 20:27+0000\n"
 "Last-Translator: Michelle Ribeiro <michelle@cipsga.org.br>\n"
 "Language-Team: Portuguese/Brazil\n"
 "MIME-Version: 1.0\n"
@@ -356,14 +356,12 @@ msgid "Do you really want to delete the emailadress for user"
 msgstr "Você realmente quer remover o e-mail do usuário"
 
 #: deleteemail.php:38
-#, fuzzy
 msgid "Yes, delete"
-msgstr "Usuário removido"
+msgstr "Sim, remover"
 
 #: deleteemail.php:43
-#, fuzzy
 msgid "Cancel"
-msgstr "Cancelado"
+msgstr "Cancelar"
 
 #: deleteemail.php:64
 msgid "Emailadress deleted."
@@ -492,8 +490,8 @@ msgstr "Impossível"
 
 #: forwardalias.php:146
 msgid ""
-"You can't forward this email address with 'Allow Free Mail Addressess' set "
-"to off!"
+"You can't forward this email address with 'Allow Free Mail Addressess' set to "
+"off!"
 msgstr ""
 "Você não pode redirecionar este e-mail com a opção `Não restringir endereços "
 "de e-mail`desabilitada!"
@@ -524,25 +522,29 @@ msgstr "migrate.php já existe! Por favor, remova ou renomeio-o"
 
 #: index.php:130
 msgid "web-cyradm has not yet been configured"
-msgstr ""
+msgstr "O web-cyradm ainda não foi configurado"
 
 #: index.php:133
 msgid "Configuration steps:"
-msgstr ""
+msgstr "Procedimentos de configuração:"
 
 #: index.php:135
 msgid "copy the config file that comes with the distribution: "
-msgstr ""
+msgstr "copie o arquivo de configuração que vem com a distribuição: "
 
 #: index.php:138
 msgid "Edit the file config/conf.php to match your systems configuration"
 msgstr ""
+"Edite o arquivo de configuração conf.php para adequar a configuração do seu "
+"sistema"
 
 #: index.php:140
 msgid ""
 "Further information about how to configure Web-cyradm can be found at the "
 "following website:"
 msgstr ""
+"Maiores informações sobre como configurar o web-cyradm podem ser encontradas "
+"no seuinte web site:"
 
 #: login.php:44
 msgid "Welcome to Web-cyradm"
@@ -554,7 +556,7 @@ msgstr "Por favor, autentique-se."
 
 #: login.php:78
 msgid "Select language"
-msgstr ""
+msgstr "Selecionar idioma"
 
 #: logout.php:45
 msgid "Thank you for using Web-cyradm"
@@ -803,13 +805,11 @@ msgstr "Remover auto-resposta"
 
 #: validate.inc.php:103
 msgid "Quota exeedes the maximum allowed qutoa for this domain."
-msgstr ""
+msgstr "A quota excede a quota máxima permitida neste domínio"
 
 #: validate.inc.php:107
-#, fuzzy
 msgid "Security violation detected, attempt logged"
-msgstr ""
-"Violação de segurança detectada, nada apagado. Sua tentativa foi registrada."
+msgstr "Violação de segurança detectada. Sua tentativa foi registrada."
 
 #: forwardaccount.php:69
 msgid "Forward for account"
@@ -877,7 +877,7 @@ msgstr ""
 
 #: editalias.php:21
 msgid "There was an error adding $dest to $alias: "
-msgstr ""
+msgstr "Houve um erro ao adicionar $dest to $alias: "
 
 #: editalias.php:58
 msgid "Editing alias"
@@ -900,9 +900,8 @@ msgid "This alias has no destinations"
 msgstr "Este alias não tem destino"
 
 #: editalias.php:136
-#, fuzzy
 msgid "New destination"
-msgstr "Novo destino&nbsp"
+msgstr "Novo destino"
 
 #~ msgid "Not yet supported, change will be ignored"
 #~ msgstr "Não suportado ainda, mudanças serão ignoradas"

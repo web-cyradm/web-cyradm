@@ -168,7 +168,6 @@ if (! empty($action)){
 		
 		if (! empty($confirmed) && ! empty($newdest) && ! empty($newalias)){
 			$valid_dest = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newdest);
-			$freeaddress="YES";
 			if ($freeaddress != "YES") {
 			    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias."@".$domain);
 			} else {
