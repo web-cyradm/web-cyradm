@@ -82,16 +82,15 @@ if ($wc_configured){
 		include WC_BASE . "/menu.inc.php";
 		include WC_BASE . "/lib/cyradm.php";
 
-		if (empty($_GET['domain']) &&
-		    (empty($_GET['action']) || 
-		     (! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain', 'editadminuser', 'newadminuser', 'search'))
-		     )
-		    )
-		   ){
+//		if (empty($_GET['domain']) && (empty($_GET['action']) || (! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain', 'editadminuser', 'newadminuser', 'search'))))){
 
-//		if (!$_GET['domain'] and ! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain', 'editadminuser'))){
+		if (!isset($action)){
+
 			include WC_BASE . "/welcome.php";
 		} else {
+		
+			# Only allow defined actions and include them
+			
 			if (in_array($_GET['action'], array('logout', 'browse', 'editdomain', 
 							    'newdomain', "deletedomain",
 							    "adminuser", "newadminuser",
@@ -104,7 +103,14 @@ if ($wc_configured){
 							    "editemail", "aliases", "newalias",
 							    "editalias", "deletealias", "search"))){
 				include sprintf('%s/%s.php', WC_BASE, $_GET['action']);
-			} else {
+			} 
+
+			# For password related stuff we also need to allow POST vars for some actions
+
+			else if (in_array($_POST['action'], array('change_password', 'newaccount'))){
+				include sprintf('%s/%s.php', WC_BASE, $_POST['action']);
+			}
+			else {
 				switch ($_GET['action']){
 					case "accounts":
 						include WC_BASE . "/browseaccounts.php";
@@ -119,6 +125,8 @@ if ($wc_configured){
 						break;
 				}
 			}
+
+
 		}
 		include WC_BASE . "/footer.inc.php";
 	} else {

@@ -111,7 +111,7 @@
 					$domain = $row['domain_name'];
 					$username = $row['username'];
 
-					$query2 = "SELECT * FROM virtual WHERE username='" . $username . "'"; 
+					$query2 = "SELECT * FROM virtual WHERE username='" . $username . "' AND alias  !='$username'"; 
 					$result2 = $handle->query($query2);
 					$cnt2 = $result2->numRows($result2);
 					$row = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);

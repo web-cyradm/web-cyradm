@@ -28,7 +28,7 @@
 				$result = $handle->query($query);
 				$forwards = explode("\n", $_POST['forwardto']);
 				reset ($forwards);
-				$query = "insert into virtual (alias,dest) VALUES (" . $handle->quote($_GET['username'])  . ", ";
+				$query = "insert into virtual (alias,dest,username) VALUES (" . $handle->quote($_GET['username'])  . ", ";
 				$q = array();
 				while (list(, $forward) = each($forwards)) {
 					// insert new forwards
@@ -40,11 +40,13 @@
 				} else {
 					$keep = '';
 				}
-				$query .= $handle->quote(implode(',', $q)) . ')';
+				$query .= $handle->quote(implode(',', $q)) . ", " . $handle->quote($_GET['username']) . ')';
 				$result = $handle->query($query);
 				$msg = _("Forward set");
 			} elseif (! empty($_POST['setforward']) && $_POST['setforward'] == "2") {
 				$query = "delete from virtual WHERE alias=" . $handle->quote($_GET['username']);
+				$result = $handle->query($query);
+				$query = "insert into virtual (alias,dest,username) VALUES (" . $handle->quote($_GET['username']) . ", "  . $handle->quote($_GET['username'])  . ", " . $handle->quote($_GET['username']) . ')';
 				$result = $handle->query($query);
 				$msg = _("Forwarding removed");
 			}

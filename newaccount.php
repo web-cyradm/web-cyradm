@@ -86,7 +86,7 @@
 					$nextaccount = $prefix.$nextaccount;
 				}
 				?>
-				<form action="index.php" method="get" style="border: ridge 0px maroon;">
+				<form action="index.php" method="POST" style="border: ridge 0px maroon;">
 					<input type="hidden" name="action" value="newaccount">
 					<input type="hidden" name="confirmed" value="true">
 					<input type="hidden" name="domain" value="<?php print $domain ?>">
