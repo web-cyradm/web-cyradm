@@ -15,20 +15,26 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 		<?php
 		if ($admintype == 0){
-			$query = "SELECT * FROM adminuser"; 
+			$query = "SELECT * FROM adminuser";
 			$handle = DB::connect($DB['DSN'], true);
 			if (DB::isError($handle)) {
 				die (_("Database error"));
 			}
+			$row_pos = (empty($row_pos))?(0):($row_pos);
 
-			$result = $handle->query($query);
+			$result = $handle->limitQuery($query,$row_pos,10);
 			$cnt = $result->numRows();
 
 			$total = $result->numRows();
 			if ($cnt != 0){
+
+
+
 				?>
 				<p>
-					<?php print _("Total administrators") . ": " . $total;?>
+					<?php print _("Total administrators") . ": " . $total;
+					print "<br>"._("Displaying from position:")." $row_pos";
+					?>
 				</p>
 
 				<table cellspacing="2" cellpadding="0">
@@ -36,7 +42,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						<td class="navi">
 							<a href="index.php?action=newadminuser&amp;domain=<?php echo $domain; ?>"><?php print _("Add administator"); ?></a>
 						</td>
-						
+
 						<?php
 						if (empty($row_pos)){
 							$row_pos = 0;
@@ -47,12 +53,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						if ($row_pos < 10){
 							$_linkP = '#';
 						} else {
-							$_linkP = 'index.php?action=accounts&amp;domain=' . $domain . '&amp;row_pos=' . $prev;
+							$_linkP = 'index.php?action=adminuser&amp;domain=' . $domain . '&amp;row_pos=' . $prev;
 						}
 						if ($next > $total){
 							$_linkN = '#';
 						} else {
-							$_linkN = 'index.php?action=accounts&amp;domain=' . $domain . '&amp;row_pos=' . $next;
+							$_linkN = 'index.php?action=adminuser&amp;domain=' . $domain . '&amp;row_pos=' . $next;
 						}
 						?>
 						<td class="navi">
@@ -80,7 +86,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								<?php print _("domain");?>
 							</th>
 
-							<th>	
+							<th>
 								<?php print _("admin type");?>
 							</th>
 						</tr>
@@ -109,7 +115,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 							<tr class="<?php echo $cssrow;?>">
 								<td valign="middle">
-									<a href="index.php?action=editadminuser&amp;username=<?php echo $username; ?>&amp;domain=<?php echo $domain; ?>"><?php
+									<a href="index.php?action=editadminuser&username=<?php echo $username; ?>&domain=<?php echo $domain; ?>&row_pos=<?php print $row_pos;?>"><?php
 									print _("Edit adminuser");
 									?></a>
 								</td>
@@ -127,10 +133,22 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								<td valign="middle">
 									<?php
 									for ($i = 0; $i < $cnt2; $i++){
-									    $row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $i);
-									    $domainname = $row2['domain_name'];
-									    print "$domainname<br>";
+										$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $i);
+										$domainname = $row2['domain_name'];
+										if ($type){
+											print "$domainname<br>";
+										}
 									}
+
+									if ($type==0){
+										print _("All domains");
+									}
+									if ($domainname=="" AND $type!=0){
+										print "<font color=\"red\">";
+										print _("None");
+										print "</font>";
+									}
+
 									?>
 								</td>
 

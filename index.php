@@ -84,7 +84,7 @@ if ($wc_configured){
 
 //		if (empty($_GET['domain']) && (empty($_GET['action']) || (! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain', 'editadminuser', 'newadminuser', 'search'))))){
 
-		if (!isset($action) OR empty($domain) AND $action!="logout"){
+		if (!isset($action) OR empty($domain) AND $action!="logout" AND $action !="adminuser" AND $action !="editadminuser" AND $action!="deleteadminuser" AND $action!="newadminuser"){
 
 			include WC_BASE . "/welcome.php";
 		} else {
@@ -107,7 +107,7 @@ if ($wc_configured){
 
 			# For password related stuff we also need to allow POST vars for some actions
 
-			else if (in_array($_POST['action'], array('change_password', 'newaccount'))){
+			else if (in_array($_POST['action'], array('change_password', 'newaccount', 'newadminuser', 'editadminuser'))){
 				include sprintf('%s/%s.php', WC_BASE, $_POST['action']);
 			}
 			else {
