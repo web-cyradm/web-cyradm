@@ -17,12 +17,15 @@ $query = "SELECT * from settings WHERE username='".$_SESSION['user']."'";
 $result = $handle->query($query);
 $row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 $_SESSION['style'] = $row['style'];
-$_SESSION['maxdisplay'] = $row['maxdisplay'];
 $_SESSION['warnlevel'] = $row['warnlevel'];
 
 $_SESSION['domain_row_pos'] = 0;
+$_SESSION['maxdisplay'] = $row['maxdisplay'];
 $_SESSION['domain_orderby'] = 'domain_name';
 $_SESSION['domain_orderby_desc'] = 'ASC';
+
+$_SESSION['account_row_pos'] = 0;
+$_SESSION['account_maxdisplay'] = $_SESSION['maxdisplay'];
 
 ##### Getting admin privilages
 # Check if admin has any domain to administrate.

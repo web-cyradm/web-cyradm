@@ -58,9 +58,25 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						<input
 						class="inputfield"
 						type="text"
-						name="maxdisplay";
+						name="maxdisplay"
 						size="4"
 						value="<?php print $_SESSION['maxdisplay'];?>"
+						>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<?php print _("Number of accounts displayed on page");?>
+					</td>
+					
+					<td>
+						<input
+						class="inputfield"
+						type="text"
+						name="account_maxdisplay"
+						size="4"
+						value="<?php print $_SESSION['account_maxdisplay'];?>"
 						>
 					</td>
 				</tr>
@@ -104,6 +120,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$_SESSION['style'] = $_GET['style'];
 			$_SESSION['maxdisplay'] = $_GET['maxdisplay'];
 			$_SESSION['domain_row_pos'] = 0;
+			$_SESSION['account_maxdisplay'] = $_GET['account_maxdisplay'];
+			$_SESSION['account_row_pos'] = 0;
 			$_SESSION['warnlevel'] = $_GET['warnlevel'];
 			$query = "UPDATE `settings` SET `style`='".$_SESSION['style']."', maxdisplay='".$_SESSION['maxdisplay']."', warnlevel='".$_SESSION['warnlevel']."' WHERE username='".$_SESSION['user']."'";
 			$handle->query($query);
