@@ -146,7 +146,7 @@ if (!isset($row_pos)){
 		print "<table border=\"0\">\n";
 		print "<tbody>";
 		print "<tr>";
-		print "<th colspan=\"4\">"._("action")."</th>";
+		print "<th colspan=\"5\">"._("action")."</th>";
 		print "<th>"._("Email address")."</th>";
 		print "<th>"._("Username")."</th>";
 		print "<th>"._("Quota used")."</th>";
@@ -165,10 +165,15 @@ if (!isset($row_pos)){
 		}
 
 		$row=$result->fetchRow(DB_FETCHMODE_ASSOC,$c);
-		$domain=$row['domain_name'];
 		$username=$row['username'];
+		$domain=$row['domain_name'];
+		$query2="SELECT * FROM virtual WHERE username='$username'";
+		$result2=$handle->query($query2);
+		$row2=$result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
+		$alias=$row2['alias'];
 		print "\n<tr class=\"$cssrow\">";
 		print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">"._("Edit account")."</a></td>";
+		print "\n<td><a href=\"index.php?action=change_password&domain=$domain&username=$username&alias=$alias\">"._("Change Password")."</a></td>";
 		print "\n<td><a href=\"index.php?action=deleteaccount&domain=$domain&username=$username\">"._("Delete account")."</a></td>";
 		print "\n<td><a href=\"index.php?action=setquota&domain=$domain&username=$username\">"._("Set quota")."</a></td>";
 		print "\n<td><a href=\"index.php?action=catch&domain=$domain&username=$username\">"._("Set catch all")."</a></td>";
