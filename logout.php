@@ -33,7 +33,7 @@ if(session_destroy()){
 	print "<p align=center><font face=Verdana,Geneva,Arial,Helvetica,sans-serif size=2 color=#000000><b><font size=3>";
 	print _("You are logged out")."</font></b></font></p>";
         print "<p align=center><font face=Verdana,Geneva,Arial,Helvetica,sans-serif size=2 color=#000000>"; 
-        print _("If you like to login click")."<a class=\"navi\" href=index.php>"._("here")."</a></font></p>";
+        print _("If you like to login click")." <a class=\"navi\" href=index.php>"._("here")."</a></font></p>";
         print "</td>";
         print "</tr>";
         print "<tr>";
