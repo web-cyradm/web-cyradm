@@ -158,13 +158,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							$_cols = array(
 								'editdomain'	=> _("Edit Domain"),
 								'deletedomain'	=> _("Delete Domain"),
-								'accounts'	=> _("accounts"),
-								'aliases'	=> _("Aliases")
-							);
-						} else {
-							$_cols = array(
-								'accounts'      => _("accounts"),
-								'aliases'       => _("Aliases")
 							);
 						}
 						foreach ($_cols as $_action => $_txt){
@@ -178,6 +171,29 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							<?php
 						}
 						?>
+						<td>
+							<?php
+							if ($row['transport'] == 'cyrus') {
+								echo "<a href=\"index.php?action=accounts&domain=".$row['domain_name']."\">";
+								print _("accounts");
+								echo "</a>";
+							} else {
+								print _("accounts");
+							}
+							?>
+						</td>
+						
+						<td>
+							<?php
+							if ($row['transport'] == 'cyrus') {
+								echo "<a href=\"index.php?action=aliases&domain=".$row['domain_name']."\">";
+								print _("Aliases");
+								echo "</a>";
+							} else {
+								print _("Aliases");
+							}
+							?>
+						</td>
 
 						<td>
 							<?php echo $row['domain_name'];?>
