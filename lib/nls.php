@@ -47,6 +47,7 @@ $nls['charsets']['ja_JP'] = 'SHIFT_JIS';
 $nls['charsets']['ko_KR'] = 'EUC-KR';
 $nls['charsets']['lt_LT'] = 'ISO-8859-13';
 $nls['charsets']['pl_PL'] = 'ISO-8859-2';
+$nls['charsets']['ro_RO'] = 'ISO-8859-2';
 $nls['charsets']['ru_RU'] = 'windows-1251';
 $nls['charsets']['ru_RU.KOI8-R'] = 'KOI8-R';
 $nls['charsets']['sk_SK'] = 'ISO-8859-2';
