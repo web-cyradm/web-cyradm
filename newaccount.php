@@ -21,6 +21,11 @@ $row=$result1->fetchRow($result1,$c,'prefix');
 
 $prefix=$row[1];
 $maxaccounts=$row[2];
+$transport=$row[4];
+
+if ($transport != "cyrus"){
+	die (_("transport is not cyrus, unable to create account"));
+}
 
 if (!$confirmed){
 
