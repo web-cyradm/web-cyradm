@@ -47,7 +47,7 @@ $DEFAULT_QUOTA=20000;
 # Valid Values:
 #  - plain 0 No encription is used
 #  - crypt 1 (shadow compatible encription)
-#  - md5 2 (MySQL PASSWORD cryto funtions
+#  - mysql 2 (MySQL PASSWORD cryto funtions
 $CRYPT="crypt";
 
 # web-cyradm is compatible with cyrus-imapd-2.0.16 (and earlier?)
