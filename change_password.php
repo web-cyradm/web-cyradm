@@ -45,6 +45,15 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					        $new_password = $pwd->encrypt($new_password, $CRYPT);
 						$query = "update accountuser set password='$new_password' where username='$username'";
 					$result = $handle->query($query);
+		
+					# Give some feedback
+					if ($result){
+						print "<h3>"._("Password changed")."</h3>";
+					}
+					else{
+						print "<h3>"._("Unknown error")."</h3>";
+					}	
+
 					include WC_BASE . "/browseaccounts.php";
 				} elseif ($PASSWORD_CHANGE_METHOD=="poppassd"){
 					include WC_BASE . '/lib/poppassd.php';
