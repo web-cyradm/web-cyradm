@@ -1,0 +1,405 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2002-08-18 13:51+0200\n"
+"PO-Revision-Date: 2002-08-19 12:00+ZONE\n"
+"Last-Translator: Zoltán Levárdy <zoltan@levardy.org>\n"
+"Language-Team: HUGARIAN <zoltan@levardy.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: adminuser.php:12
+msgid "Browse admins"
+msgstr "Admin böngészés"
+
+#: adminuser.php:24
+msgid "Total administrators"
+msgstr "Összes admin"
+
+#: adminuser.php:27
+msgid "Add administator"
+msgstr "Új adminisztrátor"
+
+#: adminuser.php:35 adminuser.php:39 browseaccounts.php:49
+#: browseaccounts.php:53
+msgid "Previous 10 entries"
+msgstr "Elözõ 10 bejegyzés"
+
+#: adminuser.php:43 adminuser.php:47 browseaccounts.php:57
+#: browseaccounts.php:61
+msgid "Next 10 entries"
+msgstr "Következõ 10 bejegyzés"
+
+#: adminuser.php:53 browse.php:16 browseaccounts.php:69 editaccount.php:31
+msgid "action"
+msgstr "tevékenység"
+
+#: adminuser.php:54
+msgid "Adminname"
+msgstr "Adminneve"
+
+#: adminuser.php:55 browseaccounts.php:72 editaccount.php:34 login.php:89
+#: newaccount.php:96
+msgid "Password"
+msgstr "Jelszó"
+
+#: adminuser.php:56
+msgid "domain"
+msgstr "tartomány"
+
+#: adminuser.php:57
+msgid "admin type"
+msgstr "admin típus"
+
+#: adminuser.php:81
+msgid "Edit adminuser"
+msgstr "Adminfelh. szerkesztés"
+
+#: adminuser.php:82
+msgid "Delete adminuser"
+msgstr "Adminfelh. törlés"
+
+#: adminuser.php:108
+msgid "No accounts fount"
+msgstr "Hozzáférés nem található"
+
+#: adminuser.php:112
+msgid "Add administrator"
+msgstr "Új adminisztátor"
+
+#: browse.php:12
+msgid "Browse domains"
+msgstr "Admin böngészés"
+
+#: browse.php:17
+msgid "domainname"
+msgstr "tartománynév"
+
+#: browse.php:21
+msgid "prefix"
+msgstr "elõtag"
+
+#: browse.php:24
+msgid "max Accounts"
+msgstr "max. hozzáférés"
+
+#: browse.php:25
+msgid "default quota per user"
+msgstr "Alap felhasználói kvóta"
+
+#: browse.php:56
+msgid "Edit Domain"
+msgstr "Tartomány szerkesztés"
+
+#: browse.php:57
+msgid "Delete Domain"
+msgstr "Tartomány törlés"
+
+#: browse.php:58 deletedomain.php:29 menu.inc.php:42
+msgid "accounts"
+msgstr "hozzáférések"
+
+#: browseaccounts.php:20
+msgid "Browse accounts for domain"
+msgstr "Tartomány hozzáférések böngészése"
+
+#: browseaccounts.php:38 newaccount.php:48
+msgid "Total accounts"
+msgstr "Összes hozzáférés"
+
+#: browseaccounts.php:41 browseaccounts.php:147
+msgid "Add new account"
+msgstr "Új hozzáférés"
+
+#: browseaccounts.php:70 editaccount.php:32 newaccount.php:86
+msgid "Email address"
+msgstr "Email cím"
+
+#: browseaccounts.php:71 editaccount.php:33 login.php:79
+msgid "Username"
+msgstr "Felhasználó"
+
+#: browseaccounts.php:73 editaccount.php:35
+msgid "Quota used"
+msgstr "Alkalmazott kvóta"
+
+#: browseaccounts.php:93
+msgid "Edit account"
+msgstr "Hozzáférés szerkesztés"
+
+#: browseaccounts.php:94
+msgid "Delete account"
+msgstr "Hozzáférés törlés"
+
+#: browseaccounts.php:95
+msgid "Set quota"
+msgstr "Kvóta beállítás"
+
+#: browseaccounts.php:96
+msgid "Set catch all"
+msgstr "Set catch all"
+
+#: browseaccounts.php:126 editaccount.php:76
+msgid "out of"
+msgstr "kívül"
+
+#: browseaccounts.php:130 editaccount.php:80
+msgid "Quota not set"
+msgstr "Kvóta nincs beállítva"
+
+#: browseaccounts.php:143
+msgid "No accounts found"
+msgstr "Hozzáférés nem található"
+
+#: catchall.php:13
+msgid "Define a Account for receiving undefined adresses for domain"
+msgstr "Adj meg egy hozzáférés ahova a meghatározott címek a domainben érkeznek"
+
+#: catchall.php:24
+msgid "Do you really want to define the user"
+msgstr "Tényleg meg akarsz adni egy felhasználót"
+
+#: catchall.php:24
+msgid "to receive all undefined emailadresses"
+msgstr "fogadni minden nem meghatározott emailcímet"
+
+#: catchall.php:54
+msgid "successfully added to Database"
+msgstr "Adatbázishoz sikeresen hozzáadva"
+
+#: catchall.php:57 editemail.php:36 newemail.php:29
+msgid "Database error, please try again"
+msgstr "Adatbázis hiba, próbáld újra"
+
+#: deleteaccount.php:19
+msgid "Delete an Account from the System"
+msgstr "Hozzáférés törlése a rendszerbõl"
+
+#: deleteaccount.php:21
+msgid "Do you really want to delete the user "
+msgstr "Tényleg törölni akarod a felhasználót"
+
+#: deleteaccount.php:21
+msgid "with all its defined Emailadresses"
+msgstr "az összes emailcímmel együtt"
+
+#: deleteaccount.php:40 deletedomain.php:47 deleteemail.php:39
+msgid "Action cancelled, nothing deleted"
+msgstr "Tevékenység megszakítva, semmit nem töröltem"
+
+#: deletedomain.php:24
+msgid "Delete a Domain from the System"
+msgstr "Tartomány törlése a rendszerbõl"
+
+#: deletedomain.php:26
+msgid "Do you really want to delete the Domain"
+msgstr "Tényleg törölni akarod a tartományt"
+
+#: deletedomain.php:26
+msgid "with all its defined accounts, admins, and emailadresses"
+msgstr "az összes hozzáféréssel, adminnal és emailcímmel együtt"
+
+#: deletedomain.php:27
+msgid "This can take a while depending on how many account have to be deleted"
+msgstr "Eltrthat egy darabig a törlés (függ a hozzáférések számától)"
+
+#: deletedomain.php:29
+msgid "Your action will delete"
+msgstr "Tevékenységed törlése"
+
+#: deletedomain.php:94
+msgid "Domain"
+msgstr "Tartomány"
+
+#: deletedomain.php:94
+msgid "successfully deleted"
+msgstr "Sikeresen törölve"
+
+#: deleteemail.php:17
+msgid "Delete an emailadress from the System"
+msgstr "Emailcím törlése a rendszerbõl"
+
+#: deleteemail.php:19
+msgid "Do you really want to delete the emailadress for user"
+msgstr "Tényleg törölni akarod a felhasználó emailcímét?"
+
+#: editaccount.php:17
+msgid "Email adresses defined for user"
+msgstr "Emailcím elkészítve a felhasználónak"
+
+#: editaccount.php:25
+msgid "New email address"
+msgstr "Új emailcím"
+
+#: editaccount.php:52
+msgid "Edit Emailadress"
+msgstr "Emailcím szerkesztése"
+
+#: editaccount.php:53
+msgid "Delete Emailadress"
+msgstr "Emailcím törlése"
+
+#: editemail.php:32
+msgid "Successfully changed"
+msgstr "Sikeresn megváltoztatva"
+
+#: editemail.php:63 newemail.php:53
+msgid "Emailadress"
+msgstr "Emailcím"
+
+#: editemail.php:68 newemail.php:58
+msgid "Destination"
+msgstr "Cél"
+
+#: login.php:68
+msgid "Welcome to Web-cyradm"
+msgstr "Web-cyradm üdvözöl"
+
+#: login.php:69
+msgid "This is only for authorized users"
+msgstr "Csak hitelesített felhasználóknak"
+
+#: login.php:70
+msgid "Please authenticate yourself"
+msgstr "Hitelesítsd magad"
+
+#: logout.php:32
+msgid "Thank you for using Web-cyradm"
+msgstr "Köszi, hogy a Web-cyradm-t használtad"
+
+#: logout.php:34
+msgid "You are logged out"
+msgstr "Bejelentkeztél"
+
+#: logout.php:36 timeout.php:67
+msgid "If you like to login click"
+msgstr "Ha be szeretnél jelentkezni, klikkelj"
+
+#: logout.php:36 timeout.php:67
+msgid "here"
+msgstr "ide"
+
+#: menu.inc.php:23
+msgid "Domainmasters menu"
+msgstr "Tartománymester menü"
+
+#: menu.inc.php:27
+msgid "add new domain"
+msgstr "Új tartomány"
+
+#: menu.inc.php:30
+msgid "browse domains"
+msgstr "Tartomány böngészés"
+
+#: menu.inc.php:33
+msgid "adminusers"
+msgstr "admin"
+
+#: menu.inc.php:45
+msgid "home"
+msgstr "home"
+
+#: menu.inc.php:48
+msgid "logout"
+msgstr "Kijelentkezés"
+
+#: menu.inc.php:53
+msgid "Search"
+msgstr "Keres"
+
+#: menu.inc.php:69
+msgid "Logged in as user"
+msgstr "Beléptél mint"
+
+#: menu.inc.php:74
+msgid "Your role is"
+msgstr "Csoportod"
+
+#: menu.inc.php:76
+msgid "Superuser"
+msgstr "szuperuser"
+
+#: menu.inc.php:79
+msgid "Domain Master"
+msgstr "Tartomány mester"
+
+#: newaccount.php:14
+msgid "Add new Account to domain"
+msgstr "Új hozzáférés a tartományhoz"
+
+#: newaccount.php:79
+msgid "Accountname"
+msgstr "Hozzáférés"
+
+#: newaccount.php:91
+msgid "Quota"
+msgstr "Kvóta"
+
+#: newaccount.php:101
+msgid "Confirm Password"
+msgstr "Jelszó ismétlés"
+
+#: newaccount.php:139
+msgid "Account successfully added to the Database"
+msgstr "Hozzáférést sikerült eltárolni az adatbázisban"
+
+#: newaccount.php:153
+msgid "Account succesfully added to the IMAP Subsystem"
+msgstr "Hozzáférést sikerült eltárolni az IMAP alrendszerbe"
+
+#: newdomain.php:17
+msgid "Add new domain"
+msgstr "Új tartomány"
+
+#: newdomain.php:29
+msgid "Domainname"
+msgstr "Tartománynév"
+
+#: newdomain.php:35
+msgid "Prefix"
+msgstr "Elõtag"
+
+#: newdomain.php:44
+msgid "Maximum Accounts"
+msgstr "Max.hozzáférés"
+
+#: newdomain.php:48
+msgid "Default Quota in Kilobytes"
+msgstr "Alap kvóta Kbyteban"
+
+#: newemail.php:25
+msgid "Successfully added"
+msgstr "Sikeresen hozzáadva"
+
+#: newemail.php:41
+msgid "New emailadress for user"
+msgstr "Új emial aliasz a felhasználónak"
+
+#: setquota.php:25
+msgid "Setting individual Quota for user"
+msgstr "Egyéni kvóta beállítása a felhasználónak"
+
+#: timeout.php:65
+msgid "Your session timed out"
+msgstr "Session lejárt"
+
+#: Submit and cancel buttons
+msgid "Yes, delete"
+msgstr "Igen, töröld"
+
+msgid "Yes"
+msgstr "Igen"
+
+msgid "Submit"
+msgstr "Elküld"
+
+msgid "Cancel"
+msgstr "Mégsem"
+
+
