@@ -61,7 +61,7 @@ if ($admintype != 0){
 		include WC_BASE . "/logout.php";
 	}
 	
-	print $domain;
+	//print $domain;
 }
 
 
