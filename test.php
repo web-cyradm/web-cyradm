@@ -12,6 +12,7 @@
  * did not receive this file, see http://www.fsf.org/copyleft/lgpl.html.
  */
 
+@session_name('web-cyradm-testing-session');
 @session_start();
 /* Register a session. */
 if (!isset($_SESSION['webcyradm_test_count'])) {

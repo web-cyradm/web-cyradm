@@ -1,29 +1,46 @@
 <?php 
+session_name('web-cyradm-session');
 session_start();
 
 $sess_timeout = $SESS_TIMEOUT; // seconds
-if (!isset($first)) $first = 1;
-$newid = time();
-if (($newid > $oldid+$sess_timeout) & !$first) {
+// if (!isset($first)) $first = 1;
+$current_time = time();
+// $newid = time();
 
-  $session_ok = FALSE;
-  session_register("session_ok");
-  $first = 0;
-  session_register("first");
-  $oldid = $newid;
-  session_register("oldid");
+// Check session of current user.
+// If the user doesn't have a session, create a new
+// session and set session_ok to FALSE, so that he can
+// login.
+// If the user already had a session, check if the
+// session expired.
+// If it has expired, set session_ok to FALSE and
+// redirect to timeout.php.
+// If the session has NOT expired, update timestamp in session.
 
-  Header("Location: $base_url/");
+// Read old timestamp
+$old_time = isset($_SESSION['timestamp'])?($_SESSION['timestamp']):(-1);
+// Update timestamp
+$_SESSION['timestamp'] = $current_time;
+if (! isset($_SESSION['session_ok'])){
+	// User doesn't have a session.
+	$_SESSION['session_ok'] = FALSE;
+} else {
+	// User seems to have a session.
+	// If it pretends to be a valid session, check if
+	// has expired.  If it has, invalidate the session.
+	// If the session is already invalid, pass through,
+	// so that the login screen is shown.
+
+	if ($_SESSION['session_ok'] === TRUE){
+		if ($current_time > ($old_time + $SESS_TIMEOUT)){
+			// Session has expired
+			$_SESSION['session_ok']	= FALSE;
+			$_SESSION['timestamp']	= -1;
+			header ("Location: timeout.php");
+		} else {
+			// Session has NOT expired
+			$_SESSION['session_ok']	= TRUE;
+		}
+	}
 }
-else {
-  $first = 0;
-  session_register("first");
-  $oldid = $newid;
-  session_register("oldid");
 
-  if (!$session_ok) {
-        header ("Location: timeout.php");
-  }
-}
-
-?>

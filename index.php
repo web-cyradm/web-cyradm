@@ -1,5 +1,10 @@
 <?php
 
+function getmicrotime(){ 
+    list($usec, $sec) = explode(" ",microtime()); 
+        return ((float)$usec + (float)$sec); 
+} 
+
 if (file_exists("./migrate.php")){
 	die(_("migrate.php exists! please delete or rename it"));
 }
@@ -12,38 +17,34 @@ $browserlang=explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']); // $HTTP_ACCEPT_LAN
 
 $browserlang1=substr($browserlang[0], 0, 2);
 
-
 //if ($nls['aliases'][$browserlang[0]]){
 if ($nls['aliases'][$browserlang1]){
 	$LANG=$nls['aliases'][$browserlang1];
 }
 
-session_start();
-$session_ok= $_SESSION['session_ok'];
+require_once ("session.php");
+$session_ok = $_SESSION['session_ok'];
 
 // Lowest prio langauge is the session setting
-
 if ($_SESSION['LANG']){
 	$LANG=$_SESSION['LANG'];
 }
 
 // if no langauge is already set, use defaultlanguage
-
 if ($LANG==""){
 	$LANG=$DEFAULTLANG;
 }
 
 // For testing porpose, http variable LANG overrides all
-
 if ($_GET['LANG']){
 	$LANG=$_GET['LANG'];
 }
 
 include ("header.inc.php");
 
-setlocale(LC_MESSAGES, "$LANG");
-putenv("LANG=$LANG");
-putenv("LANGUAGE=$LANG");
+setlocale(LC_MESSAGES, $LANG);
+putenv("LANG=" . $LANG);
+putenv("LANGUAGE=" . $LANG);
 
 setlocale(LC_ALL, $LANG);
 
@@ -53,129 +54,45 @@ bindtextdomain("web-cyradm", "./locale");
 // Choose domain
 textdomain("web-cyradm");
 
+if ($_SESSION['session_ok'] === TRUE) {
+	include ("DB.php");
+	// include ("session.php");
+	include ("validate.inc.php");
+	include ("menu.inc.php");
+	include ("lib/cyradm.php");
 
-if ($session_ok) {
-include ("DB.php");
-include ("session.php");
-include ("validate.inc.php");
-include ("menu.inc.php");
-include ("lib/cyradm.php");
-
-
-	if (!$domain and $action !="logout" and $action !="adminuser" and $action !="newdomain"){
-	
+	if (!$_GET['domain'] and ! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain'))){
 		include ("welcome.php");
-	
-	}
+	} else {
+		if (in_array($_GET['action'], array('logout', 'browse', 'editdomain', 
+		                                    'newdomain', "deletedomain",
+						    "adminuser", "newadminuser",
+						    "editadminuser", "deleteadminuser",
+						    "editaccount", "newaccount",
+						    "deleteaccount", "setquota",
+						    "change_password", "vacation",
+						    "forwardalias", "forwardaccount",
+						    "newemail", "deleteemail",
+						    "editemail"))){
+			include(sprintf('%s.php', $_GET['action']));
+		} else {
+			switch ($_GET['action']){
+				case "accounts":
+					include ("browseaccounts.php");
+					break;
 
-	else {
+				case "catch":
+					include ("catchall.php");
+					break;
 
-
-		switch ($action){
-			case "logout":
-			include ("logout.php");
-			break;
-
-			case "browse":
-			include ("browse.php");
-		        break;
-
-			case "editdomain":
-			include ("editdomain.php");
-		        break;
-
-			case "newdomain":
-			include ("newdomain.php");
-		        break;
-
-			case "deletedomain":
-			include ("deletedomain.php");
-		        break;
-
-			case "adminuser":
-			include ("adminuser.php");
-		        break;
-
-			case "newadminuser":
-			include ("newadminuser.php");
-		        break;
-
-			case "editadminuser":
-			include ("editadminuser.php");
-		        break;
-
-			case "deleteadminuser":
-			include ("deleteadminuser.php");
-		        break;
-
-			case "accounts":
-			include ("browseaccounts.php");
-		        break;
-
-			case "editaccount":
-			include ("editaccount.php");
-		        break;
-
-			case "newaccount":
-			include ("newaccount.php");
-		        break;
-
-			case "catch":
-			include ("catchall.php");
-		        break;
-
-			case "deleteaccount":
-			include ("deleteaccount.php");
-		        break;
-
-		        default:
-	        	include ("browse.php");
-		        break;
-	
-		        case "setquota":
-	        	include ("setquota.php");
-		        break;
-	
-		        case"change_password":
-	        	include ("change_password.php");
-		        break;
-
-		        case"vacation":
-	        	include ("vacation.php");
-		        break;
-
-		        case"forwardalias":
-	        	include ("forwardalias.php");
-		        break;
-
-		        case"forwardaccount":
-	        	include ("forwardaccount.php");
-		        break;
-
-		        case"newemail":
-	        	include ("newemail.php");
-		        break;
-
-		        case"deleteemail":
-	        	include ("deleteemail.php");
-		        break;
-
-		        case"editemail":
-	        	include ("editemail.php");
-		        break;
-
+				default:
+					include ("browse.php");
+					break;
+			}
 		}
-
-
 	}
-
-include ("footer.inc.php");
-} 
-else {
-
-include ("login.php");
-
+	include ("footer.inc.php");
+} else {
+	include ("login.php");
 }
 
-
-?>

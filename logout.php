@@ -4,6 +4,7 @@
 
 <?php
 
+session_name('web-cyradm-session');
 session_start();
 //print session_id();
 if(session_destroy()){
