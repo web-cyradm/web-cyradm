@@ -3,7 +3,14 @@
         <td valign="top"> 
 
 <?php
-print "<h3>Define a Account for receiving undefined adresses for domain <font color=red>$domain</font></h3>";
+
+// Specify location of translation tables
+bindtextdomain("catchall", "./locale");
+
+// Choose domain
+textdomain("catchall");
+
+print "<h3>"._("Define a Account for receiving undefined adresses for domain")." <font color=red>$domain</font></h3>";
 
 // $result=mysql_db_query($MYSQL_DB,$query1,$handle1);
 
@@ -14,7 +21,7 @@ if (!$confirmed){
 
 	?>
 
-<h3>Do you really want to define the user <?php print $username ?> to receive all undefined emailadresses?</h3>
+<h3><?php print _("Do you really want to define the user")." ".$username." "._("to receive all undefined emailadresses")?></h3>
 
 	
 <form action="index.php">
@@ -22,8 +29,8 @@ if (!$confirmed){
 <input type="hidden" name="confirmed" value="true">
 <input type="hidden" name="domain" value="<?php print $domain?>">
 <input type="hidden" name="username" value="<?php print $username?>">
-<input type="submit" name="confirmed" value="Yes">
-<input type="submit" name="cancel" value="Cancel">
+<input type="submit" name="confirmed" value="<?php print _("Yes")?>">
+<input type="submit" name="cancel" value="<?php print _("Cancel")?>">
 </form>
 
 	<?php
@@ -44,10 +51,10 @@ else{
 	$result=$handle->query($insertquery);
 
 	if ($result){
-		print "successfully added to Database....</br>";
+		print _("successfully added to Database")."...</br>";
 	}
 	else{
-		print "<p>Database error, please try again<p>";
+		print "<p>"._("Database error, please try again")."<p>";
 	}
 
 }
