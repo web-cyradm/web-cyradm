@@ -552,6 +552,10 @@ msgstr ""
 msgid "logout"
 msgstr ""
 
+#: menu.inc.php:84
+msgid "Search"
+msgstr ""
+
 #: menu.inc.php:107
 msgid "Logged in as user"
 msgstr ""
@@ -830,3 +834,19 @@ msgid ""
 "You can't edit this email address with 'Allow Free Mail Addressess' set to "
 "off!"
 msgstr ""
+
+#: Submit and cancel buttons 	 
+msgid "Yes, delete" 	 
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+
+
