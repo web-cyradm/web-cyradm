@@ -2,7 +2,6 @@
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -37,7 +36,7 @@ msgstr "Összes hozzáférés"
 
 #: CVS/Base/browseaccounts.php:49 adminuser.php:36 browseaccounts.php:49
 msgid "Displaying from position:"
-msgstr ""
+msgstr "Megjelenítés poziciótól"
 
 #: CVS/Base/browseaccounts.php:55 CVS/Base/browseaccounts.php:242
 #: browseaccounts.php:55 browseaccounts.php:242 search.php:123 search.php:239
@@ -72,9 +71,8 @@ msgid "Username"
 msgstr "Felhasználó"
 
 #: CVS/Base/browseaccounts.php:97 browseaccounts.php:97
-#, fuzzy
 msgid "Last login"
-msgstr "Képtelen belépni"
+msgstr "Utolsó belépés"
 
 #: CVS/Base/browseaccounts.php:97 browseaccounts.php:97 editaccount.php:68
 #: search.php:152
@@ -83,7 +81,7 @@ msgstr "Alkalmazott kvóta"
 
 #: CVS/Base/browseaccounts.php:136 browseaccounts.php:136
 msgid "n/a"
-msgstr ""
+msgstr "n.a."
 
 #: CVS/Base/browseaccounts.php:146 browseaccounts.php:146 search.php:171
 msgid "Edit account"
@@ -111,7 +109,6 @@ msgid "Set catch all"
 msgstr "Set catch all"
 
 #: CVS/Base/browseaccounts.php:181 browseaccounts.php:181 search.php:190
-#, fuzzy
 msgid "Forwards"
 msgstr "Továbbít"
 
@@ -122,7 +119,7 @@ msgstr "kívül"
 
 #: CVS/Base/browseaccounts.php:221 browseaccounts.php:221 search.php:220
 msgid "Unable to retrieve quota"
-msgstr ""
+msgstr "Kvóta nem elérhetõ"
 
 #: CVS/Base/browseaccounts.php:224 browseaccounts.php:224 editaccount.php:155
 #: search.php:223
@@ -166,13 +163,12 @@ msgid "Delete adminuser"
 msgstr "Adminfelh. törlés"
 
 #: adminuser.php:144
-#, fuzzy
 msgid "All domains"
-msgstr "tartomány"
+msgstr "Összes tartomány"
 
 #: adminuser.php:148
 msgid "None"
-msgstr ""
+msgstr "Nincs"
 
 #: adminuser.php:158 editadminuser.php:65 menu.inc.php:132 newadminuser.php:57
 #: newadminuser.php:207
@@ -193,19 +189,16 @@ msgid "Add administrator"
 msgstr "Új adminisztátor"
 
 #: aliases.php:11
-#, fuzzy
 msgid "Browse aliases for domain"
-msgstr "Tartomány hozzáférések böngészése"
+msgstr "Tartomány aliaszok böngészése"
 
 #: aliases.php:50
-#, fuzzy
 msgid "Total aliases"
-msgstr "Összes admin"
+msgstr "Összes aliasz"
 
 #: aliases.php:55
-#, fuzzy
 msgid "Add new alias"
-msgstr "Új tartomány"
+msgstr "Új aliasz hozzáadása"
 
 #: aliases.php:66 editalias.php:77 editemail.php:113 newemail.php:98
 #: search.php:255
@@ -213,14 +206,12 @@ msgid "Destination"
 msgstr "Cél"
 
 #: aliases.php:91 search.php:273
-#, fuzzy
 msgid "Edit Alias"
-msgstr "Emailcím szerkesztése"
+msgstr "Aliasz szerkesztése"
 
 #: aliases.php:92 search.php:274
-#, fuzzy
 msgid "Delete Alias"
-msgstr "Emailcím törlése"
+msgstr "Aliasz törlése"
 
 #: auth.inc.php:70
 msgid "Web-cyradm is for authorized users only."
@@ -235,9 +226,8 @@ msgid "Push the back button in your browser to try again."
 msgstr "Nyomd le a vissza gombot a böngészõben és próbáld újra."
 
 #: auth.inc.php:73
-#, fuzzy
 msgid " Your attempt to login has been stored."
-msgstr "A bejelentkezési próbálkozásod rögzítve."
+msgstr "A bejelentkezési próbálkozás rögzítve."
 
 #: browse.php:13
 msgid "Browse domains"
@@ -273,11 +263,11 @@ msgstr "hozzáférések"
 
 #: browse.php:93 menu.inc.php:68 search.php:85
 msgid "Aliases"
-msgstr ""
+msgstr "Aliaszok"
 
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
-msgstr ""
+msgstr "Tartomány érvénytelen címzettjeit fogadó azonosító megadása"
 "Adj meg egy hozzáférés ahova a meghatározott címek a domainben érkeznek"
 
 #: catchall.php:38
@@ -290,25 +280,23 @@ msgstr "fogadni minden nem meghatározott emailcímet"
 
 #: catchall.php:46
 msgid "The currently defined user"
-msgstr ""
+msgstr "A jelenleg meghatározott felhasználó"
 
 #: catchall.php:46
-#, fuzzy
 msgid "will not receiving any undefined emailadresses anymore"
-msgstr "fogadni minden nem meghatározott emailcímet"
+msgstr "nem fog fogadni semmilyen nem meghatározott emailcímet"
 
 #: catchall.php:74
 msgid "The user"
-msgstr ""
+msgstr "A felhasználó"
 
 #: catchall.php:74
-#, fuzzy
 msgid "is allready defined to receive all undefined Emails."
-msgstr "fogadni minden nem meghatározott emailcímet"
+msgstr "már meghatározott, hogy fogadjon minden nemmeghatározott emailt."
 
 #: catchall.php:76
 msgid "Do you want to remove the function \"catch all\" for the account"
-msgstr ""
+msgstr "El akarja távolítani a \"catch all\" funkciót az azinosítóról"
 
 #: catchall.php:127 newadminuser.php:197
 msgid "successfully added to Database"
@@ -320,9 +308,8 @@ msgid "Database error, please try again"
 msgstr "Adatbázis hiba, próbáld újra"
 
 #: catchall.php:140 delete_catchall.php:44
-#, fuzzy
 msgid "Cancelled"
-msgstr "Mégsem"
+msgstr "Elvetve"
 
 #: change_password.php:53
 msgid "Password changed"
@@ -350,7 +337,7 @@ msgstr "Új jelszó megerõsítése"
 
 #: change_password.php:121 newaccount.php:243
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Jelszavak nem egyeznek"
 
 #: deleteaccount.php:25
 msgid "Delete an Account from the System"
@@ -370,9 +357,8 @@ msgid "Action cancelled, nothing deleted"
 msgstr "Tevékenység megszakítva, semmit nem töröltem"
 
 #: deleteaccount.php:100
-#, fuzzy
 msgid "User deleted"
-msgstr "Igen, töröld"
+msgstr "Felhasználó törölve"
 
 #: deleteaccount.php:111 deletedomain.php:175
 msgid ""
@@ -391,17 +377,16 @@ msgstr "Tényleg törölni akarod a tartomány felügyelõt"
 
 #: deleteadminuser.php:90 editadminuser.php:276
 msgid "At least one Superuser is needed for Web-cyradm"
-msgstr ""
+msgstr "Legalább egy szuperuser kell a Web-cyradm-nak"
 
 #: deleteadminuser.php:103
 msgid "Admin user deleted"
-msgstr ""
+msgstr "Admin felhasználó törölve"
 
 #: deleteadminuser.php:116 editadminuser.php:299 newadminuser.php:226
-#, fuzzy
 msgid "Security violation detected, nothing deleted, attempt has been logged"
 msgstr ""
-"Biztonsági ütközést érzékelt, tevékenység megszakítva. A kísérleted "
+"Biztonsági ütközést érzékelt, semmit nem törölt. A kísérlet "
 "napolózva."
 
 #: deletedomain.php:28
@@ -434,11 +419,11 @@ msgstr "Sikeresen törölve"
 
 #: deletealias.php:28
 msgid "Please confirm you want to remove"
-msgstr ""
+msgstr "Kérem erõsítse meg a törlést"
 
 #: deletealias.php:28
 msgid "from the alias"
-msgstr ""
+msgstr "aliaszból"
 
 #: deletealias.php:30
 msgid "Yes"
@@ -446,19 +431,19 @@ msgstr "Igen"
 
 #: deletealias.php:49
 msgid "Please confirm you want to remove the alias"
-msgstr ""
+msgstr "Kérem erõsítse meg hogy törölni akarja az aliaszt"
 
 #: deletealias.php:77
 msgid "Removed"
-msgstr ""
+msgstr "Törölve"
 
 #: deletealias.php:77
 msgid "from"
-msgstr ""
+msgstr "tól"
 
 #: deletealias.php:85
 msgid "Removed the alias"
-msgstr ""
+msgstr "Aliasz törlése"
 
 #: editaccount.php:21
 msgid "Email adresses defined for user"
@@ -502,58 +487,51 @@ msgstr "Jelszó ismétlés"
 
 #: editadminuser.php:155
 msgid "No Domain assigned yet"
-msgstr ""
+msgstr "Nincs tartomány hozzárendelve"
 
 #: editadminuser.php:165
-#, fuzzy
 msgid "Add new domain to this admin"
 msgstr "Új admin hozzáférés a tartományhoz"
 
 #: editadminuser.php:223
 msgid "No such domain, create domain first"
-msgstr ""
+msgstr "Nincs ilyen tartomány, készítse el elõször"
 
 #: editadminuser.php:231
 msgid "Admin already repsonsible for the domain"
-msgstr ""
+msgstr "Admi már felelõs a tartományért"
 
 #: editalias.php:27
 msgid "There was an error adding $dest to $alias: "
-msgstr ""
+msgstr "Hiba lépett fel a $dest $alias -hoz adásánál"
 
 #: editalias.php:64
-#, fuzzy
 msgid "Editing alias"
-msgstr "Emailcím szerkesztése"
+msgstr "Aliasz szerkesztése"
 
 #: editalias.php:68
-#, fuzzy
 msgid "Delete this alias"
-msgstr "Emailcím törlése"
+msgstr "Aliasz törlése"
 
 #: editalias.php:101
-#, fuzzy
 msgid "Cannot remove from account"
-msgstr "Hozzáférés jelszavának megváltoztatása"
+msgstr "Nem tud rölni a Hozzáférésbõl"
 
 #: editalias.php:105 editalias.php:109
-#, fuzzy
 msgid "Remove destination"
-msgstr "Cél"
+msgstr "Cél törlése"
 
 #: editalias.php:125
 msgid "This alias has no destinations"
-msgstr ""
+msgstr "Nincs célja ennek az aliasznak"
 
 #: editalias.php:142
-#, fuzzy
 msgid "New destination"
-msgstr "Cél"
+msgstr "Új cél"
 
 #: editdomain.php:46
-#, fuzzy
 msgid "Successfully changed domain"
-msgstr "Sikeresn megváltoztatva"
+msgstr "Tartomány Sikeresn megváltoztatva"
 
 #: editdomain.php:92 newdomain.php:39
 msgid "Domainname"
@@ -565,12 +543,11 @@ msgstr "Elõtag"
 
 #: editdomain.php:123 newdomain.php:73
 msgid "Allow Free Names"
-msgstr ""
+msgstr "Szabad nevek engedélyezése"
 
 #: editdomain.php:141 newdomain.php:90
-#, fuzzy
 msgid "Allow Free Mail Addresses"
-msgstr "Új emailcím"
+msgstr "Szabad emailcímek engedélyezése"
 
 #: editdomain.php:159 newdomain.php:102
 msgid "Maximum Accounts"
@@ -593,6 +570,7 @@ msgid ""
 "You can't edit this email address with 'Allow Free Mail Addressess' set to "
 "off!"
 msgstr ""
+"Nem állíthatja ezt az email címet ('Szabad emailcímek engedélyezése') üresre!"
 
 #: editemail.php:95 newemail.php:77
 msgid "Emailadress"
@@ -648,6 +626,7 @@ msgid ""
 "You can't forward this email address with 'Allow Free Mail Addressess' set "
 "to off!"
 msgstr ""
+"Nem továbbíthatja ezt az email címet ('Szabad emailcímek engedélyezése') üresre!"
 
 #: forwardalias.php:161
 msgid "Forward for emailadress"
@@ -659,7 +638,7 @@ msgstr "Továbbítás ide"
 
 #: forwardalias.php:204
 msgid "(Seperate multiple values with ,)"
-msgstr ""
+msgstr "(A többszörös értékeket ,-vel válassza el)"
 
 #: forwardalias.php:210 forwardaccount.php:125
 msgid "Keep a copy in the user's mailbox"
@@ -671,29 +650,30 @@ msgstr "Továbbítás törlése"
 
 #: index.php:23
 msgid "migrate.php exists! please delete or rename it"
-msgstr ""
+msgstr "migrate.php létezik! Kérem törölje vagy nevezze át"
 
 #: index.php:138
 msgid "web-cyradm has not yet been configured"
-msgstr ""
+msgstr "web-cyradm még nincs konfigurálva"
 
 #: index.php:141
 msgid "Configuration steps:"
-msgstr ""
+msgstr "Konfigurációs lépések:"
 
 #: index.php:143
 msgid "copy the config file that comes with the distribution: "
-msgstr ""
+msgstr "másolja a konf.fájlt amely a terjesztéssel jött"
 
 #: index.php:146
 msgid "Edit the file config/conf.php to match your systems configuration"
-msgstr ""
+msgstr "Szerkessze a config/conf.php-t a rendszere igényeihez"
 
 #: index.php:148
 msgid ""
 "Further information about how to configure Web-cyradm can be found at the "
 "following website:"
 msgstr ""
+"További információ talál a Web-cyradm konfigurálásáról a következõ web-helyen:"
 
 #: login.php:50
 msgid "Welcome to Web-cyradm"
@@ -705,20 +685,19 @@ msgstr "Hitelesítsd magad"
 
 #: login.php:84
 msgid "Select language"
-msgstr ""
+msgstr "Válasszon nyelvet"
 
 #: logout.php:52
 msgid "Thank you for using Web-cyradm"
-msgstr "Köszi, hogy a Web-cyradm-t használtad"
+msgstr "Köszönöm, hogy a Web-cyradm-t használta"
 
 #: logout.php:57
 msgid "You are logged out"
 msgstr "Bejelentkeztél"
 
 #: menu.inc.php:19
-#, fuzzy
 msgid "Superusers Menu"
-msgstr "szuperuser"
+msgstr "szuperuser menü"
 
 #: menu.inc.php:23
 msgid "Domainmasters menu"
@@ -726,7 +705,7 @@ msgstr "Tartománymester menü"
 
 #: menu.inc.php:31
 msgid "add new domain"
-msgstr "Új tartomány"
+msgstr "Új tartomány hozzáadása"
 
 #: menu.inc.php:38
 msgid "browse domains"
@@ -734,11 +713,11 @@ msgstr "Tartomány böngészés"
 
 #: menu.inc.php:45
 msgid "adminusers"
-msgstr "admin"
+msgstr "admin felhasználók"
 
 #: menu.inc.php:75
 msgid "home"
-msgstr "home"
+msgstr "saját"
 
 #: menu.inc.php:82
 msgid "logout"
@@ -757,13 +736,12 @@ msgid "Your role is"
 msgstr "Csoportod"
 
 #: menu.inc.php:144
-#, fuzzy
 msgid "Current domain is"
 msgstr "Tartomány böngészés"
 
 #: menu.inc.php:150
 msgid "No domain selected"
-msgstr ""
+msgstr "Nincs tartomány választva"
 
 #: newaccount.php:13
 msgid "Add new Account to domain"
@@ -787,7 +765,7 @@ msgstr "Kvóta"
 
 #: newaccount.php:196
 msgid "Sorry, the username already exists"
-msgstr ""
+msgstr "Sajnos a felhasználó név már létezik"
 
 #: newaccount.php:221
 msgid "Account successfully added to the Database"
@@ -798,9 +776,8 @@ msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Hozzáférést sikerült eltárolni az IMAP alrendszerbe"
 
 #: newadminuser.php:13
-#, fuzzy
 msgid "Add new administrator"
-msgstr "Új adminisztátor"
+msgstr "Új adminisztátor hozzáadása"
 
 #: newadminuser.php:64
 msgid "Select \"Superuser\" for all domains"
@@ -808,28 +785,25 @@ msgstr "Válassz \"Superuser\"-t minden tartományhoz"
 
 #: newadminuser.php:132
 msgid "You must provide a username"
-msgstr ""
+msgstr "Meg kell adnia egy felhasználó nevet"
 
 #: newadminuser.php:145
 msgid "Passwords are empty or not equal."
-msgstr ""
+msgstr "Jelszavak üresek vagy nem egyeznek"
 
 #: newadminuser.php:157
 msgid "Username already exist"
-msgstr ""
+msgstr "Felhasználónév már létezik"
 
 #: newalias.php:15
-#, fuzzy
 msgid "Add new alias to domain"
 msgstr "Új admin hozzáférés a tartományhoz"
 
 #: newalias.php:55
-#, fuzzy
 msgid "Sorry, no more alias allowed for domain"
-msgstr "Bocs, nincs több hozzáférés a tartományhoz"
+msgstr "Sajnos nincs több aliasz a tartományhoz"
 
 #: newalias.php:60
-#, fuzzy
 msgid "Maximum allowed aliases is"
 msgstr "Max.hozzáférések száma"
 
@@ -838,7 +812,6 @@ msgid "Add new domain"
 msgstr "Új tartomány"
 
 #: newdomain.php:140
-#, fuzzy
 msgid "Standard Mailboxes"
 msgstr "Szabványos mailboxok"
 
@@ -860,7 +833,7 @@ msgstr "Hagyd így, hacsak nem tudod mit csinálsz"
 
 #: newdomain.php:187
 msgid "Parameter"
-msgstr ""
+msgstr "Paraméter"
 
 #: newdomain.php:245 newemail.php:34
 msgid "Successfully added"
@@ -875,26 +848,24 @@ msgid "New emailadress for user"
 msgstr "Új emial aliasz a felhasználónak"
 
 #: search.php:48
-#, fuzzy
 msgid "Total domains matching"
-msgstr "Összes admin"
+msgstr "Összes egyezõ tartomány"
 
 #: search.php:110
 msgid "Total users matching"
-msgstr ""
+msgstr "Összes egyezõ felhasználó"
 
 #: search.php:118
 msgid "Displaying from position"
-msgstr ""
+msgstr "Megjelenítés poziciótól"
 
 #: search.php:245
 msgid "Total aliases matching"
-msgstr ""
+msgstr "Összes egyezõ aliasz"
 
 #: search.php:247
-#, fuzzy
 msgid "No aliases found"
-msgstr "Hozzáférés nem található"
+msgstr "Aliasz nem található"
 
 #: setquota.php:26
 msgid "Setting individual Quota for user"
@@ -905,13 +876,12 @@ msgid "Submit"
 msgstr "Elküld"
 
 #: setquota.php:70
-#, fuzzy
 msgid "Quote for user"
-msgstr "Kvóta nincs beállítva"
+msgstr "Felhasználó kvótája"
 
 #: setquota.php:74
 msgid "changed to"
-msgstr ""
+msgstr "változtat"
 
 #: timeout.php:33
 msgid "Your session timed out"
@@ -930,9 +900,8 @@ msgid "Failure in modifying vacation notice"
 msgstr "Hiba a szabadság üzenet módosításánál"
 
 #: vacation.php:95
-#, fuzzy
 msgid "Vacation notice unset"
-msgstr "Szabadság üzenet legyen"
+msgstr "Szabadság üzenet kikapcsolás"
 
 #: vacation.php:97
 msgid "Failure in unseting vacation notice"
@@ -951,6 +920,8 @@ msgid ""
 "You can't set Vacation Message for this email address with 'Allow Free Mail "
 "Addressess' set to off!"
 msgstr ""
+"Nem állíthatja üresre a Szabadság üzenetet erre az email címre ('Szabad mail "
+"címek engedélyezése)!"
 
 #: vacation.php:152
 msgid "Vacation message for emailadress"
@@ -966,34 +937,29 @@ msgstr "Szabadság üzenet törlése"
 
 #: validate.inc.php:74 validate.inc.php:87 validate.inc.php:134
 #: validate.inc.php:249
-#, fuzzy
 msgid "Security violation detected, attempt logged"
 msgstr ""
-"Biztonsági ütközést érzékelt, tevékenység megszakítva. A kísérleted "
-"napolózva."
+"Biztonsági ütközést érzékelt, kísérlet napolózva."
 
 #: validate.inc.php:130
 msgid "Quota exeedes the maximum allowed qutoa for this domain."
-msgstr ""
+msgstr "A kvóta elérte a tartományban engedélyezett maximumot"
 
 #: forwardaccount.php:77
 msgid "Forward for account"
 msgstr "Továbbít hozzáféréshez"
 
 #: forwardaccount.php:93
-#, fuzzy
 msgid "Set forwarding to (one adress per line)"
-msgstr "Továbbítás ide"
+msgstr "Továbbítás ide (egy cím soronként)"
 
 #: delete_catchall.php:31
-#, fuzzy
 msgid "successfully deleted from the Database"
-msgstr "Adatbázishoz sikeresen hozzáadva"
+msgstr "Adatbázisból sikeresen törölve"
 
 #: deleteemail.php:16
-#, fuzzy
 msgid "Delete emailadress from the System"
-msgstr "Emailcím törlése a rendszerbõl"
+msgstr "Emailcímek törlése a rendszerbõl"
 
 #: deleteemail.php:23
 msgid "Do you really want to delete the emailadress for user"
@@ -1008,9 +974,8 @@ msgid "Cancel"
 msgstr "Mégsem"
 
 #: deleteemail.php:70
-#, fuzzy
 msgid "Emailadress deleted."
-msgstr "Emailcím"
+msgstr "Emailcím törölve."
 
 #~ msgid "successfully changed Database...."
 #~ msgstr "Adatbázishoz sikeresen megváltoztatva..."
