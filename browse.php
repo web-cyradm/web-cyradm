@@ -114,7 +114,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
                                         </th>
 
                                         <th>
-                                                <?php print _("max Domain quota");?>
+                                                <?php print _("Domain quota");?>
                                         </th>
 
                                         <th>
