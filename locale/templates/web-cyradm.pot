@@ -205,6 +205,18 @@ msgstr ""
 msgid "Database error, please try again"
 msgstr ""
 
+#: change_password.php:60
+msgid "Change password for account"
+msgstr ""
+
+#:change_password.php:72
+msgid "New password"
+msgstr ""
+
+#:change_password.php:76
+msgid "Confirm new password"
+msgstr ""
+
 #: change_password.php:29
 msgid "Password changed"
 msgstr ""
@@ -239,10 +251,6 @@ msgstr ""
 
 #: deleteadminuser.php:14
 msgid "Do you really want to delete the Domain supervisor"
-msgstr ""
-
-#: deleteadminuser.php:33
-msgid "Action cancelled, nothing deleted"
 msgstr ""
 
 #: deletedomain.php:24
@@ -299,10 +307,6 @@ msgstr ""
 
 #: editadminuser.php:5
 msgid "Change admin user for domain"
-msgstr ""
-
-#: editadminuser.php:7
-msgid "Please select a domain first"
 msgstr ""
 
 #: editadminuser.php:81
@@ -522,6 +526,14 @@ msgstr ""
 msgid "Login failed"
 msgstr ""
 
+#:forwardaccount.php:41
+msgid "Forward for account"
+msgstr ""
+
+#: forwardalias.php:102
+msgid "Forward for emailadress"
+msgstr ""
+
 #: forwardsalias.php:52
 msgid "Forward set"
 msgstr ""
@@ -534,14 +546,6 @@ msgstr ""
 msgid "Wrong password"
 msgstr ""
 
-#: forwardalias.php:64
-msgid "Forwarding unset"
-msgstr ""
-
-#: forwardalias.php:65
-msgid "Failure in unsetting forwarding"
-msgstr ""
-
 #: forwardsalias.php:68
 msgid "Forwarding removed"
 msgstr "" 
@@ -550,7 +554,29 @@ msgstr ""
 msgid "Failure in removing forwarding"
 msgstr ""
 
+#: forwardalias.php:149
+msgid "Set forwarding to"
+msgstr ""
 
+#: forwardalias.php:151
+msgid "Keep a copy in the user's mailbox"
+msgstr ""
+
+#: forwardalias.php:152
+msgid "Remove forwarding"
+msgstr ""
+
+#: vacation.php:120
+msgid "Vacation message for emailadress"
+msgstr ""
+
+#: vacation.php:132
+msgid "Set vacation notice"
+msgstr ""
+
+#: vacation.php:134
+msgid "Remove vacation notice"
+msgstr ""
 
 #: vacation.php:59
 msgid "Failed to activate vacation"
