@@ -117,33 +117,21 @@ if ($authorized){
 		print $result_array[0];
 
 	        ?>
+		<h3><?php print _("Vacation message for emailadress"); ?> 
+		<font color="red"><?php print $alias."@".$domain ?></font></h3>
 
 	        <form action="index.php" method="get">
 	
-	        <input type="hidden" name="action" value="set_vacation">
+	        <input type="hidden" name="action" value="vacation">
 	        <input type="hidden" name="confirmed" value="true">
 	        <input type="hidden" name="domain" value="<?php print $domain ?>"> 
 	        <input type="hidden" name="alias" value="<?php print $alias."@".$domain ?>"> 
 
-	        <table>
-
-	        <tr>
-	        <td><?php print _("Emailadress:") ?></td>
-<!--		<td><input type="text" size="30" name=newalias value="<?php print $alias?>">@<?php print $domain?></td>	-->
-		<td><?php print $alias.'@'.$domain?></td>
-	        </tr>
-
-	        <tr>
-	        <td width=150><?php print _("Destination:") ?></td>
-<!--	        <td><input type="text" size="30" name=dest value="<?php print $dest ?>"> </td> -->
-		<td><?php print $dest?> </td>
-	        </tr>
-
-		</table>
-		
 		<br>
-		<INPUT class="menu" TYPE="radio" NAME="mode" VALUE="set" checked>Set/install vacation notice<br>
-		<INPUT class="menu" TYPE="radio" NAME="mode" VALUE="unset">Unset/remove vacation notice<br>
+		<INPUT class="menu" TYPE="radio" NAME="mode" VALUE="set" checked>
+		<?php print _("Set vacation notice");?><br>
+		<INPUT class="menu" TYPE="radio" NAME="mode" VALUE="unset">
+		<?php print _("Remove vacation notice");?><br>
 		<?php
 		  if ($daemon->sieve_login() ){
 		    $sieve_str = new sieve_strs;
@@ -162,7 +150,7 @@ if ($authorized){
 		  <textarea name='vacation_text' rows='6' cols='55'><?php print $vacation_script;?></textarea><br>
 		      
 		      
-	        <input type="submit" value="Submit"> 
+	        <input type="submit" value="<?php print _("Submit");?>"> 
 
 		</form>
 

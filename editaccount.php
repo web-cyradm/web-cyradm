@@ -44,7 +44,7 @@
 	  $alias=$row['alias'];	
           print "<tr class=\"$cssrow\"> \n";
           print "<td><a href=\"index.php?action=editemail&domain=$domain&alias=$alias&username=$username\">"._("Edit Emailadress")."</a></td>";
-	  print "\n<td><a href=\"index.php?action=forwardalias&domain=$domain&alias=$alias&username=$username\">"._("Forwards")."
+	  print "\n<td><a href=\"index.php?action=forwardalias&domain=$domain&alias=$alias&username=$username\">"._("Forward")."
 </a></td>";
 
 	  print "\n<td><a href=\"index.php?action=vacation&domain=$domain&alias=$alias&username=$username\">"._("Vacation")."

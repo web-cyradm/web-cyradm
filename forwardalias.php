@@ -62,8 +62,8 @@ if ($authorized){
 	    if (preg_match ("/(require \".*)(redirect \"|$)/Uis",$old_script,$matches)){
 	      $vacation_script = $matches[1];
 	      if ($daemon->sieve_sendscript('sieve', $vacation_script) ) {
-	        print "<big><b>"._("Forwarding unset")."</b></big>";
-	      }else print "<big><b>"._("Failure in unsetting forwarding")."</b></big>";
+	        print "<big><b>"._("Forwarding removed")."</b></big>";
+	      }else print "<big><b>"._("Failure in removing forwarding")."</b></big>";
 	    }else {
 	      if ($daemon->sieve_deletescript('sieve')) {
 	        print "<big><b>"._("Forwarding removed")."</b></big>";
@@ -99,29 +99,15 @@ if ($authorized){
 
 	        ?>
 
+		<h3><?php print _("Forward for emailadress")." <font color=\"red\">".$alias."@".$domain;?></font></h3>
+
 	        <form action="index.php" method="get">
 	
-	        <input type="hidden" name="action" value="set_forwards">
+	        <input type="hidden" name="action" value="forwardalias">
 	        <input type="hidden" name="confirmed" value="true">
 	        <input type="hidden" name="domain" value="<?php print $domain ?>"> 
 	        <input type="hidden" name="alias" value="<?php print $alias."@".$domain ?>"> 
 
-	        <table>
-
-	        <tr>
-	        <td><?php print _("Emailadress:") ?></td>
-<!--		<td><input type="text" size="30" name=newalias value="<?php print $alias?>">@<?php print $domain?></td>	-->
-		<td><?php print $alias.'@'.$domain?></td>
-	        </tr>
-
-	        <tr>
-	        <td width=150><?php print _("Destination:") ?></td>
-<!--	        <td><input type="text" size="30" name=dest value="<?php print $dest ?>"> </td> -->
-		<td><?php print $dest?> </td>
-	        </tr>
-
-		</table>
-		
 		<?php
 		  if ($daemon->sieve_login() ){
 		    $sieve_str = new sieve_strs;
@@ -146,10 +132,10 @@ if ($authorized){
 		  ?>
 
 		<br>
-		<INPUT class="menu" TYPE="radio" NAME="mode" VALUE="set" checked>Set/install forwards to:
+		<INPUT class="menu" TYPE="radio" NAME="mode" VALUE="set" checked><?php print _("Set forwarding to") ?>:
 		<INPUT type='text' name='forwards' value='<?php print $forwards_text ?>' size='50' >
-		<pre>     <input type='checkbox' name='metoo' <?php echo $keep ?>>Keep a copy in the user's mailbox<br><br></pre>
-		<INPUT class="menu" TYPE="radio" NAME="mode" VALUE="unset">Unset/remove forwarding<br><br><br>
+		<pre><input type='checkbox' name='metoo' <?php print $keep."> "._("Keep a copy in the user's mailbox") ?><br><br></pre>
+		<INPUT class="menu" TYPE="radio" NAME="mode" VALUE="unset"><?php print _("Remove forwarding") ?><br><br><br>
 		      
 	        <input type="submit" value="Submit"> 
 

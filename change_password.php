@@ -57,6 +57,8 @@ if ($authorized){
 
 	        ?>
 
+		<h3><?php print _("Change password for account")." <font color=\"red\">".$dest; ?></font></h3>
+
 	        <form action="index.php" method="get">
 	
 	        <input type="hidden" name="action" value="change_password">
@@ -64,31 +66,19 @@ if ($authorized){
 	        <input type="hidden" name="domain" value="<?php print $domain ?>"> 
 	        <input type="hidden" name="alias" value="<?php print $alias."@".$domain ?>"> 
 
-	        <table>
-
-	        <tr>
-	        <td><?php print _("Emailadress:") ?></td>
-<!--		<td><input type="text" size="30" name=newalias value="<?php print $alias?>">@<?php print $domain?></td>	-->
-		<td><?php print $alias.'@'.$domain?></td>
-	        </tr>
-
-	        <tr>
-	        <td width=150><?php print _("Destination:") ?></td>
-<!--	        <td><input type="text" size="30" name=dest value="<?php print $dest ?>"> </td> -->
-		<td><?php print $dest?> </td>
-	        </tr>
+		<table>		
 
 		<tr>
-		<td width=150>New password:</td>
-		<td><input type="text" size='30' name=new_password></td>
+		<td width=150><?php print _("New password")?>:</td>
+		<td><input type="password" size='30' name=password></td>
 		</tr>
 		<tr>
-		<td width=150>Confirmed new password:</td>
-		<td><input type='text' size='30' name=new_password2></td>
+		<td width=150><?php print _("Confirm new password")?>:</td>
+		<td><input type='password' size='30' name=confirm_password></td>
 		</tr>
 
 	        <tr><td>
-	        <input type="submit" value="Change Password"> 
+	        <input type="submit" value="<?php print _("Submit")?>"> 
 	        </td></tr>
 
 	        </table>
