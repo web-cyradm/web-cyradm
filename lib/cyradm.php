@@ -11,6 +11,15 @@
  independent from the imap-Functions of PHP
 
  Copyright 2000 Gernot Stocker <muecketb@sbox.tu-graz.ac.at>
+ 
+ Changes by Luc de Louw <luc@delouw.ch> 
+ - Added renamemailbox command as available with cyrus IMAP 2.2.0-Alpha
+ - Added getversion to find out what version of cyrus IMAP is running
+
+ Last Change on $Date$
+
+ $Id$
+ 
 
  You should have received a copy of the GNU Public
  License along with this package; if not, write to the
@@ -45,7 +54,7 @@ class cyradm {
 #
 */
 function cyradm(){
-  global $CYRUS_USERNAME,$CYRUS_PASSWORD,$CYRUS_HOST,$CYRUS_PORT;
+  global $CYRUS_USERNAME,$CYRUS_PASSWORD,$CYRUS_HOST,$CYRUS_PORT,$rtxt;
   $this->host   = $CYRUS_HOST;
   $this->port   = $CYRUS_PORT;
   $this->mbox   = "";
@@ -93,52 +102,49 @@ function cyradm(){
 #
 */
 function command($line) {
-    /* print ("$line <br>"); */
-    $result = array();
-    $i=0; $f=0;
-    $returntext="";
-    $r = fputs($this->fp,"$line\n");
-    while (!((strstr($returntext,". OK")||(strstr($returntext,". NO"))||(strstr($returntext,". BAD")))))
-       {
-         $returntext=$this->getline();
-         /* print ("$returntext <br>"); */
-	 if ($returntext) 
-	  {
-           if (!((strstr($returntext,". OK")||(strstr($returntext,". NO"))||(strstr($returntext,". BAD")))))
-	     {
-	      $result[$i]=$returntext;
-	     }
-  	   $i++;
-	  }
-       }
+	global $rtxt;
+	//print ("$line <br>");
+	$result = array();
+	$i=0; $f=0;
+	$returntext="";
+	$r = fputs($this->fp,"$line\n");
+	while (!((strstr($returntext,". OK")||(strstr($returntext,". NO"))||(strstr($returntext,". BAD"))))){
+		$returntext=$this->getline();
+		//print ("$returntext <br>"); 
+		if (strstr($returntext,"IMAP4")){
+			$rtxt=$returntext;
+		}
+		if ($returntext){
+			if (!((strstr($returntext,". OK")||(strstr($returntext,". NO"))||(strstr($returntext,". BAD"))))){
+				$result[$i]=$returntext;
+			}
+		$i++;
+		}
+	}
        
-    if (strstr($returntext,". BAD")||(strstr($returntext,". NO"))) 
-     {
-       $result[0]="$returntext";
-       $this->error_msg  = $returntext;
+	if (strstr($returntext,". BAD")||(strstr($returntext,". NO"))){
+		$result[0]="$returntext";
+		$this->error_msg  = $returntext;
 
-      if (( strstr($returntext,". NO Quota") ))
-      {
-      
-      }
-      else
-      {
-       /*
-       print "<br><font color=red><hr><H1><center><blink>ERROR: </blink>UNEXPECTED IMAP-SERVER-ERROR</center></H1><hr><br>
-              <table color=red border=0 align=center cellpadding=5 callspacing=3>
-	      <tr><td><font color=red>SENT COMMAND: </font></td><td><font color=red>$line</font></td></tr>
-	      <tr><td><font color=red>SERVER RETURNED:</font></td><td></td></tr>
-	      ";
-              for ($i=0; $i < count($result); $i++) {
-	       print "<tr><td></td><td><font color=red>$result[$i]</font></td></tr>";
-	      }
-       print "</table><hr><br><br></font>";
-       */
-       return false;
-     }
-    }
-    return $result;  
-  }
+		if (( strstr($returntext,". NO Quota") )){
+      		}
+		else{
+			/*
+			print "<br><font color=red><hr><H1><center><blink>ERROR: </blink>UNEXPECTED IMAP-SERVER-ERROR</center></H1><hr><br>
+			<table color=red border=0 align=center cellpadding=5 callspacing=3>
+			<tr><td><font color=red>SENT COMMAND: </font></td><td><font color=red>$line</font></td></tr>
+			<tr><td><font color=red>SERVER RETURNED:</font></td><td></td></tr>
+			";
+			for ($i=0; $i < count($result); $i++) {
+				print "<tr><td></td><td><font color=red>$result[$i]</font></td></tr>";
+			}
+			print "</table><hr><br><br></font>";
+			*/
+			return false;
+		}
+	}
+return $result;  
+}
 
 
 /*
@@ -151,7 +157,23 @@ function command($line) {
         $this->line = fgets($this->fp, 256);
 	return $this->line;
        }
-       
+  
+/*
+#
+# Getting Cyrus IMAP Version
+#
+*/
+
+function getversion(){
+	global $rtxt;
+	$pos=strpos($rtxt,"IMAP4 v");
+	$pos+=7;
+	$version=substr($rtxt,$pos,5);
+//	print "<p>Version: ".$version;
+	return $version;
+	
+}
+     
 /*
 #
 # QUOTA Functions
@@ -210,6 +232,13 @@ function command($line) {
      $this->command(". rename \"$mb_name\" \"$newmbname\"");
      $this->deleteacl($newmbname, $this->admin);
     }
+
+  function renamemailbox($oldname, $newname) {
+  // This only works with cyrus imap version 2.2.x for older please use renameuser
+     $ret=$this->command(". renamemailbox \"$oldname\" \"$newname\"");
+      return $ret;
+
+  }
     
   function renameuser($from_mb_name, $to_mb_name) {
      $all="lrswipcda"; $find_out=array(); $split_res=array(); $owner=""; $oldowner="";
