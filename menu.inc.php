@@ -134,7 +134,7 @@ if (! isset($domain)){
 				</td>
 
 				<td>
-					<?php print _("Current comain is");?>:
+					<?php print _("Current domain is");?>:
 				</td>
 
 				<td style="font-weight: bold;">

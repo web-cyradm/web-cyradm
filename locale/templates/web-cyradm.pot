@@ -561,7 +561,7 @@ msgid "Your role is"
 msgstr ""
 
 #: menu.inc.php:137
-msgid "Current comain is"
+msgid "Current domain is"
 msgstr ""
 
 #: menu.inc.php:143

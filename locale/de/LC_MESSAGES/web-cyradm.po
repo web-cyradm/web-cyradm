@@ -103,7 +103,8 @@ msgstr "Stellen Sie sicher, dass Sie das richtige Passwort eingegeben haben."
 
 #: auth.inc.php:64
 msgid "Push the back button in your browser to try again."
-msgstr "Klicken Sie \"Zur&uuml;ck\" in Ihrem Browser und probieren Sie es nochmal."
+msgstr ""
+"Klicken Sie \"Zur&uuml;ck\" in Ihrem Browser und probieren Sie es nochmal."
 
 #: auth.inc.php:65
 msgid " Your attempt to login has been stored."
@@ -297,7 +298,8 @@ msgid "User deleted"
 msgstr "Konto gelöscht"
 
 #: deleteaccount.php:98 deletedomain.php:169
-msgid "Security violation detected, action cancelled. Your attempt has been logged."
+msgid ""
+"Security violation detected, action cancelled. Your attempt has been logged."
 msgstr ""
 "Sicherheits&uuml;berschreitung entdeckt, Aktion abgebrochen. Ihr Versuch "
 "wurde geloggt."
@@ -316,7 +318,9 @@ msgstr "Administrator gelöscht"
 
 #: deleteadminuser.php:92 editadminuser.php:175 newadminuser.php:207
 msgid "Security violation detected, nothing deleted, attempt has been logged"
-msgstr "Sicherheits&uuml;berschreitung entdeckt, Aktion abgebrochen. Ihr Versuch wurde geloggt."
+msgstr ""
+"Sicherheits&uuml;berschreitung entdeckt, Aktion abgebrochen. Ihr Versuch "
+"wurde geloggt."
 
 #: deletedomain.php:22
 msgid "Delete a Domain from the System"
@@ -566,7 +570,7 @@ msgid "Your role is"
 msgstr "Sie sind"
 
 #: menu.inc.php:137
-msgid "Current comain is"
+msgid "Current domain is"
 msgstr "Aktuelle Dom&auml;ne ist"
 
 #: menu.inc.php:143
@@ -837,4 +841,3 @@ msgid ""
 "You can't edit this email address with 'Allow Free Mail Addressess' set to "
 "off!"
 msgstr "E-mail Adresse kann nicht geändert werden"
-
