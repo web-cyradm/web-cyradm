@@ -40,10 +40,13 @@ if (! isset($_SESSION['session_ok'])){
 	if ($_SESSION['session_ok'] === TRUE){
 		if ($current_time > ($old_time + $SESS_TIMEOUT)){
 			// Session has expired
-			$_SESSION['session_ok']	= FALSE;
+		#	$_SESSION['session_ok']	= FALSE;
 			$_SESSION['timestamp']	= -1;
+			include ("header.inc.php");
 			include ("timeout.php");
 			include ("footer.inc.php");
+			$_SESSION['session_ok'] = FALSE;
+			session_unset();
 			die();
 		} else {
 			// Session has NOT expired

@@ -3,6 +3,35 @@ $ref=WC_BASE."/index.php";
 if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	header("Location: index.php");
 }
+
+
+if (isset($_SESSION['LANG'])){
+	// Use Language setting from session
+	$LANG = $_SESSION['LANG'];
+}
+
+elseif (isset($nls['aliases'][substr($browserlang[0], 0, 2)])){
+	// Get language from the browser
+	$LANG = $nls['aliases'][substr($browserlang[0], 0, 2)];
+
+} 
+else {
+	// Fall back to default language
+	//$LANG = $DEFAULTLANG;
+	$LANG = $nls['aliases'][substr($DEFAULTLANG,0,2)];
+}
+
+setlocale(LC_MESSAGES, $LANG);
+setlocale(LC_ALL, $LANG);
+putenv("LANG=" . $LANG);
+putenv("LANGUAGE=" . $LANG);
+
+// Specify location of translation tables
+bindtextdomain("web-cyradm", "./locale");
+
+// Choose domain
+textdomain("web-cyradm");
+
 ?>
 	<table width="100%" border="0" style="height: 80%;">
 		<tr>
@@ -36,7 +65,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 										<p align="center">
 											<?php
 											print _("If you like to login click");?>
-											<a class="navi" href="index.php?"
+											<a class="navi" href="index.php"
 											><?php print _("here");?></a>
 										</p>
 
