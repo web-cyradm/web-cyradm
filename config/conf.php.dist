@@ -9,7 +9,7 @@
 
 // Set Default language
 
-$DEFAULTLANG = "de_CH";
+$DEFAULTLANG = "en_EN";
 
 # The Cyrus login stuff
 $CYRUS = array(
@@ -101,4 +101,7 @@ $PASSWORD_CHANGE_METHOD = "sql";
 error_reporting(E_ERROR);
 
 $VERSION="0.5.4-rc3";
+
+# Define reserved Emailadresses (Separated by comma):
+$RESERVED="postmaster,root";
 
