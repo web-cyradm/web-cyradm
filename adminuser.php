@@ -28,11 +28,7 @@
 				<table cellspacing="2" cellpadding="0">
 					<tr>
 						<td class="navi">
-							<a href="index.php?action=newadminuser&amp;domain=<?php
-							echo $domain;
-							?>"><?php
-							print _("Add administator");
-							?></a>
+							<a href="index.php?action=newadminuser&amp;domain=<?php echo $domain; ?>"><?php print _("Add administator"); ?></a>
 						</td>
 						
 						<?php
@@ -54,15 +50,11 @@
 						}
 						?>
 						<td class="navi">
-							<a href="<?php 
-							echo $_linkP;
-							?>"><?php print _("Previous 10 entries");?></a>
+							<a href="<?php echo $_linkP; ?>"><?php print _("Previous 10 entries");?></a>
 						</td>
 
 						<td class="navi">
-							<a href="<?php
-							echo $_linkN;
-							?>"><?php print _("Next 10 entries");?></a>
+							<a href="<?php echo $_linkN; ?>"><?php print _("Next 10 entries");?></a>
 						</td>
 					</tr>
 				</table>
@@ -111,21 +103,13 @@
 
 							<tr class="<?php echo $cssrow;?>">
 								<td valign="middle">
-									<a href="index.php?action=editadminuser&amp;username=<?php
-									echo $username;
-									?>&amp;domain=<?php
-									echo $domain;
-									?>"><?php
+									<a href="index.php?action=editadminuser&amp;username=<?php echo $username; ?>&amp;domain=<?php echo $domain; ?>"><?php
 									print _("Edit adminuser");
 									?></a>
 								</td>
 
 								<td valign="middle">
-									<a href="index.php?action=deleteadminuser&amp;username=<?php
-									echo $username;
-									?>&amp;domain=<?php
-									echo $domain;
-									?>"><?php
+									<a href="index.php?action=deleteadminuser&amp;username=<?php echo $username; ?>&amp;domain=<?php echo $domain; ?>"><?php
 									print _("Delete adminuser");
 									?></a>
 								</td>
@@ -169,11 +153,7 @@
 				<table>
 					<tr>
 						<td class="navi">
-							<a href="index.php?action=newaccount&amp;domain=<?php
-							echo $domain;
-							?>&amp;username=<?php
-							echo $username;
-							?>"><?php
+							<a href="index.php?action=newaccount&amp;domain=<?php echo $domain; ?>&amp;username=<?php echo $username; ?>"><?php
 							print _("Add administrator")
 							?></a>
 						</td>

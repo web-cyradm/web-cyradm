@@ -84,9 +84,7 @@ if (! isset($domain)){
 				<input type="submit" value="<?php print _("Search");?>">
 				<input type="hidden" name="action" value="search">
 				<input type="hidden" name="domain" value="<?php echo $domain;?>">
-				<input type="text" class="inputfield" name="searchstring" value="<?php
-				   if (isset($searchstring))  echo $searchstring;
-				?>">
+				<input type="text" class="inputfield" name="searchstring" value="<?php if (isset($searchstring))  echo $searchstring; ?>">
 			</form>
 		</td>
 	</tr>
@@ -121,8 +119,7 @@ if (! isset($domain)){
 					<?php print _("Your role is");?>:
 				</td>
 
-				<td style="font-weight: bold;
-				color: red;">
+				<td style="font-weight: bold; color: red;">
 					<?php
 					if ($admintype == 0){
 						print _("Superuser");

@@ -159,12 +159,7 @@
 					value="true">
 					<input type="hidden" name="domain"
 					value="<?php print $domain ?>"> 
-					<input type="hidden" name="alias" value="<?php
-										     print $alias;
-										     if ($freeaddress!="YES") { 
-										        print "@" . $domain;
-										     }
-										  ?>"> 
+					<input type="hidden" name="alias" value="<?php print $alias; if ($freeaddress!="YES") { print "@" . $domain; } ?>"> 
 					<input type="hidden" name="username"
 					value="<?php echo $username;?>">
 
@@ -209,8 +204,7 @@
 
 					<input class="button"
 					type="submit"
-					value="<?php
-					print _("Submit");?>"> 
+					value="<?php print _("Submit");?>"> 
 
 				</form>
 				<?php

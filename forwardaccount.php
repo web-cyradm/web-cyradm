@@ -71,15 +71,7 @@
 					<?php echo $username;?>
 				</span>
 			</h3>
-			<form action="<?php 
-			printf ('%s?domain=%s&amp;username=%s&amp;alias=%s&amp;action=%s', 
-					$_SERVER['PHP_SELF'],
-					htmlspecialchars($_GET['domain']),
-					htmlspecialchars($_GET['username']),
-					htmlspecialchars($_GET['alias']),
-					htmlspecialchars($_GET['action'])
-			);
-			?>" method="post">
+			<form action="<?php printf ('%s?domain=%s&amp;username=%s&amp;alias=%s&amp;action=%s', $_SERVER['PHP_SELF'], htmlspecialchars($_GET['domain']), htmlspecialchars($_GET['username']), htmlspecialchars($_GET['alias']), htmlspecialchars($_GET['action'])); ?>" method="post">
 
 				<table>
 					<tr>

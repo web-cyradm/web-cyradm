@@ -45,9 +45,7 @@ header('Content-Type: text/html; charset=iso-8859-1');
 							style="height: 150px;">
 								<tr>
 									<td bgcolor="#000666" 
-									style="font-family: Verdana, Arial, sans-serif;
-									color: #ffffff; font-size: large;
-									font-weight: bold;">
+									style="font-family: Verdana, Arial, sans-serif; color: #ffffff; font-size: large; font-weight: bold;">
 										Web-cyradm
 									</td>
 								</tr>
@@ -59,21 +57,17 @@ header('Content-Type: text/html; charset=iso-8859-1');
 								<tr>
 									<td>
 										<p align="center" 
-										style="font-family: Verdana, Arial, sans-serif;
-										color: #000; font-size: x-large;">
+										style="font-family: Verdana, Arial, sans-serif; color: #000; font-size: x-large;">
 											<?php print _("Login failed");?>
 										</p>
 
 										<p align="center"
-										style="font-family: Verdana, Arial, sans-serif;
-										color: #000; font-size: xx-large;
-										font-weight: bold;">
+										style="font-family: Verdana, Arial, sans-serif; color: #000; font-size: xx-large; font-weight: bold;">
 											<?php print _("This is only for authorized users");?>
 										</p>
 
 										<p align="center"
-										style="font-family: Verdana, Arial, sans-serif;
-										color: #000; font-size: x-large;">
+										style="font-family: Verdana, Arial, sans-serif; color: #000; font-size: x-large;">
 											<?php print _("If you like to login click"); ?>
 											<a class="navi" href="index.php"><?php
 											print _("here");

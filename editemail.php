@@ -110,8 +110,7 @@
 							<td>
 								<input class="inputfield"
 								type="text" size="30"
-								name="dest" value="<?php
-								echo $dest;?>">
+								name="dest" value="<?php echo $dest;?>">
 							</td>
 						</tr>
 
@@ -120,8 +119,7 @@
 							<td colspan="2" align="center">
 								<input class="button"
 								type="submit"
-								value="<?php
-								print _("Submit");?>">
+								value="<?php print _("Submit");?>">
 							</td>
 						</tr>
 

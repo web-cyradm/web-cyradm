@@ -90,8 +90,7 @@
 								<input class="inputfield"
 								type="text" size="30"
 								name="newdomain" 
-								value="<?php 
-								print $domain;?>"
+								value="<?php print $domain;?>"
 								>
 							</td>
 						</tr>
@@ -106,9 +105,7 @@
 								type="text"
 								size="30"
 								name="prefix" 
-								value="<?php 
-								print $prefix;
-								?>"
+								value="<?php print $prefix; ?>"
 								>
 							</td>
 						</tr>
@@ -160,9 +157,7 @@
 								<input class="inputfield"
 								type="text" size="4"
 								name="maxaccounts" 
-								value="<?php 
-								print $maxaccounts;
-								?>"
+								value="<?php print $maxaccounts; ?>"
 								>
 							</td>
 						</tr>
@@ -176,9 +171,7 @@
 								<input class="inputfield"
 								type="text" size="15"
 								name="quota" 
-								value="<?php
-								print $quota;
-								?>"
+								value="<?php print $quota; ?>"
 								>
 							</td>
 						</tr>
@@ -188,9 +181,7 @@
 								<input 
 								class="button" 
 								type="submit" 
-								value="<?php
-								print _("Submit");
-								?>"
+								value="<?php print _("Submit"); ?>"
 								>
 							</td>
 						</tr>

@@ -57,9 +57,7 @@
 						
 						<input type="hidden" 
 						name="domain" 
-						value="<?php 
-						print $domain;
-						?>">
+						value="<?php print $domain; ?>">
 						
 						<input 
 						class="button"

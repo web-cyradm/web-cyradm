@@ -15,11 +15,9 @@
 		if ($authorized){
 			if (! empty($confirmed)){
 				if ($freeaddress!="YES") {
-				    $query = "INSERT INTO virtual (alias,dest,username)
-				    VALUES ('$alias@$domain','$dest','$username')";
+				    $query = "INSERT INTO virtual (alias,dest,username) VALUES ('$alias@$domain','$dest','$username')";
 				} else {
-				    $query = "INSERT INTO virtual (alias,dest,username)
-				    VALUES ('$alias','$dest','$username')";
+				    $query = "INSERT INTO virtual (alias,dest,username) VALUES ('$alias','$dest','$username')";
 				}				
 
 				$result = $handle->query($query);
@@ -97,8 +95,7 @@
 							<td>
 								<input type="text"
 								size="30" name="dest" 
-								value="<?php 
-								print $username;?>">
+								value="<?php print $username;?>">
 							</td>
 						</tr>
 
@@ -106,8 +103,7 @@
 						<tr>
 							<td>
 								<input type="submit"
-								value="<?php
-								print _("Submit");?>">
+								value="<?php print _("Submit");?>">
 							</td>
 						</tr>
 					</table>

@@ -14,9 +14,7 @@
 		<form method="get" action="index.php">
 			<input type="hidden"
 			name="domain"
-			value="<?php
-			echo $_GET['domain'];
-			?>"
+			value="<?php echo $_GET['domain']; ?>"
 			>
 
 			<input type="hidden"
@@ -36,11 +34,7 @@
 						name="alias"
 						size="30"
 						maxlength="50"
-						value="<?php
-						if (! empty($_GET['alias'])){
-							echo $_GET['alias'];
-						}
-						?>"
+						value="<?php if (! empty($_GET['alias'])){ echo $_GET['alias']; } ?>"
 						class="inputfield"
 						onfocus="this.style.backgroundColor='#aaaaaa'"
 						>@<?php
@@ -55,18 +49,14 @@
 						name="create"
 						class="button"
 						type="submit"
-						value="<?php
-						print _("Submit");
-						?>"
+						value="<?php print _("Submit"); ?>"
 						>&nbsp;
 						
 						<input
 						name="reset"
 						class="buttoN"
 						type="reset"
-						value="<?php
-						print _("Cancel");
-						?>"
+						value="<?php print _("Cancel"); ?>"
 						>
 					</td>
 				</tr>

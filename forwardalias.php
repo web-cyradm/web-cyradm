@@ -163,12 +163,7 @@
 					<input type="hidden" name="action" value="forwardalias">
 					<input type="hidden" name="confirmed" value="true">
 					<input type="hidden" name="domain" value="<?php print $domain ?>"> 
-					<input type="hidden" name="alias" value="<?php
-										     print $alias;
-										     if ($freeaddress!="YES") { 
-										        print "@" . $domain;
-										     }
-										  ?>"> 
+					<input type="hidden" name="alias" value="<?php print $alias; if ($freeaddress!="YES") { print "@" . $domain; } ?>"> 
 					<input type="hidden" name="username" value="<?php echo $username;?>">
 
 					<?php
@@ -200,16 +195,13 @@
 					<br>
 
 					<input type="radio" name="mode" value="set"
-					checked><?php print _("Set forwarding to") . "
-					" . _("(Seperate multiple values with ,)") ?>:
+					checked><?php print _("Set forwarding to") . " " . _("(Seperate multiple values with ,)") ?>:
 
 					<input class="inputfield" type="text"
-					name="forwards" value="<?php 
-					print $forwards_text;?>" size="50"><br>
+					name="forwards" value="<?php print $forwards_text;?>" size="50"><br>
 					
 					<input type="checkbox" name="metoo" 
-					<?php print $keep."> 
-					"._("Keep a copy in the user's mailbox");?><br>
+					<?php print $keep."> "._("Keep a copy in the user's mailbox");?><br>
 					<br>
 					
 					<input type="radio" name="mode"

@@ -51,9 +51,7 @@
 
 			# And then add the new one	
 
-			$insertquery = "INSERT INTO virtual (alias, dest, 
-			username, status) values ('@$domain' ,
-			'$username' , '$username' , '1')";
+			$insertquery = "INSERT INTO virtual (alias, dest, username, status) values ('@$domain' , '$username' , '$username' , '1')";
 			
 			$handle=DB::connect($DB['DSN'], true);
 			if (DB::isError($handle)) {

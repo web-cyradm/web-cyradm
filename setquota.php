@@ -33,32 +33,22 @@
 					
 					<input type="hidden"
 					name="domain"
-					value="<?php 
-					print $domain;
-					?>"
+					value="<?php print $domain; ?>"
 					>
 					
 					<input type="hidden" 
 					name="username"
-					value="<?php 
-					print $username;
-					?>"
-					>
+					value="<?php print $username; ?>" >
 					
 					<input class="inputfield"
 					type="text"
 					size="10"
 					name="quota"
-					value="<?php 
-					print $q_total = $q['qmax'];
-					?>"
-					> Kibibytes
+					value="<?php print $q_total = $q['qmax']; ?>" > Kbytes
 					
 					<input class="button" 
 					type="submit" 
-					value="<?php 
-					print _("Submit");
-					?>"
+					value="<?php print _("Submit"); ?>"
 					>
 				</form>
 				<?php

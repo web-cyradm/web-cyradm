@@ -45,9 +45,8 @@
 		<table cellspacing="2" cellpadding="0">
 			<tr>
 				<td class="navi">
-					<a href="index.php?action=newaccount&amp;domain=<?php
-					echo $domain;
-					?>"><?php print _("Add new account");?></a>
+					<a href="index.php?action=newaccount&amp;domain=<?php echo $domain; ?>"
+					><?php print _("Add new account");?></a>
 				</td>
 
 				<?php
@@ -137,39 +136,29 @@
 
 					<tr class="<?php echo $cssrow;?>">
 						<td align="center" valign="middle">
-							<a href="index.php?action=editaccount<?php
-							echo $_dom_user;
-							?>"><?php print _("Edit account");?></a>
+							<a href="index.php?action=editaccount<?php echo $_dom_user; ?>"
+							><?php print _("Edit account");?></a>
 						</td>
 
 						<td align="center" valign="middle">
-							<a href="index.php?action=change_password<?php
-							echo $_dom_user_alias;
-							?>"><?php print _("Change Password");?></a>
+							<a href="index.php?action=change_password<?php echo $_dom_user_alias; ?>"
+							><?php print _("Change Password");?></a>
 						</td>
 
 						<td align="center" valign="middle">
-							<a href="index.php?action=forwardaccount<?php
-							echo $_dom_user_alias;
-							?>"><?php print _("Forward");?></a>
+							<a href="index.php?action=forwardaccount<?php echo $_dom_user_alias; ?>"> <?php print _("Forward");?></a>
 						</td>
 
 						<td align="center" valign="middle">
-							<a href="index.php?action=deleteaccount<?php
-							echo $_dom_user;
-							?>"><?php print _("Delete account");?></a>
+							<a href="index.php?action=deleteaccount<?php echo $_dom_user; ?>"> <?php print _("Delete account");?></a>
 						</td>
 
 						<td align="center" valign="middle">
-							<a href="index.php?action=setquota<?php
-							echo $_dom_user;
-							?>"><?php print _("Set quota");?></a>
+							<a href="index.php?action=setquota<?php echo $_dom_user; ?>"><?php print _("Set quota");?></a>
 						</td>
 
 						<td align="center" valign="middle">
-							<a href="index.php?action=catch<?php
-							echo $_dom_user;
-							?>"><?php print _("Set catch all");?></a>
+							<a href="index.php?action=catch<?php echo $_dom_user; ?>"><?php print _("Set catch all");?></a>
 						</td>
 
 						<td valign="middle">
@@ -243,10 +232,8 @@
 		<table>
 			<tr>
 				<td class="navi">
-					<a href="index.php?action=newaccount&amp;domain=<?php
-					echo $domain;?>&amp;username=<?php 
-					echo $username;?>"><?php
-					print _("Add new account");
+					<a href="index.php?action=newaccount&amp;domain=<?php echo $domain;?>&amp;username=<?php echo $username;?>">
+					<?php print _("Add new account");
 					?></a>
 				</td>
 			</tr>

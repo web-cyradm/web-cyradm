@@ -32,9 +32,7 @@
 		<table cellspacing="2" cellpadding="0">
 			<tr>
 				<td class="navi">
-					<a href="index.php?action=newemail&amp;domain=<?php
-					echo $domain;?>&amp;username=<?php
-					echo $username;?>"><?php
+					<a href="index.php?action=newemail&amp;domain=<?php echo $domain;?>&amp;username=<?php echo $username;?>"><?php
 					print _("New email address");?></a>
 				</td>
 			</tr>
@@ -91,10 +89,7 @@
 					foreach ($_cols as $_action => $_txt){
 						?>
 						<td align="center" valign="middle">
-							<a href="<?php
-							printf("index.php?action=%s&amp;domain=%s&amp;alias=%s&amp;username=%s",
-								$_action, $domain, $alias, $username);
-							?>"><?php echo $_txt;?></a>
+							<a href="<?php printf("index.php?action=%s&amp;domain=%s&amp;alias=%s&amp;username=%s", $_action, $domain, $alias, $username); ?>"><?php echo $_txt;?></a>
 						</td>
 						<?php
 					}

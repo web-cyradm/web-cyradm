@@ -118,9 +118,7 @@
 								type="text"
 								size="5"
 								name="quota"
-								value="<?php
-								print $DEFAULT_QUOTA;
-								?>">
+								value="<?php print $DEFAULT_QUOTA; ?>">
 							</td>
 						</tr>
 						
@@ -197,9 +195,7 @@
 								<input
 								class="button"
 								type="submit"
-								value="<?php
-								print _("Submit");
-								?>">
+								value="<?php print _("Submit"); ?>">
 							</td>
 						</tr>
 					</table>

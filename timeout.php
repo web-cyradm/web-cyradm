@@ -9,9 +9,7 @@
 							style="height: 150px;">
 								<tr> 
 									<td colspan="5" bgcolor="#000666"
-									style="font-family: Verdana, Arial, Helvetica, sans-serif;
-									color: #fff; font-size: large;
-									font-weight: bold;">
+									style="font-family: Verdana, Arial, Helvetica, sans-serif; color: #fff; font-size: large; font-weight: bold;">
 										Web-cyradm
 									</td>
 								</tr>
@@ -24,8 +22,7 @@
 									<td>&nbsp;</td>
 
 									<td colspan="4"
-									style="font-family: Verdana, Arial, Helvetica, sans-serif;
-									color: #000; font-size: large;">
+									style="font-family: Verdana, Arial, Helvetica, sans-serif; color: #000; font-size: large;">
 										<p align="center">
 											<?php print _("Your session timed out");?>
 										</p>

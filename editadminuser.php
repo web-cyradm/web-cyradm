@@ -31,14 +31,12 @@
 					
 					<input type="hidden"
 					name="username"
-					value="<?php 
-					print $username;?>"
+					value="<?php print $username;?>"
 					>
 					
 					<input type="hidden"
 					name="domain"
-					value="<?php 
-					print $domain;?>"
+					value="<?php print $domain;?>"
 					>
 
 					<table>
@@ -118,9 +116,7 @@
 								<input 
 								class="inputfield"
 								type="submit"
-								value="<?php
-								print _("Submit");
-								?>"
+								value="<?php print _("Submit"); ?>"
 								>
 							</td>
 						</tr>
@@ -137,26 +133,17 @@
 						# If the new_password field is not 
 						# empty and the password matches, 
 						# update the password
-						$query = "UPDATE adminuser SET 
-						password='$new_password', 
-						type='$newtype' 
-						WHERE username='$username'";		
+						$query = "UPDATE adminuser SET password='$new_password', type='$newtype' WHERE username='$username'";		
 						break;
 
 					case "2":
 					case "sql":
 					case "mysql":
-						$query = "UPDATE adminuser SET 
-						password=PASSWORD('$new_password'),
-						type='$newtype' 
-						WHERE username='$username'";
+						$query = "UPDATE adminuser SET password=PASSWORD('$new_password'), type='$newtype' WHERE username='$username'";
 						break;
 
 					case "plain":
-						$query = "UPDATE adminuser SET 
-						password='$new_password',
-						type='$newtype' 
-						WHERE username='$username'";
+						$query = "UPDATE adminuser SET password='$new_password', type='$newtype' WHERE username='$username'";
 						break;
 					}	
 				} elseif ($new_password != $confirm_password){

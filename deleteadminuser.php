@@ -34,33 +34,25 @@
 					<input
 					type="hidden" 
 					name="username"
-					value="<?php
-					echo $username;
-					?>"
+					value="<?php echo $username; ?>"
 					>
 
 					<input
 					type="hidden"
 					name="domain"
-					value="<?php
-					echo $domain;
-					?>"
+					value="<?php echo $domain; ?>"
 					>
 
 					<input
 					type="submit"
 					name="confirmed"
-					value="<?php
-					print _("Yes, delete");
-					?>"
+					value="<?php print _("Yes, delete"); ?>"
 					>
 
 					<input
 					type="submit"
 					name="cancel"
-					value="<?php
-					print _("Cancel");
-					?>"
+					value="<?php print _("Cancel"); ?>"
 					>
 				</form>
 				<?php

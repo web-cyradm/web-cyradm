@@ -29,9 +29,7 @@ if(session_destroy()){
 							width="450" style="height: 150px;">
 								<tr>
 									<td bgcolor="#000666"
-									style="font-family: Verdana, Arial, Helvetica, sans-serif;
-									color: #fff; font-size: large;
-									font-weight: bold;">
+									style="font-family: Verdana, Arial, Helvetica, sans-serif; color: #fff; font-size: large; font-weight: bold;">
 										Web-cyradm
 									</td>
 								</tr>
@@ -43,21 +41,17 @@ if(session_destroy()){
 								<tr>
 									<td>
 										<p align="center"
-										style="font-family: Verdana, Arial, Helvetica, sans-serif;
-										color: #000; font-size: large;">
+										style="font-family: Verdana, Arial, Helvetica, sans-serif; color: #000; font-size: large;">
 											<?php print _("Thank you for using Web-cyradm");?>
 										</p>
 
 										<p align="center"
-										style="font-family: Verdana, Arial, Helvetica, sans-serif;
-										color: #000; font-size: x-large;
-										font-weight: bold;">
+										style="font-family: Verdana, Arial, Helvetica, sans-serif; color: #000; font-size: x-large; font-weight: bold;">
 											<?php print _("You are logged out");?>
 										</p>
 
 										<p align="center"
-										style="font-family: Verdana, Arial, Helvetica, sans-serif;
-										color: #000; font-size: large;">
+										style="font-family: Verdana, Arial, Helvetica, sans-serif; color: #000; font-size: large;">
 											<?php print _("If you like to login click");?>
 											<a class="navi" href="index.php"><?php
 											print _("here");

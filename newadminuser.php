@@ -46,9 +46,7 @@
 						<input
 						type="hidden"
 						name="domain"
-						value="<?php 
-						print $domain;
-						?>">
+						value="<?php print $domain; ?>">
 
 						<table>
 							<tr>
@@ -121,9 +119,7 @@
 									<input
 									class="inputfield"
 									type="submit" 
-									value="<?php 
-									print _("Submit");
-									?>"
+									value="<?php print _("Submit"); ?>"
 									>
 								</td>
 							</tr>

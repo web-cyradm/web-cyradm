@@ -143,15 +143,8 @@
 									<td>
 										<input
 										class="inputfield"
-										type="<?php
-										echo ($_def[2])?('password'):('text');
-										?>"
-										name="<?php
-										echo $_name;
-										?>"
-										onfocus="this.style.backgroundColor='#<?php
-										echo str_repeat($_def[1], 6);
-										?>'"
+										type="<?php echo ($_def[2])?('password'):('text'); ?>"
+										name="<?php echo $_name; ?>" onfocus="this.style.backgroundColor='#<?php echo str_repeat($_def[1], 6); ?>'"
 										<?php
 										echo (isset($_def[4]))?('value="' . $_def[4] . '"'):('');
 										?>
@@ -169,9 +162,7 @@
 								<input
 								class="button"
 								type="submit"
-								value="<?php
-								print _("Submit");
-								?>"
+								value="<?php print _("Submit"); ?>"
 								>
 							</td>
 						</tr>
@@ -200,8 +191,7 @@
 			       "</h3><br>";
 			include WC_BASE . "/browseaccounts.php";
 		    } else {
-		    	$query3="INSERT INTO accountuser (username, password, prefix, 
-				 domain_name) VALUES ('" . $username . "',";
+		    	$query3="INSERT INTO accountuser (username, password, prefix, domain_name) VALUES ('" . $username . "',";
 			switch($CRYPT){
 			case "crypt":
 				$query3 .= "ENCRYPT('$password')";
@@ -225,10 +215,7 @@
 
 			$result=$handle->query($query3);
 
-			$query4 = "INSERT INTO virtual (alias, dest, 
-				username, status) values (
-				'" . $email . "@" . $domain . "' , 
-				'$username' , '$username' , '1')";
+			$query4 = "INSERT INTO virtual (alias, dest, username, status) values ( '" . $email . "@" . $domain . "' , '$username' , '$username' , '1')";
 
 			$result2 = $handle->query($query4);
 
