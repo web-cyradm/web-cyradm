@@ -41,11 +41,13 @@ print "<a href=\"index.php\">"._("home")."</a></td>\n";
 print "<td>&nbsp;</td><td class=\"navi\">";
 print "<a href=\"index.php?action=logout&domain=$domain\">"._("logout")."</a></td>\n";
 
-print "<form action=\"search.php\" method=\"get\">";
+print "<form action=\"index.php\" method=\"get\">";
 
 print "<td>&nbsp;</td><td class=\"navi\">";
 print "<a href=\"#\">"._("Search").":</a>";
-print "<input class=\"inputfield\" type=\"text\" name=\"$searchstring\">";
+print "<input type=\"hidden\" name=\"action\" value=\"search\">";
+print "<input type=\"hidden\" name=\"domain\" value=\"$domain\">";
+print "<input class=\"inputfield\" type=\"text\" name=\"searchstring\">";
 print "</form>";
 
 

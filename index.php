@@ -122,6 +122,9 @@ include ("lib/cyradm.php");
 		        default:
 	        	include ("browse.php");
 		        break;
+
+			case "search":
+			include ("search.php");
 	
 		        case "setquota":
 	        	include ("setquota.php");
