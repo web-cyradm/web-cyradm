@@ -60,6 +60,13 @@ else{
 
 			$pwd=new password;
 
+			/* This is temporary needed, because mysql uses proprietary crypto, thus 
+			Admin password must be stored plaintext */
+
+			if ($CRYPT=="mysql") {
+				$CRYPT="plain";
+			}
+
 			$password=$pwd->encrypt($password,$CRYPT);
 	
 			$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
