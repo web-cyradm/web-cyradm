@@ -1,0 +1,92 @@
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+A:ACTIVE,A:LINK, A:VISITED{
+	color : White;
+}
+a:hover {
+	color: Black;
+	text-decoration : none;
+}
+.navi {
+	font-weight: bold;
+	font-size: 12px;
+	letter-spacing: 2px;
+	border : 1px solid Black;
+	background-color : #B0C4DE;
+	padding-left : 5px;
+	padding-right : 5px;
+	padding-bottom : 2px;
+	padding-top : 2px;
+	color: white;
+}
+
+.rootnavi {
+        font-weight: bold;
+        font-size: 12px;
+        letter-spacing: 2px;
+        border : 1px solid red;
+        background-color : #B0C4DE;
+        padding-left : 5px;
+        padding-right : 5px;
+        padding-bottom : 2px;
+        padding-top : 2px;
+}
+
+.banner {
+	border-bottom : 1px solid Black;
+}
+.header {
+	font-size: 10px;
+}
+.footer {  
+	font-size: 10px; 
+	text-transform: lowercase
+}
+.row1 {
+	background : #b4c6de;
+}
+.row2 {
+	background : #CBCBCB;
+}
+
+H3 {
+	font-size : 15px;
+	font-weight : bold;
+	text-decoration : underline;
+	text-transform : uppercase;
+}
+
+TH {
+	font-size : 13px;	
+	font-weight : bold;
+	color : #ffffff;
+	background : #000462;
+	letter-spacing : 2px;
+	word-spacing : 3px;
+	padding-left : 5px;
+	padding-right : 5px;
+}
+
+TD {
+	font-size : 12px;	
+}
+
+
+.inputfield {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-align:right;
+	width
+	cursor: ne-resize;
+//	border-left:1px #eeeeee solid;
+//	border-right:1px #eeeeee solid;
+//	border-top:1px #eeeeee solid;
+//	border-bottom:1px #000000 solid;
+	background : #c5cec5;
+	color : #ffffff;
+	font-weight: bold;
+}

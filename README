@@ -1,0 +1,15 @@
+This software is intended to be used by system adminitrators to provide them
+a friendly Web-interface instead of the commandline cyradm.
+
+A goal for the future is to incorporate authentication with makes it possible,
+that normal mail-users can change what they are authorized to change. This can 
+lead in lower workload for the System Administrator and higher flexibiliy for the
+mailuser.
+
+This is a pre-Version 1.0 and only for users that are knowing what they are doing.
+
+Especially there is no input validation yet, 
+i.e. its possible to add a email-adress like f*o*o+b*a*r@domain.org, very bad.
+
+Feedback to luc at delouw.ch is appreciated.
+  

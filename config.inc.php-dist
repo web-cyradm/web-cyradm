@@ -1,0 +1,21 @@
+<?php
+
+# The Cyrus login stuff
+
+$CYRUS_HOST="localhost";
+$CYRUS_PORT="143";
+$CYRUS_USERNAME="cyrus";
+$CYRUS_PASSWORD="secret";
+
+# The MySQL stuff
+
+$MYSQL_HOST="localhost";
+$MYSQL_DB="mail";
+$MYSQL_USER="mail";
+$MYSQL_PASSWD="secret";
+
+
+# The default timeout in seconds for a session, after that you have to login again
+$SESS_TIMEOUT=300;
+
+?>

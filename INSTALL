@@ -1,0 +1,54 @@
+1. Install a Webserver (Apache or other with php4 support) with enabled socket-connetions
+
+2. Install your mailing system according to 
+   http://www.delouw.ch/linux/Postfix-Cyrus-MySQL-replex-HOWTO/html/index.html
+
+   Its a draft of a LDP-HOWTO that describes how to set up postfix, the Cyrus IMAPd
+   and using MySQL as storage for username, password and aliases.
+
+3. The population of the Database described in that document is for replex, but its
+   (not fully) compatible with web-cyradm.
+
+   To get web-cyradm working you have to add a new field to the table "domain"
+   You can do that with the following SQL-query:
+
+   ALTER TABLE `mail`.`domain` ADD `quota` INT DEFAULT '20000' NOT NULL; 
+
+4. Untar the package where you want to have web-cyradm. A good place would be
+   /usr/local/apache/htdocs/web-cyradm
+
+   mv web-cyradm-cvs-2002-03-30.tar.gz /usr/local/apache/htdocs/
+   tar -xvzf web-cyradm-cvs-2002-03-30.tar.gz
+
+5. Protect the web-cyradm with Basic Authentication
+
+   edit your httpd.conf and add:
+
+   <Directory /usr/local/apache/htdocs/web-cyradm>
+   AuthType Basic
+   AuthName "Cyrus Admin"
+   AuthUserfile /usr/local/apache/cyrus
+   <Limit GET POST>
+   require valid-user
+   </limit>
+   </Directory>
+
+   Add a valid user by doing:
+  
+   /usr/local/apache/bin/htpasswd -c /usr/local/apache/cyrus admin
+
+   Restart apache:
+
+   /usr/local/apache/bin/apachectl restart
+
+6. Edit and install web-cyadm/config.inc.php-dist
+
+   cp config.inc.php-dist config.inc.php
+
+   Edit the values of the Variables found there
+
+
+Thats basically all, let me know if I forgot something....
+
+
+
