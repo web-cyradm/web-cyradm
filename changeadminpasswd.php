@@ -10,19 +10,15 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="top">
-
-		<h3>
-			<?php print _("Change password for account");?>
-			<span style="color: red;">
-				<?php
-				print $_SESSION['user'];
-				?>
-			</span>
-		</h3>
-
 	<?php
 	if (!isset($_POST['confirmed'])){
 		?>
+		<h3>
+			<?php print _("Change password for account");?>
+			<span style="color: red;">
+				<?php print $_SESSION['user'];?>
+			</span>
+		</h3>
 		<form action="index.php" method="post">
 			<input type="hidden" name="action" value="changeadminpasswd">
 			<input type="hidden" name="confirmed" value="true">
@@ -85,6 +81,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				</tr>
 			</table>
 		</form>
+	</td>
+</tr>
 		<?php
 	}
 	else { // if (!isset($_POST['confirmed']))
