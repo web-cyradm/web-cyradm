@@ -36,7 +36,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		die (_("Database error"));
 	}
 
-	$result = $handle->limitQuery($query,$row_pos,10);
+	$result = $handle->limitQuery($query,$row_pos,$maxdisplay);
 	$cnt = $result->numRows($result);
 
 	$query2 = "SELECT * FROM accountuser where domain_name='$domain' ORDER BY username";
