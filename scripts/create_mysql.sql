@@ -19,6 +19,9 @@ CREATE TABLE accountuser (
   password varchar(50) binary NOT NULL default '',
   prefix varchar(50) NOT NULL default '',
   domain_name varchar(255) NOT NULL default '',
+  imap int(10) NOT NULL default '0',
+  pop int(10) NOT NULL default '0',
+  sieve int(10) NOT NULL default '0',
   UNIQUE KEY username (username)
 ) TYPE=MyISAM;
 # --------------------------------------------------------

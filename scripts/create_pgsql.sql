@@ -12,7 +12,10 @@ CREATE TABLE accountuser (
   username varchar(255) PRIMARY KEY,
   password varchar(50) NOT NULL default '',
   prefix varchar(50) NOT NULL default '',
-  domain_name varchar(255) NOT NULL default ''
+  domain_name varchar(255) NOT NULL default '',
+  imap int NOT NULL default 0,
+  pop int NOT NULL default 0,
+  sieve int NOT NULL default 0
 );
 
 CREATE TABLE adminuser (
