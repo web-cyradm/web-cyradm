@@ -71,7 +71,7 @@ switch ($LANG){
 <body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 */
 ?>
-	<body bgcolor="#ffffff" style="margin: 0px;">
+	<body style="margin: 0px;">
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="height: 100%;">
 		<tr>
 			<td colspan="2" height="80" class="banner" bgcolor="#CCCCCC"><img 
