@@ -96,7 +96,7 @@ if ($wc_configured){
 							    "forwardalias", "forwardaccount",
 							    "newemail", "deleteemail",
 							    "editemail", "aliases", "newalias",
-							    "editalias", "deletealias"))){
+							    "editalias", "deletealias", "search"))){
 				include sprintf('%s/%s.php', WC_BASE, $_GET['action']);
 			} else {
 				switch ($_GET['action']){

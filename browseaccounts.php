@@ -40,6 +40,7 @@
 	$b = 0;
 	if ($cnt != 0){
 		printf ("%s: %d", _("Total accounts"), $total);
+		print "<br>"._("Displaying from position:")." $row_pos";
 		?>
 		<table cellspacing="2" cellpadding="0">
 			<tr>
@@ -88,7 +89,6 @@
 					<?php
 					$_heads = array(
 						_("Email address"), _("Username"), 
-						_("Forwards"), 
 						_("Last login"), _("Quota used")
 					);
 					foreach ($_heads as $_head){
@@ -179,29 +179,27 @@
 								$row = $result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
 								print $row['alias'] . "<br>";
 							}
+				                        $query4 = "select * from virtual where alias=\"" . $username . "\"";
+							$result4 = $handle->query($query4);
+							$row4 = $result4->fetchRow(DB_FETCHMODE_ASSOC, 0);
+							if (is_array($row4)){
+							    print "<br><b>" . _("Forwards") . ":</b><br><br>";
+							    $forwards_tmp = preg_split('|,\s*|', stripslashes($row4['dest']));   
+							    $forwards = array();                                                
+							    while (list(, $forward) = each($forwards_tmp)){
+								if (strtolower($forward) != strtolower($username)){
+								    $forwards[] = htmlspecialchars(trim($forward));
+								} else {
+								    $forwards[] = "<b>" . htmlspecialchars(trim($forward)) . "</b>";
+								}
+							    }
+							    echo implode("<br>", $forwards);
+							}
 							?>
 						</td>
 
 						<td valign="middle">
 							<?php echo $username;?>
-						</td>
-
-						<td valign="middle">
-						    <?php
-				                        $query4 = "select * from virtual where alias=\"" . $username . "\"";
-							$result4 = $handle->query($query4);
-							$row4 = $result4->fetchRow(DB_FETCHMODE_ASSOC, 0);
-							$forwards_tmp = preg_split('|,\s*|', stripslashes($row4['dest']));   
-							$forwards = array();                                                
-							while (list(, $forward) = each($forwards_tmp)){
-							    if (strtolower($forward) != strtolower($username)){
-								$forwards[] = htmlspecialchars(trim($forward));
-							    } else {
-								$forwards[] = "<b>" . htmlspecialchars(trim($forward)) . "</b>";
-							    }
-							}
-							echo implode("<br>", $forwards);
-						    ?>
 						</td>
 
 						<td align="center" valign="middle">

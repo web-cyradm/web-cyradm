@@ -42,6 +42,7 @@ $cnt = $result->numRows();
 $row = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 $admintype = $row['type'];
 if ($admintype != 0){
+	if (!isset($domain)) $domain='';
 //	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 	for ($i=0; $i < $cnt; $i++){
 		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);

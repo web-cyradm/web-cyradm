@@ -4,25 +4,37 @@
         <td valign="top">
 
 <?php
+$cyr_conn = new cyradm;
+$error = $cyr_conn -> imap_login();
 
-$query="SELECT * FROM domain where domain_name LIKE '%$searchstring%' ORDER BY domain_name";
-$query2="SELECT * FROM accountuser where username LIKE '%$searchstring%' ORDER BY username";
-$query3="SELECT * FROM alias where username LIKE '%$searchstring%' ORDER BY username";
-
-$handle=DB::connect($DB['DSN'], true);
-if (DB::isError($handle)) {
-	die (_("Database error"));
+if ($error!=0){
+    die ("Error $error");
 }
 
-	
+if ($admintype==0) {
+    $allowed_domains="('1'='1";
+} else {
+    $allowed_domains="(a.domain_name='";
+    for ($i = 0; $i < $cnt; $i++){                                                              
+	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);                                     
+	$allowed_domains.=$row['domain_name']."' OR a.domain_name='";                                       
+    }
+}
+
+$query="SELECT * FROM domain a where domain_name LIKE '%$searchstring%' 
+        and $allowed_domains') 
+        ORDER BY domain_name";
+$query2="SELECT distinct a.username, a.domain_name FROM virtual as v, accountuser as a 
+         where ((v.username LIKE '%$searchstring%') or (v.alias LIKE '%$searchstring%'))
+         and (v.username=a.username) and 
+	 $allowed_domains')
+	 ORDER BY username";
 $result=$handle->query($query);
 $result2=$handle->query($query2);
-$result3=$handle->query($query3);
 	
 
 $cnt=$result->numRows($result);
-$cnt2=$result2->numRows($result2);
-$cnt3=$result2->numRows($result3);
+$total=$result2->numRows($result2);
 
 #####  Show matching Domains first #######
 
@@ -37,7 +49,7 @@ print "<th>". _("domainname")."</th>";
 
 
 if (!$DOMAIN_AS_PREFIX ) {
-        print "<th>"._("prefix")."</th>";
+    print "<th>"._("prefix")."</th>";
 }
 
 print "<th>"._("max Accounts")."</th>";
@@ -81,12 +93,7 @@ for ($c=0;$c<$cnt;$c++){
 	print $row[3];
 
 	print "&nbsp;</td>\n</tr>\n";
-}
-
-
-
-
-	
+    }
 
 print "</tbody>";
 print "</table>";
@@ -94,31 +101,24 @@ print "</table>";
 ############ And now show the users matching the search query ###########
 
 
-print "<h3>"._("Total usernames matching:")." ".$cnt3."</h3>";
+print "<h3>"._("Total users matching:")." ".$total."</h3>";
 if (!isset($row_pos)){
 	$row_pos=0;
 	}
-	$query="SELECT * FROM accountuser where username LIKE '$searchstring%' ORDER BY username";
-	$handle=DB::connect($DB['DSN'], true);
-	if (DB::isError($handle)) {
-		die (_("Database error"));
-	}
-
+        $query="SELECT distinct a.username, a.domain_name FROM virtual as v, accountuser as a 
+	        where ((v.username LIKE '%$searchstring%') or (v.alias LIKE '%$searchstring%'))
+	        and (v.username=a.username) 
+		and $allowed_domains') 
+	        ORDER BY username";
 	$result=$handle->limitQuery($query,$row_pos,10);
 	$cnt=$result->numRows($result);
 
-	$query2="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username";
-//        $result2=mysql_db_query($MYSQL_DB,$query2);
-	$result2=$handle->query($query2);
-
-
-	$total=$result2->numRows($result2);
-
+	print "<h4>"._("Displaying from position:")." $row_pos</h4>";
 	$b=0;
 	if ($cnt!=0){
 		print "<table cellspacing=\"2\" cellpadding=\"0\"><tr>";
 		print "<td class=\"navi\">";
-		print "<a href=\"index.php?action=newaccount&domain=$domain&username=$username\">"._("Add new account")."</a>";
+		print "<a href=\"index.php?action=newaccount&domain=$domain\">"._("Add new account")."</a>";
 		print "</td>";
 
 
@@ -129,14 +129,14 @@ if (!isset($row_pos)){
 			print "<td class=\"navi\"><a href=\"#\">"._("Previous 10 entries")."</a></td>";
 		}
 		else {
-			print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$prev\">".
+			print "<td class=\"navi\"><a href=\"index.php?action=search&domain=$domain&row_pos=$prev&searchstring=$searchstring\">".
 			_("Previous 10 entries") ."</a></td>";
 		}
 		if ($next>$total){
 			print "<td class=\"navi\"><a href=\"#\">"._("Next 10 entries")."</a></td>";
 		}
 		else {
-			print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next\">".
+			print "<td class=\"navi\"><a href=\"index.php?action=search&domain=$domain&row_pos=$next&searchstring=$searchstring\">".
 			_("Next 10 entries")."</a></td>";
 		}
 		print "</tr></table><p>";
@@ -147,7 +147,6 @@ if (!isset($row_pos)){
 		print "<th colspan=\"4\">"._("action")."</th>";
 		print "<th>"._("Email address")."</th>";
 		print "<th>"._("Username")."</th>";
-		print "<th>"._("Password")."</th>";
 		print "<th>"._("Quota used")."</th>";
 		print "</tr>";
 
@@ -182,30 +181,45 @@ if (!isset($row_pos)){
 			$row=$result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
 			print $row['alias']."<br>";
 		}
-
+                $query4 = "select * from virtual where alias=\"" . $username . "\"";
+                $result4 = $handle->query($query4);
+                $row4 = $result4->fetchRow(DB_FETCHMODE_ASSOC, 0);
+                if (is_array($row4)){
+                    print "<br><b>" . _("Forwards") . ":</b><br><br>";
+                    $forwards_tmp = preg_split('|,\s*|', stripslashes($row4['dest']));
+                    $forwards = array();
+	            while (list(, $forward) = each($forwards_tmp)){
+                        if (strtolower($forward) != strtolower($username)){
+                            $forwards[] = htmlspecialchars(trim($forward));
+                        } else {
+    	                    $forwards[] = "<b>" . htmlspecialchars(trim($forward)) . "</b>";
+                        }
+                    }
+                    echo implode("<br>", $forwards);
+                }
 		print "</td>\n<td>";
 		print $username;
 		print "</td>\n<td>";
-        //        print mysql_result($hnd,$c,'password');
-		print "******";
-		print "</td>\n<td>";
-		if ($DOMAIN_AS_PREFIX) {
-			$quota= $cyr_conn->getquota("user/$username");
-		}
-		else {
-			$quota= $cyr_conn->getquota("user.$username");
-		}
-		if ($quota[used]!="NOT-SET"){
-			$q_used=$quota[used];
-			$q_total=$quota[qmax];
-			$q_percent=100*$q_used/$q_total;
-			print $quota[used]." Kbytes "._("out of")." ";
-			print $quota[qmax]." Kbytes (".sprintf("%.2f",$q_percent)." %)";
-		}
-		else{
-			print _("Quota not set");
-		}
-
+                if ($DOMAIN_AS_PREFIX){
+                    $quota = $cyr_conn->getquota("user/" . $username);
+                } else {
+                    $quota = $cyr_conn->getquota("user." . $username);
+                }
+                                                    
+                if ($quota['used'] != "NOT-SET"){
+                    $q_used  = $quota['used'];
+                    $q_total = $quota['qmax'];
+                    if (! $q_total == 0){
+                        $q_percent = 100*$q_used/$q_total;
+                        printf ("%d KBytes %s %d KiBytes (%.2f%%)",
+                        $quota['used'], _("out of"),
+	                $quota['qmax'], $q_percent);
+                    } else {
+                        print _("Unable to retrieve quota");
+                    }
+                } else { 
+                    print _("Quota not set");
+                }  
 
 		print "&nbsp;</td>\n</tr>\n";
 
@@ -220,7 +234,7 @@ if (!isset($row_pos)){
 
 		print "<table><tr>";
 		print "<td class=\"navi\">\n";
-		print "<a href=\"index.php?action=newaccount&domain=$domain&username=$username\">"._("Add new account")."</a>";
+		print "<a href=\"index.php?action=newaccount&domain=$domain\">"._("Add new account")."</a>";
 		print "\n</td></tr></table>\n";
 
 	}
