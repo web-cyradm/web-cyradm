@@ -100,7 +100,7 @@ $PASSWORD_CHANGE_METHOD = "sql";
 
 error_reporting(E_ERROR);
 
-$VERSION="0.5.4-rc3";
+$VERSION="0.5.4";
 
 # Define reserved Emailadresses (Separated by comma):
 $RESERVED="postmaster,root";
