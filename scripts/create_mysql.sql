@@ -60,7 +60,7 @@ CREATE TABLE domain (
   maxaccounts int(11) NOT NULL default '20',
   quota int(10) NOT NULL default '20000',
   transport varchar(255) NOT NULL default 'cyrus',
-  freeaddress ENUM( 'YES', 'NO' ) DEFAULT 'NO' NOT NULL;
+  freeaddress ENUM( 'YES', 'NO' ) DEFAULT 'NO' NOT NULL,
   PRIMARY KEY  (domain_name),
   UNIQUE KEY prefix (prefix)
 ) TYPE=MyISAM;
