@@ -473,8 +473,24 @@ msgstr ""
 msgid "Maximum Accounts"
 msgstr ""
 
-#: newdomain.php:48
+#: newdomain.php:41
 msgid "Default Quota in Kilobytes"
+msgstr ""
+
+#: newdomain.php:47
+msgid "Standart Mailboxes"
+msgstr ""
+
+#: newdomain.php:51
+msgid "emailadress where the default aliases should be mapped (empty means no mapping)"
+msgstr ""
+
+#: newdomain.php:59
+msgid "Mail transport"
+msgstr ""
+
+#: newdomain.php:60
+msgid "Leave this as is, unless you know what you are doing"
 msgstr ""
 
 #: newdomain.php:125
