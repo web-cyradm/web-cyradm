@@ -25,6 +25,10 @@ switch ($LANG){
 		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=8859-2\">";
 	break;
 
+	case "tr_TR":
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-9\">";
+	break;
+
 	default:
 		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=8859-1\">";
 }
