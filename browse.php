@@ -1,91 +1,132 @@
 <!-- ############################## Start browse.php ###################################### -->
-<?php
+<tr>
+	<td width="10">&nbsp;</td>
 
-print "<tr>";
-print "<td width=\"10\">&nbsp; </td>";
-print "<td valign=\"top\"><h3>"._("Browse domains")."</h3>";  
-print "<table border=0>";
-print "<tbody>";
-print "<tr>";
-print "<th colspan=4>". _("action")."</th>";
-print "<th>". _("domainname")."</th>";
+	<td valign="top">
+		<h3>
+			<?php print _("Browse domains");?>
+		</h3>
+
+		<table border="0">
+			<tbody>
+				<tr>
+					<th colspan="4">
+						<?php print _("action");?>
+					</th>
+
+					<th>
+						<?php print _("domainname");?>
+					</th>
+
+					<?php
+					if (! $DOMAIN_AS_PREFIX){
+						?>
+						<th>
+							<?php print _("prefix");?>
+						</th>
+						<?php
+					}
+					?>
+
+					<th>
+						<?php print _("max Accounts");?>
+					</th>
+
+					<th>
+						<?php print _("default quota per user");?>
+					</th>
+				</tr>
+				
+				<?php
+
+				if (! isset($allowed_domains)) {
+					$query = "SELECT * FROM domain ORDER BY domain_name";
+				} else {
+//					$query = "SELECT * FROM domain WHERE domain_name='$allowed_domains' ORDER BY domain_name";
+					$query = "SELECT * FROM domain WHERE domain_name='";
+					for ($i = 0; $i < $cnt; $i++){
+						$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+						$allowed_domains=$row['domain_name'];
+//						print "DEBUG: Allowed Domains".$allowed_domains;
+						$query.="$allowed_domains' OR domain_name='";
+					}
+					$query .= "' ORDER BY domain_name";
+//					print $query;
+				}
+
+				$handle = DB::connect($DB['DSN'], true);
+
+				if (DB::isError($handle)) {
+					die (_("Database error"));
+				}
 
 
-if (!$DOMAIN_AS_PREFIX ) {
-	print "<th>"._("prefix")."</th>";
-}
+				$result = $handle->query($query);
+				$cnt    = $result->numRows($result);
 
-print "<th>"._("max Accounts")."</th>";
-print "<th>"._("default quota per user")."</th>";
-print "</tr>";
+				$b = 0;
+				for ($c=0; $c < $cnt; $c++){
+					if ($b==0){
+						$cssrow="row1";
+						$b=1;
+					} else {
+						$cssrow="row2";
+						$b=0;
+					}
 
-if (!isset($allowed_domains)){
-	$query="SELECT * FROM domain ORDER BY domain_name";
-}
-else{
+					$row = $result->fetchRow($result,$c,'domain_name');
+					$domain = $row[0];
 
-	//$query="SELECT * FROM domain WHERE domain_name='$allowed_domains' ORDER BY domain_name";
-	$query="SELECT * FROM domain WHERE domain_name='";
-	for ($i=0;$i<$cnt;$i++){
-		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);
-		$allowed_domains=$row['domain_name'];
-//		print "DEBUG: Allowed Domains".$allowed_domains;
-		$query.="$allowed_domains' OR domain_name='";
-		
-	}
-	$query.="' ORDER BY domain_name";
-//	print $query;
-}
+					?>
+					<tr class="<?php echo $cssrow;?>">
+						<?php
+						$_cols = array(
+							'editdomain'	=> _("Edit Domain"),
+							'deletedomain'	=> _("Delete Domain"),
+							'accounts'	=> _("accounts"),
+							'aliases'	=> _("Aliases")
+						);
+						foreach ($_cols as $_action => $_txt){
+							?>
+							<td>
+								<?php
+								printf ('<a href="index.php?action=%s&amp;domain=%s">%s</a>',
+									$_action, $domain, $_txt);
+								?>
+							</td>
+							<?php
+						}
+						?>
 
-$handle=DB::connect($DSN, true);
+						<td>
+							<?php echo $domain;?>
+						</td>
 
-if (DB::isError($handle)) {
-	die (_("Database error"));
-}
-
-
-$result=$handle->query($query);
-$cnt=$result->numRows($result);
-
-$b=0;
-for ($c=0;$c<$cnt;$c++){
-
-if ($b==0){
-	$cssrow="row1";
-	$b=1;
-  }
-else{
-	$cssrow="row2";
-	$b=0;
-}
-
-  $row=$result->fetchRow($result,$c,'domain_name');
-  $domain=$row[0];
-
-  print "<tr class=\"$cssrow\"> \n";
-  print "<td><a href=\"index.php?action=editdomain&domain=$domain\">". gettext("Edit Domain")."</a></td>\n";
-  print "<td><a href=\"index.php?action=deletedomain&domain=$domain\">". _("Delete Domain")."</a></td>\n";
-  print "<td><a href=\"index.php?action=accounts&domain=$domain\">". _("accounts")."</a></td>\n";
-  print "<td><a href=\"index.php?action=aliases&domain=$domain\">". _("Aliases")."</a></td>\n";
-  print "<td>";
-  print $domain;
-  print "</td>\n<td>";
-if (!$DOMAIN_AS_PREFIX) {
-	# Print the prefix
-	print $row[1];
-	print "</td>\n<td>";
-}
-
-  # Print the maxaccount
-  print $row[2];
-  print "</td>\n<td>";
-  # Print the quota
-  print $row[3];
-
-  print "&nbsp;</td>\n</tr>\n";
-
-}
-?>
-</tbody>
-</table>
+						<td>
+							<?php
+							if (! $DOMAIN_AS_PREFIX){
+								# Print the prefix
+								echo $row[1];
+								echo "</td><td>";
+							}
+							?>
+							<!-- Max Account -->
+							<?php
+							echo $row[2];
+							?>
+						</td>
+						
+						<td>
+							<!-- Quota -->
+							<?php
+							echo $row[3];
+							?>
+						</td>
+					</tr>
+					<?php
+				} // End of for
+				?>
+			</tbody>
+		</table>
 <!-- ############################### End browse.php ############################################# -->
+

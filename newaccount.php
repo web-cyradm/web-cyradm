@@ -1,198 +1,252 @@
-          <tr>
-        <td width="10">&nbsp; </td>
-        <td valign="top"> 
+<!-- #################### newaccount.php start #################### -->
+<tr>
+	<td width="10">&nbsp;</td>
+	<td valign="top"> 
 
-<?php
-require_once('config.inc.php');
+		<h3>
+			<?php print _("Add new Account to domain");?>:
+			<span style="color: red;">
+				<?php echo $domain;?>
+			</span>
+		</h3>
+		
+		<?php
+		require_once WC_BASE . '/config/conf.php';
 
-print "<h3>"._("Add new Account to domain")." <font color=red>$domain</font></h3>";
+		$query1 = "SELECT * from domain WHERE domain_name='$domain'";
 
-$query1="SELECT * from domain WHERE domain_name='$domain'";
-
-$handle=DB::connect($DSN, true);
-if (DB::isError($handle)) {
-	die (_("Database error"));
-}
-
-$result1=$handle->query($query1);
-
-$row=$result1->fetchRow($result1,$c,'prefix');
-
-$prefix=$row[1];
-$maxaccounts=$row[2];
-$transport=$row[4];
-// START Andreas Kreisl : freenames
-$freenames=$row[5];
-// END Andreas Kreisl : freenames
-
-if ($transport != "cyrus"){
-	die (_("transport is not cyrus, unable to create account"));
-}
-
-if (!$confirmed){
-
-	$query2="SELECT * FROM accountuser WHERE prefix='$prefix' order by username";
-
-	$result2=$handle->query($query2);
-	$cnt2=$result2->numRows($result2);	
-
-	if ($cnt2+1>$maxaccounts){
-
-		print _("Sorry, no more account allowed for domain"). ".$domain."._("Maximum allowed accounts is"). ".$maxaccounts";
-	}
-	else{
-
-	print "<p>"._("Total accounts").": ".$cnt2."<p>";
-
-        if (!$DOMAIN_AS_PREFIX) {
-
-// START Andreas Kreisl : freenames
-                if ($freenames=="YES"){
-                        $lastaccount= sprintf("%04d",$cnt2);
-                        $lastaccount=$prefix.$lastaccount;
-                }
-                else{
-                        if ($cnt2>0){
-                        $row2=$result2->fetchRow($result2,$cnt2-1,'username');
-//                      $lastaccount=mysql_result($result2,$cnt2-1,"username");
-                        $lastaccount=$row2[0];
-                        }
-
-                        if ($cnt2=0){
-                        $lastaccount=$prefix."0000";
-                        }
-                }
-// END Andreas Kreisl : freenames
-
-
-		$test = ereg ("[0-9][0-9][0-9][0-9]$",$lastaccount,$result_array);
-		$next= $result_array[0]+1;
-
-		$nextaccount= sprintf("%04d",$next);
-		$nextaccount=$prefix.$nextaccount;
-	}
-
-	?>
-
-	<form action="index.php" method="get">
-	<input type="hidden" name="action" value="newaccount">
-	<input type="hidden" name="confirmed" value="true">
-	<input type="hidden" name="domain" value="<?php print $domain ?>">
-	<table>	
-	<?php
-		if (!$DOMAIN_AS_PREFIX) {
-			print "<tr>\n";
-			print "<td>"._("Accountname")."</td>\n";
-// START Andreas Kreisl : freenames
-			if ($freenames=="YES"){
-			echo "<td><input class=\"inputfield\" type=\"text\" name=\"username\" value=\"$nextaccount\" onFocus=\"this.style.backgroundColor='#aaaaaa'\">";
-			}
-			else{
-				print "<input type=\"hidden\" name=\"username\" value=\"$nextaccount\">";
-				print "<td>$nextaccount</td>\n";
-			}
-// END Andreas Kreisl : freenames
-			print "</tr>\n";
+		$handle = DB::connect($DB['DSN'], true);
+		if (DB::isError($handle)) {
+			die (_("Database error"));
 		}
-	?>
 
-		<tr>
-			<td><?php print _("Email address") ?></td>
-			<td><input class="inputfield" type="text" name="email" onFocus="this.style.backgroundColor='#aaaaaa'">@<?php print $domain?>
-		</tr>
+		$result1 = $handle->query($query1);
 
-		<tr>
-			<td><?php print _("Quota") ?></td>
-			<td><input class="inputfield" type="text" name="quota" value="<?php print $row[3]; ?>" onFocus="this.style.backgroundColor='#888888'"></td>
-		</tr>
+		$row = $result1->fetchRow(DB_FETCHMODE_ORDERED, 0);
 
-		<tr>
-			<td><?php print _("Password") ?></td>
-			<td><input class="inputfield" type="password" name="password" onFocus="this.style.backgroundColor='#cccccc'"></td>
-		</tr>
+		$prefix		= $row[1];
+		$maxaccounts	= $row[2];
+		$def_quota	= $row[3];
+		$transport	= $row[4];
+		// START Andreas Kreisl : freenames
+		$freenames	= $row[5];
+		// END Andreas Kreisl : freenames
 
-		<tr>
-			<td><?php print _("Confirm Password") ?></td>
-			<td><input class="inputfield" type="password" name="confirm_password" onFocus="this.style.backgroundColor='#cccccc'"></td>
-		</tr>
-	
-		<tr>
-			<td></td>
-			<td><input class="button" type="submit" value="<?php print _("Submit") ?>"></td>
-		</tr>
-	
+		if ($transport != "cyrus"){
+			die (_("transport is not cyrus, unable to create account"));
+		}
 
-	</table>
-	</form>
-	<?php
+		if (empty($confirmed)){
 
-	}
-}
+			$query2 	= "SELECT * FROM accountuser WHERE prefix='$prefix' order by username";
+			$result2	= $handle->query($query2);
+			$cnt2		= $result2->numRows($result2);	
 
-else{
-	if ($DOMAIN_AS_PREFIX) {
-		$prefix=$domain;
-		$username="$email.$domain";
-	}
+			if ($cnt2+1 > $maxaccounts){
+				?>
+				<h3>
+					<?php print _("Sorry, no more account allowed for domain");?>
+					<span style="color: red;">
+						<?php echo $domain;?>
+					</span>
+					<br>
+					<?php print _("Maximum allowed accounts is");?>
+					<span style="font-weight: bolder;">
+						<?php echo $maxaccounts;?>
+					</span>
+				<?php
+			} else {
+				?>
+				<p>
+					<?php print _("Total accounts") . ": " . $cnt2;?>
+				</p>
+				<?php
 
-   $query3="INSERT INTO accountuser (username , password , prefix , " .
-       "domain_name) VALUES ('$username',";
-   switch($CRYPT){
-   case "crypt":
-       $query3 .= "ENCRYPT('$password')";
-       break;
-   case "mysql":
-       $query3 .= "PASSWORD('$password')";
-       break;
-   default:
-       $query3 .= "'$password'";
-        }
-   $query3.=",'$prefix','$domain')";
+				if (!$DOMAIN_AS_PREFIX){
+					// START Andreas Kreisl : freenames
+					if ($freenames=="YES"){
+						$lastaccount = sprintf("%04d",$cnt2);
+						$lastaccount = $prefix . $lastaccount;
+					} else {
+						if ($cnt2 > 0){
+							$row2 = $result2->fetchRow(DB_FETCHMODE_ORDERED, $cnt2 - 1);
+							// $row2 = $result2->fetchRow($result2,$cnt2-1,'username');
+							// $lastaccount=mysql_result($result2,$cnt2-1,"username");
+							$lastaccount = $row2[0];
+						}
 
-	$cyr_conn = new cyradm;
-	$error=$cyr_conn -> imap_login();
+						if ($cnt2 = 0){
+							$lastaccount = $prefix."0000";
+						}
+					}
+					// END Andreas Kreisl : freenames
 
-	if ($error!=0){
-		die ("Error $error");
-	}
+					$test = ereg ("[0-9][0-9][0-9][0-9]$", $lastaccount, $result_array);
+					$next = $result_array[0] + 1;
 
+					$nextaccount = sprintf("%04d",$next);
+					$nextaccount = $prefix.$nextaccount;
+				}
+				?>
+				<form action="index.php" method="get" style="border: ridge 0px maroon;">
+					<input type="hidden" name="action" value="newaccount">
+					<input type="hidden" name="confirmed" value="true">
+					<input type="hidden" name="domain" value="<?php print $domain ?>">
 
-	$result=$handle->query($query3);
+					<table>	
+						<?php
+						if (!$DOMAIN_AS_PREFIX){
+							?>
+							<tr>
+								<td>
+									<?php print _("Accountname");?>
+								</td>
 
-	$query4="INSERT INTO virtual (alias , dest , username , status) values ('$email@$domain' , '$username' , '$username' , '1')";
+								<!-- START Andreas Kreisl : freenames -->
+								<td>
+									<?php
+									if ($freenames == "YES"){
+										$_type = 'text';
+										$_disp = '';
+									} else {
+										$_type = 'hidden';
+										$_disp = $nextaccount;
+									}
+									?>
+									<input
+									<?php
+									echo ($_type === 'hidden')?(''):('class="inputfield"');
+									?>
+									type="<?php echo $_type;?>"
+									name="username"
+									value="<?php echo $nextaccount;?>"
+									onfocus="this.style.backgroundColor='#aaaaaa';"
+									><?php echo $_disp;?>
+								</td>
+								<!-- END Andreas Kreisl : freenames -->
+							</tr>
+							<?php
+						} // End of if (!$DOMAIN_AS_PREFIX)
 
-	$result2=$handle->query($query4);
+						$_fields = array(
+							'email'	=> array(_("Email address"), 'a', false, '@' . $domain),
+							'quota' => array(_("Quota"), '8', false, '', $def_quota),
+							'password' => array(_("Password"), 'c', true, ''),
+							'confirm_password' => array(_("Confirm Password"), 'c', true, '')
+						);
 
-	if ($result and $result2){
-		print _("Account successfully added to the Database")."...</br>";
-	}
+						foreach ($_fields as $_name => $_def){
+							?>
+								<tr>
+									<td>
+										<?php echo $_def[0];?>
+									</td>
 
+									<td>
+										<input
+										class="inputfield"
+										type="<?php
+										echo ($_def[2])?('password'):('text');
+										?>"
+										name="<?php
+										echo $_name;
+										?>"
+										onfocus="this.style.backgroundColor='#<?php
+										echo str_repeat($_def[1], 6);
+										?>'"
+										<?php
+										echo (isset($_def[4]))?('value="' . $_def[4] . '"'):('');
+										?>
+										><?php
+										echo $_def[3];
+										?>
+									</td>
+								</tr>
+							<?php
+						}
+						?>
 
-	if ($DOMAIN_AS_PREFIX) {
-		$result=$cyr_conn->createmb("user/".$username);
-	}
-	else {
-		$result=$cyr_conn->createmb("user.".$username);
-	}
+						<tr>
+							<td colspan="2" align="center" style="border: 0px inset maroon;">
+								<input
+								class="button"
+								type="submit"
+								value="<?php
+								print _("Submit");
+								?>"
+								>
+							</td>
+						</tr>
+					</table>
+				</form>
+				<?php
+			} // End of if ($cnt2+1 > $maxaccounts) .. else 
+		} else {
+			if ($DOMAIN_AS_PREFIX){
+				$prefix		= $domain;
+				$username	= $email . "." . $domain;
+				$seperator	= '/';
+			} else {
+				$seperator	= '.';
+			}
 
-	if ($result){
-		print _("Account succesfully added to the IMAP Subsystem");
-	}
+			$query3="INSERT INTO accountuser (username, password, prefix, 
+				 domain_name) VALUES ('" . $username . "',";
+			switch($CRYPT){
+			case "crypt":
+				$query3 .= "ENCRYPT('$password')";
+				break;
+			case "mysql":
+				$query3 .= "PASSWORD('$password')";
+				break;
+			default:
+				$query3 .= "'$password'";
+				break;
+			}
 
-	if ($DOMAIN_AS_PREFIX) {
-		print $cyr_conn->setacl("user/$username","$CYRUS_USERNAME","lrswipcda");	
-		$result=$cyr_conn->setmbquota("user/".$username,"$quota");
-	}
-	else {
-		print $cyr_conn->setacl("user.$username","$CYRUS_USERNAME","lrswipcda");
-		$result=$cyr_conn->setmbquota("user.".$username,"$quota");
-	}
+			$query3 .= ",'" . $prefix . "','" . $domain . "')";
 
+			$cyr_conn = new cyradm;
+			$error=$cyr_conn -> imap_login();
 
-}
+			if ($error!=0){
+				die ("Error $error");
+			}
 
+			$result=$handle->query($query3);
 
-?>
+			$query4 = "INSERT INTO virtual (alias, dest, 
+				username, status) values (
+				'" . $email . "@" . $domain . "' , 
+				'$username' , '$username' , '1')";
 
-</td></tr>
+			$result2 = $handle->query($query4);
+
+			if ($result and $result2){
+				?>
+				<h3>
+					<?php print _("Account successfully added to the Database");?>:
+					<span style="color: red;">
+						<?php echo $username;?>
+					</span>
+				</h3>
+				<?php
+			}
+
+			$result=$cyr_conn->createmb("user" . $seperator . $username);
+
+			if ($result){
+				?>
+				<h3>
+					<?php print _("Account succesfully added to the IMAP Subsystem");?>
+				</h3>
+				<?php
+			}
+			print $cyr_conn->setacl("user" . $seperator . $username, $CYRUS['ADMIN'], "lrswipcda");
+			$result = $cyr_conn->setmbquota("user" . $seperator . $username, $quota);
+		}
+		?>
+	</td>
+</tr>
+<!-- #################### newaccount.php end #################### -->
 

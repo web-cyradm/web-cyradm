@@ -1,3 +1,3 @@
 <?php
-include ("browse.php");
-?>
+include WC_BASE . "/browse.php";
+

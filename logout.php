@@ -8,52 +8,82 @@ session_name('web-cyradm-session');
 session_start();
 //print session_id();
 if(session_destroy()){
+/*
 	print "<html>";
 	print "<title>Web-cyradm</title>";
 	print "<meta http-equiv=Content-Type content=text/html; charset=iso-8859-1>";
 	print "</head>";
 	print "<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>";
 	print "<form name=form1 method=post action=>";
-	print "<table width=100% border=0 height=100%>";
-	print "<tr>";	
-	print "<td align=center valign=middle>";
-	print "<table width=450 border=0 cellpadding=1 cellspacing=1 height=150>";
-	print "<tr>";
-	print "<td bgcolor=#000000>";
-	print "<table border=0 bgcolor=#FFFFFF cellpadding=0 cellspacing=0 width=450 height=150>";
-	print "<tr>"; 
-	print "<td bgcolor=#000666><font face=Verdana, Arial, Helvetica, sans-serif><b><font color=#FFFFFF size=2>Web-cyradm</font></b></font></td>";
-	print "</tr>";
-	print "<tr> ";
-	print "<td>&nbsp;</td>";
-	print "</tr>";
-	print "<tr> ";
-	print "<td> ";
-	print "<p align=center><font face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#000000 size=2>";
-	print _("Thank you for using Web-cyradm")."</font></p>";
-	print "<p align=center><font face=Verdana,Geneva,Arial,Helvetica,sans-serif size=2 color=#000000><b><font size=3>";
-	print _("You are logged out")."</font></b></font></p>";
-        print "<p align=center><font face=Verdana,Geneva,Arial,Helvetica,sans-serif size=2 color=#000000>"; 
-        print _("If you like to login click")." <a class=\"navi\" href=index.php>"._("here")."</a></font></p>";
-        print "</td>";
-        print "</tr>";
-        print "<tr>";
-        print "<td>&nbsp;</td>";
-	print "</tr>";
-	print "</table>";
-			
-	print "</td>";
-	print "</tr>";
-	print "</table>";
-	print "</td>";
-	print "</tr>";
-	print "</table>";
-	print "</form>";
-	print "</body>";
-	print "</html>";
+*/
+	?>
+	<table width="100%" border="0" style="height: 100%;">
+		<tr>
+			<td align="center" valign="middle">
+				<table width="450" border="0" cellpadding="1" 
+				cellspacing="1" style="height: 150px;">
+					<tr>
+						<td bgcolor="#000000">
+							<table border="0" bgcolor="#FFFFFF" 
+							cellpadding="0" cellspacing="0" 
+							width="450" style="height: 150px;">
+								<tr>
+									<td bgcolor="#000666"
+									style="font-family: Verdana, Arial, Helvetica, sans-serif;
+									color: #fff; font-size: large;
+									font-weight: bold;">
+										Web-cyradm
+									</td>
+								</tr>
 
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+
+								<tr>
+									<td>
+										<p align="center"
+										style="font-family: Verdana, Arial, Helvetica, sans-serif;
+										color: #000; font-size: large;">
+											<?php print _("Thank you for using Web-cyradm");?>
+										</p>
+
+										<p align="center"
+										style="font-family: Verdana, Arial, Helvetica, sans-serif;
+										color: #000; font-size: x-large;
+										font-weight: bold;">
+											<?php print _("You are logged out");?>
+										</p>
+
+										<p align="center"
+										style="font-family: Verdana, Arial, Helvetica, sans-serif;
+										color: #000; font-size: large;">
+											<?php print _("If you like to login click");?>
+											<a class="navi" href="index.php"><?php
+											print _("here");
+											?></a>
+										</p>
+									</td>
+								</tr>
+
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+							</table>
+ 
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+<!--
+</form>
+</body>
+</html>
+-->
+	<?php
 }
-
 ?>
 </td></tr>
 

@@ -1,104 +1,164 @@
-
-
 <?php
-
-print "<!-- ############################## Begin Menu ############################################ -->";
-
-############### Root menu first ##########
-
-	
-
-
-print "<table border=\"0\" cellspacing=\"2\" cellpadding=\"0\">\n";
-print "<tr>\n";
-
-if ($admintype==0){
-
-	print "<td colspan=\"7\">"._("Superusers Menu")."</td><td colspan=\"3\">"._("Domainmasters menu")."</td></tr><tr>";
-
-
-	print "<td class=\"rootnavi\" width\"20\">";
-	print "<a href=\"index.php?action=newdomain&domain=new\">"._("add new domain")."</a></td>\n";
-
-	print "<td>&nbsp;</td><td class=\"rootnavi\">";
-	print "<a href=\"index.php?action=browse&domain=$domain\">"._("browse domains")."</a></td>\n";
-
-	print "<td>&nbsp;</td><td class=\"rootnavi\">";
-	print "<a href=\"index.php?action=adminuser&domain=$domain\">"._("adminusers")."</a></td>\n";
-
-	print "<td>&nbsp;</td><td>&nbsp;</td>";
-
+if (! isset($domain)){
+	$domain = '';
 }
-
-################ And the supervisors menu #####
-
-print "<td class=\"navi\">";
-print "<a href=\"index.php?action=accounts&domain=$domain\">"._("accounts")."</a></td>\n";
-
-# Temporary removed, subject to discuss
-#print "<td>&nbsp;</td><td class=\"navi\">";
-#print "<a href=\"index.php?action=aliases&domain=$domain\">"._("Aliases")."</a></td>\n";
-
-print "<td>&nbsp;</td><td class=\"navi\">";
-print "<a href=\"index.php\">"._("home")."</a></td>\n";
-
-print "<td>&nbsp;</td><td class=\"navi\">";
-print "<a href=\"index.php?action=logout&domain=$domain\">"._("logout")."</a></td>\n";
-
-print "<form action=\"index.php\" method=\"get\">";
-
-print "<td>&nbsp;</td><td class=\"navi\">";
-print "<a href=\"#\">"._("Search").":</a>";
-print "<input type=\"hidden\" name=\"action\" value=\"search\">";
-print "<input type=\"hidden\" name=\"domain\" value=\"$domain\">";
-print "<input class=\"inputfield\" type=\"text\" name=\"searchstring\">";
-print "</form>";
-
-
-print "</td>";
-print "</tr>";
-print "</table>";
-
-print "</td></tr>";
-print "<tr>";
-print "<td width=\"10\">&nbsp;</td>";
-print "<td valign=\"top\" height=\"30\">";
-print "<table border=\"0\" cellspacing=\"2\" cellpadding=\"2\" class=\"header\">";
-print "<tr>";
-print "<td>-&gt;</td>";
-print "<td>"._("Logged in as user").": </td>";
-print "<td><b>$user</b></td>";
-//print "</tr>";
-//print "<tr>";
-print "<td>-&gt;</td>";
-print "<td>"._("Your role is").": </td>";
-if ($admintype==0){
-        print "<td><b><font color=\"red\">"._("Superuser")."</font></b></td>";
-}
-else if ($admintype==1){
-        print "<td><b><font color=\"red\">"._("Domain Master")."</font></b></td>";
-}
-//print "<tr>";
-print "<td>-&gt;</td>";
-print "<td>"._("Current domain is").": </td>";
-if ($domain==""){
-	print "<td><b>"._("No domain selected")."</b></td>";
-}
-else {
-	print "<td><b>$domain</b></td>";
-}
-print "</tr>";
 ?>
-</tr>
+<!-- ############################## Begin Menu ############################################ -->
+<table border="0" cellspacing="2" cellpadding="0">
+	<tr>
+		<?php
+		if ($admintype==0){
+			?>
+			<!-- ############### Root menu first ########## -->
+			<td colspan="7">
+				<?php print _("Superusers Menu");?>
+			</td>
+
+			<td colspan="3">
+				<?php print _("Domainmasters menu");?>
+			</td>
+
+		</tr>
+
+		<tr>
+			<td class="rootnavi">
+				<a href="index.php?action=newdomain&amp;domain=new"
+				><?php print _("add new domain");?></a>
+			</td>
+
+			<td>&nbsp;</td>
+
+			<td class="rootnavi">
+				<a href="index.php?action=browse"
+				><?php print _("browse domains");?></a>
+			</td>
+
+			<td>&nbsp;</td>
+
+			<td class="rootnavi">
+				<a href="index.php?action=adminuser&amp;domain=<?php echo $domain;?>"
+				><?php print _("adminusers");?></a>
+			</td>
+
+			<td>&nbsp;</td>
+
+			<td>&nbsp;</td>
+			
+			<?php
+		}
+		?>
+		<!-- ################ And the supervisors menu ##### -->
+
+		<td class="navi">
+			<a href="index.php?action=accounts&amp;domain=<?php echo $domain;?>"
+			><?php print _("accounts");?></a>
+		</td>
+
+		<td>&nbsp;</td>
+
+		<!--
+		# Temporary removed, subject to discuss
+		<td class="navi">
+			<a href="index.php?action=aliases&amp;domain=<?php echo $domain;?>"
+			><?php print _("Aliases");?></a>
+		</td>
+		-->
+
+		<td>&nbsp;</td>
+
+		<td class="navi">
+			<a href="index.php"><?php print _("home");?></a>
+		</td>
+
+		<td>&nbsp;</td>
+
+		<td class="navi">
+			<a href="index.php?action=logout&amp;domain=<?php echo $domain;?>"
+			><?php print _("logout");?></a>
+		</td>
+
+		<td>&nbsp;</td>
+
+		<td class="navi">
+			<form action="index.php" method="get">
+				<a href="#"><?php print _("Search");?>:</a>
+				<input type="hidden" name="action" value="search">
+				<input type="hidden" name="domain" value="<?php echo $domain;?>">
+				<input type="text" class="inputfield" name="searchstring">
+			</form>
+		</td>
+	</tr>
 </table>
-</td>
-</tr>
-  <tr>
+
+</td></tr>
+
+<tr>
 	<td width="10">&nbsp;</td>
-	<td height="5">
-	  <hr noshade size="1">
+
+	<td valign="top" height="30">
+		<table border="0" cellspacing="2" cellpadding="2"
+		class="header">
+			<tr>
+				<td>
+					-&gt;
+				</td>
+
+				<td>
+					<?php print _("Logged in as user");?>:
+				</td>
+
+				<td style="font-weight: bold;">
+					<?php echo $user;?>
+				</td>
+
+				<td>
+					-&gt;
+				</td>
+
+				<td>
+					<?php print _("Your role is");?>:
+				</td>
+
+				<td style="font-weight: bold;
+				color: red;">
+					<?php
+					if ($admintype == 0){
+						print _("Superuser");
+					} elseif ($admintype == 1){
+						print _("Domain Master");
+					}
+					?>
+				</td>
+
+				<td>
+					-&gt;
+				</td>
+
+				<td>
+					<?php print _("Current comain is");?>:
+				</td>
+
+				<td style="font-weight: bold;">
+					<?php
+					if (empty($domain)){
+						print _("No domain selected");
+					} else {
+						echo $domain;
+					}
+					?>
+				</td>
+			</tr>
+		</table>
 	</td>
-  </tr>
+</tr>
+
+<tr>
+	<td width="10">&nbsp;</td>
+	
+	<td height="5">
+		<hr noshade="noshade" size="1">
+	</td>
+</tr>
 
 <!-- ############################## End Menu ############################################ -->
 

@@ -1,25 +1,26 @@
 <?php 
 
-include ("lib/nls.php");
-$charset= $nls["charsets"][$LANG];
-
-//print "Language= ".$LANG." Charset= ".$charset;
+include WC_BASE . "/lib/nls.php";
+$charset = isset($nls["charsets"][$LANG])?$nls["charsets"][$LANG]:'iso-8859-1';
 
 if (isset($LANG)) {
-    header("Content-type: text/html; charset=$charset");
     header('Vary: Accept-Language');
+    header('Content-type: text/html; charset=' . $charset);
 }
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
 <!-- #####################################  Begin header ############################################ -->
 <html>
-<head>
-<title>web-cyradm</title>
+	<head>
+		<title>
+			web-cyradm
+		</title>
 
 <?php
 
-
+/*
 //print "Charset is". $nls["charsets"][$LANG];
 
 switch ($LANG){
@@ -52,26 +53,39 @@ switch ($LANG){
 }
 
 //print "Charset is: ".$charset;
-
+*/
 ?>
 
-<link rel="stylesheet" href="css/web-cyradm.css" type="text/css">
-</head>
-<body bgColor=#ffffff leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
- <tr>
-	<td colspan="2" height="80" class="banner" bgcolor="#CCCCCC"><img src="images/banner.gif" width="780" height="80" usemap="#Map" border="0">
-	  <map name="Map">
-	    <area shape="rect" coords="689,2,767,15" href="mailto:luc at delouw.ch">
-	</map>
-	  </td>
-  </tr>
-  <tr>
-	<td width="10">&nbsp;</td>
-	<td valign="middle" height="45">
+		<link rel="stylesheet" href="css/web-cyradm.css" type="text/css">
+	</head>
 
+<?php
+/*
+<body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+*/
+?>
+	<body bgcolor="#ffffff" style="margin: 0px;">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="height: 100%;">
+		<tr>
+			<td colspan="2" height="80" class="banner" bgcolor="#CCCCCC"><img 
+			src="images/banner.gif" width="780" height="80" usemap="#Map" border="0"
+			alt="web-cyradm" title="">
+				<map name="Map">
+					<area shape="rect" coords="689,2,767,15" 
+					href="mailto:luc at delouw.ch"
+					alt="send mail to luc at delouw.ch">
+				</map>
+			</td>
+		</tr>
+		
+		<tr>
+			<td width="10">&nbsp;</td>
+
+			<td valign="middle" height="45">
 
 <!--  <tr>
         <td width="10">&nbsp; </td>
         <td valign="top"> -->
+
 <!-- ########################################## End header ############################################## -->
+

@@ -1,6 +1,7 @@
 <?php
-include ("config.inc.php");
-include ("lib/crypto.php");
+define('WC_BASE', dirname(__FILE__));
+include WC_BASE . "/config/conf.php";
+include WC_BASE . "/lib/crypto.php";
 
 session_name('web-cyradm-session');
 session_start();

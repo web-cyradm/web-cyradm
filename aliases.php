@@ -8,7 +8,7 @@
 
 $domain = $_GET['domain'];
 
-$handle=DB::connect($DSN, true);
+$handle=DB::connect($DB['DSN'], true);
 if (DB::isError($handle)) {
 	die ($handle->getMessage());
 }

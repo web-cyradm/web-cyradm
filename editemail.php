@@ -1,95 +1,120 @@
-          <tr>
-        <td width="10">&nbsp; </td>
-        <td valign="top">
+<!-- #################### editemail.php start #################### -->
+<tr>
+	<td width="10">&nbsp; </td>
+	<td valign="top" align="center" style="border: 0px dashed green;">
 
-<?php
+		<?php
+		if ($authorized){
 
-if ($authorized){
+			$query = "select * from virtual where alias='$alias'";
+			$handle = DB::connect($DB['DSN'], true);
+			if (DB::isError($handle)) {
+				die (_("Database error"));
+			}
 
-	$query="select * from virtual where alias='$alias'";
-	$handle=DB::connect($DSN, true);
-	if (DB::isError($handle)) {
-		die (_("Database error"));
-	}
+			$result = $handle->query($query);
+			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+			$alias = $row['alias'];
+			$dest = $row['dest'];
+			$username = $row['username'];
 
-	$result=$handle->query($query);
-	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-	$alias=$row['alias'];
-	$dest=$row['dest'];
-	$username=$row['username'];
+			if (! empty($confirmed)){
+				$query = "UPDATE virtual SET alias='$newalias@$domain', dest='$dest' WHERE alias='$alias'";
+				$handle = DB::connect($DB['DSN'], true);
+				if (DB::isError($handle)) {
+					die (_("Database error"));
+				}
 
-	if ($confirmed){
+				$result = $handle->query($query);
 
-	        $query="UPDATE virtual SET alias='$newalias@$domain', dest='$dest' WHERE alias='$alias'";
-	
-	        $handle=DB::connect($DSN, true);
-		if (DB::isError($handle)) {
-			die (_("Database error"));
-		}
+				if (!DB::isError($result)){
+					?>
+					<h3>
+						<?php print _("Successfully changed");?>
+					</h3>
+					<?php
+					include WC_BASE . "/editaccount.php";
+				} else {
+					?>
+					<p>
+						<?php print _("Database error, please try again");?>
+					</p>
+					<?php
+				}
 
-	        $result=$handle->query($query);
+			}
+
+			if (empty($confirmed)){
+
+				$alias = spliti("@",$alias);
+				$alias = $alias[0];
+
+				if (isset($result_array)){
+					print $result_array[0];
+				}
+				?>
+
+				<form action="index.php" method="get">
+
+					<input type="hidden" name="action" value="editemail">
+					<input type="hidden" name="confirmed" value="true">
+					<input type="hidden" name="domain" value="<?php echo $domain ?>"> 
+					<input type="hidden" name="alias" value="<?php echo $alias . "@" . $domain ?>"> 
+					<input type="hidden" name="username" value="<?php echo $username;?>">
+
+					<table>
+
+						<tr>
+							<td>
+								<?php print _("Emailadress");?>
+							</td>
+
+							<td>
+								<input class="inputfield" 
+								type="text" size="30" 
+								name="newalias" value="<?php
+								echo $alias;?>">@<?php
+								echo $domain;?>
+							</td>
+						</tr>
+
+						<tr>
+							<td width=150>
+								<?php print _("Destination");?>
+							</td>
+
+							<td>
+								<input class="inputfield"
+								type="text" size="30"
+								name="dest" value="<?php
+								echo $dest;?>">
+							</td>
+						</tr>
 
 
-	        if (!DB::isError($result)){
-	                print "<h3>"._("Successfully changed")."</h3>";
-			include ("editaccount.php");
-	        }
-	        else{
-	                print "<p>"._("Database error, please try again")."<p>";
-	        }
+						<tr>
+							<td colspan="2" align="center">
+								<input class="button"
+								type="submit"
+								value="<?php
+								print _("Submit");?>">
+							</td>
+						</tr>
 
-	}
+					</table>
+				</form>
+				<?php
+			} // End of if (empty($confirmed))
+		} else {
+			?>
+			<h3>
+				<?php echo $err_msg;?>
+			</h3>
+			<?php
+		} // End of if ($authorized)
+		?>
+	</td>
+</tr>
 
-
-
-	if (!$confirmed){
-//		$test = ereg ("",$alias,$result_array);
-
-		$alias = spliti("@",$alias);
-		$alias = $alias[0];
-
-		print $result_array[0];
-
-	        ?>
-
-	        <form action="index.php" method="get">
-	
-	        <input type="hidden" name="action" value="editemail">
-	        <input type="hidden" name="confirmed" value="true">
-	        <input type="hidden" name="domain" value="<?php print $domain ?>"> 
-	        <input type="hidden" name="alias" value="<?php print $alias."@".$domain ?>"> 
-
-	        <table>
-
-	        <tr>
-	        <td><?php print _("Emailadress") ?></td>
-		<td><input class="inputfield" type="text" size="30" name=newalias value="<?php print $alias?>">@<?php print $domain?></td>
-	        </tr>
-
-	        <tr>
-	        <td width=150><?php print _("Destination") ?></td>
-	        <td><input class="inputfield" type="text" size="30" name=dest value="<?php print $dest ?>"> </td>
-	        </tr>
-
-
-	        <tr><td>
-	        <input class="button" type="submit" value="<?php print _("Submit") ?>">
-	        </td></tr>
-
-	        </table>
-		</form>
-
-
-	        <?php
-
-	}
-
-}
-else{
-	print "<h3>".$err_msg."</h3>";
-}
-
-?>
-</td></tr>
-
+<!-- #################### editemail.php end #################### -->
 

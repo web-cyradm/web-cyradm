@@ -1318,12 +1318,14 @@ $DB_TYPE="mysql";
 */
 
 
-$DB_HOST="localhost";
-$DB_NAME="mail";
-$DB_USER="mail";
-$DB_PASSWD="secret";
-$DB_PROTOCOL="unix"; // set to "tcp" for TCP/IP
-$DSN="$DB_TYPE://$DB_USER:$DB_PASSWD@$DB_PROTOCOL+$DB_HOST/$DB_NAME";
+$DB = array(
+        'TYPE'  => 'mysql',
+        'USER'  => 'mail',
+        'PASS'  => 'secret',
+        'PROTO' => 'unix',      // set to "tcp" for TCP/IP
+        'HOST'  => 'localhost',
+        'NAME'  => 'mail'
+);
      _________________________________________________________________
 
 8.3. Default Quota

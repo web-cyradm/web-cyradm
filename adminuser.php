@@ -1,133 +1,191 @@
 <!-- ############################## Start adminuser.php ###################################### -->
-           <tr>
-        <td width="10">&nbsp; </td>
-<?php
+<tr>
+	<td width="10">&nbsp;</td>
 
-print "<td valign=\"top\"><h3>"._("Browse admins")."</h3>";
+	<td valign="top">
+		<h3>
+			<?php print _("Browse admins");?>
+		</h3>
 
-
-if ($admintype==0){
-        $query="SELECT * FROM adminuser"; 
-//	$query="SELECT * FROM domainadmin";
-        $handle=DB::connect($DSN, true);
-	if (DB::isError($handle)) {
-		die (_("Database error"));
-	}
-
-        $result=$handle->query($query);
-        $cnt=$result->numRows();
-
-        $total=$result->numRows();
-        $b=0;
-        if ($cnt!=0){
-                print _("Total administrators").": ".$total."<p>";
-                print "<table cellspacing=\"2\" cellpadding=\"0\"><tr>";
-                print "<td class=\"navi\">";
-                print "<a href=\"index.php?action=newadminuser&domain=$domain&username=$username\">"._("Add administator")."</a>";
-                print "</td>";
-
-
-                $prev = $row_pos -10;
-                $next = $row_pos +10;
-
-                if ($row_pos<10){
-                        print "<td class=\"navi\"><a href=\"#\">"._("Previous 10 entries")."</a></td>";
-                }
-                else {
-                        print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$prev\">".
-                        _("Previous 10 entries")."</a></td>";
-                }
-
-                if ($next>$total){
-                        print "<td class=\"navi\"><a href=\"#\">"._("Next 10 entries")."</a></td>";
-                }
-                else {
-                        print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next\">".
-                        _("Next 10 entries")."</a></td>";
-                }
-                print "</tr></table><p>";
-                print "<table border=\"0\">\n";
-                print "<tbody>";
-                print "<tr>";
-                print "<th colspan=\"2\">"._("action")."</th>";
-                print "<th>"._("Adminname")."</th>";
-                print "<th>"._("domain")."</th>";
-                print "<th>"._("admin type")."</th>";
-                print "</tr>";
-
-
-                for ($c=0;$c<$cnt;$c++){
-
-                if ($b==0){
-                        $cssrow="row1";
-                        $b=1;
-                }
-                else{
-                        $cssrow="row2";
-                        $b=0;
-                }
-		
-		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $c);
-                $username=$row['username'];
-		$query2="SELECT * from domainadmin WHERE adminuser='$username'";
-		$result2=$handle->query($query2);
-		$cnt2=$result->numRows();
-
-		$row2=$result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
-		$domainname=$row2['domain_name'];
-	        $type=$row['type'];
-                print "\n<tr class=\"$cssrow\">";
-                print "\n<td><a href=\"index.php?action=editadminuser&username=$username&domain=$domain\">"._("Edit adminuser")."</a></td>";
-                print "\n<td><a href=\"index.php?action=deleteadminuser&username=$username&domain=$domain\">"._("Delete adminuser")."</a></td>";
-                print "</td>\n<td>";
-                print $username;
-                print "</td>\n<td>";
-		for ($i=0;$i<$cnt2;$i++){
-
-			$query3="SELECT * FROM domainadmin WHERE username='$username'";
-//			print $query3;
-			$result3=$handle->query($query3);
-//			$row2=$result2->fetchRow(DB_FETCHMODE_ASSOC, $i);
-			$row3=$result2->fetchRow(DB_FETCHMODE_ASSOC, $i);
-			$domainname=$row3['domain_name'];
-			if ($domainname!=""){
-				print "<br>";
+		<?php
+		if ($admintype == 0){
+			$query = "SELECT * FROM adminuser"; 
+			$handle = DB::connect($DB['DSN'], true);
+			if (DB::isError($handle)) {
+				die (_("Database error"));
 			}
 
-			print $domainname;
+			$result = $handle->query($query);
+			$cnt = $result->numRows();
+
+			$total = $result->numRows();
+			if ($cnt != 0){
+				?>
+				<p>
+					<?php print _("Total administrators") . ": " . $total;?>
+				</p>
+
+				<table cellspacing="2" cellpadding="0">
+					<tr>
+						<td class="navi">
+							<a href="index.php?action=newadminuser&amp;domain=<?php
+							echo $domain;
+							?>"><?php
+							print _("Add administator");
+							?></a>
+						</td>
+						
+						<?php
+						if (empty($row_pos)){
+							$row_pos = 0;
+						}
+						$prev = $row_pos - 10;
+						$next = $row_pos + 10;
+
+						if ($row_pos < 10){
+							$_linkP = '#';
+						} else {
+							$_linkP = 'index.php?action=accounts&amp;domain=' . $domain . '&amp;row_pos=' . $prev;
+						}
+						if ($next > $total){
+							$_linkN = '#';
+						} else {
+							$_linkN = 'index.php?action=accounts&amp;domain=' . $domain . '&amp;row_pos=' . $next;
+						}
+						?>
+						<td class="navi">
+							<a href="<?php 
+							echo $_linkP;
+							?>"><?php print _("Previous 10 entries");?></a>
+						</td>
+
+						<td class="navi">
+							<a href="<?php
+							echo $_linkN;
+							?>"><?php print _("Next 10 entries");?></a>
+						</td>
+					</tr>
+				</table>
+
+				<table border="0">
+					<tbody>
+						<tr>
+							<th colspan="2">
+								<?php print _("action");?>
+							</th>
+
+							<th>
+								<?php print _("Adminname");?>
+							</th>
+
+							<th>
+								<?php print _("domain");?>
+							</th>
+
+							<th>	
+								<?php print _("admin type");?>
+							</th>
+						</tr>
+
+						<?php
+						for ($c = 0; $c < $cnt; $c++){
+							if (! isset($b)){
+								$cssrow = "row1";
+								$b = NULL;
+							} else {
+								$cssrow = "row2";
+								unset($b);
+							}
+
+							$row = $result->fetchRow(DB_FETCHMODE_ASSOC, $c);
+							$username = $row['username'];
+							$query2 = "SELECT * from domainadmin WHERE adminuser='$username'";
+							$result2 = $handle->query($query2);
+							$cnt2 = $result->numRows();
+
+							$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
+							$domainname = $row2['domain_name'];
+							$type = $row['type'];
+
+							?>
+
+							<tr class="<?php echo $cssrow;?>">
+								<td>
+									<a href="index.php?action=editadminuser&amp;username=<?php
+									echo $username;
+									?>&amp;domain=<?php
+									echo $domain;
+									?>"><?php
+									print _("Edit adminuser");
+									?></a>
+								</td>
+
+								<td>
+									<a href="index.php?action=deleteadminuser&amp;username=<?php
+									echo $username;
+									?>&amp;domain=<?php
+									echo $domain;
+									?>"><?php
+									print _("Delete adminuser");
+									?></a>
+								</td>
+
+								<td>
+									<?php echo $username;?>
+								</td>
+
+								<td>
+									<?php
+									for ($i = 0; $i < $cnt2; $i++){
+										$query3="SELECT * FROM domainadmin WHERE username='$username'";
+										$result3 = $handle->query($query3);
+										$row3 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $i);
+										$domainname = $row3['domain_name'];
+										print $domainname;
+									}
+									?>
+								</td>
+
+								<td>
+									<?php
+									if ($type == 0){
+										print _("Superuser");
+									} elseif ($type == 1){
+										print _("Domain Master");
+									}
+									?>
+								</td>
+							</tr>
+							<?php
+						}
+						?>
+					</tbody>
+				</table>
+				<?php
+			} else {
+				?>
+				<p>
+					<?php print _("No accounts fount");?>
+				</p>
+
+				<table>
+					<tr>
+						<td class="navi">
+							<a href="index.php?action=newaccount&amp;domain=<?php
+							echo $domain;
+							?>&amp;username=<?php
+							echo $username;
+							?>"><?php
+							print _("Add administrator")
+							?></a>
+						</td>
+					</tr>
+				</table>
+				<?php
+			}
 		}
-
-                print "</td>\n<td>";
-		if ($type==0){
-			print _("Superuser");
-		}
-		else if ($type==1){
-			print _("Domain Master");
-		}
-
-		print "&nbsp;</td>\n</tr>\n";
-
-
-                }
-                print "\n</tbody>\n";
-                print "</table>\n";
-
-                }
-                else{
-                        print "\n"._("No accounts fount")."\n<p>";
-
-                print "<table><tr>";
-                print "<td class=\"navi\">\n";
-                print "<a href=\"index.php?action=newaccount&domain=$domain&username=$username\">"._("Add administrator")."</a>";
-                print "\n</td></tr></table>\n";
-
-        }
-
-
-}
-
-?>
-<!-- </tbody>
-</table> -->
+		?>
+	</td>
+</tr>
 <!-- ############################### End adminuser.php ############################################# -->
 

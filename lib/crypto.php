@@ -21,8 +21,8 @@ class password{
 	// Check if supplied password is valid
 
 	function check($table, $username, $userinput, $encryption){
-		include ("config.inc.php");
-		include ("DB.php");
+		include WC_BASE . "/config/conf.php";
+		include "DB.php";
 
 		switch (strval($encryption)){
 		case "crypt":
@@ -30,7 +30,7 @@ class password{
 			/* First get the encrypted password out of the database to have the salt */
 
 		        $query = "SELECT password FROM $table WHERE username ='$username'";
-			$handle=DB::connect ($DSN,true);
+			$handle=DB::connect ($DB['DSN'],true);
 			if (DB::isError($handle)) {
 				die (_("Database error"));
 			}
@@ -57,7 +57,7 @@ class password{
 		case "sql":
 		case "2":
 			$query = "SELECT * FROM $table WHERE username='$username' AND password=PASSWORD('$userinput')";
-			$handle=DB::connect ($DSN,true);
+			$handle=DB::connect ($DB['DSN'],true);
 
 			if (DB::isError($handle)) {
 				die (_("Database error"));
@@ -78,7 +78,7 @@ class password{
 		case "plain":
 		case "0":
 			$query = "SELECT password FROM $table WHERE username ='$username'";
-			$handle=DB::connect ($DSN,true);
+			$handle=DB::connect ($DB['DSN'],true);
 
 			if (DB::isError($handle)) {
                                 die (_("Database error"));
@@ -111,7 +111,7 @@ class password{
 	*/
 
 	function update($table,$username,$newpassword,$encryption){
-		include ("config.inc.php");
+		include WC_BASE . "/config/conf.php";
 
 		switch ($encryption){
 		case "crypt":
@@ -120,7 +120,7 @@ class password{
 			$newpassword=crypt($newpassword,substr($newpassword,0,2));
 	
 			$query="UPDATE $table SET password='$newpassword' WHERE username='$username'";
-			$handle=DB::connect ($DSN,true);
+			$handle=DB::connect ($DB['DSN'],true);
 
 			if (DB::isError($handle)) {
                                 die (_("Database error"));
@@ -140,7 +140,7 @@ class password{
                 case "2":
 			
 			$query="UPDATE $table SET password=PASSWORD('$newpassword') WHERE username='$username'";
-			$handle=DB::connect ($DSN,true);
+			$handle=DB::connect ($DB['DSN'],true);
 
 			if (DB::isError($handle)) {
                                 die (_("Database error"));

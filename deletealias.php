@@ -53,7 +53,7 @@ else
 {
 	// $confirmed is set, so do the dirty work
 	
-	$handle=DB::connect($DSN, true);
+	$handle=DB::connect($DB['DSN'], true);
 	if (DB::isError($handle)) {
 		die ($handle->getMessage());
 	}
@@ -67,7 +67,7 @@ else
 		$query1 = "DELETE FROM virtual WHERE alias = '$alias' AND dest = '$dest' AND username = '$domain'";
 		$result1 = $handle->query( $query1 );
 		print( _("Removed")." <b>$dest</b> "._("from")." <b>$alias</b>.\n" );
-		include( "editalias.php" );
+		include WC_BASE . "/editalias.php";
 	}
 	else
 	{
@@ -75,7 +75,7 @@ else
 		$query2 = "DELETE FROM virtual WHERE alias = '$alias' AND username = '$domain'";
 		$result2 = $handle->query( $query2 );
 		print( _("Removed the alias")." <b>$alias</b>\n" );
-		include( "aliases.php" );
+		include WC_BASE . "/aliases.php";
 	}
 }
 

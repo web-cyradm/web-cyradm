@@ -1,149 +1,262 @@
-          <tr>
-        <td width="10">&nbsp; </td>
-        <td valign="top">
-
-
-<?php
-
-if ($admintype==0){
-
-	print "<h3>"._("Add new domain")."</h3>";
-
-	if (!$confirmed){
-	
-
-	?>
-
-	<form action="index.php">
-	<input type="hidden" name="action" value="newdomain">
-	<input type="hidden" name="confirmed" value="true">
-		<table>
-			<tr>
-			<td><?php print _("Domainname") ?></td>
-			<td><input class="inputfield" type="text" size="20" name="domain"></td>
-			</tr>
-			<?php
-				if (!$DOMAIN_AS_PREFIX) {
-					print "<tr>\n";
-				        print "<td>"._("Prefix")."</td>\n";
-					print "<td><input class=\"inputfield\" type=\"text\" size=\"8\" name=\"prefix\"></td>\n";
-					print "</tr>\n";
-// START Andreas Kreisl : freenames
-					print "<tr>\n";
-				        print "<td>"._("Allow Free Names")."</td>\n";
-					print "<td><input class=\"inputfield\" type=\"checkbox\" name=\"freenames\"></td>\n";
-					print "</tr>\n";
-// END Andreas Kreisl : freenames
-				}
-				else {
-					print "<input type=\"hidden\" name=\"prefix\" value=\"to-be-overwritten-by-domain\">\n";
-				} 
+<!-- #################### newdomain.php start #################### -->
+<tr>
+	<td width="10">&nbsp;</td>
+	<td valign="top">
+		<?php
+		if ($admintype==0){
 			?>
-			<tr>
-			<td><?php print _("Maximum Accounts") ?></td>
-			<td><input class="inputfield" type="text" size="2" name="maxaccounts"></td>
-			</tr>
-			<tr>
-			<td><?php print _("Default Quota in Kilobytes") ?></td>
-			<td><input class="inputfield" type="text" size="5" name="quota" value="<?php print $DEFAULT_QUOTA ?>"></td>
-			</tr>
-			<tr><td><p></td></tr>
-			</table>
-			
-			<h4><?php print _("Standart Mailboxes") ?> </h4>
-			
-			<table>
-			<tr>
-			<td><?php print _("emailadress where the default aliases should be mapped (empty means no mapping)"); ?> </td>
-			</tr> 
-			<tr><td><input class="inputfield" type="text" name="defaultaliases">
-			</td>
-			</tr>
-	
-			</table>
-			<h4><?php print _("Mail transport") ?></h4>
-			<?php print _("Leave this as is, unless you know what you are doing") ?>
+			<h3>
+				<?php print _("Add new domain");?>
+			</h3>
+			<?php
 
-			<table>
+			if (empty($confirmed)){
+				?>
+				<form action="index.php" style="border: 0px double green;">
+					<input type="hidden" name="action" value="newdomain">
+					<input type="hidden" name="confirmed" value="true">
+					<?php
+					if ($DOMAIN_AS_PREFIX){
+						?>
+						<input type="hidden"
+						name="prefix"
+						value="to-be-overwritten-by-domain"
+						>
+						<?php
+					}
+					?>
 
-			<tr>
-			<td><select name="transport" class="selectfield">
-				<option selected value="cyrus">cyrus</option>
-				<option value="lmtp">lmtp</option>
-				<option value="smtp">smtp</option>
-				<option value="uucp">uucp</option>
-			</select></td>
-			<td>Parameter <input class="inputfield" type="text" name="tparam"></td>
-			</tr>
+					<table>
+						<tr>
+							<td>
+								<?php 
+								print _("Domainname");
+								?>
+							</td>
 
-			</table>
-			
-			<table>
-			
+							<td>
+								<input 
+								class="inputfield" 
+								type="text" 
+								size="20" 
+								name="domain">
+							</td>
+						</tr>
 
-			<tr>
-			<td><input class="button" type="submit" value="<?php print _("Submit") ?>" ></td>
-			</tr>
-		</table>
-	</form>
+						<?php
+						if (! $DOMAIN_AS_PREFIX) {
+							?>
+							<tr>
+								<td>
+									<?php print _("Prefix");?>
+								</td>
 
-	<?php
+								<td>
+									<input
+									class="inputfield"
+									type="text"
+									size="8"
+									name="prefix"
+									>
+								</td>
+							</tr>
 
-	}
+							<!-- START Andreas Kreisl : freenames -->
+							<tr>
+								<td>
+									<?php print _("Allow Free Names");?>
+								</td>
 
-	else{
+								<td>
+									<input
+									class="inputfield"
+									type="checkbox"
+									name="freenames"
+									value="Done by Andreas Kreisl"
+									>
+								</td>
+							</tr>
+							<!-- END Andreas Kreisl : freenames -->
+							<?php
+						} 
+						?>
+						<tr>
+							<td>
+								<?php print _("Maximum Accounts");?>
+							</td>
+							
+							<td>
+								<input
+								class="inputfield"
+								type="text"
+								size="2"
+								name="maxaccounts"
+								>
+							</td>
+						</tr>
+						
+						<tr>
+							<td>
+								<?php print _("Default Quota in Kilobytes");?>
+							</td>
+							
+							<td>
+								<input
+								class="inputfield"
+								type="text"
+								size="5"
+								name="quota"
+								value="<?php
+								print $DEFAULT_QUOTA;
+								?>">
+							</td>
+						</tr>
+						
+						<tr>
+							<td colspan="2">
+								<p>
+									&nbsp;
+								</p>
+							</td>
+						</tr>
+					</table>
 
-		if ($authorized==TRUE){
-			if ($DOMAIN_AS_PREFIX) {
-				$prefix=$domain;
+					<h4>
+						<?php print _("Standard Mailboxes");?>
+					</h4>
+
+					<table>
+						<tr>
+							<td>
+								<?php print _("emailadress where the default aliases should be mapped (empty means no mapping)");?>
+							</td>
+						</tr> 
+						
+						<tr>
+							<td>
+								<input
+								class="inputfield"
+								type="text"
+								name="defaultaliases"
+								>
+							</td>
+						</tr>
+
+					</table>
+					
+					<h4>
+						<?php print _("Mail transport");?>
+					</h4>
+					
+					<?php print _("Leave this as is, unless you know what you are doing");?>
+
+					<table>
+						<tr>
+							<td>
+								<select 
+								name="transport" 
+								class="selectfield">
+									<option
+									selected 
+									value="cyrus">cyrus</option>
+									<option 
+									value="lmtp">lmtp</option>
+									<option 
+									value="smtp">smtp</option>
+									<option
+									value="uucp">uucp</option>
+								</select>
+							</td>
+							
+							<td>
+								<?php print _("Parameter");?>
+								<input
+								class="inputfield"
+								type="text"
+								name="tparam"
+								>
+							</td>
+						</tr>
+					</table>
+
+					<table>
+						<tr>
+							<td>
+								<input
+								class="button"
+								type="submit"
+								value="<?php
+								print _("Submit");
+								?>">
+							</td>
+						</tr>
+					</table>
+				</form>
+				<?php
+			} else {
+				if ($authorized == TRUE){
+					if ($DOMAIN_AS_PREFIX) {
+						$prefix = $domain;
+					}
+
+					$trans = 'cyrus';
+					if ($transport != "cyrus"){
+						$trans = $transport . ":" . $tparam;
+					}
+					// START Andreas Kreisl : freenames
+					if (! empty($freenames)){
+						$freenames = "YES";
+					} else {
+						$freenames = "NO";
+					}
+					$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, transport,freenames) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$trans', '$freenames')";
+					// END Andreas Kreisl : freenames
+
+					$handle = DB::connect ($DB['DSN'],true);
+					if (DB::isError($handle)){
+						die (_("Database error"));
+					}
+
+					$result = $handle->query($query);
+
+					if (!DB::isError($result)){
+						?>
+						<h3>
+							<?php print _("Successfully added");?>:
+							<span style="color: red;">
+								<?php echo $domain;?>
+							</span>
+						</h3>
+						<?php
+						include WC_BASE . "/browse.php";
+					} else {
+						?>
+						<h3>
+							<?php print _("Database error, please try again");?>
+							<?php
+							echo get_var_dump($result);
+							?>
+						</h3>
+						<?php
+					}
+				} else {
+					?>
+					<h3>
+						<?php echo $err_msg;?>
+					</h3>
+					<?php
+				}
 			}
-
-			if ($transport != "cyrus"){
-				$trans=$transport.":".$tparam;
-			}
-			else{
-				$trans=$transport;
-			}
-// START Andreas Kreisl : freenames
-			if (isSet($freenames)){
-				$freenames="YES";
-			}
-			else{
-				$freenames="NO";
-			}
-
-			$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, transport,freenames) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$trans', '$freenames')";
-
-// END Andreas Kreisl : freenames
-		        $handle=DB::connect ($DSN,true);
-                        if (DB::isError($handle)) {
-                                die (_("Database error"));
-                        }
-
-		        $result=$handle->query($query);
-
-		        if (!DB::isError($result)){
-		                print _("Successfully added");
-				include ("browse.php");
-		        }
-		        else{
-		                print "<p>"._("Database error, please try again")."<p>";
-		        }
+		} else {
+			?>
+			<h3>
+				<?php print _("You are not allowed to add new domains");?>
+			</h3>
+			<?php
 		}
-		else{
-			print "<h3>".$err_msg."</h3>";
-		}
-	
-	}
+		?>
+	</td>
+</tr>
 
-}
-else{
-
-	print "<h3>"._("You are not allowed to add new domains")."</h3>";
-}
-
-
-?>
-</td></tr>
-
+<!-- #################### newdomain.php end #################### -->
 

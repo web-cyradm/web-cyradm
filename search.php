@@ -9,7 +9,7 @@ $query="SELECT * FROM domain where domain_name LIKE '%$searchstring%' ORDER BY d
 $query2="SELECT * FROM accountuser where username LIKE '%$searchstring%' ORDER BY username";
 $query3="SELECT * FROM alias where username LIKE '%$searchstring%' ORDER BY username";
 
-$handle=DB::connect($DSN, true);
+$handle=DB::connect($DB['DSN'], true);
 if (DB::isError($handle)) {
 	die (_("Database error"));
 }
@@ -99,7 +99,7 @@ if (!isset($row_pos)){
 	$row_pos=0;
 	}
 	$query="SELECT * FROM accountuser where username LIKE '$searchstring%' ORDER BY username";
-	$handle=DB::connect($DSN, true);
+	$handle=DB::connect($DB['DSN'], true);
 	if (DB::isError($handle)) {
 		die (_("Database error"));
 	}

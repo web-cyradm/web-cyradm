@@ -2,97 +2,123 @@
 
 function getmicrotime(){ 
     list($usec, $sec) = explode(" ",microtime()); 
-        return ((float)$usec + (float)$sec); 
+    return ((float)$usec + (float)$sec); 
 } 
+
+function get_var_dump(&$var, $name = NULL){
+	ob_start();
+	echo '<pre class="varDump" style="color: black; background-color: silver; font-family: monospace; border: 2px dotted red; display: block;">';
+	if ($name !== NULL){
+		echo $name . ":\n";
+	}
+	var_dump($var);
+	echo '</pre>';
+	$ret = ob_get_contents();
+	ob_end_clean();
+
+	return $ret;
+}
 
 if (file_exists("./migrate.php")){
 	die(_("migrate.php exists! please delete or rename it"));
 }
 
-include ("config.inc.php");
-include ("lib/nls.php");
-include ("lib/crypto.php");
+define('WC_BASE', dirname(__FILE__));
 
-$browserlang=explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']); // $HTTP_ACCEPT_LANGUAGE;
+$wc_configured = @file_exists(WC_BASE . '/config/conf.php');
 
-$browserlang1=substr($browserlang[0], 0, 2);
+if ($wc_configured){
+	include WC_BASE . "/config/conf.php";
+	include WC_BASE . "/lib/nls.php";
+	include WC_BASE . "/lib/crypto.php";
 
-//if ($nls['aliases'][$browserlang[0]]){
-if ($nls['aliases'][$browserlang1]){
-	$LANG=$nls['aliases'][$browserlang1];
-}
-
-require_once ("session.php");
-$session_ok = $_SESSION['session_ok'];
-
-// Lowest prio langauge is the session setting
-if ($_SESSION['LANG']){
-	$LANG=$_SESSION['LANG'];
-}
-
-// if no langauge is already set, use defaultlanguage
-if ($LANG==""){
-	$LANG=$DEFAULTLANG;
-}
-
-// For testing porpose, http variable LANG overrides all
-if ($_GET['LANG']){
-	$LANG=$_GET['LANG'];
-}
-
-include ("header.inc.php");
-
-setlocale(LC_MESSAGES, $LANG);
-putenv("LANG=" . $LANG);
-putenv("LANGUAGE=" . $LANG);
-
-setlocale(LC_ALL, $LANG);
-
-// Specify location of translation tables
-bindtextdomain("web-cyradm", "./locale");
-
-// Choose domain
-textdomain("web-cyradm");
-
-if ($_SESSION['session_ok'] === TRUE) {
-	include ("DB.php");
-	// include ("session.php");
-	include ("validate.inc.php");
-	include ("menu.inc.php");
-	include ("lib/cyradm.php");
-
-	if (!$_GET['domain'] and ! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain', 'editadminuser'))){
-		include ("welcome.php");
+	if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
+		$browserlang = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 	} else {
-		if (in_array($_GET['action'], array('logout', 'browse', 'editdomain', 
-		                                    'newdomain', "deletedomain",
-						    "adminuser", "newadminuser",
-						    "editadminuser", "deleteadminuser",
-						    "editaccount", "newaccount",
-						    "deleteaccount", "setquota",
-						    "change_password", "vacation",
-						    "forwardalias", "forwardaccount",
-						    "newemail", "deleteemail",
-						    "editemail", "aliases", "newalias",
-						    "editalias", "deletealias"))){
-			include(sprintf('%s.php', $_GET['action']));
+		$browserlang = 'en_EN';
+	}
+
+	require_once WC_BASE . "/session.php";
+
+	// 1st) Try to get the language from the browser
+	// 2nd) If there is a language setting in the session, use this instead
+	// 3rd) If none of the above is true, use the default language
+	if (isset($nls['aliases'][substr($browserlang[0], 0, 2)])){
+		// Get language from the browser
+		$LANG = $nls['aliases'][substr($browserlang[0], 0, 2)];
+	} elseif (isset($_SESSION['LANG'])){
+		// Use Language setting from session
+		$LANG = $_SESSION['LANG'];
+	} else {
+		// Fall back to default language
+		$LANG = $DEFAULTLANG;
+	}
+
+	// For testing porpose, GET variable LANG overrides all
+	$LANG = (! empty($_GET['LANG']))?($_GET['LANG']):($LANG);
+
+	include WC_BASE . "/header.inc.php";
+
+	setlocale(LC_MESSAGES, $LANG);
+	setlocale(LC_ALL, $LANG);
+	putenv("LANG=" . $LANG);
+	putenv("LANGUAGE=" . $LANG);
+
+	// Specify location of translation tables
+	bindtextdomain("web-cyradm", "./locale");
+
+	// Choose domain
+	textdomain("web-cyradm");
+
+	if ($_SESSION['session_ok'] === TRUE) {
+		include "DB.php";
+		include WC_BASE . "/validate.inc.php";
+		include WC_BASE . "/menu.inc.php";
+		include WC_BASE . "/lib/cyradm.php";
+
+		if (empty($_GET['domain']) &&
+		    (empty($_GET['action']) || 
+		     (! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain', 'editadminuser', 'newadminuser'))
+		     )
+		    )
+		   ){
+
+//		if (!$_GET['domain'] and ! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain', 'editadminuser'))){
+			include WC_BASE . "/welcome.php";
 		} else {
-			switch ($_GET['action']){
-				case "accounts":
-					include ("browseaccounts.php");
-					break;
+			if (in_array($_GET['action'], array('logout', 'browse', 'editdomain', 
+							    'newdomain', "deletedomain",
+							    "adminuser", "newadminuser",
+							    "editadminuser", "deleteadminuser",
+							    "editaccount", "newaccount",
+							    "deleteaccount", "setquota",
+							    "change_password", "vacation",
+							    "forwardalias", "forwardaccount",
+							    "newemail", "deleteemail",
+							    "editemail", "aliases", "newalias",
+							    "editalias", "deletealias"))){
+				include sprintf('%s/%s.php', WC_BASE, $_GET['action']);
+			} else {
+				switch ($_GET['action']){
+					case "accounts":
+						include WC_BASE . "/browseaccounts.php";
+						break;
 
-				case "catch":
-					include ("catchall.php");
-					break;
+					case "catch":
+						include WC_BASE . "/catchall.php";
+						break;
 
-				default:
-					include ("browse.php");
-					break;
+					default:
+						include WC_BASE . "/browse.php";
+						break;
+				}
 			}
 		}
+		include WC_BASE . "/footer.inc.php";
+	} else {
+		include WC_BASE . "/login.php";
 	}
-	include ("footer.inc.php");
 } else {
-	include ("login.php");
+	die("web-cyradm has not yet been configured!");
 }
+

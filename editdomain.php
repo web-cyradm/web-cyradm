@@ -1,128 +1,189 @@
-          <tr>
-        <td width="10">&nbsp; </td>
-        <td valign="top">
+<!-- #################### editdomain.php start #################### -->
+<tr>
+	<td width="10">&nbsp;</td>
+	<td valign="top">
 
-<?php
+		<?php
 
-if ($admintype==0){
+		if ($admintype == 0){
 
-	if ($confirmed){
+			if (! empty($confirmed)){
 
-// START Andreas Kreisl : freenames
-		if (isSet($freenames)){
-                	$freenames="YES";
-                }
-                else{
-                	$freenames="NO";
-                }
+				// START Andreas Kreisl : freenames
+				if (isset($freenames)){
+					$freenames="YES";
+				} else {
+					$freenames="NO";
+				}
 
+				$query = "UPDATE domain SET domain_name='$newdomain', maxaccounts='$maxaccounts',quota='$quota',freenames='$freenames' WHERE domain_name='$domain'";
+				// END Andreas Kreisl : freenames
 
+				$query2 = "UPDATE accountuser SET domain_name='$newdomain' WHERE domain_name='$domain'";
 
-	        $query="UPDATE domain SET domain_name='$newdomain', maxaccounts='$maxaccounts',quota='$quota',freenames='$freenames' WHERE domain_name='$domain'";
-// END Andreas Kreisl : freenames
+				$handle = DB::connect ($DB['DSN'],true);
+				if (DB::isError($handle)) {
+					die (_("Database error"));
+				}
 
-		$query2="UPDATE accountuser SET domain_name='$newdomain' WHERE domain_name='$domain'";
+				$result = $handle->query($query);
+				$result2 = $handle->query($query2);
 
-	        $handle=DB::connect ($DSN,true);
-		if (DB::isError($handle)) {
-			die (_("Database error"));
-		}
+				if (!DB::isError($result)){
+					?>
+					<h3>
+						<?php print _("Successfully changed domain");?>:
+						<span style="color: red;">
+							<?php echo $domain;?>
+						</span>
+					</h3>
+					<?php
+					include WC_BASE . "/browse.php";
+				} else {
+					?>
+					<h3>
+						<?php print _("Database error, please try again");?>
+					</h3>
+					<?php
+				}
 
-	        $result=$handle->query($query);
-	        $result2=$handle->query($query2);
+			}
 
+			if (empty($confirmed)){
+				$query = "select * from domain where domain_name='$domain'";
+				$handle = DB::connect($DB['DSN'],true);
+				if (DB::isError($handle)) {
+					die (_("Database error"));
+				}
 
-	        if (!DB::isError($result)){
-	                print _("Successfully changed");
-			include ("browse.php");
-	        }
-	        else{
-	                print "<p>"._("Database error, please try again")."<p>";
-	        }
+				$result = $handle->query($query);
+				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+				$domain = $row['domain_name'];
+				$prefix = $row['prefix'];
+				$maxaccounts = $row['maxaccounts'];
+				$quota = $row['quota']; 
+				// START Andreas Kreisl : freenames
+				$freenames=$row['freenames']; 
+				// END Andreas Kreisl : freenames
+				?>
+				<form action="index.php" method="get">
 
-	}
+					<input type="hidden" name="action" value="editdomain">
+					<input type="hidden" name="confirmed" value="true">
+					<input type="hidden" name="domain" value="<?php print $domain ?>"> 
+					<input type="hidden" name="id" value="<?php print $id ?>">
 
+					<table>
 
+						<tr>
+							<td>
+								<?php print _("Domainname");?>
+							</td>
+							
+							<td>
+								<input class="inputfield"
+								type="text" size="30"
+								name="newdomain" 
+								value="<?php 
+								print $domain;?>"
+								>
+							</td>
+						</tr>
 
-
-	if (!$confirmed){
-
-	        $query="select * from domain where domain_name='$domain'";
-	        $handle=DB::connect($DSN,true);
-		if (DB::isError($handle)) {
-			die (_("Database error"));
-		}
-
-	        $result=$handle->query($query);
-		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-	        $domain=$row['domain_name'];
-	        $prefix=$row['prefix'];
-	        $maxaccounts=$row['maxaccounts'];
-	        $quota=$row['quota']; 
-// START Andreas Kreisl : freenames
-	        $freenames=$row['freenames']; 
-// END Andreas Kreisl : freenames
-
-	        ?>
-
-	        <form action="index.php" method="get">
-
-	        <input type="hidden" name="action" value="editdomain">
-	        <input type="hidden" name="confirmed" value="true">
-	        <input type="hidden" name="domain" value="<?php print $domain ?>"> 
-	        <input type="hidden" name="id" value="<?php print $id ?>">
-
-	        <table>
-
-	        <tr>
-	        <td><?php print _("Domainname") ?></td>
-		<td><input class="inputfield" type="text" size="30" name=newdomain value="<?php print $domain?>"></td>
-	        </tr>
-
-	        <tr>
-	        <td><?php print _("Prefix"). " ". _("(Not yet supported, change will be ignored)") ?></td>
-	        <td><input class="inputfield" type="text" size="30"  value="<?php print $prefix ?>"></td>
-	        </tr>
-
-
-<?php // START Andreas Kreisl : freenames ?>
-	        <tr>
-	        <td>Allow Free Names</td>
-	        <td><input class="inputfield" type="checkbox" name=freenames <?php if($freenames=="YES") echo "CHECKED"; ?>></td>
-	        </tr>
-<?php // END Andreas Kreisl : freenames ?>
-
-
-
-
-	        <tr>
-	        <td width=150><?php print _("Maximum Accounts") ?></td>
-	        <td><input class="inputfield" type="text" size="4" name=maxaccounts value="<?php print $maxaccounts ?>"> </td>
-	        </tr>
-
-	        <tr>
-	        <td><?php print _("Default Quota in Kilobytes") ?></td>
-	        <td><input class="inputfield" type="text" size="15" name=quota value="<?php print $quota ?>"></td>
-	        </tr>
-
-	        <tr><td>
-	        <input class="button" type="submit" value=<?php print _("Submit") ?>>
-	        </td></tr>
-
-	        </table>
-		</form>
-
-	        <?php
-
-	}
-
-}
-else{
-
-	print "<h3>"._("Your are not allowed to change domains!")."</h3>";
-}
+						<tr>
+							<td>
+								<?php print _("Prefix"). " ". _("(Not yet supported, change will be ignored)");?>
+							</td>
+							
+							<td>
+								<input class="inputfield"
+								type="text"
+								size="30" 
+								value="<?php 
+								print $prefix;
+								?>"
+								>
+							</td>
+						</tr>
 
 
-?>
-</td></tr>
+						<!-- // START Andreas Kreisl : freenames -->
+						<tr>
+							<td>
+								<?php print _("Allow Free Names");?>
+							</td>
+							
+							<td>
+								<input class="inputfield"
+								type="checkbox"
+								name="freenames" 
+								<?php 
+								if ($freenames=="YES"){
+									echo "checked";
+								}
+								?>
+								>
+							</td>
+						</tr>
+						<!-- // END Andreas Kreisl : freenames -->
+
+						<tr>
+							<td width="150">
+								<?php print _("Maximum Accounts");?>
+							</td>
+							
+							<td>
+								<input class="inputfield"
+								type="text" size="4"
+								name="maxaccounts" 
+								value="<?php 
+								print $maxaccounts;
+								?>"
+								>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<?php print _("Default Quota in Kilobytes");?>
+							</td>
+							
+							<td>
+								<input class="inputfield"
+								type="text" size="15"
+								name="quota" 
+								value="<?php
+								print $quota;
+								?>"
+								>
+							</td>
+						</tr>
+
+						<tr>
+							<td colspan="2" align="center">
+								<input 
+								class="button" 
+								type="submit" 
+								value="<?php
+								print _("Submit");
+								?>"
+								>
+							</td>
+						</tr>
+
+					</table>
+				</form>
+				<?php
+			} // End of if (empty($confirmed))
+		} else {
+			?>
+			<h3>
+				<?php print _("Your are not allowed to change domains!");?>
+			</h3>
+			<?php
+		} // End of if ($admintype == 0)
+		?>
+	</td>
+</tr>
+<!-- #################### editdomain.php end #################### -->
 

@@ -1,4 +1,4 @@
-<script>
+<script type="text/javascript">
 <!--
 function setfocus() {
 document.form1.login.focus();
@@ -11,7 +11,7 @@ function entsub() {
 // --></script>
 <!-- </head> -->
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" height="15%">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="height: 15%;">
  <tr>
          <td></td>
   </tr>
@@ -20,15 +20,15 @@ function entsub() {
 <!-- -->
 <form name="form1" method="post" action="auth.inc.php">
 <input type="hidden" name="LANG" value="<?php print $LANG ?>">
-<table width="100%" border="0" height="80%">
+<table width="100%" border="0" style="height: 80%;">
   <tr>
     <td align="center" valign="middle"> 
-        <table width="450" border="0" cellpadding="1" cellspacing="1" height="150">
+        <table width="450" border="0" cellpadding="1" cellspacing="1" style="height: 150px;">
           <tr>
 
 
           <td bgcolor="#000000">		  
-              <table border="0" bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" width="450" height="150">
+              <table border="0" bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" width="450" style="height: 150px;">
                 <tr> 
                   <td colspan="5" bgcolor="#000666">
 			<font face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#FFFFFF" size="2">
@@ -42,7 +42,7 @@ function entsub() {
                   <td colspan="4">
                     <p><font face="Verdana,Geneva,Arial,Helvetica,sans-serif" color="#000000" size="2">
 		     <?php print _("Welcome to Web-cyradm") ?><br>  
-                     <?php print _("This is only for authorized users") ?> <p>
+                     <?php print _("This is only for authorized users") ?><br><br>
 		     <?php print _("Please authenticate yourself") ?>
 		
                       </font></p><br>                    
@@ -87,6 +87,6 @@ function entsub() {
 </form>
 
 <?php
-include ("footer.inc.php");
+include WC_BASE . "/footer.inc.php";
 
 

@@ -2,9 +2,9 @@
 
 <?php
 
-include ("config.inc.php");
-include ("DB.php");
-include ("lib/crypto.php");
+include WC_BASE . "/config/conf.php";
+include "DB.php";
+include WC_BASE . "/lib/crypto.php";
 
 if ($CRYPT != "crypt"){
         die ("Sorry, only crypt is supported, please check config.inc.php");
@@ -41,7 +41,7 @@ if ($confirmed!="yes"){
 else if ($confirmed=="yes"){
 
 	$query="SELECT * from adminuser";
-	$handle=DB::connect ($DSN,true);
+	$handle=DB::connect ($DB['DSN'],true);
 	$result=$handle->query($query);
 	$cnt=$result->numRows($result);
 
@@ -55,7 +55,7 @@ else if ($confirmed=="yes"){
 
 		$query="UPDATE adminuser SET password='$cryptpassword' WHERE username='$username'";
 
-		$handle=DB::connect ($DSN,true);
+		$handle=DB::connect ($DB['DSN'],true);
 		$result2=$handle->query($query);
 		if ($result2){
 			print "User <b>$username</b> successfully migrated<br>";

@@ -1,4 +1,4 @@
-<!-- #################################### Start newalias.php ################################# -->
+<!-- #################################### Start editalias.php ################################# -->
 <?php
 
 if( isset( $_GET['create'] ) )
@@ -6,7 +6,7 @@ if( isset( $_GET['create'] ) )
 	$alias = $_GET['alias']."@".$_GET['domain'];
 }
 
-$handle=DB::connect($DSN, true);
+$handle=DB::connect($DB['DSN'], true);
 if (DB::isError($handle)) {
 	die ($handle->getMessage());
 }
@@ -141,4 +141,4 @@ else
 	</td>
 </tr>
 	
-<!-- ##################################### End newalias.php ################################## -->
+<!-- ##################################### End editalias.php ################################## -->
