@@ -5,13 +5,13 @@
 	<td valign="top">
 
 		<?php
+		$handle= DB::connect($DB['DSN'], true);
+		if (DB::isError($handle)) {
+			die (_("Database error"));
+		}
 		if ($authorized){
 
 			$query = "select * from virtual where alias='$alias'";
-			$handle= DB::connect($DB['DSN'], true);
-			if (DB::isError($handle)) {
-				die (_("Database error"));
-			}
 
 			$result = $handle->query($query);
 			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
@@ -132,9 +132,20 @@
 			} // End of if (! empty($confirmed))
 
 			if (empty($confirmed)){
+    				$query = "select * from domain where domain_name='$domain'";
 
-				$alias = spliti("@",$alias);
-				$alias = $alias[0];
+				$result = $handle->query($query);
+				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+				$freeaddress = $row['freeaddress'];
+				if ($freeaddress!="YES") { 
+                            	    $alias_orig = $alias;
+				    $alias = spliti("@",$alias);
+				    $alias = $alias[0];
+				    $alias_new = $alias . "@" . $domain;
+				    if ($alias_new!=$alias_orig) {
+					die ("<b>" . _("You can't forward this email address with 'Allow Free Mail Addressess' set to off!") . "</b>");
+				    }
+				}
 				if (isset($result_array)){
 					print $result_array[0];
 				}
@@ -152,7 +163,12 @@
 					<input type="hidden" name="action" value="forwardalias">
 					<input type="hidden" name="confirmed" value="true">
 					<input type="hidden" name="domain" value="<?php print $domain ?>"> 
-					<input type="hidden" name="alias" value="<?php print $alias."@".$domain ?>"> 
+					<input type="hidden" name="alias" value="<?php
+										     print $alias;
+										     if ($freeaddress!="YES") { 
+										        print "@" . $domain;
+										     }
+										  ?>"> 
 					<input type="hidden" name="username" value="<?php echo $username;?>">
 
 					<?php

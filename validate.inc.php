@@ -16,7 +16,7 @@ $_get_vars = array(
 	'password', 'new_password', 'confirm_password', 'quota', 'maxaccounts',
 	'newdomain', 'email', 'alias', 'dest', 'newalias', 'newdest', 'confirmed',
 	'cancel', 'searchstring', 'transport', 'tparam', 'mode', 'forwards',
-	'metoo', 'freenames'
+	'metoo', 'freenames', 'freeaddress'
 );
 
 foreach ($_get_vars as $_get_var){
@@ -112,12 +112,21 @@ if (! empty($action)){
 	case "newemail":
 		$query = "SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
 		$result = $handle->query($query, $handle);
-
 		$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		$username2 = $row['username'];
+
+                $query2 = "select * from domain where domain_name='$domain'";
+		$result2 = $handle->query($query2);
+		$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
+		$freeaddress=$row2['freeaddress'];
+		
 		if (! empty($confirmed)){
 			$valid_dest  = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $dest);
-			$valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $alias."@".$domain);
+			if ($freeaddress != "YES") {
+			    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $alias."@".$domain);
+			} else {
+			    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $alias);
+			}
 			if ($dest != $username2 and !$valid_dest){
 //			if ($dest != $username2 and !ValidateMail($dest))
 				$authorized = FALSE;
@@ -146,9 +155,20 @@ if (! empty($action)){
 
 		$query = "SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
 		$result = $handle->query($query);
+		
+                $query2 = "select * from domain where domain_name='$domain'";
+		$result2 = $handle->query($query2);
+		$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
+		$freeaddress=$row2['freeaddress'];
+		
 		if (! empty($confirmed) && ! empty($newdest) && ! empty($newalias)){
 			$valid_dest = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newdest);
-			$valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias."@".$domain);
+			$freeaddress="YES";
+			if ($freeaddress != "YES") {
+			    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias."@".$domain);
+			} else {
+			    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias);
+			}			
 			if ($newdest != $username2 and !$valid_dest){
 				$authorized=FALSE;
 				$err_msg = "invalid destination";

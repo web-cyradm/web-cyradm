@@ -4,14 +4,17 @@
 	<td valign="top" align="center" style="border: 0px dashed green;">
 
 		<?php
+                $handle = DB::connect($DB['DSN'], true);
+		if (DB::isError($handle)){
+		    die (_("Database error"));
+		}
+		$query = "select * from domain where domain_name='$domain'";
+		$result = $handle->query($query);
+		$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+		$freeaddress=$row['freeaddress'];
 		if ($authorized){
 
 			$query = "select * from virtual where alias='$alias'";
-			$handle = DB::connect($DB['DSN'], true);
-			if (DB::isError($handle)) {
-				die (_("Database error"));
-			}
-
 			$result = $handle->query($query);
 			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			$alias = $row['alias'];
@@ -19,7 +22,11 @@
 			$username = $row['username'];
 
 			if (! empty($confirmed)){
-				$query = "UPDATE virtual SET alias='$newalias@$domain', dest='$dest' WHERE alias='$alias'";
+			        if ($freeaddress!="YES") {
+	  				$query = "UPDATE virtual SET alias='$newalias@$domain', dest='$dest' WHERE alias='$alias'";
+				} else {
+	  				$query = "UPDATE virtual SET alias='$newalias', dest='$dest' WHERE alias='$alias'";
+				}
 				$handle = DB::connect($DB['DSN'], true);
 				if (DB::isError($handle)) {
 					die (_("Database error"));
@@ -46,8 +53,15 @@
 
 			if (empty($confirmed)){
 
-				$alias = spliti("@",$alias);
-				$alias = $alias[0];
+			        if ($freeaddress!="YES") {
+					$alias_orig = $alias;
+					$alias = spliti("@",$alias);
+					$alias = $alias[0];
+					$alias_new = $alias . "@" . $domain;
+					if ($alias_new!=$alias_orig) {
+					    die ("<b>" . _("You can't edit this email address with 'Allow Free Mail Addressess' set to off!") . "</b>");
+					}
+				}
 
 				if (isset($result_array)){
 					print $result_array[0];
@@ -59,7 +73,13 @@
 					<input type="hidden" name="action" value="editemail">
 					<input type="hidden" name="confirmed" value="true">
 					<input type="hidden" name="domain" value="<?php echo $domain ?>"> 
-					<input type="hidden" name="alias" value="<?php echo $alias . "@" . $domain ?>"> 
+					<input type="hidden" name="alias" 
+					    <?php	
+						echo "value=\"" . $alias;
+						if ($freeaddress!="YES") {			
+					    	    echo "@" . $domain;
+						}
+					    ?>"> 							       
 					<input type="hidden" name="username" value="<?php echo $username;?>">
 
 					<table>
@@ -72,9 +92,13 @@
 							<td>
 								<input class="inputfield" 
 								type="text" size="30" 
-								name="newalias" value="<?php
-								echo $alias;?>">@<?php
-								echo $domain;?>
+								name="newalias" 
+								<?php
+								    echo "value=\"" . $alias  . "\">";
+								    if ($freeaddress!="YES") {
+									echo "@" . $domain;
+								    }
+								?>
 							</td>
 						</tr>
 

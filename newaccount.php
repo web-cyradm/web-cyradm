@@ -31,6 +31,7 @@
 		// START Andreas Kreisl : freenames
 		$freenames	= $row[5];
 		// END Andreas Kreisl : freenames
+		$freeaddress    = $row[6];
 
 		if ($transport != "cyrus"){
 			die (_("transport is not cyrus, unable to create account"));
@@ -68,15 +69,12 @@
 						$lastaccount = sprintf("%04d",$cnt2);
 						$lastaccount = $prefix . $lastaccount;
 					} else {
+						$lastaccount = $prefix."0000";
 						if ($cnt2 > 0){
 							$row2 = $result2->fetchRow(DB_FETCHMODE_ORDERED, $cnt2 - 1);
 							// $row2 = $result2->fetchRow($result2,$cnt2-1,'username');
 							// $lastaccount=mysql_result($result2,$cnt2-1,"username");
 							$lastaccount = $row2[0];
-						}
-
-						if ($cnt2 = 0){
-							$lastaccount = $prefix."0000";
 						}
 					}
 					// END Andreas Kreisl : freenames
@@ -184,7 +182,10 @@
 		} else {
 			if ($DOMAIN_AS_PREFIX){
 				$prefix		= $domain;
-				$username	= $email . "." . $domain;
+				$username	= $email;
+				if ($freenames!="YES") {
+				    $username = $username . "." . $domain;
+				}
 				$seperator	= '/';
 			} else {
 				$seperator	= '.';
@@ -244,6 +245,7 @@
 			}
 			print $cyr_conn->setacl("user" . $seperator . $username, $CYRUS['ADMIN'], "lrswipcda");
 			$result = $cyr_conn->setmbquota("user" . $seperator . $username, $quota);
+			include WC_BASE . "/browseaccounts.php";
 		}
 		?>
 	</td>

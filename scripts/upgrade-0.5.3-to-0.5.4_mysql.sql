@@ -1,4 +1,5 @@
 ALTER TABLE `mail`.`domain` ADD `freenames` ENUM( 'YES', 'NO' ) DEFAULT 'NO' NOT NULL;
+ALTER TABLE `mail`.`domain` ADD `freeaddress` ENUM( 'YES', 'NO' ) DEFAULT 'NO' NOT NULL;
 
 CREATE TABLE log (
   id int(11) NOT NULL auto_increment,

@@ -15,8 +15,13 @@
 				} else {
 					$freenames="NO";
 				}
+				if (isset($freeaddress)){
+					$freeaddress="YES";
+				} else {
+					$freeaddress="NO";
+				}
 
-				$query = "UPDATE domain SET domain_name='$newdomain', maxaccounts='$maxaccounts',quota='$quota',freenames='$freenames' WHERE domain_name='$domain'";
+				$query = "UPDATE domain SET domain_name='$newdomain', maxaccounts='$maxaccounts',quota='$quota',freenames='$freenames',freeaddress='$freeaddress',prefix='$prefix' WHERE domain_name='$domain'";
 				// END Andreas Kreisl : freenames
 
 				$query2 = "UPDATE accountuser SET domain_name='$newdomain' WHERE domain_name='$domain'";
@@ -65,6 +70,7 @@
 				// START Andreas Kreisl : freenames
 				$freenames=$row['freenames']; 
 				// END Andreas Kreisl : freenames
+				$freeaddress=$row['freeaddress'];
 				?>
 				<form action="index.php" method="get">
 
@@ -92,13 +98,14 @@
 
 						<tr>
 							<td>
-								<?php print _("Prefix"). " ". _("(Not yet supported, change will be ignored)");?>
+								<?php print _("Prefix");?>
 							</td>
 							
 							<td>
 								<input class="inputfield"
 								type="text"
-								size="30" 
+								size="30"
+								name="prefix" 
 								value="<?php 
 								print $prefix;
 								?>"
@@ -126,6 +133,23 @@
 							</td>
 						</tr>
 						<!-- // END Andreas Kreisl : freenames -->
+						<tr>
+							<td>
+								<?php print _("Allow Free Mail Addresses");?>
+							</td>
+							
+							<td>
+								<input class="inputfield"
+								type="checkbox"
+								name="freeaddress" 
+								<?php 
+								if ($freeaddress=="YES"){
+									echo "checked";
+								}
+								?>
+								>
+							</td>
+						</tr>
 
 						<tr>
 							<td width="150">

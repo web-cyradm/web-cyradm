@@ -4,15 +4,23 @@
 	<td valign="top">
 
 		<?php
+		$handle = DB::connect($DB['DSN'], true);
+		if (DB::isError($handle)){
+			die (_("Database error"));
+		}
+                $query = "select * from domain where domain_name='$domain'";                                        
+ 		$result = $handle->query($query);                                                                   
+		$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);                                                    
+		$freeaddress=$row['freeaddress'];
 		if ($authorized){
 			if (! empty($confirmed)){
-				$query = "INSERT INTO virtual (alias,dest,username)
-				VALUES ('$alias@$domain','$dest','$username')";
-
-				$handle = DB::connect($DB['DSN'], true);
-				if (DB::isError($handle)){
-					die (_("Database error"));
-				}
+				if ($freeaddress!="YES") {
+				    $query = "INSERT INTO virtual (alias,dest,username)
+				    VALUES ('$alias@$domain','$dest','$username')";
+				} else {
+				    $query = "INSERT INTO virtual (alias,dest,username)
+				    VALUES ('$alias','$dest','$username')";
+				}				
 
 				$result = $handle->query($query);
 
@@ -68,11 +76,16 @@
 							<td>
 								<input type="text" 
 								size="30" name="alias"
-								value="<?php
-								if (isset($alias)){
-									print $alias;
-								}
-								?>">@<?php print $domain;?>
+								<?php
+							    	    if (isset($alias)){
+									print "value=\"" . $alias . "\">";
+								    } else {
+									print "value=\"\">";
+								    }
+								    if ($freeaddress!="YES") {
+									print "@" . $domain;
+								    }
+								?>
 							</td>
 						</tr>
 

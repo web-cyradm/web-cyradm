@@ -61,25 +61,37 @@
 								</td>
 							</tr>
 
-							<!-- START Andreas Kreisl : freenames -->
-							<tr>
-								<td>
-									<?php print _("Allow Free Names");?>
-								</td>
-
-								<td>
-									<input
-									class="inputfield"
-									type="checkbox"
-									name="freenames"
-									value="Done by Andreas Kreisl"
-									>
-								</td>
-							</tr>
-							<!-- END Andreas Kreisl : freenames -->
 							<?php
 						} 
 						?>
+						<!-- START Andreas Kreisl : freenames -->
+						<tr>
+							<td>
+								<?php print _("Allow Free Names");?>
+							</td>
+							<td>
+								<input
+								class="inputfield"
+								type="checkbox"
+								name="freenames"
+								value="Done by Andreas Kreisl"
+								>
+							</td>
+						</tr>
+							<!-- END Andreas Kreisl : freenames -->
+						<tr>
+							<td>
+								<?php print _("Allow Free Mail Addresses");?>
+							</td>
+							<td>
+								<input
+								class="inputfield"
+								type="checkbox"
+								name="freeaddress"
+								value=""
+								>
+							</td>
+						</tr>
 						<tr>
 							<td>
 								<?php print _("Maximum Accounts");?>
@@ -209,7 +221,12 @@
 					} else {
 						$freenames = "NO";
 					}
-					$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, transport,freenames) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$trans', '$freenames')";
+					if (! empty($freeaddress)){
+						$freenames = "YES";
+					} else {
+						$freenames = "NO";
+					}
+					$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, transport,freenames,freeaddress) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$trans', '$freenames', '$freeaddress')";
 					// END Andreas Kreisl : freenames
 
 					$handle = DB::connect ($DB['DSN'],true);

@@ -4,6 +4,9 @@
 	<td valign="top">
 
 		<?php
+		include WC_BASE . '/lib/sieve-php.lib';                                                                     
+                include WC_BASE . '/lib/sieve_strs.php'; 
+		$daemon = new sieve("localhost","2000", $username, $CYRUS['PASS'], $CYRUS['ADMIN']);
 		$cyr_conn = new cyradm;
 		$cyr_conn->imap_login();
 		?>
@@ -102,7 +105,30 @@
 					</td>
 
 					<td valign="middle">
-						<?php print _("Forward or not?");?>
+					    <?php
+                                    		if ($daemon->sieve_login()){
+                                            	    $sieve_str = new sieve_strs;
+                                            	    $old_script = $sieve_str->get_old_script($daemon);
+                                            	    if (preg_match("/redirect \".*$/siU", $old_script, $matches)){
+                                                        $forwards_script = $matches[0];
+                                                        $forwards_text = '';
+                                                        while (preg_match ("/(redirect \")(.*)(\";)(.*$)/siU", $forwards_script, $matches)){
+                                                                $forwards_text .= $matches[2].'<br>';
+                                                                $forwards_script = $matches[4];
+                                                        }
+                                                        $forwards_text = rtrim ($forwards_text, ', ');
+                                                        if (preg_match ("/keep;/i", $forwards_script, $matches)){
+                                                                $forwards_text .= "<b>" . $username . "</b>";
+                                                        }
+                                            	    } else {
+                                                        $forwards_text ='';
+							$keep = '';
+                                            	    }
+                                    		} else {
+                                            	    $forwards_text = '';
+                                    		}
+                        			print $forwards_text;
+					    ?>
 					</td>
 
 					<?php
