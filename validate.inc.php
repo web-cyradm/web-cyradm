@@ -43,49 +43,6 @@ if ($_POST){
 	}
 }
 
-# Security precaution if register_globals = on
-$authorized = FALSE;
-# Load list of reserved Adresses into array
-$reserved=explode(",",$RESERVED);
-#
-$setforward = $forwardto = (isset($_POST['setforward']))?($_POST['setforward']):('');
-
-# Connecting to database
-$handle =& DB::connect($DB['DSN'],true);
-if (DB::isError($handle)) {
-	die (_("Database error"));
-}
-# We check and remember list of domains for domain admin
-$query = "SELECT * FROM domainadmin WHERE adminuser='".$_SESSION['user']."'";
-$result = $handle->query($query);
-$cnt = $result->numRows();
-
-if (!$cnt){
-	print _("Security violation detected, attempt logged");
-	logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
-	include WC_BASE . "/logout.php";
-	die ();
-}
-
-if ($_SESSION['admintype'] != 0){
-	$allowed_domains = array();
-	
-	for ($i=0; $i < $cnt; $i++){
-		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);
-		$allowed_domains[] = $row['domain_name'];
-	}
-	$_SESSION['allowed_domains'] = $allowed_domains;
-	if (!isset($domain)) $domain='';
-
-	if (isset($domain) AND $domain != "" AND !in_array($domain,$_SESSION['allowed_domains'])) {
-		print _("Security violation detected, attempt logged");
-		logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
-		include WC_BASE . "/logout.php";
-		die ();
-	}
-}
-
-
 // ############################### FUNCTIONS ##################################
 
 // function ValdateEmail V0.2 2002-04-10 22:14
@@ -95,6 +52,14 @@ function ValidateMail($email) {
 		return 0;
 	} else {
 		return 1;
+	}
+}
+
+function ValidName($username) {
+	if (empty($username)) {
+		return FALSE;
+	} else {
+		return TRUE;
 	}
 }
 
@@ -128,6 +93,53 @@ function ValidPrefix($prefix) {
 	}
 	
 }
+
+
+# Security precaution if register_globals = on
+$authorized = FALSE;
+# Load list of reserved Adresses into array
+$reserved=explode(",",$RESERVED);
+#
+$setforward = $forwardto = (isset($_POST['setforward']))?($_POST['setforward']):('');
+
+# Connecting to database
+$handle =& DB::connect($DB['DSN'],true);
+if (DB::isError($handle)) {
+	die (_("Database error"));
+}
+
+# We check and remember list of domains for domain admin
+$query = "SELECT * FROM domainadmin WHERE adminuser='".$_SESSION['user']."'";
+$result = $handle->query($query);
+if (DB::isError($result)) {
+	die (_("Database error"));
+}
+$cnt = $result->numRows();
+
+if (!$cnt){
+	print _("Security violation detected, attempt logged");
+	logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+	include WC_BASE . "/logout.php";
+	die ();
+}
+
+if ($_SESSION['admintype'] != 0){
+	$allowed_domains = array();
+	
+	for ($i=0; $i < $cnt; $i++){
+		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+		$allowed_domains[] = $row['domain_name'];
+	}
+	$_SESSION['allowed_domains'] = $allowed_domains;
+	if (!isset($domain)) $domain='';
+
+	if (isset($domain) AND $domain != "" AND !in_array($domain,$_SESSION['allowed_domains'])) {
+		print _("Security violation detected, attempt logged");
+		logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+		include WC_BASE . "/logout.php";
+		die ();
+	}
+}
 //################## Validate input and verify users actions ##################
 if (! empty($action)){
 	switch ($action){
@@ -142,17 +154,34 @@ if (! empty($action)){
 			unset($_GET['row_pos']);
 		}
 		break;
-############################## Check deleteaccount ##################################################
-	case "deleteaccount":
-		$query = "SELECT username FROM accountuser WHERE username='$username' AND domain_name='$domain'";
-		$result3 = $handle->query($query);
-		if (!$result3->numRows()){
-			$authorized = FALSE;
-		} else {
-			$authorized = TRUE;
+#OK############################# Check input if accounts ##############################################
+	case "accounts":
+		if (isset($_GET['domain']) AND !ValidDomain($_GET['domain'])) {
+			unset($_GET['domain']);
+		}
+		if (isset($_GET['row_pos']) AND !is_numeric($_GET['row_pos'])) {
+			unset($_GET['row_pos']);
 		}
 		break;
-
+############################## Check deleteaccount ##################################################
+	case "deleteaccount":
+		if (!ValidDomain($_GET['domain'])){
+			$authorized = FALSE;
+		} elseif (!ValidName($_GET['username'])) {
+			$authorized = FALSE;
+		} else {
+			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
+			if (!$result->numRows()){
+				$authorized = FALSE;
+			} else {
+				$authorized = TRUE;
+			}
+		}
+		break;
 
 ################################ Check input if newaccount ################################################
 
@@ -300,9 +329,7 @@ if (! empty($action)){
 		break;
 
 ######################################## Check new domain name ########################################
-
 	case "newdomain":
-
 		if (! empty($confirmed)){
 			if ($DOMAIN_AS_PREFIX) {
 				$prefix = $domain;
@@ -316,6 +343,9 @@ if (! empty($action)){
 			} else {
 				$query = "SELECT domain_name FROM domain WHERE domain_name='$domain' OR prefix='$prefix'";
 				$result = $handle->query($query);
+				if (DB::isError($result)) {
+					die (_("Database error"));
+				}
 				if ($result->numRows()){
 					$authorized = FALSE;
 					$err_msg = "Domain or prefix already exists";
@@ -330,6 +360,9 @@ if (! empty($action)){
 		if (!empty($confirmed)){
 			$query = "SELECT domain_name FROM domain WHERE domain_name='$newdomain' AND domain_name!='$domain' OR prefix='$_GET[newprefix]' AND prefix!='$prefix'";
 			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
 			if ($result->numRows()){
 				$authorized = FALSE;
 				$err_msg = "Domain or prefix already exists";
@@ -363,6 +396,10 @@ if (! empty($action)){
 	case "display":
 		if (isset($_GET['confirmed'])) {
 			if (!is_numeric($_GET['maxdisplay']) OR $_GET['maxdisplay'] <= 0) {
+				$authorized = FALSE;
+				$err_msg = "Value incorrect";
+			}
+			elseif (!is_numeric($_GET['account_maxdisplay']) OR $_GET['account_maxdisplay'] <= 0) {
 				$authorized = FALSE;
 				$err_msg = "Value incorrect";
 			}
