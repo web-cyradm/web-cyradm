@@ -60,6 +60,22 @@ $nls['charsets']['uk_UA'] = 'KOI8-U';
 $nls['charsets']['zh_CN'] = 'GB2312';
 $nls['charsets']['zh_TW'] = 'BIG5';
 
+/**
+ ** Translators
+ **/
+
+$nls['translator']['zh_CN'] = '<a href="mailto:boozhang at sdb.ac.cn">Zhang Bo</a>';
+$nls['translator']['da_DK'] = '<a href="mailto:kw atCombo.dk">Kenneth Wrang</a>';
+$nls['translator']['fr_FR'] = '<a href="mailto:mrjack at fastorama.com">Raphaël Jeudy</a>';
+$nls['translator']['de_DE'] = '<a href="mailto:m.muenz at maxonline.de">Michael Muenz</a> and <a href="mailto:luc at delouw.ch">Luc de Louw</a>'; 
+$nls['translator']['hu_HU'] = '<a href="mailto:zoltan at levardy.org">Zoltan Levardy</a>';
+$nls['translator']['it_IT'] = '<a href="mailto:forschner at web.de">Adrian Forschner</a>';
+$nls['translator']['pl_PL'] = '<a href="mailto:primo at npl.pl">Przemyslaw Witek</a>';
+$nls['translator']['pt_PT'] = '<a href="mailto:fernando at costeira.com.br">Fernando Garcia</a>';
+$nls['translator']['ro_RO'] = '<a href="mailto:catalinboiangiu at SoftHome.net">Catalin Boiangiu</a>';
+$nls['translator']['ru_RU'] = '<a href="mailto:edge at gts.smtn.stavropol.ru">Andrey Kolbasenko</a> and <a href="mailto:a_mdl at mail.ru">Denis Medvedev</a>';
+$nls['translator']['sv_SE'] = '<a href="mailto:fredrik at rambrik Rambris.com"></a> and <a href="mailto:anders.litzell at telia.com">Anders Litzell</a>';
+$nls['translator']['tr_TR'] = '<a href="mailto:suleymankuran at yahoo.com">Süleyman Kuran</a>';
 
 
 ?>

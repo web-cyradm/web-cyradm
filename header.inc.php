@@ -19,6 +19,7 @@ if (isset($LANG)) {
 		</title>
 
 <?php
+#print $LANG;
 
 /*
 //print "Charset is". $nls["charsets"][$LANG];
