@@ -77,7 +77,6 @@ if ($authorized){
 			} 
 
 		else if ($new_password != $confirm_password){
-			print "Nix da";
 			print "<b>"._("New passwords are not equal. Password not changed")."</b><p><p>";
 		}
 	}
