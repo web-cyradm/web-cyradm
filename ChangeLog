@@ -1,3 +1,42 @@
+2002-10-17 22:24  luc
+
+	* newaccount.php: 
+	Fixed query for ENCRYPT/PASSWD function
+
+2002-10-17 21:48  luc
+
+	* doc/Postfix-Cyrus-Web-cyradm-HOWTO.txt: 
+	added text doc
+
+2002-10-17 21:48  luc
+
+	* test.php: 
+	Added test.php to give users a change to check its systems. This
+	page is derived from the Horde testpage
+
+2002-10-16 01:13  luc
+
+	* doc/html/: big-picture.png, cyrus-config.html, faq.html,
+	home.png, imap-account.png, imap-tls.png, index.html, install.html,
+	intro.html, moreinfo.html, mysql-config.html, pam-config.html,
+	postfix-config.html, tech.html, test.html, web-cyradm-config.html: 
+	Added documentaion from the Postfix-Cyrus-Web-cyradm-HOWTO
+
+2002-10-08 23:20  luc
+
+	* lib/nls.php: 
+	Uncommented fr_FR
+
+2002-10-08 23:09  luc
+
+	* auth.inc.php: 
+	Fixed problem with PEAR (additional include statement in function)
+
+2002-10-08 21:44  luc
+
+	* ChangeLog: 
+	Added Changes
+
 2002-10-08 21:36  luc
 
 	* auth.inc.php, config.inc.php-dist, newaccount.php: 
