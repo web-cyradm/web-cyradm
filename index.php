@@ -112,7 +112,7 @@ if ($wc_configured){
 							    "editemail", "aliases", "newalias",
 							    "editalias", "deletealias", "search",
 							    "delete_catchall", "settings",
-							    "changeadminpasswd", "display"))){
+							    "changeadminpasswd", "display", "editservices"))){
 				include sprintf('%s/%s.php', WC_BASE, $_GET['action']);
 			}
 
