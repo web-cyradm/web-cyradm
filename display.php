@@ -10,7 +10,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="top">
-
+	<?php
+	if (!isset($_GET['confirmed'])){
+		?>
 		<h3>
 			<?php print _("Display preferences for");?>
 			<span style="color: red;">
@@ -19,10 +21,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				?>
 			</span>
 		</h3>
-
-	<?php
-	if (!isset($_GET['confirmed'])){
-		?>
 		<form action="index.php" method="get">
 			<input type="hidden" name="action" value="display">
 			<input type="hidden" name="confirmed" value="true">
