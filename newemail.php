@@ -2,6 +2,15 @@
         <td width="10">&nbsp; </td>
         <td valign="top">
 <?php
+
+// Specify location of translation tables
+bindtextdomain("newemail", "./locale");
+
+// Choose domain
+textdomain("newemail");
+
+
+
 if ($authorized){
 
 if ($confirmed){
@@ -13,11 +22,11 @@ if ($confirmed){
 
 
         if (!DB::isError($result)){
-                print "Sucessfully inserted";
+                print _("Sucessfully inserted");
 		include ("editaccount.php");
         }
         else{
-                print "<p>Database error, please try again<p>";
+                print "<p>"._("Database error, please try again")."<p>";
 		include ("editaccount.php");
         }
 
@@ -29,7 +38,7 @@ if (!$confirmed){
 
         ?>
 
-	<h3>New emailadress for user <?php print $username?></h3>
+	<h3><?php print _("New emailadress for user")?> <?php print $username?></h3>
 
         <form action="index.php" method="get">
 
@@ -41,18 +50,18 @@ if (!$confirmed){
         <table>
 
         <tr>
-        <td>Emailadress</td>
+        <td><?php print _("Emailadress") ?></td>
 	<td><input type="text" size="30" name=alias value="<?php print $alias?>">@<?php print $domain?></td>
         </tr>
 
         <tr>
-        <td width=150>Destination</td>
+        <td width=150><?php print _("Destination") ?></td>
         <td><input type="text" size="30" name=dest value="<?php print $username ?>"> </td>
         </tr>
 
 
         <tr><td>
-        <input type="submit" value="Submit">
+        <input type="submit" value="<?php print _("Submit")?>">
         </td></tr>
 
         </table>
