@@ -229,7 +229,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					}
 					$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, transport,freenames,freeaddress) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$trans', '$freenames', '$freeaddress')";
 
-print $query;
 					// END Andreas Kreisl : freenames
 
 					$handle = DB::connect ($DB['DSN'],true);
