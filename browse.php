@@ -15,33 +15,23 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			<?php print _("Browse domains");?>
 		</h3>
 		<?php
-		$row_pos = (empty($row_pos))?(0):($row_pos);
-//		if (! isset($_SESSION['allowed_domains'])) {
-//			$query2 = "SELECT * FROM domain ORDER BY domain_name";
-//		} 
-//		else {
-//			$domains = '';
-//			foreach ($_SESSION['allowed_domains'] as $allowed_domain) {
-//			$domains .= $allowed_domain."' OR domain_name='";
-//		 }
-//		$query2 = "SELECT * FROM domain WHERE domain_name='$domains' ORDER BY domain_name";
-//		}
-
-//	        $result2 = $handle->query($query2);
-//        	$total=$result2->numRows($result2);
+		if (isset($_GET['row_pos'])) $_SESSION['domain_row_pos'] = $_GET['row_pos'];
+//		$_SESSION['domain_row_pos'] = $row_pos;
+		if (isset($_GET['orderby'])) $_SESSION['domain_orderby'] = $_GET['orderby'];
+//		$_SESSION['domain_orderby'] = $orderby;
 ?>
 <!-- 		<table border="1" width="98%"> -->
 				<?php
 
 				if (! isset($_SESSION['allowed_domains'])) {
 					#$query = "SELECT * FROM domain ORDER BY domain_name";
-					$query = "SELECT * FROM domain ORDER BY ".$_GET['orderby'];
+					$query = "SELECT * FROM domain ORDER BY ".$_SESSION['domain_orderby'];
 				} else {
 					$domains = '';
 					foreach ($_SESSION['allowed_domains'] as $allowed_domain) {
 						$domains .= $allowed_domain."' OR domain_name='";
 					}
-					$query = "SELECT * FROM domain WHERE domain_name='$domains' ORDER BY ".$_GET['orderby'];
+					$query = "SELECT * FROM domain WHERE domain_name='$domains' ORDER BY ".$_SESSION['domain_orderby'];
 				}
 
 				$result = $handle->query($query);
@@ -49,7 +39,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$cnt    = $result->numRows($result);
 
 				print _("Total Domains")." ".$cnt;
-				print "<br>"._("Displaying from position:")." $row_pos";
+				print "<br>"._("Displaying from position:")." ".$_SESSION['domain_row_pos'];
 				
 				?>
 <!-- 		</table> -->
@@ -64,20 +54,20 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
                                 <?php
 				}
 				
-                                $prev = $row_pos - $_SESSION['maxdisplay'];
-                                $next = $row_pos + $_SESSION['maxdisplay'];
+                                $prev = $_SESSION['domain_row_pos'] - $_SESSION['maxdisplay'];
+                                $next = $_SESSION['domain_row_pos'] + $_SESSION['maxdisplay'];
 
-                                if ($row_pos < $_SESSION['maxdisplay']){
+                                if ($_SESSION['domain_row_pos'] < $_SESSION['maxdisplay']){
 //					print "<td class=\"navi\"><a href=\"#\">"._("Previous entries")."</a></td>";
                                 } else {
-					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$prev&orderby=".$_GET['orderby']."\">"._("Previous entries") ."</a></td>";		
+					print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=$prev\">"._("Previous entries") ."</a></td>";		
                                 }
 
-				if ($next>$cnt){
+				if ($next>=$cnt){
 //					print "<td class=\"navi\"><a href=\"#\">"._("Next entries")."</a></td>";
 				}
 				else {
-					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next&orderby=".$_GET['orderby']."\">". _("Next entries")."</a></td>";
+					print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=$next\">". _("Next entries")."</a></td>";
 				}
                                 ?>
 
@@ -95,31 +85,31 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
                                         <th>
                                                 <!-- <?php print _("domainname");?> -->
-                                                <?php print "<a href=\"index.php?action=browse&row_pos=$row_pos&orderby=domain_name\">".("domainname")."</a>";?>
+                                                <?php print "<a href=\"index.php?action=browse&orderby=domain_name\">".("domainname")."</a>";?>
                                         </th>
 
                                         <?php
                                         if (! $DOMAIN_AS_PREFIX){
                                                 ?>
                                                 <th>
-                                                        <?php print "<a href=\"index.php?action=browse&row_pos=$row_pos&orderby=prefix\">"._("prefix")."</a>";?>
+                                                        <?php print "<a href=\"index.php?action=browse&orderby=prefix\">"._("prefix")."</a>";?>
                                                 </th>
                                                 <?php
                                         }
                                         ?>
 
                                         <th>
-                                                <?php print "<a href=\"index.php?action=browse&row_pos=$row_pos&orderby=maxaccounts\">".("max Accounts")."</a>";?>
+                                                <?php print "<a href=\"index.php?action=browse&orderby=maxaccounts\">".("max Accounts")."</a>";?>
                                         </th>
 
                                         <th>
                                                 <!-- <?php print _("Domain quota");?> -->
-                                                <?php print "<a href=\"index.php?action=browse&row_pos=$row_pos&orderby=domainquota\">".("Domain quota")."</a>";?>
+                                                <?php print "<a href=\"index.php?action=browse&orderby=domainquota\">".("Domain quota")."</a>";?>
                                         </th>
 
                                         <th>
                                                 <!-- <?php print _("default quota per user");?> -->
-                                                <?php print "<a href=\"index.php?action=browse&row_pos=$row_pos&orderby=quota\">".("default quota per user")."</a>";?>
+                                                <?php print "<a href=\"index.php?action=browse&orderby=quota\">".("default quota per user")."</a>";?>
                                         </th>
                                 </tr>
 
@@ -127,7 +117,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 <?php
 				
 
-				for ($c=$row_pos; $c < (($next>$cnt)?($cnt):($next)); $c++){
+				for ($c=$_SESSION['domain_row_pos']; $c < (($next>$cnt)?($cnt):($next)); $c++){
 					if ($c%2==0){
 						$cssrow="row1";
 					} else {

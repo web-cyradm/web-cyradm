@@ -20,9 +20,8 @@ $_SESSION['style'] = $row['style'];
 $_SESSION['maxdisplay'] = $row['maxdisplay'];
 $_SESSION['warnlevel'] = $row['warnlevel'];
 
-if (!$_SESSION['maxdisplay']){
-	$_SESSION['maxdisplay'] = 15;
-}
+$_SESSION['domain_row_pos'] = 0;
+$_SESSION['domain_orderby'] = 'domain_name';
 
 ##### Getting admin privilages
 # Check if admin has any domain to administrate.
