@@ -36,7 +36,8 @@ $searchstring=$_GET['searchstring'];
 $transport=$_GET['transport'];
 $tparam=$_GET['tparam'];
 $mode=$_GET['mode'];
-
+$forwards=$_GET['forwards'];
+$metoo=$_GET['metoo'];
 
 # Validate input and verify authorization of a users action
 

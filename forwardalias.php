@@ -22,7 +22,7 @@ if ($authorized){
 	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 	$password=$row['password'];
 //	$daemon = new sieve("localhost","2000",$dest,$password,"");
-	$daemon = new sieve("localhost","2000", $user, $CYRUS_PASSWORD, $CYRUS_USERNAME);
+	$daemon = new sieve("localhost","2000", $username, $CYRUS_PASSWORD, $CYRUS_USERNAME);
 
 	if ($confirmed){
 
