@@ -38,8 +38,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 //				$result = $handle->limitQuery($query,$row_pos,$_SESSION['maxdisplay']);
 				$cnt    = $result->numRows($result);
 
-				print _("Total Domains")." ".$cnt;
-				print "<br>"._("Displaying from position:")." ".$_SESSION['domain_row_pos'];
+				print _("Total Domains:")." ".$cnt;
+				print "<br>"._("Displaying from position:")." ".($_SESSION['domain_row_pos']+1);
 				
 				?>
 <!-- 		</table> -->
@@ -74,13 +74,15 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
                         </tr>
                  </table> 
-		<table>
+		<table width="99%">
 
 
                        <tbody>
                                 <tr>
-                                        <th colspan="4">
-                                                <?php print _("action");?>
+					<?php
+						print ($_SESSION['admintype']==0)?"<th colspan=\"4\">":"<th colspan=\"2\">";
+						print _("action");
+					?>
                                         </th>
 
                                         <th>
@@ -129,12 +131,19 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					?>
 					<tr class="<?php echo $cssrow;?>">
 						<?php
-						$_cols = array(
-							'editdomain'	=> _("Edit Domain"),
-							'deletedomain'	=> _("Delete Domain"),
-							'accounts'	=> _("accounts"),
-							'aliases'	=> _("Aliases")
-						);
+						if ($_SESSION['admintype']==0) {
+							$_cols = array(
+								'editdomain'	=> _("Edit Domain"),
+								'deletedomain'	=> _("Delete Domain"),
+								'accounts'	=> _("accounts"),
+								'aliases'	=> _("Aliases")
+							);
+						} else {
+							$_cols = array(
+								'accounts'      => _("accounts"),
+								'aliases'       => _("Aliases")
+							);
+						}
 						foreach ($_cols as $_action => $_txt){
 							?>
 							<td>
@@ -151,21 +160,22 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							<?php echo $row['domain_name'];?>
 						</td>
 
-						<td>
 							<?php
 							if (! $DOMAIN_AS_PREFIX){
 								# Print the prefix
+								echo "<td>";
 								echo $row['prefix'];
-								echo "</td><td>";
+								echo "</td>";
 							}
 							?>
+						<td align="right">
 							<!-- Max Account -->
 							<?php
 							echo $row['maxaccounts'];
 							?>
 						</td>
 						
-						<td>
+						<td align="right">
 							<!--  Max Domain Quota -->
 							<?php
 							if (! $row['domainquota'] == 0) {
@@ -176,7 +186,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							?>
 						</td>
 						
-						<td>
+						<td align="right">
 							<!-- Default Account Quota -->
 							<?php
 							echo $row['quota'];
