@@ -63,6 +63,10 @@ include ("lib/cyradm.php");
 			include ("newaccount.php");
 		        break;
 
+			case "catch":
+			include ("catchall.php");
+		        break;
+
 			case "deleteaccount":
 			include ("deleteaccount.php");
 		        break;
