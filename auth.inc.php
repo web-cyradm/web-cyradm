@@ -1,5 +1,5 @@
 <?php
-require_once("config.inc.php");
+include("config.inc.php");
 
 session_start();
 $method=getenv('REQUEST_METHOD');
@@ -10,6 +10,7 @@ $login = $HTTP_POST_VARS['login'];
 $password = $HTTP_POST_VARS['password'];
 $LANG = $HTTP_POST_VARS['LANG'];
 function authenticate($user, $pw) {
+	include("config.inc.php");
         include_once("DB.php");
 	global $handle;
 
