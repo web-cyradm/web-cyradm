@@ -69,7 +69,7 @@ if ($admintype==0){
 		$result2=$handle->query($query2);
 
 		$row2=$result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
-		$domainname=$row['domain_name'];
+		$domainname=$row2['domain_name'];
                 $type=$row['type'];
                 print "\n<tr class=\"$cssrow\">";
                 print "\n<td><a href=\"index.php?action=editadminuser&username=$username&domain=$domain\">"._("Edit adminuser")."</a></td>";
@@ -80,7 +80,7 @@ if ($admintype==0){
 //                print $row['password'];
                 print "******";
                 print "</td>\n<td>";
-		print $domain;
+		print $domainname;
 
                 print "</td>\n<td>";
 		if ($type==0){
