@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Web-cyradm\n"
 "POT-Creation-Date: 2002-09-02 12:35+0300\n"
-"PO-Revision-Date: 2002-09-02 12:35+0300\n"
+"PO-Revision-Date: 2002-09-13 09:56+0300\n"
 "Last-Translator: Andrey Kolbasenko <edge@gts.smtn.stavropol.ru>\n"
 "Language-Team: Russian <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -143,7 +143,7 @@ msgstr "Установить квоту"
 
 #: browseaccounts.php:96
 msgid "Set catch all"
-msgstr "Set catch all"
+msgstr "Мусор ему"
 
 #: browseaccounts.php:126 editaccount.php:76
 msgid "out of"
@@ -158,8 +158,8 @@ msgid "Define a Account for receiving undefined adresses for domain"
 msgstr "Определить счет для приема нераспознанных адресов для домена"
 
 #: catchall.php:24
-msgid "Do you really want to define the user?"
-msgstr "Вы действительно хотите определить пользователя?"
+msgid "Do you really want to define the user"
+msgstr "Вы действительно хотите определить пользователя"
 
 #: catchall.php:24
 msgid "to receive all undefined emailadresses"
@@ -235,7 +235,7 @@ msgstr "Новый адрес E-Mail"
 
 #: editaccount.php:52
 msgid "Edit Emailadress"
-msgstr "Редактирование E-Mail адресов"
+msgstr "Редактирование E-Mail адреса"
 
 #: editaccount.php:53
 msgid "Delete Emailadress"
@@ -247,7 +247,7 @@ msgstr "Успешно изменен"
 
 #: editemail.php:63 newemail.php:53
 msgid "Emailadress"
-msgstr "E-Mail адреса"
+msgstr "E-Mail адрес"
 
 #: editemail.php:68 newemail.php:58
 msgid "Destination"
@@ -258,7 +258,7 @@ msgid "Welcome to Web-cyradm"
 msgstr "Добро пожаловать в Web-cyradm"
 
 #: login.php:69
-msgid "Only for autorized users"
+msgid "This is only for authorized users"
 msgstr "Только для зарегистрированных пользователей"
 
 #: login.php:70
