@@ -42,6 +42,9 @@ $forwards=$_GET['forwards'];
 $metoo=$_GET['metoo'];
 $freenames=$_GET['freenames'];
 
+$setforward=$_POST['setforward'];
+$forwardto=$_POST['setforward'];
+
 # Validate input and verify authorization of a users action
 
 $query="SELECT * FROM domainadmin WHERE adminuser='$user'";
