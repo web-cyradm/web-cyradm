@@ -40,7 +40,7 @@ $total=$result2->numRows($result2);
 
 print "<tr>";
 print "<td width=\"10\">&nbsp; </td>";
-print "<td valign=\"top\"><h3>"._("Total domains matching:")." ".$cnt."</h3>";
+print "<td valign=\"top\"><h3>"._("Total domains matching").": ".$cnt."</h3>";
 print "<table border=0>";
 print "<tbody>";
 print "<tr>";
@@ -74,7 +74,7 @@ for ($c=0;$c<$cnt;$c++){
 	$domain=$row[0];
 
 	print "<tr class=\"$cssrow\"> \n";
-	print "<td><a href=\"index.php?action=editdomain&domain=$domain\">". gettext("Edit Domain")."</a></td>\n";
+	print "<td><a href=\"index.php?action=editdomain&domain=$domain\">". _("Edit Domain")."</a></td>\n";
 	print "<td><a href=\"index.php?action=deletedomain&domain=$domain\">". _("Delete Domain")."</a></td>\n";
 	print "<td><a href=\"index.php?action=accounts&domain=$domain\">". _("accounts")."</a></td>\n";
 	print "<td>";
@@ -101,7 +101,7 @@ print "</table>";
 ############ And now show the users matching the search query ###########
 
 
-print "<h3>"._("Total users matching:")." ".$total."</h3>";
+print "<h3>"._("Total users matching").": ".$total."</h3>";
 if (!isset($row_pos)){
 	$row_pos=0;
 	}
@@ -113,7 +113,7 @@ if (!isset($row_pos)){
 	$result=$handle->limitQuery($query,$row_pos,10);
 	$cnt=$result->numRows($result);
 
-	print "<h4>"._("Displaying from position:")." $row_pos</h4>";
+	print "<h4>"._("Displaying from position").": ". "$row_pos</h4>";
 	$b=0;
 	if ($cnt!=0){
 		print "<table cellspacing=\"2\" cellpadding=\"0\"><tr>";
@@ -211,7 +211,7 @@ if (!isset($row_pos)){
                     $q_total = $quota['qmax'];
                     if (! $q_total == 0){
                         $q_percent = 100*$q_used/$q_total;
-                        printf ("%d KBytes %s %d KiBytes (%.2f%%)",
+                        printf ("%d KBytes %s %d KBytes (%.2f%%)",
                         $quota['used'], _("out of"),
 	                $quota['qmax'], $q_percent);
                     } else {
