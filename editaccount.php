@@ -25,7 +25,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		</h3>
 
 		<?php
-		$query = "SELECT * FROM virtual WHERE username='$username' AND alias != '$username'";
+		$query = "SELECT * FROM virtual WHERE username='$username'"; # AND alias != '$username'";
 		$handle = DB::connect($DB['DSN'], true);
 		if (DB::isError($handle)) {
 			die (_("Database error"));
