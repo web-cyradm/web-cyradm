@@ -97,10 +97,13 @@
 
 		$query3="SELECT * FROM log WHERE user='$username' ORDER BY time DESC";
 		$result3=$handle->query($query3); 
-		$row3=$result3->fetchRow(DB_FETCHMODE_ASSOC, 0);
+		if (!DB::isError($result3)) {
+			$row3=$result3->fetchRow(DB_FETCHMODE_ASSOC, 0);
+        	}
 		$lastlogin=$row3['time'];
 		if ($lastlogin==""){
-			$lastlogin=_("Never logged in");
+			//$lastlogin=_("Never logged in");
+			$lastlogin=_("n/a");
 		}
 
 	        print "\n<tr class=\"$cssrow\">";
@@ -133,9 +136,14 @@
 			if ($quota[used]!="NOT-SET"){
 			$q_used=$quota[used];
 			$q_total=$quota[qmax];	
-			$q_percent=100*$q_used/$q_total;
-			print $quota[used]." Kbytes "._("out of")." ";
-			print $quota[qmax]." Kbytes (".sprintf("%.2f",$q_percent)." %)";
+			if (!$q_total==0){
+				$q_percent=100*$q_used/$q_total;
+				print $quota[used]." Kbytes "._("out of")." ";
+				print $quota[qmax]." Kbytes (".sprintf("%.2f",$q_percent)." %)";
+			}
+			else{
+				print _("Unable to retrieve quota");
+			}
 		}
 		else{
 			print _("Quota not set");
