@@ -151,6 +151,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							</td>
 						</tr>
 					</table>
+<!-- 
 
 					<h4>
 						<?php print _("Standard Mailboxes");?>
@@ -174,6 +175,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						</tr>
 
 					</table>
+-->
 					
 					<h4>
 						<?php print _("Mail transport");?>
