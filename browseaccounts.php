@@ -88,6 +88,7 @@
 					<?php
 					$_heads = array(
 						_("Email address"), _("Username"), 
+						_("Forwards"), 
 						_("Last login"), _("Quota used")
 					);
 					foreach ($_heads as $_head){
@@ -183,6 +184,24 @@
 
 						<td valign="middle">
 							<?php echo $username;?>
+						</td>
+
+						<td valign="middle">
+						    <?php
+				                        $query4 = "select * from virtual where alias=\"" . $username . "\"";
+							$result4 = $handle->query($query4);
+							$row4 = $result4->fetchRow(DB_FETCHMODE_ASSOC, 0);
+							$forwards_tmp = preg_split('|,\s*|', stripslashes($row4['dest']));   
+							$forwards = array();                                                
+							while (list(, $forward) = each($forwards_tmp)){
+							    if (strtolower($forward) != strtolower($username)){
+								$forwards[] = htmlspecialchars(trim($forward));
+							    } else {
+								$forwards[] = "<b>" . htmlspecialchars(trim($forward)) . "</b>";
+							    }
+							}
+							echo implode("<br>", $forwards);
+						    ?>
 						</td>
 
 						<td align="center" valign="middle">
