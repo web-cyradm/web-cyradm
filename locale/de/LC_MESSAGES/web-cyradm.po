@@ -181,7 +181,7 @@ msgstr "Benutzter Speicherplatz"
 
 #: browseaccounts.php:130
 msgid "n/a"
-msgstr "nicht verfÃ¼gbar"
+msgstr "nicht verfügbar"
 
 #: browseaccounts.php:140 search.php:165
 msgid "Edit account"
@@ -217,7 +217,7 @@ msgstr "von"
 
 #: browseaccounts.php:215 search.php:214
 msgid "Unable to retrieve quota"
-msgstr "Speicherplatzkontingent nicht verfÃ¼gbar"
+msgstr "Speicherplatzkontingent nicht verfügbar"
 
 #: browseaccounts.php:218 editaccount.php:149 search.php:217
 msgid "Quota not set"
@@ -295,7 +295,7 @@ msgstr "Befehl abgebrochen, keine Daten gel&ouml;scht"
 
 #: deleteaccount.php:87
 msgid "User deleted"
-msgstr "Konto gelÃ¶scht"
+msgstr "Konto gelöscht"
 
 #: deleteaccount.php:98 deletedomain.php:169
 msgid ""
@@ -314,7 +314,7 @@ msgstr "M&ouml;chten Sie den Dom&auml;nenadministrator wirklich l&ouml;schen"
 
 #: deleteadminuser.php:79
 msgid "Admin user deleted"
-msgstr "Administrator gelÃ¶scht"
+msgstr "Administrator gelöscht"
 
 #: deleteadminuser.php:92 editadminuser.php:175 newadminuser.php:207
 msgid "Security violation detected, nothing deleted, attempt has been logged"
@@ -372,7 +372,7 @@ msgstr "Abbrechen"
 
 #: deleteemail.php:64
 msgid "Emailadress deleted."
-msgstr "E-Mail-Adresse gelÃ¶scht"
+msgstr "E-Mail-Adresse gelöscht"
 
 #: editaccount.php:15
 msgid "Email adresses defined for user"
@@ -420,7 +420,7 @@ msgstr "Datenbank erfolgreich ge&auml;ndert"
 
 #: editdomain.php:40
 msgid "Successfully changed domain"
-msgstr "DomÃ¶ne erfolgreich ge&auml;ndert"
+msgstr "Domäne erfolgreich ge&auml;ndert"
 
 #: editdomain.php:86 newdomain.php:33
 msgid "Domainname"
@@ -523,7 +523,7 @@ msgstr "Weiterleitung entfernen"
 
 #: index.php:23
 msgid "migrate.php exists! please delete or rename it"
-msgstr "migrate.php existiert! Bitte lÃ¶schen oder umbenennen.."
+msgstr "migrate.php existiert! Bitte löschen oder umbenennen.."
 
 #: index.php:130
 msgid "web-cyradm has not yet been configured"
