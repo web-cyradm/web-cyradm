@@ -60,7 +60,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$error = $cyr_conn -> imap_login();
 
 				if ($error != 0){
-					die ("Error $error");
+					die ("IMAP Error: ".$cyr_conn->geterror());
 				}
 
 				for ($c = 0; $c < $cnt; $c++) {

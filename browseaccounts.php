@@ -17,13 +17,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	$error = $cyr_conn -> imap_login();
 
 	if ($error!=0){
-		die ("Error $error");
+		die ("IMAP Error: ".$cyr_conn->geterror());
 	}
 	?>
 	<h3>
 		<?php print _("Browse accounts for domain");?>
 		<span style="color: red;">
-			<?php echo $domain;?>
+			<?php echo $_GET['domain'];?>
 		</span>
 	</h3>
 	<?php
