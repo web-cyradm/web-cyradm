@@ -6,3 +6,9 @@ flush privileges;
 
 create database mail;
 
+
+use mail;
+
+INSERT INTO adminuser (username, password) VALUES ('admin', 'test');
+INSERT INTO domainadmin (domain_name,adminuser) VALUES ('*','admin');
+INSERT INTO accountuser (username, password) VALUES ('cyrus', ENCRYPT('secret'));
