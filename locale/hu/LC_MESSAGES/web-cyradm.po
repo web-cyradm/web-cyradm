@@ -163,11 +163,11 @@ msgstr "Set catch all"
 
 #: browseaccounts.php:99
 msgid "Change Password"
-msgstr "Jelszó ismétlés"
+msgstr "Jelszó megváltoztatása"
 
 #: browseaccounts.php:100
 msgid "Vacation"
-msgstr "tevékenység"
+msgstr "Szabadság"
 
 #: browseaccounts.php:101
 msgid "Forward"
@@ -212,15 +212,15 @@ msgstr "Hozzáférés jelszavának megváltoztatása"
 
 #: change_password.php:72
 msgid "New password"
-msgstr "Jelszó"
+msgstr "Új Jelszó"
 
 #: change_password.php:76
 msgid "Confirm new password"
-msgstr "Jelszó ismétlés"
+msgstr "Új jelszó megerõsítése"
 
 #: change_password.php:29
 msgid "Password changed"
-msgstr "Jelszó"
+msgstr "Jelszó megváltozott"
 
 #: change_password.php:32
 msgid "Failure in changing password."
@@ -248,11 +248,11 @@ msgstr "Tevékenység megszakítva, semmit nem töröltem"
 
 #: deleteadminuser.php:12
 msgid "Delete an Admin account from the System"
-msgstr "Hozzáférés törlése a rendszerbõl"
+msgstr "Admin hozzáférés törlése a rendszerbõl"
 
 #: deleteadminuser.php:14
 msgid "Do you really want to delete the Domain supervisor"
-msgstr "Tényleg törölni akarod a tartományt"
+msgstr "Tényleg törölni akarod a tartomány felügyelõt"
 
 #: deletedomain.php:24
 msgid "Delete a Domain from the System"
@@ -312,11 +312,11 @@ msgstr "Tartomány adminfelh. megválotoztatása"
 
 #: editadminuser.php:81
 msgid "successfully changed Database...."
-msgstr "Adatbázishoz sikeresen hozzáadva"
+msgstr "Adatbázishoz sikeresen megváltoztatva..."
 
 #: editadminuser.php:84 newadminuser.php:79
 msgid "Database error"
-msgstr "Adatbázis hiba, próbáld újra"
+msgstr "Adatbázis hiba"
 
 #: editdomain.php:21 editemail.php:32
 msgid "Successfully changed"
@@ -416,11 +416,11 @@ msgstr "transport nem cyrus. Képtelen hozzáférést készíteni"
 
 #: newaccount.php:43
 msgid "Sorry, no more account allowed for domain"
-msgstr "Tartomány hozzáférések böngészése"
+msgstr "Bocs, nincs több hozzáférés a tartományhoz"
 
 #: newaccount.php:43
 msgid "Maximum allowed accounts is"
-msgstr "Max.hozzáférés"
+msgstr "Max.hozzáférések száma"
 
 #: newaccount.php:79
 msgid "Accountname"
@@ -444,7 +444,7 @@ msgstr "Hozzáférést sikerült eltárolni az IMAP alrendszerbe"
 
 #: newadminuser.php:6
 msgid "Add new admin user for domain"
-msgstr "Új hozzáférés a tartományhoz"
+msgstr "Új admin hozzáférés a tartományhoz"
 
 #: newadminuser.php:8
 msgid "Please select a domain first"
@@ -547,11 +547,11 @@ msgstr "Bejelentkezés sikertelen"
 
 #: forwardaccount.php:41
 msgid "Forward for account"
-msgstr "Összes hozzáférés"
+msgstr "Továbbít hozzáféréshez"
 
 #: forwardalias.php:102
 msgid "Forward for emailadress"
-msgstr "Új emailcím"
+msgstr "Emailcímre továbbít"
 
 #: forwardsalias.php:52
 msgid "Forward set"
@@ -563,7 +563,7 @@ msgstr "Hiba a továbbítás beállításában"
 
 #: forwardsalias.php:54
 msgid "Wrong password"
-msgstr "Jelszó ismétlés"
+msgstr "Helytelen jelszó"
 
 #: forwardsalias.php:68
 msgid "Forwarding removed"
