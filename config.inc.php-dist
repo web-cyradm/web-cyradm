@@ -11,8 +11,6 @@ $CYRUS_PORT="143";
 $CYRUS_USERNAME="cyrus";
 $CYRUS_PASSWORD="secret";
 
-# The MySQL stuff to be replaced after all files have PEAR implemented
-
 /* DB_TYPE
 
  Possible Values are:
@@ -27,7 +25,7 @@ $CYRUS_PASSWORD="secret";
 */
 
 
-$DB_TYPE="pgsql";
+$DB_TYPE="mysql";
 
 $DB_HOST="localhost";
 $DB_NAME="mail";

@@ -1,9 +1,19 @@
 <?php
 
 include ("config.inc.php");
+include ("lib/nls.php");
+
+$browserlang=explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']); // $HTTP_ACCEPT_LANGUAGE;
+
+if ($nls['aliases'][$browserlang[0]]){
+	$LANG=$nls['aliases'][$browserlang[0]];
+}
+
 session_start();
 $session_ok= $HTTP_SESSION_VARS['session_ok'];
-$LANG=$HTTP_SESSION_VARS['LANG'];
+if ($HTTP_SESSION_VARS['LANG']){
+	$LANG=$HTTP_SESSION_VARS['LANG'];
+}
 if ($LANG==""){
 	$LANG=$DEFAULTLANG;
 	$LANG=$HTTP_GET_VARS['LANG'];
@@ -11,8 +21,8 @@ if ($LANG==""){
 
 if ($LANG==""){
         $LANG=$DEFAULTLANG;
-//        $LANG=$HTTP_GET_VARS['LANG'];
 }
+
 
 include ("header.inc.php");
 
