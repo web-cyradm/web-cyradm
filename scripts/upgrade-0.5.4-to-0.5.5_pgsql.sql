@@ -16,4 +16,4 @@ CREATE TABLE settings (
 );
 
 INSERT INTO settings (username) SELECT username FROM adminuser;
-INSERT INTO settings (username, style , maxdisplay , warnlevel ) VALUES ( 'admin', 'default', '15', '90');
+UPDATE settings SET style = DEFAULT, maxdisplay = DEFAULT, warnlevel = DEFAULT;

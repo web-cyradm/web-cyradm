@@ -12,4 +12,3 @@ CREATE TABLE `settings` (
 ) TYPE=MyISAM;
 
 INSERT INTO `settings` (username) SELECT `username` FROM adminuser;
-INSERT INTO `settings` ( `username` , `style` , `maxdisplay` , `warnlevel` ) VALUES ( 'admin', 'default', '15', '90');
