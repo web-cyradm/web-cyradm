@@ -14,7 +14,7 @@ if (! isset($domain)){
 <table border="0" cellspacing="2" cellpadding="0">
 	<tr>
 		<?php
-		if ($admintype==0){
+		if ($_SESSION['admintype']==0){
 			?>
 			<!-- ############### Root menu first ########## -->
 			<td colspan="7">
@@ -136,9 +136,9 @@ if (! isset($domain)){
 
 				<td style="font-weight: bold; color: red;">
 					<?php
-					if ($admintype == 0){
+					if ($_SESSION['admintype'] == 0){
 						print _("Superuser");
-					} elseif ($admintype == 1){
+					} elseif ($_SESSION['admintype'] == 1){
 						print _("Domain Master");
 					}
 					?>

@@ -42,10 +42,9 @@ $query2 = "SELECT * FROM adminuser WHERE username='".$_SESSION['user']."'";
 $result2 = $handle->query($query2);
 $row = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 $_SESSION['admintype'] = $row['type'];
-$admintype = $row['type'];
 
 # We check and remember list of domains for domain admin
-if ($admintype != 0){
+if ($_SESSION['admintype'] != 0){
 	$allowed_domains = array();
 	
 	for ($i=0; $i < $cnt; $i++){

@@ -19,7 +19,7 @@ if ($error!=0){
     die ("Error $error");
 }
 
-if ($admintype==0) {
+if ($_SESSION['admintype']==0) {
     $allowed_domains="('1'='1";
     $allowed_domains3="('1'='1";
 } else {

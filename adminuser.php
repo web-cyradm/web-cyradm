@@ -16,7 +16,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		</h3>
 
 		<?php
-		if ($admintype == 0){
+		if ($_SESSION['admintype'] == 0){
 			$query = "SELECT * FROM adminuser";
 			$handle = DB::connect($DB['DSN'], true);
 			if (DB::isError($handle)) {

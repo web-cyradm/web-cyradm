@@ -21,7 +21,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		</h3>
 
 	<?php
-	if ($admintype == 0){
+	if ($_SESSION['admintype'] == 0){
 		$handle1=DB::connect($DB['DSN'], true);
 		$query = "SELECT `type` from adminuser WHERE username='$username'";
 		$result = $handle1->query($query);
@@ -301,7 +301,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				include WC_BASE . "/adminuser.php";
 			}
-		} elseif ($admintype != 0){
+		} elseif ($_SESSION['admintype'] != 0){
 			?>
 			<h3>
 				<?php print _("Security violation detected, nothing deleted, attempt has been logged");?>

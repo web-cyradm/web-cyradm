@@ -11,7 +11,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td width="10">&nbsp;</td>
 	<td valign="top">
 		<?php
-		if ($admintype==0){
+		if ($_SESSION['admintype']==0){
 			?>
 			<h3>
 				<?php print _("Add new domain");?>

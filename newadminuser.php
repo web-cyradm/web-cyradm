@@ -14,7 +14,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<h3>
 		<?php print _("Add new administrator");?>:</h3>
 	<?php
-	if ($admintype == 0){
+	if ($_SESSION['admintype'] == 0){
 		if (empty($confirmed)){
 			?>
 			<form action="index.php" method="post">
@@ -224,7 +224,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<?php
 				include WC_BASE . "/adminuser.php";
 		} // End of if (empty($confirmed)) .. elseif (! empty($confirmed))
-	} elseif ($admintype != 0){
+	} elseif ($_SESSION['admintype'] != 0){
 		?>
 		<h3>
 		<?php print _("Security violation detected, nothing deleted, attempt has been logged");?>

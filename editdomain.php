@@ -13,7 +13,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 	<?php
 
-	if ($admintype == 0){
+	if ($_SESSION['admintype'] == 0){
 
 		if (! empty($confirmed)){
 			if ($authorized) {
@@ -236,7 +236,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			<?php print _("Your are not allowed to change domains!");?>
 		</h3>
 		<?php
-	} // End of if ($admintype == 0)
+	} // End of if ($_SESSION['admintype'] == 0)
 	?>
 	</td>
 </tr>

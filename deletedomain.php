@@ -12,7 +12,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td valign="top">
 
 		<?php
-		if ($admintype == 0){
+		if ($_SESSION['admintype'] == 0){
 
 			$handle = DB::connect($DB['DSN'], true);
 			if (DB::isError($handle)) {
