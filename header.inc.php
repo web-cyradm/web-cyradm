@@ -33,7 +33,22 @@ else {
 <html>
 <head>
 <title>web-cyradm</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<?php 
+if (getenv(LANG)=="zh_CN"){
+
+	print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=GB2312\">";
+}
+
+else {
+	print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">";
+
+}
+
+
+
+?>
+
 <META content="MSHTML 5.00.2920.0" name=GENERATOR>
 <link rel="stylesheet" href="css/web-cyradm.css" type="text/css">
 </head>
