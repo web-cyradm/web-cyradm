@@ -1,4 +1,8 @@
-<?php 
+<?php
+$ref=WC_BASE."/index.php";
+if ($ref!=$_SERVER['SCRIPT_FILENAME']){
+        header("Location: index.php");
+}
 
 include WC_BASE . "/lib/nls.php";
 $charset = isset($nls["charsets"][$LANG])?$nls["charsets"][$LANG]:'iso-8859-1';

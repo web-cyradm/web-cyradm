@@ -1,3 +1,9 @@
+<?php
+$ref=WC_BASE."/index.php";
+if ($ref!=$_SERVER['SCRIPT_FILENAME']){
+	header("Location: index.php");
+}
+?>
 <!-- #################### deletedomain.php start #################### -->
 <tr>
 	<td width="10">&nbsp;</td>

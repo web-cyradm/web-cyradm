@@ -1,7 +1,13 @@
+<?php
+$ref=WC_BASE."/index.php";
+if ($ref!=$_SERVER['SCRIPT_FILENAME']){
+	header("Location: index.php");
+}
+?>
 <!-- #################### editadminuser.php start #################### -->
 <tr>
 	<td width="10">&nbsp;</td>
-	<td valign="top"> 
+	<td valign="top">
 
 		<h3>
 			<?php print _("Change admin user for domain");?>
@@ -15,29 +21,22 @@
 			$handle1=DB::connect($DB['DSN'], true);
 			$query = "SELECT * from adminuser WHERE username='$username'";
 			$result = $handle1->query($query);
+			$cnt = $result->numRows($result);
 			$adminrow = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			$type = $adminrow['type'];
 
 			if (empty($confirmed)){
 				?>
 				<form action="index.php" method="get">
-					<input type="hidden"
-					name="action"
-					value="editadminuser">
-					
-					<input type="hidden"
-					name="confirmed"
-					value="true">
-					
-					<input type="hidden"
-					name="username"
-					value="<?php print $username;?>"
-					>
-					
-					<input type="hidden"
-					name="domain"
-					value="<?php print $domain;?>"
-					>
+					<input type="hidden" name="action" value="editadminuser">
+
+					<input type="hidden" name="confirmed" value="true">
+
+					<input type="hidden" name="username" value="<?php print $username;?>">
+
+					<input type="hidden" name="domain" value="<?php print $domain;?>">
+
+					<input type="hidden" name="nrdomains" value="<?php print $cnt;?>">
 
 					<table>
 						<tr>
@@ -112,8 +111,56 @@
 						</tr>
 
 						<tr>
+							<td>
+							<?php
+							$query = "SELECT * from domainadmin WHERE adminuser='$username'";
+							$result = $handle1->query($query);
+							$cnt = $result->numRows($result);
+
+							if ($type==0){
+								print "<p>";
+								print "<h4>";
+								print "Responsible for all domains";
+								print "</h4>";
+								print "</td></tr>";
+
+							}
+							else if ($type !=0 and $cnt>0){
+								print "<p>";
+								print "<h4>";
+								print "Responsible for the following domains:";
+								print "</h4>";
+								print "</td></tr><tr>";
+								for ($i=0;$i<$cnt;$i++){
+									$query = "SELECT * from domainadmin WHERE adminuser='$username'";
+									$result = $handle1->query($query);
+									$cnt = $result->numRows($result);
+// 									$adminrow = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+									$row = $result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+									$resp_domain = $row['domain_name'];
+									print "<td>";
+									print $resp_domain;
+									print "</td>";
+									print "<td>";
+									print "<input type=\"checkbox\" name=\"resp_domain[$resp_domain]\" checked>";
+									print "</td>";
+									print "</tr>";
+								}
+							}
+							?>
+							<tr>
+								<td>Add new domain to this admin</td>
+								<td><input type="text" name="newdomain"></td>
+							</tr>
+
+
+							</td>
+						</tr>
+
+
+						<tr>
 							<td colspan="2" align="center">
-								<input 
+								<input
 								class="inputfield"
 								type="submit"
 								value="<?php print _("Submit"); ?>"
@@ -124,13 +171,55 @@
 				</form>
 				<?php
 			} elseif (! empty($confirmed)){
+
+			# First delete and set new Domainresponsibilities
+
+				$query = "DELETE from domainadmin WHERE adminuser='$username'";
+// 				print $query."<p>";
+				$result = $handle1->query($query);
+
+				# Insert each key in the array "domain" into database again
+
+				foreach ($resp_domain as $key => $r_domain){
+					$query="INSERT INTO domainadmin (domain_name,adminuser) VALUES('$key', '$username')";
+// 					print $query."<br>";
+					$result=$handle1->query($query);
+				}
+
+				# If there is a new domain to add, lets insert it to the DB
+
+				if ($newdomain){
+// 					print "Newdomain=".$newdomain."<br>";
+
+					# Check if the domain to be added really exists
+
+					$query="SELECT domain_name FROM domain WHERE domain_name='$newdomain'";
+// 					print $query."<p>";
+					$result= $handle1->query($query);
+					$cnt = $result->numRows($result);
+
+						if ($cnt==0){
+
+							# If the domain does not exist, print error
+
+							die("No such domain");
+						}
+						else{
+
+							# Insert if domain exists
+
+							$query="INSERT INTO domainadmin (domain_name,adminuser) VALUES('$newdomain','$username')";
+							$result=$handle1->query($query);
+						}
+				}
+
 				if (! empty($new_password) && $new_password == $confirm_password){
 						$pwd = new password;
 						$new_password = $pwd->encrypt($new_password, $CRYPT);
-						# If the new_password field is not 
-						# empty and the password matches, 
+						# If the new_password field is not
+						# empty and the password matches,
 						# update the password
-						$query = "UPDATE adminuser SET password='$new_password', type='$newtype' WHERE username='$username'";		
+						$query = "UPDATE adminuser SET password='$new_password', type='$newtype' WHERE username='$username'";
 				} elseif ($new_password != $confirm_password){
 					die (_("New passwords are not equal. Password not changed"));
 				} else {
@@ -141,8 +230,6 @@
 
 				if ($newtype == 0){
 					$query2="UPDATE domainadmin SET domain_name='*' WHERE adminuser='$username'";
-				} else {
-					$query2="UPDATE domainadmin SET domain_name='$domain' WHERE adminuser='$username'";
 				}
 				$result2=$handle1->query($query2);
 

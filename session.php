@@ -1,3 +1,9 @@
+<?php
+$ref=WC_BASE."/index.php";
+if ($ref!=$_SERVER['SCRIPT_FILENAME']){
+	header("Location: index.php");
+}
+?>
 <?php 
 session_name('web-cyradm-session');
 session_start();
