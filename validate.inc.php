@@ -32,6 +32,8 @@ $newdest=$_GET['newdest'];
 $confirmed=$_GET['confirmed'];
 $cancel=$_GET['cancel'];
 $searchstring=$_GET['searchstring'];
+$transport=$_GET['transport'];
+$tparam=$_GET['tparam'];
 
 # Validate input and verify authorization of a users action
 
