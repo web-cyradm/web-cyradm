@@ -1,10 +1,19 @@
 <!-- ############################## Start adminuser.php ###################################### -->
            <tr>
         <td width="10">&nbsp; </td>
-	<td valign="top"><h3>Browse adminusers</h3>
 <?php
+
+// Specify location of translation tables
+bindtextdomain("adminuser", "./locale");
+
+// Choose domain
+textdomain("adminuser");
+	
+print "<td valign=\"top\"><h3>"._("Browse admins")."</h3>";
+
+
 if ($admintype==0){
-        $query="SELECT * FROM adminuser"; # where username='$user' ORDER BY username";
+        $query="SELECT * FROM adminuser"; 
         $handle=DB::connect($DSN, true);
         $result=$handle->query($query);
         $cnt=$result->numRows();
@@ -12,10 +21,10 @@ if ($admintype==0){
         $total=$result->numRows();
         $b=0;
         if ($cnt!=0){
-                print "Total accounts: ".$total."<p>";
+                print _("Total administrators").": ".$total."<p>";
                 print "<table cellspacing=\"2\" cellpadding=\"0\"><tr>";
                 print "<td class=\"navi\">";
-                print "<a href=\"index.php?action=newadminuser&domain=$domain&username=$username\">Add&nbsp;new&nbsp;account</a>";
+                print "<a href=\"index.php?action=newadminuser&domain=$domain&username=$username\">"._("Add administator")."</a>";
                 print "</td>";
 
 
@@ -23,29 +32,29 @@ if ($admintype==0){
                 $next = $row_pos +10;
 
                 if ($row_pos<10){
-                        print "<td class=\"navi\"><a href=\"#\">Previous&nbsp;10&nbsp;entries</a></td>";
+                        print "<td class=\"navi\"><a href=\"#\">"._("Previous 10 entries")."</a></td>";
                 }
                 else {
-                        print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$prev\">
-                        Previous&nbsp;10&nbsp;entries</a></td>";
+                        print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$prev\">".
+                        _("Previous 10 entries")."</a></td>";
                 }
 
                 if ($next>$total){
-                        print "<td class=\"navi\"><a href=\"#\">Next&nbsp;10&nbsp;entries</a></td>";
+                        print "<td class=\"navi\"><a href=\"#\">"._("Next 10 entries")."</a></td>";
                 }
                 else {
-                        print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next\">
-                        Next&nbsp;10&nbsp;entries</a></td>";
+                        print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next\">".
+                        _("Next 10 entries")."</a></td>";
                 }
                 print "</tr></table><p>";
                 print "<table border=\"0\">\n";
                 print "<tbody>";
                 print "<tr>";
-                print "<th colspan=\"2\">actions</th>";
-                print "<th>username</th>";
-                print "<th>password</th>";
-                print "<th>domain</th>";
-                print "<th>admin type</th>";
+                print "<th colspan=\"2\">"._("actions")."</th>";
+                print "<th>"._("Adminname")."</th>";
+                print "<th>"._("Password")."</th>";
+                print "<th>"._("domain")."</th>";
+                print "<th>"._("admin type")."</th>";
                 print "</tr>";
 
 
@@ -69,8 +78,8 @@ if ($admintype==0){
 		$domainname=$row['domain_name'];
                 $type=$row['type'];
                 print "\n<tr class=\"$cssrow\">";
-                print "\n<td><a href=\"index.php?action=editadminuser&username=$username&domain=$domainname\">Edit adminuser</a></td>";
-                print "\n<td><a href=\"index.php?action=deleteadminuser&username=$username&domain=$domainname\">Delete adminuser</a></td>";
+                print "\n<td><a href=\"index.php?action=editadminuser&username=$username&domain=$domainname\">"._("Edit adminuser")."</a></td>";
+                print "\n<td><a href=\"index.php?action=deleteadminuser&username=$username&domain=$domainname\">"._("Delete adminuser")."</a></td>";
                 print "</td>\n<td>";
                 print $username;
                 print "</td>\n<td>";
@@ -96,11 +105,11 @@ if ($admintype==0){
 
                 }
                 else{
-                        print "\nNo accounts fount\n<p>";
+                        print "\n"._("No accounts fount")."\n<p>";
 
                 print "<table><tr>";
                 print "<td class=\"navi\">\n";
-                print "<a href=\"index.php?action=newaccount&domain=$domain&username=$username\">Add&nbsp;new&nbsp;account</a>";
+                print "<a href=\"index.php?action=newaccount&domain=$domain&username=$username\">"._("Add administrator")."</a>";
                 print "\n</td></tr></table>\n";
 
         }
