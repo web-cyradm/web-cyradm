@@ -8,16 +8,15 @@ require_once('config.inc.php');
 print "<h3>"._("Add new Account to domain")." <font color=red>$domain</font></h3>";
 
 $query1="SELECT * from domain WHERE domain_name='$domain'";
-//$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-//$result1=mysql_db_query($MYSQL_DB,$query1,$handle1);
 
 $handle=DB::connect($DSN, true);
+if (DB::isError($handle)) {
+	die (_("Database error"));
+}
+
 $result1=$handle->query($query1);
 
 $row=$result1->fetchRow($result1,$c,'prefix');
-
-//$prefix=mysql_result($result1,0,"prefix");
-//$maxaccounts=mysql_result($result1,0,"maxaccounts");
 
 $prefix=$row[1];
 $maxaccounts=$row[2];
@@ -30,10 +29,6 @@ if ($transport != "cyrus"){
 if (!$confirmed){
 
 	$query2="SELECT * FROM accountuser WHERE prefix='$prefix' order by username";
-
-
-//	$result2=mysql_db_query($MYSQL_DB,$query2,$handle1);
-//	$cnt2=mysql_num_rows($result2);
 
 	$result2=$handle->query($query2);
 	$cnt2=$result2->numRows($result2);	
@@ -49,7 +44,6 @@ if (!$confirmed){
         if (!$DOMAIN_AS_PREFIX) {
 		if ($cnt2>0){
 		$row2=$result2->fetchRow($result2,$cnt2-1,'username');
-//		$lastaccount=mysql_result($result2,$cnt2-1,"username");
 		$lastaccount=$row2[0];
 		}
 
@@ -57,7 +51,6 @@ if (!$confirmed){
 			$lastaccount=$prefix."0000";
 		}	
 
-		//$test = ereg ("[0-9]*$",$lastaccount,$result_array);
 		$test = ereg ("[0-9][0-9][0-9][0-9]$",$lastaccount,$result_array);
 		$next= $result_array[0]+1;
 
@@ -135,11 +128,6 @@ else{
         }
    $query3.=",'$prefix','$domain')";
 
-//	print $query3;
-
-//	$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-//	$result=mysql_db_query($MYSQL_DB,$query3,$handle1);
-
 	$cyr_conn = new cyradm;
 	$error=$cyr_conn -> imap_login();
 
@@ -151,7 +139,6 @@ else{
 	$result=$handle->query($query3);
 
 	$query4="INSERT INTO virtual (alias , dest , username , status) values ('$email@$domain' , '$username' , '$username' , '1')";
-//	$result2=mysql_db_query($MYSQL_DB,$query4,$handle1);
 
 	$result2=$handle->query($query4);
 

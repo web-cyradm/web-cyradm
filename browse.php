@@ -28,6 +28,11 @@ else{
 
 $handle=DB::connect($DSN, true);
 
+if (DB::isError($handle)) {
+	die (_("Database error"));
+}
+
+
 $result=$handle->query($query);
 $cnt=$result->numRows($result);
 

@@ -102,6 +102,10 @@ if ($admintype==0){
 			$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, transport) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$trans')";
 
 		        $handle=DB::connect ($DSN,true);
+                        if (DB::isError($handle)) {
+                                die (_("Database error"));
+                        }
+
 		        $result=$handle->query($query);
 
 		        if (!DB::isError($result)){

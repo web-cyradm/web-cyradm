@@ -8,6 +8,10 @@ if ($authorized){
 
 	$query="select * from virtual where alias='$alias'";
 	$handle=DB::connect($DSN, true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+
 	$result=$handle->query($query);
 	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 	$alias=$row['alias'];
@@ -19,6 +23,10 @@ if ($authorized){
 		if ($new_password == $confirm_password && $new_password!="") {
 			$query="select * from accountuser where username='$dest'";
 		        $handle=DB::connect($DSN, true);
+			if (DB::isError($handle)) {
+				die (_("Database error"));
+			}
+
 		        $result=$handle->query($query);
 			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			$password=$row['password'];
@@ -28,6 +36,10 @@ if ($authorized){
 			
 
 			$handle=DB::connect($DSN, true);
+			if (DB::isError($handle)) {
+				die (_("Database error"));
+			}
+
 			switch($CRYPT){
 			case "crypt":
 			  $query="update accountuser set password=ENCRYPT('$new_password') where username='$username'";

@@ -15,6 +15,7 @@ $admintype= $_GET['admintype'];
 $newadmintype= $_GET['newadmintype'];
 $newusername= $_GET['newusername'];
 $type= $_GET['type'];
+$newtype= $_GET['newtype'];
 $domain=$_GET['domain'];
 $prefix=$_GET['prefix'];
 $action=$_GET['action'];
@@ -45,15 +46,22 @@ $metoo=$_GET['metoo'];
 $query="SELECT * FROM domainadmin WHERE adminuser='$user'";
 $query2="SELECT type FROM adminuser WHERE username='$user'";
 $handle=DB::connect($DSN,true);
+if (DB::isError($handle)) {
+	die (_("Database error"));
+}
+
 $result=$handle->query($query);
 $result2=$handle->query($query2);
 $cnt=$result->numRows();
 $row=$result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 $admintype=$row['type'];
 if ($admintype!=0){
- $row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
- $allowed_domains=$row['domain_name'];
- $domain=$row['domain_name'];
+	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+	$allowed_domains=$row['domain_name'];
+	if (!$allowed_domains){
+		include("logout.php");	
+	}
+	$domain=$row['domain_name'];
 }
 
 

@@ -8,6 +8,10 @@ if ($authorized){
 
 	$query="select * from virtual where alias='$alias'";
 	$handle=DB::connect($DSN, true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+
 	$result=$handle->query($query);
 	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 	$alias=$row['alias'];
@@ -19,6 +23,10 @@ if ($authorized){
 	        $query="UPDATE virtual SET alias='$newalias@$domain', dest='$dest' WHERE alias='$alias'";
 	
 	        $handle=DB::connect($DSN, true);
+		if (DB::isError($handle)) {
+			die (_("Database error"));
+		}
+
 	        $result=$handle->query($query);
 
 

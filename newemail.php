@@ -11,6 +11,10 @@ if ($confirmed){
         $query="INSERT INTO virtual (alias,dest,username) VALUES('$alias@$domain','$dest','$username')";
 
         $handle=DB::connect($DSN, true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+
         $result=$handle->query($query);
 
 

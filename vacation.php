@@ -8,6 +8,10 @@ if ($authorized){
 
 	$query="select * from virtual where alias='$alias'";
 	$handle=DB::connect($DSN, true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+
 	$result=$handle->query($query);
 	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 //	$alias=$row['alias'];
@@ -18,6 +22,10 @@ if ($authorized){
 	include ('lib/sieve_strs.php');
 	$query="select * from accountuser where username='$dest'";
 	$handle=DB::connect($DSN, true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+
 	$result=$handle->query($query);
 	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 	$password=$row['password'];
