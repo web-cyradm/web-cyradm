@@ -6,7 +6,7 @@
 
 
 //$nls['aliases']['bg'] = 'bg_BG';
-//$nls['aliases']['cs'] = 'cs_CZ';
+$nls['aliases']['cs'] = 'cs_CZ';
 $nls['aliases']['da'] = 'da_DK';
 $nls['aliases']['de'] = 'de_DE';
 //$nls['aliases']['el'] = 'el_GR';
@@ -106,7 +106,7 @@ $nls['charsets']['zh_TW'] = 'BIG5';
  ** Translators
  **/
 
-$nls['translator']['zh_CN'] = '<a href="mailto:boozhang at sdb.ac.cn">Zhang Bo</a>';
+$nls['translator']['cs_CZ'] = '<a href="mailto:kania at gdi.cz">Robert Kania</a>';
 $nls['translator']['da_DK'] = '<a href="mailto:kw atCombo.dk">Kenneth Wrang</a>';
 $nls['translator']['fr_FR'] = '<a href="mailto:mrjack at fastorama.com">Raphaël Jeudy</a>';
 $nls['translator']['de_DE'] = '<a href="mailto:m.muenz at maxonline.de">Michael Muenz</a> and <a href="mailto:luc at delouw.ch">Luc de Louw</a>'; 
@@ -120,6 +120,7 @@ $nls['translator']['ro_RO'] = '<a href="mailto:catalinboiangiu at SoftHome.net">
 $nls['translator']['ru_RU'] = '<a href="mailto:edge at gts.smtn.stavropol.ru">Andrey Kolbasenko</a> and <a href="mailto:a_mdl at mail.ru">Denis Medvedev</a>';
 $nls['translator']['sv_SE'] = '<a href="mailto:fredrik at rambrik Rambris.com">Fredrik Rambris</a> and <a href="mailto:anders.litzell at telia.com">Anders Litzell</a>';
 $nls['translator']['tr_TR'] = '<a href="mailto:suleymankuran at yahoo.com">Süleyman Kuran</a>';
+$nls['translator']['zh_CN'] = '<a href="mailto:boozhang at sdb.ac.cn">Zhang Bo</a>';
 
 
 ?>
