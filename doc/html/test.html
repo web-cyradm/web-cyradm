@@ -78,8 +78,8 @@ CLASS="SECT2"
 ><A
 NAME="TEST-RUNNING">9.1. (Re-)Starting the daemons</H2
 ><P
->Now all the software has been installed and configured, lets do some testings now. First you have to (re-)start all
-the daemons affected </P
+>Now all the software has been installed and configured. Lets do some testings now. 
+First you have to (re-)start all the daemons affected </P
 ><P
 ></P
 ><UL
@@ -117,9 +117,11 @@ CLASS="COMMAND"
 ></LI
 ></UL
 ><P
->Hopefully all daemons started without any complaints...</P
+>Hopefully all daemons started without any complaints. Note that this is assuming saslauthd is started 
+in the cyrus startup script.</P
 ><P
->Now you can verify if the daemons are running properly by issuing <B
+>Now you can verify if the daemons are running properly by issuing 
+<B
 CLASS="COMMAND"
 >netstat -an|grep LISTEN</B
 ></P
@@ -215,18 +217,19 @@ TARGET="_top"
 >
 Login with the credentials defined before.</P
 ><P
->Define a Domainname and some accounts. Be sure the domainname belongs to your server. If not you have to fake it by 
-enter the domain in <TT
+>Define a domainname and some accounts. Be sure the domainname belongs to your server. 
+If not you have to fake it by enter the domain in <TT
 CLASS="FILENAME"
 >/etc/hosts</TT
->. The Domain must also be defined as local in 
+>. 
+The domain must also be defined as local in 
 <TT
 CLASS="FILENAME"
 >/etc/postfix/main.cf</TT
 > (mydestination = domain)</P
 ><P
->Please be sure that you are providing a unique domainprefix when adding a new domain. I.e. test for the domain
-test.org. If you dont provide such a prefix you will get a error-message</P
+>Please be sure that you are providing a unique domain prefix when adding a new domain. I.e. test for the domain
+test.org. If you don't provide such a prefix you will get a error message.</P
 ></DIV
 ><DIV
 CLASS="SECT2"
@@ -257,7 +260,7 @@ helo localhost
 250 mail
 mail from: luc at delouw.ch
 250 Ok
-rcpt to: rcpt to: luc at localhost
+rcpt to: luc at localhost
 250 Ok
 
 data
@@ -272,8 +275,8 @@ quit</PRE
 ></TR
 ></TABLE
 ><P
->If you see such a message, then all seems to work fine. Be sure to specify a recipients address you previously defined 
-in the web-cyradm database</P
+>If you see such a message, then all seems to work fine. Be sure to specify a recipients 
+address you previously defined in the web-cyradm database</P
 ><P
 >If you get an error like this:</P
 ><TABLE
@@ -294,7 +297,7 @@ CLASS="SCREEN"
 ></TABLE
 ><P
 >Then either MySQL is not running, DB permission are not set properly or you 
-miss-configured <TT
+missconfigured <TT
 CLASS="FILENAME"
 >/etc/postfix/main.cf</TT
 ></P
@@ -302,23 +305,24 @@ CLASS="FILENAME"
 >On any errors, I suggest to examine <TT
 CLASS="FILENAME"
 >/var/log/mail</TT
->. Often you will find some hints whats went wrong.</P
+>. Often you will find 
+some hints whats went wrong.</P
 ></DIV
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="TESTING-CYRUS">9.4. Testing the IMAP and POP functionality</H2
+NAME="TESTING-CYRUS">9.4. Testing the IMAP functionality</H2
 ><P
 >A lot of users like to test the cyrus-IMAPd with the Command Line Interface (CLI) »cyradm« and they are failing.
-To be sucessful with cyradm, you will need to add the cyrus user to <TT
+To be successful with cyradm, you will need to add the cyrus user to <TT
 CLASS="FILENAME"
 >/etc/sasldb2</TT
-> because »cyradm« always 
-authenticates against SASL __and__ IMAP.</P
+> 
+because »cyradm« always authenticates against SASL AND IMAP.</P
 ><P
->To add the cyrus user to the sasldb use the command:</P
+>To add the Cyrus user to the sasldb use the command:</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -337,8 +341,9 @@ Again (for verification): (enter your password)</PRE
 ></TR
 ></TABLE
 ><P
->To use the »cyradm« CLI please take care that the tool does not recognize standart CLI-options like -u and similar. Please follow
-the syntax like descibed in the man page »cyradm 1« like the following example:</P
+>To use the »cyradm« CLI please take care that the tool does not recognize standard CLI-options 
+like -u and similar. Please follow the syntax like described in the man page »cyradm 1« like the 
+following example:</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -358,17 +363,17 @@ localhost&#62;</PRE
 ></TR
 ></TABLE
 ><P
->With the cyrus command <B
+>With the Cyrus command <B
 CLASS="COMMAND"
 >help</B
-> you will see all possible commands and its abbreviations</P
+> you will see all possible commands and its abbreviations.</P
 ><P
 >To make that kind of tests. you just need a mailclient like kmail or netscape
-(Yes of course M$-Products are working as well) but in this example I'll using kmail</P
+(Yes of course, M$-Products are working as well) but in this example I'm using kmail.</P
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="AEN582"><P
+NAME="AEN672"><P
 ><B
 >Figure 3. Creating a new account</B
 ></P
@@ -381,7 +386,7 @@ SRC="imap-account.png"></P
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="AEN586"><P
+NAME="AEN676"><P
 ><B
 >Figure 4. Testing TLS/SSL functionality</B
 ></P
@@ -390,7 +395,7 @@ NAME="AEN586"><P
 SRC="imap-tls.png"></P
 ></DIV
 ><P
->If login fails, and you are sure, you typed the right password, take care that MySQL is running</P
+>If login fails, and you are sure, you typed the right password, take care that MySQL is running.</P
 ></DIV
 ></DIV
 ><DIV

@@ -96,12 +96,12 @@ CLASS="FILENAME"
 >/etc/services</TT
 ></H3
 ><P
->If you like to use sieve (A Mail Filtering Language), you must change an entry
+>If you like to use sieve (a mail filtering language), you must change an entry
 in <TT
 CLASS="FILENAME"
 >/etc/services</TT
->. With SuSE 8.0 take especiall care about the port for sieve, they defined the wrong port.
-Add or change the following line:</P
+>. With SuSE 8.0 take especially care about the port for sieve, 
+they defined the wrong port. Add or change the following lines:</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -167,13 +167,13 @@ sieve_maxscripts: 5
 ></TR
 ></TABLE
 ><P
->Be sure »servername« contains your FQHN (Fully qualified hostname)</P
+>Be sure »servername« contains your FQHN (Fully Qualified Hostname)</P
 ><P
->The parameter »unixhierarchysep: yes« is only used if you like to have usernames like »hans.mueller.somedomain.tld« see 
-<A
+>The parameter »unixhierarchysep: yes« is only used if you like to have usernames 
+like »hans.mueller.somedomain.tld« see <A
 HREF="web-cyradm-config.html"
 >Section 8</A
-> for more info</P
+> for more info.</P
 ></DIV
 ><DIV
 CLASS="SECT3"
@@ -182,7 +182,7 @@ CLASS="SECT3"
 ><A
 NAME="TLS">7.1.3. Creating the TLS/SSL Certificate</H3
 ><P
->If you want to enable Cyrus' TLS/SSL facilities you have to create a certificate first. This requires an 
+>If you want to enable Cyrus' TLS/SSL facilities, you have to create a certificate first. This requires an 
 OpenSSL installation</P
 ><TABLE
 BORDER="1"
@@ -245,9 +245,8 @@ CLASS="SCREEN"
 ># standard standalone server implementation
 
 START {
-  # do not delete these entries!
-  mboxlist      cmd="ctl_mboxlist -r"
-  deliver       cmd="ctl_deliver -r"
+  # do not delete this entry!
+  recover       cmd="ctl_cyrusdb -r"
 
   # this is only necessary if using idled for IMAP IDLE
 #  idled                cmd="idled"
@@ -265,14 +264,20 @@ SERVICES {
   # at least one LMTP is required for delivery
 #  lmtp         cmd="lmtpd" listen="lmtp" prefork=0
   lmtpunix      cmd="lmtpd" listen="/var/imap/socket/lmtp" prefork=0
+
+  # this is only necessary if using notifications
+#  notify       cmd="notifyd" listen="/var/imap/socket/notify" proto="udp" prefork=1
 }
 
 EVENTS {
   # this is required
-  checkpoint    cmd="ctl_mboxlist -c" period=30
+  checkpoint    cmd="ctl_cyrusdb -c" period=30
 
   # this is only necessary if using duplicate delivery suppression
   delprune      cmd="ctl_deliver -E 3" period=1440
+
+  # this is only necessary if caching TLS sessions
+  tlsprune      cmd="tls_prune" period=1440
 }</PRE
 ></FONT
 ></TD
@@ -395,7 +400,7 @@ COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >su - cyrus
-/usr/local/cyrus-imapd-2.1.5/tools/mkimap</PRE
+/usr/local/cyrus-imapd-2.1.12/tools/mkimap</PRE
 ></FONT
 ></TD
 ></TR
@@ -407,7 +412,28 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="CH-ATTRIB">7.3. Changing the attributes</H2
+NAME="CH-ATTRIB">7.3. Changing the filesystem attributes</H2
+><P
+>When using the ext2 filesystem, you must set an attribute, that defines, that all changes 
+are immediately committed to the disk. With todays journaling filesystems there is no need. 
+If you are still running ext2 filesystems, I strongly suggest to switch to ext3 filesystems. 
+Ext2 and ext3 are fully compatible to each other.</P
+><P
+>To check what type of filesystem is used for <TT
+CLASS="FILENAME"
+>/var</TT
+> issue the
+command <B
+CLASS="COMMAND"
+>mount</B
+> or see your <TT
+CLASS="FILENAME"
+>/etc/fstab</TT
+>. Please note
+that the <TT
+CLASS="FILENAME"
+>/var</TT
+> could also be a part of the root or other filesystem.</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
