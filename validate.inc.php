@@ -35,6 +35,8 @@ $cancel=$_GET['cancel'];
 $searchstring=$_GET['searchstring'];
 $transport=$_GET['transport'];
 $tparam=$_GET['tparam'];
+$mode=$_GET['mode'];
+
 
 # Validate input and verify authorization of a users action
 
