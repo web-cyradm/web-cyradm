@@ -43,6 +43,8 @@ if ($_POST){
 	}
 }
 
+# Security precaution if register_globals = on
+$authorized = FALSE;
 # Load list of reserved Adresses into array
 $reserved=explode(",",$RESERVED);
 #
@@ -129,12 +131,15 @@ function ValidPrefix($prefix) {
 //################## Validate input and verify users actions ##################
 if (! empty($action)){
 	switch ($action){
-################################ Check input if browse ################################################
+#OK############################# Check input if browse ################################################
 	case "browse":
-		if (!isset($_GET['orderby']) OR empty($_GET['orderby']) OR
+		if (isset($_GET['orderby']) AND
 			!in_array($_GET['orderby'], array('domain_name', 'prefix', 'maxaccounts',
 							  'domainquota', 'quota'))){
-			$_GET['orderby'] = 'domain_name';
+			unset($_GET['orderby']);
+		}
+		if (isset($_GET['row_pos']) AND !is_numeric($_GET['row_pos'])) {
+			unset($_GET['row_pos']);
 		}
 		break;
 ############################## Check deleteaccount ##################################################
@@ -354,7 +359,7 @@ if (! empty($action)){
 			}
 		}
 		break;
-########################################## Check input if display ##################################
+#OK####################################### Check input if display ##################################
 	case "display":
 		if (isset($_GET['confirmed'])) {
 			if (!is_numeric($_GET['maxdisplay']) OR $_GET['maxdisplay'] <= 0) {
@@ -364,6 +369,10 @@ if (! empty($action)){
 			elseif (!is_numeric($_GET['warnlevel']) OR $_GET['warnlevel'] < 0 OR $_GET['warnlevel'] > 100) {
 				$authorized = FALSE;
 				$err_msg = "Warn level should be beetwen 0 and 100";
+			}
+			elseif (!isset($_GET['style']) OR empty($_GET['style']) OR !in_array($_GET['style'], $TEMPLATE)){
+				$authorized = FALSE;
+				$err_msg = "Value incorrect";
 			}
 			else {
 				$authorized = TRUE;
@@ -406,4 +415,5 @@ if (! empty($action)){
 		break;
 	} // End of switch ($action)
 } // End of if (! empty($action))
+?>
 
