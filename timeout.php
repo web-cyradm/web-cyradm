@@ -1,3 +1,9 @@
+<?php
+$ref=WC_BASE."/index.php";
+if ($ref!=$_SERVER['SCRIPT_FILENAME']){
+	header("Location: index.php");
+}
+?>
 	<table width="100%" border="0" style="height: 80%;">
 		<tr>
 			<td align="center" valign="middle"> 

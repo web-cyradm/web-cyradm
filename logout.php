@@ -1,3 +1,10 @@
+<?php
+$ref=WC_BASE."/index.php";
+if ($ref!=$_SERVER['SCRIPT_FILENAME']){
+	header("Location: index.php");
+}
+?>
+
           <tr>
         <td width="10">&nbsp; </td>
         <td valign="top">
