@@ -135,6 +135,13 @@ switch ($action){
 #####################  Check if change email-adress ####################################
 
  case "editemail":
+
+
+## FIXEM: make beter checks 
+ case "change_password":
+ case "set_vacation":
+ case "set_forwards":
+
   print $username;
          $query="SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
          $result=$handle->query($query);
