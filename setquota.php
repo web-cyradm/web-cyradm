@@ -144,7 +144,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			}
 		}
 
-//		print "<h3>".$err_msg."</h3>";
+		print "<h3>".$err_msg."</h3>";
 
 		?>
 	</td>
