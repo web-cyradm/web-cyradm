@@ -84,7 +84,6 @@ if ($wc_configured){
 
 //		if (empty($_GET['domain']) && (empty($_GET['action']) || (! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain', 'editadminuser', 'newadminuser', 'search'))))){
 
-
 		if (!isset($action)){
 
 			include WC_BASE . "/welcome.php";

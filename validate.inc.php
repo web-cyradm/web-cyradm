@@ -19,18 +19,23 @@ $_get_vars = array(
 );
 
 $_post_vars = array(
-	'confirmed', 'action'. 'domain', 'alias' , 'username', 'new_password', 
-	'confirm_password');
+	'confirmed', 'action', 'domain', 'alias' , 'username', 'new_password', 
+	'confirm_password', 'email', 'quota', 'password');
 
-foreach ($_get_vars as $_get_var){
-	if (isset($_GET[$_get_var])){
-		$$_get_var = $_GET[$_get_var];
+if ($_GET['action']!=""){
+
+	foreach ($_get_vars as $_get_var){
+		if (isset($_GET[$_get_var])){
+			$$_get_var = $_GET[$_get_var];
+		}
 	}
 }
 
-foreach ($_post_vars as $_post_var){
-	if (isset($_POST[$post_var])){
-		$$_post_var = $_POST[$_post_var];
+if ($_POST['action']!=""){
+	foreach ($_post_vars as $_post_var){
+		if (isset($_POST[$_post_var])){
+			$$_post_var = $_POST[$_post_var];
+		}
 	}
 }
 
