@@ -6,7 +6,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	exit();
 }
 ?>
-<!-- #################### Start main #################### -->
+<!-- #################### Start display #################### -->
 <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="top">
@@ -21,6 +21,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				?>
 			</span>
 		</h3>
+		<?php
+			if (!$TEMPLATE){
+				die(_("No template definitions found, please check your config file"));
+			}
+		?>
+
 		<form action="index.php" method="get">
 			<input type="hidden" name="action" value="display">
 			<input type="hidden" name="confirmed" value="true">
@@ -131,5 +137,5 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		include WC_BASE . "/settings.php";
 	}
 	?>
-<!-- #################### End main #################### -->
+<!-- #################### End display #################### -->
 
