@@ -1,135 +1,216 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Turkish translation of PACKAGE.
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# Süleyman Kuran <suleymankuran@yahoo.com>, 2003.
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2003-08-10 16:56+0200\n"
-"PO-Revision-Date: 2002-11-17 16:26+0200\n"
+"PO-Revision-Date: 2003-08-25 02:07+0200\n"
 "Last-Translator: Süleyman Kuran <suleymankuran@yahoo.com>\n"
-"Language-Team: Turkish\n"
+"Language-Team: Turkish <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.6\n"
 
-#: CVS/Base/browseaccounts.php:22 browseaccounts.php:22
+#: CVS/Base/browseaccounts.php:22
+#: browseaccounts.php:22
 msgid "Browse accounts for domain"
 msgstr "Etki alanındaki hesaplara gözat"
 
-#: CVS/Base/browseaccounts.php:34 adminuser.php:21 browse.php:66
-#: browseaccounts.php:34 catchall.php:24 catchall.php:118
-#: change_password.php:19 change_password.php:32 change_password.php:42
-#: deleteaccount.php:83 deleteadminuser.php:74 deletedomain.php:17
-#: editaccount.php:31 editdomain.php:37 editdomain.php:67 editemail.php:15
-#: editemail.php:38 forwardalias.php:16 forwardalias.php:33 newaccount.php:26
-#: newadminuser.php:137 newadminuser.php:215 newalias.php:26 newdomain.php:237
-#: newemail.php:15 vacation.php:15 vacation.php:30 validate.inc.php:58
-#: lib/crypto.php:30 lib/crypto.php:110 lib/crypto.php:149
-#: forwardaccount.php:28 delete_catchall.php:23 deleteemail.php:62
+#: CVS/Base/browseaccounts.php:34
+#: adminuser.php:21
+#: browse.php:66
+#: browseaccounts.php:34
+#: catchall.php:24
+#: catchall.php:118
+#: change_password.php:19
+#: change_password.php:32
+#: change_password.php:42
+#: deleteaccount.php:83
+#: deleteadminuser.php:74
+#: deletedomain.php:17
+#: editaccount.php:31
+#: editdomain.php:37
+#: editdomain.php:67
+#: editemail.php:15
+#: editemail.php:38
+#: forwardalias.php:16
+#: forwardalias.php:33
+#: newaccount.php:26
+#: newadminuser.php:137
+#: newadminuser.php:215
+#: newalias.php:26
+#: newdomain.php:237
+#: newemail.php:15
+#: vacation.php:15
+#: vacation.php:30
+#: validate.inc.php:58
+#: lib/crypto.php:30
+#: lib/crypto.php:110
+#: lib/crypto.php:149
+#: forwardaccount.php:28
+#: delete_catchall.php:23
+#: deleteemail.php:62
 msgid "Database error"
 msgstr "Veritabanı hatası"
 
-#: CVS/Base/browseaccounts.php:48 browseaccounts.php:48 newaccount.php:68
+#: CVS/Base/browseaccounts.php:48
+#: browseaccounts.php:48
+#: newaccount.php:68
 msgid "Total accounts"
 msgstr "Toplam hesap sayısı"
 
-#: CVS/Base/browseaccounts.php:49 adminuser.php:36 browseaccounts.php:49
+#: CVS/Base/browseaccounts.php:49
+#: adminuser.php:36
+#: browseaccounts.php:49
 msgid "Displaying from position:"
-msgstr ""
+msgstr "Listeleme·Konumu:"
 
-#: CVS/Base/browseaccounts.php:55 CVS/Base/browseaccounts.php:242
-#: browseaccounts.php:55 browseaccounts.php:242 search.php:123 search.php:239
+#: CVS/Base/browseaccounts.php:55
+#: CVS/Base/browseaccounts.php:242
+#: browseaccounts.php:55
+#: browseaccounts.php:242
+#: search.php:123
+#: search.php:239
 msgid "Add new account"
 msgstr "Yeni hesap ekle"
 
-#: CVS/Base/browseaccounts.php:78 adminuser.php:65 aliases.php:56
-#: browseaccounts.php:78 editalias.php:69 search.php:131 search.php:135
+#: CVS/Base/browseaccounts.php:78
+#: adminuser.php:65
+#: aliases.php:56
+#: browseaccounts.php:78
+#: editalias.php:69
+#: search.php:131
+#: search.php:135
 msgid "Previous 10 entries"
 msgstr "Önceki 10 kayıt"
 
-#: CVS/Base/browseaccounts.php:82 adminuser.php:69 aliases.php:57
-#: browseaccounts.php:82 editalias.php:70 search.php:138 search.php:142
+#: CVS/Base/browseaccounts.php:82
+#: adminuser.php:69
+#: aliases.php:57
+#: browseaccounts.php:82
+#: editalias.php:70
+#: search.php:138
+#: search.php:142
 msgid "Next 10 entries"
 msgstr "Sonraki 10 kayıt"
 
-#: CVS/Base/browseaccounts.php:91 adminuser.php:78 aliases.php:64
-#: browse.php:20 browseaccounts.php:91 editaccount.php:50 editalias.php:76
-#: search.php:52 search.php:149 search.php:253
+#: CVS/Base/browseaccounts.php:91
+#: adminuser.php:78
+#: aliases.php:64
+#: browse.php:20
+#: browseaccounts.php:91
+#: editaccount.php:50
+#: editalias.php:76
+#: search.php:52
+#: search.php:149
+#: search.php:253
 msgid "action"
 msgstr "işlem"
 
-#: CVS/Base/browseaccounts.php:96 aliases.php:65 browseaccounts.php:96
-#: editaccount.php:54 newaccount.php:136 newalias.php:82 search.php:150
+#: CVS/Base/browseaccounts.php:96
+#: aliases.php:65
+#: browseaccounts.php:96
+#: editaccount.php:54
+#: newaccount.php:136
+#: newalias.php:82
+#: search.php:150
 #: search.php:254
 msgid "Email address"
 msgstr "Eposta adresi"
 
-#: CVS/Base/browseaccounts.php:96 browseaccounts.php:96 editaccount.php:63
-#: login.php:61 search.php:151
+#: CVS/Base/browseaccounts.php:96
+#: browseaccounts.php:96
+#: editaccount.php:63
+#: login.php:61
+#: search.php:151
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-#: CVS/Base/browseaccounts.php:97 browseaccounts.php:97
-#, fuzzy
+#: CVS/Base/browseaccounts.php:97
+#: browseaccounts.php:97
 msgid "Last login"
-msgstr "Giriş başarısız"
+msgstr "Son·giriş"
 
-#: CVS/Base/browseaccounts.php:97 browseaccounts.php:97 editaccount.php:68
+#: CVS/Base/browseaccounts.php:97
+#: browseaccounts.php:97
+#: editaccount.php:68
 #: search.php:152
 msgid "Quota used"
 msgstr "Kota kullanımı"
 
-#: CVS/Base/browseaccounts.php:136 browseaccounts.php:136
+#: CVS/Base/browseaccounts.php:136
+#: browseaccounts.php:136
 msgid "n/a"
-msgstr ""
+msgstr "n/a"
 
-#: CVS/Base/browseaccounts.php:146 browseaccounts.php:146 search.php:171
+#: CVS/Base/browseaccounts.php:146
+#: browseaccounts.php:146
+#: search.php:171
 msgid "Edit account"
 msgstr "Hesap düzenle"
 
-#: CVS/Base/browseaccounts.php:151 browseaccounts.php:151
+#: CVS/Base/browseaccounts.php:151
+#: browseaccounts.php:151
 msgid "Change Password"
 msgstr "Şifre Değiştir"
 
-#: CVS/Base/browseaccounts.php:155 browseaccounts.php:155 editaccount.php:58
+#: CVS/Base/browseaccounts.php:155
+#: browseaccounts.php:155
+#: editaccount.php:58
 #: editaccount.php:91
 msgid "Forward"
 msgstr "Yönlendir"
 
-#: CVS/Base/browseaccounts.php:159 browseaccounts.php:159 search.php:172
+#: CVS/Base/browseaccounts.php:159
+#: browseaccounts.php:159
+#: search.php:172
 msgid "Delete account"
 msgstr "Hesap Sil"
 
-#: CVS/Base/browseaccounts.php:163 browseaccounts.php:163 search.php:173
+#: CVS/Base/browseaccounts.php:163
+#: browseaccounts.php:163
+#: search.php:173
 msgid "Set quota"
 msgstr "Kota belirle"
 
-#: CVS/Base/browseaccounts.php:167 browseaccounts.php:167 search.php:174
+#: CVS/Base/browseaccounts.php:167
+#: browseaccounts.php:167
+#: search.php:174
 msgid "Set catch all"
 msgstr "Tümünü yakala"
 
-#: CVS/Base/browseaccounts.php:181 browseaccounts.php:181 search.php:190
-#, fuzzy
+#: CVS/Base/browseaccounts.php:181
+#: browseaccounts.php:181
+#: search.php:190
 msgid "Forwards"
 msgstr "Yönlendir"
 
-#: CVS/Base/browseaccounts.php:218 browseaccounts.php:218 editaccount.php:152
+#: CVS/Base/browseaccounts.php:218
+#: browseaccounts.php:218
+#: editaccount.php:152
 #: search.php:217
 msgid "out of"
 msgstr ", Toplam:"
 
-#: CVS/Base/browseaccounts.php:221 browseaccounts.php:221 search.php:220
+#: CVS/Base/browseaccounts.php:221
+#: browseaccounts.php:221
+#: search.php:220
 msgid "Unable to retrieve quota"
-msgstr ""
+msgstr "Kota·değeri·belirlenemedi"
 
-#: CVS/Base/browseaccounts.php:224 browseaccounts.php:224 editaccount.php:155
+#: CVS/Base/browseaccounts.php:224
+#: browseaccounts.php:224
+#: editaccount.php:155
 #: search.php:223
 msgid "Quota not set"
-msgstr "Kota belirlenmedi"
+msgstr "Kota ayarlanmadı"
 
-#: CVS/Base/browseaccounts.php:236 browseaccounts.php:236 search.php:235
+#: CVS/Base/browseaccounts.php:236
+#: browseaccounts.php:236
+#: search.php:235
 msgid "No accounts found"
 msgstr "Hesap bulunamadı"
 
@@ -166,20 +247,25 @@ msgid "Delete adminuser"
 msgstr "Yönetici sil"
 
 #: adminuser.php:144
-#, fuzzy
 msgid "All domains"
-msgstr "etki alanı"
+msgstr "Tüm etki alanları"
 
 #: adminuser.php:148
 msgid "None"
-msgstr ""
+msgstr "Hiçbiri"
 
-#: adminuser.php:158 editadminuser.php:65 menu.inc.php:132 newadminuser.php:57
+#: adminuser.php:158
+#: editadminuser.php:65
+#: menu.inc.php:132
+#: newadminuser.php:57
 #: newadminuser.php:207
 msgid "Superuser"
 msgstr "Süper kullanıcı"
 
-#: adminuser.php:160 editadminuser.php:76 menu.inc.php:134 newadminuser.php:61
+#: adminuser.php:160
+#: editadminuser.php:76
+#: menu.inc.php:134
+#: newadminuser.php:61
 #: newadminuser.php:209
 msgid "Domain Master"
 msgstr "Etki alanı yöneticisi"
@@ -193,32 +279,32 @@ msgid "Add administrator"
 msgstr "Yönetici ekle"
 
 #: aliases.php:11
-#, fuzzy
 msgid "Browse aliases for domain"
 msgstr "Etki alanındaki hesaplara gözat"
 
 #: aliases.php:50
-#, fuzzy
 msgid "Total aliases"
-msgstr "Toplam yönetici sayısı:"
+msgstr "Toplam hesap sayısı:"
 
 #: aliases.php:55
-#, fuzzy
 msgid "Add new alias"
-msgstr "Yeni etki alanı ekle"
+msgstr "Yeni hesap ekle"
 
-#: aliases.php:66 editalias.php:77 editemail.php:113 newemail.php:98
+#: aliases.php:66
+#: editalias.php:77
+#: editemail.php:113
+#: newemail.php:98
 #: search.php:255
 msgid "Destination"
 msgstr "Hedef"
 
-#: aliases.php:91 search.php:273
-#, fuzzy
+#: aliases.php:91
+#: search.php:273
 msgid "Edit Alias"
 msgstr "Eposta adresi düzenle"
 
-#: aliases.php:92 search.php:274
-#, fuzzy
+#: aliases.php:92
+#: search.php:274
 msgid "Delete Alias"
 msgstr "Eposta adresi sil"
 
@@ -235,7 +321,6 @@ msgid "Push the back button in your browser to try again."
 msgstr "Tekrar denemek için tarayıcınızın geri düğmesine basın."
 
 #: auth.inc.php:73
-#, fuzzy
 msgid " Your attempt to login has been stored."
 msgstr "Giriş denemeniz kaydedildi."
 
@@ -243,43 +328,52 @@ msgstr "Giriş denemeniz kaydedildi."
 msgid "Browse domains"
 msgstr "Etki alanlarına gözat"
 
-#: browse.php:24 search.php:53
+#: browse.php:24
+#: search.php:53
 msgid "domainname"
 msgstr "Etki alanı"
 
-#: browse.php:31 search.php:57
+#: browse.php:31
+#: search.php:57
 msgid "prefix"
 msgstr "Önek"
 
-#: browse.php:38 search.php:60
+#: browse.php:38
+#: search.php:60
 msgid "max Accounts"
 msgstr "max Hesap"
 
-#: browse.php:42 search.php:61
+#: browse.php:42
+#: search.php:61
 msgid "default quota per user"
 msgstr "varsayılan kullanıcı kotası"
 
-#: browse.php:90 search.php:82
+#: browse.php:90
+#: search.php:82
 msgid "Edit Domain"
 msgstr "Etki alanı Düzenle"
 
-#: browse.php:91 search.php:83
+#: browse.php:91
+#: search.php:83
 msgid "Delete Domain"
 msgstr "Etki alanı Sil"
 
-#: browse.php:92 deletedomain.php:51 menu.inc.php:59 search.php:84
+#: browse.php:92
+#: deletedomain.php:51
+#: menu.inc.php:59
+#: search.php:84
 msgid "accounts"
 msgstr "hesaplar"
 
-#: browse.php:93 menu.inc.php:68 search.php:85
+#: browse.php:93
+#: menu.inc.php:68
+#: search.php:85
 msgid "Aliases"
-msgstr ""
+msgstr "Hesaplar"
 
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
-msgstr ""
-"Tanımsız hesapların postalarını yakalaması için bir hesap belirleyin. Etki "
-"alanı:"
+msgstr "Tanımsız hesapların postalarını yakalaması için bir hesap belirleyin. Etki alanı:"
 
 #: catchall.php:38
 msgid "Do you really want to define the user"
@@ -291,39 +385,42 @@ msgstr "kullanıcısını tanımlamak istediğinizden emin misiniz?"
 
 #: catchall.php:46
 msgid "The currently defined user"
-msgstr ""
+msgstr "Şu an tanımlı kullanıcı"
 
 #: catchall.php:46
-#, fuzzy
 msgid "will not receiving any undefined emailadresses anymore"
-msgstr "kullanıcısını tanımlamak istediğinizden emin misiniz?"
+msgstr "bundan sonra tanımsız epostaları almayacak"
 
 #: catchall.php:74
 msgid "The user"
-msgstr ""
+msgstr "Kullanıcı"
 
 #: catchall.php:74
-#, fuzzy
 msgid "is allready defined to receive all undefined Emails."
-msgstr "kullanıcısını tanımlamak istediğinizden emin misiniz?"
+msgstr "Tüm tanımsız epostaları almak için zaten ayarlandı"
 
 #: catchall.php:76
 msgid "Do you want to remove the function \"catch all\" for the account"
-msgstr ""
+msgstr "Bu·hesap·için·\"tümünü·yakala\"·fonksiyonunu·kaldırmak·istiyor·musunuz"
 
-#: catchall.php:127 newadminuser.php:197
+#: catchall.php:127
+#: newadminuser.php:197
 msgid "successfully added to Database"
 msgstr "Veri tabanına başarıyla eklendi"
 
-#: catchall.php:133 editdomain.php:56 editemail.php:53 newdomain.php:255
-#: newemail.php:44 delete_catchall.php:37
+#: catchall.php:133
+#: editdomain.php:56
+#: editemail.php:53
+#: newdomain.php:255
+#: newemail.php:44
+#: delete_catchall.php:37
 msgid "Database error, please try again"
 msgstr "Veri tabanı hatası, lütfen tekrar deneyin"
 
-#: catchall.php:140 delete_catchall.php:44
-#, fuzzy
+#: catchall.php:140
+#: delete_catchall.php:44
 msgid "Cancelled"
-msgstr "İptal"
+msgstr "İptal·edildi"
 
 #: change_password.php:53
 msgid "Password changed"
@@ -333,7 +430,8 @@ msgstr "Şifre değiştirildi"
 msgid "Failure in changing password."
 msgstr "Şifre değiştirme başarısız."
 
-#: change_password.php:59 editadminuser.php:252
+#: change_password.php:59
+#: editadminuser.php:252
 msgid "New passwords are not equal. Password not changed"
 msgstr "Yeni şifreler aynı değil. Şifre değiştirilmedi"
 
@@ -349,9 +447,10 @@ msgstr "Yeni şifre"
 msgid "Confirm new password"
 msgstr "Yeni şifreyi onayla"
 
-#: change_password.php:121 newaccount.php:243
+#: change_password.php:121
+#: newaccount.php:243
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Şifreler·aynı·değil"
 
 #: deleteaccount.php:25
 msgid "Delete an Account from the System"
@@ -365,22 +464,21 @@ msgstr "Tanımlı tüm eposta adresleriyle birlikte bu kullanıcıyı"
 msgid "with all its defined Emailadresses"
 msgstr "silmek istediğinizden emin misiniz"
 
-#: deleteaccount.php:69 deleteadminuser.php:68 deletedomain.php:84
+#: deleteaccount.php:69
+#: deleteadminuser.php:68
+#: deletedomain.php:84
 #: deleteemail.php:55
 msgid "Action cancelled, nothing deleted"
 msgstr "İşlem iptal edildi, hesap silinmedi"
 
 #: deleteaccount.php:100
-#, fuzzy
 msgid "User deleted"
-msgstr "Evet, sil"
+msgstr "Kullanıcı·silindi"
 
-#: deleteaccount.php:111 deletedomain.php:175
-msgid ""
-"Security violation detected, action cancelled. Your attempt has been logged."
-msgstr ""
-"Güvenlik ihlali belirlendi, işlem iptal edildi. Denemeniz günlük dosyasına "
-"kaydedildi."
+#: deleteaccount.php:111
+#: deletedomain.php:175
+msgid "Security violation detected, action cancelled. Your attempt has been logged."
+msgstr " Güvenlik ihlali belirlendi, işlem iptal edildi. Denemeniz günlük dosyasına kaydedildi."
 
 #: deleteadminuser.php:17
 msgid "Delete an Admin account from the System"
@@ -390,20 +488,20 @@ msgstr "Sistemden yönetici hesabı sil"
 msgid "Do you really want to delete the Domain supervisor"
 msgstr "Etki alanı yöneticisini silmek istediğinizden emin misiniz? Yönetici:"
 
-#: deleteadminuser.php:90 editadminuser.php:276
+#: deleteadminuser.php:90
+#: editadminuser.php:276
 msgid "At least one Superuser is needed for Web-cyradm"
-msgstr ""
+msgstr "Web-cyradm·için·en·az·bir·Superkullanıcı·gereklidir"
 
 #: deleteadminuser.php:103
 msgid "Admin user deleted"
-msgstr ""
+msgstr "Yönetici·hesabı·silindi"
 
-#: deleteadminuser.php:116 editadminuser.php:299 newadminuser.php:226
-#, fuzzy
+#: deleteadminuser.php:116
+#: editadminuser.php:299
+#: newadminuser.php:226
 msgid "Security violation detected, nothing deleted, attempt has been logged"
-msgstr ""
-"Güvenlik ihlali belirlendi, işlem iptal edildi. Denemeniz günlük dosyasına "
-"kaydedildi."
+msgstr "Güvenlik ihlali belirlendi, işlem iptal edildi. Denemeniz günlük dosyasına kaydedildi."
 
 #: deletedomain.php:28
 msgid "Delete a Domain from the System"
@@ -425,7 +523,8 @@ msgstr "Silinecek hesap sayısına bağlı olarak bu işlem uzun sürebilir"
 msgid "Your action will delete"
 msgstr "Silinecek hesap sayısı"
 
-#: deletedomain.php:154 newadminuser.php:101
+#: deletedomain.php:154
+#: newadminuser.php:101
 msgid "Domain"
 msgstr "Etki alanı"
 
@@ -435,7 +534,7 @@ msgstr "başarıyla silindi"
 
 #: deletealias.php:28
 msgid "Please confirm you want to remove"
-msgstr ""
+msgstr "Silme·işlemini·onaylayın"
 
 #: deletealias.php:28
 msgid "from the alias"
@@ -447,11 +546,11 @@ msgstr "Evet"
 
 #: deletealias.php:49
 msgid "Please confirm you want to remove the alias"
-msgstr ""
+msgstr "Bu hesabın silinmesini onaylayın"
 
 #: deletealias.php:77
 msgid "Removed"
-msgstr ""
+msgstr "Silindi"
 
 #: deletealias.php:77
 msgid "from"
@@ -459,7 +558,7 @@ msgstr ""
 
 #: deletealias.php:85
 msgid "Removed the alias"
-msgstr ""
+msgstr "Hesap silindi"
 
 #: editaccount.php:21
 msgid "Email adresses defined for user"
@@ -485,99 +584,106 @@ msgstr "Eposta adresi sil"
 msgid "Change admin user for domain"
 msgstr "Etki alanının yönetici kullanıcısını değiştir"
 
-#: editadminuser.php:42 newaccount.php:106 newadminuser.php:36
+#: editadminuser.php:42
+#: newaccount.php:106
+#: newadminuser.php:36
 msgid "Accountname"
 msgstr "Hesap Adı"
 
-#: editadminuser.php:52 newadminuser.php:51
+#: editadminuser.php:52
+#: newadminuser.php:51
 msgid "Admin Type"
 msgstr "Yönetici Tipi"
 
-#: editadminuser.php:84 login.php:71 newaccount.php:138 newadminuser.php:71
+#: editadminuser.php:84
+#: login.php:71
+#: newaccount.php:138
+#: newadminuser.php:71
 msgid "Password"
 msgstr "Şifre"
 
-#: editadminuser.php:100 newaccount.php:139 newadminuser.php:86
+#: editadminuser.php:100
+#: newaccount.php:139
+#: newadminuser.php:86
 msgid "Confirm Password"
 msgstr "Şifreyi doğrula"
 
 #: editadminuser.php:155
 msgid "No Domain assigned yet"
-msgstr ""
+msgstr "Henüz·etki·alanı·atanmadı"
 
 #: editadminuser.php:165
-#, fuzzy
 msgid "Add new domain to this admin"
-msgstr "Etki alanına yeni yönetici hesabı ekle"
+msgstr "Bu yöneticiye yeni etki alanı ekle"
 
 #: editadminuser.php:223
 msgid "No such domain, create domain first"
-msgstr ""
+msgstr "Etki·alanı·bulunamadı,·önce·etki·alanını·yaratın"
 
 #: editadminuser.php:231
 msgid "Admin already repsonsible for the domain"
-msgstr ""
+msgstr "Yönetici·zaten·etki·alanının·sorumlusu"
 
 #: editalias.php:27
 msgid "There was an error adding $dest to $alias: "
-msgstr ""
+msgstr "$dest·'i·$alias·'a·eklerken·hata·oluştu:"
 
 #: editalias.php:64
-#, fuzzy
 msgid "Editing alias"
 msgstr "Eposta adresi düzenle"
 
 #: editalias.php:68
-#, fuzzy
 msgid "Delete this alias"
 msgstr "Eposta adresi sil"
 
 #: editalias.php:101
-#, fuzzy
 msgid "Cannot remove from account"
-msgstr "Hesap şifresini değiştir"
+msgstr "Hesaptan silinemedi"
 
-#: editalias.php:105 editalias.php:109
-#, fuzzy
+#: editalias.php:105
+#: editalias.php:109
 msgid "Remove destination"
-msgstr "Hedef"
+msgstr "Hedefi·sil"
 
 #: editalias.php:125
 msgid "This alias has no destinations"
-msgstr ""
+msgstr "Bu·hesabın·hedefi·yok"
 
 #: editalias.php:142
-#, fuzzy
 msgid "New destination"
-msgstr "Hedef"
+msgstr "Yeni·Hedef"
 
 #: editdomain.php:46
-#, fuzzy
 msgid "Successfully changed domain"
-msgstr "Başarıyla değiştirildi"
+msgstr "Etki alanı başarıyla değiştirildi"
 
-#: editdomain.php:92 newdomain.php:39
+#: editdomain.php:92
+#: newdomain.php:39
 msgid "Domainname"
 msgstr "Etki alanı adı"
 
-#: editdomain.php:106 newdomain.php:57
+#: editdomain.php:106
+#: newdomain.php:57
 msgid "Prefix"
 msgstr "Önek"
 
-#: editdomain.php:123 newdomain.php:73
+#: editdomain.php:123
+#: newdomain.php:73
 msgid "Allow Free Names"
-msgstr ""
+msgstr "Serbest·isimlere·izin·ver"
 
-#: editdomain.php:141 newdomain.php:90
-#, fuzzy
+#: editdomain.php:141
+#: newdomain.php:90
 msgid "Allow Free Mail Addresses"
-msgstr "Yeni eposta adresi"
+msgstr "Serbest·Eposta·adreslerine·izin·ver"
 
-#: editdomain.php:159 newdomain.php:102
+#: editdomain.php:159
+#: newdomain.php:102
 msgid "Maximum Accounts"
 msgstr "Maksimum hesap sayısı"
 
-#: editdomain.php:173 newdomain.php:117
+#: editdomain.php:173
+#: newdomain.php:117
 msgid "Default Quota in Kilobytes"
 msgstr "Varsayılan kota (KB)"
 
@@ -590,12 +696,11 @@ msgid "Successfully changed"
 msgstr "Başarıyla değiştirildi"
 
 #: editemail.php:68
-msgid ""
-"You can't edit this email address with 'Allow Free Mail Addressess' set to "
-"off!"
-msgstr ""
+msgid "You can't edit this email address with 'Allow Free Mail Addressess' set to off!"
+msgstr "'Serbest·Eposta·adreslerine·izin·ver'·seçeneği·etkin·olmadan·bu·eposta·adresini·düzenleyemezsiniz"
 
-#: editemail.php:95 newemail.php:77
+#: editemail.php:95
+#: newemail.php:77
 msgid "Emailadress"
 msgstr "Eposta adresi"
 
@@ -603,19 +708,25 @@ msgstr "Eposta adresi"
 msgid "Login failed"
 msgstr "Giriş başarısız"
 
-#: failed.php:71 login.php:51
+#: failed.php:71
+#: login.php:51
 msgid "This is only for authorized users"
 msgstr "Bu sistem sadece yetkili kullanıcılar içindir"
 
-#: failed.php:76 logout.php:62 timeout.php:38
+#: failed.php:76
+#: logout.php:62
+#: timeout.php:38
 msgid "If you like to login click"
 msgstr "Tekrar giriş yapmak için yandaki düğmeyi tıklayın"
 
-#: failed.php:78 logout.php:64 timeout.php:40
+#: failed.php:78
+#: logout.php:64
+#: timeout.php:40
 msgid "here"
 msgstr "Giriş"
 
-#: forwardalias.php:68 forwardaccount.php:51
+#: forwardalias.php:68
+#: forwardaccount.php:51
 msgid "Forward set"
 msgstr "Yönlendirme belirle"
 
@@ -627,28 +738,33 @@ msgstr "Yönlendirme yapılırken hata oluştu"
 msgid "Wrong password"
 msgstr "Şifre geçersiz"
 
-#: forwardalias.php:89 forwardalias.php:97 forwardalias.php:103
-#: forwardalias.php:107 forwardaccount.php:57
+#: forwardalias.php:89
+#: forwardalias.php:97
+#: forwardalias.php:103
+#: forwardalias.php:107
+#: forwardaccount.php:57
 msgid "Forwarding removed"
 msgstr "Yönlendirme kaldırıldı"
 
-#: forwardalias.php:91 forwardalias.php:99
+#: forwardalias.php:91
+#: forwardalias.php:99
 msgid "Failure in removing forwarding"
 msgstr "Yönlendirme kaldırılırken hata oluştu"
 
-#: forwardalias.php:111 vacation.php:79 vacation.php:107
+#: forwardalias.php:111
+#: vacation.php:79
+#: vacation.php:107
 msgid "Failed to login"
 msgstr "Giriş başarısız"
 
-#: forwardalias.php:123 vacation.php:119
+#: forwardalias.php:123
+#: vacation.php:119
 msgid "Not possible"
 msgstr "Kullanılamaz "
 
 #: forwardalias.php:152
-msgid ""
-"You can't forward this email address with 'Allow Free Mail Addressess' set "
-"to off!"
-msgstr ""
+msgid "You can't forward this email address with 'Allow Free Mail Addressess' set to off!"
+msgstr "'Serbest·Eposta·adresilerine·izin·ver'·seçeneği·etkin·değilken·bu·eposta·adresini·yönlendiremezsiniz"
 
 #: forwardalias.php:161
 msgid "Forward for emailadress"
@@ -660,41 +776,41 @@ msgstr "Yönlendirme ayarla"
 
 #: forwardalias.php:204
 msgid "(Seperate multiple values with ,)"
-msgstr ""
+msgstr "Birden·fazla·değer·girmek·istiyorsanız·virgül(,)·kullanın"
 
-#: forwardalias.php:210 forwardaccount.php:125
+#: forwardalias.php:210
+#: forwardaccount.php:125
 msgid "Keep a copy in the user's mailbox"
 msgstr "Bir kopyasını kullanıcının posta kutusunda bırak"
 
-#: forwardalias.php:215 forwardaccount.php:139
+#: forwardalias.php:215
+#: forwardaccount.php:139
 msgid "Remove forwarding"
 msgstr "Yönlendirmeyi kaldır"
 
 #: index.php:23
 msgid "migrate.php exists! please delete or rename it"
-msgstr ""
+msgstr "migrate.php·dosyası·zaten·var!·lütfen·önce·dosyayı·silin·ya·da·ismini·değiştirin"
 
 #: index.php:138
 msgid "web-cyradm has not yet been configured"
-msgstr ""
+msgstr "web-cyradm·henüz·yapılandırılmadı"
 
 #: index.php:141
 msgid "Configuration steps:"
-msgstr ""
+msgstr "Yapılandırma·adımları:"
 
 #: index.php:143
 msgid "copy the config file that comes with the distribution: "
-msgstr ""
+msgstr "dağıtımla·birlikte·gelen·yapılandırma·dosyasını·kopyalayın:"
 
 #: index.php:146
 msgid "Edit the file config/conf.php to match your systems configuration"
-msgstr ""
+msgstr "config/conf.php·dosyasını·sistem·ayarlarınıza·göre·düzenleyin"
 
 #: index.php:148
-msgid ""
-"Further information about how to configure Web-cyradm can be found at the "
-"following website:"
-msgstr ""
+msgid "Further information about how to configure Web-cyradm can be found at the following website:"
+msgstr "Web-cyradm·yapılandırılması·hakkında·daha·fazla·bilgiyi·bu·web·sitesinde·bulabilirsiniz:"
 
 #: login.php:50
 msgid "Welcome to Web-cyradm"
@@ -706,7 +822,7 @@ msgstr "Lütfen giriş yapınız"
 
 #: login.php:84
 msgid "Select language"
-msgstr ""
+msgstr "Dil seçimi"
 
 #: logout.php:52
 msgid "Thank you for using Web-cyradm"
@@ -717,9 +833,8 @@ msgid "You are logged out"
 msgstr "Sistemden çıkış yapıldı"
 
 #: menu.inc.php:19
-#, fuzzy
 msgid "Superusers Menu"
-msgstr "Süper kullanıcı"
+msgstr "Süper kullanıcı Menüsü"
 
 #: menu.inc.php:23
 msgid "Domainmasters menu"
@@ -758,19 +873,19 @@ msgid "Your role is"
 msgstr "Yetki tanımı"
 
 #: menu.inc.php:144
-#, fuzzy
 msgid "Current domain is"
-msgstr "etki alanlarına gözat"
+msgstr "Aktif etki alanı"
 
 #: menu.inc.php:150
 msgid "No domain selected"
-msgstr ""
+msgstr "Etki alanı seçilmedi"
 
 #: newaccount.php:13
 msgid "Add new Account to domain"
 msgstr "Etki alanına yeni hesap ekle"
 
-#: newaccount.php:43 newalias.php:43
+#: newaccount.php:43
+#: newalias.php:43
 msgid "transport is not cyrus, unable to create account"
 msgstr "aktarım cyrus değil, hesap oluşturulamadı"
 
@@ -788,7 +903,7 @@ msgstr "Kota"
 
 #: newaccount.php:196
 msgid "Sorry, the username already exists"
-msgstr ""
+msgstr "Üzgünüm, bu kullanıcı adı zaten var"
 
 #: newaccount.php:221
 msgid "Account successfully added to the Database"
@@ -799,9 +914,8 @@ msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Hesap IMAP altsistemine başarıyla eklendi"
 
 #: newadminuser.php:13
-#, fuzzy
 msgid "Add new administrator"
-msgstr "Yönetici ekle"
+msgstr "Yeni Yönetici ekle"
 
 #: newadminuser.php:64
 msgid "Select \"Superuser\" for all domains"
@@ -809,28 +923,25 @@ msgstr "Tüm etki alanları için \"Superkullanıcı\" seçin"
 
 #: newadminuser.php:132
 msgid "You must provide a username"
-msgstr ""
+msgstr "Bir kullanıcı adı bliertmelisiniz"
 
 #: newadminuser.php:145
 msgid "Passwords are empty or not equal."
-msgstr ""
+msgstr "Şifreler aynı değil ya da boş"
 
 #: newadminuser.php:157
 msgid "Username already exist"
-msgstr ""
+msgstr "Kullanıcı adı zaten var"
 
 #: newalias.php:15
-#, fuzzy
 msgid "Add new alias to domain"
-msgstr "Etki alanına yeni yönetici hesabı ekle"
+msgstr "Etki alanına yeni hesab ekle"
 
 #: newalias.php:55
-#, fuzzy
 msgid "Sorry, no more alias allowed for domain"
 msgstr "Üzgünüm, bu alan için daha fazla hesap tanımlanamaz"
 
 #: newalias.php:60
-#, fuzzy
 msgid "Maximum allowed aliases is"
 msgstr "Maksimum hesap sayısı"
 
@@ -839,17 +950,12 @@ msgid "Add new domain"
 msgstr "Yeni etki alanı ekle"
 
 #: newdomain.php:140
-#, fuzzy
 msgid "Standard Mailboxes"
 msgstr "Standart Postakutusu"
 
 #: newdomain.php:146
-msgid ""
-"emailadress where the default aliases should be mapped (empty means no "
-"mapping)"
-msgstr ""
-"Varsayılan Lakabın eşleştirileceği eposta adresi (boş bırakılırsa eşleştirme "
-"yapılmayacak)"
+msgid "emailadress where the default aliases should be mapped (empty means no mapping)"
+msgstr "Varsayılan Lakabın eşleştirileceği eposta adresi (boş bırakılırsa eşleştirme yapılmayacak)"
 
 #: newdomain.php:163
 msgid "Mail transport"
@@ -861,9 +967,10 @@ msgstr "Ne yaptığınızı bilmiyorsanız, bunu değiştirmeyin"
 
 #: newdomain.php:187
 msgid "Parameter"
-msgstr ""
+msgstr "Parametre"
 
-#: newdomain.php:245 newemail.php:34
+#: newdomain.php:245
+#: newemail.php:34
 msgid "Successfully added"
 msgstr "Başarıyla eklendi"
 
@@ -876,24 +983,22 @@ msgid "New emailadress for user"
 msgstr "Kullanıcıya yeni eposta adresi oluştur"
 
 #: search.php:48
-#, fuzzy
 msgid "Total domains matching"
-msgstr "Toplam yönetici sayısı:"
+msgstr "Eşlenen etki alanı sayısı"
 
 #: search.php:110
 msgid "Total users matching"
-msgstr ""
+msgstr "Eşlenen kullanıcı sayısı"
 
 #: search.php:118
 msgid "Displaying from position"
-msgstr ""
+msgstr "Listeleme konumu"
 
 #: search.php:245
 msgid "Total aliases matching"
-msgstr ""
+msgstr "Eşlenen hesap sayısı"
 
 #: search.php:247
-#, fuzzy
 msgid "No aliases found"
 msgstr "Hesap bulunamadı"
 
@@ -906,22 +1011,20 @@ msgid "Submit"
 msgstr "Gönder"
 
 #: setquota.php:70
-#, fuzzy
 msgid "Quote for user"
-msgstr "Kota belirlenmedi"
+msgstr "Kullanıcı kotası"
 
 #: setquota.php:74
 msgid "changed to"
-msgstr ""
+msgstr "değiştirildi"
 
 #: timeout.php:33
 msgid "Your session timed out"
 msgstr "Oturum süresi aşıldı"
 
 #: vacation.php:71
-#, fuzzy
 msgid "Vacation notice set"
-msgstr "Tatil mesajı kaldırıldı"
+msgstr "Tatil mesajı ayarlandı"
 
 #: vacation.php:73
 msgid "Failed to activate vacation"
@@ -932,7 +1035,6 @@ msgid "Failure in modifying vacation notice"
 msgstr "Tatil mesajı değiştirilirken hata oluştu"
 
 #: vacation.php:95
-#, fuzzy
 msgid "Vacation notice unset"
 msgstr "Tatil mesajı kaldırıldı"
 
@@ -949,10 +1051,8 @@ msgid "Failure in removing vacation notice"
 msgstr "Tatil mesajı kaldırılırken hata oluştu"
 
 #: vacation.php:142
-msgid ""
-"You can't set Vacation Message for this email address with 'Allow Free Mail "
-"Addressess' set to off!"
-msgstr ""
+msgid "You can't set Vacation Message for this email address with 'Allow Free Mail Addressess' set to off!"
+msgstr "'Serbest eposta adreslerine izin ver' seçeneği etkin olmadan bu eposta adresi için tatil mesajı ayarlayamazsınız"
 
 #: vacation.php:152
 msgid "Vacation message for emailadress"
@@ -966,34 +1066,30 @@ msgstr "Tatil mesajı belirle"
 msgid "Remove vacation notice"
 msgstr "Tatil mesajını kaldır"
 
-#: validate.inc.php:74 validate.inc.php:87 validate.inc.php:134
+#: validate.inc.php:74
+#: validate.inc.php:87
+#: validate.inc.php:134
 #: validate.inc.php:249
-#, fuzzy
 msgid "Security violation detected, attempt logged"
-msgstr ""
-"Güvenlik ihlali belirlendi, işlem iptal edildi. Denemeniz günlük dosyasına "
-"kaydedildi."
+msgstr "Güvenlik ihlali belirlendi, işlem iptal edildi. Denemeniz günlük dosyasına kaydedildi."
 
 #: validate.inc.php:130
 msgid "Quota exeedes the maximum allowed qutoa for this domain."
-msgstr ""
+msgstr "Kota değeri bu etki alanı için belirlenmiş sınırı aşıyor"
 
 #: forwardaccount.php:77
 msgid "Forward for account"
 msgstr "Hesap yönlendir"
 
 #: forwardaccount.php:93
-#, fuzzy
 msgid "Set forwarding to (one adress per line)"
-msgstr "Yönlendirme ayarla"
+msgstr "Yönlendirme ayarla (her satırda bir adres)"
 
 #: delete_catchall.php:31
-#, fuzzy
 msgid "successfully deleted from the Database"
-msgstr "Veri tabanına başarıyla eklendi"
+msgstr "Veri tabanından başarıyla silindi"
 
 #: deleteemail.php:16
-#, fuzzy
 msgid "Delete emailadress from the System"
 msgstr "Sistemden eposta adresi sil"
 
@@ -1010,18 +1106,6 @@ msgid "Cancel"
 msgstr "İptal"
 
 #: deleteemail.php:70
-#, fuzzy
 msgid "Emailadress deleted."
-msgstr "Eposta adresi"
+msgstr "Eposta adresi silindi"
 
-#~ msgid "successfully changed Database...."
-#~ msgstr "Veri tabanı başarıyla düzenlendi"
-
-#~ msgid "Add new admin user for domain"
-#~ msgstr "Etki alanına yeni yönetici hesabı ekle"
-
-#~ msgid "Please select a domain first"
-#~ msgstr "Lütfen önce Etki alanını seçin"
-
-#~ msgid "Not yet supported, change will be ignored"
-#~ msgstr "Henüz desteklenmiyor, değişiklik gözardı edilecek"
