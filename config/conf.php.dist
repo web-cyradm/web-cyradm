@@ -100,5 +100,5 @@ $PASSWORD_CHANGE_METHOD = "sql";
 
 error_reporting(E_ERROR);
 
-$VERSION="0.5.4-rc2";
+$VERSION="0.5.4-rc3";
 
