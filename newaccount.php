@@ -40,7 +40,7 @@ if (!$confirmed){
 
 	if ($cnt2+1>$maxaccounts){
 
-		print "Sorry, no more account allowed for domain ".$domain.". Maximum allowed accounts is ".$maxaccounts;
+		print _("Sorry, no more account allowed for domain"). ".$domain."._("Maximum allowed accounts is"). ".$maxaccounts";
 	}
 	else{
 

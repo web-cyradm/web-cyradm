@@ -110,7 +110,7 @@ if ($admintype==0){
 				include ("browse.php");
 		        }
 		        else{
-		                print "<p>Database error, please try again<p>";
+		                print "<p>"._("Database error, please try again")."<p>";
 		        }
 		}
 		else{
@@ -122,7 +122,7 @@ if ($admintype==0){
 }
 else{
 
-	print "<h3>You are not allowed to add new domains</h3>";
+	print "<h3>"._("You are not allowed to add new domains")."</h3>";
 }
 
 

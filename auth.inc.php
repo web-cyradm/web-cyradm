@@ -95,10 +95,14 @@ if ($login && $password)
     }
 else
     {
-     print "<center><h4><font face=Verdana,Geneva,Arial,Helvetica,sans-serif>Web-cyradm is for authorized users only. <br>Make sure you entered the right password. <br>Push the back button in your browser to try again. Your attempt to login has been stored.</font></h4></center>";
+     print "<center><h4><font face=Verdana,Geneva,Arial,Helvetica,sans-serif>"
+	   ._("Web-cyradm is for authorized users only."). 
+           "<br>"._("Make sure you entered the right password.").
+           "<br>"._("Push the back button in your browser to try again.").
+           "<br>"._(" Your attempt to login has been stored.")."</font></h4></center>";
     }
 
 
 ?>
 
-<!-- ###################################### End auth.inc.php ################################################
+<!-- ###################################### End auth.inc.php ################################################ --!>

@@ -8,10 +8,10 @@ if ($admintype==0){
 
 	if (!$confirmed){
 
-	?>
-	<h3>Delete an Admin account from the System</h3>
+	
+	print "<h3>"._("Delete an Admin account from the System")."</h3>";
 
-	<h3>Do you really want to delete the Domain supervisor  "<?php print $username ?>" ?</h3>
+	print "<h3>"._("Do you really want to delete the Domain supervisor"); ?> "<?php print $username ?>" ?</h3>
 
 	<form action="index.php">
 	<input type="hidden" name="action" value="deleteadminuser">
@@ -30,7 +30,7 @@ if ($admintype==0){
 	}
 
 	else if ($cancel){
-		print "<h3>Action cancelled, nothing deleted</h3>";
+		print "<h3>"._("Action cancelled, nothing deleted")."</h3>";
 	}
 
 	else{
@@ -51,7 +51,7 @@ if ($admintype==0){
 }
 else{
 
-	print "<h3>Security violation detected, nothing deleted, attempt has been loggd</h3>";
+	print "<h3>"._("Security violation detected, nothing deleted, attempt has been logged")."</h3>";
 }
 
 ?>

@@ -86,7 +86,7 @@ if ($admintype==0){
 }
 else{
 
-	print "<h3>Your are not allowed to change domains!</h3>";
+	print "<h3>"._("Your are not allowed to change domains!")."</h3>";
 }
 
 

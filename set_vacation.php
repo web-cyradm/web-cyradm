@@ -159,7 +159,7 @@ if ($authorized){
 		  $vacation_script2 = preg_replace ( "/subject \"/", "Subject: ",$vacation_script );
 		  $vacation_script = preg_replace ( "/\";$/", "", $vacation_script2 );
 		  ?>
-		  <textarea name='vacation_text' rows='6' cols='55'><?php print $vacation_script; ?></textarea><br>
+		  <textarea name='vacation_text' rows='6' cols='55'><?php print $vacation_script;?></textarea><br>
 		      
 		      
 	        <input type="submit" value="Submit"> 

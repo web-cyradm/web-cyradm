@@ -4,7 +4,7 @@
 <?php
 print "<h3>"._("Change admin user for domain")." <font color=red>". $domain. "</font></h3>";
 if (!$domain or $domain=="new"){
-	print "Please select a domain first";
+	print _("Please select a domain first");
 }
 else{
 
@@ -78,10 +78,10 @@ else{
 			$result2=$handle1->query($query2);
 
 			if ($result and $result2){
-				print "successfully changed Database....</br>";
+				print _("successfully changed Database....")."</br>";
 			}
 			else{
-				print "Database error<br>";
+				print _("Database error")."<br>";
 			}
 	
 			include ("adminuser.php");
@@ -91,7 +91,7 @@ else{
 	}
 
 	else if ($admintype!=0){
-        	print "<h3>Security violation detected, nothing deleted, attempt has been loggd</h3>";
+        	print "<h3>"._("Security violation detected, nothing deleted, attempt has been logged")."</h3>";
 	}
 }
 

@@ -26,13 +26,13 @@ if ($authorized){
 		include ('lib/poppassd.php');
 		$daemon = new poppassd;
 		if ($daemon->change_password($dest, $password, $new_password)) {
-		  print  "<em><big>Password changed!!!</big></em><p><p>";
+		  print  "<em><big>"._("Password changed")."</big></em><p><p>";
 		} else {
 		  print $daemon->$err_str;
-		  print "<big>Failure in changing password.</big><p><p>";
+		  print "<big>"._("Failure in changing password.")."</big><p><p>";
 		}
 	  } else {
-	    print '<b>New passwords are not equal. Password not changed</b><p><p>';
+	    print "<b>"._("New passwords are not equal. Password not changed")."</b><p><p>";
 	  }
 	  include ("browseaccounts.php");
 //	        if (!DB::isError($result)){
