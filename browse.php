@@ -46,6 +46,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				}
 
 				$result = $handle->query($query);
+				if (DB::isError($result)) {
+					die (_("Database error"));
+				}
 //				$result = $handle->limitQuery($query,$row_pos,$_SESSION['maxdisplay']);
 				$cnt    = $result->numRows($result);
 
@@ -98,7 +101,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
                                         <th>
                                                 <!-- <?php print _("domainname");?> -->
-                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=domain_name\">".("domainname")."</a>";?>
+                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=domain_name\">"._("domainname")."</a>";?>
                                         </th>
 
                                         <?php
@@ -112,17 +115,17 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
                                         ?>
 
                                         <th>
-                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=maxaccounts\">".("max Accounts")."</a>";?>
+                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=maxaccounts\">"._("max Accounts")."</a>";?>
                                         </th>
 
                                         <th>
                                                 <!-- <?php print _("Domain quota");?> -->
-                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=domainquota\">".("Domain quota")."</a>";?>
+                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=domainquota\">"._("Domain quota")."</a>";?>
                                         </th>
 
                                         <th>
                                                 <!-- <?php print _("default quota per user");?> -->
-                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=quota\">".("default quota per user")."</a>";?>
+                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=quota\">"._("default quota per user")."</a>";?>
                                         </th>
                                 </tr>
 
