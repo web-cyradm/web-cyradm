@@ -41,7 +41,7 @@ if (getenv(LANG)=="zh_CN"){
 }
 
 else {
-	print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">";
+	print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=8859-1\">";
 
 }
 
