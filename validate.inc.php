@@ -289,11 +289,31 @@ if (! empty($action)){
 				$authorized = FALSE;
 				$err_msg = "You must choose a valid prefix for your domain";
 			} else {
-				$authorized=TRUE;
+				if ($DOMAIN_AS_PREFIX) {
+					$prefix = $domain;
+				}
+				$query = "SELECT domain_name FROM domain WHERE domain_name='$domain' OR prefix='$prefix'";
+				$result = $handle->query($query);
+				if ($result->numRows()){
+					$authorized = FALSE;
+					$err_msg = "Domain or prefix already exists";
+				} else {
+					$authorized = TRUE;
+				}
 			}
 		}
 		break;
-
+####################################### Check input if editdomain ####################################
+	case "editdomain":
+		$query = "SELECT domain_name FROM domain WHERE domain_name='$newdomain' AND domain_name!='$domain' OR prefix='$_GET[newprefix]' AND prefix!='$prefix'";
+		$result = $handle->query($query);
+		if ($result->numRows()){
+			$authorized = FALSE;
+			$err_msg = "Domain or prefix already exists";
+		} else {
+			$authorized = TRUE;
+		}
+		break;
 ######################################## Check on catch all setting ##################################
 	case "catch":
 	case "delete_catchall";
