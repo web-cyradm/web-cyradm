@@ -129,5 +129,5 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 ?>
 </td></tr>
 
-<!-- #################### change_password.php start #################### -->
+<!-- #################### change_password.php end #################### -->
 
