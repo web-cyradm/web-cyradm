@@ -53,7 +53,9 @@ if ($admintype != 0){
 		include WC_BASE . "/logout.php";
 		die ();
 	}
-//	$domain=$row['domain_name'];
+
+	// Check if username to be changed belong to the domain
+
 
 	$query3 = "SELECT * from domainadmin WHERE adminuser='$user' AND domain_name='$domain'";
 	$result3 = $handle->query($query3);
@@ -65,7 +67,6 @@ if ($admintype != 0){
 		die ();
 	}
 	
-	//print $domain;
 }
 
 
@@ -82,10 +83,10 @@ function ValidateMail($email) {
 }
 
 if (! empty($action)){
-############################## Check deleteaccount ##################################################
 	switch ($action){
+############################## Check deleteaccount ##################################################
 	case "deleteaccount":
-		$query = "SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
+		$query = "SELECT username FROM accountuser WHERE username='$username' AND domain_name='$domain'";
 		$result3 = $handle->query($query);
 		if (!$result3->numRows()){
 			$authorized = FALSE;
@@ -110,6 +111,8 @@ if (! empty($action)){
 		} elseif (!$result5->numRows()){
 			$err_msg=_("Security violation detected, attempt logged");
 			$authorized = FALSE;
+			include WC_BASE . "/logout.php";
+			die ();
 		}
 		break;
 
@@ -203,6 +206,31 @@ if (! empty($action)){
 			}
 		}
 		break;
+
+######################################## Check on catch all setting ##################################
+	case "catch":
+	case "aliases":
+	case "newalias":
+	case "editalias":
+	case "deletealias":
+	case "forwardalias":
+	case "deleteemail":
+	case "vacation":
+
+	print $username;
+
+	$query3 = "SELECT domain_name FROM accountuser WHERE username='$username' AND domain_name='$domain'";
+	$result3 = $handle->query($query3);
+	$cnt3=$result3->numRows();
+
+	print $cnt3;
+
+	if (!$cnt3 and $username !=""){
+		print _("Security violation detected, attempt logged");
+		include WC_BASE . "/logout.php";
+		die ();
+	}
+
 
 ######################################### If nothing matches ##########################################
 
