@@ -34,7 +34,8 @@ class password{
 			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 
 			$dbinput=$row['password'];
-
+//			print "From DB:".$dbinput;
+//			print "userinput:".crypt($userinput,$dbinput);
 			// The salt used is the encrypted password
 	
 			if ($dbinput == crypt($userinput,$dbinput)){
@@ -101,7 +102,8 @@ class password{
 	function encrypt($password,$encryption){
 		switch ($encryption){
                 case "crypt":
-			$password=crypt($newpassword,substr($password,0,2));
+			//$password=crypt($newpassword,substr($password,0,2));
+			$password=crypt($password);
 			return $password;
 		}
 	}
