@@ -108,12 +108,10 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<?php
 				for ($c=0;$c<$cnt;$c++){
 
-					if ($b==0){
+					if ($c%2==0){
 						$cssrow = "row1";
-						$b = 1;
 					} else {
 						$cssrow = "row2";
-						$b = 0;
 					}
 
 					$row = $result->fetchRow(DB_FETCHMODE_ASSOC, $c);
@@ -219,14 +217,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								if (! $q_total == 0){
 									$q_percent = 100*$q_used/$q_total;
 
-									if ($q_percent >= $QUOTA_WARN_LEVEL){
+									if ($q_percent >= $_SESSION['warnlevel']){
 										printf ("<font color=red>");
 									}
 
 									printf ("%d KBytes %s %d KBytes (%.2f%%)",
 										$quota['used'], _("out of"),
 										$quota['qmax'], $q_percent);
-									if ($q_percent >= $QUOTA_WARN_LEVEL){
+									if ($q_percent >= $_SESSION['warnlevel']){
                                                                                 printf ("</font>");
                                                                         }
 								} else {
