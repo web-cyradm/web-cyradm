@@ -1,4 +1,7 @@
 ALTER TABLE `domain` ADD `domainquota` int(10) DEFAULT '0' NOT NULL AFTER `quota`;
+ALTER TABLE `accountuser` ADD `imap` int(10) DEFAULT '0' NOT NULL AFTER `domain_name`;
+ALTER TABLE `accountuser` ADD `pop` int(10) DEFAULT '0' NOT NULL AFTER `imap`;
+ALTER TABLE `accountuser` ADD `sieve` int(10) DEFAULT '0' NOT NULL AFTER `pop`;
 
 CREATE TABLE `settings` (
   `username` varchar(50) binary NOT NULL default '',
@@ -9,3 +12,4 @@ CREATE TABLE `settings` (
 ) TYPE=MyISAM;
 
 INSERT INTO `settings` (username) SELECT `username` FROM adminuser;
+INSERT INTO `settings` ( `username` , `style` , `maxdisplay` , `warnlevel` ) VALUES ( 'admin', 'default', '15', '90');

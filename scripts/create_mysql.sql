@@ -130,4 +130,4 @@ CREATE TABLE log (
 INSERT INTO adminuser (username, password) VALUES ('admin', ENCRYPT('test'));
 INSERT INTO domainadmin (domain_name,adminuser) VALUES ('*','admin');
 INSERT INTO accountuser (username, password) VALUES ('cyrus', ENCRYPT('secret'));
-
+INSERT INTO `settings` ( `username` , `style` , `maxdisplay` , `warnlevel` ) VALUES ( 'admin', 'default', '15', '90');
