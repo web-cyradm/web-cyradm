@@ -37,7 +37,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					</td>
 
 					<td>
-						<select size="1" name="style">
+						<select class="inputfield" size="1" name="style">
 						<?php
 							foreach ($TEMPLATE as $temp){
 								print "<option";
