@@ -88,7 +88,7 @@ else{
 			$result2=$handle1->query($query2);
 
 			if (!DB::isError($result)){
-				print _(" successfully added to Database")."</br>";
+				print _("successfully added to Database")."</br>";
 			}
 			else{
 				print _("Database error")."<br>";
