@@ -102,3 +102,7 @@ CREATE TABLE virtual (
   UNIQUE KEY alias (alias)
 ) TYPE=MyISAM;
 
+INSERT INTO adminuser (username, password) VALUES ('admin', ENCRYPT('test'));
+INSERT INTO domainadmin (domain_name,adminuser) VALUES ('*','admin');
+INSERT INTO accountuser (username, password) VALUES ('cyrus', ENCRYPT('secret'));
+
