@@ -146,7 +146,7 @@ if (!isset($row_pos)){
 		print "<table border=\"0\">\n";
 		print "<tbody>";
 		print "<tr>";
-		print "<th colspan=\"5\">"._("action")."</th>";
+		print "<th colspan=\"6\">"._("action")."</th>";
 		print "<th>"._("Email address")."</th>";
 		print "<th>"._("Username")."</th>";
 		print "<th>"._("Quota used")."</th>";
