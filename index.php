@@ -7,34 +7,32 @@ $browserlang=explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']); // $HTTP_ACCEPT_LAN
 
 $browserlang1=substr($browserlang[0], 0, 2);
 
-if ($nls['aliases'][$browserlang[0]])
-    {
-     if ($nls['aliases'][$browserlang1])
-         {
-          $LANG=$nls['aliases'][$browserlang1];
-         }
-    }
+
+//if ($nls['aliases'][$browserlang[0]]){
+if ($nls['aliases'][$browserlang1]){
+	$LANG=$nls['aliases'][$browserlang1];
+}
 
 session_start();
-$session_ok = $_SESSION['session_ok'];
+$session_ok= $_SESSION['session_ok'];
 
 // Lowest prio langauge is the session setting
-if ($_SESSION['LANG'])
-    {
-     $LANG=$_SESSION['LANG'];
-    }
 
-// if no langauge is already set, use default language
-if (!$LANG)
-    {
-     $LANG=$DEFAULTLANG;
-    }
+if ($_SESSION['LANG']){
+	$LANG=$_SESSION['LANG'];
+}
+
+// if no langauge is already set, use defaultlanguage
+
+if ($LANG==""){
+	$LANG=$DEFAULTLANG;
+}
 
 // For testing porpose, http variable LANG overrides all
-if ($_GET['LANG'])
-    {
-     $LANG=$_GET['LANG'];
-    }
+
+if ($_GET['LANG']){
+	$LANG=$_GET['LANG'];
+}
 
 include ("header.inc.php");
 
@@ -50,105 +48,121 @@ bindtextdomain("web-cyradm", "./locale");
 // Choose domain
 textdomain("web-cyradm");
 
-if ($session_ok)
-    {
-     include ("DB.php");
-     include ("session.php");
-     include ("validate.inc.php");
-     include ("menu.inc.php");
-     include ("lib/cyradm.php");
 
-     if (!$domain and $action !="logout" and $action !="adminuser" and $action !="newdomain")
-         {
-          include ("welcome.php");
-         }
-     else
-         {
-          switch ($action)
-              {
-               case "logout":
-               include ("logout.php");
-               break;
+if ($session_ok) {
+include ("DB.php");
+include ("session.php");
+include ("validate.inc.php");
+include ("menu.inc.php");
+include ("lib/cyradm.php");
 
-               case "browse":
-               include ("browse.php");
-               break;
 
-               case "editdomain":
-               include ("editdomain.php");
-               break;
+	if (!$domain and $action !="logout" and $action !="adminuser" and $action !="newdomain"){
+	
+		include ("welcome.php");
+	
+	}
 
-               case "newdomain":
-               include ("newdomain.php");
-               break;
+	else {
 
-               case "deletedomain":
-               include ("deletedomain.php");
-               break;
 
-               case "adminuser":
-               include ("adminuser.php");
-               break;
+		switch ($action){
+			case "logout":
+			include ("logout.php");
+			break;
 
-               case "newadminuser":
-               include ("newadminuser.php");
-               break;
+			case "browse":
+			include ("browse.php");
+		        break;
 
-               case "editadminuser":
-               include ("editadminuser.php");
-               break;
+			case "editdomain":
+			include ("editdomain.php");
+		        break;
 
-               case "deleteadminuser":
-               include ("deleteadminuser.php");
-               break;
+			case "newdomain":
+			include ("newdomain.php");
+		        break;
 
-               case "accounts":
-               include ("browseaccounts.php");
-               break;
+			case "deletedomain":
+			include ("deletedomain.php");
+		        break;
 
-               case "newaccount":
-               include ("newaccount.php");
-               break;
+			case "adminuser":
+			include ("adminuser.php");
+		        break;
 
-               case "catch":
-               include ("catchall.php");
-               break;
+			case "newadminuser":
+			include ("newadminuser.php");
+		        break;
 
-               case "deleteaccount":
-               include ("deleteaccount.php");
-               break;
+			case "editadminuser":
+			include ("editadminuser.php");
+		        break;
 
-               default:
-               include ("browse.php");
-               break;
+			case "deleteadminuser":
+			include ("deleteadminuser.php");
+		        break;
 
-               case "setquota":
-               include ("setquota.php");
-               break;
+			case "accounts":
+			include ("browseaccounts.php");
+		        break;
 
-               case"editaccount":
-               include ("editaccount.php");
-               break;
+			case "newaccount":
+			include ("newaccount.php");
+		        break;
 
-               case"newemail":
-               include ("newemail.php");
-               break;
+			case "catch":
+			include ("catchall.php");
+		        break;
 
-               case"deleteemail":
-               include ("deleteemail.php");
-               break;
+			case "deleteaccount":
+			include ("deleteaccount.php");
+		        break;
 
-               case"editemail":
-               include ("editemail.php");
-               break;
-              }
-         }
-     include ("footer.inc.php");
-    }
-else
-    {
-     include ("login.php");
-    }
+		        default:
+	        	include ("browse.php");
+		        break;
+	
+		        case "setquota":
+	        	include ("setquota.php");
+		        break;
+	
+		        case"change_password":
+	        	include ("change_password.php");
+		        break;
+
+		        case"set_vacation":
+	        	include ("set_vacation.php");
+		        break;
+
+		        case"set_forwards":
+	        	include ("set_forwards.php");
+		        break;
+
+		        case"newemail":
+	        	include ("newemail.php");
+		        break;
+
+		        case"deleteemail":
+	        	include ("deleteemail.php");
+		        break;
+
+		        case"editemail":
+	        	include ("editemail.php");
+		        break;
+
+		}
+
+
+	}
+
+include ("footer.inc.php");
+} 
+else {
+
+include ("login.php");
+
+}
+
 
 ?>
-
