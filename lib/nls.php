@@ -123,6 +123,7 @@ $nls['translator']['sl_SI'] = '<a href="mailto:gregor at yellowtooth.com">Gregor
 $nls['translator']['ru_RU'] = '<a href="mailto:edge at gts.smtn.stavropol.ru">Andrey Kolbasenko</a> and <a href="mailto:a_mdl at mail.ru">Denis Medvedev</a>';
 $nls['translator']['sv_SE'] = '<a href="mailto:fredrik at rambrik Rambris.com">Fredrik Rambris</a>, <a href="mailto:anders.litzell at telia.com">Anders Litzell</a> and <a href="mailto:anders at norrbring.biz">Anders Norrbring</a>';
 $nls['translator']['tr_TR'] = '<a href="mailto:suleymankuran at yahoo.com">Süleyman Kuran</a>';
+$nls['translator']['uk_UA'] = '<a href="mailto:ruslanf@yandex.ru">Ruslan Firsov</a>';
 $nls['translator']['zh_CN'] = '<a href="mailto:boozhang at sdb.ac.cn">Zhang Bo</a>';
 
 
