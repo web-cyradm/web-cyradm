@@ -221,7 +221,7 @@
 								$q_total = $quota['qmax'];
 								if (! $q_total == 0){
 									$q_percent = 100*$q_used/$q_total;
-									printf ("%d KiBytes %s %d KiBytes (%.2f%%)",
+									printf ("%d KBytes %s %d KiBytes (%.2f%%)",
 										$quota['used'], _("out of"),
 										$quota['qmax'], $q_percent);
 								} else {
