@@ -8,7 +8,7 @@
 
        $cyr_conn -> imap_login();
 
-        print "<h3>Browse accounts for domain $domain</h3>";
+        print "<h3>Browse accounts for domain <font color=red>$domain</font></h3>";
 	if (!isset($row_pos)){
 		$row_pos=0;
 	}
@@ -60,9 +60,9 @@
 	        print "<table border=\"0\">\n";
 		print "<tbody>";
 	        print "<tr>";
-	        print "<th colspan=\"3\">actions</th>";
-	        print "<th>username</th>";
-	        print "<th>Emailadress</th>";
+	        print "<th colspan=\"4\">actions</th>";
+	        print "<th>Email address</th>";
+	        print "<th>Username</th>";
 	        print "<th>Password</th>";
 	        print "<th>Quota used</th>";
 	        print "</tr>";
@@ -85,9 +85,8 @@
 	        print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">Edit account</a></td>";
 	        print "\n<td><a href=\"index.php?action=deleteaccount&domain=$domain&username=$username\">Delete account</a></td>";
 	        print "\n<td><a href=\"index.php?action=setquota&domain=$domain&username=$username\">Set Quota</a></td>";
+	        print "\n<td><!-- <a href=\"index.php?action=catch&domain=$domain&username=$username\">Set Catch all</a> -->Set catch all</td>";
 	        print "\n<td>";
-	        print $username;
-	        print "</td>\n<td>";
 		$query2="SELECT * FROM virtual WHERE username='$username'"; 
 		$result2=mysql_db_query($MYSQL_DB,$query2);
 	        $cnt2=mysql_num_rows($result2);
@@ -96,17 +95,24 @@
 			}
 	
 	        print "</td>\n<td>";
+	        print $username;
+	        print "</td>\n<td>";
 	//        print mysql_result($hnd,$c,'password');
 		print "******";
 	        print "</td>\n<td>";
-	
-		$quota= $cyr_conn->getquota("user.$username");
+
+		if ($DOMAIN_AS_PREFIX) {
+			$quota= $cyr_conn->getquota("user/$username");
+		}
+		else {
+			$quota= $cyr_conn->getquota("user.$username");
+		}
 			if ($quota[used]!="NOT-SET"){
 			$q_used=$quota[used];
 			$q_total=$quota[qmax];	
 			$q_percent=100*$q_used/$q_total;
-			print $quota[used]." Kilobytes out of ";
-			print $quota[qmax]." Kilobytes (".$q_percent." %)";
+			print $quota[used]." Kbytes out of ";
+			print $quota[qmax]." Kbytes (".sprintf("%.2f",$q_percent)." %)";
 		}
 		else{
 			print "Quota not set";
@@ -122,7 +128,7 @@
 
 		}
                 else{
-                        print "\nNo accounts fount\n<p>";
+                        print "\nNo accounts found\n<p>";
 
 		print "<table><tr>";
 		print "<td class=\"navi\">\n";
@@ -134,3 +140,5 @@
 ?>
 
 <!-- ##################################### End browseaccounts.php #################################### -->
+
+

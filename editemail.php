@@ -59,7 +59,7 @@ if ($authorized){
 
 	        <tr>
 	        <td width=150>Destination</td>
-	        <td><input type="text" size="30" name=newdest value="<?php print $dest ?>"> </td>
+	        <td><input type="text" size="30" name=dest value="<?php print $dest ?>"> </td>
 	        </tr>
 
 
@@ -82,4 +82,5 @@ else{
 
 ?>
 </td></tr>
+
 

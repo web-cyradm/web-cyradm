@@ -31,7 +31,7 @@ if ($admintype==0){
 
 ################ And the supervisors menu #####
 
-print "<td class=\"navi\" width\"20\">";
+print "<td class=\"navi\">";
 print "<a href=\"index.php?action=accounts&domain=$domain\">accounts</a></td>\n";
 
 print "<td>&nbsp;</td><td class=\"navi\">";

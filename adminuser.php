@@ -68,7 +68,7 @@ if ($admintype==0){
                 $type= mysql_result($result,$c,'type');
                 print "\n<tr class=\"$cssrow\">";
                 print "\n<td><a href=\"index.php?action=editadminuser&username=$username&domain=$domain\">Edit adminuser</a></td>";
-                print "\n<td><a href=\"index.php?action=deleteadminuser&adminuser=$username&domain=$domain\">Delete adminuser</a></td>";
+                print "\n<td><a href=\"index.php?action=deleteadminuser&username=$username&domain=$domain\">Delete adminuser</a></td>";
                 print "</td>\n<td>";
                 print $username;
                 print "</td>\n<td>";

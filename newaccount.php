@@ -3,7 +3,7 @@
         <td valign="top"> 
 
 <?php
-print "<h3>Add new Account to domain $domain</h3>";
+print "<h3>Add new Account to domain <font color=red>$domain</font></h3>";
 
 $query1="SELECT * from domain WHERE domain_name='$domain'";
 $handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
@@ -29,20 +29,22 @@ if (!$confirmed){
 
 	print "<p>Total accounts: ".$cnt2."<p>";
 
-	if ($cnt2>0){
+        if (!$DOMAIN_AS_PREFIX) {
+		if ($cnt2>0){
 
-	$lastaccount=mysql_result($result2,$cnt2-1,"username");
+		$lastaccount=mysql_result($result2,$cnt2-1,"username");
+		}
+
+		if ($cnt2=0){
+			$lastaccount=$prefix."0000";
+		}	
+
+		$test = ereg ("[0-9]*$",$lastaccount,$result_array);
+		$next= $result_array[0]+1;
+
+		$nextaccount= sprintf("%04d",$next);
+		$nextaccount=$prefix.$nextaccount;
 	}
-
-	if ($cnt2=0){
-		$lastaccount=$prefix."0000";
-	}	
-
-	$test = ereg ("[0-9]*$",$lastaccount,$result_array);
-	$next= $result_array[0]+1;
-
-	$nextaccount= sprintf("%04d",$next);
-	$nextaccount=$prefix.$nextaccount;
 
 	?>
 
@@ -50,16 +52,19 @@ if (!$confirmed){
 	<input type="hidden" name="action" value="newaccount">
 	<input type="hidden" name="confirmed" value="true">
 	<input type="hidden" name="domain" value="<?php print $domain ?>">
-	<input type="hidden" name="username" value="<?php print $nextaccount ?>">
+	<table>	
+	<?php
+		if (!$DOMAIN_AS_PREFIX) {
+			print "<input type=\"hidden\" name=\"username\" value=\"$nextaccount\">";
+			print "<tr>\n";
+			print "<td>Accountname</td>\n";
+			print "<td>$nextaccount</td>\n";
+			print "</tr>\n";
+		}
+	?>
 
-	<table>
 		<tr>
-			<td>Accountname</td>
-			<td><?php print $nextaccount ?></td>
-		</tr>
-
-		<tr>
-			<td>Emailadress</td>
+			<td>Email address</td>
 			<td><input class="inputfield" type="text" name="email" onFocus="this.style.backgroundColor='#aaaaaa'">@<?php print $domain?>
 		</tr>
 
@@ -92,6 +97,10 @@ if (!$confirmed){
 }
 
 else{
+	if ($DOMAIN_AS_PREFIX) {
+		$prefix=$domain;
+		$username="$email.$domain";
+	}
 
 	$query3="INSERT INTO accountuser (username , password , prefix , domain_name) VALUES ('$username','$password','$prefix','$domain')";
 
@@ -110,14 +119,25 @@ else{
 	$cyr_conn = new cyradm;
         $cyr_conn -> imap_login();
 
-	$result=$cyr_conn->createmb("user.".$username);
+	if ($DOMAIN_AS_PREFIX) {
+		$result=$cyr_conn->createmb("user/".$username);
+	}
+	else {
+		$result=$cyr_conn->createmb("user.".$username);
+	}
 
 	if ($result){
 		print "Account succesfully added to IMAP Subsystem";
 	}
 
-	$result=$cyr_conn->setacl('user.".$username',"$CYRUS_USERNAME","lrswipcda");
-	print $cyr_conn->setmbquota("user.$username","$quota");
+	if ($DOMAIN_AS_PREFIX) {
+		print $cyr_conn->setacl("user/$username","$CYRUS_USERNAME","lrswipcda");	
+		$result=$cyr_conn->setmbquota("user/".$username,"$quota");
+	}
+	else {
+		print $cyr_conn->setacl("user.$username","$CYRUS_USERNAME","lrswipcda");
+		$result=$cyr_conn->setmbquota("user.".$username,"$quota");
+	}
 
 	print $result;
 
@@ -131,3 +151,4 @@ else{
 ?>
 
 </td></tr>
+

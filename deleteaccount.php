@@ -46,8 +46,12 @@ $hnd3=mysql_db_query($MYSQL_DB,$query3);
 $cyr_conn = new cyradm;
 $cyr_conn -> imap_login();
 
-
-print $cyr_conn -> deletemb("user.".$username);
+if ($DOMAIN_AS_PREFIX) {
+	print $cyr_conn -> deletemb("user/".$username);
+}
+else {
+	print $cyr_conn -> deletemb("user.".$username);
+}
 
 include ("browseaccounts.php");
 
@@ -57,9 +61,10 @@ include ("browseaccounts.php");
 }
 else{
 
-	print "<h3>Security violation detected, nothing deleted, attempt has been loggd</h3>";
+	print "<h3>Security violation detected, nothing deleted, attempt has been logged.</h3>";
 }
 
 ?>
 </td></tr>
+
 
