@@ -100,10 +100,11 @@ class password{
 	}
 
 	function encrypt($password,$encryption){
+
+		print $password;
 		switch ($encryption){
                 case "crypt":
-			//$password=crypt($newpassword,substr($password,0,2));
-			$password=crypt($password);
+			$password=crypt($password,substr($password,0,2));
 			return $password;
 		}
 	}

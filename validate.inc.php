@@ -15,6 +15,7 @@ $admintype= $_GET['admintype'];
 $newadmintype= $_GET['newadmintype'];
 $newusername= $_GET['newusername'];
 $type= $_GET['type'];
+$newtype= $_GET['newtype'];
 $domain=$_GET['domain'];
 $prefix=$_GET['prefix'];
 $action=$_GET['action'];

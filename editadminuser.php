@@ -13,9 +13,7 @@ else{
 		$query="SELECT * from adminuser WHERE username='$username'";
 		$result=$handle1->query($query);
                 $adminrow=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-                $password=$adminrow['password'];
-	//	$password=mysql_result($result,0,'password');
-		
+                $type=$adminrow['type'];
 
 		if (!$confirmed){
 
@@ -30,25 +28,35 @@ else{
 		<table>
 			<tr>
 				<td><?php print _("Accountname") ?></td>
-				<td><input class="inputfield" type="text" name="newusername" value="<?php print $username ?>" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
+				<td><?php print $username ?></td>
 			</tr>
 		
 			<tr>
 				<td><?php print _("Admin Type") ?></td>
-				<td><select class="selectfield" name="type">
-					<option value=0><?php print _("Superuser") ?></option>
-					<option selected value=1><?php print _("Domain Master") ?></option>
+				<td><select class="selectfield" name="newtype">
+					<option <?php 
+					if ($type==0){
+						print "selected";
+					}
+					print " value=0>";
+					 print _("Superuser") ?></option>
+					<option <?php
+					if ($type==1){
+						print "selected";
+					}
+					 print " value=1>";
+					 print _("Domain Master") ?></option>
 				</select>
 
 		
 			<tr>
 				<td><?php print _("Password") ?></td>
-				<td><input class="inputfield" type="password" value="<?php print $password ?>" name="newpassword" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
+				<td><input class="inputfield" type="password" name="new_password" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
 			</tr>
 
 			<tr>
 				<td><?php print _("Confirm Password") ?></td>
-				<td><input class="inputfield" type="password" name="confirm_password" value="<?php print $password ?>" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
+				<td><input class="inputfield" type="password" name="confirm_password" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
 			</tr>
 	
 			<tr>
@@ -65,15 +73,29 @@ else{
 
 		else if ($confirmed){
 
-			$query="UPDATE adminuser SET password='$newpassword' , type='$type', username='$newusername' WHERE username='$username'";
+			if ($new_password && $new_password==$confirm_password){
+				$pwd=new password;
+				$new_password=$pwd->encrypt($new_password,$CRYPT);
+				# If the new_password field is not empty and the password matches, update the password
+				$query="UPDATE adminuser SET password='$new_password' , type='$newtype' WHERE username='$username'";
+			}
+
+			else if ($new_password!=$confirm_password){
+				die (_("New passwords are not equal. Password not changed"));
+			}
+
+			else{
+
+				$query="UPDATE adminuser SET type='$newtype' WHERE username='$username'";
+			}
 
 			$result=$handle1->query($query);
 	
-			if ($type==0){
-				$query2="UPDATE domainadmin SET domain_name='*', adminuser='$newusername' WHERE adminuser='$username'";
+			if ($newtype==0){
+				$query2="UPDATE domainadmin SET domain_name='*' WHERE adminuser='$username'";
 			}
 			else{
-				$query2="UPDATE domainadmin SET domain_name='$domain', adminuser='$newusername' WHERE adminuser='$username'";
+				$query2="UPDATE domainadmin SET domain_name='$domain' WHERE adminuser='$username'";
 			}
 			$result2=$handle1->query($query2);
 
