@@ -78,7 +78,7 @@ $_SESSION['admintype'] = $row['type'];
 $admintype = $row['type'];
 */
 # We check and remember list of domains for domain admin
-if ($admintype != 0){	
+if ($_SESSION['admintype'] != 0){	
 /*	$allowed_domains = array();
 	
 	for ($i=0; $i < $cnt; $i++){
@@ -180,7 +180,7 @@ if (! empty($action)){
 
 		#When the requuested quota is higher that the default quota, we need to check if
 		#admin NOT superuser AND when submitting the request
-		if ($quota>$quota2 && $admintype!=0 && $confirmed==TRUE){
+		if ($quota>$quota2 && $_SESSION['admintype']!=0 && $confirmed==TRUE){
 			$err_msg=_("Quota exeedes the maximum allowed qutoa for this domain.");
 			$authorized = FALSE;
 		}
@@ -211,7 +211,7 @@ if (! empty($action)){
 			$authorized=TRUE;
 
 			# If the admin is a superuser, lets change the quota anyway, regardless what the default quota is
-			if (! empty($quota) && $quota > $quota2 && $admintype!=0){
+			if (! empty($quota) && $quota > $quota2 && $_SESSION['admintype']!=0){
 				$err_msg=_("Quota exeedes the maximum allowed qutoa for this domain.");
 				$authorized = FALSE;
 			}
