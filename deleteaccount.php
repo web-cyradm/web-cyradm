@@ -94,7 +94,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					die (_("Database error"));
 				}
 
-
 				if ($DOMAIN_AS_PREFIX) {
 					print $cyr_conn->deletemb("user/".$_GET['username']);
 				} else {
@@ -113,11 +112,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		} else {
 			?>
 			<h3>
-				<?php
-				logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
-				print _("Security violation detected, action cancelled. Your attempt has been logged.");
-				?>
+				<?php print $err_msg;?>
 			</h3>
+			<a href="index.php?action=browseaccounts&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
 			<?php
 		}
 		?>

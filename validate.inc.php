@@ -290,7 +290,7 @@ if (! empty($action)){
 						}
 					}
 				}
-				# Required checks for array of domains $_POST['resp_domain']
+# TO DO: Checks for array of domains $_POST['resp_domain']
 				//if (!empty($_POST['resp_domain'])) {
 				//}
 				# If domain is not set: that's all
@@ -338,7 +338,7 @@ if (! empty($action)){
 			if (!ValidDomain($_POST['domain']) || !is_numeric($_POST['quota'])) {
 				$authorized = FALSE;
 				$err_msg = "";
-			} elseif (!ValidPassword($_POST['password'] || !ValidPassword($_POST['confirm_password']))){
+			} elseif (!ValidPassword($_POST['password']) || !ValidPassword($_POST['confirm_password'])){
 				$authorized = FALSE;
 				$err_msg = _("Password incorrect");
 			} elseif ($_POST['password'] != $_POST['confirm_password']) {
@@ -391,10 +391,13 @@ if (! empty($action)){
 		break;
 #OK########################### Check input if deleteaccount ###############################################
 	case "deleteaccount":
-		if (!ValidDomain($_GET['domain'])){
+		if (!ValidDomain($_GET['domain'])) {
 			$authorized = FALSE;
+			$err_msg = "";
 		} elseif (!ValidName($_GET['username'])) {
 			$authorized = FALSE;
+			logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 		} else {
 			# it's needed to defend 'cyrus' user
 			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
@@ -404,6 +407,8 @@ if (! empty($action)){
 			}
 			if (!$result->numRows()){
 				$authorized = FALSE;
+				logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 			} else {
 				$authorized = TRUE;
 			}
