@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+#
+# This script extracts the i18n stings out of the php files and puts them in a pot file
+
+xgettext -C `find . -name "*.php"` -o locale/template/web-cyradm.pot --keyword="_("
