@@ -9,7 +9,6 @@ ALTER TABLE accountuser ADD imap int;
 ALTER TABLE accountuser ADD pop int;
 ALTER TABLE accountuser ADD sieve int;
 ALTER TABLE accountuser ADD smtpauth int;
-ALTER TABLE accountuser ADD status int;
 
 CREATE TABLE settings (
   username varchar(50) PRIMARY KEY,

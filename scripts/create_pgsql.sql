@@ -17,7 +17,6 @@ CREATE TABLE accountuser (
   pop int NOT NULL default 0,
   sieve int NOT NULL default 0,
   smtpauth int NOT NULL default 0,
-  status int NOT NULL default 0
 );
 
 CREATE TABLE adminuser (
