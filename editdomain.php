@@ -32,6 +32,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				$query2 = "UPDATE accountuser SET domain_name='$newdomain' WHERE domain_name='$domain'";
 
+				$query3 = "UPDATE domainadmin SET domain_name='$newdomain' WHERE domain_name='$domain'";
+
 				$handle = DB::connect ($DB['DSN'],true);
 				if (DB::isError($handle)) {
 					die (_("Database error"));
@@ -39,6 +41,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				$result = $handle->query($query);
 				$result2 = $handle->query($query2);
+				$result3 = $handle->query($query3);
 
 				if (!DB::isError($result)){
 					?>
