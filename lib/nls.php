@@ -20,7 +20,7 @@ $nls['aliases']['it'] = 'it_IT';
 //$nls['aliases']['ja'] = 'ja_JP';
 //$nls['aliases']['ko'] = 'ko_KR';
 //$nls['aliases']['lt'] = 'lt_LT';
-//$nls['aliases']['nl'] = 'nl_NL';
+$nls['aliases']['nl'] = 'nl_NL';
 //$nls['aliases']['nn'] = 'nn_NO';
 //$nls['aliases']['no'] = 'nb_NO';
 $nls['aliases']['pl'] = 'pl_PL';
@@ -70,6 +70,7 @@ $nls['translator']['fr_FR'] = '<a href="mailto:mrjack at fastorama.com">Raphaël 
 $nls['translator']['de_DE'] = '<a href="mailto:m.muenz at maxonline.de">Michael Muenz</a> and <a href="mailto:luc at delouw.ch">Luc de Louw</a>'; 
 $nls['translator']['hu_HU'] = '<a href="mailto:zoltan at levardy.org">Zoltan Levardy</a>';
 $nls['translator']['it_IT'] = '<a href="mailto:forschner at web.de">Adrian Forschner</a>';
+$nls['translator']['nl_NL'] = '<a href="mailto:carlo at giga-byte.nl">Carlo Landmeter</a>';
 $nls['translator']['pl_PL'] = '<a href="mailto:primo at npl.pl">Przemyslaw Witek</a>';
 $nls['translator']['pt_PT'] = '<a href="mailto:fernando at costeira.com.br">Fernando Garcia</a>';
 $nls['translator']['ro_RO'] = '<a href="mailto:catalinboiangiu at SoftHome.net">Catalin Boiangiu</a>';
