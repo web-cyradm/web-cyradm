@@ -1,0 +1,722 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>The software needed against viruses and SPAM</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
+HREF="t1.html"><LINK
+REL="PREVIOUS"
+TITLE="Fighting against Viruses and SPAM"
+HREF="spam-and-virus-intro.html"><LINK
+REL="NEXT"
+TITLE="Further Information"
+HREF="moreinfo.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECT1"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Postfix-Cyrus-Web-cyradm-HOWTO</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="spam-and-virus-intro.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="moreinfo.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="INSTALLING-ANTI-SPAM"
+>The software needed against viruses and SPAM</A
+></H1
+><P
+>This chapter describes how to install and handle the software against viruses and SPAM</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="GET-CLAMAV"
+>Getting and installing ClamAV</A
+></H2
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN789"
+>Download</A
+></H3
+><P
+>	Origin-Site: <A
+HREF="http://prdownloads.sourceforge.net/clamav/clamav-0.68.tar.gz"
+TARGET="_top"
+>http://prdownloads.sourceforge.net/clamav/clamav-0.68.tar.gz</A
+>&#13;</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN793"
+>Building and installing</A
+></H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+># Adding a group for the clamav user
+groupadd clamav
+
+# Adding the clamav user to your system
+useradd -g clamav -c "clamav user" clamav
+
+cd /usr/local
+
+tar -xvzf clamav-0.68.tar.gz
+cd clamav-0.68
+
+./configure
+
+make &#38;&#38; make install</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN796"
+>Testing and configuring</A
+></H3
+><P
+>To test the funtionality of clamav, you can run <B
+CLASS="COMMAND"
+>clamscan</B
+> to get some results from the testpatterns that are included in the clamav distribution run <B
+CLASS="COMMAND"
+>clamscan -r -i /usr/local/clamav-0.68</B
+></P
+><P
+>The output should look like this:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>/usr/local/clamav-0.68/test/test1: ClamAV-Test-Signature FOUND
+/usr/local/clamav-0.68/test/test1.bz2: ClamAV-Test-Signature FOUND
+/usr/local/clamav-0.68/test/test2.zip: ClamAV-Test-Signature FOUND
+/usr/local/clamav-0.68/test/test2.badext: ClamAV-Test-Signature FOUND
+/usr/local/clamav-0.68/contrib/clamdwatch/clamdwatch.tar.gz: Eicar-Test-Signature FOUND
+
+----------- SCAN SUMMARY -----------
+Known viruses: 20482
+Scanned directories: 47
+Scanned files: 406
+Infected files: 5
+Data scanned: 5.48 MB
+I/O buffer size: 131072 bytes
+Time: 2.706 sec (0 m 2 s)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Next step is to setup the automated update of the virus database. This is a important step, because the speed of virus spreading is fast and would pick up even further.</P
+><P
+>Create the needed logfiles</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>touch /var/log/clam-update.log
+chmod 600 /var/log/clam-update.log
+chown clamav /var/log/clam-update.log</PRE
+></TD
+></TR
+></TABLE
+><P
+>I suggest to update the signatures with a hourly cronjob. To edit the crontab issue <B
+CLASS="COMMAND"
+>crontab -e</B
+> and add the following line, and replace the »x« with a random value between 1 and 59. This is some kind of time based loadbalancing to ensure more people can fetch the updated.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>#x * * * *       /usr/local/bin/freshclam --quiet -l /var/log/clam-update.log</PRE
+></TD
+></TR
+></TABLE
+><P
+>To test if the update process is working, please issue the command <B
+CLASS="COMMAND"
+>/usr/local/bin/freshclam -l /var/log/clam-update.log</B
+> and have a look at the output.</P
+><P
+>The output should look similar to this:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>ClamAV update process started at Tue Mar 23 19:58:11 2004
+Reading CVD header (main.cvd): OK
+Downloading main.cvd [*]
+main.cvd updated (version: 21, sigs: 20094, f-level: 1, builder: tkojm)
+Reading CVD header (daily.cvd): OK
+Downloading daily.cvd [*]
+daily.cvd updated (version: 210, sigs: 596, f-level: 1, builder: acab)
+Database updated (20690 signatures) from database.clamav.net (64.74.124.90).</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="RAZOR"
+>Razor</A
+></H2
+><P
+>Razor is one of the prerequisites of spamassassin.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN816"
+>Download</A
+></H3
+><P
+>Origin-Site: <A
+HREF="http://prdownloads.sourceforge.net/razor/razor-agents-sdk-2.03.tar.gz?download"
+TARGET="_top"
+>http://prdownloads.sourceforge.net/razor/razor-agents-sdk-2.03.tar.gz?download</A
+></P
+><P
+>Origin-Site: <A
+HREF="http://prdownloads.sourceforge.net/razor/razor-agents-2.40.tar.gz?download"
+TARGET="_top"
+>http://prdownloads.sourceforge.net/razor/razor-agents-2.40.tar.gz?download</A
+>
+
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>cd /usr/local
+
+tar -xvzf razor-agents-sdk-2.03.tar.gz
+cd razor-agents-sdk-2.03
+
+perl Makefile.PL
+make &#38;&#38; make install
+
+cd /usr/local
+tar -xvzf razor-agents-2.40.tar.gz
+cd razor-agents-2.40/
+
+perl Makefile.PL
+make &#38;&#38; make install</PRE
+></TD
+></TR
+></TABLE
+>&#13;</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN823"
+>Registering and setting up</A
+></H3
+><P
+>In order to use razor2 you need to register yourself as a user</P
+><P
+>Choose a unique username and password and issue <B
+CLASS="COMMAND"
+>razor-admin -register -user=some_user -pass=somepass</B
+></P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="GET-SPAMASSASSIN"
+>Getting and installing spamassassin</A
+></H2
+><P
+>Spamassassin is the todays leading opensource project to fight against SPAM. To describe how spamassassin works would be too much for this document. For further information please consult <A
+HREF="http://eu.spamassassin.org/doc.html"
+TARGET="_top"
+>http://eu.spamassassin.org/doc.html</A
+></P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN832"
+>Download</A
+></H3
+><P
+>Origin-Site: <A
+HREF="http://eu.spamassassin.org/released/Mail-SpamAssassin-2.63.tar.gz"
+TARGET="_top"
+>http://eu.spamassassin.org/released/Mail-SpamAssassin-2.63.tar.gz</A
+>&#13;</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN836"
+>Prerequisites</A
+></H3
+><P
+>Spamassassin depends on a lot of prerequisites. The easiest way is using the CPAN repository. Issue the command <B
+CLASS="COMMAND"
+>perl -MCPAN -e shell</B
+> and answer all questions as needed.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN840"
+>Building and installing</A
+></H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>cd /usr/local
+
+tar -xvzf Mail-SpamAssassin-2.63.tar.gz
+
+cd Mail-SpamAssassin-2.63
+
+perl Makefile.PL
+
+# You get prompted to run Razor tests which you should answer with "y"
+Run Razor v2 tests (these may fail due to network problems)? (y/n) [n] y 
+
+make &#38;&#38; make install</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AMAVIS-INSTALL"
+>Getting and installing amavisd-new</A
+></H2
+><P
+>Amavisd-new is the software that glues all the software described above together to postfix</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN846"
+>Download</A
+></H3
+><P
+>Origin-Site: <A
+HREF="http://www.ijs.si/software/amavisd/amavisd-new-20030616-p8.tar.gz"
+TARGET="_top"
+>http://www.ijs.si/software/amavisd/amavisd-new-20030616-p8.tar.gz</A
+>&#13;</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN850"
+>Prerequisites</A
+></H3
+><P
+>Amavisd-new needs a lot of prerequisites.</P
+><P
+>Run <B
+CLASS="COMMAND"
+>perl -MCPAN -e shell</B
+> and issue:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>install ExtUtils::MakeMaker
+install HTML::Parser
+install DB_File
+install Digest::SHA1
+install Archive::Tar
+install Archive::Zip
+install Compress::Zlib
+install Convert::TNEF
+install Convert::UUlib
+install MIME::Base64
+install MIME::Parser
+install Mail::Internet
+install Mail::SPF::Query
+install Net::Server
+install Net::SMTP
+install Net::DNS
+install Digest::MD5
+install IO::Stringy
+install Time::HiRes
+install Unix::Syslog</PRE
+></TD
+></TR
+></TABLE
+><P
+>At the end run <B
+CLASS="COMMAND"
+>./amavisd</B
+> and have a look at overseen prerequisites.</P
+><P
+>Edit <TT
+CLASS="FILENAME"
+>/etc/amavisd.conf</TT
+> and change the variables <VAR
+CLASS="VARNAME"
+>$daemon_user</VAR
+> to »amavis« and <VAR
+CLASS="VARNAME"
+>$daemon_group</VAR
+> to »amavis«. Another variable to change is <VAR
+CLASS="VARNAME"
+>$mydomain to match your domain.</VAR
+></P
+><P
+>Please also consider to change the default settings for virus and spam mails to avoid being notified about every intercepted mail</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>$final_virus_destiny      = D_DISCARD;  # (defaults to D_BOUNCE)
+$final_spam_destiny       = D_DISCARD;  # (defaults to D_REJECT)</PRE
+></TD
+></TR
+></TABLE
+><P
+>In the beginning of SPAM filtering I recommend to set the kill-value to something higher until you tweaked the filters. Change the variable <VAR
+CLASS="VARNAME"
+>$sa_kill_level_deflt</VAR
+> to 8 or even higher.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN867"
+>Building and installing</A
+></H3
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>cd /usr/local
+
+tar -xvzf amavisd-new-20030616-p8.tar.gz
+
+cd amavisd-new-20030616
+cp amavisd /usr/local/sbin
+cp amavisd.conf /etc
+chown root /etc/amavisd.conf
+chmod 644  /etc/amavisd.conf</PRE
+></TD
+></TR
+></TABLE
+><P
+>Now it is the the time to define a group and a user for amavisd-new</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>groupadd amavis
+useradd -g amavis -c "Amavisd-new user" amavis</PRE
+></TD
+></TR
+></TABLE
+><P
+>Next you have to define a directory for the quarantined mail:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>mkdir /var/virusmails
+chown amavis:amavis /var/virusmails
+chmod 750 /var/virusmails
+mkdir /var/amavis
+chown amavis:amavis /var/amavis
+chmod 750 /var/amavis</PRE
+></TD
+></TR
+></TABLE
+><P
+>The original init script in the amavisd-new distribution does only work work with Redhat. Other distributions need to install my quick and dirty init-script:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>#!/bin/bash
+#
+# Amavisd-new startup script
+
+case "$1" in
+    start)
+        # Starting amavisd
+        /usr/local/sbin/amavisd
+        ;;
+
+    stop)
+
+	# follows later
+
+        ;;
+
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+
+esac</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="POSTFIX-SETUP"
+>Setting up postfix</A
+></H2
+><P
+>Postfix needs to be configured to send each mail to amavis-new in order to get sanitized.</P
+><P
+>You need to add the following line to <TT
+CLASS="FILENAME"
+>/etc/postfix/main.cf</TT
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>content_filter = smtp-amavis:127.0.0.1:10024</PRE
+></TD
+></TR
+></TABLE
+><P
+>The <TT
+CLASS="FILENAME"
+>/etc/postfix/master.cf</TT
+> needs also some adjustments to return the results from amavisd-new to the mailingsystem.</P
+><P
+>Please add the following lines to your configuration:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>smtp-amavis unix - - y - 2 smtp -o smtp_data_done_timeout=1200
+
+127.0.0.1:10025 inet n  -       n       -       -  smtpd
+    -o content_filter=
+    -o local_recipient_maps=
+    -o relay_recipient_maps=
+    -o smtpd_restriction_classes=
+    -o smtpd_client_restrictions=
+    -o smtpd_helo_restrictions=
+    -o smtpd_sender_restrictions=
+    -o smtpd_recipient_restrictions=permit_mynetworks,reject
+    -o mynetworks=127.0.0.0/8
+    -o strict_rfc821_envelopes=yes
+    -o smtpd_error_sleep_time=0
+    -o smtpd_soft_error_limit=1001
+    -o smtpd_hard_error_limit=1000</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="spam-and-virus-intro.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="t1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="moreinfo.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Fighting against Viruses and SPAM</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Further Information</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Fighting against Viruses and SPAM</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
+HREF="t1.html"><LINK
+REL="PREVIOUS"
+TITLE="Testing the setup"
+HREF="test.html"><LINK
+REL="NEXT"
+TITLE="The software needed against viruses and SPAM"
+HREF="installing-anti-spam.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
+><BODY
+CLASS="SECT1"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Postfix-Cyrus-Web-cyradm-HOWTO</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="test.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="installing-anti-spam.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="SPAM-AND-VIRUS-INTRO"
+>Fighting against Viruses and SPAM</A
+></H1
+><P
+>This chapter is optional and describes HOWTO fight against Viruses and SPAM.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="BRIEF-VIRUS"
+>Brief introdcution to viruses</A
+></H2
+><P
+>I think I do not need to explain how dangerous Viruses are. Unfortunately in the most recent attacks from SCO.A (aka MyDoom) also more or less experienced users get tricked by viruses. Most of todays viruses and worms comes via the internet, most of them via E-Mail. Needless to say, that viruses should be catched by the SMTP system if possible.</P
+><DIV
+CLASS="CAUTION"
+><P
+></P
+><TABLE
+CLASS="CAUTION"
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="CENTER"
+><B
+>Not a substitute</B
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+><P
+>A mailsystem that filters viruses is NEVER a substitute for a local installed anti-virus software. E-Mails are only one way how viruses can penetrate computers.</P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="BRIEF-SPAM"
+>Brief introduction to SPAM</A
+></H2
+><P
+>The other harmless but unwanted and disturbing E-Mails are SPAM e-mails. SPAM is originally a disgusting canned meat. It is a synonym for UCE (Unsolicited Commercial Email) and UBE (Unsolicited Bulk Email).&#13;</P
+><P
+>Studies claim, that up to 60 percent of the worldwide e-mail traffic is SPAM. Before I installed the anti-SPAM filters on my SMTP servers, I received about 150 SPAMS's a day. One reason is this document. In ancient time, I noticed my real e-mail address unprotected. E-mail harvesters are scanning websites allover the world for addresses, and try to deliver its commercial, often illegal offers.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="STRATEGY-VIRUSES"
+>Strategy against viruses</A
+></H2
+><P
+>The strategy against viruses is pretty forward: Filtering viruses delivered via e-mail and having a localally installed anti-virus software.</P
+><P
+>Almost all vendors of anti-virus software have a up-to-date version for Linux and Unix Systems, because most SMTP servers are running on Unix. In this document I'll explain HOWTO implement <A
+HREF="http://www.clamav.net"
+TARGET="_top"
+>clamav</A
+>, a very active open source anti virus project.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="STRATEGY-SPAM"
+>Strategy against SPAM</A
+></H2
+><P
+>Fighting against SPAM is much more difficult than viruses. Why? It is because every virus has a unique signature. SPAM can contain arbitrary content. Some of the SPAM is in english, other is korean, other is in "you-name-it-language".</P
+><P
+>The best method how to prevent SPAM is to handle your e-mail address as your best treasured secret. NEVER put your address in a web-form or put it on your website. I know, that is against the idea of the internet. Information must be free. You can keep publishing your e-mail address if you implement the configuration further below.&#13;</P
+><P
+>In the beginning of SPAM, filtering for keywords like »viagra« was enough. Todays SPAM techniques are much more sophisticated. It is a war between users and spammers. The solution against sophisticated SPAM is even more sophisticated anti-spam software.Todays anti-spam software checks e-mail for more than just keywords. They are checking for specific mail-header data etc. Also a technique called <A
+HREF="http://en.wikipedia.org/wiki/Epistemic_probability"
+TARGET="_top"
+>bayesian</A
+> filters which can learn from particular input, distributed checksum networks etc.</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="test.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="t1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="installing-anti-spam.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Testing the setup</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The software needed against viruses and SPAM</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
