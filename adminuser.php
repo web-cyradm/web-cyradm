@@ -22,10 +22,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			}
 			$row_pos = (empty($row_pos))?(0):($row_pos);
 
+			# Fist query is for displaying 
 			$result = $handle->limitQuery($query,$row_pos,10);
+
+			# second query is needed to get the total of administrators
+			$result2 = $handle->Query($query);
 			$cnt = $result->numRows();
 
-			$total = $result->numRows();
+			$total = $result2->numRows();
 			if ($cnt != 0){
 
 
