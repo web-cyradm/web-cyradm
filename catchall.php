@@ -32,7 +32,12 @@ if (!$confirmed){
 
 else{
 
+	# First Delete the entry from the database
+
 	$deletequery="DELETE from virtual WHERE alias='@$domain'";
+
+	# And then add the new one	
+
 	$insertquery="INSERT INTO virtual  (alias , dest , username , status) values ('@$domain' , '$username' , '$username' , '1')";
 	$handle=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
 	$result=mysql_query($deletequery,$handle);
