@@ -145,6 +145,18 @@ msgstr ""
 msgid "Set catch all"
 msgstr ""
 
+#: browseaccounts.php:99
+msgid "Change Password"
+msgstr ""
+
+#: browseaccounts.php:100
+msgid "Set Vacation"
+msgstr ""
+
+#: browseaccounts.php:101
+msgid "Set Forwards"
+msgstr ""
+
 #: browseaccounts.php:126 editaccount.php:76
 msgid "out of"
 msgstr ""
@@ -243,6 +255,10 @@ msgstr ""
 
 #: editaccount.php:53
 msgid "Delete Emailadress"
+msgstr ""
+
+#: editadminuser.php:5
+msgid "Change admin user for domain"
 msgstr ""
 
 #: editdomain.php:21
@@ -357,6 +373,22 @@ msgstr ""
 msgid "Account succesfully added to the IMAP Subsystem"
 msgstr ""
 
+#: newadminuser.php:6
+msgid "Add new admin user for domain"
+msgstr ""
+
+#: newadminuser.php:8
+msgid "Please select a domain first"
+msgstr ""
+
+#: newadminuser.php:30
+msgid "Admin Type"
+msgstr ""
+
+#: newadminuser.php:34
+msgid "Select \"Superuser\" for all domains"
+msgstr ""
+
 #: newdomain.php:17
 msgid "Add new domain"
 msgstr ""
@@ -393,27 +425,6 @@ msgstr ""
 msgid "Your session timed out"
 msgstr ""
 
-#: editadminuser.php:5
-msgid "Change admin user for domain"
-msgstr ""
-
-#: newadminuser.php:6
-msgid "Add new admin user for domain"
-msgstr ""
-
-#: newadminuser.php:8
-msgid "Please select a domain first"
-msgstr ""
-
-#: newadminuser.php:30
-msgid "Admin Type"
-msgstr ""
-
-
-#: newadminuser.php:34
-msgid "Select \"Superuser\" for all domains"
-msgstr ""
-
 
 
 #: Submit and cancel buttons
@@ -443,4 +454,60 @@ msgstr ""
 msgid "Login failed"
 msgstr ""
 
+#: set_forwards.php:52
+msgid "Forward set"
+msgstr ""
 
+#: set_forwards.php:53
+msgid "Failure in setting forward"
+msgstr ""
+
+#: set_forwards.php:54
+msgid "Wrong password"
+msgstr ""
+
+#: set_forwards.php:64
+msgid "Forwarding unset"
+msgstr ""
+
+#: set_forwards.php:65
+msgid "Failure in unsetting forwarding"
+msgstr ""
+
+#: set_forwards.php:68
+msgid "Forwarding removed"
+msgstr "" 
+
+#: set_forwards.php:69
+msgid "Failure in removing forwarding"
+msgstr ""
+
+
+
+#: set_vacation.php:59
+msgid "Failed to activate vacation"
+msgstr ""
+
+#: set_vacation.php:62
+msgid "Failure in modifying vacation notice"
+msgstr ""
+
+#: set_vacation.php:65 set_vacation.php:88 set_forwards.php:71
+msgid "Failed to login"
+msgstr ""
+
+#: set_vacation.php:78
+msgid "Failure in unseting vacation notice"
+msgstr ""
+
+#: set_vacation.php:82
+msgid "Vacation notice removed"
+msgstr ""
+
+#: set_vacation.php:84
+msgid "Failure in removing vacation notice"
+msgstr ""
+
+#: set_vacation:93 set_forwards:75
+msgid "Not possible"
+msgstr ""
