@@ -183,7 +183,7 @@
 							$result4 = $handle->query($query4);
 							$row4 = $result4->fetchRow(DB_FETCHMODE_ASSOC, 0);
 							if (is_array($row4)){
-							    print "<br><b>" . _("Forwards") . ":</b><br><br>";
+							    print "<hr color=\"ffffff\"><b>" . _("Forwards") . ":</b><br>";
 							    $forwards_tmp = preg_split('|,\s*|', stripslashes($row4['dest']));   
 							    $forwards = array();                                                
 							    while (list(, $forward) = each($forwards_tmp)){
