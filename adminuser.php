@@ -44,7 +44,7 @@ if ($admintype==0){
                 print "<table border=\"0\">\n";
                 print "<tbody>";
                 print "<tr>";
-                print "<th colspan=\"2\">"._("actions")."</th>";
+                print "<th colspan=\"2\">"._("action")."</th>";
                 print "<th>"._("Adminname")."</th>";
                 print "<th>"._("Password")."</th>";
                 print "<th>"._("domain")."</th>";
