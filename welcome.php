@@ -5,6 +5,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	header("Location: index.php");
 	exit();
 }
-
+$_GET['orderby'] = "domain_name";
 include WC_BASE . "/browse.php";
 ?>
