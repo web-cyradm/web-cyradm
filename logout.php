@@ -10,6 +10,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
         <td valign="top">
 
 <?php
+logger(sprintf("LOGOUT : %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"));
 
 $_SESSION = array();
 //print session_id();
