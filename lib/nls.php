@@ -25,6 +25,7 @@ $nls['aliases']['it'] = 'it_IT';
 //$nls['aliases']['no'] = 'nb_NO';
 //$nls['aliases']['pl'] = 'pl_PL';
 $nls['aliases']['pt'] = 'pt_PT';
+$nls['aliases']['ro'] = 'ro_RO';
 $nls['aliases']['ru'] = 'ru_RU';
 //$nls['aliases']['sk'] = 'sk_SK';
 //$nls['aliases']['sl'] = 'sl_SI';
