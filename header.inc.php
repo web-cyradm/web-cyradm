@@ -18,15 +18,15 @@ switch ($LANG){
 	break;
 
 	case "hu_HU":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=8859-2\">";
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-2\">";
 	break;
 
 	case "pl_PL":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=8859-2\">";
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-2\">";
 	break;
 
 	case "ro_RO":
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=8859-2\">";
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-2\">";
 	break;
 
 	case "tr_TR":
@@ -34,7 +34,7 @@ switch ($LANG){
 	break;
 
 	default:
-		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=8859-1\">";
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">";
 }
 
 ?>
