@@ -31,6 +31,7 @@ $newalias=$_GET['newalias'];
 $newdest=$_GET['newdest'];
 $confirmed=$_GET['confirmed'];
 $cancel=$_GET['cancel'];
+$searchstring=$_GET['searchstring'];
 
 # Validate input and verify authorization of a users action
 
