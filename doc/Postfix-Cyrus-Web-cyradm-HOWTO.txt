@@ -1,42 +1,52 @@
 
-Postfix-Cyrus-Web-cyradm-HOWTO
+Postfix-Cyrus-Web-cyradm-HOWTOLuc de Louw
 
               luc at delouw.ch
 
    Revision History
+   Revision 1.2.3 2003-03-24 Revised by: ldl
+   Some minor correction and enhancements from user-input, updated
+   software mentioned in the HOWTO
+   Revision 1.2.2 2003-02-14 Revised by: ldl
+   Lots of grammar and typos fixed. Some corrections to the pam_mysql
+   Makefile
+   Revision 1.2.1 2003-02-12 Revised by: ldl
+   Nonofficial testrelease: Added lots of fixes and updates. Added
+   OpenSSL and more pam related stuff.
+   Revision 1.2.0 2002-10-16 Revised by: ldl
+   Added lot of user requests, updated the software mentioned in the
+   HOWTO
    Revision 1.1.7 2002-10-15 Revised by: ldl
-   T E S T R E L E A S E ! Added Michael Muenz' hints for SMTP AUTH,
-   corrected ca-cert related mistake, improved SGML code (more metadata),
-   updated the software mentioned in the document.
+   Added Michael Muenz' hints for SMTP AUTH, corrected ca-cert related
+   mistake, improved SGML code (more metadata), updated the software
+   mentioned in the document.
    Revision 1.1.6 2002-06-14 Revised by: ldl
-   T E S T R E L E A S E ! Added sasl_mech_list: PLAIN to imapd.conf,
-   added web-cyradm Mailinglist, added more to web-cyradm
+   Added sasl_mech_list: PLAIN to imapd.conf, added web-cyradm
+   Mailinglist, added more to web-cyradm
    Revision 1.1.5 2002-06-11 Revised by: ldl
-   T E S T R E L E A S E ! Added new SQL query to initialize web-cyradm
-   to have full data integrity in the MySQL Database,
-   mysql-mydestination.cf reported to be operational as expected.
+   Added new SQL query to initialize web-cyradm to have full data
+   integrity in the MySQL Database, mysql-mydestination.cf reported to be
+   operational as expected.
    Revision 1.1.4 2002-05-15 Revised by: ldl
-   T E S T R E L E A S E ! Added description what is needed in
-   /etc/services Another fix for pam_mysql compile, updated software
-   versions.
+   Added description what is needed in /etc/services Another fix for
+   pam_mysql compile, updated software versions.
    Revision 1.1.3 2002-05-08 Revised by: ldl
-   T E S T R E L E A S E ! Added more description for web-cyradm, fix for
-   wrong path of the saslauthdb-socket, Fix for wrong place of com_err.h,
-   protection of the TLS/SSL private key.
+   Added more description for web-cyradm, fix for wrong path of the
+   saslauthdb-socket, Fix for wrong place of com_err.h, protection of the
+   TLS/SSL private key.
    Revision 1.1.2 2002-04-29 Revised by: ldl
-   T E S T R E L E A S E ! Added describtion for Redhat users how to
-   install the init scripts.
+   Added description for Redhat users how to install the init scripts.
    Revision 1.1.1 2002-04-29 Revised by: ldl
-   T E S T R E L E A S E ! Fixed bug in configuring cyrus-IMAP (disabled
-   unused kerberos authetication)
+   Fixed bug in configuring cyrus-IMAP (disabled unused kerberos
+   authentication)
    Revision 1.1.0 2002-04-28 Revised by: ldl
-   T E S T R E L E A S E ! - Initial support for building cyrus from
-   source, dropped binary installation for Cyrus, because configuration
-   has changed with Release 2.1.x
-   Revision 1.0.2-draft-3 2002-04-25 Revised by: ldl
+   Initial support for building cyrus from source, dropped binary
+   installation for Cyrus, because configuration has changed with Release
+   2.1.x
+   Revision 1.0.2 2002-04-25 Revised by: ldl
    Added basic description for sieve and correct sender handling, minor
    fixes to db related stuff, Added mysql-lookup for »mydestination« ,
-   fixed bug for building postfix with mysql support
+   fixed bug for building postfix with mysql support.
    Revision 1.0.1 2002-04-07 Revised by: ldl
    Added an important fix for compiling pam_mysql
    Revision 1.0.0 2002-04-07 Revised by: ldl
@@ -65,68 +75,72 @@ Postfix-Cyrus-Web-cyradm-HOWTO
 
         2.1. [11]The Postfix MTA
         2.2. [12]Cyrus IMAP
-        2.3. [13]MySQL Database
-        2.4. [14]pam_mysql
-        2.5. [15]Web-cyradm Webinterface
+        2.3. [13]Cyrus SASL
+        2.4. [14]OpenSSL
+        2.5. [15]MySQL Database
+        2.6. [16]pam_mysql
+        2.7. [17]Web-cyradm Webinterface
 
-   3. [16]Getting and installing the software
+   3. [18]Getting and installing the software
 
-        3.1. [17]Getting and installing MySQL
-        3.2. [18]Getting and installing Berkely DB
-        3.3. [19]Getting and installing Cyrus SASL and IMAP
-        3.4. [20]Getting and installing Postfix
-        3.5. [21]Getting and installing pam_mysql
-        3.6. [22]Getting and installing Web-cyradm
+        3.1. [19]Getting and installing MySQL
+        3.2. [20]Getting and installing Berkeley DB
+        3.3. [21]Getting and installing OpenSSL
+        3.4. [22]Getting and installing Cyrus SASL and IMAP
+        3.5. [23]Getting and installing Postfix
+        3.6. [24]Getting and installing PAM
+        3.7. [25]Getting and installing pam_mysql
+        3.8. [26]Getting and installing Web-cyradm
 
-   4. [23]Configuring MySQL
+   4. [27]Configuring MySQL
 
-        4.1. [24]Securing MySQL
-        4.2. [25]Create the databases and tables
+        4.1. [28]Securing MySQL
+        4.2. [29]Setting up rinetd
 
-   5. [26]Configuring PAM
-   6. [27]Configuring Postfix
+   5. [30]Configuring PAM
+   6. [31]Configuring Postfix
 
-        6.1. [28]master.cf
-        6.2. [29]main.cf
+        6.1. [32]master.cf
+        6.2. [33]main.cf
 
-   7. [30]Configuring Cyrus IMAP
+   7. [34]Configuring Cyrus IMAP
 
-        7.1. [31]Creating the config files
-        7.2. [32]Creating the directories
-        7.3. [33]Changing the attributes
+        7.1. [35]Creating the config files
+        7.2. [36]Creating the directories
+        7.3. [37]Changing the filesystem attributes
 
-   8. [34]Configuring Web-cyradm
+   8. [38]Configuring Web-cyradm
 
-        8.1. [35]Cyrus setup
-        8.2. [36]Database setup
-        8.3. [37]Default Quota
-        8.4. [38]Crypted passwords
-        8.5. [39]Usernames
+        8.1. [39]Cyrus setup
+        8.2. [40]Database setup
+        8.3. [41]Default Quota
+        8.4. [42]Crypted passwords
+        8.5. [43]Usernames
 
-   9. [40]Testing the setup
+   9. [44]Testing the setup
 
-        9.1. [41](Re-)Starting the daemons
-        9.2. [42]Testing Web-cyradm
-        9.3. [43]Testing postfix
-        9.4. [44]Testing the IMAP and POP functionality
+        9.1. [45](Re-)Starting the daemons
+        9.2. [46]Testing Web-cyradm
+        9.3. [47]Testing postfix
+        9.4. [48]Testing the IMAP functionality
 
-   10. [45]Further Information
+   10. [49]Further Information
 
-        10.1. [46]News groups
-        10.2. [47]Mailing Lists
-        10.3. [48]HOWTO
-        10.4. [49]Local Resources
-        10.5. [50]Web Sites
+        10.1. [50]News groups
+        10.2. [51]Mailing Lists
+        10.3. [52]HOWTO
+        10.4. [53]Local Resources
+        10.5. [54]Web Sites
 
-   11. [51]Questions and Answers
+   11. [55]Questions and Answers
 
 1. Introduction
 
 The cyrus part is only valid for Cyrus-IMAP 2.1.x and Cyrus-SASL 2.1.x. If
-you plan to use Cyrus-IMAP 2.0.x then please consult the depricated version
+you plan to use Cyrus-IMAP 2.0.x then please consult the deprecated version
 1.0.x of this HOWTO.
 
-I recommand stronly to update to the Cyrus Version 2.1.x. If you do so, you
+I recommend strongly to update to the Cyrus Version 2.1.x. If you do so, you
 will have chances to get valuable support by the community
      _________________________________________________________________
 
@@ -135,7 +149,7 @@ will have chances to get valuable support by the community
 First I would thank all those people who send questions and suggestions that
 made a further development of this document possible. It shows me, sharing
 knowledge is the right way. I would encourage you to send me more
-suggestion, just write me an email <[52]luc at delouw.ch>
+suggestion, just write me an email <[56]luc at delouw.ch>
      _________________________________________________________________
 
 1.2. Why I wrote this document
@@ -159,8 +173,9 @@ get all information needed to get all software running.
 
 1.3. Copyright Information
 
-This document is copyrighted (c) 2002 Luc de Louw and is distributed under
-the terms of the Linux Documentation Project (LDP) license, stated below.
+This document is copyrighted (c) 2002, 2003 Luc de Louw and is distributed
+under the terms of the Linux Documentation Project (LDP) license, stated
+below.
 
 Unless otherwise stated, Linux HOWTO documents are copyrighted by their
 respective authors. Linux HOWTO documents may be reproduced and distributed
@@ -181,7 +196,7 @@ many channels as possible. However, we do wish to retain copyright on the
 HOWTO documents, and would like to be notified of any plans to redistribute
 the HOWTOs.
 
-If you have any questions, please contact <[53]linux-howto at
+If you have any questions, please contact <[57]linux-howto at
 metalab.unc.edu>
      _________________________________________________________________
 
@@ -205,25 +220,23 @@ installation and backups at regular intervals.
 
 1.5. New Versions
 
-This is the initial release.
-
 New version of this document are announced on freshmeat
 
 The latest version of this document you can get from
-[54]http://www.delouw.ch/linux
+[58]http://www.delouw.ch/linux
 
-     * [55]HTML.
-     * [56]Postscript (ISO A4 format).
-     * [57]Acrobat PDF.
-     * [58]SGML Source.
-     * [59]HTML gzipped tarball.
+     * [59]HTML.
+     * [60]Postscript (ISO A4 format).
+     * [61]Acrobat PDF.
+     * [62]SGML Source.
+     * [63]HTML gzipped tarball.
      _________________________________________________________________
 
 1.6. Credits
 
-     * Michael Muenz <[60]mimu at maxonline.de> for his help with SMTP
+     * Michael Muenz <[64]m.muenz at maxonline.de> for his help with SMTP
        Authentication
-     * The nice people at <[61] discuss at linuxdoc.org> for supporting
+     * The nice people at <[65] discuss at linuxdoc.org> for supporting
        me in writing the HOWTOs
      _________________________________________________________________
 
@@ -231,46 +244,51 @@ The latest version of this document you can get from
 
 Feedback is most certainly welcome for this document. Without your
 submissions and input, this document wouldn't exist. Please send your
-additions, comments and criticisms to the following email address : <[62]luc
+additions, comments and criticisms to the following email address : <[66]luc
 at delouw.ch>.
 
-Please understand, that I dont want to add Cyrus-IMAP 2.0.x related stuff in
-this Document anymore
+Please understand, that I don't want to add Cyrus-IMAP 2.0.x related stuff
+in this Document anymore
      _________________________________________________________________
 
 1.8. Translations
 
 At the moment no translations are available. A german translation is planned
-and would be written by myself as soon as the document is valid
+and would be written by myself as soon as I get the time.
 
 Translations to other languages are always welcome. If you translated this
-document, please let me know, so I can set a link here
+document, please translate the SGML source. Please let me know if you begin
+to translate, so I can set a link here.
      _________________________________________________________________
 
 2. Technologies
 
 2.1. The Postfix MTA
 
-Quoting [63]www.postfix.org »Postfix attempts to be fast, easy to
-administer, and secure, while at the same time being sendmail compatible
-enough to not upset existing users. Thus, the outside has a sendmail-ish
-flavor, but the inside is completely different.«
+
+
+   Postfix attempts to be fast, easy to administer, and secure, while at
+   the same time being sendmail compatible enough to not upset existing
+   users. Thus, the outside has a sendmail-ish flavor, but the inside is
+   completely different.
+
+--www.postfix.org
 
    Figure 1. Postfix - the big picture
 
    [big-picture.png]
 
    Doesn't it look impressive? - It looks much more complicated as it is.
-   Postfix is indeed nice to configure and handle
+   Postfix is indeed nice to configure and handle.
 
    Unlike sendmail, postfix is not one monolithic program, it is a
    compilation of small programs, each of it has a specialized function.
    At this place I don't what to go into details with program does what.
    If you are interested how Postfix is working, please see the
-   documentation at [64]http://www.postfix.org/docs.html
+   documentation at [67]http://www.postfix.org/docs.html
 
-   In this document you will find the information what to put in the
-   config files
+   In this document you will find the information needed to get the
+   system running.
      _________________________________________________________________
 
 2.2. Cyrus IMAP
@@ -278,9 +296,12 @@ flavor, but the inside is completely different.«
 The Cyrus IMAP is developed and maintained by Carnegie Mellon University.
 
 Unlike the WU-IMAPd Cyrus is using its own method to store the users mail.
-The data is stored in a database, this makes Cyrus so performant. Especially
-with lots of users and/or lot of big emails, there is nothing such fast as
-the Cyrus IMAP-server.
+The data is stored in a own method. Each message is stored in its own file.
+The benefit of separate file is also the reliability, on filesystem errors,
+only one message is lost. Metadata like statuts of a message (seen etc) is
+stored in a database. Additionally the messages are indexed. This makes
+Cyrus very performant. Especially with lots of users and/or lot of big
+emails, there is nothing else fast as the Cyrus IMAP-server.
 
 Another very important feature is, you don't need a local Un*x user for each
 account. All users are authenticated by the IMAP-Server. This makes it a
@@ -289,92 +310,127 @@ great solution for really huge base of users.
 User administration is done by special IMAP-commands. This allows you to
 either use the commandline interface, or use one of the available
 Webinterfaces. This Method is much more secure than a Webinterface to
-/etc/passwd !
+/etc/passwd.
 
 Starting from Cyrus 2.1, the SASL-lib version 2 is used for authentication.
-So for the setup described in this HOWTO there is a tree-layer
-authentication implemented. Cyrus authenticates with saslauthdaemon which
-forwards the request to pam_mysql which finally looks up the MySQL-table.
+For the setup described in this HOWTO, there is a tree-layer authentication
+implemented. Cyrus authenticates with saslauthdaemon which forwards the
+request to pam_mysql which finally looks up the MySQL-table.
 
 Since CMU changed the license policy for Cyrus, this software is going to be
-used by much more users
+used by much more users.
      _________________________________________________________________
 
-2.3. MySQL Database
+2.3. Cyrus SASL
+
+SASL means »Simple Authentication and Security Layer«. It is standardized by
+the IETF (Internet Engineering Taskforce). SASL is used by network servers
+(Here for Cyrus-IMAP) to handle authentication requests from clients.
+
+Cyrus SASL is a extensive software, and sometimes not easy to understand.
+Even I just have a minimum knowledge needed to write this HOWTO.
+     _________________________________________________________________
+
+2.4. OpenSSL
+
+OpenSSL is a library needed by SASL for encrytion of the data-stream. It is
+used by by almost all opensource software which needs encryption methods.
+Most or all distributions comes with a preinstalled OpenSSL. Be sure to
+install also the appropriate devel-package. If you like, you also can
+compile OpenSSL by your self. This is especially recommended, if you need to
+fix a security hole.
+     _________________________________________________________________
+
+2.5. MySQL Database
 
 MySQL is a very fast, powerful and very nice to handle Database.
 
 Since Cyrus can authenticate its users with pam, you can use pam_mysql as a
-connector to the Userdatebase stored in MySQL. This allows you to create a
+connector to the userdatebase stored in MySQL. This allows you to create a
 nice Webinterface for your users for changing passwords, define and delete
 aliases and more.
      _________________________________________________________________
 
-2.4. pam_mysql
+2.6. pam_mysql
 
-pam means "Pluggable authentication module" and was originally proposed by
+pam means "Pluggable Authentication module" and was originally proposed by
 some people at Sun. In meantime a lot of modules have been developed. One of
 them is an interface to MySQL
 
-With pam_mysql you to store the users password in a mysql database. Further,
+With pam_mysql you store the users password in a mysql database. Further,
 Postfix is able to lookup aliases from a MySQL-table. At the end of the day,
-you have a base for all administrative tasks to be done by the Sysadmin.
+you have a base for all administrative tasks to be done by the postmaster.
 
-Further you will be able to delegate some tasks to Powerusers, e.g. creating
-Accounts for a particular Domain. Changing passwords and creating new
+You will be able to delegate some tasks to Powerusers, e.g. creating
+accounts for a particular domain. Changing passwords and creating new
 aliases can be delegated to the user. At the end of the day you as a
 Sysadmin have the time to do some more productive tasks, or write a HOWTO
-for the Linux Documentation Project :-)
+for the Linux Documentation Project.
      _________________________________________________________________
 
-2.5. Web-cyradm Webinterface
+2.7. Web-cyradm Webinterface
 
    Figure 2. Web-cyradm Domain administration
 
    [home.png]
 
-   Web-cyradm is the Webinterface that allows you to perform the
-   administrative tasks to your mailsystem This Screenshot shows the
-   domain-administration part of Web-cyradm.
+   Web-cyradm is the webinterface that allows you to perform the
+   administrative tasks to your mailsystem. This screenshot shows the
+   domain administration part of Web-cyradm.
 
-   Web-cyradm is written in PHP, which is often installed on webservers.
-   Time to set up Web-cyradm takes just a few minutes.
+   Web-cyradm is written in PHP, the most sophisticated html-preprocessor
+   language. If you don't have a webserver with php installed, I would
+   like to refer to my [68]Apache-Compile-HOWTO. This document describes
+   how to set up Apache with PHP and other modules
 
-   Features:
+   Web-cyradm is under active development from people around the globe.
+   The list of features grows with each release. If you like to
+   contribute to web-cyradm, or you have a nice idea, feel free to
+   contact the mailinglist on [69]http://www.web-cyradm.org
+
+   Here a choice of features:
 
      * Administration of multiple virtual domains
      * Setting of quotas
-     * Automatically create username, eigher with a defined prefix, or
-       the domainame as postfix
+     * Automatically create username, either with a defined prefix, or
+       the domainname as postfix
      * Delegate tasks like creating new users to »Domain Masters«
-     * Map useraccounts to emailadresses
+     * Map user-accounts to emailadresses
+     * Forwarding of accounts or single aliases
+     * Vacation function for single aliases
+     * Support for SMTP Transport Tables
+     * Support for MySQL and PostgreSQL
+     * i18n (internationalization) support (including different charsets)
+     * Translated into 14 Languages and growing
 
-   At the time being, Web-cyradm does only have experimental support for
-   different roles of its users. If you plan to use is as a frontend for
-   your powerusers, please notice, that security may be a problem, the
-   rolebased stuff needs a security rewiev.
+   Web-cyradm has support for different roles of its users. If you plan
+   to use is as a frontend for your powerusers, please notice, that
+   security may be a problem, the role based stuff needs a security
+   review.
      _________________________________________________________________
 
 3. Getting and installing the software
 
-Most of the software is included in your Linux distribution. SuSE is
+Most of the software is included in your Linux distribution. I. e. SuSE is
 shipping Cyrus as far as I know since 7.1. Since SuSE 8.1, cyrus-imap 2.1
-and sasl2 is included, but not yet tested for this setup. Redhat does not
-ship any cyrus software (7.3).
+and sasl2 is included, and works. It is still recommended to compile Cyrus
+by yourself. SuSE does not ship a MySQL enabled Postifx.
+
+Please let me know about other distributions, especially Debian.
      _________________________________________________________________
 
 3.1. Getting and installing MySQL
 
 3.1.1. Download
 
-Origin-Site: [65]http://www.mysql.com/downloads/
+Origin-Site: [70]http://www.mysql.com/downloads/
      _________________________________________________________________
 
 3.1.2. Building and installing
 
 cd /usr/local
-tar -xvzf mysql-3.23.51.tar.gz
-cd mysql-3.23.51
+tar -xvzf mysql-3.23.56.tar.gz
+cd mysql-3.23.56
 
 ./configure \
 --prefix=/usr/local/mysql \
@@ -391,17 +447,15 @@ ldconfig
 ln -s /usr/local/mysql/include/mysql /usr/include/mysql
 ln -s /usr/local/mysql/lib/mysql /usr/lib/mysql
 
-   For security-improvement add a mysql-user on your system i.e. "mysql",
+   For security-improvement add a mysql-user on your system i.e. »mysql«,
    then
    chown -R mysql /usr/local/mysql/var
 
-   and change the line user=root to user=mysql in the file
-   /usr/local/mysql/bin/safe_mysqld
-
-   you may wish to start mysql automatically at boottime, copy
+   You may wish to start MySQL automatically at boottime, copy
    /usr/local/mysql/share/mysql/mysql.server to /etc/init.d/ for SuSE,
    for Redhat it is /etc/rc.d/init.d instead of /etc/init.d/. Further you
-   need to add Symlinks to /etc/init.d/rc3.d for SuSE and /etc/rc.d/rc3.d
+   need to add symbolic links to /etc/init.d/rc3.d for SuSE and
+   /etc/rc.d/rc3.d for Redhat.
 
    The following example is for SuSE Linux and should be easily changed
    for Redhat and other Linux distributions and commercial Unixes.
@@ -410,27 +464,27 @@ ln -s /etc/init.d/mysql.server /etc/init.d/rc3.d/S20mysql
 ln -s /etc/init.d/mysql.server /etc/init.d/rc3.d/k08mysql
      _________________________________________________________________
 
-3.2. Getting and installing Berkely DB
+3.2. Getting and installing Berkeley DB
 
-The Berkely DB is a requirement for building Cyrus-SASL and Cyrus-IMAP. Some
-Systems comes with recent versions but without the header files installed.
-Please see your distributors CD/DVD to check if you can install the
-headerfiles from a package.
+The Berkeley DB is a requirement for building Cyrus-SASL and Cyrus-IMAP.
+Some Systems comes with recent versions but without the header files
+installed. Please see your distributors CD/DVD to check if you can install
+the header files from a package. Usually this package is called bdb-devel.
 
 The version that comes with GNU/Debian Linux is out of Date, you will need
-to compile most recent version instead. If you allready installed Berkely DB
+to compile most recent version instead. If you already installed Berkely DB
 on your Debian Box, please fist uninstall the software to prevent conflicts.
 
-It is also very important, that Cyrus-SASL and Cyrus-IMAP ist compiled with
+It is also very important, that Cyrus-SASL and Cyrus-IMAP is compiled with
 the same version of Berkely DB of else you can run into problems
      _________________________________________________________________
 
 3.2.1. Download Berkely DB
 
-Origin-Site: [66]http://www.sleepycat.com/update/snapshot/db-4.0.14.tar.gz
+Origin-Site: [71]http://www.sleepycat.com/update/snapshot/db-4.0.14.tar.gz
      _________________________________________________________________
 
-3.2.2. Builing and installing Berkeley DB
+3.2.2. Building and installing Berkeley DB
 
 cd dist
 
@@ -440,30 +494,71 @@ make
 make install
 
 echo /usr/local/bdb/lib >> /etc/ld.so.conf
-
 ldconfig
      _________________________________________________________________
 
-3.3. Getting and installing Cyrus SASL and IMAP
+3.3. Getting and installing OpenSSL
+
+3.3.1. Download OpenSSL
+
+Origin-Site [72]http://www.openssl.org
+     _________________________________________________________________
+
+3.3.2. Building and installing
+
+cd /usr/local
+tar -xvzf openssl-0.9.7a.tar.gz
+
+cd openssl-0.9.7a
+
+./config shared
+
+make
+make test
+make install
+
+echo "/usr/local/ssl/lib" >> /etc/ld.so.conf
+ldconfig
+
+   Tip Select your CPU to improve speed
+
+
+   By default the Makefile generates code for the i486 CPU. You can
+   change this by editing the Makefile after running config shared.
+   Search for -m486 and replace it i.e with -march=athlon
+     _________________________________________________________________
+
+3.4. Getting and installing Cyrus SASL and IMAP
 
 Building Cyrus SASL and IMAP from source is not a easy task. There are some
 prerequisites to be fulfilled, and lots of difficult authentication related
 stuff to be considered.
      _________________________________________________________________
 
-3.3.1. Download Cyrus SASL and Cyrus IMAP
+3.4.1. Download Cyrus SASL and Cyrus IMAP
 
 Origin-Site:
-[67]ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-sasl-2.1.9.tar.gz
+[73]ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-sasl-2.1.12.tar.gz
 
 Origin-Site:
-[68]ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-imapd-2.1.9.tar.gz
+[74]ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-imapd-2.1.12.tar.gz
      _________________________________________________________________
 
-3.3.2. Building and installing Cyrus SASL
+3.4.2. Create the cyrus user
 
-tar -xvzf cyrus-sasl-2.1.9.tar.gz
-cd cyrus-sasl-2.1.9
+On most systems there is no cyrus user and mailgroup per default. Check for
+a free UID, usually daemons are running with UID less that 100. As example
+I'm using UID 96 like SuSE has in the default /etc/passwd.
+
+groupadd mail
+useradd -u 96 -d /usr/cyrus -g mail cyrus
+passwd cyrus
+     _________________________________________________________________
+
+3.4.3. Building and installing Cyrus SASL
+
+tar -xvzf cyrus-sasl-2.1.12.tar.gz
+cd cyrus-sasl-2.1.12
 
 ./configure \
 --enable-anon \
@@ -474,8 +569,8 @@ cd cyrus-sasl-2.1.9
 --with-pam \
 --with-dblib=berkeley \
 --with-bdb-libdir=/usr/local/bdb/lib \
---with-bdb-incdir=/usr/local/bdb/inlude \
---with-openssl-dir=/usr/local/ssl \
+--with-bdb-incdir=/usr/local/bdb/include \
+--with-openssl=/usr/local/ssl \
 --with-plugindir=/usr/local/lib/sasl2
 
 
@@ -488,20 +583,18 @@ cd saslauthd
 make testsaslauthd
 cp testsaslauthd /usr/local/bin
 
+echo /usr/local/lib/sasl2 >> /etc/ld.so.conf
 ldconfig
 
    The SASL library is installed in /usr/local/lib/sasl2 but some
    programs are expecting SASL in /usr/lib/sasl2. So it is a good idea to
-   create a symlink: ln -s /usr/local/lib/sasl2 /usr/lib/sasl2.
-
-   The testsaslauthd program allows you to test the saslauthd,
-   description follows later.
+   create a symbolic link: ln -s /usr/local/lib/sasl2 /usr/lib/sasl2.
      _________________________________________________________________
 
-3.3.3. Building Cyrus-IMAP
+3.4.4. Building Cyrus-IMAP
 
-tar -xvzf cyrus-imapd-2.1.9.tar.gz
-cd cyrus-imapd-2.1.9
+tar -xvzf cyrus-imapd-2.1.12.tar.gz
+cd cyrus-imapd-2.1.12
 
 export CPPFLAGS="-I/usr/include/et"
 
@@ -509,15 +602,18 @@ export CPPFLAGS="-I/usr/include/et"
 --with-sasl=/usr/local/lib \
 --with-perl \
 --with-auth=unix \
+--with-dbdir=/usr/local/bdb \
+--with-bdb-libdir=/usr/local/bdb/lib \
+--with-bdb-incdir=/usr/local/bdb/include \
 --with-openssl=/usr/local/ssl \
---without-ucdsnmp
+--without-ucdsnmp \
 
 make depend
 make
 make install
      _________________________________________________________________
 
-3.3.4. Automatic startup script
+3.4.5. Automatic startup script
 
 If you wish to start the Cyrus IMAP daemon automatically after booting, you
 need a startupscript. Place the following script in /etc/init.d/ for Redhat
@@ -563,26 +659,19 @@ ln -s /etc/init.d/cyrus /etc/init.d/rc3.d/K10
    For Redhat:
 ln -s /etc/rc.d/init.d/cyrus /etc/rc.d/rc3.d/S20cyrus
 ln -s /etc/rc.d/init.d/cyrus /etc/rc.d/rc3.d/K10cyrus
-
-   Attn the distributors: W H E N will all distributors use the same
-   paths for the init script? thanks!
      _________________________________________________________________
 
-3.4. Getting and installing Postfix
+3.5. Getting and installing Postfix
 
-3.4.1. Download
+3.5.1. Download
 
-Origin-Site: [69]http://www.postfix.org/ftp-sites.html
-
-If you want to use SMTP authentication, you need to download the latest
-snapshot release, version 1.1.11 does NOT work with sasl2. Use
-1.1.11-20020928 or newer.
+Origin-Site: [75]http://www.postfix.org/ftp-sites.html
      _________________________________________________________________
 
-3.4.2. Creating a User-ID (UID) and Group-ID (GID) for postfix
+3.5.2. Creating a User-ID (UID) and Group-ID (GID) for postfix
 
 Before you can build and install postfix you have to be sure a »postfix« and
-a »postdrop« groups and users exists on the System. First check for the
+a »postdrop« groups and users exists on the system. First check for the
 groups. You can check this by grep postfix /etc/group and grep maildrop
 /etc/group
 
@@ -597,102 +686,177 @@ groupadd -g 33335 postdrop
 useradd -u 33333 -g 33333 -d /dev/null -s /bin/false postfix
      _________________________________________________________________
 
-3.4.3. Building and installing
+3.5.3. Building and installing
 
 The following screen shows what you have to do, if you installed MySQL from
 source as described above. If you installed MySQL from a binary package such
 as rpm or deb, then you have to change the include and library-flags to
 -I/usr/include/mysql and -L/usr/lib/mysql.
 
-tar -xvzf postfix-1.1.11-20020928.tar.gz
+   Caution Old MTA needs to be uninstalled
 
-cd postfix-1.1.11-20020928
+
+   It is important, that you are uninstalling any sendmail version from
+   RPM based Systems. I suggest to remove sendmail, and install Postfix
+   instead. At least SuSE RPMs need a MTA. After installing the
+   Postfix-RPM, just over-install Postfix by further following the HOWTO
+
+tar -xvzf postfix-2.0.7.tar.gz
+
+cd postfix-2.0.7
 
 make makefiles 'CCARGS=-DHAS_MYSQL \
 -I/usr/local/mysql/include/mysql -DUSE_SASL_AUTH \
--I/usr/local/include/sasl' 'AUXLIBS=-L/usr/local/mysql/lib/mysql \
--lmysqlclient -lz -lm -L/usr/local/lib -lsasl2'
-
+-I/usr/local/include/sasl -I/usr/local/bdb/include' \
+'AUXLIBS=-L/usr/local/mysql/lib/mysql \
+-lmysqlclient -lz -lm -L/usr/local/lib -lsasl2 -L/usr/local/bdb/lib'
+make
 make install
 
    During make install a few question are asked. Just pressing Enter
    should match your needs. For Redhat users it could be useful to enter
    /usr/local/share/man
+
+   Now you need to create some sybolic links to start Postfix
+   automatically on system startup. The sample is for SuSE Linux, please
+   consult your vendors manual for other distributions.
+ln -s /usr/sbin/postfix /etc/init.d/rc3.d/S14postfix
+ln -s /usr/sbin/postfix /etc/init.d/rc3.d/K07postfix
      _________________________________________________________________
 
-3.5. Getting and installing pam_mysql
+3.6. Getting and installing PAM
 
-3.5.1. Download
+PAM is on almost all ditributions installed by default. I'm not descibing
+here how compile PAM by yourself, because it could break your system. I'll
+describe instead, how install the RPM. the version could be vary.
 
-Origin-Site: [70]http://sourceforge.net/projects/pam-mysql/
+rpm -i pam-devel.rpm
+
+   Experianced Debian users: Please provide me information how to install
+   pam-devel, thanks
      _________________________________________________________________
 
-3.5.2. Installing
+3.7. Getting and installing pam_mysql
 
-If you compiled MySQL by yourself, you need to create a symlink to the MySQL
-includes and libraries
+3.7.1. Download
 
-Additionally there is a bug in the Makefile which you need to correct. Edit
-the file and replace as follow:
+Origin-Site: [76]http://sourceforge.net/projects/pam-mysql/
+     _________________________________________________________________
 
-old:
+3.7.2. Installing
 
-export LD_D=gcc -shared -Xlinker -x -L/usr/lib/mysql
-
-new:
-
-export LD_D=gcc -shared -Xlinker -x -L/usr/lib/mysql -lz
-
-   After customizing that file go ahead with compiling pam_mysql
-tar -xvzf pam_mysql-0.4.7.tar.gz
+tar -xvzf pam_mysql-0.5.tar.gz
 
 cd pam_mysql
 
+   Depending if you compiled mysql by yourself or not, check the Makefile
+   and enter the correct path to your mysql libs and add the compiler
+   flag CFLAGS -I/path/to/mysql/include.
+ifndef FULL_LINUX_PAM_SOURCE_TREE
+export DYNAMIC=-DPAM_DYNAMIC
+export CC=gcc
+export CFLAGS=-O2 -Dlinux -DLINUX_PAM \
+       -ansi -D_POSIX_SOURCE -Wall -Wwrite-strings \
+       -Wpointer-arith -Wcast-qual -Wcast-align -Wtraditional \
+       -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Winline \
+       -Wshadow -pedantic -fPIC -I/usr/local/mysql/include
+export MKDIR=mkdir -p
+export LD_D=gcc -shared -Xlinker -x -L/usr/local/mysql/lib/mysql -lz
+endif
+
+   After customizing that file go ahead with compiling pam_mysql
 make
 
 cp pam_mysql.so /lib/security
 
+[[ ! -d /var/lib/mysql ]] && mkdir /var/lib/mysql
 ln -s /tmp/mysql.sock /var/lib/mysql/mysql.sock
      _________________________________________________________________
 
-3.6. Getting and installing Web-cyradm
+3.8. Getting and installing Web-cyradm
 
-3.6.1. Download
+3.8.1. Download
 
-Origin-Site: [71]http://www.web-cyradm.org
+Origin-Site: [77]http://www.web-cyradm.org
      _________________________________________________________________
 
-3.6.2. Installing
-
-Web-cyradm is written in PHP. If you don't have a webserver with php
-installed, I like to refer to my [72]Apache-Compile-HOWTO. That document
-describes how to set up Apache with PHP and other modules
-
-I M P O R T A N T : Since web-cyradm is under heavy development, it maybe
-does not work properly with PHP 4.2.1 or newer. Please edit your
-/usr/local/lib/php.ini and set »register_globals=On« to be sure it works.
-please report any bugs to web-cyradm@test.delouw.ch (after subscribing the
-list).
-
-Since web-cyradm uses PEAR for its database abstraction, you will also need
-a recent copy of PEAR. This is included in recent PHP Versions. I strongly
-suggest to update PHP anyway to 4.2.3 because a lot of important bugs have
-been fixed.
-
-An often error done is to forget to touch the logfile and change the owner
-to the UID that Apache use. This is usually »nobody« or »wwwrun«.
+3.8.2. Installing
 
 cd /usr/local/apache/htdocs
 
-tar -xvzf web-cyradm-0.5.2.tar.gz
+tar -xvzf web-cyradm-0.5.3.tar.gz
 
 touch /var/log/web-cyradm.log
 chown nobody /var/log/web-cyradm.log
 
-   After unpacking web-cyradm move it to a place in your webservers
+   After unpacking web-cyradm, move it to a place in your webservers
    DocumentRoot
 
-   This is all, now we need to configure the whole bunch of software
+   Thats all. Now you need to configure the whole bunch of software.
+
+   Web-cyradm 0.5.3 is considered stable, and was released on 2003-03-24
+
+   Since web-cyradm uses PEAR for its database abstraction layer, you
+   also need a recent copy of PEAR. This is included in recent PHP
+   Versions. I strongly suggest to update PHP to 4.3.1, because a lot of
+   important bugs have been fixed.
+
+   An often mistake is to forget to touch the logfile and change the
+   owner to the UID that Apache use. This is usually »nobody« or
+   »wwwrun«.
+     _________________________________________________________________
+
+3.8.3. Create the databases and tables
+
+Now we need to create the database and tables for Postfix and Web-cyradm and
+add a user to the database.
+
+Web-cyradm comes with three MySQL scripts: insertuser_mysql.sql and
+create_mysql.sql. The first inserts the Database user to the database
+»mysql« and creates the database »mail«. The second creates the needed
+tables and populates the database with an initial admin-user and the cyrus
+user.
+
+The third script is used for upgrading from Web-cyradm 0.5.2 to 0.5.3.
+
+The password for the database user »mail« in this example is »secret«.
+Please insert whatever user and password you like.
+
+The username for the initial superuser is »admin« with the password »test«.
+
+   Caution Change the default password!
+
+
+   If a malicious user wants to gain unauthorized access to a system, the
+   first try is always the default username and password supplied by the
+   vendor. It is IMPORTANT that you are changing them in the scripts
+   before applying them.
+
+   After customizing the username and password, apply the scripts:
+/usr/local/mysql/bin/mysql -u root -p < \
+/usr/local/apache/htdocs/web-cyradm/scripts/insertuser_mysql.sql
+
+/usr/local/mysql/bin/mysql mail -u mail -p < \
+/usr/local/apache/htdocs/web-cyradm/scripts/create_mysql.sql
+     _________________________________________________________________
+
+3.8.4. Upgrading from 0.5.2 to 0.5.3
+
+In version 0.5.3 there us a small Database enhancement done. You can upgrade
+your Database by issuing the MySQL script that commes with the distribution.
+
+mysql mail -u mail -p < \
+scripts/upgrade-0.5.2-to-0.5.3_mysql.sql
+
+   Since Version 0.5.3 web-cyradm does have full support for DES crypted
+   passwords. You can use the php-script migrate.php to convert the users
+   passwords from plain to unix compatible crypt (DES).
+
+   Caution Migration from plain to crypt cannot be undone
+
+
+   Be sure to have a recent backup of your database before doing anything
+   with the migration script.
      _________________________________________________________________
 
 4. Configuring MySQL
@@ -702,10 +866,10 @@ chown nobody /var/log/web-cyradm.log
 Because you are using MySQL to authenticate users, you need to restrict
 network access to Port 3306.
 
-I suggest to just bind mysql to the loopback-interface 127.0.0.1. This makes
-sure nobody can connect to your MySQL-Daemon via the network.
+I suggest to just bind MySQL only to the loopback interface 127.0.0.1. This
+makes sure nobody can connect to your MySQL Daemon via the network.
 
-edit /etc/init.d/mysql.server and edit line 107 as following:
+Edit /etc/init.d/mysql.server and change line 107 as following:
 
 Original line:
 
@@ -717,50 +881,30 @@ $bindir/safe_mysqld --datadir=$datadir --pid-file=$pid_file \
 
    (Re-)start your MySQL-Daemon by issuing /etc/init.d/mysql.server start
 
-   To ensure the configuration-change was successful issue: netstat
+   To ensure the configuration change was successful issue: netstat
    -an|grep LISTEN. The Output should be looking similar to this:
 bond:~ # netstat -an|grep LISTEN
 tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN
      _________________________________________________________________
 
-4.2. Create the databases and tables
+4.2. Setting up rinetd
 
-Now we need to create the database and tables for postfix and web-cyradm and
-add a user to the database
+This step is only necessary if you run the mysql sever on another host than
+the mailserver. It allows you to securely connect from another host by
+allowing only defined IP adresses.
 
-Web-cyradm comes with two SQL-files: insertuser.sql and create.sql The first
-inserts the Database user to the database »mysql«, the second creates the
-database »mail« and the needed tables.
+The example used is from the view of the host serving the MySQL database.
+Lets assume your mailserver has the IP 192.168.0.100 and the MySQL host has
+192.168.0.200
 
-The password for the user "mail" in this example is "secret" please insert
-whatever user and password you like
+Edit /etc/rinetd.conf and add:
 
-First you must add the user by executing /usr/local/mysql/bin/mysql <
-insertuser.sql After the new DB-user is successfully added, you need to
-reload mysql with mysqladmin reload
+192.168.0.200 3306 127.0.0.1 3306
+allow 192.168.0.100
 
-To create the needed tables in the database:
-
-/usr/local/mysql/bin/mysql mail -u mail -p < \
-/usr/local/apache/htdocs/web-cyradm/scripts/create.sql
-
-   Now lets populate our tables, and insert the first admin-user. This
-   user is needed to login to Web-cyradm
-
-   Execute /usr/local/mysql/bin/mysql mail -u mail -p And type the
-   following SQL queries:
-INSERT INTO adminuser (username, password) VALUES ('admin', 'test');
-INSERT INTO domainadmin (domain_name,adminuser) VALUES ('*','admin');
-INSERT INTO accountuser (username, password) VALUES ('cyrus', 'secret');
-
-   The first query inserts the admin user into the database, the second
-   one is needed that the cyrus user can be authenticated, use the same
-   password like defined in
-   /usr/local/apache/htdocs/web-cyradm/config.inc.php
-
-   Please note, this setup for web-cyradm is fully compatible with
-   replex, another project. Please see [73]http://www.replex.org for more
-   details.
+   This means: The MySQL host is listening on 192.168.0.200 port 3306. If
+   192.168.0.100 is attempting a connection, it is forwared to
+   127.0.0.1:3306. All other hosts are rejected.
      _________________________________________________________________
 
 5. Configuring PAM
@@ -770,26 +914,22 @@ Now we need to get sure that PAM knows how to authenticate the Cyrus users
 You have to create the file /etc/pam.d/imap with the following entries:
 
 auth sufficient pam_mysql.so user=mail passwd=secret host=localhost db=mail tab
-le=accountuser usercolumn=username   passwdcolumn=password crypt=0
+le=accountuser usercolumn=username   passwdcolumn=password crypt=1
 
 auth sufficient pam_unix_auth.so
 
 account required pam_mysql.so user=mail passwd=secret host=localhost db=mail ta
-ble=accountuser usercolumn=username passwdcolumn=password   crypt=0
+ble=accountuser usercolumn=username passwdcolumn=password   crypt=1
 
 account  sufficient       pam_unix_acct.so
 
    The lines containing pam_unix_auth.so and pam_unix_acct.so are only
-   needed if you are migrating from wu-IMAP to cyrus. This way the users
-   can be authenticate with its old unix-password and its new mysql-based
-   password
+   needed if you are migrating from WU-IMAP to Cyrus. This allows you to
+   authenticate with its old unix-password AND its new mysql-based
+   password.
 
-   If you will use Cyrus also for POP-Service just cp /etc/pam.d/imap
-   /etc/pam.d/pop For user that like to use also sieve, must also make a
-   pam module for the sieve service with the following entry: cp
-   /etc/pam.d/imap /etc/pam.d/sieve Finally if you want to use SMTP
-   authentication you need to copy the same file: cp /etc/pam.d/imap
-   /etc/pam.d/smtp
+   To use the other services provided by cyrus and smtp-authtication you
+   need to copy the file so that they match the service-ID
 cp /etc/pam.d/imap /etc/pam.d/pop
 cp /etc/pam.d/imap /etc/pam.d/sieve
 cp /etc/pam.d/imap /etc/pam.d/smtp
@@ -797,8 +937,8 @@ cp /etc/pam.d/imap /etc/pam.d/smtp
 
 6. Configuring Postfix
 
-Postfix needs two major config files: main.cf and master.cf. Both needs now
-our attention.
+Postfix needs two major config files: main.cf and master.cf. Both needs your
+attention.
      _________________________________________________________________
 
 6.1. master.cf
@@ -815,12 +955,12 @@ er}
 
    What affect that changes?
 
-   A look to the cyrus man-pages man deliverclears that issue:
+   A look to the cyrus man-pages man deliver clears that issue:
 
-   The Postfix default setup uses a wrong path to the cyrus deliver, this
-   is the first change. The parameter »-r« Inserts a proper return path,
-   without that mail rejected by sieve will be sent to cyrus at
-   yourdomain.
+   The Postfix default setup uses a wrong path to cyrus deliver, this is
+   the first change. The parameter »-r« Inserts a proper return path,
+   without that mail rejected/retured by sieve will be sent to the cyrus
+   user at yourdomain.
      _________________________________________________________________
 
 6.2. main.cf
@@ -835,27 +975,30 @@ myhostname = foo.bar.org
    mydestination
 
    Here you have to put all domainnames that are local (corresponding to
-   sendmail's /etc/mail/sendmail.cw) If you have multiple domains
-   separate them with comma
+   sendmail's /etc/mail/sendmail.cw). If you have multiple domains
+   separate them with comma.
 mydestination = foo.bar.org, example.com, furchbar-grausam.ch,
  whatever.domain.tld, mysql:/etc/postfix/mysql-mydestination.cf
 
-   relayhost
+   Relayhost
 
    Here you define where to deliver outgoing mails. If you do not provide
    any host. mails are delivered directly to the destination smtp host.
-   Usually your relayhosts are your providers smtp-server
+   Usually your relayhosts are your providers smtp-server.
    relayhost = relay01.foobar.net relay02.foobar.net relay03.foobar.net
 
-   mailtransport
+   Mailtransport
 
    Here you define how the mails accepted for local delivery should be
-   handled. In our situation mails should be delivered by the cyrus
-   delivery-program
+   handled. In your situation mails should be delivered by the cyrus
+   delivery-program.
    mailbox_transport = cyrus
 
    At the end of file you need to add:
   virtual_maps = hash:/etc/postfix/virtual, mysql:/etc/postfix/mysql-virtual.cf
+
+   If you dont want to have a overriding /etc/postfix/virtual, skip the
+   hash entry
 
    Outgoing addresses should be rewritten from i.e test0002 at domain to
    user.name at virtualhost.com. This is important if you like to use a
@@ -929,8 +1072,10 @@ where_field = domain_name
 
    Put the following in your /etc/postfix/main.cf
 smtpd_sasl_auth_enable = yes
-smtpd_recipient_restrictions = permit_sasl_authenticated, check_relay_domains
+smtpd_recipient_restrictions = permit_sasl_authenticated, permit_mynetworks, re
+ject_unauth_destination
 smtpd_sasl_security_options = noanonymous
+smtpd_sasl_local_domain = example.com
 broken_sasl_auth_clients = yes
 
    You also need to create the file /usr/local/lib/sasl2/smtpd.conf with
@@ -951,9 +1096,9 @@ You have to create /etc/imapd.conf and /etc/cyrus.conf
 
 7.1.1. /etc/services
 
-If you like to use sieve (A Mail Filtering Language), you must change an
-entry in /etc/services. With SuSE 8.0 take especiall care about the port for
-sieve, they defined the wrong port. Add or change the following line:
+If you like to use sieve (a mail filtering language), you must change an
+entry in /etc/services. With SuSE 8.0 take especially care about the port
+for sieve, they defined the wrong port. Add or change the following lines:
 
 pop3            110/tcp
 imap            143/tcp
@@ -986,16 +1131,16 @@ sieve_maxscriptsize: 32
 sieve_maxscripts: 5
 #unixhierarchysep: yes
 
-   Be sure »servername« contains your FQHN (Fully qualified hostname)
+   Be sure »servername« contains your FQHN (Fully Qualified Hostname)
 
    The parameter »unixhierarchysep: yes« is only used if you like to have
-   usernames like »hans.mueller.somedomain.tld« see [74]Section 8 for
-   more info
+   usernames like »hans.mueller.somedomain.tld« see [78]Section 8 for
+   more info.
      _________________________________________________________________
 
 7.1.3. Creating the TLS/SSL Certificate
 
-If you want to enable Cyrus' TLS/SSL facilities you have to create a
+If you want to enable Cyrus' TLS/SSL facilities, you have to create a
 certificate first. This requires an OpenSSL installation
 
 openssl req -new -nodes -out req.pem -keyout key.pem
@@ -1026,9 +1171,8 @@ services and events to be spawned by process »master«.
 # standard standalone server implementation
 
 START {
-  # do not delete these entries!
-  mboxlist      cmd="ctl_mboxlist -r"
-  deliver       cmd="ctl_deliver -r"
+  # do not delete this entry!
+  recover       cmd="ctl_cyrusdb -r"
 
   # this is only necessary if using idled for IMAP IDLE
 #  idled                cmd="idled"
@@ -1046,14 +1190,21 @@ SERVICES {
   # at least one LMTP is required for delivery
 #  lmtp         cmd="lmtpd" listen="lmtp" prefork=0
   lmtpunix      cmd="lmtpd" listen="/var/imap/socket/lmtp" prefork=0
+
+  # this is only necessary if using notifications
+#  notify       cmd="notifyd" listen="/var/imap/socket/notify" proto="udp" pref
+ork=1
 }
 
 EVENTS {
   # this is required
-  checkpoint    cmd="ctl_mboxlist -c" period=30
+  checkpoint    cmd="ctl_cyrusdb -c" period=30
 
   # this is only necessary if using duplicate delivery suppression
   delprune      cmd="ctl_deliver -E 3" period=1440
+
+  # this is only necessary if caching TLS sessions
+  tlsprune      cmd="tls_prune" period=1440
 }
      _________________________________________________________________
 
@@ -1092,10 +1243,20 @@ chmod 750 sieve
 The rest of the directories can be created by the tool mkimap
 
 su - cyrus
-/usr/local/cyrus-imapd-2.1.5/tools/mkimap
+/usr/local/cyrus-imapd-2.1.12/tools/mkimap
      _________________________________________________________________
 
-7.3. Changing the attributes
+7.3. Changing the filesystem attributes
+
+When using the ext2 filesystem, you must set an attribute, that defines,
+that all changes are immediately committed to the disk. With todays
+journaling filesystems there is no need. If you are still running ext2
+filesystems, I strongly suggest to switch to ext3 filesystems. Ext2 and ext3
+are fully compatible to each other.
+
+To check what type of filesystem is used for /var issue the command mount or
+see your /etc/fstab. Please note that the /var could also be a part of the
+root or other filesystem.
 
 cd /var/imap
 
@@ -1105,7 +1266,9 @@ chattr +S /var/spool/imap /var/spool/imap/*
 
 8. Configuring Web-cyradm
 
-First copy the distributions config file
+First copy the distributions config file, and create to logfile. The logfile
+must be owned by user that runns the webserver. This is usually the user
+»nobody« or »wwwrun«.
 
 cp config.inc.php-dist config.inc.php
 
@@ -1130,31 +1293,24 @@ $CYRUS_PASSWORD="secret";
 
 8.2. Database setup
 
-Please note: the database releated code is now being rewritten to use PEAR
-as a database abstraction. So in future you will be able to also use
-PostgreSQL as database engine (with the patch for postfix). In meantime it
-is needed to setup the database setup twice (only for the CVS versions,
-release 2002-05-25_xx will just ignore the unused stuff).
+Since version 0.5.2 web-cyradm uses PEAR as a database abstraction layer.
+This adds more flexibility. Currently supported databases are MySQL and
+PostgreSQL. Please note that for PostgreSQL there is a patch needed, because
+Postfix does not support PostgreSQL natively. I strongly suggest to use
+MySQL. I know MySQL has some restrictions on transaction and stuff, but it
+is natively in the Postfix code.
 
-The MySQL stuff to be replaced after all files have PEAR implemented
+The entries should be self explenatory
 
-$MYSQL_HOST="localhost";
+$DB_TYPE="mysql";
 
-   Put here the name of your mysql-server. Please note that if you use a
-   mysql database on the same host as web-cyradm does, use »localhost« as
-   the hostname if you followed the instructions at [75]Section 4.
-$MYSQL_DB="mail";
-$MYSQL_USER="mail";
-$MYSQL_PASSWD="secret";
-
-   This should be self-explanatory
 /* DB_TYPE
 
  Possible Values are:
  o mysql
  o pgsql
 
- To operate a mailsystem with postgreSQL you will need a patch for
+ To operate a mailsystem with PostgreSQL you will need a patch for
  Postfix.
 
  Other Databases needs to be supported by PAM and postfix
@@ -1162,37 +1318,53 @@ $MYSQL_PASSWD="secret";
 */
 
 
-$DB_TYPE="mysql";
-
 $DB_HOST="localhost";
 $DB_NAME="mail";
 $DB_USER="mail";
 $DB_PASSWD="secret";
-
-   This is the PEAR stuff with is only needed (at the moment) if you work
-   with the CVS versions
-   $DSN="$DB_TYPE://$DB_USER:$DB_PASSWD@$DB_HOST/$DB_NAME";
-
-   And this variable is the final result of the PEAR configuration which
-   is used by web-cyradm, please leave in untouched
+$DB_PROTOCOL="unix"; // set to "tcp" for TCP/IP
+$DSN="$DB_TYPE://$DB_USER:$DB_PASSWD@$DB_PROTOCOL+$DB_HOST/$DB_NAME";
      _________________________________________________________________
 
 8.3. Default Quota
 
-The default quota to be used is set in the Variable »DEFAULT_QUOTA=20000«
-and is used when creating a new domain
+The default quota to be used is set in the variable DEFAULT_QUOTA=20000 and
+is used when creating a new domain
      _________________________________________________________________
 
 8.4. Crypted passwords
 
-At the moment the handling of crypted passwords is not yet supported and
-will be implemented in one of the next major releases. In meantime please
-leave the value of the Variable $CRYPT=0
+Web-cyradm supports the storage of encryted passwords. I strongly suggest,
+to use encryption. There are two methods supported at the moment:
+Unix-compatible (crypt) and MySQL. The Unix-compatible encryption allows you
+to take over encrytped passwords from an existing /etc/shadow. This should
+be preferred.
+
+Unfortunately, MySQL uses a proprietary encryption method which is only
+available when using MySQL. I'm currently thinking about dropping support
+for MySQL crypt, because it would only work with MySQL and makes a migration
+to another database impossible. As soon as there is a method available to
+re-engineer the MySQL crypt on PHP there will be a solution (Help needed in
+programming, legal contraints?)
+
+Check the variable $CRYPT in the file config.inc.php. Value »plain« means no
+encryption, »crypt« means Shadow compatible encryption, mysql means MySQL
+encryption.
+
+   Caution Choose encryption method carefully
+
+
+   Since the supported crypto-methods are all one-way encryptions, there
+   will be NO WAY to migrate from one to another. Note also, that this is
+   a global variable, which means, it is used for all passwords,
+   including the password of the admin users. I STRONGLY suggest to use
+   Unix Shadow compatible encryption, because it makes you independant
+   from any software vendor.
      _________________________________________________________________
 
 8.5. Usernames
 
-There are two schemas of usernames supported with are defined in the
+There are two schemas of usernames supported which are defined in the
 variable »DOMAIN_AS_PREFIX«. The default is to have a defined prefix
 ($DOMAIN_AS_PREFIX=0), i.e. »test« for the domain »expample.com«. With this
 scheme, the first user gets the username test0001, the second test0002 and
@@ -1205,7 +1377,7 @@ At the moment you can not mix both schemas, evaluate carefully with scheme
 matches your needs best
 
 If you choose to have $DOMAIN_AS_PREFIX=1, be sure you uncomment the option
-»unixhierarchysep: yes« like described in [76]Section 7.1.2
+unixhierarchysep: yes like described in [79]Section 7.1.2
      _________________________________________________________________
 
 9. Testing the setup
@@ -1213,7 +1385,7 @@ If you choose to have $DOMAIN_AS_PREFIX=1, be sure you uncomment the option
 
 9.1. (Re-)Starting the daemons
 
-Now all the software has been installed and configured, lets do some
+Now all the software has been installed and configured. Lets do some
 testings now. First you have to (re-)start all the daemons affected
 
      * postfix start
@@ -1221,7 +1393,8 @@ testings now. First you have to (re-)start all the daemons affected
      * /etc/init.d/mysql.server start
      * /usr/local/apache/bin/apachectl startssl
 
-   Hopefully all daemons started without any complaints...
+   Hopefully all daemons started without any complaints. Note that this
+   is assuming saslauthd is started in the cyrus startup script.
 
    Now you can verify if the daemons are running properly by issuing
    netstat -an|grep LISTEN
@@ -1253,17 +1426,17 @@ tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN
 
 9.2. Testing Web-cyradm
 
-Now you should be able to connect to [77]http://localhost/web-cyradm/ Login
+Now you should be able to connect to [80]http://localhost/web-cyradm/ Login
 with the credentials defined before.
 
-Define a Domainname and some accounts. Be sure the domainname belongs to
+Define a domainname and some accounts. Be sure the domainname belongs to
 your server. If not you have to fake it by enter the domain in /etc/hosts.
-The Domain must also be defined as local in /etc/postfix/main.cf
+The domain must also be defined as local in /etc/postfix/main.cf
 (mydestination = domain)
 
-Please be sure that you are providing a unique domainprefix when adding a
-new domain. I.e. test for the domain test.org. If you dont provide such a
-prefix you will get a error-message
+Please be sure that you are providing a unique domain prefix when adding a
+new domain. I.e. test for the domain test.org. If you don't provide such a
+prefix you will get a error message.
      _________________________________________________________________
 
 9.3. Testing postfix
@@ -1281,7 +1454,7 @@ helo localhost
 250 mail
 mail from: luc at delouw.ch
 250 Ok
-rcpt to: rcpt to: luc at localhost
+rcpt to: luc at localhost
 250 Ok
 
 data
@@ -1301,28 +1474,28 @@ rcpt to: luc at localhost
 451 <luc at localhost>: Temporary lookup failure
 
    Then either MySQL is not running, DB permission are not set properly
-   or you miss-configured /etc/postfix/main.cf
+   or you missconfigured /etc/postfix/main.cf
 
    On any errors, I suggest to examine /var/log/mail. Often you will find
    some hints whats went wrong.
      _________________________________________________________________
 
-9.4. Testing the IMAP and POP functionality
+9.4. Testing the IMAP functionality
 
 A lot of users like to test the cyrus-IMAPd with the Command Line Interface
-(CLI) »cyradm« and they are failing. To be sucessful with cyradm, you will
+(CLI) »cyradm« and they are failing. To be successful with cyradm, you will
 need to add the cyrus user to /etc/sasldb2 because »cyradm« always
-authenticates against SASL __and__ IMAP.
+authenticates against SASL AND IMAP.
 
-To add the cyrus user to the sasldb use the command:
+To add the Cyrus user to the sasldb use the command:
 
 saslpasswd2 -c cyrus
 Password: (enter your passwd)
 Again (for verification): (enter your password)
 
    To use the »cyradm« CLI please take care that the tool does not
-   recognize standart CLI-options like -u and similar. Please follow the
-   syntax like descibed in the man page »cyradm 1« like the following
+   recognize standard CLI-options like -u and similar. Please follow the
+   syntax like described in the man page »cyradm 1« like the following
    example:
 bond:~ # cyradm --user cyrus --server localhost --auth plain
 Password: # This is the SASL2 password
@@ -1330,12 +1503,12 @@ IMAP Password: # This is the IMAP password that you need to enter in the mysql-
 table »accountusers«
 localhost>
 
-   With the cyrus command help you will see all possible commands and its
-   abbreviations
+   With the Cyrus command help you will see all possible commands and its
+   abbreviations.
 
    To make that kind of tests. you just need a mailclient like kmail or
-   netscape (Yes of course M$-Products are working as well) but in this
-   example I'll using kmail
+   netscape (Yes of course, M$-Products are working as well) but in this
+   example I'm using kmail.
 
    Figure 3. Creating a new account
 
@@ -1348,75 +1521,73 @@ localhost>
    [imap-tls.png]
 
    If login fails, and you are sure, you typed the right password, take
-   care that MySQL is running
+   care that MySQL is running.
      _________________________________________________________________
 
 10. Further Information
 
-Here you will find some other resources available in the internet
+Here you will find some other resources available in the internet.
      _________________________________________________________________
 
 10.1. News groups
 
 Some of the most interesting news groups are:
 
-     * [78]alt.comp.mail.postfix
-       This is low traffic-group
-     * [79]comp.mail.imap
+     * [81]alt.comp.mail.postfix
+       This is low traffic group.
+     * [82]comp.mail.imap
 
    Maybe you also check out your country newsgroups e.g ch.comp.os.linux
 
    Most newsgroups have their own FAQ that are designed to answer most of
    your questions, as the name Frequently Asked Questions indicate. Fresh
    versions should be posted regularly to the relevant newsgroups. If you
-   cannot find it in your news spool you could go directly to the [80]FAQ
-   main archive FTP site. The WWW versions can be browsed at the [81]FAQ
+   cannot find it in your news spool you could go directly to the [83]FAQ
+   main archive FTP site. The WWW versions can be browsed at the [84]FAQ
    main archive WWW site.
      _________________________________________________________________
 
 10.2. Mailing Lists
      _________________________________________________________________
 
-10.2.1. <[82]postfix-users at postfix.org>
+10.2.1. <[85]postfix-users at postfix.org>
 
-Send an mail to <[83]majordomo at postfix.org> with the content (not
+Send an mail to <[86]majordomo at postfix.org> with the content (not
 subject):
 
 subscribe postfix-users
 
    Before writing to the list, check out the archive:
-   [84]http://www.deja.com/group/mailing.postfix.users
+   [87]http://www.deja.com/group/mailing.postfix.users
      _________________________________________________________________
 
-10.2.2. <[85]info-cyrus at lists.andrew.cmu.edu>
+10.2.2. <[88]info-cyrus at lists.andrew.cmu.edu>
 
-Send an mail to <[86]majordomo at lists.andrew.cmu.edu> with the content
+Send an mail to <[89]majordomo at lists.andrew.cmu.edu> with the content
 (not subject):
 
 subscribe info-cyrus
 
    Before writing to the list, check out the archive:
-   [87]http://asg.web.cmu.edu/archive/index.php?mailbox=archive.info-cyru
+   [90]http://asg.web.cmu.edu/archive/index.php?mailbox=archive.info-cyru
    s 
      _________________________________________________________________
 
-10.2.3. <[88]web-cyradm at test.delouw.ch>
+10.2.3. <[91]web-cyradm at web-cyradm.org>
 
-Send an mail to <[89]majordomo at test.delouw.ch> with the content (not
-subject):
+Subscription can be done trought the webinterface
+[92]http://www.web-cyradm.org/mailman/listinfo/web-cyradm
 
-subscribe web-cyradm
-
-   Before writing to the list, check out the archive:
-   [90]http://www.delouw.ch/linux/web-cyradm/list
+Before writing to the list, check out the archive for similar incidents:
+[93]http://www.web-cyradm.org/pipermail/web-cyradm/ 
      _________________________________________________________________
 
 10.3. HOWTO
 
-These are intended as the primary starting points to get the background
+This are intended as the primary starting points to get the background
 information as well as show you how to solve a specific problem. Some
-relevant HOWTOs are [91]Cyrus-IMAP and [92]Apache-Compile-HOWTO. The main
-site for these is the [93]LDP archive
+relevant HOWTOs are [94]Cyrus-IMAP and [95]Apache-Compile-HOWTO. The main
+site for these is the [96]LDP archive.
      _________________________________________________________________
 
 10.4. Local Resources
@@ -1427,11 +1598,11 @@ standard they are located in /usr/share/doc/packages
 The SuSE rpms of Cyrus contains a lot a such documentation.
 
 Postfix has some html-files in the source directory
-/usr/local/postfix-1.1.11/html
+/usr/local/postfix-2.0.3/html
 
 PAM comes also with lots of documentation in /usr/share/doc/packages/pam
 
-The pam_mysql module has a readme with the size of 1670 bytes :-(
+The pam_mysql module has a readme with the incredible size of 1670 bytes.
      _________________________________________________________________
 
 10.5. Web Sites
@@ -1440,10 +1611,10 @@ There are a huge number of informative web sites available. By their very
 nature they change quickly so do not be surprised if these links become
 quickly outdated.
 
-A good starting point is of course the [94]Linux Documentation Project home
+A good starting point is of course the [97]Linux Documentation Project home
 page, an information central for documentation, project pages and much more.
 
-To get more deepened information about Postfix, then [95]www.postfix.org
+To get more deepened information about Postfix, then [98]www.postfix.org
 would be the starting point.
 
 Please let me know if you have any other leads that can be of interest.
@@ -1454,36 +1625,200 @@ Please let me know if you have any other leads that can be of interest.
 Here I answer the questions which I got from users. If you don't find an
 answer feel free to contact me
 
-     * Q: Does web-cyradm only support users like »test0001« ? I'd like
-       to have a more desciptive username
-       A: web-cyradm does also support usernames like
-       »user.name.example.com« if you configure it. Your need to change
-       config.inc.php and change the value of DOMAIN_AS_PREFIX to 1. then
-       you need to add »unixhierarchysep: yes« to your /etc/imapd.conf
-     * Q: Why MySQL and not LDAP?
-       A: Good question. LDAP is role-based and it would be indeed a
-       better solution for such applications. Unfortunately LDAP is very
-       hard to set up. You have to make proper schemes etc. MySQL is the
-       way strait ahead, it is very easy to handle and versatile. There
-       is a PAM module available for LDAP, feel free to use it.
-     * Q: Why Postfix and not Qmail?
-       A: Lots of people like to see such a setup with Qmail. The reason
-       why is, Mysql-support is a hack and not in the included in the
-       main source-tree. This could end up in a bad situation. Think if a
-       security-hole is found in qmail and the patch does not work with
-       the corrected version. Postfix is supporting MySQL natively.
-       Another (personal) reason is that I find Postfix more sympatic (I
-       don't know why)
-     * Q: I got a Error: "Temporary lookup failure"
-       A: Postfix cannot look up the alias table. Must common failure is
-       that MySQL is not running, or there is a authentication Error.
-       Check /var/log/mail and /usr/local/mysql/var/<hostname>.err to
-       track the error
-     * Q: Does this HOWTO also work on other platforms?
-       A: Unsure. I personally compiled MySQL and Apache on AIX 4.3 and
-       5.1L (php does not run properly on AIX), Solaris 6/7/8 and HP-UX.
-       Cyrus, pam_mysql and cyrus I never tried. On Solaris there is
-       maybe a chance to get pam_mysql running. On AIX there is no PAM,
-       but a similar mechanism. In short: Try it, and let me know if were
-       successful
+   1. [99]FAQ
 
+        11.1.1. [100]Does web-cyradm only support users like »test0001« ?
+                I'd like to have a more descriptive username
+
+        11.1.2. [101]web-cyradm complains about »Fatal error: Call to
+                undefined function: bindtextdomain() in
+                /www/web-cyradm-0.5.3/index.php on line 46«, whats wrong?
+                
+        11.1.3. [102]I got a error from Web-cyradm like this »Fatal
+                error: Call to undefined function: query() in
+                /usr/local/httpd/htdocs/web-cyradm/auth.inc.php on line
+                17« 
+
+        11.1.4. [103]Why MySQL and not LDAP? 
+        11.1.5. [104]Why Postfix and not Qmail? 
+        11.1.6. [105]I got a Error: "Temporary lookup failure" 
+        11.1.7. [106]Does this HOWTO also work on other platforms? 
+
+1. FAQ
+
+   11.1.1. Does web-cyradm only support users like »test0001« ? I'd like
+   to have a more descriptive username
+
+   web-cyradm does also support usernames like »user.name.example.com« if
+   you configure it. Your need to change config.inc.php and change the
+   value of DOMAIN_AS_PREFIX to 1. then you need to add
+   »unixhierarchysep: yes« to your /etc/imapd.conf
+
+   11.1.2. web-cyradm complains about »Fatal error: Call to undefined
+   function: bindtextdomain() in /www/web-cyradm-0.5.3/index.php on line
+   46«, whats wrong?
+
+   Web-cyradm needs gettext enabled PHP. Please compile PHP with the
+   configure-option --with-gettext.
+
+   gettext is needed for NLS (Native Language Support) which means
+   contributors can easily translate web-cyradm to there language. Fill
+   in your Language in the file
+   /usr/local/apache/htdocs/web-cyradm/locale/templates/web-cyradm.pot
+   and send me the file, then your language will be supported in the next
+   CVS snapshot
+
+   11.1.3. I got a error from Web-cyradm like this »Fatal error: Call to
+   undefined function: query() in
+   /usr/local/httpd/htdocs/web-cyradm/auth.inc.php on line 17«
+
+   Web-cyradm depends on PEAR for database abstraction. PEAR is included
+   in recent PHP versions. Often PEAR is a separate package, check out
+   the package base of your distribution. I strongly suggest to update to
+   the most recent version of PHP anyway, because a lot of bugs have been
+   fixed.
+
+   Another reason could be an authentication error with MySQL. Be sure
+   the user »mail« has enought rights to acccess the database and tables.
+
+   11.1.4. Why MySQL and not LDAP?
+
+   Good question. LDAP is role-based and it would be indeed a better
+   solution for such applications. Unfortunately LDAP is very hard to set
+   up. You have to make proper schemes etc. MySQL is the way strait
+   ahead, it is very easy to handle and versatile. There is a PAM module
+   available for LDAP, feel free to use it.
+
+   11.1.5. Why Postfix and not Qmail?
+
+   Lots of people like to see such a setup with Qmail. The reason why is,
+   Mysql-support is a hack and not in the included in the main
+   source-tree. This could end up in a bad situation. Think if a
+   security-hole is found in qmail and the patch does not work with the
+   corrected version. Postfix is supporting MySQL natively. Another
+   (personal) reason is that I find Postfix more sympatic (I don't know
+   why)
+
+   11.1.6. I got a Error: "Temporary lookup failure"
+
+   Postfix cannot look up the alias table. Must common failure is that
+   MySQL is not running, or there is a authentication Error. Check
+   /var/log/mail and /usr/local/mysql/var/<hostname>.err to track the
+   error.
+
+   11.1.7. Does this HOWTO also work on other platforms?
+
+   Unsure. I personally compiled MySQL and Apache on AIX 4.3 and 5.1L
+   (php does not run properly on AIX), Solaris 6/7/8 and HP-UX. Cyrus,
+   pam_mysql and cyrus I never tried. On Solaris there is maybe a chance
+   to get pam_mysql running. On AIX there is no PAM, but a similar
+   mechanism. In short: Try it, and let me know if were successful
+
+References
+
+   1. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#INTRO
+   2. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN96
+   3. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN100
+   4. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#COPYRIGHT
+   5. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#DISCLAIMER
+   6. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#NEWVERSIONS
+   7. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#CREDITS
+   8. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#FEEDBACK
+   9. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#TRANSLATIONS
+  10. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#TECH
+  11. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#POSTFIX
+  12. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#CYRUS
+  13. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#SASL
+  14. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#OPENSSL
+  15. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#MYSQL
+  16. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#PAM-MYSQL
+  17. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#WEB-CYRADM
+  18. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#INSTALL
+  19. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#MYSQL-INSTALL
+  20. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#BERKELEY-DB
+  21. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN275
+  22. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#CYRUS-INSTALL
+  23. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#POSTFIX-INSTALL
+  24. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#PAM-INSTALL
+  25. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#PAM-MYSQL-INSTALL
+  26. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#WEB-CYRADM-INSTALL
+  27. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#MYSQL-CONFIG
+  28. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#MYSQL-CONFIG-SECURING
+  29. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#MYSQL-RINETD
+  30. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#PAM-CONFIG
+  31. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#POSTFIX-CONFIG
+  32. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#POSTFIX-MASTER
+  33. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#POSTFIX-MAIN
+  34. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#CYRUS-CONFIG
+  35. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#CYRUS-CONFIGFILES
+  36. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#CYRUS-DIRECTORIES
+  37. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#CH-ATTRIB
+  38. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#WEB-CYRADM-CONFIG
+  39. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN565
+  40. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN569
+  41. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN574
+  42. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN578
+  43. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN589
+  44. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#TEST
+  45. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#TEST-RUNNING
+  46. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#TESTING-WEB-CYRADM
+  47. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#TESTING-POSTFIX
+  48. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#TESTING-CYRUS
+  49. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#MOREINFO
+  50. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#NEWSGROUPS
+  51. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#MAILLISTS
+  52. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#HOWTO
+  53. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#LOCAL-RES
+  54. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#WEB
+  55. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#FAQ
+  56. mailto:luc at delouw.ch
+  57. mailto:linux-howto at metalab.unc.edu
+  58. http://www.delouw.ch/linux
+  59. http://www.delouw.ch/linux/Postfix-Cyrus-Web-cyradm-HOWTO/html/index.html
+  60. http://www.delouw.ch/linux/Postfix-Cyrus-Web-cyradm-HOWTO/Postfix-Cyrus-Web-cyradm-HOWTO.ps
+  61. http://www.delouw.ch/linux/Postfix-Cyrus-Web-cyradm-HOWTO/Postfix-Cyrus-Web-cyradm-HOWTO.pdf
+  62. http://www.delouw.ch/linux/Postfix-Cyrus-Web-cyradm-HOWTO/Postfix-Cyrus-Web-cyradm-HOWTO.sgml
+  63. http://www.delouw.ch/linux/Postfix-Cyrus-Web-cyradm-HOWTO/Postfix-Cyrus-Web-cyradm-HOWTO.tar.gz
+  64. mailto:m.muenz at maxonline.de
+  65. mailto: discuss at linuxdoc.org
+  66. mailto:luc at delouw.ch
+  67. http://www.postfix.org/docs.html
+  68. http://www.delouw.ch/linux/apache.phtml
+  69. http://www.web-cyradm.org/
+  70. http://www.mysql.com/downloads/
+  71. http://www.sleepycat.com/update/snapshot/db-4.0.14.tar.gz
+  72. http://www.openssl.org/
+  73. ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-sasl-2.1.12.tar.gz
+  74. ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-imapd-2.1.12.tar.gz
+  75. http://www.postfix.org/ftp-sites.html
+  76. http://sourceforge.net/projects/pam-mysql/
+  77. http://www.web-cyradm.org/
+  78. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#WEB-CYRADM-CONFIG
+  79. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#ETC-IMAPD
+  80. http://localhost/web-cyradm/
+  81. news:alt.comp.mail.postfix
+  82. news:comp.mail.imap
+  83. ftp://rtfm.mit.edu/
+  84. http://www.cis.ohio-state.edu/hypertext/faq/usenet/FAQ-List.html
+  85. mailto:postfix-users at postfix.org
+  86. mailto:majordomo at postfix.org
+  87. http://www.deja.com/group/mailing.postfix.users
+  88. mailto:info-cyrus at lists.andrew.cmu.edu
+  89. mailto:majordomo at lists.andrew.cmu.edu
+  90. http://asg.web.cmu.edu/archive/index.php?mailbox=archive.info-cyrus
+  91. mailto:web-cyradm at web-cyradm.org
+  92. http://www.web-cyradm.org/mailman/listinfo/web-cyradm
+  93. http://www.web-cyradm.org/pipermail/web-cyradm/
+  94. http://www.linuxdoc.org/HOWTO/Cyrus-IMAP.html
+  95. http://www.linuxdoc.org/HOWTO/Apache-Compile-HOWTO/index.html
+  96. http://www.linuxdoc.org/
+  97. http://www.tldp.org/
+  98. http://www.postfix.org/
+  99. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN767
+ 100. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN770
+ 101. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN776
+ 102. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN783
+ 103. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN789
+ 104. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN794
+ 105. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN799
+ 106. file://localhost/home/luc/LDP-work/Postfix-Cyrus-Web-cyradm-HOWTO/singlehtml.html#AEN806
