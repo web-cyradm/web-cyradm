@@ -6,128 +6,211 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: web-cyradm\n"
-"POT-Creation-Date: 2003-08-10 16:56+0200\n"
-"PO-Revision-Date: 2003-07-13 16:12+0100\n"
+"POT-Creation-Date: 2003-05-29 16:28+0200\n"
+"PO-Revision-Date: 2003-08-18 13:52+0100\n"
 "Last-Translator: throats <throats@gdi.cz>\n"
 "Language-Team: gdi.cz <web-cyradm@gdi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: CVS/Base/browseaccounts.php:22 browseaccounts.php:22
+#: CVS/Base/browseaccounts.php:22
+#: browseaccounts.php:22
 msgid "Browse accounts for domain"
-msgstr "Procházet úèty domény"
+msgstr "Procházení úètù domény"
 
-#: CVS/Base/browseaccounts.php:34 adminuser.php:21 browse.php:66
-#: browseaccounts.php:34 catchall.php:24 catchall.php:118
-#: change_password.php:19 change_password.php:32 change_password.php:42
-#: deleteaccount.php:83 deleteadminuser.php:74 deletedomain.php:17
-#: editaccount.php:31 editdomain.php:37 editdomain.php:67 editemail.php:15
-#: editemail.php:38 forwardalias.php:16 forwardalias.php:33 newaccount.php:26
-#: newadminuser.php:137 newadminuser.php:215 newalias.php:26 newdomain.php:237
-#: newemail.php:15 vacation.php:15 vacation.php:30 validate.inc.php:58
-#: lib/crypto.php:30 lib/crypto.php:110 lib/crypto.php:149
-#: forwardaccount.php:28 delete_catchall.php:23 deleteemail.php:62
+#: CVS/Base/browseaccounts.php:34
+#: adminuser.php:21
+#: browse.php:66
+#: browseaccounts.php:34
+#: catchall.php:24
+#: catchall.php:118
+#: change_password.php:19
+#: change_password.php:32
+#: change_password.php:42
+#: delete_catchall.php:23
+#: deleteaccount.php:83
+#: deleteadminuser.php:74
+#: deletedomain.php:17
+#: deleteemail.php:62
+#: editaccount.php:31
+#: editdomain.php:37
+#: editdomain.php:67
+#: editemail.php:15
+#: editemail.php:38
+#: forwardaccount.php:28
+#: forwardalias.php:16
+#: forwardalias.php:33
+#: lib/crypto.php:30
+#: lib/crypto.php:110
+#: lib/crypto.php:149
+#: newaccount.php:26
+#: newadminuser.php:137
+#: newadminuser.php:215
+#: newalias.php:26
+#: newdomain.php:237
+#: newemail.php:15
+#: vacation.php:15
+#: vacation.php:30
+#: validate.inc.php:58
 msgid "Database error"
 msgstr "Chyba databáze"
 
-#: CVS/Base/browseaccounts.php:48 browseaccounts.php:48 newaccount.php:68
+#: CVS/Base/browseaccounts.php:48
+#: browseaccounts.php:48
+#: newaccount.php:68
 msgid "Total accounts"
 msgstr "Úètù celkem"
 
-#: CVS/Base/browseaccounts.php:49 adminuser.php:36 browseaccounts.php:49
+#: CVS/Base/browseaccounts.php:49
+#: adminuser.php:36
+#: browseaccounts.php:49
 msgid "Displaying from position:"
 msgstr "Zobrazeno od pozice:"
 
-#: CVS/Base/browseaccounts.php:55 CVS/Base/browseaccounts.php:242
-#: browseaccounts.php:55 browseaccounts.php:242 search.php:123 search.php:239
+#: CVS/Base/browseaccounts.php:55
+#: CVS/Base/browseaccounts.php:242
+#: browseaccounts.php:55
+#: browseaccounts.php:242
+#: search.php:123
+#: search.php:239
 msgid "Add new account"
 msgstr "Nový úèet"
 
-#: CVS/Base/browseaccounts.php:78 adminuser.php:65 aliases.php:56
-#: browseaccounts.php:78 editalias.php:69 search.php:131 search.php:135
+#: CVS/Base/browseaccounts.php:78
+#: adminuser.php:65
+#: aliases.php:56
+#: browseaccounts.php:78
+#: editalias.php:69
+#: search.php:131
+#: search.php:135
 msgid "Previous 10 entries"
-msgstr "10 zpìt"
+msgstr "O 10 zpìt"
 
-#: CVS/Base/browseaccounts.php:82 adminuser.php:69 aliases.php:57
-#: browseaccounts.php:82 editalias.php:70 search.php:138 search.php:142
+#: CVS/Base/browseaccounts.php:82
+#: adminuser.php:69
+#: aliases.php:57
+#: browseaccounts.php:82
+#: editalias.php:70
+#: search.php:138
+#: search.php:142
 msgid "Next 10 entries"
 msgstr "Dal¹ích 10"
 
-#: CVS/Base/browseaccounts.php:91 adminuser.php:78 aliases.php:64
-#: browse.php:20 browseaccounts.php:91 editaccount.php:50 editalias.php:76
-#: search.php:52 search.php:149 search.php:253
+#: CVS/Base/browseaccounts.php:91
+#: adminuser.php:78
+#: aliases.php:64
+#: browse.php:20
+#: browseaccounts.php:91
+#: editaccount.php:50
+#: editalias.php:76
+#: search.php:52
+#: search.php:149
+#: search.php:253
 msgid "action"
 msgstr "akce"
 
-#: CVS/Base/browseaccounts.php:96 aliases.php:65 browseaccounts.php:96
-#: editaccount.php:54 newaccount.php:136 newalias.php:82 search.php:150
+#: CVS/Base/browseaccounts.php:96
+#: aliases.php:65
+#: browseaccounts.php:96
+#: editaccount.php:54
+#: newaccount.php:136
+#: newalias.php:82
+#: search.php:150
 #: search.php:254
 msgid "Email address"
 msgstr "Email"
 
-#: CVS/Base/browseaccounts.php:96 browseaccounts.php:96 editaccount.php:63
-#: login.php:61 search.php:151
+#: CVS/Base/browseaccounts.php:96
+#: browseaccounts.php:96
+#: editaccount.php:63
+#: login.php:61
+#: search.php:151
 msgid "Username"
 msgstr "U¾ivatelské jméno"
 
-#: CVS/Base/browseaccounts.php:97 browseaccounts.php:97
+#: CVS/Base/browseaccounts.php:97
+#: browseaccounts.php:97
 msgid "Last login"
 msgstr "Poslední pøihlá¹ení"
 
-#: CVS/Base/browseaccounts.php:97 browseaccounts.php:97 editaccount.php:68
+#: CVS/Base/browseaccounts.php:97
+#: browseaccounts.php:97
+#: editaccount.php:68
 #: search.php:152
 msgid "Quota used"
 msgstr "Vyu¾ití kvóty"
 
-#: CVS/Base/browseaccounts.php:136 browseaccounts.php:136
+#: CVS/Base/browseaccounts.php:136
+#: browseaccounts.php:136
 msgid "n/a"
 msgstr "n/a"
 
-#: CVS/Base/browseaccounts.php:146 browseaccounts.php:146 search.php:171
+#: CVS/Base/browseaccounts.php:146
+#: browseaccounts.php:146
+#: search.php:171
 msgid "Edit account"
 msgstr "Upravit úèet"
 
-#: CVS/Base/browseaccounts.php:151 browseaccounts.php:151
+#: CVS/Base/browseaccounts.php:151
+#: browseaccounts.php:151
 msgid "Change Password"
 msgstr "Zmìnit heslo"
 
-#: CVS/Base/browseaccounts.php:155 browseaccounts.php:155 editaccount.php:58
+#: CVS/Base/browseaccounts.php:155
+#: browseaccounts.php:155
+#: editaccount.php:58
 #: editaccount.php:91
 msgid "Forward"
-msgstr ""
+msgstr "Pøedat"
 
-#: CVS/Base/browseaccounts.php:159 browseaccounts.php:159 search.php:172
+#: CVS/Base/browseaccounts.php:159
+#: browseaccounts.php:159
+#: search.php:172
 msgid "Delete account"
 msgstr "Smazat úèet"
 
-#: CVS/Base/browseaccounts.php:163 browseaccounts.php:163 search.php:173
+#: CVS/Base/browseaccounts.php:163
+#: browseaccounts.php:163
+#: search.php:173
 msgid "Set quota"
 msgstr "Nastavit kvótu"
 
-#: CVS/Base/browseaccounts.php:167 browseaccounts.php:167 search.php:174
+#: CVS/Base/browseaccounts.php:167
+#: browseaccounts.php:167
+#: search.php:174
 msgid "Set catch all"
-msgstr ""
+msgstr "Nastavit doménový ko¹"
 
-#: CVS/Base/browseaccounts.php:181 browseaccounts.php:181 search.php:190
+#: CVS/Base/browseaccounts.php:181
+#: browseaccounts.php:181
+#: search.php:190
 msgid "Forwards"
-msgstr ""
+msgstr "Pøedávání"
 
-#: CVS/Base/browseaccounts.php:218 browseaccounts.php:218 editaccount.php:152
+#: CVS/Base/browseaccounts.php:218
+#: browseaccounts.php:218
+#: editaccount.php:152
 #: search.php:217
 msgid "out of"
-msgstr ""
+msgstr "z"
 
-#: CVS/Base/browseaccounts.php:221 browseaccounts.php:221 search.php:220
+#: CVS/Base/browseaccounts.php:221
+#: browseaccounts.php:221
+#: search.php:220
 msgid "Unable to retrieve quota"
-msgstr ""
+msgstr "Nezdaøilo se zjistit kvótu."
 
-#: CVS/Base/browseaccounts.php:224 browseaccounts.php:224 editaccount.php:155
+#: CVS/Base/browseaccounts.php:224
+#: browseaccounts.php:224
+#: editaccount.php:155
 #: search.php:223
 msgid "Quota not set"
 msgstr "Kvóta není nastavena"
 
-#: CVS/Base/browseaccounts.php:236 browseaccounts.php:236 search.php:235
+#: CVS/Base/browseaccounts.php:236
+#: browseaccounts.php:236
+#: search.php:235
 msgid "No accounts found"
 msgstr "Nebyl nalezen ¾ádný úèet"
 
@@ -164,23 +247,28 @@ msgid "Delete adminuser"
 msgstr "Sma¾ správce"
 
 #: adminuser.php:144
-#, fuzzy
 msgid "All domains"
-msgstr "doména"
+msgstr "v¹echny domény"
 
 #: adminuser.php:148
 msgid "None"
 msgstr ""
 
-#: adminuser.php:158 editadminuser.php:65 menu.inc.php:132 newadminuser.php:57
+#: adminuser.php:158
+#: editadminuser.php:65
+#: menu.inc.php:132
+#: newadminuser.php:57
 #: newadminuser.php:207
 msgid "Superuser"
 msgstr "Superu¾ivatel"
 
-#: adminuser.php:160 editadminuser.php:76 menu.inc.php:134 newadminuser.php:61
+#: adminuser.php:160
+#: editadminuser.php:76
+#: menu.inc.php:134
+#: newadminuser.php:61
 #: newadminuser.php:209
 msgid "Domain Master"
-msgstr ""
+msgstr "Správce domény"
 
 #: adminuser.php:174
 msgid "No accounts fount"
@@ -192,78 +280,94 @@ msgstr "Nový správce"
 
 #: aliases.php:11
 msgid "Browse aliases for domain"
-msgstr ""
+msgstr "Procházet aliasy pro doménu"
 
 #: aliases.php:50
 msgid "Total aliases"
-msgstr ""
+msgstr "Celkem aliasù"
 
 #: aliases.php:55
 msgid "Add new alias"
-msgstr ""
+msgstr "Pøidat alias"
 
-#: aliases.php:66 editalias.php:77 editemail.php:113 newemail.php:98
+#: aliases.php:66
+#: editalias.php:77
+#: editemail.php:113
+#: newemail.php:98
 #: search.php:255
 msgid "Destination"
-msgstr ""
+msgstr "Pøíjemce"
 
-#: aliases.php:91 search.php:273
+#: aliases.php:91
+#: search.php:273
 msgid "Edit Alias"
 msgstr "Upravit alias"
 
-#: aliases.php:92 search.php:274
+#: aliases.php:92
+#: search.php:274
 msgid "Delete Alias"
 msgstr "Smazat alias"
 
 #: auth.inc.php:70
 msgid "Web-cyradm is for authorized users only."
-msgstr "Web-cyradm smí pou¾ívat jen  oprávnìný u¾ivatel"
+msgstr "Web-cyradm smí pou¾ívat jen  oprávnìný u¾ivatel."
 
 #: auth.inc.php:71
 msgid "Make sure you entered the right password."
-msgstr "Zkontrolujte správnost hesla"
+msgstr "Zkontrolujte si prosím správnost hesla."
 
 #: auth.inc.php:72
 msgid "Push the back button in your browser to try again."
-msgstr "Pou¾ijte tlaèítko Zpìt v prohlí¾eèi"
+msgstr "Pou¾ijte tlaèítko Zpìt v prohlí¾eèi a pøihlá¹ení opakujte."
 
 #: auth.inc.php:73
 msgid " Your attempt to login has been stored."
-msgstr "Pokus o pøihlá¹ení byl zaznamenán"
+msgstr "Pokus o pøihlá¹ení byl zaznamenán."
 
 #: browse.php:13
 msgid "Browse domains"
 msgstr "Procházet domény"
 
-#: browse.php:24 search.php:53
+#: browse.php:24
+#: search.php:53
 msgid "domainname"
 msgstr "jméno domény"
 
-#: browse.php:31 search.php:57
+#: browse.php:31
+#: search.php:57
 msgid "prefix"
 msgstr "pøedpona(prefix)"
 
-#: browse.php:38 search.php:60
+#: browse.php:38
+#: search.php:60
 msgid "max Accounts"
 msgstr "max úètù"
 
-#: browse.php:42 search.php:61
+#: browse.php:42
+#: search.php:61
 msgid "default quota per user"
-msgstr "výchozí kvóta pro u¾ivatele"
+msgstr "Výchozí kvóta pro u¾ivatele"
 
-#: browse.php:90 search.php:82
+#: browse.php:90
+#: search.php:82
 msgid "Edit Domain"
 msgstr "Uprav doménu"
 
-#: browse.php:91 search.php:83
+#: browse.php:91
+#: search.php:83
 msgid "Delete Domain"
 msgstr "Sma¾ doménu"
 
-#: browse.php:92 deletedomain.php:51 menu.inc.php:59 search.php:84
+#: browse.php:92
+#: deletedomain.php:51
+#: menu.inc.php:59
+#: search.php:84
 msgid "accounts"
 msgstr "úèty"
 
-#: browse.php:93 menu.inc.php:68 search.php:85
+#: browse.php:93
+#: menu.inc.php:68
+#: search.php:85
 msgid "Aliases"
 msgstr "Aliasy"
 
@@ -278,40 +382,44 @@ msgstr "Opravdu chcete vytvoøit nového u¾ivatele"
 
 #: catchall.php:42
 msgid "to receive all undefined emailadresses"
-msgstr "pøijímat v¹chny neznámé e-mailové adresy"
+msgstr ", aby pøijímal v¹echny neznámé e-mailové adresy"
 
 #: catchall.php:46
 msgid "The currently defined user"
 msgstr ""
 
 #: catchall.php:46
-#, fuzzy
 msgid "will not receiving any undefined emailadresses anymore"
-msgstr "pøijímat v¹chny neznámé e-mailové adresy"
+msgstr "aby pøijímal v¹echny neznámé e-mailové adresy"
 
 #: catchall.php:74
 msgid "The user"
-msgstr ""
+msgstr "U¾ivatel"
 
 #: catchall.php:74
-#, fuzzy
 msgid "is allready defined to receive all undefined Emails."
-msgstr "pøijímat v¹chny neznámé e-mailové adresy"
+msgstr "aby pøijímal v¹echny neznámé e-mailové adresy"
 
 #: catchall.php:76
 msgid "Do you want to remove the function \"catch all\" for the account"
-msgstr ""
+msgstr "Chcete zakázat doménový ko¹ pro úèet"
 
-#: catchall.php:127 newadminuser.php:197
+#: catchall.php:127
+#: newadminuser.php:197
 msgid "successfully added to Database"
 msgstr "úspì¹nì ulo¾eno do databáze"
 
-#: catchall.php:133 editdomain.php:56 editemail.php:53 newdomain.php:255
-#: newemail.php:44 delete_catchall.php:37
+#: catchall.php:133
+#: delete_catchall.php:37
+#: editdomain.php:56
+#: editemail.php:53
+#: newdomain.php:255
+#: newemail.php:44
 msgid "Database error, please try again"
 msgstr "Chyba databáze, prosím zkuste opakovat operaci"
 
-#: catchall.php:140 delete_catchall.php:44
+#: catchall.php:140
+#: delete_catchall.php:44
 msgid "Cancelled"
 msgstr "Zru¹eno"
 
@@ -323,7 +431,8 @@ msgstr "Heslo bylo zmìnìno"
 msgid "Failure in changing password."
 msgstr "Chyba pøi zmìnì hesla"
 
-#: change_password.php:59 editadminuser.php:252
+#: change_password.php:59
+#: editadminuser.php:252
 msgid "New passwords are not equal. Password not changed"
 msgstr "Nová hesla si neodpovídají. Heslo nebylo zmìnìno"
 
@@ -339,9 +448,10 @@ msgstr "Nové heslo"
 msgid "Confirm new password"
 msgstr "Potrvrzení nového hesla"
 
-#: change_password.php:121 newaccount.php:243
+#: change_password.php:121
+#: newaccount.php:243
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Hesla si neodpovídají"
 
 #: deleteaccount.php:25
 msgid "Delete an Account from the System"
@@ -356,7 +466,9 @@ msgstr "Opravdu chcete smazat u¾ivatele"
 msgid "with all its defined Emailadresses"
 msgstr "se v¹emi {jeho} e-mailovými adresami"
 
-#: deleteaccount.php:69 deleteadminuser.php:68 deletedomain.php:84
+#: deleteaccount.php:69
+#: deleteadminuser.php:68
+#: deletedomain.php:84
 #: deleteemail.php:55
 msgid "Action cancelled, nothing deleted"
 msgstr "Akce zru¹ena, nic nebylo smazáno"
@@ -365,9 +477,9 @@ msgstr "Akce zru¹ena, nic nebylo smazáno"
 msgid "User deleted"
 msgstr "U¾ivatel smazán"
 
-#: deleteaccount.php:111 deletedomain.php:175
-msgid ""
-"Security violation detected, action cancelled. Your attempt has been logged."
+#: deleteaccount.php:111
+#: deletedomain.php:175
+msgid "Security violation detected, action cancelled. Your attempt has been logged."
 msgstr "Naru¹ení bezpeènosti, oprace zru¹ena. Pokus byl zaznamenán"
 
 #: deleteadminuser.php:17
@@ -376,17 +488,20 @@ msgstr "Sma¾ úèet správce ze systému"
 
 #: deleteadminuser.php:21
 msgid "Do you really want to delete the Domain supervisor"
-msgstr ""
+msgstr "Chcete opravdu smazat správce domény"
 
-#: deleteadminuser.php:90 editadminuser.php:276
+#: deleteadminuser.php:90
+#: editadminuser.php:276
 msgid "At least one Superuser is needed for Web-cyradm"
-msgstr ""
+msgstr "Web-cyradm musí mít alespoò jednoho Superu¾ivatele"
 
 #: deleteadminuser.php:103
 msgid "Admin user deleted"
 msgstr "Správce smazán"
 
-#: deleteadminuser.php:116 editadminuser.php:299 newadminuser.php:226
+#: deleteadminuser.php:116
+#: editadminuser.php:299
+#: newadminuser.php:226
 msgid "Security violation detected, nothing deleted, attempt has been logged"
 msgstr "Naru¹ení bezpeènosti, nic nebylo smazáno. Pokus byl zaznamenán."
 
@@ -400,17 +515,18 @@ msgstr "Chcete opravdu smazat doménu"
 
 #: deletedomain.php:37
 msgid "with all its defined accounts, admins, and emailadresses"
-msgstr ""
+msgstr "se v¹emi jejími úèty, správci a adresami"
 
 #: deletedomain.php:43
 msgid "This can take a while depending on how many account have to be deleted"
-msgstr "Operace mù¾e chvíli trvat v závislosti na poètu ru¹ebých úètù "
+msgstr "Operace mù¾e chvíli trvat v závislosti na poètu ru¹ených úètù "
 
 #: deletedomain.php:47
 msgid "Your action will delete"
-msgstr "Tímto sma¾ete"
+msgstr "Potvrzením sma¾ete"
 
-#: deletedomain.php:154 newadminuser.php:101
+#: deletedomain.php:154
+#: newadminuser.php:101
 msgid "Domain"
 msgstr "Doména"
 
@@ -449,7 +565,7 @@ msgstr "Odstranìn alias"
 
 #: editaccount.php:21
 msgid "Email adresses defined for user"
-msgstr "Vytvoøena e-mailová adresa u¾ivatele"
+msgstr "Vytvoøené e-mailové adresy u¾ivatele"
 
 #: editaccount.php:42
 msgid "New email address"
@@ -469,21 +585,29 @@ msgstr "Smazat e-mailovou adresu"
 
 #: editadminuser.php:13
 msgid "Change admin user for domain"
-msgstr "Zmìnit soprávce domény"
+msgstr "Zmìnit správce domény"
 
-#: editadminuser.php:42 newaccount.php:106 newadminuser.php:36
+#: editadminuser.php:42
+#: newaccount.php:106
+#: newadminuser.php:36
 msgid "Accountname"
 msgstr "Název úètu"
 
-#: editadminuser.php:52 newadminuser.php:51
+#: editadminuser.php:52
+#: newadminuser.php:51
 msgid "Admin Type"
-msgstr ""
+msgstr "Typ správce"
 
-#: editadminuser.php:84 login.php:71 newaccount.php:138 newadminuser.php:71
+#: editadminuser.php:84
+#: login.php:71
+#: newaccount.php:138
+#: newadminuser.php:71
 msgid "Password"
 msgstr "Heslo"
 
-#: editadminuser.php:100 newaccount.php:139 newadminuser.php:86
+#: editadminuser.php:100
+#: newaccount.php:139
+#: newadminuser.php:86
 msgid "Confirm Password"
 msgstr "Potvrzení hesla"
 
@@ -493,17 +617,16 @@ msgid "No Domain assigned yet"
 msgstr "Není vybrána doména"
 
 #: editadminuser.php:165
-#, fuzzy
 msgid "Add new domain to this admin"
-msgstr "Nový alias domény"
+msgstr "Nová doména s tímto správcem"
 
 #: editadminuser.php:223
 msgid "No such domain, create domain first"
-msgstr ""
+msgstr "Tato doména neexistuje. Doménu je tøeba nejøíve vytvoøit."
 
 #: editadminuser.php:231
 msgid "Admin already repsonsible for the domain"
-msgstr ""
+msgstr "Správce je ji¾ za doménu odpovìdný"
 
 #: editalias.php:27
 msgid "There was an error adding $dest to $alias: "
@@ -511,7 +634,7 @@ msgstr "Nastala chyba pøi pøidávání $dest k $alias: "
 
 #: editalias.php:64
 msgid "Editing alias"
-msgstr ""
+msgstr "Úprava aliasu"
 
 #: editalias.php:68
 msgid "Delete this alias"
@@ -521,45 +644,52 @@ msgstr "Smazat tento alias"
 msgid "Cannot remove from account"
 msgstr "Nelze odstranit z úètu"
 
-#: editalias.php:105 editalias.php:109
+#: editalias.php:105
+#: editalias.php:109
 msgid "Remove destination"
-msgstr ""
+msgstr "Odstranít pøíjemce"
 
 #: editalias.php:125
 msgid "This alias has no destinations"
-msgstr ""
+msgstr "Alias nemá pøíjemce"
 
 #: editalias.php:142
 msgid "New destination"
-msgstr ""
+msgstr "Nový pøíjemce"
 
 #: editdomain.php:46
 msgid "Successfully changed domain"
 msgstr "úspì¹nì zmìnìna doména"
 
-#: editdomain.php:92 newdomain.php:39
+#: editdomain.php:92
+#: newdomain.php:39
 msgid "Domainname"
 msgstr "Název domény"
 
-#: editdomain.php:106 newdomain.php:57
+#: editdomain.php:106
+#: newdomain.php:57
 msgid "Prefix"
 msgstr "Pøedpona(prefix)"
 
-#: editdomain.php:123 newdomain.php:73
+#: editdomain.php:123
+#: newdomain.php:73
 msgid "Allow Free Names"
 msgstr ""
 
-#: editdomain.php:141 newdomain.php:90
+#: editdomain.php:141
+#: newdomain.php:90
 msgid "Allow Free Mail Addresses"
-msgstr ""
+msgstr "Povolit volitelné adresy"
 
-#: editdomain.php:159 newdomain.php:102
+#: editdomain.php:159
+#: newdomain.php:102
 msgid "Maximum Accounts"
 msgstr "Maximálnì úètù"
 
-#: editdomain.php:173 newdomain.php:117
+#: editdomain.php:173
+#: newdomain.php:117
 msgid "Default Quota in Kilobytes"
-msgstr "výchozí kvóta v KB"
+msgstr "Výchozí kvóta v KB"
 
 #: editdomain.php:202
 msgid "Your are not allowed to change domains!"
@@ -570,12 +700,11 @@ msgid "Successfully changed"
 msgstr "Úspì¹nì zmìnìno"
 
 #: editemail.php:68
-msgid ""
-"You can't edit this email address with 'Allow Free Mail Addressess' set to "
-"off!"
-msgstr ""
+msgid "You can't edit this email address with 'Allow Free Mail Addressess' set to off!"
+msgstr "Nelze upravit adresu, pokud jsou zakázány volitelné adresy."
 
-#: editemail.php:95 newemail.php:77
+#: editemail.php:95
+#: newemail.php:77
 msgid "Emailadress"
 msgstr "E-mailová adresa"
 
@@ -583,72 +712,85 @@ msgstr "E-mailová adresa"
 msgid "Login failed"
 msgstr "Neúspì¹né pøihlá¹ení"
 
-#: failed.php:71 login.php:51
+#: failed.php:71
+#: login.php:51
 msgid "This is only for authorized users"
-msgstr "Pouze pro pøihlá¹ené u¾ivatele"
+msgstr "Pouze pro oprávnìné u¾ivatele"
 
-#: failed.php:76 logout.php:62 timeout.php:38
+#: failed.php:76
+#: logout.php:62
+#: timeout.php:38
 msgid "If you like to login click"
 msgstr "Pro pøihlá¹ení kliknìte "
 
-#: failed.php:78 logout.php:64 timeout.php:40
+#: failed.php:78
+#: logout.php:64
+#: timeout.php:40
 msgid "here"
 msgstr "zde"
 
-#: forwardalias.php:68 forwardaccount.php:51
+#: forwardaccount.php:51
+#: forwardalias.php:68
 msgid "Forward set"
-msgstr ""
+msgstr "Pøedávání nastaveno"
 
 #: forwardalias.php:70
 msgid "Failure in setting forward"
-msgstr ""
+msgstr "Nastavení pøedávání se nezdaøilo"
 
 #: forwardalias.php:73
 msgid "Wrong password"
 msgstr "©patné heslo"
 
-#: forwardalias.php:89 forwardalias.php:97 forwardalias.php:103
-#: forwardalias.php:107 forwardaccount.php:57
+#: forwardaccount.php:57
+#: forwardalias.php:89
+#: forwardalias.php:97
+#: forwardalias.php:103
+#: forwardalias.php:107
 msgid "Forwarding removed"
-msgstr ""
+msgstr "Pøedávání zru¹eno"
 
-#: forwardalias.php:91 forwardalias.php:99
+#: forwardalias.php:91
+#: forwardalias.php:99
 msgid "Failure in removing forwarding"
-msgstr ""
+msgstr "Zru¹ení pøedávání se nezdaøilo"
 
-#: forwardalias.php:111 vacation.php:79 vacation.php:107
+#: forwardalias.php:111
+#: vacation.php:79
+#: vacation.php:107
 msgid "Failed to login"
 msgstr "Neúspì¹né pøihlá¹ení"
 
-#: forwardalias.php:123 vacation.php:119
+#: forwardalias.php:123
+#: vacation.php:119
 msgid "Not possible"
 msgstr "Nelze"
 
 #: forwardalias.php:152
-msgid ""
-"You can't forward this email address with 'Allow Free Mail Addressess' set "
-"to off!"
-msgstr ""
+msgid "You can't forward this email address with 'Allow Free Mail Addressess' set to off!"
+msgstr "Nelze pøedávat z této adresy, pokud jsou zakázány volitelné adresy."
 
 #: forwardalias.php:161
 msgid "Forward for emailadress"
-msgstr ""
+msgstr "Pøedávání pro adresu"
 
 #: forwardalias.php:204
 msgid "Set forwarding to"
-msgstr ""
+msgstr "Nastavení pøedávání na"
 
 #: forwardalias.php:204
 msgid "(Seperate multiple values with ,)"
 msgstr "(Oddìlujte hodnoty èárkou)"
 
-#: forwardalias.php:210 forwardaccount.php:125
+#: forwardaccount.php:125
+#: forwardalias.php:210
 msgid "Keep a copy in the user's mailbox"
 msgstr "Nechávat kopii ve schránce"
 
-#: forwardalias.php:215 forwardaccount.php:139
+#: forwardaccount.php:139
+#: forwardalias.php:215
 msgid "Remove forwarding"
-msgstr ""
+msgstr "Zru¹ení pøedávání"
 
 #: index.php:23
 msgid "migrate.php exists! please delete or rename it"
@@ -671,9 +813,7 @@ msgid "Edit the file config/conf.php to match your systems configuration"
 msgstr "Upravte soubor config/conf.php, aby odpovídal nastavení va¹eho systému"
 
 #: index.php:148
-msgid ""
-"Further information about how to configure Web-cyradm can be found at the "
-"following website:"
+msgid "Further information about how to configure Web-cyradm can be found at the following website:"
 msgstr "Dal¹í informace o nastavování Web-cyradm najdete na:"
 
 #: login.php:50
@@ -686,14 +826,13 @@ msgstr "Prosím ovìøte svou toto¾nost"
 
 #: login.php:84
 msgid "Select language"
-msgstr "Vyberte jazyk"
+msgstr "Zvolte jazyk"
 
 #: logout.php:52
 msgid "Thank you for using Web-cyradm"
 msgstr "Díky za pou¾ití Web-cyradmin"
 
 #: logout.php:57
-#, fuzzy
 msgid "You are logged out"
 msgstr "Jste odhlá¹en"
 
@@ -703,7 +842,7 @@ msgstr "Menu superu¾ivatele"
 
 #: menu.inc.php:23
 msgid "Domainmasters menu"
-msgstr ""
+msgstr "Menu správce domény"
 
 #: menu.inc.php:31
 msgid "add new domain"
@@ -718,7 +857,6 @@ msgid "adminusers"
 msgstr "správci"
 
 #: menu.inc.php:75
-#, fuzzy
 msgid "home"
 msgstr "hlavní stránka"
 
@@ -736,7 +874,7 @@ msgstr "Pøíhlá¹en jako u¾ivatel"
 
 #: menu.inc.php:126
 msgid "Your role is"
-msgstr ""
+msgstr "Úroveò oprávnìní"
 
 #: menu.inc.php:144
 msgid "Current domain is"
@@ -750,9 +888,10 @@ msgstr "Není vybrána doména"
 msgid "Add new Account to domain"
 msgstr "Pøidat úèet domény"
 
-#: newaccount.php:43 newalias.php:43
+#: newaccount.php:43
+#: newalias.php:43
 msgid "transport is not cyrus, unable to create account"
-msgstr ""
+msgstr "transport není cyrus"
 
 #: newaccount.php:55
 msgid "Sorry, no more account allowed for domain"
@@ -775,12 +914,10 @@ msgid "Account successfully added to the Database"
 msgstr "Úèet byl ùspì¹nì pøidán do databáze"
 
 #: newaccount.php:234
-#, fuzzy
 msgid "Account succesfully added to the IMAP Subsystem"
-msgstr "Úèet byl úspì¹nì pøidán do slu¾by IMAP"
+msgstr "Úèet byl úspì¹nì pøidán do systému IMAP"
 
 #: newadminuser.php:13
-#, fuzzy
 msgid "Add new administrator"
 msgstr "Nový správce"
 
@@ -790,14 +927,13 @@ msgstr "Vyberte \"Superu¾ivatele\" pro v¹echny domény"
 
 #: newadminuser.php:132
 msgid "You must provide a username"
-msgstr ""
+msgstr "Musíte zadat u¾ivatelské jméno"
 
 #: newadminuser.php:145
 msgid "Passwords are empty or not equal."
-msgstr ""
+msgstr "Hesla jsou prázdná nebo si neodpovídají."
 
 #: newadminuser.php:157
-#, fuzzy
 msgid "Username already exist"
 msgstr "U¾ivatelské jméno ji¾ existuje"
 
@@ -806,14 +942,12 @@ msgid "Add new alias to domain"
 msgstr "Nový alias domény"
 
 #: newalias.php:55
-#, fuzzy
 msgid "Sorry, no more alias allowed for domain"
-msgstr "Nelze vytvoøit více úètù v doménì"
+msgstr "Nelze vytvoøit více aliasù v doménì"
 
 #: newalias.php:60
-#, fuzzy
 msgid "Maximum allowed aliases is"
-msgstr "Maximální poèet úètù je"
+msgstr "Maximální poèet aliasù je"
 
 #: newdomain.php:15
 msgid "Add new domain"
@@ -824,15 +958,12 @@ msgid "Standard Mailboxes"
 msgstr "Standardní schránky"
 
 #: newdomain.php:146
-msgid ""
-"emailadress where the default aliases should be mapped (empty means no "
-"mapping)"
-msgstr ""
-"e-mailové adresy pro mapování výchozích aliasù (prázdné znamená bez mapování)"
+msgid "emailadress where the default aliases should be mapped (empty means no mapping)"
+msgstr "e-mailové adresy pro mapování výchozích aliasù (prázdné znamená bez mapování)"
 
 #: newdomain.php:163
 msgid "Mail transport"
-msgstr ""
+msgstr "Mail transport"
 
 #: newdomain.php:166
 msgid "Leave this as is, unless you know what you are doing"
@@ -842,7 +973,8 @@ msgstr "Nemìòte, pokud si nejste jisti dùsledky"
 msgid "Parameter"
 msgstr "Parametr"
 
-#: newdomain.php:245 newemail.php:34
+#: newdomain.php:245
+#: newemail.php:34
 msgid "Successfully added"
 msgstr "Úspì¹nì pøidáno"
 
@@ -892,55 +1024,55 @@ msgstr "zmìnìno na"
 
 #: timeout.php:33
 msgid "Your session timed out"
-msgstr ""
+msgstr "Vypr¹el èasový limit relace."
 
 #: vacation.php:71
 msgid "Vacation notice set"
-msgstr ""
+msgstr "Odpovìï v nepøítomnosti zapnuta"
 
 #: vacation.php:73
 msgid "Failed to activate vacation"
-msgstr ""
+msgstr "Chyba pøi zapínáni odpovìdi v nepøítomnosti"
 
 #: vacation.php:76
 msgid "Failure in modifying vacation notice"
-msgstr ""
+msgstr "Chyba pøi provádìní zmìn odpovìdi v nepøítomnosti"
 
 #: vacation.php:95
 msgid "Vacation notice unset"
-msgstr ""
+msgstr "Odpovìd v nepøítomnosti vypnuta"
 
 #: vacation.php:97
 msgid "Failure in unseting vacation notice"
-msgstr ""
+msgstr "Chyba pøi vypínanání odpovìdi v nepøítomnosti"
 
 #: vacation.php:101
 msgid "Vacation notice removed"
-msgstr ""
+msgstr "Odpovìï v nepøítomnosti odstranìna"
 
 #: vacation.php:103
 msgid "Failure in removing vacation notice"
-msgstr ""
+msgstr "Chyba pøi odstraòování odpovìdi v nepøítomnosti"
 
 #: vacation.php:142
-msgid ""
-"You can't set Vacation Message for this email address with 'Allow Free Mail "
-"Addressess' set to off!"
-msgstr ""
+msgid "You can't set Vacation Message for this email address with 'Allow Free Mail Addressess' set to off!"
+msgstr ", pokud jsou zakázány volitelné adresy."
 
 #: vacation.php:152
 msgid "Vacation message for emailadress"
-msgstr ""
+msgstr "Odpovìd v nepøítomnosti pro adresu"
 
 #: vacation.php:174
 msgid "Set vacation notice"
-msgstr ""
+msgstr "Zapnout odpovìï v nepøítomnosti"
 
 #: vacation.php:178
 msgid "Remove vacation notice"
-msgstr ""
+msgstr "Odstranit odpovìï v nepøítomnosti"
 
-#: validate.inc.php:74 validate.inc.php:87 validate.inc.php:134
+#: validate.inc.php:74
+#: validate.inc.php:87
+#: validate.inc.php:134
 #: validate.inc.php:249
 msgid "Security violation detected, attempt logged"
 msgstr "Naru¹ení bezpeènosti, pokus zaznamenán"
@@ -951,16 +1083,15 @@ msgstr "Kvóta pøekraèuje maximální kvótu pro doménu"
 
 #: forwardaccount.php:77
 msgid "Forward for account"
-msgstr ""
+msgstr "Pøedávání pro úèet"
 
 #: forwardaccount.php:93
 msgid "Set forwarding to (one adress per line)"
-msgstr ""
+msgstr "Nastavení pøedávání na (ka¾dá adresa na samostatném øádku)"
 
 #: delete_catchall.php:31
-#, fuzzy
 msgid "successfully deleted from the Database"
-msgstr "úspì¹nì ulo¾eno do databáze"
+msgstr "úspì¹nì odstranìno z databáze"
 
 #: deleteemail.php:16
 msgid "Delete emailadress from the System"
@@ -982,11 +1113,3 @@ msgstr "Zru¹it"
 msgid "Emailadress deleted."
 msgstr "E-mailová adresa smazána"
 
-#~ msgid "successfully changed Database...."
-#~ msgstr "úspì¹nì zmìnìna databáze...."
-
-#~ msgid "Add new admin user for domain"
-#~ msgstr "Nový správce pro doménu"
-
-#~ msgid "Please select a domain first"
-#~ msgstr "Prosím zvolte napøed doménu"
