@@ -39,7 +39,9 @@
 
 					switch($CRYPT){
 					case "crypt":
-						$query = "update accountuser set password=ENCRYPT('$new_password') where username='$username'";
+						$pwd = new password;
+					        $new_password = $pwd->encrypt($new_password, $CRYPT);
+						$query = "update accountuser set password='$new_password' where username='$username'";
 						break;
 					case "mysql":
 						$query = "update accountuser set password=PASSWORD('$new_password') where username='$username'";
@@ -48,7 +50,6 @@
 						$query = "update accountuser set password='$new_password' where username='$username'";
 						break;
 					}
-
 					$result = $handle->query($query);
 					include WC_BASE . "/browseaccounts.php";
 				} elseif ($PASSWORD_CHANGE_METHOD=="poppassd"){
@@ -69,9 +70,6 @@
 		if (empty($confirmed) || ($confirmed != "true")){
 //			$test = ereg ("",$alias,$result_array);
 
-			$alias = spliti("@",$alias);
-			$alias = $alias[0];
-
 			if (isset($result_array)){
 				print $result_array[0];
 			}
@@ -89,7 +87,7 @@
 				<input type="hidden" name="action" value="change_password">
 				<input type="hidden" name="confirmed" value="true">
 				<input type="hidden" name="domain" value="<?php echo $domain ?>"> 
-				<input type="hidden" name="alias" value="<?php echo $alias . "@" . $domain ?>"> 
+				<input type="hidden" name="alias" value="<?php echo $alias ?>"> 
 				<input type="hidden" name="username" value="<?php echo $username;?>">
 
 				<table>		

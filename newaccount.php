@@ -194,7 +194,9 @@
 		    	$query3="INSERT INTO accountuser (username, password, prefix, domain_name) VALUES ('" . $username . "',";
 			switch($CRYPT){
 			case "crypt":
-				$query3 .= "ENCRYPT('$password')";
+				$pwd = new password;
+			        $password = $pwd->encrypt($password, $CRYPT);
+				$query3 .= "'$password'";
 				break;
 			case "mysql":
 				$query3 .= "PASSWORD('$password')";
