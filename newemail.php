@@ -12,30 +12,29 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td valign="top">
 
 		<?php
-		$handle = DB::connect($DB['DSN'], true);
-		if (DB::isError($handle)){
-			die (_("Database error"));
-		}
-                $query = "select * from domain where domain_name='$domain'";                                        
- 		$result = $handle->query($query);                                                                   
-		$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);                                                    
-		$freeaddress=$row['freeaddress'];
-		if ($authorized){
-			if (! empty($confirmed)){
-				if ($freeaddress!="YES") {
-				    $query = "INSERT INTO virtual (alias,dest,username) VALUES ('$alias@$domain','$dest','$username')";
+		if ($authorized) {
+	                $query = "SELECT freeaddress FROM domain WHERE domain_name='".$_GET['domain']."'";
+	 		$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
+			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+			$freeaddress=$row['freeaddress'];
+		
+			if (!empty($_GET['confirmed']) && empty($_GET['cancel'])) {
+				if ($freeaddress != "YES") {
+					$query = "INSERT INTO virtual (alias,dest,username) VALUES ('".$_GET['alias']."@".$_GET['domain']."','".$_GET['dest']."','".$_GET['username']."')";
 				} else {
-				    $query = "INSERT INTO virtual (alias,dest,username) VALUES ('$alias','$dest','$username')";
-				}				
-
+					$query = "INSERT INTO virtual (alias,dest,username) VALUES ('".$_GET['alias']."','".$_GET['dest']."','".$_GET['username']."')";
+				}
 				$result = $handle->query($query);
 
-				if (! DB::isError($result)){
+				if (!DB::isError($result)) {
 					?>
 					<h3>
 						<?php print _("Successfully added");?>:
 						<span style="color: red;">
-							<?php echo $alias;?>
+							<?php echo $_GET['alias'];?>
 						</span>
 					</h3>
 					<?php
@@ -48,16 +47,15 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<?php
 					include WC_BASE . "/editaccount.php";
 				}
-
-			}
-
-			if (empty($confirmed)){
+			} elseif (!empty($_GET['cancel'])) {
+				include WC_BASE . "/editaccount.php";
+			} else {
 				?>
 
 				<h3>
 					<?php print _("New emailadress for user");?>:
 					<span style="color: red;">
-						<?php echo $username;?>
+						<?php echo $_GET['username'];?>
 					</span>
 				</h3>
 
@@ -68,9 +66,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<input type="hidden" name="confirmed"
 					value="true">
 					<input type="hidden" name="domain"
-					value="<?php print $domain ?>"> 
+					value="<?php print $_GET['domain'] ?>"> 
 					<input type="hidden" name="username"
-					value="<?php print $username ?>"> 
+					value="<?php print $_GET['username'] ?>"> 
 
 					<table>
 
@@ -81,16 +79,11 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 							<td>
 								<input  class="inputfield" type="text" 
-								size="30" name="alias"
+								size="30" name="alias">
 								<?php
-							    	    if (isset($alias)){
-									print "value=\"" . $alias . "\">";
-								    } else {
-									print "value=\"\">";
-								    }
-								    if ($freeaddress!="YES") {
-									print "@" . $domain;
-								    }
+									if ($freeaddress != "YES") {
+										print "@".$_GET['domain'];
+									}
 								?>
 							</td>
 						</tr>
@@ -103,7 +96,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							<td>
 								<input  class="inputfield" type="text"
 								size="30" name="dest" 
-								value="<?php print $username;?>">
+								value="<?php print $_GET['username'];?>">
 							</td>
 						</tr>
 
@@ -112,17 +105,21 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							<td>
 								<input class="button" type="submit"
 								value="<?php print _("Submit");?>">
+
+								<input class="button" type="submit"
+								name="cancel" value="<?php print _("Cancel"); ?>">
 							</td>
 						</tr>
 					</table>
 				</form>
 				<?php
-			} // End of if (empty($confirmed))
-		} else {
+			} // End of if (!empty($_GET['confirmed']))
+		} else { // if ($authorized)
 			?>
 				<h3>
 					<?php echo $err_msg;?>
 				</h3>
+				<a href="index.php?action=accounts&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
 			<?php
 		}
 		?>
