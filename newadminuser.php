@@ -11,12 +11,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td width="10">&nbsp;</td>
 	<td valign="top">
 
-	<h3>
-		<?php print _("Add new administrator");?>:</h3>
 	<?php
-	if ($_SESSION['admintype'] == 0){
-		if (empty($confirmed)){
+	if ($authorized){
+		if (empty($_POST['confirmed'])){
 			?>
+			<h3>
+				<?php print _("Add new administrator");?>:
+			</h3>
 			<form action="index.php" method="post">
 				<input type="hidden"
 				name="action"
@@ -30,7 +31,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<input
 				type="hidden"
 				name="domain"
-				value="<?php print $domain; ?>">
+				value="<?php print $_GET['domain']; ?>">
 
 				<table>
 					<tr>
@@ -107,7 +108,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							class="inputfield"
 							type="text"
 							name="newdomain"
-							value="<?print $domain?>"
+							value="<?print $_GET['domain']?>"
 							onfocus="this.style.backgroundColor='#aaaaaa'"
 							>
 						</td>
@@ -125,113 +126,68 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				</table>
 				</form>
 				<?php
-			} elseif (! empty($confirmed)){
-
-				################### Begin admin USER checks and INSERT ####################
-
-				# Username most not be empty
-				if (empty($newadminuser)){
-					die (_("You must provide a username"));
-				}
-
-				$handle1 = DB::connect($DB['DSN'],true);
-				if (DB::isError($handle)) {
+			} elseif (! empty($_POST['confirmed'])){
+				# Generate password for new admin
+				$pwd = new password;
+				$password = $pwd->encrypt($_POST['new_password'],$CRYPT);
+				# Save new admin into table
+				$query = "INSERT INTO adminuser (username , password , type ) VALUES ('".$_POST['newadminuser']."','".$password."','".$_POST['newadmintype']."')";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
 					die (_("Database error"));
 				}
-
-				# Check if the username already exists
-				$query = "SELECT * FROM adminuser WHERE username='$newadminuser'";
-				$result = $handle1->query($query);
-
-				if (empty($new_password) || $new_password != $confirm_password){
-					die (_("Passwords are empty or not equal."));
+				# Save initial setup for new admin
+				$query = "INSERT INTO settings (username) VALUES ('".$_POST['newadminuser']."')";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
+					die (_("Database error"));
 				}
-
-				if (!$result->numRows()){
-					# If the username does not exist, then insert the adminuser table
-					$pwd = new password;
-					$password = $pwd->encrypt($new_password,$CRYPT);
-					$query = "INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
-					$result=$handle1->query($query);
-					$query = "INSERT INTO settings (username) VALUES ('$newadminuser')";
-					$result=$handle1->query($query);
-				}
-				else {
-					# It is not a new admin, so lets die
-					die(_("Username already exist"));
-				}
-
-				#################### End admin USER checks and INSERT ###########################
-
-				#################### Begin domain name checks and INSERT ########################
-
-				if ($newdomain){
-
-					# Check if the domain to be added really exists
-
-					$query="SELECT domain_name FROM domain WHERE domain_name='$newdomain'";
-					$result= $handle1->query($query);
-					$cnt = $result->numRows($result);
-
-					if ($cnt==0){
-
-						# If the domain does not exist, print error
-
-						die("No such domain");
+				# Save domain which new admin will be responsible for
+				# If admin is superuser, he will be responsible for all domains
+				if ($_POST['newadmintype'] == 0){
+					$query = "INSERT INTO domainadmin (domain_name , adminuser) values ('*' , '".$_POST['newadminuser']."')";
+					$result = $handle->query($query);
+					if (DB::isError($result)) {
+						die (_("Database error"));
 					}
 				}
-
-				if ($newadmintype==0){
-					print $newadminuser;
-					$query2="INSERT INTO domainadmin (domain_name , adminuser) values ('*' , '$newadminuser')";
-					$result2=$handle1->query($query2);
+				else if (!empty($_POST['newdomain'])){
+					$query = "INSERT INTO domainadmin (domain_name , adminuser) values ('".$_POST['newdomain']."' ,'".$_POST['newadminuser']."')";
+					$result = $handle->query($query);
+					if (DB::isError($result)) {
+						die (_("Database error"));
+					}
 				}
-				else if ($newadmintype==1 AND !empty($newdomain)){
-					$query2="INSERT INTO domainadmin (domain_name , adminuser) values ('$newdomain' ,'$newadminuser')";
-					$result2=$handle1->query($query2);
-				}
-
-				################### End domain name checks and INSERTS ##############################
-
 				?>
-
 				<h3>
 					<?php
-					if (!DB::isError($result)){
 						print _("successfully added to Database");
-						?>
-						:
-						<span style="color: red;">
-							<?php echo $newadminuser;?>
-						</span>
-						as
-						<span style="color: red;">
-							<?php
-							if ($newadmintype==0){
-								print _("Superuser");
-							} else {
-								print _("Domain Master");
-							}
-							?>
-						</span>
-						<?php
-					} else {
-						print _("Database error");
-					}
 					?>
+					:
+					<span style="color: red;">
+						<?php echo $_POST['newadminuser'];?>
+					</span>
+					as
+					<span style="color: red;">
+						<?php
+						if ($_POST['newadmintype'] == 0) {
+							print _("Superuser");
+						} else {
+							print _("Domain Master");
+						}
+						?>
+					</span>
 				</h3>
-
 				<?php
 				include WC_BASE . "/adminuser.php";
-		} // End of if (empty($confirmed)) .. elseif (! empty($confirmed))
-	} elseif ($_SESSION['admintype'] != 0){
+		} // End of if (empty($_POST['confirmed']))
+	} else { // if ($authorized)
 		?>
 		<h3>
-		<?php print _("Security violation detected, nothing deleted, attempt has been logged");?>
+			<?php print $err_msg; ?>
 		</h3>
 		<?php
-	}
-
+	} // End of if ($authorized)
 	?>
 	</td>
 </tr>

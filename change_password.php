@@ -13,87 +13,61 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 	<?php
 
-	if ($authorized AND $new_password == $confirm_password){
+	if ($authorized){
+		if (!empty($_POST['confirmed']) && ("true" == $_POST['confirmed'])) {
+			$query = "select password from accountuser where username='".$_POST['username']."'";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
+			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+			$password = $row['password'];
 
-		$query = "select * from virtual where alias='$alias'";
-		$handle = DB::connect($DB['DSN'], true);
-		if (DB::isError($handle)){
-			die (_("Database error"));
-		}
-
-		$result = $handle->query($query);
-		$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-		$alias = $row['alias'];
-		$dest = $row['dest'];
-		$username = $row['username'];
-		if (! empty($confirmed) && ("true" == $confirmed)){
-			if ($new_password == $confirm_password && $new_password != ""){
-				$query = "select * from accountuser where username='$dest'";
-				$handle = DB::connect($DB['DSN'], true);
-				if (DB::isError($handle)) {
+			if ($PASSWORD_CHANGE_METHOD=="sql"){
+				$pwd = new password;
+			        $new_password = $pwd->encrypt($_POST['new_password'], $CRYPT);
+				$query = "UPDATE accountuser SET password='$new_password' where username='".$_POST['username']."'";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
 					die (_("Database error"));
 				}
-
-				$result = $handle->query($query);
-				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-				$password = $row['password'];
-
-				if ($PASSWORD_CHANGE_METHOD=="sql"){
-					$handle = DB::connect($DB['DSN'], true);
-					if (DB::isError($handle)) {
-						die (_("Database error"));
-					}
-						$pwd = new password;
-					        $new_password = $pwd->encrypt($new_password, $CRYPT);
-						$query = "update accountuser set password='$new_password' where username='$username'";
-					$result = $handle->query($query);
 		
-					# Give some feedback
-					if ($result){
-						print "<h3>"._("Password changed")."</h3>";
-					}
-					else{
-						print "<h3>"._("Unknown error")."</h3>";
-					}	
-
-					include WC_BASE . "/browseaccounts.php";
-				} elseif ($PASSWORD_CHANGE_METHOD=="poppassd"){
-					include WC_BASE . '/lib/poppassd.php';
-					$daemon = new poppassd;
-					if ($daemon->change_password($dest, $password, $new_password)) {
-						print  "<em><big>"._("Password changed")."</big></em><p><p>";
-					} else {
-						print $daemon->$err_str;
-						print "<big>"._("Failure in changing password.")."</big><p><p>";
-					}
-				} elseif ($new_password != $confirm_password){
-					print "<b>"._("New passwords are not equal. Password not changed")."</b>";
+				# Give some feedback
+				if ($result){
+					print "<h3>"._("Password changed")."</h3>";
+				}
+				else {
+					print "<h3>"._("Unknown error")."</h3>";
+				}	
+			} elseif ($PASSWORD_CHANGE_METHOD=="poppassd") {
+				require WC_BASE . '/lib/poppassd.php';
+				$daemon = new poppassd;
+				if ($daemon->change_password($_POST['username'], $password, $_POST['new_password'])) {
+					print  "<h3>"._("Password changed")."</h3>";
+				} else {
+					print $daemon->$err_str;
+					print "<h3>"._("Failure in changing password.")."</h3>";
 				}
 			}
+			$_GET['domain'] = $_POST['domain'];
+			include WC_BASE . "/browseaccounts.php";	
 		}
-		if (empty($confirmed) || ($confirmed != "true")){
-//			$test = ereg ("",$alias,$result_array);
-
-			if (isset($result_array)){
-				print $result_array[0];
-			}
+		if (empty($_POST['confirmed']) || ($_POST['confirmed'] != "true")){
 			?>
 
 			<h3>
 				<?php print _("Change password for account");?>
 				<span style="color: red;">
-					<?php echo $dest;?>
+					<?php echo $_GET['username'];?>
 				</span>
 			</h3>
 
-			<!-- <form action="index.php" method="get"> -->
 			<form action="index.php" method="POST">
 
 				<input type="hidden" name="action" value="change_password">
 				<input type="hidden" name="confirmed" value="true">
-				<input type="hidden" name="domain" value="<?php echo $domain ?>"> 
-				<input type="hidden" name="alias" value="<?php echo $alias ?>"> 
-				<input type="hidden" name="username" value="<?php echo $username;?>">
+				<input type="hidden" name="domain" value="<?php echo $_GET['domain'];?>"> 
+				<input type="hidden" name="username" value="<?php echo $_GET['username'];?>">
 
 				<table>		
 
@@ -126,11 +100,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			</form>
 			<?php
 		} // End of if (! $confirmed)
-	} else {
-		// Not authorized
-		if ($new_password != $confirm_password){
-			print _("Passwords do not match");
-		}
+	} else { // Not authorized
 		?>
 		<h3>
 			<?php echo $err_msg;?>

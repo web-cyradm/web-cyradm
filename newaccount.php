@@ -11,26 +11,19 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td width="10">&nbsp;</td>
 	<td valign="top">
 
-		<h3>
-			<?php print _("Add new Account to domain");?>:
-			<span style="color: red;">
-				<?php echo $domain;?>
-			</span>
-		</h3>
-
-		<?php
-		require_once WC_BASE . '/config/conf.php';
-
-		$query1 = "SELECT * from domain WHERE domain_name='$domain'";
-
-		$handle = DB::connect($DB['DSN'], true);
-		if (DB::isError($handle)) {
+	<?php
+	if ($authorized){
+		if (empty($_POST['confirmed'])){
+			$query = "SELECT * from domain WHERE domain_name='".$_GET['domain']."'";
+		} else {
+			$query = "SELECT * from domain WHERE domain_name='".$_POST['domain']."'";
+		}
+		$result = $handle->query($query);
+		if (DB::isError($result)) {
 			die (_("Database error"));
 		}
 
-		$result1 = $handle->query($query1);
-
-		$row = $result1->fetchRow(DB_FETCHMODE_ASSOC, 0);
+		$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 
 		$prefix		= $row['prefix'];
 		$maxaccounts	= $row['maxaccounts'];
@@ -43,34 +36,42 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		$freeaddress    = $row['freeaddress'];
 
 		if ($transport != "cyrus"){
-			die (_("transport is not cyrus, unable to create account"));
+			print _("transport is not cyrus, unable to create account");
+			echo "<br>";
+			echo "<a href=\"index.php\">";
+			print _("Back");
+			echo "</a>";
+			echo "</td></tr>";
+			exit();
 		}
-
-		if (empty($confirmed)){
-
-			$query2 	= "SELECT * FROM accountuser WHERE prefix='$prefix' order by username";
-			$result2	= $handle->query($query2);
-			$cnt2		= $result2->numRows($result2);
+		
+		if (empty($_POST['confirmed'])){
+			# Why prefix, not domain_name?
+			$query = "SELECT * FROM accountuser WHERE prefix='$prefix' order by username";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
+			$cnt = $result->numRows();
 			
-			if ($domain_quota!=0) {
+			if ($domain_quota != 0) {
 				$used_domain_quota = 0;
 				$cyr_conn = new cyradm;
+				$error = $cyr_conn -> imap_login();
 
-				$error=$cyr_conn -> imap_login();
-
-				if ($error!=0){
+				if ($error != 0){
 					die ("Error $error");
 				}
 
-				for ($c2 = 0; $c2 < $cnt2; $c2++){
-					$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
+				for ($c = 0; $c < $cnt; $c++) {
+					$row = $result->fetchRow(DB_FETCHMODE_ASSOC, $c);
 					
 					$_sep = '.';
 					if ($DOMAIN_AS_PREFIX) {
 						$_sep = '/';
 					}
 					
-					$user_quota = $cyr_conn->getquota("user" . $_sep . $row2['username']);
+					$user_quota = $cyr_conn->getquota("user" . $_sep . $row['username']);
 					
 					if ($user_quota['qmax'] != "NOT-SET"){
 						$used_domain_quota += $user_quota['qmax'];
@@ -79,55 +80,65 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				$quota_left = $domain_quota - $used_domain_quota;
 				
-				if ($def_quota > $quota_left){
+				if ($def_quota > $quota_left) {
  					$def_quota = $quota_left;
 				}
 				$_SESSION['quota_left'] = $quota_left;
 			} // End of if ($domain_quota!=0)
 				
-			if ($cnt2+1 > $maxaccounts){
+			if ($cnt+1 > $maxaccounts){
 				?>
 				<h3>
 					<?php print _("Sorry, no more account allowed for domain");?>
 					<span style="color: red;">
-						<?php echo $domain;?>
+						<?php echo $_GET['domain'];?>
 					</span>
 					<br>
 					<?php print _("Maximum allowed accounts is");?>
 					<span style="font-weight: bolder;">
 						<?php echo $maxaccounts;?>
 					</span>
+					<br>
+					<a href="index.php?action=accounts&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
 				<?php
-			} elseif ($domain_quota!=0 && $quota_left <= 0) {
+			} elseif ($domain_quota != 0 && $quota_left <= 0) {
 				?>
 				<h3>
 					<?php print _("Sorry, no more disk space left for domain");?>
 					<span style="color: red;">
-						<?php echo $domain;?>
+						<?php echo $_GET['domain'];?>
 					</span>
 					<br>
 					<?php print _("Quota is");?>
 					<span style="font-weight: bolder;">
 						<?php echo $domain_quota;?>
 					</span>
+					<br>
+					<a href="index.php?action=accounts&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
 				<?php
 			} else {
 				?>
+				<h3>
+					<?php print _("Add new Account to domain");?>:
+					<span style="color: red;">
+						<?php echo $_GET['domain'];?>
+					</span>
+				</h3>
 				<p>
-					<?php print _("Total accounts") . ": " . $cnt2;?>
+					<?php print _("Total accounts") . ": " . $cnt;?>
 				</p>
 				<?php
 
 				if (!$DOMAIN_AS_PREFIX){
 					// START Andreas Kreisl : freenames
 					if ($freenames=="YES"){
-						$lastaccount = sprintf("%04d",$cnt2);
+						$lastaccount = sprintf("%04d",$cnt);
 						$lastaccount = $prefix . $lastaccount;
 					} else {
 						$lastaccount = $prefix."0000";
-						if ($cnt2 > 0){
-							$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $cnt2 - 1);
-							$lastaccount = $row2['username'];
+						if ($cnt > 0){
+							$row = $result->fetchRow(DB_FETCHMODE_ASSOC, $cnt - 1);
+							$lastaccount = $row['username'];
 						}
 					}
 					// END Andreas Kreisl : freenames
@@ -142,7 +153,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<form action="index.php" method="POST" style="border: ridge 0px maroon;">
 					<input type="hidden" name="action" value="newaccount">
 					<input type="hidden" name="confirmed" value="true">
-					<input type="hidden" name="domain" value="<?php print $domain ?>">
+					<input type="hidden" name="domain" value="<?php print $_GET['domain'];?>">
 
 					<table>
 						<?php
@@ -180,7 +191,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						} // End of if (!$DOMAIN_AS_PREFIX)
 
 						$_fields = array(
-							'email'	=> array(_("Email address"), 'a', false, '@' . $domain),
+							'email'	=> array(_("Email address"), 'a', false, '@' . $_GET['domain']),
 							'quota' => array(_("Quota"), '8', false, '', $def_quota),
 							'password' => array(_("Password"), 'c', true, ''),
 							'confirm_password' => array(_("Confirm Password"), 'c', true, '')
@@ -223,40 +234,23 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				</form>
 				<?php
 			} // End of if ($cnt2+1 > $maxaccounts) .. else
-		} else {
-
-			if ($authorized!=TRUE){
-				print $err_msg;
-				die($err_msg);
-			}
+		} elseif (!empty($_POST['confirmed'])){
 
 			if ($DOMAIN_AS_PREFIX){
-				$prefix		= $domain;
-				$username	= $email;
-				if ($freenames!="YES") {
-				    $username = $username . "." . $domain;
-				}
-				$seperator	= '/';
+				$username = $_POST['email'].".".$_POST['domain'];
+				$seperator = '/';
 			} else {
-				$seperator	= '.';
+				$username = $_POST['username'];
+				$seperator = '.';
 			}
-		    // check to see if there's an account with the same username
-		    $query3="select * from accountuser where username='$username'";
-		    $result3=$handle->query($query3);
-		    $cnt3=$result3->numRows();
-		    if ($cnt3!=0) {
-			print "<h3>" .
-			       _("Sorry, the username already exists") .
-			       "</h3><br>";
-			include WC_BASE . "/browseaccounts.php";
-		    } else {
+
 			if ($domain_quota!=0){
-				// if domain_quota is set all accounts must have quotas
-				if (empty($quota)){
-					$quota = $def_quota;
+				// WARNING: if domain_quota is set, all accounts MUST have quotas!
+				if (empty($_POST['quota'])){
+					$_POST['quota'] = $def_quota;
 				}
-				if ($quota > $_SESSION['quota_left']){
-					$quota = $_SESSION['quota_left'];
+				if ($_POST['quota'] > $_SESSION['quota_left']){
+					$_POST['quota'] = $_SESSION['quota_left'];
 						?>
 						<h3>
 							<?php print _("Quota exeeded");?>
@@ -264,62 +258,66 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								<?php print _("New quota is");?>:
 							</span>
 							<span style="font-weight: bolder;">
-								<?php echo $quota;?>
+								<?php echo $_POST['quota'];?>
 							</span>
 						</h3>
 						<?php
 				}
 				unset($_SESSION['quota_left']);
 			}
-			if ($password == $confirm_password){
-				$pwd = new password;
-			        $password = $pwd->encrypt($password, $CRYPT);
-			    	$query3="INSERT INTO accountuser (username, password, prefix, domain_name) VALUES ('" . $username . "','" . $password . "','" . $prefix . "','" . $domain . "')";
 
-				$cyr_conn = new cyradm;
-				$error=$cyr_conn -> imap_login();
-
-				if ($error!=0){
-					die ("Error $error");
-				}
-
-				$result=$handle->query($query3);
-
-				$query4 = "INSERT INTO virtual (alias, dest, username, status) values ( '" . $email . "@" . $domain . "' , '$username' , '$username' , '1')";
-
-				$result2 = $handle->query($query4);
-
-				if ($result and $result2){
-					?>
-					<h3>
-						<?php print _("Account successfully added to the Database");?>:
-						<span style="color: red;">
-						<?php echo $username;?>
-						</span>
-					</h3>
-					<?php
-				}
-
-				$result=$cyr_conn->createmb("user" . $seperator . $username);
-
-				if ($result){
-					?>
-					<h3>
-						<?php print _("Account succesfully added to the IMAP Subsystem");?>
-					</h3>
-					<?php
-				}
-				print $cyr_conn->setacl("user" . $seperator . $username, $CYRUS['ADMIN'], "lrswipcda");
-				$result = $cyr_conn->setmbquota("user" . $seperator . $username, $quota);
-				include WC_BASE . "/browseaccounts.php";
+			$cyr_conn = new cyradm;
+			$error = $cyr_conn -> imap_login();
+			if ($error != 0) {
+				die ("Error $error");
 			}
-			else{ # if password and confirm_password are not the same
-				print _("Passwords do not match");
+			
+			$pwd = new password;
+			$password = $pwd->encrypt($_POST['password'], $CRYPT);
+			
+			$query = "INSERT INTO accountuser (username, password, prefix, domain_name) VALUES ('".$username."','".$password."','".$prefix."','".$_POST['domain']."')";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
 			}
-		}
-	}
+
+			$query = "INSERT INTO virtual (alias, dest, username, status) values ( '".$_POST['email']."@".$_POST['domain']."','".$username."','".$username."','1')";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
+			?>
+				<h3>
+					<?php print _("Account successfully added to the Database");?>:
+					<span style="color: red;">
+					<?php echo $username;?>
+					</span>
+				</h3>
+			<?php
+
+			$result = $cyr_conn->createmb("user" . $seperator . $username);
+
+			if ($result) {
+				?>
+				<h3>
+					<?php print _("Account succesfully added to the IMAP Subsystem");?>
+				</h3>
+				<?php
+			}
+			$result = $cyr_conn->setacl("user" . $seperator . $username, $CYRUS['ADMIN'], "lrswipcda");
+			$result = $cyr_conn->setmbquota("user" . $seperator . $username, $_POST['quota']);
+			$_GET['domain'] = $_POST['domain'];
+			include WC_BASE . "/browseaccounts.php";
+		} // End of if (empty($_POST['confirmed']))
+	} else { // if ($authorized)
 		?>
+		<h3>
+			<?php print $err_msg;?>
+		</h3>
+			<a href="index.php?action=newaccount&domain=<?php echo $_POST['domain'];?>"><?php print _("Back");?></a>
+		<?php
+	} // End of if ($authorized)
+	?>
 	</td>
 </tr>
 <!-- #################### newaccount.php end #################### -->
-
