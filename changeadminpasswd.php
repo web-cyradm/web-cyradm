@@ -6,7 +6,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	exit();
 }
 ?>
-<!-- #################### editadminuser.php start #################### -->
+<!-- #################### Start main #################### -->
 <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="top">
@@ -21,7 +21,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		</h3>
 
 	<?php
-	if (empty($confirmed)){
+	if (!isset($_POST['confirmed'])){
 		?>
 		<form action="index.php" method="post">
 			<input type="hidden" name="action" value="changeadminpasswd">
@@ -87,28 +87,27 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		</form>
 		<?php
 	}
-	elseif (! empty($confirmed)){
+	else { // if (!isset($_POST['confirmed']))
 		if ($authorized){
-			if (!empty($new_password) && $new_password == $confirm_password){
-				$pwd = new password;
-				$new_password = $pwd->encrypt($new_password, $CRYPT);
-				# If the new_password field is not empty and the password matches, update the password
-				$query = "UPDATE adminuser SET password='$new_password' WHERE username='$_SESSION[user]'";
-				$result=$handle->query($query);
+			$pwd = new password;
+			$new_password = $pwd->encrypt($_POST['new_password'], $CRYPT);
+			# If the new_password field is not empty and the password matches, update the password
+			$query = "UPDATE adminuser SET password='".$_POST['new_password']."' WHERE username='".$_SESSION['user']."' AND password='".$_POST['old_password']."'";
+			$result =& $handle->query($query);
+			if (DB::isError($result) || $handle->affectedRows()==0) {
+				print _("Database error");
+				echo ".&nbsp;";
+				print _("Password not changed");
+			} else {
 				print _("Password successfully changed");
-			}
-			elseif ($new_password != $confirm_password){
-				print _("New passwords are not equal. Password not changed");
 			}
 		}
 		else {
 			print "<h3>".$err_msg."</h3>";
 		}
 		echo "</td></tr>\n";
-		include WC_BASE . "/setup.php";
+		include WC_BASE . "/settings.php";
 	}
 	?>
-	</td>
-</tr>
-<!-- #################### editadminuser.php end #################### -->
+<!-- #################### End main #################### -->
 

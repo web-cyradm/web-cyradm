@@ -51,7 +51,7 @@ $reserved=explode(",",$RESERVED);
 $setforward = $forwardto = (isset($_POST['setforward']))?($_POST['setforward']):('');
 
 # Connecting to database
-$handle = DB::connect($DB['DSN'],true);
+$handle =& DB::connect($DB['DSN'],true);
 if (DB::isError($handle)) {
 	die (_("Database error"));
 }
@@ -118,6 +118,14 @@ function ValidateMail($email) {
 		return 0;
 	} else {
 		return 1;
+	}
+}
+
+function ValidPassword($password) {
+	if (empty($password)) {
+		return FALSE;
+	} else {
+		return TRUE;
 	}
 }
 
@@ -344,14 +352,22 @@ if (! empty($action)){
 		break;
 ##################################### Check input if changeadminpasswd ###############################
 	case "changeadminpasswd":
-		if (! empty($confirmed)){
-			$pwd=new password;
-			$result=$pwd->check("adminuser",$_SESSION['user'],$_POST['old_password'],$CRYPT);
-			if ($result) {
-				$authorized = TRUE;
-			} else {
+		if (isset($_POST['confirmed'])){
+			if (!ValidPassword($_POST['old_password']) || !ValidPassword($_POST['new_password']) || !ValidPassword($_POST['confirm_password'])) {
 				$authorized = FALSE;
 				$err_msg = "Password incorrect";
+			} elseif ($_POST['new_password'] != $_POST['confirm_password']){
+				$authorized = FALSE;
+				$err_msg = _("New passwords are not equal. Password not changed");
+			} else {
+				$pwd=new password;
+				$result=$pwd->check("adminuser",$_SESSION['user'],$_POST['old_password'],$CRYPT);
+				if ($result) {
+					$authorized = TRUE;
+				} else {
+					$authorized = FALSE;
+					$err_msg = "Password incorrect";
+				}
 			}
 		}
 		break;
