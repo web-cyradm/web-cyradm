@@ -111,6 +111,7 @@ $nls['translator']['cs_CZ'] = '<a href="mailto:kania at gdi.cz">Robert Kania</a>
 $nls['translator']['da_DK'] = '<a href="mailto:kw atCombo.dk">Kenneth Wrang</a>';
 $nls['translator']['fr_FR'] = '<a href="mailto:mrjack at fastorama.com">Raphaël Jeudy</a>';
 $nls['translator']['de_DE'] = '<a href="mailto:m.muenz at maxonline.de">Michael Muenz</a> and <a href="mailto:luc at delouw.ch">Luc de Louw</a>'; 
+$nls['translator']['en_US'] = '<a href="mailto:m.muenz at maxonline.de">Michael Muenz</a>';
 $nls['translator']['es_ES'] = '<a href="mailto:rafasg at terra.es">Rafael Santamaria</a>';
 $nls['translator']['hu_HU'] = '<a href="mailto:zoltan at levardy.org">Zoltan Levardy</a>';
 $nls['translator']['it_IT'] = '<a href="mailto:forschner at web.de">Adrian Forschner</a>';
