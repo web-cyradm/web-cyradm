@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: Web-cyradm\n"
 "POT-Creation-Date: 2002-08-18 13:51+0200\n"
 "PO-Revision-Date: 2002-09-13 09:56+0300\n"
-"Last-Translator: Andrey Kolbasenko <edge@gts.smtn.stavropol.ru>\n"
+"Last-Translator: Denis Medvedev <a_mdl@mail.ru>\n"
 "Language-Team: Russian <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=koi8-r\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: adminuser.php:12
@@ -66,7 +66,6 @@ msgid "Delete adminuser"
 msgstr "Удалить админа"
 
 #: adminuser.php:108
-#, fuzzy
 msgid "No accounts fount"
 msgstr "Счетов не найдено"
 
@@ -75,21 +74,20 @@ msgid "Add administrator"
 msgstr "Добавить админа"
 
 #: auth.inc.php:99
-#, fuzzy
 msgid "Web-cyradm is for authorized users only."
 msgstr "Только для зарегистрированных пользователей"
 
 #: auth.inc.php:100
 msgid "Make sure you entered the right password."
-msgstr ""
+msgstr "Убедитесь что вы ввели правильный пароль"
 
 #: auth.inc.php:101
 msgid "Push the back button in your browser to try again."
-msgstr ""
+msgstr "Для того чтобы попытаться снова нажмите кнопку back в вашем браузере"
 
 #: auth.inc.php:102
 msgid "Your attempt to login has been stored."
-msgstr ""
+msgstr "Ваша попытка войти в систему была записана"
 
 #: browse.php:12
 msgid "Browse domains"
@@ -164,18 +162,16 @@ msgid "Set catch all"
 msgstr "Мусор ему"
 
 #: browseaccounts.php:99
-#, fuzzy
 msgid "Change Password"
 msgstr "Подтвердить пароль"
 
 #: browseaccounts.php:100
-#, fuzzy
 msgid "Vacation"
-msgstr "действия"
+msgstr "Cообщение о каникулах/отпуске"
 
 #: browseaccounts.php:101
 msgid "Forward"
-msgstr ""
+msgstr "Переслать"
 
 #: browseaccounts.php:126 editaccount.php:76
 msgid "out of"
@@ -212,30 +208,27 @@ msgstr "Ошибка базы данных, попробуйте еще раз"
 
 #: change_password.php:60
 msgid "Change password for account"
-msgstr ""
+msgstr "Сменить пароль для счета"
 
 #: change_password.php:72
-#, fuzzy
 msgid "New password"
 msgstr "Пароль"
 
 #: change_password.php:76
-#, fuzzy
 msgid "Confirm new password"
 msgstr "Подтвердить пароль"
 
 #: change_password.php:29
-#, fuzzy
 msgid "Password changed"
-msgstr "Пароль"
+msgstr "Пароль сменен "
 
 #: change_password.php:32
 msgid "Failure in changing password."
-msgstr ""
+msgstr "Не получилось сменить пароль"
 
 #: change_password.php:35
 msgid "New passwords are not equal. Password not changed"
-msgstr ""
+msgstr "Новые пароли не совпали. Смена паролей не произведена"
 
 #: deleteaccount.php:19
 msgid "Delete an Account from the System"
@@ -246,7 +239,6 @@ msgid "Do you really want to delete the user "
 msgstr "Вы действительно хотите удалить пользователя"
 
 #: deleteaccount.php:21
-#, fuzzy
 msgid "with all its defined Emailadresses"
 msgstr "со всеми его E-Mail адресами?"
 
@@ -255,12 +247,10 @@ msgid "Action cancelled, nothing deleted"
 msgstr "Действие отменено, ничего не удалили"
 
 #: deleteadminuser.php:12
-#, fuzzy
 msgid "Delete an Admin account from the System"
 msgstr "Удалить счет из системы"
 
 #: deleteadminuser.php:14
-#, fuzzy
 msgid "Do you really want to delete the Domain supervisor"
 msgstr "Вы действительно хотите удалить Домен"
 
@@ -318,15 +308,13 @@ msgstr "Удаление E-Mail адреса"
 
 #: editadminuser.php:5
 msgid "Change admin user for domain"
-msgstr ""
+msgstr "Сменить администратора для домена"
 
 #: editadminuser.php:81
-#, fuzzy
 msgid "successfully changed Database...."
 msgstr "успешно добавлен в базу"
 
 #: editadminuser.php:84 newadminuser.php:79
-#, fuzzy
 msgid "Database error"
 msgstr "Ошибка базы данных, попробуйте еще раз"
 
@@ -336,7 +324,7 @@ msgstr "Успешно изменен"
 
 #: editdomain.php:89
 msgid "Your are not allowed to change domains!"
-msgstr ""
+msgstr "Вам запрещено изменять домены!"
 
 #: editemail.php:63 newemail.php:53
 msgid "Emailadress"
@@ -424,15 +412,13 @@ msgstr "Зарегистрировать новый счет в домене"
 
 #: newaccount.php:27
 msgid "transport is not cyrus, unable to create account"
-msgstr ""
+msgstr "транспорт не cyrus, не могу создать счет "
 
 #: newaccount.php:43
-#, fuzzy
 msgid "Sorry, no more account allowed for domain"
 msgstr "Просмотр счетов для домена"
 
 #: newaccount.php:43
-#, fuzzy
 msgid "Maximum allowed accounts is"
 msgstr "Максимальное кол-во счетов"
 
@@ -457,22 +443,20 @@ msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "Счет успешно добавлен в IMAP подсистему"
 
 #: newadminuser.php:6
-#, fuzzy
 msgid "Add new admin user for domain"
 msgstr "Зарегистрировать новый счет в домене"
 
 #: newadminuser.php:8
 msgid "Please select a domain first"
-msgstr ""
+msgstr "пожалуйста выберите сначала домен"
 
 #: newadminuser.php:30
-#, fuzzy
 msgid "Admin Type"
-msgstr "тип админа"
+msgstr "Тип администратора"
 
 #: newadminuser.php:34
 msgid "Select \"Superuser\" for all domains"
-msgstr ""
+msgstr "Выберите \"Суперпользователя\" для всех доменов"
 
 #: newdomain.php:17
 msgid "Add new domain"
@@ -496,25 +480,25 @@ msgstr "Квота по-умолчанию в Кб"
 
 #: newdomain.php:47
 msgid "Standart Mailboxes"
-msgstr ""
+msgstr "Стандартные Почтовые ящики"
 
 #: newdomain.php:51
 msgid ""
 "emailadress where the default aliases should be mapped (empty means no "
 "mapping)"
-msgstr ""
+msgstr "Почтовый адрес куда должны указывать псевдонимы по умолчанию (пусто - не указывать никуда)"
 
 #: newdomain.php:59
 msgid "Mail transport"
-msgstr ""
+msgstr "Почтовый транспорт"
 
 #: newdomain.php:60
 msgid "Leave this as is, unless you know what you are doing"
-msgstr ""
+msgstr "Оставьте это как есть, изменяйте если вы хорошо понимаете что вы делаете."
 
 #: newdomain.php:125
 msgid "You are not allowed to add new domains"
-msgstr ""
+msgstr "Вам нельзя заводить новые домены"
 
 #: newemail.php:25
 msgid "Successfully added"
@@ -548,100 +532,97 @@ msgstr "Отмена"
 # Error messages
 #: editdomain.php:61
 msgid "Not yet supported, change will be ignored"
-msgstr ""
+msgstr "Еще не поддерживается, изменения будут проигнорированы"
 
 #: deleteaccount.php:64 editadminuser.php:94 newadminuser.php:89
 msgid ""
 "Security violation detected, action cancelled. Your attempt has been logged."
-msgstr ""
+msgstr "Обнаружено нарушение защиты, действие отменено. Ваша попытка была запротоколирована"
 
 #: failed.php:49
 msgid "Login failed"
-msgstr ""
+msgstr "Неудачный вход"
 
 #: forwardaccount.php:41
-#, fuzzy
 msgid "Forward for account"
 msgstr "Всего счетов"
 
 #: forwardalias.php:102
-#, fuzzy
 msgid "Forward for emailadress"
-msgstr "Новый адрес E-Mail"
+msgstr "Пересылать на адрес E-Mail"
 
 #: forwardsalias.php:52
 msgid "Forward set"
-msgstr ""
+msgstr "Пересылка установлена"
 
 #: forwardalias.php:53
 msgid "Failure in setting forward"
-msgstr ""
+msgstr "Неудача при установке адреса пересылки"
 
 #: forwardsalias.php:54
-#, fuzzy
 msgid "Wrong password"
 msgstr "Подтвердить пароль"
 
 #: forwardsalias.php:68
 msgid "Forwarding removed"
-msgstr ""
+msgstr "Пересылка удалена"
 
 #: forwardsalias.php:69
 msgid "Failure in removing forwarding"
-msgstr ""
+msgstr "Невозможно удалить пересылку"
 
 #: forwardalias.php:149
 msgid "Set forwarding to"
-msgstr ""
+msgstr "Установить пересылку на"
 
 #: forwardalias.php:151
 msgid "Keep a copy in the user's mailbox"
-msgstr ""
+msgstr "Оставлять копию в почтовом ящике пользователя"
 
 #: forwardalias.php:152
 msgid "Remove forwarding"
-msgstr ""
+msgstr "Удалить пересылку"
 
 #: vacation.php:120
 msgid "Vacation message for emailadress"
-msgstr ""
+msgstr "Сообщение о каникулах/отпуске для данного e-mail"
 
 #: vacation.php:132
 msgid "Set vacation notice"
-msgstr ""
+msgstr "Установить сообщение о каникулах/отпуске"
 
 #: vacation.php:134
 msgid "Remove vacation notice"
-msgstr ""
+msgstr "Удалить сообщение о каникулах/отпуске"
 
 #: vacation.php:58
 msgid "Vacation notice set"
-msgstr ""
+msgstr "Сообщение о каникулах/отпуске установлено"
 
 #: vacation.php:59
 msgid "Failed to activate vacation"
-msgstr ""
+msgstr "Не удалось активизировать  сообщение о каникулах/отпуске"
 
 #: vacation.php:62
 msgid "Failure in modifying vacation notice"
-msgstr ""
+msgstr "Не удалось модифицировать сообщение о каникулах/отпуске "
 
 #: forwards.php:71 vacation.php:65 vacation.php:88
 msgid "Failed to login"
-msgstr ""
+msgstr "Не удалось войти в систему"
 
 #: vacation.php:78
 msgid "Failure in unseting vacation notice"
-msgstr ""
+msgstr "Не удалось выключить сообщение о каникулах/отпуске"
 
 #: vacation.php:82
 msgid "Vacation notice removed"
-msgstr ""
+msgstr "Сообщение о каникулах/отпуске удалено"
 
 #: vacation.php:84
 msgid "Failure in removing vacation notice"
-msgstr ""
+msgstr "Не удалось удалить сообщение о каникулах/отпуске "
 
 #: forwardalias:75 vacation:93
 msgid "Not possible"
-msgstr ""
+msgstr "Не возможно"
