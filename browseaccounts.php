@@ -27,63 +27,42 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		</span>
 	</h3>
 	<?php
+	if (isset($_GET['row_pos'])) $_SESSION['account_row_pos'] = $_GET['row_pos'];
 
-	$row_pos = (empty($row_pos))?(0):($row_pos);
-
-	$query = "SELECT * FROM accountuser where domain_name='$domain' ORDER BY username";
-	$handle = DB::connect($DB['DSN'], true);
-	if (DB::isError($handle)) {
+	$query = "SELECT * FROM accountuser where domain_name='".$_GET['domain']."' ORDER BY username";
+	$result = $handle->query($query);
+	if (DB::isError($result)) {
 		die (_("Database error"));
 	}
-
-	$result = $handle->limitQuery($query,$row_pos,$_SESSION['maxdisplay']);
 	$cnt = $result->numRows($result);
 
-	$query2 = "SELECT * FROM accountuser where domain_name='$domain' ORDER BY username";
-	$result2 = $handle->query($query2);
-
-
-	$total=$result2->numRows($result2);
-
-	$b = 0;
 	if ($cnt != 0){
-		printf ("%s: %d", _("Total accounts"), $total);
-		print "<br>"._("Displaying from position:")." $row_pos";
+		printf ("%s: %d", _("Total accounts"), $cnt);
+		print "<br>"._("Displaying from position:")." ".($_SESSION['account_row_pos']+1);
 		?>
 		<table cellspacing="2" cellpadding="0">
 			<tr>
 				<td class="navi">
-					<a href="index.php?action=newaccount&amp;domain=<?php echo $domain; ?>"
+					<a href="index.php?action=newaccount&amp;domain=<?php echo $_GET['domain']; ?>"
 					><?php print _("Add new account");?></a>
 				</td>
 
 				<?php
-				//$prev = $row_pos - 10;
-				$prev = $row_pos - $_SESSION['maxdisplay'];
-				$next = $row_pos + $_SESSION['maxdisplay'];
+				$prev = $_SESSION['account_row_pos'] - $_SESSION['account_maxdisplay'];
+				$next = $_SESSION['account_row_pos'] + $_SESSION['account_maxdisplay'];
 				
-				if ($row_pos < $_SESSION['maxdisplay']){
-					$_linkP = '#';
+				if ($_SESSION['account_row_pos'] < $_SESSION['account_maxdisplay']){
+					print "<td class=\"navi\"><a>"._("Previous entries")."</a></td>";
 				} else {
-					$_linkP = sprintf('index.php?action=accounts&amp;domain=%s&amp;row_pos=%d',
-						$domain, $prev);
+					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=".$_GET['domain']."&row_pos=".$prev."\">"._("Previous entries") ."</a></td>";
 				}
 
-				if ($next > $total){
-					$_linkN = '#';
+				if ($next >= $cnt){
+					print "<td class=\"navi\"><a>"._("Next entries")."</a></td>";
 				} else {
-					$_linkN = sprintf('index.php?action=accounts&amp;domain=%s&amp;row_pos=%d',
-						$domain, $next);
+					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=".$_GET['domain']."&row_pos=".$next."\">"._("Next entries") ."</a></td>";
 				}
 				?>
-				
-				<td class="navi">
-					<a href="<?php echo $_linkP;?>"><?php print _("Previous entries");?></a>
-				</td>
-
-				<td class="navi">
-					<a href="<?php echo $_linkN;?>"><?php print _("Next entries");?></a>
-				</td>
 			</tr>
 		</table>
 
@@ -94,9 +73,15 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						<?php print _("action");?>
 					</th>
 
+					<th>
+						<?php print _("Email address");?>
+					</th>
+
+					<th>
+						<?php print _("Username");?>
+					</th>
 					<?php
-					$_heads = array(
-						_("Email address"), _("Username"), 
+					$_heads = array( 
 						_("Last login"), _("Quota used")
 					);
 					foreach ($_heads as $_head){
@@ -106,7 +91,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				</tr>
 
 				<?php
-				for ($c=0;$c<$cnt;$c++){
+				for ($c=$_SESSION['account_row_pos']; $c < (($next>$cnt)?($cnt):($next)); $c++){
 
 					if ($c%2==0){
 						$cssrow = "row1";
@@ -120,11 +105,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 					$query2 = "SELECT * FROM virtual WHERE username='$username'"; # AND alias  !='$username'"; 
 					$result2 = $handle->query($query2);
+					if (DB::isError($result2)) {
+						die (_("Database error"));
+					}
 					$cnt2 = $result2->numRows($result2);
 					$row = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 					$alias = $row['alias'];
 
-					$query3 = "SELECT * FROM log WHERE user='" . $username . "' ORDER BY time DESC";
+					$query3 = "SELECT * FROM log WHERE user='".$username."' ORDER BY time DESC";
 					$result3 = $handle->query($query3); 
 					if (! DB::isError($result3)){
 						$row3 = $result3->fetchRow(DB_FETCHMODE_ASSOC, 0);
@@ -137,7 +125,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						$lastlogin=_("n/a");
 					}
 					$_dom_user = sprintf('&amp;domain=%s&amp;username=%s',
-						$domain, $username);
+						$_GET['domain'], $username);
 					$_dom_user_alias = $_dom_user . '&amp;alias=' . $alias;
 					?>
 
@@ -177,6 +165,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							}
 				                        $query4 = "select * from virtual where alias='" . $username . "'";
 							$result4 = $handle->query($query4);
+							if (DB::isError($result4)) {
+								die (_("Database error"));
+							}
 							$row4 = $result4->fetchRow(DB_FETCHMODE_ASSOC, 0);
 							if (is_array($row4)){
 							    #print "<hr color=\"ffffff\"><b>" . _("Forwards") . ":</b><br>";
@@ -248,7 +239,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		<table>
 			<tr>
 				<td class="navi">
-					<a href="index.php?action=newaccount&amp;domain=<?php echo $domain;?>&amp;username=<?php echo $username;?>">
+					<a href="index.php?action=newaccount&amp;domain=<?php echo $_GET['domain'];?>">
 					<?php print _("Add new account");
 					?></a>
 				</td>
