@@ -1,24 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
 >Questions and Answers</TITLE
 ><META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
-HREF="index.html"><LINK
+HREF="t1.html"><LINK
 REL="PREVIOUS"
 TITLE="Further Information"
-HREF="moreinfo.html"></HEAD
+HREF="moreinfo.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
 ><BODY
 CLASS="SECT1"
-BGCOLOR="#FFFFFF"
-TEXT="#000000"
-LINK="#0000FF"
-VLINK="#840084"
-ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
@@ -63,7 +60,9 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="FAQ">11. Questions and Answers</H1
+NAME="FAQ"
+>Questions and Answers</A
+></H1
 ><P
 >	Here I answer the questions which I got from users. If you don't find an answer feel free to contact me</P
 ><DIV
@@ -71,52 +70,58 @@ CLASS="QANDASET"
 ><DL
 ><DT
 >1. <A
-HREF="faq.html#AEN767"
+HREF="faq.html#AEN979"
 >FAQ</A
 ></DT
 ><DD
 ><DL
 ><DT
->11.1.1. <A
-HREF="faq.html#AEN770"
+>1.1. <A
+HREF="faq.html#AEN982"
 >Does web-cyradm only support users like »test0001« ? I'd like to have a more descriptive username</A
 ></DT
 ><DT
->11.1.2. <A
-HREF="faq.html#AEN776"
+>1.2. <A
+HREF="faq.html#AEN988"
+>	Messages are bouncing. Postfix/pipe complains that "Mailbox does not exist". Whats wrong?
+	</A
+></DT
+><DT
+>1.3. <A
+HREF="faq.html#AEN993"
 >	web-cyradm complains about »Fatal error: Call to undefined function: bindtextdomain()
  	in /www/web-cyradm-0.5.3/index.php on line 46«, whats wrong?
      </A
 ></DT
 ><DT
->11.1.3. <A
-HREF="faq.html#AEN783"
+>1.4. <A
+HREF="faq.html#AEN1000"
 >	I got a error from Web-cyradm like this »Fatal error: Call to undefined function: query() in
 	/usr/local/httpd/htdocs/web-cyradm/auth.inc.php on line 17«
 	</A
 ></DT
 ><DT
->11.1.4. <A
-HREF="faq.html#AEN789"
+>1.5. <A
+HREF="faq.html#AEN1006"
 >      Why MySQL and not LDAP?
      </A
 ></DT
 ><DT
->11.1.5. <A
-HREF="faq.html#AEN794"
+>1.6. <A
+HREF="faq.html#AEN1011"
 >      Why Postfix and not Qmail?
      </A
 ></DT
 ><DT
->11.1.6. <A
-HREF="faq.html#AEN799"
+>1.7. <A
+HREF="faq.html#AEN1016"
 >      I got a Error: "Temporary lookup failure"
      </A
 ></DT
 ><DT
->11.1.7. <A
-HREF="faq.html#AEN806"
->      Does this HOWTO also work on other platforms?
+>1.8. <A
+HREF="faq.html#AEN1023"
+>      For what platforms does this HOWTO work?
      </A
 ></DT
 ></DL
@@ -126,15 +131,19 @@ HREF="faq.html#AEN806"
 CLASS="QANDADIV"
 ><H3
 ><A
-NAME="AEN767">1. FAQ</H3
+NAME="AEN979"
+></A
+>1. FAQ</H3
 ><DIV
 CLASS="QANDAENTRY"
 ><DIV
 CLASS="QUESTION"
 ><P
 ><A
-NAME="AEN770"><B
->11.1.1. </B
+NAME="AEN982"
+></A
+><B
+>1.1. </B
 >Does web-cyradm only support users like »test0001« ? I'd like to have a more descriptive username</P
 ></DIV
 ><DIV
@@ -157,8 +166,34 @@ CLASS="QANDAENTRY"
 CLASS="QUESTION"
 ><P
 ><A
-NAME="AEN776"><B
->11.1.2. </B
+NAME="AEN988"
+></A
+><B
+>1.2. </B
+>	Messages are bouncing. Postfix/pipe complains that "Mailbox does not exist". Whats wrong?
+	</P
+></DIV
+><DIV
+CLASS="ANSWER"
+><P
+><B
+> </B
+>	Check that the cyrus login on web-cyradm (config.inc.php) is correct.
+	The username and password must exist in MySQL on table accountuser. 
+	Web-cyradm will not complain if the cyrus login info is incorrect.
+	</P
+></DIV
+></DIV
+><DIV
+CLASS="QANDAENTRY"
+><DIV
+CLASS="QUESTION"
+><P
+><A
+NAME="AEN993"
+></A
+><B
+>1.3. </B
 >	web-cyradm complains about »Fatal error: Call to undefined function: bindtextdomain()
  	in /www/web-cyradm-0.5.3/index.php on line 46«, whats wrong?
      </P
@@ -187,8 +222,10 @@ CLASS="QANDAENTRY"
 CLASS="QUESTION"
 ><P
 ><A
-NAME="AEN783"><B
->11.1.3. </B
+NAME="AEN1000"
+></A
+><B
+>1.4. </B
 >	I got a error from Web-cyradm like this »Fatal error: Call to undefined function: query() in
 	/usr/local/httpd/htdocs/web-cyradm/auth.inc.php on line 17«
 	</P
@@ -202,8 +239,8 @@ CLASS="ANSWER"
 	PEAR is a separate package, check out the package base of your distribution. I strongly suggest to update
 	to the most recent version of PHP anyway, because a lot of bugs have been fixed.</P
 ><P
->Another reason could be an authentication error with MySQL. Be sure the user »mail« has enought
-	rights to acccess the database and tables.</P
+>Another reason could be an authentication error with MySQL. Be sure the user »mail« has enough
+	rights to access the database and tables.</P
 ></DIV
 ></DIV
 ><DIV
@@ -212,8 +249,10 @@ CLASS="QANDAENTRY"
 CLASS="QUESTION"
 ><P
 ><A
-NAME="AEN789"><B
->11.1.4. </B
+NAME="AEN1006"
+></A
+><B
+>1.5. </B
 >      Why MySQL and not LDAP?
      </P
 ></DIV
@@ -235,8 +274,10 @@ CLASS="QANDAENTRY"
 CLASS="QUESTION"
 ><P
 ><A
-NAME="AEN794"><B
->11.1.5. </B
+NAME="AEN1011"
+></A
+><B
+>1.6. </B
 >      Why Postfix and not Qmail?
      </P
 ></DIV
@@ -258,8 +299,10 @@ CLASS="QANDAENTRY"
 CLASS="QUESTION"
 ><P
 ><A
-NAME="AEN799"><B
->11.1.6. </B
+NAME="AEN1016"
+></A
+><B
+>1.7. </B
 >      I got a Error: "Temporary lookup failure"
      </P
 ></DIV
@@ -275,7 +318,7 @@ CLASS="FILENAME"
 > and 
       <TT
 CLASS="FILENAME"
->/usr/local/mysql/var/&#60;hostname&#62;.err</TT
+>/usr/local/mysql/var/&lt;hostname&gt;.err</TT
 > to track the error.
      </P
 ></DIV
@@ -286,9 +329,11 @@ CLASS="QANDAENTRY"
 CLASS="QUESTION"
 ><P
 ><A
-NAME="AEN806"><B
->11.1.7. </B
->      Does this HOWTO also work on other platforms?
+NAME="AEN1023"
+></A
+><B
+>1.8. </B
+>      For what platforms does this HOWTO work?
      </P
 ></DIV
 ><DIV
@@ -296,10 +341,10 @@ CLASS="ANSWER"
 ><P
 ><B
 > </B
->      Unsure. I personally compiled MySQL and Apache on AIX 4.3 and 5.1L (php does not run properly on AIX), 
-      Solaris 6/7/8 and HP-UX. Cyrus, pam_mysql and cyrus I never tried. On Solaris there is maybe a 
-      chance to get pam_mysql running. On AIX there is no PAM, but a similar mechanism. In short: 
-      Try it, and let me know if were successful
+>      It is primarily for Linux. Until now I only tested it on Linux/IA32. Most probably it will also work on other 
+      architectures.
+      FreeBSD is reported working fine. AIX has problems with at least PHP. Please report if you got it running 
+      on other platform, so I can update this section.
      </P
 ></DIV
 ></DIV
@@ -331,7 +376,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="index.html"
+HREF="t1.html"
 ACCESSKEY="H"
 >Home</A
 ></TD

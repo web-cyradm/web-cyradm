@@ -1,21 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
 >Postfix-Cyrus-Web-cyradm-HOWTO</TITLE
 ><META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="NEXT"
-TITLE="Introduction"
-HREF="intro.html"></HEAD
+TITLE="Technologies"
+HREF="tech.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
 ><BODY
 CLASS="ARTICLE"
-BGCOLOR="#FFFFFF"
-TEXT="#000000"
-LINK="#0000FF"
-VLINK="#840084"
-ALINK="#0000FF"
 ><DIV
 CLASS="ARTICLE"
 ><DIV
@@ -23,7 +20,9 @@ CLASS="TITLEPAGE"
 ><H1
 CLASS="TITLE"
 ><A
-NAME="AEN2">Postfix-Cyrus-Web-cyradm-HOWTO</H1
+NAME="AEN2"
+>Postfix-Cyrus-Web-cyradm-HOWTO</A
+></H1
 ><H3
 CLASS="AUTHOR"
 ><A
@@ -36,7 +35,13 @@ CLASS="AFFILIATION"
 CLASS="ADDRESS"
 ><P
 CLASS="ADDRESS"
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;luc at delouw.ch<br>
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<CODE
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto:luc at delouw.ch"
+>luc at delouw.ch</A
+>&#62;</CODE
+><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P
 ></DIV
 ></DIV
@@ -53,6 +58,57 @@ COLSPAN="3"
 ><B
 >Revision History</B
 ></TH
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.2.6</TD
+><TD
+ALIGN="LEFT"
+>2004-03-30</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>Added minor additions and corrected to amavisd-new, corrected cronjob-time for freshclam</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.2.5</TD
+><TD
+ALIGN="LEFT"
+>2004-03-28</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>Added Anti-Virus and SPAM methods (amavisd-new, spamassassin, clamav), updated cyrus-imapd section with update instructions, added instruction to restrict imapd admin access.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 1.2.4</TD
+><TD
+ALIGN="LEFT"
+>2003-11-30</TD
+><TD
+ALIGN="LEFT"
+>Revised by: ldl</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>Input from English proofreading, minor correction and enhancements from user-input, updated software mentioned in the HOWTO</TD
 ></TR
 ><TR
 ><TD
@@ -103,7 +159,7 @@ ALIGN="LEFT"
 ><TD
 ALIGN="LEFT"
 COLSPAN="3"
->Nonofficial testrelease: Added lots of fixes and updates. Added OpenSSL and more pam related stuff.</TD
+>Non-official test-release: Added lots of fixes and updates. Added OpenSSL and more pam related stuff.</TD
 ></TR
 ><TR
 ><TD
@@ -154,7 +210,7 @@ ALIGN="LEFT"
 ><TD
 ALIGN="LEFT"
 COLSPAN="3"
->Added sasl_mech_list: PLAIN to imapd.conf, added web-cyradm Mailinglist, added more
+>Added sasl_mech_list: PLAIN to imapd.conf, added web-cyradm mailinglist, added more
 		to web-cyradm</TD
 ></TR
 ><TR
@@ -322,9 +378,11 @@ COLSPAN="3"
 ><DIV
 ><DIV
 CLASS="ABSTRACT"
-><A
-NAME="AEN86"><P
+><P
 ></P
+><A
+NAME="AEN101"
+></A
 ><P
 >	This document guides you through the installation of the Postfix mail transportation agent (MTA), 
 	the Cyrus IMAP server. The goal is a fully functional high-performance 
@@ -344,317 +402,380 @@ CLASS="TOC"
 >Table of Contents</B
 ></DT
 ><DT
->1. <A
-HREF="intro.html"
+><A
+HREF="t1.html#INTRO"
 >Introduction</A
 ></DT
-><DD
-><DL
 ><DT
->1.1. <A
-HREF="intro.html#AEN96"
->Contributors and Contacts</A
-></DT
-><DT
->1.2. <A
-HREF="intro.html#AEN100"
->Why I wrote this document</A
-></DT
-><DT
->1.3. <A
-HREF="intro.html#COPYRIGHT"
->Copyright Information</A
-></DT
-><DT
->1.4. <A
-HREF="intro.html#DISCLAIMER"
->Disclaimer</A
-></DT
-><DT
->1.5. <A
-HREF="intro.html#NEWVERSIONS"
->New Versions</A
-></DT
-><DT
->1.6. <A
-HREF="intro.html#CREDITS"
->Credits</A
-></DT
-><DT
->1.7. <A
-HREF="intro.html#FEEDBACK"
->Feedback</A
-></DT
-><DT
->1.8. <A
-HREF="intro.html#TRANSLATIONS"
->Translations</A
-></DT
-></DL
-></DD
-><DT
->2. <A
+><A
 HREF="tech.html"
 >Technologies</A
 ></DT
-><DD
-><DL
 ><DT
->2.1. <A
-HREF="tech.html#POSTFIX"
->The Postfix MTA</A
-></DT
-><DT
->2.2. <A
-HREF="tech.html#CYRUS"
->Cyrus IMAP</A
-></DT
-><DT
->2.3. <A
-HREF="tech.html#SASL"
->Cyrus SASL</A
-></DT
-><DT
->2.4. <A
-HREF="tech.html#OPENSSL"
->OpenSSL</A
-></DT
-><DT
->2.5. <A
-HREF="tech.html#MYSQL"
->MySQL Database</A
-></DT
-><DT
->2.6. <A
-HREF="tech.html#PAM-MYSQL"
->pam_mysql</A
-></DT
-><DT
->2.7. <A
-HREF="tech.html#WEB-CYRADM"
->Web-cyradm Webinterface</A
-></DT
-></DL
-></DD
-><DT
->3. <A
+><A
 HREF="install.html"
 >Getting and installing the software</A
 ></DT
-><DD
-><DL
 ><DT
->3.1. <A
-HREF="install.html#MYSQL-INSTALL"
->Getting and installing MySQL</A
-></DT
-><DT
->3.2. <A
-HREF="install.html#BERKELEY-DB"
->Getting and installing Berkeley DB</A
-></DT
-><DT
->3.3. <A
-HREF="install.html#AEN275"
->Getting and installing OpenSSL</A
-></DT
-><DT
->3.4. <A
-HREF="install.html#CYRUS-INSTALL"
->Getting and installing Cyrus SASL and IMAP</A
-></DT
-><DT
->3.5. <A
-HREF="install.html#POSTFIX-INSTALL"
->Getting and installing Postfix</A
-></DT
-><DT
->3.6. <A
-HREF="install.html#PAM-INSTALL"
->Getting and installing PAM</A
-></DT
-><DT
->3.7. <A
-HREF="install.html#PAM-MYSQL-INSTALL"
->Getting and installing pam_mysql</A
-></DT
-><DT
->3.8. <A
-HREF="install.html#WEB-CYRADM-INSTALL"
->Getting and installing Web-cyradm</A
-></DT
-></DL
-></DD
-><DT
->4. <A
+><A
 HREF="mysql-config.html"
 >Configuring MySQL</A
 ></DT
-><DD
-><DL
 ><DT
->4.1. <A
-HREF="mysql-config.html#MYSQL-CONFIG-SECURING"
->Securing MySQL</A
-></DT
-><DT
->4.2. <A
-HREF="mysql-config.html#MYSQL-RINETD"
->Setting up rinetd</A
-></DT
-></DL
-></DD
-><DT
->5. <A
+><A
 HREF="pam-config.html"
 >Configuring PAM</A
 ></DT
 ><DT
->6. <A
+><A
 HREF="postfix-config.html"
 >Configuring Postfix</A
 ></DT
-><DD
-><DL
 ><DT
->6.1. <A
-HREF="postfix-config.html#POSTFIX-MASTER"
->master.cf</A
-></DT
-><DT
->6.2. <A
-HREF="postfix-config.html#POSTFIX-MAIN"
->main.cf</A
-></DT
-></DL
-></DD
-><DT
->7. <A
+><A
 HREF="cyrus-config.html"
 >Configuring Cyrus IMAP</A
 ></DT
-><DD
-><DL
 ><DT
->7.1. <A
-HREF="cyrus-config.html#CYRUS-CONFIGFILES"
->Creating the config files</A
-></DT
-><DT
->7.2. <A
-HREF="cyrus-config.html#CYRUS-DIRECTORIES"
->Creating the directories</A
-></DT
-><DT
->7.3. <A
-HREF="cyrus-config.html#CH-ATTRIB"
->Changing the filesystem attributes</A
-></DT
-></DL
-></DD
-><DT
->8. <A
+><A
 HREF="web-cyradm-config.html"
 >Configuring Web-cyradm</A
 ></DT
-><DD
-><DL
 ><DT
->8.1. <A
-HREF="web-cyradm-config.html#AEN565"
->Cyrus setup</A
-></DT
-><DT
->8.2. <A
-HREF="web-cyradm-config.html#AEN569"
->Database setup</A
-></DT
-><DT
->8.3. <A
-HREF="web-cyradm-config.html#AEN574"
->Default Quota</A
-></DT
-><DT
->8.4. <A
-HREF="web-cyradm-config.html#AEN578"
->Crypted passwords</A
-></DT
-><DT
->8.5. <A
-HREF="web-cyradm-config.html#AEN589"
->Usernames</A
-></DT
-></DL
-></DD
-><DT
->9. <A
+><A
 HREF="test.html"
 >Testing the setup</A
 ></DT
-><DD
-><DL
 ><DT
->9.1. <A
-HREF="test.html#TEST-RUNNING"
->(Re-)Starting the daemons</A
+><A
+HREF="spam-and-virus-intro.html"
+>Fighting against Viruses and SPAM</A
 ></DT
 ><DT
->9.2. <A
-HREF="test.html#TESTING-WEB-CYRADM"
->Testing Web-cyradm</A
+><A
+HREF="installing-anti-spam.html"
+>The software needed against viruses and SPAM</A
 ></DT
 ><DT
->9.3. <A
-HREF="test.html#TESTING-POSTFIX"
->Testing postfix</A
-></DT
-><DT
->9.4. <A
-HREF="test.html#TESTING-CYRUS"
->Testing the IMAP functionality</A
-></DT
-></DL
-></DD
-><DT
->10. <A
+><A
 HREF="moreinfo.html"
 >Further Information</A
 ></DT
-><DD
-><DL
 ><DT
->10.1. <A
-HREF="moreinfo.html#NEWSGROUPS"
->News groups</A
-></DT
-><DT
->10.2. <A
-HREF="moreinfo.html#MAILLISTS"
->Mailing Lists</A
-></DT
-><DT
->10.3. <A
-HREF="moreinfo.html#HOWTO"
->HOWTO</A
-></DT
-><DT
->10.4. <A
-HREF="moreinfo.html#LOCAL-RES"
->Local Resources</A
-></DT
-><DT
->10.5. <A
-HREF="moreinfo.html#WEB"
->Web Sites</A
-></DT
-></DL
-></DD
-><DT
->11. <A
+><A
 HREF="faq.html"
 >Questions and Answers</A
 ></DT
 ></DL
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="INTRO"
+>Introduction</A
+></H1
+><P
+>   The cyrus part is only valid for Cyrus-IMAP 2.1.x and Cyrus-SASL 2.1.x. If you plan to use Cyrus-IMAP 2.0.x
+   then please consult the deprecated version 1.0.x of this HOWTO.</P
+><P
+>  I strongly recommend that you upgrade to Cyrus Version 2.1.x. If you do so, you will have a better ability to get
+  valuable support from the user community</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN111"
+>Contributors and Contacts</A
+></H2
+><P
+>First I would thank all those people who sent questions and suggestions that made the
+	further development of this document possible. It shows me that sharing knowledge is the right way.
+	I would encourage you to send me more suggestion, just write me an email <CODE
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto:luc at delouw.ch"
+>luc at delouw.ch</A
+>&#62;</CODE
+>
+	</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN115"
+>Why I wrote this document</A
+></H2
+><P
+>There are different approaches on how to set up different mailsystems. Most documents that are available are
+	related to Sendmail, procmail, WU-IMAPd and friends. These packages are very good but are unfortunately very
+	inflexible in their user administration.
+	</P
+><P
+>For a long time I was testing alternative MTA's like qmail, postfix and exim, in conjunction with IMAP/POP-servers like 
+	Cyrus, vpopmail, Courier IMAP and others.</P
+><P
+>At the end of the day, from my point of view the couple Postfix/Cyrus seems to be the
+	most flexible and best performing solution.</P
+><P
+>All these combinations of software had one thing in common: their was very little documentation available
+	describing how these packages work  together with each other.
+	To install the software, lot of effort has be spent to get all information needed to get all the 
+	software running.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="COPYRIGHT"
+>Copyright Information</A
+></H2
+><P
+>    This document is copyrighted (c) 2002, 2003, 2004 Luc de Louw and is
+    distributed under the terms of the Linux Documentation Project
+    (LDP) license, stated below. 
+   </P
+><P
+>    Unless otherwise stated, Linux HOWTO documents are
+    copyrighted by their respective authors. Linux HOWTO documents may
+    be reproduced and distributed in whole or in part, in any medium
+    physical or electronic, as long as this copyright notice is
+    retained on all copies. Commercial redistribution is allowed and
+    encouraged; however, the author would like to be notified of any
+    such distributions.
+   </P
+><P
+>    All translations, derivative works, or aggregate works
+    incorporating any Linux HOWTO documents must be covered under this
+    copyright notice. That is, you may not produce a derivative work
+    from a HOWTO and impose additional restrictions on its
+    distribution. Exceptions to these rules may be granted under
+    certain conditions; please contact the Linux HOWTO coordinator at
+    the address given below.
+   </P
+><P
+>    In short, we wish to promote dissemination of this
+    information through as many channels as possible. However, we do
+    wish to retain copyright on the HOWTO documents, and would like to
+    be notified of any plans to redistribute the HOWTOs.
+   </P
+><P
+>    If you have any questions, please contact 
+    <CODE
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto:linux-howto at metalab.unc.edu"
+>linux-howto at metalab.unc.edu</A
+>&#62;</CODE
+>
+   </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="DISCLAIMER"
+>Disclaimer</A
+></H2
+><P
+>    No liability for the contents of this documents can be accepted.
+    Use the concepts, examples and other content at your own risk.
+    As this is a new edition of this document, there may be errors
+    and inaccuracies, that may of course be damaging to your system.
+    Proceed with caution, and although this is highly unlikely,
+    the author(s) do not take any responsibility for that.
+   </P
+><P
+>    All copyrights are held by their by their respective owners, unless
+    specifically noted otherwise.  Use of a term in this document
+    should not be regarded as affecting the validity of any trademark
+    or service mark.
+   </P
+><P
+>    Naming of particular products or brands should not be seen 
+    as endorsements.
+   </P
+><P
+>    You are strongly recommended to take a backup of your system 
+    before major installation and backups at regular intervals.
+   </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="NEWVERSIONS"
+>New Versions</A
+></H2
+><P
+>New version of this document are announced on freshmeat</P
+><P
+>    The latest version of this document can be obtained from
+    <A
+HREF="http://www.delouw.ch/linux"
+TARGET="_top"
+>http://www.delouw.ch/linux</A
+> 
+   </P
+><P
+>   <P
+></P
+><UL
+><LI
+><P
+>      <A
+HREF="http://www.delouw.ch/linux/Postfix-Cyrus-Web-cyradm-HOWTO/html/index.html"
+TARGET="_top"
+>HTML</A
+>.
+     </P
+></LI
+><LI
+><P
+>      <A
+HREF="http://www.delouw.ch/linux/Postfix-Cyrus-Web-cyradm-HOWTO/Postfix-Cyrus-Web-cyradm-HOWTO.ps"
+TARGET="_top"
+>	Postscript (ISO A4 format)</A
+>.
+     </P
+></LI
+><LI
+><P
+>       <A
+HREF="http://www.delouw.ch/linux/Postfix-Cyrus-Web-cyradm-HOWTO/Postfix-Cyrus-Web-cyradm-HOWTO.pdf"
+TARGET="_top"
+>Acrobat PDF</A
+>.
+     </P
+></LI
+><LI
+><P
+>       <A
+HREF="http://www.delouw.ch/linux/Postfix-Cyrus-Web-cyradm-HOWTO/Postfix-Cyrus-Web-cyradm-HOWTO.sgml"
+TARGET="_top"
+>SGML Source</A
+>.
+     </P
+></LI
+><LI
+><P
+>      <A
+HREF="http://www.delouw.ch/linux/Postfix-Cyrus-Web-cyradm-HOWTO/Postfix-Cyrus-Web-cyradm-HOWTO.tar.gz"
+TARGET="_top"
+>HTML gzipped tarball</A
+>.
+     </P
+></LI
+></UL
+>
+   </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="CREDITS"
+>Credits</A
+></H2
+><P
+></P
+><UL
+><LI
+><P
+>	Martynas Bieliauskas <CODE
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto:martynas at inet.lt"
+>martynas at inet.lt</A
+>&#62;</CODE
+> submitted a good idea how to restrict the cyrus admin to localhost only.
+	</P
+></LI
+><LI
+><P
+>	Michael Muenz <CODE
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto:m.muenz at maxonline.de"
+>m.muenz at maxonline.de</A
+>&#62;</CODE
+> for his help with SMTP Authentication
+	</P
+></LI
+><LI
+><P
+>	Ron Wheeler <CODE
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto:rwheeler at artifact-software.com"
+>rwheeler at artifact-software.com</A
+>&#62;</CODE
+> for his help with editing for readability
+	</P
+></LI
+><LI
+><P
+>    The nice people at <CODE
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto: discuss at tldp.org"
+> discuss at tldp.org</A
+>&#62;</CODE
+> for
+    supporting me in writing the HOWTOs.
+   </P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="FEEDBACK"
+>Feedback</A
+></H2
+><P
+>    Feedback is most certainly welcome for this document. Without
+    your submissions and input, this document wouldn't exist. Please
+    send your additions, comments and criticisms to the following
+    email address : <CODE
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto:luc at delouw.ch"
+>luc at delouw.ch</A
+>&#62;</CODE
+>.
+   </P
+><P
+>   Please understand, that I don't want to add Cyrus-IMAP 2.0.x related stuff in this document anymore.
+   </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="TRANSLATIONS"
+>Translations</A
+></H2
+><P
+>     	At the moment no translations are available. A German translation is planned and would be
+     	written by me as soon as I get the time. 
+   </P
+><P
+>	Translations to other languages are always welcome. If you translate this document, please translate the
+	SGML source. Please let me know if you begin to translate, so I can set a link here.
+   </P
+></DIV
 ></DIV
 ></DIV
 ><DIV
@@ -683,7 +804,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="intro.html"
+HREF="tech.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -703,7 +824,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Introduction</TD
+>Technologies</TD
 ></TR
 ></TABLE
 ></DIV

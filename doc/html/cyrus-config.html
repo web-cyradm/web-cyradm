@@ -1,27 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
 >Configuring Cyrus IMAP</TITLE
 ><META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
-HREF="index.html"><LINK
+HREF="t1.html"><LINK
 REL="PREVIOUS"
 TITLE="Configuring Postfix"
 HREF="postfix-config.html"><LINK
 REL="NEXT"
 TITLE="Configuring Web-cyradm"
-HREF="web-cyradm-config.html"></HEAD
+HREF="web-cyradm-config.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
 ><BODY
 CLASS="SECT1"
-BGCOLOR="#FFFFFF"
-TEXT="#000000"
-LINK="#0000FF"
-VLINK="#840084"
-ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
@@ -70,13 +67,17 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="CYRUS-CONFIG">7. Configuring Cyrus IMAP</H1
+NAME="CYRUS-CONFIG"
+>Configuring Cyrus IMAP</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="CYRUS-CONFIGFILES">7.1. Creating the config files</H2
+NAME="CYRUS-CONFIGFILES"
+>Creating the config files</A
+></H2
 ><P
 >You have to create <TT
 CLASS="FILENAME"
@@ -91,9 +92,11 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="ETC-SERVICES">7.1.1. <TT
+NAME="ETC-SERVICES"
+><TT
 CLASS="FILENAME"
 >/etc/services</TT
+></A
 ></H3
 ><P
 >If you like to use sieve (a mail filtering language), you must change an entry
@@ -103,13 +106,11 @@ CLASS="FILENAME"
 >. With SuSE 8.0 take especially care about the port for sieve, 
 they defined the wrong port. Add or change the following lines:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >pop3		110/tcp
@@ -117,7 +118,6 @@ imap		143/tcp
 imaps           993/tcp
 pop3s           995/tcp 
 sieve           2000/tcp</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -127,24 +127,34 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="ETC-IMAPD">7.1.2. <TT
+NAME="ETC-IMAPD"
+><TT
 CLASS="FILENAME"
 >/etc/imapd.conf</TT
+></A
 ></H3
+><P
+>Be sure »servername« contains your FQHN (Fully Qualified Hostname)</P
+><P
+>The parameter »unixhierarchysep: yes« is only used if you like to have usernames 
+like »hans.mueller.somedomain.tld« see <A
+HREF="web-cyradm-config.html"
+>the Section called <I
+>Configuring Web-cyradm</I
+></A
+> for more info.</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >postmaster: postmaster
 configdirectory: /var/imap
 partition-default: /var/spool/imap
-admins: cyrus
+# admins: cyrus # no admins!
 allowanonymouslogin: no
 allowplaintext: yes
 sasl_mech_list: PLAIN
@@ -162,36 +172,83 @@ sendmail: /usr/sbin/sendmail
 sieve_maxscriptsize: 32
 sieve_maxscripts: 5
 #unixhierarchysep: yes</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
-><P
->Be sure »servername« contains your FQHN (Fully Qualified Hostname)</P
-><P
->The parameter »unixhierarchysep: yes« is only used if you like to have usernames 
-like »hans.mueller.somedomain.tld« see <A
-HREF="web-cyradm-config.html"
->Section 8</A
-> for more info.</P
 ></DIV
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="TLS">7.1.3. Creating the TLS/SSL Certificate</H3
+NAME="ETC-IMAPD-LOCAL"
+><TT
+CLASS="FILENAME"
+>/etc/imapd-local.conf</TT
+></A
+></H3
 ><P
->If you want to enable Cyrus' TLS/SSL facilities, you have to create a certificate first. This requires an 
-OpenSSL installation</P
+>Be sure »servername« contains your FQHN (Fully Qualified Hostname)</P
+><P
+>The parameter »unixhierarchysep: yes« is only used if you like to have usernames 
+like »hans.mueller.somedomain.tld« see <A
+HREF="web-cyradm-config.html"
+>the Section called <I
+>Configuring Web-cyradm</I
+></A
+> for more info.</P
+><P
+>This second file ensures, that admin users only can connect via localhost. Decide by yourself if this additional security feature is needed for your site.</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
+><PRE
+CLASS="SCREEN"
+>postmaster: postmaster
+configdirectory: /var/imap
+partition-default: /var/spool/imap
+admins: cyrus 
+allowanonymouslogin: no
+allowplaintext: yes
+sasl_mech_list: PLAIN
+servername: servername
+autocreatequota: 10000
+reject8bit: no
+quotawarn: 90
+timeout: 30
+poptimeout: 10
+dracinterval: 0
+drachost: localhost
+sasl_pwcheck_method: saslauthd
+sievedir: /usr/sieve
+sendmail: /usr/sbin/sendmail
+sieve_maxscriptsize: 32
+sieve_maxscripts: 5
+#unixhierarchysep: yes</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="TLS"
+>Creating the TLS/SSL Certificate</A
+></H3
+><P
+>If you want to enable Cyrus' TLS/SSL facilities, you have to create a certificate first. This requires an 
+OpenSSL installation</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
 ><PRE
 CLASS="SCREEN"
 >openssl req -new -nodes -out req.pem -keyout key.pem  
@@ -208,10 +265,9 @@ cat ca-cert &#62;&#62; /var/imap/server.pem
 chown cyrus:mail /var/imap/server.pem
 chmod 600 /var/imap/server.pem # Your key should be protected
 
-echo tls_ca_file: /var/imap/server.pem &#62;&#62; /etc/imapd.conf
-echo tls_cert_file: /var/imap/server.pem &#62;&#62; /etc/imapd.conf
-echo tls_key_file: /var/imap/server.pem &#62;&#62; /etc/imapd.conf&#13;</PRE
-></FONT
+echo tls_ca_file: /var/imap/server.pem &gt;&gt; /etc/imapd.conf
+echo tls_cert_file: /var/imap/server.pem &gt;&gt; /etc/imapd.conf
+echo tls_key_file: /var/imap/server.pem &gt;&gt; /etc/imapd.conf&#13;</PRE
 ></TD
 ></TR
 ></TABLE
@@ -221,9 +277,11 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="ETC-CYRUS-CONF">7.1.4. <TT
+NAME="ETC-CYRUS-CONF"
+><TT
 CLASS="FILENAME"
 >/etc/cyrus.conf</TT
+></A
 ></H3
 ><P
 >The other file you need to create is <TT
@@ -233,13 +291,11 @@ CLASS="FILENAME"
 It is the configuration file for the Cyrus master process.  It defines the startup procedures, services
 and events to be spawned by  process »master«.</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 ># standard standalone server implementation
@@ -255,11 +311,14 @@ START {
 # UNIX sockets start with a slash and are put into /var/imap/socket
 SERVICES {
   # add or remove based on preferences
-  imap          cmd="imapd" listen="imap" prefork=0
-  imaps         cmd="imapd -s" listen="imaps" prefork=0
+  imap          cmd="imapd" listen="192.168.0.1:imap" prefork=0
+  imaplocal     cmd="imapd -C /etc/imapd-local.conf" listen="127.0.0.1:imap" prefork=0
+  imaps         cmd="imapd -s" listen="192.168.0.1:imaps" prefork=0
+  imapslocal    cmd="imapd -C /etc/imapd-local.conf" listen="127.0.0.1:imaps" prefork=0
   pop3          cmd="pop3d" listen="pop3" prefork=0
   pop3s         cmd="pop3d -s" listen="pop3s" prefork=0
-  sieve         cmd="timsieved" listen="sieve" prefork=0
+  sieve         cmd="timsieved" listen="192.168.0.1:sieve" prefork=0
+  sievelocal    cmd="timsieved -C /etc/imapd-local.conf listen="127.0.0.1:sieve" prefork=0
 
   # at least one LMTP is required for delivery
 #  lmtp         cmd="lmtpd" listen="lmtp" prefork=0
@@ -279,10 +338,19 @@ EVENTS {
   # this is only necessary if caching TLS sessions
   tlsprune      cmd="tls_prune" period=1440
 }</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
+><DIV
+CLASS="TIP"
+><BLOCKQUOTE
+CLASS="TIP"
+><P
+><B
+>Please check your Systems IP address: </B
+>In the example above the IP 192.168.0.1 is to be replaced with your systems external IP address.</P
+></BLOCKQUOTE
+></DIV
 ></DIV
 ></DIV
 ><DIV
@@ -290,7 +358,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="CYRUS-DIRECTORIES">7.2. Creating the directories</H2
+NAME="CYRUS-DIRECTORIES"
+>Creating the directories</A
+></H2
 ><P
 >There must be created different directories. Additionally you should 
 change some attributes of the filesystem</P
@@ -299,25 +369,24 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="VAR-IMAP">7.2.1. <TT
+NAME="VAR-IMAP"
+><TT
 CLASS="FILENAME"
 >/var/imap</TT
+></A
 ></H3
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >cd /var
 mkdir imap
 chown cyrus:mail imap
 chmod 750 imap</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -327,25 +396,24 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="VAR-SPOOL-IMAP">7.2.2. <TT
+NAME="VAR-SPOOL-IMAP"
+><TT
 CLASS="FILENAME"
 >/var/spool/imap</TT
+></A
 ></H3
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >cd /var/spool
 mkdir imap
 chown cyrus:mail imap
 chmod 750 imap</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -355,25 +423,24 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="USR-SIEVE">7.2.3. <TT
+NAME="USR-SIEVE"
+><TT
 CLASS="FILENAME"
 >/usr/sieve</TT
+></A
 ></H3
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >cd /usr
 mkdir sieve
 chown cyrus:mail sieve
 chmod 750 sieve</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -383,25 +450,24 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="OTHER-DIRS">7.2.4. The rest of the directories</H3
+NAME="OTHER-DIRS"
+>The rest of the directories</A
+></H3
 ><P
 >The rest of the directories can be created by the tool <B
 CLASS="COMMAND"
 >mkimap</B
 ></P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >su - cyrus
 /usr/local/cyrus-imapd-2.1.12/tools/mkimap</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -412,7 +478,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="CH-ATTRIB">7.3. Changing the filesystem attributes</H2
+NAME="CH-ATTRIB"
+>Changing the filesystem attributes</A
+></H2
 ><P
 >When using the ext2 filesystem, you must set an attribute, that defines, that all changes 
 are immediately committed to the disk. With todays journaling filesystems there is no need. 
@@ -435,20 +503,17 @@ CLASS="FILENAME"
 >/var</TT
 > could also be a part of the root or other filesystem.</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >cd /var/imap
 
 chattr +S user quota user/* quota/*
 chattr +S /var/spool/imap /var/spool/imap/*</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -479,7 +544,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="index.html"
+HREF="t1.html"
 ACCESSKEY="H"
 >Home</A
 ></TD

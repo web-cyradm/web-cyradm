@@ -1,27 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
 >Configuring PAM</TITLE
 ><META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
-HREF="index.html"><LINK
+HREF="t1.html"><LINK
 REL="PREVIOUS"
 TITLE="Configuring MySQL"
 HREF="mysql-config.html"><LINK
 REL="NEXT"
 TITLE="Configuring Postfix"
-HREF="postfix-config.html"></HEAD
+HREF="postfix-config.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
 ><BODY
 CLASS="SECT1"
-BGCOLOR="#FFFFFF"
-TEXT="#000000"
-LINK="#0000FF"
-VLINK="#840084"
-ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
@@ -70,7 +67,9 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="PAM-CONFIG">5. Configuring PAM</H1
+NAME="PAM-CONFIG"
+>Configuring PAM</A
+></H1
 ><P
 >Now we need to get sure that PAM knows how to authenticate the Cyrus users</P
 ><P
@@ -79,33 +78,30 @@ CLASS="FILENAME"
 >/etc/pam.d/imap</TT
 > with the following entries:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
->auth sufficient pam_mysql.so user=mail passwd=secret host=localhost db=mail table=accountuser usercolumn=username   passwdcolumn=password crypt=1
+>auth sufficient pam_mysql.so user=mail passwd=secret host=localhost db=mail table=accountuser usercolumn=username passwdcolumn=password crypt=1 logtable=log logmsgcolumn=msg logusercolumn=user loghostcolumn=host logpidcolumn=pid logtimecolumn=time
 
 auth sufficient pam_unix_auth.so
 
-account required pam_mysql.so user=mail passwd=secret host=localhost db=mail table=accountuser usercolumn=username passwdcolumn=password   crypt=1
+account required pam_mysql.so user=mail passwd=secret host=localhost db=mail table=accountuser usercolumn=username passwdcolumn=password crypt=1 logtable=log logmsgcolumn=msg logusercolumn=user loghostcolumn=host logpidcolumn=pid logtimecolumn=time
 
 account  sufficient       pam_unix_acct.so</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
 ><P
->The lines containing <TT
+>The lines containing <VAR
 CLASS="OPTION"
->pam_unix_auth.so</TT
-> and <TT
+>pam_unix_auth.so</VAR
+> and <VAR
 CLASS="OPTION"
->pam_unix_acct.so</TT
+>pam_unix_acct.so</VAR
 >
 	 are only needed if you are migrating from WU-IMAP to Cyrus. 
 	This allows you to authenticate with its old unix-password AND its new mysql-based password.</P
@@ -113,19 +109,16 @@ CLASS="OPTION"
 >To use the other services provided by cyrus and smtp-authtication you need to copy the file
 	so that they match the service-ID</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >cp /etc/pam.d/imap /etc/pam.d/pop
 cp /etc/pam.d/imap /etc/pam.d/sieve
 cp /etc/pam.d/imap /etc/pam.d/smtp</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -155,7 +148,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="index.html"
+HREF="t1.html"
 ACCESSKEY="H"
 >Home</A
 ></TD

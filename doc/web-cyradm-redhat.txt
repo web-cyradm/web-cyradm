@@ -4,7 +4,7 @@ Postfix-Cyrus-Web-cyradm-HOWTO (RedHat 7.2/7.3 optimized)
 
 This Guid explains the installation of the above topic. It only works
 
-with RedHat 7.2 and 7.3. Version 8.0/9.0 is currently untested!
+with RedHat 7.2 and 7.3. Version 8.0 is currently untested!
 
 It will not cover the configuration, this will be almost the same
 
@@ -18,7 +18,7 @@ So lets start:
 
 
 
-MySQL (3.23.55)
+MySQL (3.23.53)
 
 ./configure --prefix=/usr/local/mysql --enable-assembler --with-innodb
 
@@ -60,7 +60,7 @@ First start the database and then create the link !
 
 
 
-Cyrus SASL (2.1.13)
+Cyrus SASL (2.1.10)
 
 ./configure --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin \
 
@@ -118,7 +118,7 @@ groupadd -g 33335 postdrop
 
 useradd -u 33333 -g 33333 -d /dev/null -s /bin/false postfix
 
-cd /root/postfix-2.0.9/
+cd /root/postfix-1.1.12-snaprelease/
 
 make makefiles 'CCARGS=-DHAS_MYSQL -I/usr/local/mysql/include/mysql -DUSE_SASL_AUTH \
 
@@ -144,7 +144,9 @@ from above, not with LUC's HOWTO!
 
 Cyrus-IMAPd
 
-cd cyrus-imapd-2.1.13/
+cd cyrus-imapd-2.1.11/
+
+ln -s /usr/bin/perl /usr/bin/perl5
 
 export CPPFLAGS="-I/usr/include/et"
 
@@ -162,10 +164,13 @@ make install
 
 If something went wrong you can also define --with-sasl the directory
 
-where the compiled source is. (e.g. /usr/local/cyrus-sasl-2.1.13/ or where
+where the compiled source is. (e.g. /usr/local/cyrus-sasl-2.1.10/ or where
 
 you "untared" it)
 
+IMPORTANT: Since version 2.1.10 it's required to have "perl5", so create
+
+a link if your interpreter is only called "perl"!
 
 
 
@@ -223,9 +228,9 @@ cd /www/htdocs
 
 rm -rf *
 
-tar xvfz /root/files/web-cyradm-0.5.3.tar.gz
+tar xvfz /root/files/web-cyradm-0.5.2.tar.gz
 
-mv web-cyradm-0.5.3/ web
+mv web-cyradm-0.5.2/ web
 
 mkdir /var/log/cyradm
 

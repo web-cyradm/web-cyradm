@@ -1,27 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
 >Configuring MySQL</TITLE
 ><META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
-HREF="index.html"><LINK
+HREF="t1.html"><LINK
 REL="PREVIOUS"
 TITLE="Getting and installing the software"
 HREF="install.html"><LINK
 REL="NEXT"
 TITLE="Configuring PAM"
-HREF="pam-config.html"></HEAD
+HREF="pam-config.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
 ><BODY
 CLASS="SECT1"
-BGCOLOR="#FFFFFF"
-TEXT="#000000"
-LINK="#0000FF"
-VLINK="#840084"
-ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
@@ -70,19 +67,23 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="MYSQL-CONFIG">4. Configuring MySQL</H1
+NAME="MYSQL-CONFIG"
+>Configuring MySQL</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="MYSQL-CONFIG-SECURING">4.1. Securing MySQL</H2
+NAME="MYSQL-CONFIG-SECURING"
+>Securing MySQL</A
+></H2
 ><P
 >Because you are using MySQL to authenticate users, you need to restrict network access 
-	to Port 3306.</P
+	to port 3306.</P
 ><P
->I suggest to just bind MySQL only to the loopback interface 127.0.0.1. 
-	This makes sure nobody can connect to your MySQL Daemon via the network.</P
+>The easiest way is to only bind MySQL to the loopback interface 127.0.0.1. 
+	This makes sure nobody can connect to your MySQL daemon via the network.</P
 ><P
 >	Edit <TT
 CLASS="FILENAME"
@@ -91,62 +92,53 @@ CLASS="FILENAME"
 ><P
 >Original line:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >$bindir/safe_mysqld --datadir=$datadir --pid-file=$pid_file&#38;</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
 ><P
 >Changed line:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >$bindir/safe_mysqld --datadir=$datadir --pid-file=$pid_file \
 --bind-address=127.0.0.1&#38;</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
 ><P
->(Re-)start your MySQL-Daemon by issuing <B
+>Restart your MySQL daemon by issuing the command<B
 CLASS="COMMAND"
 >/etc/init.d/mysql.server start</B
 ></P
 ><P
->To ensure the configuration change was successful issue: <B
+>To ensure the configuration change was successful, <B
 CLASS="COMMAND"
 >netstat -an|grep LISTEN</B
 >. The 
 	Output should be looking similar to this:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >bond:~ # netstat -an|grep LISTEN
 tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -156,37 +148,36 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="MYSQL-RINETD">4.2. Setting up rinetd</H2
+NAME="MYSQL-RINETD"
+>Setting up rinetd</A
+></H2
 ><P
->This step is only necessary if you run the mysql sever on another host than the mailserver. It allows
-	you to securely connect from another host by allowing only defined IP adresses.</P
+>This step is only necessary if you run the MySQL sever on host other than the mail server. This allows
+	you to securely connect from another host since access is allowed only from pre-defined IP addresses.</P
 ><P
 >The example used is from the view of the host serving the MySQL database. Lets assume your 
-	mailserver has the IP 192.168.0.100 and the MySQL host has 192.168.0.200</P
+	mail server has the IP 192.168.0.100 and the MySQL host has 192.168.0.200</P
 ><P
 >	Edit <TT
 CLASS="FILENAME"
 >/etc/rinetd.conf</TT
 > and add:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >192.168.0.200 3306 127.0.0.1 3306
 allow 192.168.0.100</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
 ><P
 >This means: The MySQL host is listening on 192.168.0.200 port 3306. If 192.168.0.100 
-	is attempting a connection, it is forwared to 127.0.0.1:3306. All other hosts are rejected. </P
+	attempts a connection, it is forwarded to 127.0.0.1:3306. All other hosts are rejected. </P
 ></DIV
 ></DIV
 ><DIV
@@ -214,7 +205,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="index.html"
+HREF="t1.html"
 ACCESSKEY="H"
 >Home</A
 ></TD

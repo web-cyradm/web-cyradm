@@ -1,27 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
 >Testing the setup</TITLE
 ><META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
-HREF="index.html"><LINK
+HREF="t1.html"><LINK
 REL="PREVIOUS"
 TITLE="Configuring Web-cyradm"
 HREF="web-cyradm-config.html"><LINK
 REL="NEXT"
-TITLE="Further Information"
-HREF="moreinfo.html"></HEAD
+TITLE="Fighting against Viruses and SPAM"
+HREF="spam-and-virus-intro.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
 ><BODY
 CLASS="SECT1"
-BGCOLOR="#FFFFFF"
-TEXT="#000000"
-LINK="#0000FF"
-VLINK="#840084"
-ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
@@ -56,7 +53,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="moreinfo.html"
+HREF="spam-and-virus-intro.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -70,13 +67,17 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="TEST">9. Testing the setup</H1
+NAME="TEST"
+>Testing the setup</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="TEST-RUNNING">9.1. (Re-)Starting the daemons</H2
+NAME="TEST-RUNNING"
+>(Re-)Starting the daemons</A
+></H2
 ><P
 >Now all the software has been installed and configured. Lets do some testings now. 
 First you have to (re-)start all the daemons affected </P
@@ -128,13 +129,11 @@ CLASS="COMMAND"
 ><P
 >The output should look similar like that:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >bond:~ # netstat -an|grep LISTEN
@@ -147,7 +146,6 @@ tcp        0      0 0.0.0.0:2000            0.0.0.0:*               LISTEN
 tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN
 tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN
 tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -208,7 +206,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="TESTING-WEB-CYRADM">9.2. Testing Web-cyradm</H2
+NAME="TESTING-WEB-CYRADM"
+>Testing Web-cyradm</A
+></H2
 ><P
 >Now you should be able to connect to <A
 HREF="http://localhost/web-cyradm/"
@@ -236,17 +236,17 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="TESTING-POSTFIX">9.3. Testing postfix</H2
+NAME="TESTING-POSTFIX"
+>Testing postfix</A
+></H2
 ><P
 >Now we are going to write a mail:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >telnet localhost 25
@@ -258,19 +258,18 @@ Escape character is '^]'.
 
 helo localhost
 250 mail
-mail from: luc at delouw.ch
+mail from: testing at example.com
 250 Ok
-rcpt to: luc at localhost
+rcpt to: tester at localhost
 250 Ok
 
 data
-354 End data with &#60;CR&#62;&#60;LF&#62;.&#60;CR&#62;&#60;LF&#62;
+354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;
 some text
 .
 250 Ok: queued as B58E141D33
 
 quit</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -280,24 +279,21 @@ address you previously defined in the web-cyradm database</P
 ><P
 >If you get an error like this:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
->rcpt to: luc at localhost
-451 &#60;luc at localhost&#62;: Temporary lookup failure</PRE
-></FONT
+>rcpt to: tester at localhost
+451 &lt;tester  at localhost&gt;: Temporary lookup failure</PRE
 ></TD
 ></TR
 ></TABLE
 ><P
 >Then either MySQL is not running, DB permission are not set properly or you 
-missconfigured <TT
+miss-configured <TT
 CLASS="FILENAME"
 >/etc/postfix/main.cf</TT
 ></P
@@ -313,7 +309,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="TESTING-CYRUS">9.4. Testing the IMAP functionality</H2
+NAME="TESTING-CYRUS"
+>Testing the IMAP functionality</A
+></H2
 ><P
 >A lot of users like to test the cyrus-IMAPd with the Command Line Interface (CLI) »cyradm« and they are failing.
 To be successful with cyradm, you will need to add the cyrus user to <TT
@@ -324,19 +322,16 @@ because »cyradm« always authenticates against SASL AND IMAP.</P
 ><P
 >To add the Cyrus user to the sasldb use the command:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >saslpasswd2 -c cyrus
 Password: (enter your passwd)
 Again (for verification): (enter your password)</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -345,20 +340,17 @@ Again (for verification): (enter your password)</PRE
 like -u and similar. Please follow the syntax like described in the man page »cyradm 1« like the 
 following example:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >bond:~ # cyradm --user cyrus --server localhost --auth plain
 Password: # This is the SASL2 password
 IMAP Password: # This is the IMAP password that you need to enter in the mysql-table »accountusers«
 localhost&#62;</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -373,7 +365,9 @@ CLASS="COMMAND"
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="AEN672"><P
+NAME="AEN752"
+></A
+><P
 ><B
 >Figure 3. Creating a new account</B
 ></P
@@ -386,7 +380,9 @@ SRC="imap-account.png"></P
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="AEN676"><P
+NAME="AEN756"
+></A
+><P
 ><B
 >Figure 4. Testing TLS/SSL functionality</B
 ></P
@@ -423,7 +419,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="index.html"
+HREF="t1.html"
 ACCESSKEY="H"
 >Home</A
 ></TD
@@ -432,7 +428,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="moreinfo.html"
+HREF="spam-and-virus-intro.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -452,7 +448,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Further Information</TD
+>Fighting against Viruses and SPAM</TD
 ></TR
 ></TABLE
 ></DIV

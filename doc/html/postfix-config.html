@@ -1,27 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
 >Configuring Postfix</TITLE
 ><META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="Postfix-Cyrus-Web-cyradm-HOWTO"
-HREF="index.html"><LINK
+HREF="t1.html"><LINK
 REL="PREVIOUS"
 TITLE="Configuring PAM"
 HREF="pam-config.html"><LINK
 REL="NEXT"
 TITLE="Configuring Cyrus IMAP"
-HREF="cyrus-config.html"></HEAD
+HREF="cyrus-config.html"><META
+http-equiv="Content-Type"
+content="text/html; charset="></HEAD
 ><BODY
 CLASS="SECT1"
-BGCOLOR="#FFFFFF"
-TEXT="#000000"
-LINK="#0000FF"
-VLINK="#840084"
-ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
@@ -70,7 +67,9 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="POSTFIX-CONFIG">6. Configuring Postfix</H1
+NAME="POSTFIX-CONFIG"
+>Configuring Postfix</A
+></H1
 ><P
 >Postfix needs two major config files: <TT
 CLASS="FILENAME"
@@ -79,61 +78,57 @@ CLASS="FILENAME"
 CLASS="FILENAME"
 >master.cf</TT
 >. 
-	Both needs your attention.</P
+	Both need your attention.</P
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="POSTFIX-MASTER">6.1. master.cf</H2
+NAME="POSTFIX-MASTER"
+>master.cf</A
+></H2
 ><P
 >You need to change just one line:</P
 ><P
 >old: </P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >flags=R user=cyrus argv=/cyrus/bin/deliver -e -m ${extension} ${user}</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
 ><P
 >new: </P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >flags= user=cyrus argv=/usr/cyrus/bin/deliver -r ${sender} -m ${extension} ${user}</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
 ><P
->	What affect that changes?
+>	What does that change affect?
 	</P
 ><P
 >	A look to the cyrus man-pages <B
 CLASS="COMMAND"
 >man deliver </B
->clears that issue:
+>clears up that issue:
 	</P
 ><P
 >	The Postfix default setup uses a wrong path to cyrus deliver, this is the first change.
-	The parameter »-r« Inserts a proper return path, without that mail rejected/retured by sieve will 
+	The parameter »-r« inserts a proper return path. Without that, mail rejected/retured by sieve will 
 	be sent to the cyrus user at yourdomain.
 	</P
 ></DIV
@@ -142,23 +137,22 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="POSTFIX-MAIN">6.2. main.cf</H2
+NAME="POSTFIX-MAIN"
+>main.cf</A
+></H2
 ><P
 >Here you need to change some more things like hostname, relaying, alias-lookups etc.</P
 ><P
->First change hostname:</P
+>First change the hostname:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >myhostname = foo.bar.org</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -169,97 +163,82 @@ CLASS="SCREEN"
 <TT
 CLASS="FILENAME"
 >/etc/mail/sendmail.cw)</TT
->. If you have multiple domains separate them with comma.</P
+>. If you have multiple domains, separate them with comma.</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >mydestination = foo.bar.org, example.com, furchbar-grausam.ch, 
  whatever.domain.tld, mysql:/etc/postfix/mysql-mydestination.cf</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
 ><P
 >Relayhost</P
 ><P
->Here you define where to deliver outgoing mails. If you do not provide any host. mails are delivered directly 
-to the destination smtp host. Usually your relayhosts are your providers smtp-server.</P
+>Here you define where to deliver outgoing mails. If you do not provide any host, mail is delivered directly 
+to the destination smtp host. Usually your relayhosts are your internet service provider's smtp server.</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >relayhost = relay01.foobar.net relay02.foobar.net relay03.foobar.net</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
 ><P
 >Mailtransport</P
 ><P
->Here you define how the mails accepted for local delivery should be handled. In your situation mails should be 
-delivered by the cyrus delivery-program.</P
+>Here you define how the mails accepted for local delivery should be handled. In your situation, mail should be 
+delivered by the cyrus delivery program.</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >mailbox_transport = cyrus</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
 ><P
 >At the end of file you need to add:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
->virtual_maps = hash:/etc/postfix/virtual, mysql:/etc/postfix/mysql-virtual.cf</PRE
-></FONT
+>virtual_alias_maps = hash:/etc/postfix/virtual, mysql:/etc/postfix/mysql-virtual.cf</PRE
 ></TD
 ></TR
 ></TABLE
 ><P
->If you dont want to have a overriding /etc/postfix/virtual, skip the hash entry</P
+>If you don't want to have a overriding /etc/postfix/virtual, skip the hash entry</P
 ><P
->Outgoing addresses should be rewritten from i.e test0002 at domain 
-to user.name at virtualhost.com. This is important if you like to use a webmail interface.</P
+>Outgoing addresses should be rewritten from test0002 at domain 
+to user.name at virtualhost.com. This is important if you want to use a webmail interface.</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >sender_canonical_maps = mysql:/etc/postfix/mysql-canonical.cf </PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -269,13 +248,11 @@ CLASS="FILENAME"
 >/etc/postfix/mysql-virtual.cf</TT
 >: </P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >#
@@ -298,7 +275,6 @@ table = virtual
 select_field = dest
 where_field = alias
 additional_conditions = and status = '1'</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -308,13 +284,11 @@ CLASS="FILENAME"
 >/etc/postfix/mysql-canonical.cf</TT
 >:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 ># mysql config file for canonical lookups on postfix
@@ -336,7 +310,6 @@ select_field = alias
 where_field = username
 # Return the first match only
 additional_conditions = and status = '1' limit 1</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -346,13 +319,11 @@ CLASS="FILENAME"
 >/etc/postfix/mysql-mydestination.cf</TT
 >:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 ># mysql config file for local domain (like sendmail's sendmail.cw) lookups on postfix
@@ -372,7 +343,6 @@ table = domain
 #
 select_field = domain_name
 where_field = domain_name</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -384,21 +354,18 @@ CLASS="FILENAME"
 >/etc/postfix/main.cf</TT
 ></P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >smtpd_sasl_auth_enable = yes
 smtpd_recipient_restrictions = permit_sasl_authenticated, permit_mynetworks, reject_unauth_destination
 smtpd_sasl_security_options = noanonymous
-smtpd_sasl_local_domain = example.com
+smtpd_sasl_local_domain = 
 broken_sasl_auth_clients = yes</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
@@ -407,40 +374,134 @@ broken_sasl_auth_clients = yes</PRE
 CLASS="FILENAME"
 >/usr/local/lib/sasl2/smtpd.conf</TT
 > with
-the following content:</P
+the following contents:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >pwcheck_method: saslauthd</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
 ><P
->The next step is make the saslauthd socket being found by postfix:</P
+>The next step is to tell postfix how to find the saslauthd socket:</P
 ><TABLE
-BORDER="1"
+BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
-><FONT
-COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >mv /var/run/sasl2 /var/run/sasl2-old
 ln -s /var/run/saslauthd /var/run/sasl2</PRE
-></FONT
 ></TD
 ></TR
 ></TABLE
+><P
+></P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="ANTISPAM"
+>Fighting against SPAM</A
+></H2
+><P
+>This section describes how to implement a basic SPAM protection setup with postfix. It does not use any external software like spamassassin, etc.</P
+><P
+>Postfix has some built-in filters that allow you to stop obvious SPAM attempts. In particular these are:</P
+><P
+></P
+><UL
+><LI
+><P
+>	smtpd_helo_required = yes
+	</P
+><P
+>	This switch in <TT
+CLASS="FILENAME"
+>main.cf</TT
+> means that SMTP clients connecting to your mail server must give 
+	a »helo« when connecting.
+	</P
+></LI
+><LI
+><P
+>	smtpd_recipient_restrictions
+	</P
+><P
+>This option in <TT
+CLASS="FILENAME"
+>main.cf</TT
+> lets you define different rules on the handling the acceptance 
+	of mail. The following example simply rejects all invalid sender and recipient data. 
+	Additionally it defines how to lookup known spammers from online blacklists.
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>smtpd_recipient_restrictions =
+            reject_invalid_hostname,
+            reject_non_fqdn_hostname,
+            reject_non_fqdn_sender,
+            reject_non_fqdn_recipient,
+            reject_unknown_sender_domain,
+            reject_unknown_recipient_domain,
+            reject_unauth_pipelining,
+            permit_mynetworks,
+            reject_unauth_destination,
+            reject_rbl_client zombie.dnsbl.sorbs.net,
+            reject_rbl_client relays.ordb.org,
+            reject_rbl_client opm.blitzed.org,
+            reject_rbl_client list.dsbl.org,
+            reject_rbl_client sbl.spamhaus.org,
+            permit</PRE
+></TD
+></TR
+></TABLE
+><P
+></P
+></LI
+><LI
+><P
+>mime_header_checks=pcre:/etc/postfix/body_checks</P
+><P
+>MIME header checks let you reject mail which contains malicious MIME content, i.e dangerous 
+	attachments such as Windows executables. Create the file <TT
+CLASS="FILENAME"
+>/etc/postfix/body_checks</TT
+>. 
+	The following example rejects all mail that contains potentially dangerous attachments. 
+	In my experience, using this example would filter out most of viruses delivered by e-mail. 
+	In any event, a virus scanner should always be installed.
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>	/^((Content-(Disposition: attachment;|Type:).*|\ +)| *)(file)?name\ *=\ *"?.*\.(lnk|asd|hlp|ocx|reg|bat|c[ho]m|cmd|exe|dll|vxd|pif|scr|hta|jse?|sh[mbs]|vb[esx]|ws[fh]|wmf)"?\ *$/      REJECT  attachment type not allowed
+	</PRE
+></TD
+></TR
+></TABLE
+></LI
+></UL
 ></DIV
 ></DIV
 ><DIV
@@ -468,7 +529,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="index.html"
+HREF="t1.html"
 ACCESSKEY="H"
 >Home</A
 ></TD
