@@ -10,7 +10,7 @@
 $nls['aliases']['da'] = 'da_DK';
 $nls['aliases']['de'] = 'de_DE';
 //$nls['aliases']['el'] = 'el_GR';
-//$nls['aliases']['en'] = 'en_US';
+$nls['aliases']['en'] = 'en_US';
 $nls['aliases']['es'] = 'es_ES';
 //$nls['aliases']['et'] = 'et_EE';
 //$nls['aliases']['fi'] = 'fi_FI';
