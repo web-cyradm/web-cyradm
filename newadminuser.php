@@ -161,7 +161,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				#################### Begin domain name checks and INSERT ########################
 
-				if (isset($newdomain)){
+				if ($newdomain){
 
 					# Check if the domain to be added really exists
 
