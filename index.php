@@ -5,8 +5,12 @@ include ("lib/nls.php");
 
 $browserlang=explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']); // $HTTP_ACCEPT_LANGUAGE;
 
-if ($nls['aliases'][$browserlang[0]]){
-	$LANG=$nls['aliases'][$browserlang[0]];
+$browserlang1=substr($browserlang[0], 0, 2);
+
+
+//if ($nls['aliases'][$browserlang[0]]){
+if ($nls['aliases'][$browserlang1]){
+	$LANG=$nls['aliases'][$browserlang1];
 }
 
 session_start();
