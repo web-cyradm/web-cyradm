@@ -20,7 +20,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		?>
 
 		<h3>
-			<?php print _("Email adresses defined for user");?>
+			<?php print _("Email addresses defined for user");?>
 			<span style="color: red;">
 				<?php echo $username;?>
 			</span>
