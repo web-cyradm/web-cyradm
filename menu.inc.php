@@ -74,6 +74,16 @@ if ($admintype==0){
 else if ($admintype==1){
         print "<td><b><font color=\"red\">"._("Domain Master")."</font></b></td>";
 }
+print "<tr>";
+print "<td>-&gt;</td>";
+print "<td>"._("Current domain is").": </td>";
+if ($domain==""){
+	print "<td><b>"._("No domain selected")."</b></td>";
+}
+else {
+	print "<td><b>$domain</b></td>";
+}
+print "</tr>";
 ?>
 </tr>
 </table>
