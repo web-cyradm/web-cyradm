@@ -14,7 +14,7 @@ $domain = $_GET['domain'];
 if( isset( $_GET['adddest'] ) )
 {
 	$dest = $_GET['dest'];
-	$query2 = "INSERT INTO virtual SET alias = '$alias', dest = '$dest', username = '$domain'";
+	$query2 = "INSERT INTO virtual (alias,dest,username) values ('$alias', '$dest', '$domain')";
 	$result2 = $handle->query( $query2 );
 	if( DB::isError( $handle ) )
 	{
