@@ -25,7 +25,7 @@ if ($authorized){
 		<input type="hidden" name="confirmed" value="true">
 		<input type="hidden" name="domain" value="<?php print $domain?>">
 		<input type="hidden" name="username" value="<?php print $username?>">
-		<input type="text" size="10" name="quotaset" value="<?php print $q_total=$q[qmax]?>"> Kilobytes
+		<input type="text" size="10" name="quota" value="<?php print $q_total=$q[qmax]?>"> Kilobytes
 		<input type="submit">
 		</form>
  	
@@ -37,10 +37,10 @@ if ($authorized){
         	$cyr_conn -> imap_login();
 
 		if ($DOMAIN_AS_PREFIX) {
-			print $cyr_conn->setmbquota("user/$username","$quotaset");
+			print $cyr_conn->setmbquota("user/$username","$quota");
 		}
 		else {
-			print $cyr_conn->setmbquota("user.$username","$quotaset");
+			print $cyr_conn->setmbquota("user.$username","$quota");
 		}
 
 		include ("browseaccounts.php");
