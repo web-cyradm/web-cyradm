@@ -17,45 +17,52 @@ if (!$DOMAIN_AS_PREFIX ) {
 <th>default quota per user</th>
 </tr>
 <?php
+
 if (!isset($allowed_domains)){
 	$query="SELECT * FROM domain ORDER BY domain_name";
 }
 else{
 	$query="SELECT * FROM domain WHERE domain_name='$allowed_domains' ORDER BY domain_name";
 }
-$handle=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-$result=mysql_db_query($MYSQL_DB,$query, $handle);
-$cnt=mysql_num_rows($result);
+
+$handle=DB::connect($DSN, true);
+
+$result=$handle->query($query);
+$cnt=$result->numRows($result);
+
 $b=0;
 for ($c=0;$c<$cnt;$c++){
 
 if ($b==0){
-//    $color="dcdcdc";
 	$cssrow="row1";
 	$b=1;
   }
 else{
-//    $color="ffffcc";
 	$cssrow="row2";
 	$b=0;
 }
 
-  $domain=mysql_result($result,$c,'domain_name');
+  $row=$result->fetchRow($result,$c,'domain_name');
+  $domain=$row[0];
+
   print "<tr class=\"$cssrow\"> \n";
   print "<td><a href=\"index.php?action=editdomain&domain=$domain\">Edit domain</a></td>\n";
   print "<td><a href=\"index.php?action=deletedomain&domain=$domain\">Delete Domain</a></td>\n";
   print "<td><a href=\"index.php?action=accounts&domain=$domain\">accounts</a></td>\n";
   print "<td>";
-  print mysql_result($result,$c,'domain_name');
+  print $domain;
   print "</td>\n<td>";
 if (!$DOMAIN_AS_PREFIX) {
-	print mysql_result($result,$c,'prefix');
+	# Print the prefix
+	print $row[1];
 	print "</td>\n<td>";
 }
 
-  print mysql_result($result,$c,'maxaccounts');
+  # Print the maxaccount
+  print $row[2];
   print "</td>\n<td>";
-  print mysql_result($result,$c,'quota');
+  # Print the quota
+  print $row[3];
 
   print "&nbsp;</td>\n</tr>\n";
 
