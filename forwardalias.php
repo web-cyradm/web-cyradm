@@ -137,7 +137,7 @@ if ($authorized){
 		<input type='checkbox' name='metoo' <?php print $keep."> "._("Keep a copy in the user's mailbox") ?><br><br>
 		<INPUT class="menu" TYPE="radio" NAME="mode" VALUE="unset"><?php print _("Remove forwarding") ?><br><br><br>
 		      
-	        <input type="submit" value="Submit"> 
+	        <input type="submit" value="<?php print _("Submit")?>"> 
 
 		</form>
 
