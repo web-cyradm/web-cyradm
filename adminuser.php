@@ -101,7 +101,7 @@
 							$username = $row['username'];
 							$query2 = "SELECT * from domainadmin WHERE adminuser='$username'";
 							$result2 = $handle->query($query2);
-							$cnt2 = $result->numRows();
+							$cnt2 = $result2->numRows();
 
 							$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 							$domainname = $row2['domain_name'];
@@ -110,7 +110,7 @@
 							?>
 
 							<tr class="<?php echo $cssrow;?>">
-								<td>
+								<td valign="middle">
 									<a href="index.php?action=editadminuser&amp;username=<?php
 									echo $username;
 									?>&amp;domain=<?php
@@ -120,7 +120,7 @@
 									?></a>
 								</td>
 
-								<td>
+								<td valign="middle">
 									<a href="index.php?action=deleteadminuser&amp;username=<?php
 									echo $username;
 									?>&amp;domain=<?php
@@ -130,23 +130,21 @@
 									?></a>
 								</td>
 
-								<td>
+								<td valign="middle">
 									<?php echo $username;?>
 								</td>
 
-								<td>
+								<td valign="middle">
 									<?php
 									for ($i = 0; $i < $cnt2; $i++){
-										$query3="SELECT * FROM domainadmin WHERE username='$username'";
-										$result3 = $handle->query($query3);
-										$row3 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $i);
-										$domainname = $row3['domain_name'];
-										print $domainname;
+									    $row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $i);
+									    $domainname = $row2['domain_name'];
+									    print "$domainname<br>";
 									}
 									?>
 								</td>
 
-								<td>
+								<td valign="middle">
 									<?php
 									if ($type == 0){
 										print _("Superuser");
