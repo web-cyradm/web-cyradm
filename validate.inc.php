@@ -161,8 +161,8 @@ if (! empty($action)){
 	case "setquota":
 		$query = "SELECT quota FROM domain WHERE domain_name='$domain'";
 		$query2 = "SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
-		$result4 = $handle->query($query, $handle);
-		$result5 = $handle->query($query2, $handle);
+		$result4 = $handle->query($query);
+		$result5 = $handle->query($query2);
 		$row = $result4->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		$quota2 = $row['quota'];
 		if ($result5->numRows()){
@@ -187,7 +187,7 @@ if (! empty($action)){
 		
 
 		$query = "SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
-		$result = $handle->query($query, $handle);
+		$result = $handle->query($query);
 		$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		$username2 = $row['username'];
 
