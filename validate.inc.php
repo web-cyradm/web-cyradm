@@ -373,7 +373,7 @@ if (! empty($action)){
 				if ($DOMAIN_AS_PREFIX){
 					$_POST['username'] = $_POST['email'];
 				}
-				// check to see if there's an account with the same username
+				# Check to see if there's an account with the same username
 				$query = "SELECT * FROM accountuser WHERE username='".$_POST['username']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
@@ -383,6 +383,18 @@ if (! empty($action)){
 				if ($cnt != 0) {
 					$authorized = FALSE;
 					$err_msg = _("Sorry, the username already exists");
+				}
+				
+				# Check to see if there's an email with the same name
+				$query = "SELECT alias FROM virtual WHERE alias='".$_POST['email']."@".$_POST['domain']."'";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
+					die (_("Database error"));
+				}
+				$cnt = $result->numRows();
+				if ($cnt != 0) {
+					$authorized = FALSE;
+					$err_msg = _("Sorry, the emailadress already exists");
 				}
 				
 				# We need to check if the requested quota is NOT higher than the defined maximum Quota
