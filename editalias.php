@@ -18,7 +18,7 @@ if( isset( $_GET['adddest'] ) )
 	$result2 = $handle->query( $query2 );
 	if( DB::isError( $handle ) )
 	{
-		print( "There was an error adding $dest to $alias:  ".$handle->getMessage() );
+		print _("There was an error adding $dest to $alias: ").$handle->getMessage();
 	}
 }
 
@@ -116,7 +116,7 @@ else
 ?>
 
 	<tr>
-		<td colspan="4" align="center" bgcolor="red"><?php print _("This alias has no destinations");?></td>
+		<td colspan="4" align="center" bgcolor="#b4c6de"><?php print _("This alias has no destinations");?></td>
 	</tr>
 
 <?php
@@ -133,7 +133,7 @@ else
 	<input type="hidden" name="domain" value="<?php echo $_GET['domain'] ?>">
 	<input type="hidden" name="action" value="editalias">
 	<input type="hidden" name="alias" value="<?php echo $alias ?>">
-	<?php print _("New destination&nbsp"); ?>;<input type="text" name="dest" size="30" maxlength="50" class="inputfield" onFocus="this.style.backgroundColor='#aaaaaa'">&nbsp;
+	<?php print _("New destination&nbsp"); ?>:<input type="text" name="dest" size="30" maxlength="50" class="inputfield" onFocus="this.style.backgroundColor='#aaaaaa'">&nbsp;
 	<input name="adddest" value="<?php print _("Submit");?>" class="button" type="submit">&nbsp;
 	<input name="reset" value="<?php echo _("Cancel");?>" class="button" type="reset">
 	</form>

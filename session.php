@@ -36,7 +36,6 @@ if (! isset($_SESSION['session_ok'])){
 			// Session has expired
 			$_SESSION['session_ok']	= FALSE;
 			$_SESSION['timestamp']	= -1;
-			//header ("Location: timeout.php");
 			include ("timeout.php");
 			include ("footer.inc.php");
 			die();

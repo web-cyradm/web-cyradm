@@ -74,6 +74,9 @@
 				include WC_BASE . "/browseaccounts.php";
 			}
 		}
+
+		print "<h3>".$err_msg."</h3>";
+
 		?>
 	</td>
 </tr>

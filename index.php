@@ -38,8 +38,6 @@ if ($wc_configured){
 		$browserlang = 'en_EN';
 	}
 
-	require_once WC_BASE . "/session.php";
-
 	// 1nd) If there is a language setting in the session, use this instead
 	// 2st) Try to get the language from the browser
 	// 3rd) If none of the above is true, use the default language
@@ -75,7 +73,7 @@ if ($wc_configured){
 
 	// Choose domain
 	textdomain("web-cyradm");
-//	require_once WC_BASE . "/session.php";
+	require_once WC_BASE . "/session.php";
 
 	if ($_SESSION['session_ok'] === TRUE) {
 		include "DB.php";
@@ -126,6 +124,20 @@ if ($wc_configured){
 		include WC_BASE . "/login.php";
 	}
 } else {
-	die("web-cyradm has not yet been configured!");
+
+	print "<h1>";
+	print _("web-cyradm has not yet been configured");
+	print "</h1>";
+	print "<p>";
+	print _("Configuration steps:");
+	print "<ul><li>";
+	print _("copy the config file that comes with the distribution: ");
+	print "<b>cp config/conf.php.dist config/conf.php</b>"; 
+	print "</li><li>";
+	print _("Edit the file config/conf.php to match your systems configuration"); 
+	print "</ul>";
+	print _("Further information about how to configure Web-cyradm can be found at the following website:");
+	print "<br><a href=\"http://www.delouw.ch/linux/Postfix-Cyrus-Web-cyradm-HOWTO/html/index.html\" target=_new>Postfix-Cyrus-Web-cyradm-HOWTO</a>";
+	die();
 }
 

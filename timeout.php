@@ -29,9 +29,8 @@
 
 										<p align="center">
 											<?php
-											print _("If you like to login click");
-											?>
-											<a class="navi" href="index.php"
+											print _("If you like to login click");?>
+											<a class="navi" href="index.php?"
 											><?php print _("here");?></a>
 										</p>
 

@@ -55,7 +55,10 @@ if ($login && $password){
           fclose($fp);
           unset($_SESSION['session_ok']);
           //session_unregister("session_ok");
-          header ("Location: failed.php");
+
+	   include ("failed.php");
+	   die();
+	
      }
 } else {
      print "<center><h4><font face=Verdana,Geneva,Arial,Helvetica,sans-serif>"

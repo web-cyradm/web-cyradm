@@ -100,11 +100,11 @@ if (! empty($action)){
 		if ($result5->numRows()){
 			$authorized=TRUE;
 			if (! empty($quota) && $quota > $quota2){
-				print "<h3>Quota exeedes $quota2, the maximum allowed qutoa for domain.</h3>";
+				$err_msg=_("Quota exeedes the maximum allowed qutoa for this domain.");
 				$authorized = FALSE;
 			}
 		} elseif (!$result5->numRows()){
-			print "<h3>Security violation detected, attempt logged</h3>";
+			$err_msg=_("Security violation detected, attempt logged");
 			$authorized = FALSE;
 		}
 		break;
