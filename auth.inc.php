@@ -42,7 +42,7 @@ if ($login!="" and $password!="") {
 
 
   // Log access
-   $fp = fopen($LOG_DIR . "web-cyradm-login.log", "a");
+	$fp = fopen($LOG_DIR . "web-cyradm-login.log", "a");
 	$date = date("d/M/Y H:i:s");
 	fwrite($fp, "LOGIN : $REMOTE_ADDR $login $date $HTTP_USER_AGENT $HTTP_REFERER $REQUEST_METHOD \n");
 	fclose($fp);
@@ -67,7 +67,6 @@ if ($login!="" and $password!="") {
 
 	 	header ("Location: index.php");
 
-//		print "Authentication sucessful";
 		break;
         } 
 
@@ -84,11 +83,10 @@ if ($login!="" and $password!="") {
 	}
 } 
 else {
-
-	print "<center><h4><font face=Verdana,Geneva,Arial,Helvetica,sans-serif>Web-cyradm is for authorized users only. <br>Make sure you entered the right password. <br>Push the back button in your browser to try again. Your attempt to login has been stored.</font></h4></center>";
+	header ("Location: failed.php");
 }
 
 
 ?>
 
-<!-- ###################################### End auth.inc.php ################################################
+<!-- ###################################### End auth.inc.php ################################################-->
