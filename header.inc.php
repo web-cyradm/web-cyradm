@@ -17,6 +17,14 @@ switch ($LANG){
 		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=koi8-r\">";
 	break;
 
+	case "hu_HU":
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=8859-2\">";
+	break;
+
+	case "ro_RO":
+		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=8859-2\">";
+	break;
+
 	default:
 		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=8859-1\">";
 }
