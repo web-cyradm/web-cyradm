@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: web-cyradm 0.5.3-1\n"
 "POT-Creation-Date: 2003-05-29 16:28+0200\n"
-"PO-Revision-Date: 2003-06-15 20:27+0000\n"
+"PO-Revision-Date: 2003-06-16 15:39+0000\n"
 "Last-Translator: Michelle Ribeiro <michelle@cipsga.org.br>\n"
 "Language-Team: Portuguese/Brazil\n"
 "MIME-Version: 1.0\n"
@@ -530,7 +530,7 @@ msgstr "Procedimentos de configuração:"
 
 #: index.php:135
 msgid "copy the config file that comes with the distribution: "
-msgstr "copie o arquivo de configuração que vem com a distribuição: "
+msgstr "copie o arquivo de configuração que vem junto com o web-cyradm: "
 
 #: index.php:138
 msgid "Edit the file config/conf.php to match your systems configuration"
