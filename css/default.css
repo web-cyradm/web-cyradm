@@ -74,6 +74,14 @@ TH {
 	padding-right : 5px;
 }
 
+.th_a:active, .th_a:link, .th_a:visited {
+	color : #ffffff;
+}
+
+.th_a:hover {
+	color: #ffffff;
+}
+
 TD {
 	font-size : 12px;
 }
