@@ -3,6 +3,12 @@
         <td valign="top">
 
 <?php
+// Specify location of translation tables
+bindtextdomain("setquota", "./locale");
+
+// Choose domain
+textdomain("setquota");
+
 if ($authorized){
         $cyr_conn = new cyradm;
        	$cyr_conn -> imap_login();
@@ -16,7 +22,7 @@ if ($authorized){
 
 	if (!$confirmed){
 	
-		print"<h3>Setting individual Quota for user <font color=red>".$username."</font></h3>";
+		print"<h3>"._("Setting individual Quota for user")." <font color=red>".$username."</font></h3>";
 
 		?>
 
@@ -26,7 +32,7 @@ if ($authorized){
 		<input type="hidden" name="domain" value="<?php print $domain?>">
 		<input type="hidden" name="username" value="<?php print $username?>">
 		<input type="text" size="10" name="quota" value="<?php print $q_total=$q[qmax]?>"> Kilobytes
-		<input type="submit">
+		<input type="submit" value="<?php print _("Submit") ?>">
 		</form>
  	
 		<?php
