@@ -49,17 +49,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					value="<?php echo $domain; ?>"
 					>
 
-					<input
-					type="submit"
-					name="confirmed"
-					value="<?php print _("Yes, delete"); ?>"
-					>
+					<input class="button" type="submit" name="confirmed" value="<?php print _("Yes, delete"); ?>">
 
-					<input
-					type="submit"
-					name="cancel"
-					value="<?php print _("Cancel"); ?>"
-					>
+					<input class="button" type="submit" name="cancel" value="<?php print _("Cancel"); ?>" >
 				</form>
 				<?php
 			} elseif (! empty($cancel)){
