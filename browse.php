@@ -10,6 +10,7 @@ if (!$orderby){
 	$orderby="domain_name";
 }
 
+
 ?>
 <!-- ############################## Start browse.php ###################################### -->
 <tr>
@@ -34,14 +35,7 @@ if (!$orderby){
 
 	        $result2 = $handle->query($query2);
         	$total=$result2->numRows($result2);
-
 ?>
-
-
-	
-
-
-
 		<table border="1" width="98%">
 				<?php
 
@@ -66,11 +60,15 @@ if (!$orderby){
 <!-- 		</table> -->
                 <table cellspacing="2" cellpadding="0">
                         <tr>
-                                <td class="navi">
-                                        <a href="index.php?action=newdomain&domain=new"><?php print _("Add new domain");?></a>
-                                </td>
-
+				<?php 
+				if ($admintype==0){
+					?>
+	                                <td class="navi">
+        	                                <a href="index.php?action=newdomain&domain=new"><?php print _("Add new domain");?></a>
+                	                </td>
                                 <?php
+				}
+				
                                 $prev = $row_pos - $_SESSION['maxdisplay'];
                                 $next = $row_pos + $_SESSION['maxdisplay'];
 
@@ -81,7 +79,7 @@ if (!$orderby){
                                 }
 
 				if ($next>$total){
-					print "<td class=\"navi\"><a href=\"#\">"._("Next 10 entries")."</a></td>";
+					print "<td class=\"navi\"><a href=\"#\">"._("Next entries")."</a></td>";
 				}
 				else {
 					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next&orderby=$orderby\">". _("Next entries")."</a></td>";
