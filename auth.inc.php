@@ -1,4 +1,6 @@
 <?php
+require_once("config.inc.php");
+
 session_start();
 $method=getenv('REQUEST_METHOD');
 
@@ -8,7 +10,6 @@ $login = $HTTP_POST_VARS['login'];
 $password = $HTTP_POST_VARS['password'];
 $LANG = $HTTP_POST_VARS['LANG'];
 function authenticate($user, $pw) {
-	include ("config.inc.php");
         include_once("DB.php");
 	global $handle;
 
@@ -40,14 +41,14 @@ if ($login!="" and $password!="") {
 
 
   // Log access
-	$fp = fopen("/var/log/web-cyradm-login.log", "a");
+   $fp = fopen($LOG_DIR . "web-cyradm-login.log", "a");
 	$date = date("d/M/Y H:i:s");
 	fwrite($fp, "LOGIN : $REMOTE_ADDR $login $date $HTTP_USER_AGENT $HTTP_REFERER $REQUEST_METHOD \n");
 	fclose($fp);
 
 	if (authenticate($login, $password)) {
         	// Log successfull login
-        	$fp = fopen("/var/log/web-cyradm-login.log", "a");
+           $fp = fopen($LOG_DIR . "web-cyradm-login.log", "a");
          	$date = date("d/M/Y H:i:s");
          	fwrite($fp, "PASS: $REMOTE_ADDR $login $date $HTTP_USER_AGENT $HTTP_REFERER $REQUEST_METHOD \n");
          	fclose($fp);
@@ -72,7 +73,7 @@ if ($login!="" and $password!="") {
 	else {
 
         // Log login failure
-        $fp = fopen("/var/log/web-cyradm-login.log", "a");
+        $fp = fopen($LOG_DIR . "web-cyradm-login.log", "a");
         $date = date("d/M/Y H:i:s");
         fwrite($fp, "FAIL: $REMOTE_ADDR $login $date $HTTP_USER_AGENT $HTTP_REFERER $REQUEST_METHOD \n");
         fclose($fp);

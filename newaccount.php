@@ -3,6 +3,7 @@
         <td valign="top"> 
 
 <?php
+require_once('config.inc.php');
 
 print "<h3>"._("Add new Account to domain")." <font color=red>$domain</font></h3>";
 
@@ -114,7 +115,19 @@ else{
 		$username="$email.$domain";
 	}
 
-	$query3="INSERT INTO accountuser (username , password , prefix , domain_name) VALUES ('$username','$password','$prefix','$domain')";
+   $query3="INSERT INTO accountuser (username , password , prefix , " .
+       "domain_name) VALUES ('$username',";
+   switch($CRYPT){
+   case 1:
+       $query3 .= "ENCRYPT($password)";
+       break;
+   case 2:
+       $query3 .= "PASSWORD($password)";
+       break;
+   default:
+       $query3 .= "'$password'";
+        }
+   $query3.=",'$prefix','$domain')";
 
 	//print $query3;
 

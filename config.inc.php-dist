@@ -34,6 +34,8 @@ $DB_PASSWD="secret";
 $DB_PROTOCOL="unix"; // set to "tcp" for TCP/IP
 $DSN="$DB_TYPE://$DB_USER:$DB_PASSWD@$DB_PROTOCOL+$DB_HOST/$DB_NAME";
 
+#Where should web-cyradm write its log to?
+$LOG_DIR="/var/log/cyradm/";
 
 # The default timeout in seconds for a session, after that you have to login again
 $SESS_TIMEOUT=1000;
@@ -46,7 +48,7 @@ $DEFAULT_QUOTA=20000;
 #  - 0 No encription is used
 #  - 1 Reserved (shadow compatible encription)
 #  - 2 MySQL PASSWORD cryto funtions
-$CRYPT=0;
+$CRYPT=1;
 
 # web-cyradm is compatible with cyrus-imapd-2.0.16 (and earlier?)
 # however, if you are using 2.1.x and wish to use email addresses 
