@@ -43,18 +43,18 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<?php print _("Change password"); ?>
 					</a>
 				</th>
-				<td align="left" valign="top" width="2%">&nbsp;</td>
+<!--				<td align="left" valign="top" width="2%">&nbsp;</td>
 				<th align="left" valign="top" width="49%">
-				</th>
+				</th> -->
 			</tr>
 
 			<tr>
 				<td class="row1" align="left" valign="top" width="49%">
 					<?php print _("Use this to change your admin password."); ?>
 				</td>
-				<td align="left" valign="top" width="2%">&nbsp;</td>
+<!--				<td align="left" valign="top" width="2%">&nbsp;</td>
 				<td class="row1" align="left" valign="top" width="49%">
-				</td>
+				</td> -->
 			</tr>
 		</table>
 	</td>
