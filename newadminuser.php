@@ -23,7 +23,7 @@ else{
 		<table>
 			<tr>
 				<td>login</td>
-				<td><input class="inputfield" type="text" name="newadmin" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
+				<td><input class="inputfield" type="text" name="newadminuser" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
 			</tr>
 		
 			<tr>
@@ -58,16 +58,17 @@ else{
 
 		else if ($confirmed){
 	
-			$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadmin','$password','$newadmintype')";
+			$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
 
 			$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
 			$result=mysql_db_query($MYSQL_DB,$query,$handle1);
 	
 			if ($newadmintype==0){
-				$query2="INSERT INTO domainadmin (domain_name , adminuser) values ('*' , '$newadmin')";
+				print $newadminuser;
+				$query2="INSERT INTO domainadmin (domain_name , adminuser) values ('*' , '$newadminuser')";
 			}
 			else{
-				$query2="INSERT INTO domainadmin (domain_name , adminuser) values ('$domain' , '$newadmin')";
+				$query2="INSERT INTO domainadmin (domain_name , adminuser) values ('$domain' , '$newadminuser')";
 			}
 			$result2=mysql_db_query($MYSQL_DB,$query2,$handle1);
 

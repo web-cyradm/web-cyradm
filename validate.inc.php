@@ -2,8 +2,11 @@
 
 ################# Temporary fix for PHP 4.2.0 a better solution has to found #######################
 $user= $HTTP_SESSION_VARS['user'];
-$adminuser= $HTTP_SESSION_VARS['adminuser'];
-$type= $HTTP_SESSION_VARS['type'];
+$adminuser= $HTTP_GET_VARS['adminuser'];
+$newadminuser= $HTTP_GET_VARS['newadminuser'];
+$admintype= $HTTP_GET_VARS['admintype'];
+$newadmintype= $HTTP_GET_VARS['newadmintype'];
+$type= $HTTP_GET_VARS['type'];
 $domain=$HTTP_GET_VARS['domain'];
 $prefix=$HTTP_GET_VARS['prefix'];
 $action=$HTTP_GET_VARS['action'];
