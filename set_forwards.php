@@ -49,9 +49,9 @@ if ($authorized){
 	    $script = $vacation_script.$forwards_script;
 	    if ($daemon->sieve_sendscript('sieve', $script) &&
 	      $daemon->sieve_setactivescript('sieve')) {
-	      echo '<big><b>Forward set!</b></big>';
-	    } else echo '<big><b>Failure in setting forward!</b></big>';
-	  }else echo '<big><b>Wrong password!</b></big>';
+	      print '<big><b>._("Forward set").</b></big>';
+	    } else print '<big><b>._("Failure in setting forward").</b></big>';
+	  }else print '<big><b>._("Wrong password").</b></big>';
 	  break;
 
 	  case 'unset':
@@ -61,18 +61,18 @@ if ($authorized){
 	    if (preg_match ("/(require \".*)(redirect \"|$)/Uis",$old_script,$matches)){
 	      $vacation_script = $matches[1];
 	      if ($daemon->sieve_sendscript('sieve', $vacation_script) ) {
-	        echo '<big><b>Forwarding unset!</b></big>';
-	      }else echo '<big><b>Failure in unsetting forwarding!</b></big>';
+	        print '<big><b>._("Forwarding unset").</b></big>';
+	      }else print '<big><b>._("Failure in unsetting forwarding").</b></big>';
 	    }else {
 	      if ($daemon->sieve_deletescript('sieve')) {
-	        echo '<big><b>Forwarding removed!</b></big>';
-	      }else echo '<big><b>Failure in removing forwarding!</b></big>';
+	        print '<big><b>._("Forwarding removed").</b></big>';
+	      }else print '<big><b>._("Failure in removing forwarding").</b></big>';
 	    }
-	  }else echo '<big><b>Fail login!</b></big>';
+	  }else print '<big><b>._("Failed to login").</b></big>';
 	  break;
 
 	  default:
-	  print '<big><b>Not possible!</b></big>';
+	  print '<big><b>._("Not possible").</b></big>';
 	  break;
 	  }
 

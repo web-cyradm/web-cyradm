@@ -54,15 +54,15 @@ if ($authorized){
 	    $script = $vacation_script.$forwards_script;
 	    if ($daemon->sieve_sendscript('sieve', $script) ) {
 	      if ($daemon->sieve_setactivescript('sieve')) {
-	        print '<big><b>Vacation notice set!</b></big>';
+	        print '<big><b>._("Vacation notice set").</b></big>';
 	      } else {
-	        print '<big><b>Fail to activate vacation!</b></big>';
+	        print '<big><b>._("Failed to activate vacation").</b></big>';
 	      }
 	    } else {
-	      print '<big><b>Failure in modifying vacation notice!</b></big>';
+	      print '<big><b>._("Failure in modifying vacation notice").</b></big>';
 	    }
 	  } else {
-	    print '<big><b>Fail to login!</b></big><p><p>';
+	    print '<big><b>._("Failed to login").</b></big><p><p>';
 	  }
 	  break;
 
@@ -73,24 +73,24 @@ if ($authorized){
 	    if (preg_match ("/redirect \".*$/is",$old_script,$matches) ){
 	      $forwards_script = $matches[0];
 	      if ($daemon->sieve_sendscript('sieve', $forwards_script) ) {
-	        print '<big><b>Vacation notice unset!</b></big>';
+	        print '<big><b>._("Vacation notice unset").</b></big>';
 	      } else {
-	        print '<big><b>Failure in unseting vacation notice!</b></big>';
+	        print '<big><b>._("Failure in unseting vacation notice").</b></big>';
 	      }
 	    } else {
 	      if ($daemon->sieve_deletescript('sieve')) {
-	        print '<big><b>Vacation notice removed!</b></big>';
+	        print '<big><b>._("Vacation notice removed").</b></big>';
 	      } else {
-	        print '<big><b>Failure in removing vacation notice!</b></big>';
+	        print '<big><b>._("Failure in removing vacation notice").</b></big>';
 	      }
 	    }
 	  } else {
-	    print '<big><b>Fail login!</b></big>';
+	    print '<big><b>._("Failed to login").</b></big>';
 	  }
 	  break;
 
 	  default:
-	  print '<big><b>Not possible!</b></big>';
+	  print '<big><b>._("Not possible").</b></big>';
 	  break;
 	  }
 
