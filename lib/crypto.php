@@ -23,14 +23,14 @@ class password{
 		include WC_BASE . "/config/conf.php";
 		if (!class_exists("DB")) include "DB.php";
 
-		        $query = "SELECT password FROM $table WHERE username ='$username'";
+		    $query = "SELECT password FROM $table WHERE username ='$username'";
 			$handle=DB::connect ($DB['DSN'],true);
 
 			if (DB::isError($handle)) {
 				die (_("Database error"));
 			}
 		
-	       		$result = $handle->query($query);
+	       	$result = $handle->query($query);
 			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 
 		$dbinput = $row['password'];
