@@ -250,8 +250,8 @@ msgid "Successfully changed"
 msgstr "Erfolgreich ge&auml;ndert"
 
 #: editdomain.php:61
-msgid "Not yet supported, change will be ignored"
-msgstr "Noch nicht unterst&uuml;tzt, wird ignoriert"
+msgid "(Not yet supported, change will be ignored)"
+msgstr "(Noch nicht unterst&uuml;tzt, wird ignoriert)"
 
 #: editemail.php:63 newemail.php:53
 msgid "Emailadress"

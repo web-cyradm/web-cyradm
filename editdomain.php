@@ -58,7 +58,7 @@ if ($admintype==0){
 	        </tr>
 
 	        <tr>
-	        <td><?php print _("Prefix") ?> (Not yet supported, change will be ignored)</td>
+	        <td><?php print _("Prefix"). " ". _("(Not yet supported, change will be ignored)") ?></td>
 	        <td><input type="text" size="30"  value="<?php print $prefix ?>"></td>
 	        </tr>
 
