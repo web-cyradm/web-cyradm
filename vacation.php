@@ -35,7 +35,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$result = $handle->query($query);
 			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			$password = $row['password'];
-			$daemon = new sieve("localhost", "2000", $username, $CYRUS['PASS'], $CYRUS['ADMIN']);
+			$daemon = new sieve($CYRUS['HOST'], "2000", $username, $CYRUS['PASS'], $CYRUS['ADMIN']);
 
 			if (! empty($confirmed)){
 				switch ($mode) {
