@@ -65,12 +65,17 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	                                <td class="navi">
         	                                <a href="index.php?action=newdomain&domain=new"><?php print _("Add new domain");?></a>
                 	                </td>
+					<td width="20">&nbsp;</td>
                                 <?php
 				}
 				
                                 $prev = $_SESSION['domain_row_pos'] - $_SESSION['maxdisplay'];
                                 $next = $_SESSION['domain_row_pos'] + $_SESSION['maxdisplay'];
+				$last = $cnt - $_SESSION['maxdisplay'];
 
+
+				print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=0\">"._("First entry") ."</a></td>";		
+	
                                 if ($_SESSION['domain_row_pos'] < $_SESSION['maxdisplay']){
 					print "<td class=\"navi\"><a>"._("Previous entries")."</a></td>";
                                 } else {
@@ -83,6 +88,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				else {
 					print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=$next\">". _("Next entries")."</a></td>";
 				}
+				print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=$last\">"._("Last entry") ."</a></td>";		
                                 ?>
 
 
