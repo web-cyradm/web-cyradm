@@ -8,7 +8,7 @@
 #
 #  License: GNU GPL
 #
-#  $id$
+#  $Id$
 #
 class password{
 
