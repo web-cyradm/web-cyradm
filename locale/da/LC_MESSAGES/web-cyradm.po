@@ -1,0 +1,405 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2002-08-18 13:51+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: adminuser.php:12
+msgid "Browse admins"
+msgstr "Gennemse Administratorer"
+
+#: adminuser.php:24
+msgid "Total administrators"
+msgstr "administratorer"
+
+#: adminuser.php:27
+msgid "Add administator"
+msgstr "Tilføj Administrator"
+
+#: adminuser.php:35 adminuser.php:39 browseaccounts.php:49
+#: browseaccounts.php:53
+msgid "Previous 10 entries"
+msgstr "Forrige 10"
+
+#: adminuser.php:43 adminuser.php:47 browseaccounts.php:57
+#: browseaccounts.php:61
+msgid "Next 10 entries"
+msgstr "Næste 10"
+
+#: adminuser.php:53 browse.php:16 browseaccounts.php:69 editaccount.php:31
+msgid "action"
+msgstr "funktioner"
+
+#: adminuser.php:54
+msgid "Adminname"
+msgstr "Admin navn"
+
+#: adminuser.php:55 browseaccounts.php:72 editaccount.php:34 login.php:89
+#: newaccount.php:96
+msgid "Password"
+msgstr "Kodeord"
+
+#: adminuser.php:56
+msgid "domain"
+msgstr "domæne"
+
+#: adminuser.php:57
+msgid "admin type"
+msgstr "Admin type"
+
+#: adminuser.php:81
+msgid "Edit adminuser"
+msgstr "Rediger admin bruger"
+
+#: adminuser.php:82
+msgid "Delete adminuser"
+msgstr "Slet admin bruger"
+
+#: adminuser.php:108
+msgid "No accounts fount"
+msgstr "Ingen konti fundet"
+
+#: adminuser.php:112
+msgid "Add administrator"
+msgstr "Tilføj administrator"
+
+#: browse.php:12
+msgid "Browse domains"
+msgstr "Gennemse domæner"
+
+#: browse.php:17
+msgid "domainname"
+msgstr "Domænenavn"
+
+#: browse.php:21
+msgid "prefix"
+msgstr "prefix"
+
+#: browse.php:24
+msgid "max Accounts"
+msgstr "Max. antal konti"
+
+#: browse.php:25
+msgid "default quota per user"
+msgstr "Standard quota per bruger"
+
+#: browse.php:56
+msgid "Edit Domain"
+msgstr "Rediger Domæne"
+
+#: browse.php:57
+msgid "Delete Domain"
+msgstr "Slet Domæne"
+
+#: browse.php:58 deletedomain.php:29 menu.inc.php:42
+msgid "accounts"
+msgstr "konti"
+
+#: browseaccounts.php:20
+msgid "Browse accounts for domain"
+msgstr "Gennemse konti for domænet"
+
+#: browseaccounts.php:38 newaccount.php:48
+msgid "Total accounts"
+msgstr "Konti"
+
+#: browseaccounts.php:41 browseaccounts.php:147
+msgid "Add new account"
+msgstr "Tilføj ny konto"
+
+#: browseaccounts.php:70 editaccount.php:32 newaccount.php:86
+msgid "Email address"
+msgstr "Email adresse"
+
+#: browseaccounts.php:71 editaccount.php:33 login.php:79
+msgid "Username"
+msgstr "Brugernavn"
+
+#: browseaccounts.php:73 editaccount.php:35
+msgid "Quota used"
+msgstr "Quota brugt"
+
+#: browseaccounts.php:93
+msgid "Edit account"
+msgstr "Rediger konto"
+
+#: browseaccounts.php:94
+msgid "Delete account"
+msgstr "Slet konto"
+
+#: browseaccounts.php:95
+msgid "Set quota"
+msgstr "Sæt quota"
+
+#: browseaccounts.php:96
+msgid "Set catch all"
+msgstr "lav til maildrop"
+
+#: browseaccounts.php:126 editaccount.php:76
+msgid "out of"
+msgstr "ud af"
+
+#: browseaccounts.php:130 editaccount.php:80
+msgid "Quota not set"
+msgstr "Quota ikke sat"
+
+#: browseaccounts.php:143
+msgid "No accounts found"
+msgstr "Ingen konti fundet"
+
+#: catchall.php:13
+msgid "Define a Account for receiving undefined adresses for domain"
+msgstr "Definer en konto for udefinerede adresser på domænet"
+
+#: catchall.php:24
+msgid "Do you really want to define the user"
+msgstr "Vil du virkelig definere brugeren"
+
+#: catchall.php:24
+msgid "to receive all undefined emailadresses"
+msgstr "til at modtage for alle udefinerede adresser"
+
+#: catchall.php:54
+msgid "successfully added to Database"
+msgstr "korrekt tilføjet til database"
+
+#: catchall.php:57 editemail.php:36 newemail.php:29
+msgid "Database error, please try again"
+msgstr "Database fejl, prøv igen"
+
+#: deleteaccount.php:19
+msgid "Delete an Account from the System"
+msgstr "Slet en konto fra systemet"
+
+#: deleteaccount.php:21
+msgid "Do you really want to delete the user "
+msgstr "Vil du virkelig slette brugeren"
+
+#: deleteaccount.php:21
+msgid "with all its defined Emailadresses"
+msgstr "med alle dens definerede emailadresser"
+
+#: deleteaccount.php:40 deletedomain.php:47 deleteemail.php:39
+msgid "Action cancelled, nothing deleted"
+msgstr "sletning annuleret, ingenting slettet"
+
+#: deletedomain.php:24
+msgid "Delete a Domain from the System"
+msgstr "Slet et domæne fra systemet"
+
+#: deletedomain.php:26
+msgid "Do you really want to delete the Domain"
+msgstr "Vil du virkelig slette domænet"
+
+#: deletedomain.php:26
+msgid "with all its defined accounts, admins, and emailadresses"
+msgstr "med alle dets definerede konti, admins og emailadresser"
+
+#: deletedomain.php:27
+msgid "This can take a while depending on how many account have to be deleted"
+msgstr "Dette kan tage et stykke tid, afhængigt af hvor konti der skal slettes"
+
+#: deletedomain.php:29
+msgid "Your action will delete"
+msgstr "Dit valg vil slette"
+
+#: deletedomain.php:94
+msgid "Domain"
+msgstr "domæne"
+
+#: deletedomain.php:94
+msgid "successfully deleted"
+msgstr "Korrekt slettet"
+
+#: deleteemail.php:17
+msgid "Delete an emailadress from the System"
+msgstr "Slet en emailadresse fra systemet"
+
+#: deleteemail.php:19
+msgid "Do you really want to delete the emailadress for user"
+msgstr "Vil du virkelig slette emailadresse for brugeren"
+
+#: editaccount.php:17
+msgid "Email adresses defined for user"
+msgstr "Emailadresse defineret for brugeren"
+
+#: editaccount.php:25
+msgid "New email address"
+msgstr "Ny email adresse"
+
+#: editaccount.php:52
+msgid "Edit Emailadress"
+msgstr "Rediger emailadresse"
+
+#: editaccount.php:53
+msgid "Delete Emailadress"
+msgstr "Slet emailadresse"
+
+#: editemail.php:32
+msgid "Successfully changed"
+msgstr "Korrekt ændret"
+
+#: editemail.php:63 newemail.php:53
+msgid "Emailadress"
+msgstr "Emailadresse"
+
+#: editemail.php:68 newemail.php:58
+msgid "Destination"
+msgstr "Destination"
+
+#: login.php:68
+msgid "Welcome to Web-cyradm"
+msgstr "Velkommen til Web-cyradm"
+
+#: login.php:69
+msgid "This is only for authorized users"
+msgstr "Dette er kun for autoriserede brugere"
+
+#: login.php:70
+msgid "Please authenticate yourself"
+msgstr "Autoriser venligst digselv"
+
+#: logout.php:32
+msgid "Thank you for using Web-cyradm"
+msgstr "Tak fordi du brugte Web-cyradm"
+
+#: logout.php:34
+msgid "You are logged out"
+msgstr "Du er logget af"
+
+#: logout.php:36 timeout.php:67
+msgid "If you like to login click"
+msgstr "Hvis du vil logge ind, klik"
+
+#: logout.php:36 timeout.php:67
+msgid "here"
+msgstr "her"
+
+#: menu.inc.php:23
+msgid "Domainmasters menu"
+msgstr "Domænemesterens menu"
+
+#: menu.inc.php:27
+msgid "add new domain"
+msgstr "tilføj nyt domæne"
+
+#: menu.inc.php:30
+msgid "browse domains"
+msgstr "Gennemse domæner"
+
+#: menu.inc.php:33
+msgid "adminusers"
+msgstr "admin brugere"
+
+#: menu.inc.php:45
+msgid "home"
+msgstr "hjem"
+
+#: menu.inc.php:48
+msgid "logout"
+msgstr "log af"
+
+#: menu.inc.php:53
+msgid "Search"
+msgstr "Søg"
+
+#: menu.inc.php:69
+msgid "Logged in as user"
+msgstr "Logget ind som bruger"
+
+#: menu.inc.php:74
+msgid "Your role is"
+msgstr "Din rolle er"
+
+#: menu.inc.php:76
+msgid "Superuser"
+msgstr "Superbruger"
+
+#: menu.inc.php:79
+msgid "Domain Master"
+msgstr "Domænermester "
+
+#: newaccount.php:14
+msgid "Add new Account to domain"
+msgstr "Tilføj ny konti til domænet"
+
+#: newaccount.php:79
+msgid "Accountname"
+msgstr "Kontonavn"
+
+#: newaccount.php:91
+msgid "Quota"
+msgstr "Quota"
+
+#: newaccount.php:101
+msgid "Confirm Password"
+msgstr "Verificer Kodeord"
+
+#: newaccount.php:139
+msgid "Account successfully added to the Database"
+msgstr "Konto korrekt tilføjet til databasen"
+
+#: newaccount.php:153
+msgid "Account succesfully added to the IMAP Subsystem"
+msgstr "Konto korrekt tilføjet til IMAP undersystemet"
+
+#: newdomain.php:17
+msgid "Add new domain"
+msgstr "Tilføj nyt domæne"
+
+#: newdomain.php:29
+msgid "Domainname"
+msgstr "Domænenavn"
+
+#: newdomain.php:35
+msgid "Prefix"
+msgstr "Prefix"
+
+#: newdomain.php:44
+msgid "Maximum Accounts"
+msgstr "Max. konti"
+
+#: newdomain.php:48
+msgid "Default Quota in Kilobytes"
+msgstr "Standard Quota i Kilobytes"
+
+#: newemail.php:25
+msgid "Successfully added"
+msgstr "Korrekt tilføjet"
+
+#: newemail.php:41
+msgid "New emailadress for user"
+msgstr "Ny emailadresse for bruger"
+
+#: setquota.php:25
+msgid "Setting individual Quota for user"
+msgstr "Sætter individuel Quora for bruger"
+
+#: timeout.php:65
+msgid "Your session timed out"
+msgstr "Din session er udløbet"
+
+#: Submit and cancel buttons
+msgid "Yes, delete"
+msgstr "Ja, Slet"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "Submit"
+msgstr "Tilføj"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+

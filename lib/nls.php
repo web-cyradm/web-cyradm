@@ -7,7 +7,7 @@
 
 //$nls['aliases']['bg'] = 'bg_BG';
 //$nls['aliases']['cs'] = 'cs_CZ';
-//$nls['aliases']['da'] = 'da_DK';
+$nls['aliases']['da'] = 'da_DK';
 $nls['aliases']['de'] = 'de_DE';
 //$nls['aliases']['el'] = 'el_GR';
 //$nls['aliases']['en'] = 'en_US';
