@@ -64,28 +64,17 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 //					print $query;
 				}
 
-				$handle = DB::connect($DB['DSN'], true);
-
-				if (DB::isError($handle)) {
-					die (_("Database error"));
-				}
-
-
 				$result = $handle->query($query);
 				$cnt    = $result->numRows($result);
 
-				$b = 0;
 				for ($c=0; $c < $cnt; $c++){
-					if ($b==0){
+					if ($c%2==0){
 						$cssrow="row1";
-						$b=1;
 					} else {
 						$cssrow="row2";
-						$b=0;
 					}
 
 					$row = $result->fetchRow(DB_FETCHMODE_ASSOC,$c);
-					$domain = $row['domain_name'];
 
 					?>
 					<tr class="<?php echo $cssrow;?>">
@@ -101,7 +90,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							<td>
 								<?php
 								printf ('<a href="index.php?action=%s&amp;domain=%s">%s</a>',
-									$_action, $domain, $_txt);
+									$_action, $row['domain_name'], $_txt);
 								?>
 							</td>
 							<?php
@@ -109,7 +98,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						?>
 
 						<td>
-							<?php echo $domain;?>
+							<?php echo $row['domain_name'];?>
 						</td>
 
 						<td>
