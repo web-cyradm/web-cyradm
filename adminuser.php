@@ -65,7 +65,7 @@ if ($admintype==0){
 		$query2="SELECT * from domainadmin WHERE adminuser='$username'";
 		$result2=$handle->query($query2);
 
-		$row2=$result2->fetchRow(DB_FETCHMOD_ASSOC, 0);
+		$row2=$result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		$domainname=$row['domain_name'];
                 $type=$row['type'];
                 print "\n<tr class=\"$cssrow\">";

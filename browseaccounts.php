@@ -12,21 +12,9 @@
 	if (!isset($row_pos)){
 		$row_pos=0;
 	}
-	if (!isset($allowed_domains)){
-
-######## If you are using PostgreSQL, please use the query which is commented out
-
-//	        $query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username OFFSET $row_pos LIMIT 10";
-                $query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username LIMIT $row_pos,10";
-
-	}
-	else{
-//		$query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username OFFSET $row_pos LIMIT 10";
-                $query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username LIMIT $row_pos,10";
-
-	}
+        $query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username";
 	$handle=DB::connect($DSN, true);
-	$result=$handle->query($query);
+	$result=$handle->limitQuery($query,$row_pos,10);
 	$cnt=$result->numRows($result);
 
         $query2="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username";
@@ -88,9 +76,9 @@
 	        	$b=0;
 	        }
 
-		$row=$result->fetchRow($result,$c,'domain_name');
-		$domain=$row[3];
-		$username=$row[0];
+		$row=$result->fetchRow(DB_FETCHMODE_ASSOC,$c);
+		$domain=$row['domain_name'];
+		$username=$row['username'];
 
 	        print "\n<tr class=\"$cssrow\">";
 	        print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">Edit account</a></td>";
@@ -105,8 +93,8 @@
 		
 		for ($c2=0;$c2<$cnt2;$c2++){
 			# Print All Emailadresses found for the account
-			$row=$result2->fetchRow($result2,$c2,'alias');
-			print $row[0]."<br>";
+			$row=$result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
+			print $row['alias']."<br>";
 			}
 	
 	        print "</td>\n<td>";

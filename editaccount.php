@@ -40,10 +40,8 @@
 		$cssrow="row2";
             $b=0;
           }
-	  $row=$hnd->fetchRow(DB_FETCHMOD_ASSOC, $c);
-//	  print $row[0];
-//	  $alias=$row['alias'];	
-	  $alias=$row[0];	
+	  $row=$hnd->fetchRow(DB_FETCHMODE_ASSOC, $c);
+	  $alias=$row['alias'];	
           print "<tr class=\"$cssrow\"> \n";
           print "<td><a href=\"index.php?action=editemail&domain=$domain&alias=$alias&username=$username\">Edit Emailadress</a></td>";
           print "<td><a href=\"index.php?action=deleteemail&domain=$domain&alias=$alias&username=$username\">Delete Emailadress</a></td>";

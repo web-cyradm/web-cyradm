@@ -58,7 +58,7 @@ if ($admintype==0){
 
 		for ($i=0;$i<$cnt1;$i++){
 	
-			$row = $result1->fetchRow(DB_FETCHMOD_ASSOC, $i);
+			$row = $result1->fetchRow(DB_FETCHMODE_ASSOC, $i);
 			$username=$row['username'];
 			$query5="DELETE FROM virtual WHERE username='$username'";
 			$result5=$handle->query($query5);
