@@ -15,9 +15,9 @@
 #
 
 CREATE TABLE accountuser (
-  username varchar(30) NOT NULL default '',
+  username varchar(50) NOT NULL default '',
   password varchar(30) binary NOT NULL default '',
-  prefix varchar(30) NOT NULL default '',
+  prefix varchar(50) NOT NULL default '',
   domain_name varchar(255) NOT NULL default '',
   UNIQUE KEY username (username)
 ) TYPE=MyISAM;
@@ -28,8 +28,8 @@ CREATE TABLE accountuser (
 #
 
 CREATE TABLE adminuser (
-  username varchar(30) NOT NULL default '',
-  password varchar(30) binary NOT NULL default '',
+  username varchar(50) NOT NULL default '',
+  password varchar(50) binary NOT NULL default '',
   type int(11) NOT NULL default '0',
   SID varchar(255) NOT NULL default '',
   home varchar(255) NOT NULL default '',
@@ -44,7 +44,7 @@ CREATE TABLE adminuser (
 CREATE TABLE alias (
   alias varchar(255) NOT NULL default '',
   dest longtext,
-  username varchar(30) NOT NULL default '',
+  username varchar(50) NOT NULL default '',
   status int(11) NOT NULL default '1',
   PRIMARY KEY  (alias)
 ) TYPE=MyISAM;
@@ -56,10 +56,10 @@ CREATE TABLE alias (
 
 CREATE TABLE domain (
   domain_name varchar(255) NOT NULL default '',
-  prefix varchar(30) NOT NULL default '',
+  prefix varchar(50) NOT NULL default '',
   maxaccounts int(11) NOT NULL default '20',
   quota int(10) NOT NULL default '20000',
-  transport varchar(30) NOT NULL default 'cyrus',
+  transport varchar(255) NOT NULL default 'cyrus',
   PRIMARY KEY  (domain_name),
   UNIQUE KEY prefix (prefix)
 ) TYPE=MyISAM;
@@ -96,7 +96,7 @@ CREATE TABLE search (
 CREATE TABLE virtual (
   alias varchar(255) NOT NULL default '',
   dest longtext,
-  username varchar(30) NOT NULL default '',
+  username varchar(50) NOT NULL default '',
   status int(11) NOT NULL default '1',
   PRIMARY KEY  (alias),
   UNIQUE KEY alias (alias)

@@ -1,1 +1,1 @@
-ALTER TABLE `mail`.`domain` ADD `transport` VARCHAR(30) DEFAULT 'cyrus' NOT NULL
+ALTER TABLE `mail`.`domain` ADD `transport` VARCHAR(255) DEFAULT 'cyrus' NOT NULL
