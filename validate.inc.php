@@ -116,6 +116,34 @@ if (! empty($action)){
 			$authorized = TRUE;
 		}
 		break;
+
+
+################################ Check input if newaccount ################################################
+
+	case "newaccount":
+		# We need to check if the requested quota is NOT higher than the defined maximum Quota
+		# Superusers can override
+		$query = "SELECT quota FROM domain WHERE domain_name='$domain'";
+		$result=$handle->query($query);
+		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+		# $quota2 is the allowed quota, $quota the requested quota for the account
+		$quota2=$row['quota'];
+
+		#When the requuested quota is higher that the default quota, we need to check if
+		#admin NOT superuser AND when submitting the request
+		if ($quota>$quota2 && $admintype!=0 && $confirmed==TRUE){
+			$err_msg=_("Quota exeedes the maximum allowed qutoa for this domain.");
+			$authorized = FALSE;
+		}
+		else {
+			# If the requirements are not matches, deny submission
+			$authorized=TRUE;
+		}
+	break;
+
+
+
+
 ################################ Check input if setquota ##################################################
 	case "setquota":
 		$query = "SELECT quota FROM domain WHERE domain_name='$domain'";
@@ -126,10 +154,13 @@ if (! empty($action)){
 		$quota2 = $row['quota'];
 		if ($result5->numRows()){
 			$authorized=TRUE;
-			if (! empty($quota) && $quota > $quota2){
+
+			# If the admin is a superuser, lets change the quota anyway, regardless what the default quota is
+			if (! empty($quota) && $quota > $quota2 && $admintype!=0){
 				$err_msg=_("Quota exeedes the maximum allowed qutoa for this domain.");
 				$authorized = FALSE;
 			}
+		# admins not responsible for the selected domain are rejected, lets assume a break-in try
 		} elseif (!$result5->numRows()){
 			$err_msg=_("Security violation detected, attempt logged");
 			$authorized = FALSE;
