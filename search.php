@@ -20,19 +20,19 @@ if ($error!=0){
 }
 
 if ($_SESSION['admintype']==0) {
-    $allowed_domains="('1'='1";
+    $allowed_domains1="('1'='1";
     $allowed_domains3="('1'='1";
 } else {
-    $allowed_domains="(a.domain_name='";
+    $allowed_domains1="(a.domain_name='";
     $allowed_domains3="(virtual.username='";
     foreach($_SESSION['allowed_domains'] as $allowed_domain) {
-	$allowed_domains .= $allowed_domain."' OR a.domain_name='";                                       
+	$allowed_domains1 .= $allowed_domain."' OR a.domain_name='";                                       
 	$allowed_domains3 .= $allowed_domain."' OR virtual.username='";                                       
     }
 }
 
-$query="SELECT * FROM domain a where domain_name LIKE '%$searchstring%' and $allowed_domains') ORDER BY domain_name";
-$query2="SELECT distinct a.username, a.domain_name FROM virtual as v, accountuser as a where ((v.username LIKE '%$searchstring%') or (v.alias LIKE '%$searchstring%')) and (v.username=a.username) and $allowed_domains') ORDER BY username";
+$query="SELECT * FROM domain a where domain_name LIKE '%$searchstring%' and $allowed_domains1') ORDER BY domain_name";
+$query2="SELECT distinct a.username, a.domain_name FROM virtual as v, accountuser as a where ((v.username LIKE '%$searchstring%') or (v.alias LIKE '%$searchstring%')) and (v.username=a.username) and $allowed_domains1') ORDER BY username";
 $query3="SELECT DISTINCT alias, username FROM virtual WHERE (((dest LIKE '%$searchstring%') OR (alias LIKE '%$searchstring%')) AND (dest <> username) AND (username<>'') ) AND $allowed_domains3') ORDER BY username";	
 $result=$handle->query($query);
 $result2=$handle->query($query2);
@@ -112,7 +112,7 @@ print "<h3>"._("Total users matching").": ".$total."</h3>";
 if (!isset($row_pos)){
 	$row_pos=0;
 	}
-        $query="SELECT distinct a.username, a.domain_name FROM virtual as v, accountuser as a where ((v.username LIKE '%$searchstring%') or (v.alias LIKE '%$searchstring%')) and (v.username=a.username) and $allowed_domains') ORDER BY username";
+        $query="SELECT distinct a.username, a.domain_name FROM virtual as v, accountuser as a where ((v.username LIKE '%$searchstring%') or (v.alias LIKE '%$searchstring%')) and (v.username=a.username) and $allowed_domains1') ORDER BY username";
 	$result=$handle->limitQuery($query,$row_pos,10);
 	$cnt=$result->numRows($result);
 
