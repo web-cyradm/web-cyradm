@@ -47,9 +47,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					><?php print _("Add new account");?></a>
 				</td>
 
+				<td width="20">&nbsp;</td>
+
 				<?php
+				print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=0\">"._("First entry") ."</a></td>";
+
 				$prev = $_SESSION['account_row_pos'] - $_SESSION['account_maxdisplay'];
 				$next = $_SESSION['account_row_pos'] + $_SESSION['account_maxdisplay'];
+				$last = $cnt - $_SESSION['maxdisplay'];
 				
 				if ($_SESSION['account_row_pos'] < $_SESSION['account_maxdisplay']){
 					print "<td class=\"navi\"><a>"._("Previous entries")."</a></td>";
@@ -59,8 +64,10 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				if ($next >= $cnt){
 					print "<td class=\"navi\"><a>"._("Next entries")."</a></td>";
+					print "<td class=\"navi\"><a>"._("Last entry") ."</a></td>";
 				} else {
 					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=".$_GET['domain']."&row_pos=".$next."\">"._("Next entries") ."</a></td>";
+					print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$last\">"._("Last entry") ."</a></td>";
 				}
 				?>
 			</tr>
