@@ -7,10 +7,10 @@
 <?php
 
 // Specify location of translation tables
-bindtextdomain("browse", "./locale");
+bindtextdomain("timeout", "./locale");
 
 // Choose domain
-textdomain("browse");
+textdomain("timeout");
 
 ?>
 
