@@ -27,8 +27,16 @@ if (DB::isError($result)) {
 }
 $cnt = $result->numRows($result);
 
+$query2 = "SELECT status FROM virtual where username ='".$_GET['username']."' LIMIT 1";
+$result2 = $handle->query($query2);
+
+if (DB::isError($result2)) {
+        die (_("Database error"));
+}
+
 if ($cnt){
 	$row=$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0 );
+	$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0 );
 	if ($row['imap']){
 		$imap_checked="checked";
 	}
@@ -41,7 +49,7 @@ if ($cnt){
 	if ($row['smtpauth']){
                 $smtpauth_checked="checked";
         }
-        if ($row['smtp']){
+        if ($row2['status']){
                 $smtp_checked="checked";
         }
 }

@@ -271,7 +271,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
                                                         print "<tr><td>smtpauth</td><td><img src=\"images/false.png\" alt=\"no\" border=0></td></tr>";
                                                 }
 
-                                                if($row['smtp']==1){
+                                                if($row2['status']==1){
                                                         print "<tr><td>smtp</td><td><img src=\"images/checked.png\" alt=\"yes\" border=0></td></tr>";
                                                 }
                                                 else{
