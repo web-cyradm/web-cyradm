@@ -168,7 +168,7 @@
 								$row = $result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
 								print $row['alias'] . "<br>";
 							}
-				                        $query4 = "select * from virtual where alias=\"" . $username . "\"";
+				                        $query4 = "select * from virtual where alias='" . $username . "'";
 							$result4 = $handle->query($query4);
 							$row4 = $result4->fetchRow(DB_FETCHMODE_ASSOC, 0);
 							if (is_array($row4)){
