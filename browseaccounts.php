@@ -36,7 +36,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		die (_("Database error"));
 	}
 
-	$result = $handle->limitQuery($query,$row_pos,$maxdisplay);
+	$result = $handle->limitQuery($query,$row_pos,$_SESSION['maxdisplay']);
 	$cnt = $result->numRows($result);
 
 	$query2 = "SELECT * FROM accountuser where domain_name='$domain' ORDER BY username";
@@ -59,10 +59,10 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				<?php
 				//$prev = $row_pos - 10;
-				$prev = $row_pos - $maxdisplay;
-				$next = $row_pos + $maxdisplay;
+				$prev = $row_pos - $_SESSION['maxdisplay'];
+				$next = $row_pos + $_SESSION['maxdisplay'];
 				
-				if ($row_pos < $maxdisplay){
+				if ($row_pos < $_SESSION['maxdisplay']){
 					$_linkP = '#';
 				} else {
 					$_linkP = sprintf('index.php?action=accounts&amp;domain=%s&amp;row_pos=%d',
