@@ -27,6 +27,7 @@ if ($login && $password){
 	  logger(sprintf("PASS : %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $login, $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"));
 
           $_SESSION['session_ok'] = TRUE;
+	  $_SESSION['timestamp'] = time();
 	  $_SESSION['user'] = $login;
 	  $_SESSION['LANG'] = $LANG;
 	  $_SESSION['init'] = 'init';
