@@ -29,7 +29,12 @@ class password{
 
 		        $query = "SELECT password FROM $table WHERE username ='$username'";
 			$handle=DB::connect ($DSN,true);
+			if (DB::isError($handle)) {
+				die (_("Database error"));
+			}
+		
 	       		$result = $handle->query($query);
+
 
 			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 
@@ -51,6 +56,11 @@ class password{
 		case "0":
 			$query = "SELECT password FROM $table WHERE username ='$username'";
 			$handle=DB::connect ($DSN,true);
+
+			if (DB::isError($handle)) {
+                                die (_("Database error"));
+                        }
+
 			$result = $handle->query($query);
 			$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 
@@ -90,6 +100,12 @@ class password{
 	
 			$query="UPDATE $table SET password='$newpassword' WHERE username='$username'";
 			$handle=DB::connect ($DSN,true);
+
+			if (DB::isError($handle)) {
+                                die (_("Database error"));
+                        }
+
+
 			$result = $handle->query($query);
 			
 			if ($result){	

@@ -36,6 +36,10 @@ if ($admintype==0){
 	else{
 
 	$handle=DB::connect($DSN,true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+
 
 	$query2="DELETE FROM adminuser WHERE username='$username'";
 	$hnd2=$handle->query($query2);

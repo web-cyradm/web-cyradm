@@ -19,6 +19,10 @@
 	}
         $query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username";
 	$handle=DB::connect($DSN, true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+
 	$result=$handle->limitQuery($query,$row_pos,10);
 	$cnt=$result->numRows($result);
 

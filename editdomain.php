@@ -13,6 +13,10 @@ if ($admintype==0){
 		$query2="UPDATE accountuser SET domain_name='$newdomain' WHERE domain_name='$domain'";
 
 	        $handle=DB::connect ($DSN,true);
+		if (DB::isError($handle)) {
+			die (_("Database error"));
+		}
+
 	        $result=$handle->query($query);
 	        $result2=$handle->query($query2);
 
@@ -34,6 +38,10 @@ if ($admintype==0){
 
 	        $query="select * from domain where domain_name='$domain'";
 	        $handle=DB::connect($DSN,true);
+		if (DB::isError($handle)) {
+			die (_("Database error"));
+		}
+
 	        $result=$handle->query($query);
 		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 	        $domain=$row['domain_name'];

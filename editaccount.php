@@ -12,6 +12,10 @@
 
 	$query="select * from virtual where username='$username'";
         $handle=DB::connect($DSN, true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+
         $hnd=$handle->query($query);
         $cnt=$hnd->numRows();
 	print "<table cellspacing=\"2\" cellpadding=\"0\"><tr>";

@@ -43,6 +43,10 @@ if ($error!=0){
 }
 
 $handle=DB::connect($DSN, true);
+if (DB::isError($handle)) {
+	die (_("Database error"));
+}
+
 
 $query2="delete from virtual where username='$username'";
 $hnd2=$handle->query($query2);

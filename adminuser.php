@@ -9,6 +9,10 @@ print "<td valign=\"top\"><h3>"._("Browse admins")."</h3>";
 if ($admintype==0){
         $query="SELECT * FROM adminuser"; 
         $handle=DB::connect($DSN, true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+
         $result=$handle->query($query);
         $cnt=$result->numRows();
 

@@ -13,6 +13,10 @@ if($err_msg) {
 
 if ($authorized){
     $handle=DB::connect($DSN, true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+
     if($setforward==1 && !empty($forwardto)) {
         // delete all first
         $query="delete from virtual WHERE alias='$username'";

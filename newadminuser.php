@@ -72,6 +72,10 @@ else{
 			$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
 
 			$handle1=DB::connect($DSN,true);
+			if (DB::isError($handle)) {
+				die (_("Database error"));
+			}
+
 			$result=$handle1->query($query);
 	
 			if ($newadmintype==0){

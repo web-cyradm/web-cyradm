@@ -36,6 +36,10 @@ else if ($cancel){
 else{
 
 $handle=DB::connect($DSN, true);
+if (DB::isError($handle)) {
+	die (_("Database error"));
+}
+
 $query="delete from virtual where alias='$alias'";
 $result=$handle->query($query);
 

@@ -37,6 +37,10 @@ if (!$confirmed){
 
 	$insertquery="INSERT INTO virtual  (alias , dest , username , status) values ('@$domain' , '$username' , '$username' , '1')";
 	$handle=DB::connect($DSN, true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+
 	$result=$handle->query($deletequery);
 	$result=$handle->query($insertquery);
 

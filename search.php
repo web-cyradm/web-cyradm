@@ -10,6 +10,10 @@ $query2="SELECT * FROM accountuser where username LIKE '%$searchstring%' ORDER B
 $query3="SELECT * FROM alias where username LIKE '%$searchstring%' ORDER BY username";
 
 $handle=DB::connect($DSN, true);
+if (DB::isError($handle)) {
+	die (_("Database error"));
+}
+
 	
 $result=$handle->query($query);
 $result2=$handle->query($query2);
@@ -96,6 +100,10 @@ if (!isset($row_pos)){
 	}
 	$query="SELECT * FROM accountuser where username LIKE '$searchstring%' ORDER BY username";
 	$handle=DB::connect($DSN, true);
+	if (DB::isError($handle)) {
+		die (_("Database error"));
+	}
+
 	$result=$handle->limitQuery($query,$row_pos,10);
 	$cnt=$result->numRows($result);
 
