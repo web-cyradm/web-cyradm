@@ -1,13 +1,13 @@
 # Swedish translation of web-cyradm
 # Copyright (C) 2003 Free Software Foundation, Inc.
-# Fredrik Rambris <fredrik@rambris.com>, 2003.
+# Anders Norrbring <anders@norrbring.biz>, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: web-cyradm cvs-2003-01-31\n"
 "POT-Creation-Date: 2003-08-10 16:56+0200\n"
-"PO-Revision-Date: 2003-08-11 19:06+0100\n"
-"Last-Translator: Fredrik Rambris <fredrik@rambris.com>\n"
+"PO-Revision-Date: 2004-03-11 22:16+0100\n"
+"Last-Translator: Anders Norrbring <anders@norrbring.biz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
@@ -119,7 +119,7 @@ msgstr "av"
 
 #: CVS/Base/browseaccounts.php:221 browseaccounts.php:221 search.php:220
 msgid "Unable to retrieve quota"
-msgstr "Kunde inte läsa av kvot"
+msgstr "Kunde inte läsa kvot"
 
 #: CVS/Base/browseaccounts.php:224 browseaccounts.php:224 editaccount.php:155
 #: search.php:223
@@ -231,7 +231,7 @@ msgstr "Ditt inloggningsförsök har lagrats."
 
 #: browse.php:13
 msgid "Browse domains"
-msgstr "Bläddra igenom domäner"
+msgstr "Bläddra genom domäner"
 
 #: browse.php:24 search.php:53
 msgid "domainname"
@@ -271,7 +271,7 @@ msgstr "Definiera ett konto för mottagning av odefinierade adresser i domänen"
 
 #: catchall.php:38
 msgid "Do you really want to define the user"
-msgstr "Vill du verkligen definiera användaren"
+msgstr "Vill du verkligen skapa användaren"
 
 #: catchall.php:42
 msgid "to receive all undefined emailadresses"
@@ -394,11 +394,11 @@ msgstr "Vill du verkligen radera domänen"
 
 #: deletedomain.php:37
 msgid "with all its defined accounts, admins, and emailadresses"
-msgstr "med alla dess upplaggda konton, administratörer och e-postadresser"
+msgstr "med alla dess konton, administratörer och e-postadresser"
 
 #: deletedomain.php:43
 msgid "This can take a while depending on how many account have to be deleted"
-msgstr "Detta kan ta ett tag beroende på hur många konton du har laggt upp"
+msgstr "Detta kan ta en stund beroende på hur många konton det finns"
 
 #: deletedomain.php:47
 msgid "Your action will delete"
@@ -442,7 +442,7 @@ msgstr "Alias borttaget"
 
 #: editaccount.php:21
 msgid "Email adresses defined for user"
-msgstr "E-postadress upplaggd för användare"
+msgstr "E-postadress skapad för användare"
 
 #: editaccount.php:42
 msgid "New email address"
@@ -482,7 +482,7 @@ msgstr "Bekräfta lösenord"
 
 #: editadminuser.php:155
 msgid "No Domain assigned yet"
-msgstr "Ingen domän tilldelad än"
+msgstr "Ingen domän tilldelad ännu"
 
 #: editadminuser.php:165
 msgid "Add new domain to this admin"
@@ -506,7 +506,7 @@ msgstr "Redigerar alias"
 
 #: editalias.php:68
 msgid "Delete this alias"
-msgstr "Ta bort alias"
+msgstr "Ta bort detta alias"
 
 #: editalias.php:101
 msgid "Cannot remove from account"
@@ -526,7 +526,7 @@ msgstr "Ny destination"
 
 #: editdomain.php:46
 msgid "Successfully changed domain"
-msgstr "Ändrat domän"
+msgstr "Domänen ändrad"
 
 #: editdomain.php:92 newdomain.php:39
 msgid "Domainname"
@@ -671,7 +671,7 @@ msgid ""
 "following website:"
 msgstr ""
 "Ytterligare information om hur du konfigurerar Web-cyradm hittar du på "
-"följande webbsida:"
+"följande webbsajt:"
 
 #: login.php:50
 msgid "Welcome to Web-cyradm"
@@ -679,7 +679,7 @@ msgstr "Välkommen till Web-cyradm"
 
 #: login.php:52
 msgid "Please authenticate yourself"
-msgstr "Auktorisera dig"
+msgstr "Var vänlig att identifiera dig"
 
 #: login.php:84
 msgid "Select language"
@@ -727,7 +727,7 @@ msgstr "Sök"
 
 #: menu.inc.php:114
 msgid "Logged in as user"
-msgstr "Loggade in som användare"
+msgstr "Inloggad som användare"
 
 #: menu.inc.php:126
 msgid "Your role is"
@@ -747,7 +747,7 @@ msgstr "Nytt konto i domänen"
 
 #: newaccount.php:43 newalias.php:43
 msgid "transport is not cyrus, unable to create account"
-msgstr "Annat transportmedel än Cyrus, kan inte skapa kontot"
+msgstr "Kan inte skapa kontot med annan transport än Cyrus"
 
 #: newaccount.php:55
 msgid "Sorry, no more account allowed for domain"
@@ -767,11 +767,11 @@ msgstr "Tyvärr, användarnamnet finns redan"
 
 #: newaccount.php:221
 msgid "Account successfully added to the Database"
-msgstr "Kontot har laggts till i databas"
+msgstr "Kontot har lagts till i databas"
 
 #: newaccount.php:234
 msgid "Account succesfully added to the IMAP Subsystem"
-msgstr "Kontot har laggts till i IMAP servern"
+msgstr "Kontot har lagts till i IMAP servern"
 
 #: newadminuser.php:13
 msgid "Add new administrator"
@@ -818,7 +818,7 @@ msgid ""
 "emailadress where the default aliases should be mapped (empty means no "
 "mapping)"
 msgstr ""
-"e-postadress där standardalias ska mappas (tomt betyder ingen mappning)"
+"e-postadress dit standardalias ska mappas (tomt betyder ingen mappning)"
 
 #: newdomain.php:163
 msgid "Mail transport"
@@ -902,7 +902,7 @@ msgstr "Semestermeddelande ej satt"
 
 #: vacation.php:97
 msgid "Failure in unseting vacation notice"
-msgstr "Kunde inte tömma semestermeddelande"
+msgstr "Kunde inte deaktivera semestermeddelande"
 
 #: vacation.php:101
 msgid "Vacation notice removed"
