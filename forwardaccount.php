@@ -98,17 +98,20 @@
 
 					<tr>
 						<td>
-							<textarea name="forwardto" class="inputfield" cols="30" rows="5"><?php
+							<textarea name="forwardto" class="inputfield" cols="60" rows="5"><?php
 							if ($forw_is_set){
 								$forwards_tmp = preg_split('|,\s*|', stripslashes($row['dest']));
 								$forwards = array();
+							        $keep = '';
 								while (list(, $forward) = each($forwards_tmp)){
 									// If a mail is to be kept on the server,
 									// the $row[dest] also contains the $username
 									// -> filter it out
 									if (strtolower($forward) != strtolower($username)){
 										$forwards[] = htmlspecialchars(trim($forward));
-									}
+									} else {
+									       $keep = ' checked ';
+								        }
 								}
 								echo implode("\n", $forwards);
 							}
