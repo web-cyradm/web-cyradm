@@ -19,9 +19,9 @@ if( ! isset( $_GET['confirmed'] ) )
 	<input type="hidden" name="dest" value="<?php echo $_GET['dest'] ?>">
 	<input type="hidden" name="alias" value="<?php echo $_GET['alias'] ?>">
 	<input type="hidden" name="domain" value="<?php echo $_GET['domain'] ?>">
-	Please confirm you want to remove <b><?php echo $_GET['dest'] ?></b> from the alias <b><?php echo $_GET['alias'] ?></b>&nbsp;
-	<input name="confirmed" value="yes" type="submit" class="inputclass">&nbsp;
-	<input name="no" value="no" type="button" class="inputclass" onClick="history.go(-1)">
+	<?php print _("Please confirm you want to remove")?> <b><?php echo $_GET['dest'] ?></b> <?php print _("from the alias");?> <b><?php echo $_GET['alias'] ?></b>&nbsp;<p>
+	<input name="confirmed" class="button" value="<?php print _("Yes");?>" type="submit" class="inputclass">&nbsp;
+	<input name="no" class="button" value="<?php print _("Cancel");?>" type="button" class="inputclass" onClick="history.go(-1)">
 	</form>
 	</td>
 </tr>	
@@ -38,9 +38,9 @@ if( ! isset( $_GET['confirmed'] ) )
 	<input type="hidden" name="action" value="deletealias">
 	<input type="hidden" name="alias" value="<?php echo $_GET['alias'] ?>">
 	<input type="hidden" name="domain" value="<?php echo $_GET['domain'] ?>">
-	Please confirm you want to remove the alias <b><?php echo $_GET['alias'] ?></b>&nbsp;
-	<input name="confirmed" value="yes" type="submit" class="inputclass">&nbsp;
-	<input name="no" value="no" type="button" class="inputclass" onClick="history.go(-1)">
+	<?php print _("Please confirm you want to remove the alias");?> <b><?php echo $_GET['alias'] ?></b>&nbsp;
+	<input name="confirmed" class="button" value="<?php print _("Yes");?>" type="submit" class="inputclass">&nbsp;
+	<input name="no" class="button" value="<?php print _("Cancel");?>" type="button" class="inputclass" onClick="history.go(-1)">
 	</form>
 	</td>
 </tr>	
@@ -66,7 +66,7 @@ else
 		$dest = $_GET['dest'];
 		$query1 = "DELETE FROM virtual WHERE alias = '$alias' AND dest = '$dest' AND username = '$domain'";
 		$result1 = $handle->query( $query1 );
-		print( "Removed <b>$dest</b> from <b>$alias</b>.\n" );
+		print( _("Removed")." <b>$dest</b> "._("from")." <b>$alias</b>.\n" );
 		include( "editalias.php" );
 	}
 	else
@@ -74,7 +74,7 @@ else
 		// Removing an entire alias
 		$query2 = "DELETE FROM virtual WHERE alias = '$alias' AND username = '$domain'";
 		$result2 = $handle->query( $query2 );
-		print( "Removed the alias <b>$alias</b>\n" );
+		print( _("Removed the alias")." <b>$alias</b>\n" );
 		include( "aliases.php" );
 	}
 }

@@ -2,7 +2,7 @@
 <tr>
 	<td width="10">&nbsp; </td>
 	<td valign="top">
-	<h3>Browse aliases for domain <font color=red><?php print( $_GET['domain'] ); ?></font></h3>
+	<h3><?php print _("Browse aliases for domain")?> <font color=red><?php print( $_GET['domain'] ); ?></font></h3>
 
 <?php
 
@@ -40,23 +40,24 @@ else {
 }
 
 
-?>
 
-	Total aliases: <?php print( $alias_count ); ?><P>
+	print _("Total aliases").":".$alias_count;
+	?><P>
 	<table cellspacing="2" cellpadding="0">
 	<tr>
-		<td class="navi"><a href="index.php?action=newalias&domain=<?php print( $domain ); ?>">Add new alias</a></td>
-		<td class="navi"><a href="<?php print( $prev_url ); ?>">Previous 10 entries</a></td>
-		<td class="navi"><a href="<?php print( $next_url ); ?>">Next 10 entries</a></td>
+		<td class="navi"><a href="index.php?action=newalias&domain=<?php print $domain; ?>">
+		<?php print _("Add new alias");?></a></td>
+		<td class="navi"><a href="<?php print( $prev_url ); ?>"><?php print _("Previous 10 entries");?></a></td>
+		<td class="navi"><a href="<?php print( $next_url ); ?>"><?php print _("Next 10 entries");?></a></td>
 	</tr>
 	</table>
 	<p>
 	<table border="0">
 		<tbody>
 		<tr>
-			<th colspan="2">action</th>
-			<th>Email address</th>
-			<th>Destination</th>
+			<th colspan="2"><?php print _("action");?></th>
+			<th><?php print _("Email address"); ?></th>
+			<th><?php print _("Destination"); ?></th>
 		</tr>
 <?php
 
@@ -81,8 +82,8 @@ for( $c = 0; $c < $num_alias; $c++ )
 	
 	?>
 		<tr class="<?php print( $cssrow ); ?>">
-			<td><a href="index.php?action=editalias&alias=<?php print( $alias ); ?>&domain=<?php print( $domain ); ?>">Edit Alias</a></td>
-			<td><a href="index.php?action=deletealias&alias=<?php print( $alias ); ?>&domain=<?php print( $domain ); ?>">Delete Alias</a></td>
+			<td><a href="index.php?action=editalias&alias=<?php print( $alias ); ?>&domain=<?php print( $domain ); ?>"><?php print _("Edit Alias"); ?></a></td>
+			<td><a href="index.php?action=deletealias&alias=<?php print( $alias ); ?>&domain=<?php print( $domain ); ?>"><?php print _("Delete Alias"); ?></a></td>
 			<td><?php print( $alias ); ?></td>
 			<td>
 	

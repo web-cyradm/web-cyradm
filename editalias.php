@@ -55,20 +55,20 @@ else {
 <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="top">
-	<h3>Editing alias <font color=red><?php echo $alias ?></font></h3>
+	<h3><?php print _("Editing alias"); ?> <font color=red><?php echo $alias ?></font></h3>
 
 	<table cellspacing="2" cellpadding="0">
 	<tr>
-		<td class="navi"><a href="index.php?action=deletealias&domain=<?php echo $domain ?>&alias=<?php echo $alias ?>">Delete this alias</a></td>
-		<td class="navi"><a href="<?php print( $prev_url ); ?>">Previous 10 entries</a></td>
-		<td class="navi"><a href="<?php print( $next_url ); ?>">Next 10 entries</a></td>
+		<td class="navi"><a href="index.php?action=deletealias&domain=<?php echo $domain ?>&alias=<?php echo $alias ?>"><?php print _("Delete this alias");?></a></td>
+		<td class="navi"><a href="<?php print( $prev_url ); ?>"><?php print _("Previous 10 entries");?></a></td>
+		<td class="navi"><a href="<?php print( $next_url ); ?>"><?php print _("Next 10 entries");?></a></td>
 	</tr>
 	</table>
 	<p>
 	<table border=0>
 	<tr>
-		<th colspan="1">action</th>
-		<th>Destination email address</th>
+		<th colspan="1"><?php print _("action"); ?></th>
+		<th><?php print _("Destination");?></th>
 	</tr>
 
 <?php	
@@ -92,11 +92,11 @@ if( $num_aliases != 0 )
 		$dest = $row['dest'];
 		if( $row['username'] != $domain )
 		{
-			$action = "Cannot remove from account";
+			$action = _("Cannot remove from account")." <b>FIXME:Why not? We should think about reorganize that";
 		}
 		else
 		{
-			$action = "<a href=\"index.php?action=deletealias&domain=$domain&alias=$alias&dest=$dest\">Remove destination</a>";
+			$action = "<a href=\"index.php?action=deletealias&domain=$domain&alias=$alias&dest=$dest\">". _("Remove destination")."</a>";
 		}
 ?>
 	<tr class="<?php echo $cssrow ?>">
@@ -116,7 +116,7 @@ else
 ?>
 
 	<tr>
-		<td colspan="4" align="center" bgcolor="red">This alias has no destinations</td>
+		<td colspan="4" align="center" bgcolor="red"><?php print _("This alias has no destinations");?></td>
 	</tr>
 
 <?php
@@ -133,7 +133,9 @@ else
 	<input type="hidden" name="domain" value="<?php echo $_GET['domain'] ?>">
 	<input type="hidden" name="action" value="editalias">
 	<input type="hidden" name="alias" value="<?php echo $alias ?>">
-	New destination&nbsp;<input type="text" name="dest" size="30" maxlength="50" class="inputfield" onFocus="this.style.backgroundColor='#aaaaaa'">&nbsp;<input name="adddest" value="add" type="submit">&nbsp;<input name="reset" value="reset" type="reset">
+	<?php print _("New destination&nbsp"); ?>;<input type="text" name="dest" size="30" maxlength="50" class="inputfield" onFocus="this.style.backgroundColor='#aaaaaa'">&nbsp;
+	<input name="adddest" value="<?php print _("Submit");?>" class="button" type="submit">&nbsp;
+	<input name="reset" value="<?php echo _("Cancel");?>" class="button" type="reset">
 	</form>
 
 	</td>
