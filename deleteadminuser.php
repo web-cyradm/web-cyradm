@@ -27,7 +27,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<form action="index.php" method="get">
 					<input
 					type="hidden"
-					name="action" 
+					name="action"
 					value="deleteadminuser"
 					>
 
@@ -38,7 +38,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					>
 
 					<input
-					type="hidden" 
+					type="hidden"
 					name="username"
 					value="<?php echo $username; ?>"
 					>
@@ -74,9 +74,27 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					die (_("Database error"));
 				}
 
+				#Determine what type of admin should be deleted
+				$query="SELECT type FROM adminuser WHERE username='$username'";
+				$result= $handle->query($query);
+				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+				$type= $row['type'];
+
+				# Get the count of actual supersusers
+				$query="SELECT type FROM adminuser WHERE type='0'";
+				$result = $handle->query($query);
+				$cnt=$result->numRows();
+
+				if ($cnt==1 && $type==0){
+					# No Way! We cannot change the last Superuser to domainadmin!
+					die (_("At least one Superuser is needed for Web-cyradm"));
+				}
+
+				# If not died, delete that brave admin
 				$query2 = "DELETE FROM adminuser WHERE username='$username'";
 				$hnd2 = $handle->query($query2);
 
+				# The admin also needs to be deleted from the assigment table
 				$query3 = "DELETE FROM domainadmin WHERE adminuser='$username'";
 				$hnd3 = $handle->query($query3);
 

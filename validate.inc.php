@@ -27,7 +27,8 @@ $_get_vars = array(
 
 $_post_vars = array(
 	'confirmed', 'action', 'domain', 'alias' , 'username', 'new_password',
-	'confirm_password', 'email', 'quota', 'password');
+	'confirm_password', 'email', 'quota', 'password','newadminuser', 'newadmintype',
+	'newdomain', 'newtype', 'resp_domain');
 
 if ($_GET['action']!=""){
 
