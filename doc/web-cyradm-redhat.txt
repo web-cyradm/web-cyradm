@@ -1,128 +1,264 @@
 Postfix-Cyrus-Web-cyradm-HOWTO (RedHat 7.2/7.3 optimized)
 
+
+
 This Guid explains the installation of the above topic. It only works
+
 with RedHat 7.2 and 7.3. Version 8.0 is currently untested!
+
 It will not cover the configuration, this will be almost the same
+
 of the Main HOWTO from Luc.
+
 So lets start:
+
+
 
 --------------------------------------------------------------------------
 
+
+
 MySQL (3.23.53)
+
 ./configure --prefix=/usr/local/mysql --enable-assembler --with-innodb
+
 make
+
 make install
+
 /usr/local/mysql/bin/mysql_install_db
+
 echo /usr/local/mysql/lib/mysql >> /etc/ld.so.conf
+
 ldconfig
+
 cp /usr/local/mysql/share/mysql/mysql.server /etc/rc.d/init.d/mysqld
+
 ln -s /usr/local/mysql/include/mysql /usr/include/mysql
+
 ln -s /usr/local/mysql/lib/mysql /usr/lib/mysql
+
 useradd -s /dev/null -d /dev/null mysql
+
 chown -R mysql /usr/local/mysql/var
+
 mkdir /var/lib/mysql
+
 chmod 750 /etc/rc.d/init.d/mysqld
+
 /etc/rc.d/init.d/mysqld start
+
 ln -s /tmp/mysql.sock /var/lib/mysql/mysql.sock
+
+
 
 First start the database and then create the link ! 
 
+
+
 -------------------------------------------------------------------------
 
-Cyrus SASL (2.1.9)
+
+
+Cyrus SASL (2.1.10)
+
 ./configure --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin \
+
 --sysconfdir=/etc --libdir=/usr/lib --includedir=/usr/include \
+
 --libexecdir=/usr/libexec --mandir=/usr/man --localstatedir=/var --with-pam \
+
 --with-saslauthd=/var/run/saslauthd --with-openssl=/usr/share/ssl \
+
 --enable-login --disable-krb4 --with-plugindir=/usr/lib/sasl2 
+
 make
+
 make install
+
 mkdir /var/run/saslauthd
+
 ldconfig
 
+
+
 The Configure-commands will overwrite the Version 1.6.x installed by default 
+
 from RedHat. 
+
+
 
 -------------------------------------------------------------------------
 
-pam_mysql
+
+
+pam_mysql 0.5
+
 cd pam_mysql/
-vi Makefile => ADD -lz
+
 make
+
 cp pam_mysql.so /lib/security
+
+
 
 This is the same like in Luc's HOWTO, get more info from his Guide!
 
+
+
 --------------------------------------------------------------------------
+
+
 
 Postfix
+
 groupadd -g 33333 postfix
+
 groupadd -g 33335 postdrop
+
 useradd -u 33333 -g 33333 -d /dev/null -s /bin/false postfix
-cd /root/postfix-1.1.11-snaprelease/
+
+cd /root/postfix-1.1.12-snaprelease/
+
 make makefiles 'CCARGS=-DHAS_MYSQL -I/usr/local/mysql/include/mysql -DUSE_SASL_AUTH \
+
 -I/usr/include/sasl' 'AUXLIBS=-L/usr/local/mysql/lib/mysql \
+
 -lmysqlclient -lz -lm -L/usr/lib -lsasl2'
+
 make
+
 make install
 
+
+
 The CCARGS and AUXLIBS will only work when you've followed the steps
+
 from above, not with LUC's HOWTO!
+
+
 
 --------------------------------------------------------------------------
 
+
+
 Cyrus-IMAPd
-cd cyrus-imapd-2.1.9/
+
+cd cyrus-imapd-2.1.11/
+
+ln -s /usr/bin/perl /usr/bin/perl5
+
 export CPPFLAGS="-I/usr/include/et"
+
 ./configure --with-sasl=/usr/lib --with-perl \
+
 --with-auth=unix --with-openssl=/usr/share/ssl
+
 make depend
+
 make
+
 make install
 
+
+
 If something went wrong you can also define --with-sasl the directory
-where the compiled source is. (e.g. /usr/local/cyrus-sasl-2.1.9/ or where
+
+where the compiled source is. (e.g. /usr/local/cyrus-sasl-2.1.10/ or where
+
 you "untared" it)
+
+IMPORTANT: Since version 2.1.10 it's required to have "perl5", so create
+
+a link if your interpreter is only called "perl"!
+
+
 
 ---------------------------------------------------------------------------
 
+
+
 PHP + Apache
+
 mkdir /www
+
 useradd -s /dev/null -d /dev/null apache
+
 cd apache_1.3.27/
+
 ./configure --prefix=/www
+
 cd ../php-4.2.3/
+
 ./configure --with-apache=../apache_1.3.27 --with-mysql=/usr/local/mysql \
+
 --with-config-file-path=/usr/local/etc --enable-track-vars --with-gettext
-make && make install
-cp php.ini-dist /usr/local/etc/php.ini
-cd ../apache_1.3.27/
-./configure --prefix=/www --activate-module=src/modules/php4/libphp4.a \
---enable-module=php4
+
 make && make install
 
+cp php.ini-dist /usr/local/etc/php.ini
+
+cd ../apache_1.3.27/
+
+./configure --prefix=/www --activate-module=src/modules/php4/libphp4.a \
+
+--enable-module=php4
+
+make && make install
+
+
+
 I don't use "nobody" user for apache and install it under /www. PHP and
+
 Apache source must be under the same dir, like /usr/local/.
-Add to httpd.conf: AddType application/x-httpd-php .php <== httpd.conf
-And don't forget to set RegisterGlobals = On in php.ini !
+
+Add to httpd.conf: AddType application/x-httpd-php .php 
+
+And don't forget to set register_globals = On in php.ini !
+
+
 
 ----------------------------------------------------------------------------
 
+
+
 web-cyradm
+
 cd /www/htdocs
+
 rm -rf *
-tar xvfz root/files/web-cyradm-0.5.2.tar.gz
+
+tar xvfz /root/files/web-cyradm-0.5.2.tar.gz
+
 mv web-cyradm-0.5.2/ web
+
+mkdir /var/log/cyradm
+
 touch /var/log/cyradm/web-cyradm.log
+
 touch /var/log/cyradm/web-cyradm-login.log
+
 cd /var/log/cyradm
+
 chown apache.apache web-cyradm*
+
+
 
 ---------------------------------------------------------------------------
 
+
+
 The configuration is almost the same, so get more info from Luc's Guide
+
 (which is great) ! 
 
+
+
 That's all, if you have further questions, please send them to 
+
 Luc's mailing list !
+
 Have fun ... 
+
+
+
