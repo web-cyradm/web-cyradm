@@ -30,7 +30,7 @@ $nls['aliases']['pt'] = 'pt_PT';
 //$nls['aliases']['sl'] = 'sl_SI';
 //$nls['aliases']['sv'] = 'sv_SE';
 //$nls['aliases']['uk'] = 'uk_UA';
-$nsl['aliases']['zh'] = 'zh_CN';
+$nls['aliases']['zh'] = 'zh_CN';
 
 
 /**
