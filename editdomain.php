@@ -54,26 +54,26 @@ if ($admintype==0){
 
 	        <tr>
 	        <td><?php print _("Domainname") ?></td>
-		<td><input type="text" size="30" name=newdomain value="<?php print $domain?>"></td>
+		<td><input class="inputfield" type="text" size="30" name=newdomain value="<?php print $domain?>"></td>
 	        </tr>
 
 	        <tr>
 	        <td><?php print _("Prefix"). " ". _("(Not yet supported, change will be ignored)") ?></td>
-	        <td><input type="text" size="30"  value="<?php print $prefix ?>"></td>
+	        <td><input class="inputfield" type="text" size="30"  value="<?php print $prefix ?>"></td>
 	        </tr>
 
 	        <tr>
 	        <td width=150><?php print _("Maximum Accounts") ?></td>
-	        <td><input type="text" size="4" name=maxaccounts value="<?php print $maxaccounts ?>"> </td>
+	        <td><input class="inputfield" type="text" size="4" name=maxaccounts value="<?php print $maxaccounts ?>"> </td>
 	        </tr>
 
 	        <tr>
 	        <td><?php print _("Default Quota in Kilobytes") ?></td>
-	        <td><input type="text" size="15" name=quota value="<?php print $quota ?>"></td>
+	        <td><input class="inputfield" type="text" size="15" name=quota value="<?php print $quota ?>"></td>
 	        </tr>
 
 	        <tr><td>
-	        <input type="submit" value=<?php print _("Submit") ?>>
+	        <input class="button" type="submit" value=<?php print _("Submit") ?>>
 	        </td></tr>
 
 	        </table>

@@ -104,7 +104,7 @@ if (!$confirmed){
 	
 		<tr>
 			<td></td>
-			<td><input class="inputfield" type="submit" value="<?php print _("Submit") ?>"></td>
+			<td><input class="button" type="submit" value="<?php print _("Submit") ?>"></td>
 		</tr>
 	
 

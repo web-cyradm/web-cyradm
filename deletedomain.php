@@ -26,8 +26,8 @@ if ($admintype==0){
 		<input type="hidden" name="action" value="deletedomain">
 		<input type="hidden" name="confirmed" value="true">
 		<input type="hidden" name="domain" value="<?php print $domain?>">
-		<input type="submit" name="confirmed" value="<?php print _("Yes, delete")?>">
-		<input type="submit" name="cancel" value="<?php print _("Cancel")?>">
+		<input class="button" type="submit" name="confirmed" value="<?php print _("Yes, delete")?>">
+		<input class="button" type="submit" name="cancel" value="<?php print _("Cancel")?>">
 		</form>
 
 

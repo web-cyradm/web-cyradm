@@ -43,13 +43,13 @@ if ($authorized){
 <table>
 <tr>
 <td><input type="radio" name="setforward" value="1"<?php echo ($forw_is_set)?' checked':'';?>><?php echo _("Set forwarding to");?>:</td>
-<td><input type="text" name="forwardto" value="<?php echo ($forw_is_set)?$row['dest']:'';?>" size="30"></td>
+<td><input class="inputfield" type="text" name="forwardto" value="<?php echo ($forw_is_set)?$row['dest']:'';?>" size="30"></td>
 </tr>
 <td colspan="2"><input type="radio" name="setforward" value="2"<?php echo (!$forw_is_set)?' checked':'';?>><?php echo _("Remove forwarding");?></td>
 </tr>
 </table>
-<input type="submit" value="<?php echo _("Submit");?>">
-<input type="reset" value="<?php echo _("Cancel");?>">
+<input class="button" type="submit" value="<?php echo _("Submit");?>">
+<input class="button" type="reset" value="<?php echo _("Cancel");?>">
 </form>
 <?php
 

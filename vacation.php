@@ -150,7 +150,7 @@ if ($authorized){
 		  <textarea name='vacation_text' rows='6' cols='55'><?php print $vacation_script;?></textarea><br>
 		      
 		      
-	        <input type="submit" value="<?php print _("Submit");?>"> 
+	        <input class="button" type="submit" value="<?php print _("Submit");?>"> 
 
 		</form>
 

@@ -132,12 +132,12 @@ if ($authorized){
 		  ?>
 
 		<br>
-		<INPUT class="menu" TYPE="radio" NAME="mode" VALUE="set" checked><?php print _("Set forwarding to") ?>:
-		<INPUT type='text' name='forwards' value='<?php print $forwards_text ?>' size='50' ><br>
+		<INPUT TYPE="radio" NAME="mode" VALUE="set" checked><?php print _("Set forwarding to") ?>:
+		<INPUT class="inputfield" type='text' name='forwards' value='<?php print $forwards_text ?>' size='50' ><br>
 		<input type='checkbox' name='metoo' <?php print $keep."> "._("Keep a copy in the user's mailbox") ?><br><br>
-		<INPUT class="menu" TYPE="radio" NAME="mode" VALUE="unset"><?php print _("Remove forwarding") ?><br><br><br>
+		<INPUT TYPE="radio" NAME="mode" VALUE="unset"><?php print _("Remove forwarding") ?><br><br><br>
 		      
-	        <input type="submit" value="<?php print _("Submit")?>"> 
+	        <input class="button" type="submit" value="<?php print _("Submit")?>"> 
 
 		</form>
 

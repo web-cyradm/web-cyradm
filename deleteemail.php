@@ -17,8 +17,8 @@ if (!$confirmed){
 <input type="hidden" name="domain" value="<?php print $domain?>">
 <input type="hidden" name="username" value="<?php print $username?>">
 <input type="hidden" name="alias" value="<?php print $alias?>">
-<input type="submit" name="confirmed" value="<?php print _("Yes, delete") ?>">
-<input type="submit" name="cancel" value="<?php print _("Cancel") ?>">
+<input class="button" type="submit" name="confirmed" value="<?php print _("Yes, delete") ?>">
+<input class="button" type="submit" name="cancel" value="<?php print _("Cancel") ?>">
 </form>
 
 

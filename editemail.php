@@ -65,7 +65,7 @@ if ($authorized){
 
 
 	        <tr><td>
-	        <input type="submit" value="<?php print _("Submit") ?>">
+	        <input class="button" type="submit" value="<?php print _("Submit") ?>">
 	        </td></tr>
 
 	        </table>

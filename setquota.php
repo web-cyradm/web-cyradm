@@ -25,8 +25,8 @@ if ($authorized){
 		<input type="hidden" name="confirmed" value="true">
 		<input type="hidden" name="domain" value="<?php print $domain?>">
 		<input type="hidden" name="username" value="<?php print $username?>">
-		<input type="text" size="10" name="quota" value="<?php print $q_total=$q[qmax]?>"> Kilobytes
-		<input type="submit" value="<?php print _("Submit") ?>">
+		<input class="inputfield" type="text" size="10" name="quota" value="<?php print $q_total=$q[qmax]?>"> Kilobytes
+		<input class="button" type="submit" value="<?php print _("Submit") ?>">
 		</form>
  	
 		<?php

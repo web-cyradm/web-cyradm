@@ -20,7 +20,7 @@ if ($admintype==0){
 		<table>
 			<tr>
 			<td><?php print _("Domainname") ?></td>
-			<td><input type="text" size="20" name="domain"></td>
+			<td><input class="inputfield" type="text" size="20" name="domain"></td>
 			</tr>
 			<?php
 				if (!$DOMAIN_AS_PREFIX) {
@@ -35,11 +35,11 @@ if ($admintype==0){
 			?>
 			<tr>
 			<td><?php print _("Maximum Accounts") ?></td>
-			<td><input type="text" size="2" name="maxaccounts"></td>
+			<td><input class="inputfield" type="text" size="2" name="maxaccounts"></td>
 			</tr>
 			<tr>
 			<td><?php print _("Default Quota in Kilobytes") ?></td>
-			<td><input type="text" size="5" name="quota" value="<?php print $DEFAULT_QUOTA ?>"></td>
+			<td><input class="inputfield" type="text" size="5" name="quota" value="<?php print $DEFAULT_QUOTA ?>"></td>
 			</tr>
 			<tr><td><p></td></tr>
 			</table>
@@ -50,7 +50,7 @@ if ($admintype==0){
 			<tr>
 			<td><?php print _("emailadress where the default aliases should be mapped (empty means no mapping)"); ?> </td>
 			</tr> 
-			<tr><td><input type="text" name="defaultaliases">
+			<tr><td><input class="inputfield" type="text" name="defaultaliases">
 			</td>
 			</tr>
 	
@@ -61,13 +61,13 @@ if ($admintype==0){
 			<table>
 
 			<tr>
-			<td><select name="transport">
+			<td><select name="transport" class="selectfield">
 				<option selected value="cyrus">cyrus</option>
 				<option value="lmtp">lmtp</option>
 				<option value="smtp">smtp</option>
 				<option value="uucp">uucp</option>
 			</select></td>
-			<td>Parameter <input type="text" name="tparam"></td>
+			<td>Parameter <input class="inputfield" type="text" name="tparam"></td>
 			</tr>
 
 			</table>
@@ -76,7 +76,7 @@ if ($admintype==0){
 			
 
 			<tr>
-			<td><input type="submit" value="<?php print _("Submit") ?>" ></td>
+			<td><input class="button" type="submit" value="<?php print _("Submit") ?>" ></td>
 			</tr>
 		</table>
 	</form>
