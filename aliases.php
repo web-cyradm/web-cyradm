@@ -64,7 +64,7 @@ else {
 $query2 = "SELECT DISTINCT( alias ) FROM virtual WHERE username = '$domain'";
 $result2 = $handle->limitQuery( $query2, $row_pos, 10 );
 $num_alias = $result2->numRows( $result2 );
-
+$b = 0;
 for( $c = 0; $c < $num_alias; $c++ )
 {
 	if( $b == 0 )

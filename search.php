@@ -29,12 +29,18 @@ $query2="SELECT distinct a.username, a.domain_name FROM virtual as v, accountuse
          and (v.username=a.username) and 
 	 $allowed_domains')
 	 ORDER BY username";
+$query3="SELECT DISTINCT alias, username FROM virtual
+		WHERE (((username LIKE '%$searchstring%') 
+		OR (alias LIKE '%$searchstring%')) 
+		AND (dest <> username)) AND $allowed_domains')
+		ORDER BY username";	
 $result=$handle->query($query);
 $result2=$handle->query($query2);
-	
+$result3=$handle->query($query3);	
 
 $cnt=$result->numRows($result);
 $total=$result2->numRows($result2);
+$total3=$result3->numRows($result3);
 
 #####  Show matching Domains first #######
 
@@ -44,7 +50,7 @@ print "<td valign=\"top\"><h3>"._("Total domains matching").": ".$cnt."</h3>";
 print "<table border=0>";
 print "<tbody>";
 print "<tr>";
-print "<th colspan=3>". _("action")."</th>";
+print "<th colspan=4>". _("action")."</th>";
 print "<th>". _("domainname")."</th>";
 
 
@@ -77,6 +83,7 @@ for ($c=0;$c<$cnt;$c++){
 	print "<td><a href=\"index.php?action=editdomain&domain=$domain\">". _("Edit Domain")."</a></td>\n";
 	print "<td><a href=\"index.php?action=deletedomain&domain=$domain\">". _("Delete Domain")."</a></td>\n";
 	print "<td><a href=\"index.php?action=accounts&domain=$domain\">". _("accounts")."</a></td>\n";
+	print "<td><a href=\"index.php?action=aliases&domain=$domain\">"._("Aliases")."</a></td>\n";
 	print "<td>";
 	print $domain;
 	print "</td>\n<td>";
@@ -239,8 +246,63 @@ if (!isset($row_pos)){
 
 	}
 
+################ And now show the matching aliases #######################
+	print "<h3>"._("Total aliases matching").": ".$total3."</h3>";
+	if ($total3 == 0) 
+		print _("No aliases found");
+	else {
+?>
+        <table border="0">
+                <tbody>
+                <tr>
+                        <th colspan="2"><?php print _("action");?></th>
+                        <th><?php print _("Email address"); ?></th>
+                        <th><?php print _("Destination"); ?></th>
+                </tr>
+<?php 
+$b = 0;
 
+for ( $c = 0; $c < $total3; $c++){
+	if ($b == 0){
+		$cssrow = "row1";
+		$b = 1;
+	}
+	else {
+		$cssrow = "row2";
+		$b = 0;
+	}
+	$row = $result3->fetchRow( DB_FETCHMODE_ASSOC, $c);
+	$alias = $row['alias'];
+	$domain = $row['username'];
+	?><tr class="<?php print( $cssrow ); ?>">
+                        <td><a href="index.php?action=editalias&alias=<?php print( $alias ); ?>&domain=<?php print( $domain ); ?>"><?php print _("Edit Alias"); ?></a></td>
+                        <td><a href="index.php?action=deletealias&alias=<?php print( $alias ); ?>&domain=<?php print( $domain ); ?>"><?php print _("Delete Alias"); ?></a></td>
+                        <td><?php print( $alias ); ?></td>
+                        <td>	
+	<?php
+	$query4 = "SELECT dest FROM virtual WHERE alias = '$alias'";
+	$result4 = $handle->limitQuery($query4, 0, 3);
+	$num_dest = $result4->numRows ($result4);
+	for ($d =0; $d < $num_dest; $d++){
+		$row2 = $result4->fetchRow (DB_FETCHMODE_ASSOC, $d);
+		if ($d != 0) {
+			print ", ";
+		}
+		print ($row2['dest']);
+	}
+	$query5 = "SELECT COUNT( dest ) FROM virtual WHERE alias = '$alias'";
+	$num_dests = $handle->getOne($query5);
+		if ($num_dests > 3){
+			print ", ... ";
+		}
+	?></td></tr>
+<?php
+	}
 
+?>
+</table>
+<?php
+}
 ?>
 
 <!-- ##################################### End search.php #################################### -->

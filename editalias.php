@@ -74,7 +74,7 @@ else {
 <?php	
 if( $num_aliases != 0 )
 {
-
+	$b = 0;
 	for( $a = 0; $a < $num_aliases; $a++ )
 	{
 		if( $b == 0 )
