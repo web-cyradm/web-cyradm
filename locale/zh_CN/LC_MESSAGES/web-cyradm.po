@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Web-cyradm 1.0\n"
 "POT-Creation-Date: 2003-08-10 16:56+0200\n"
-"PO-Revision-Date: 2002-08-19 10:55+0800\n"
+"PO-Revision-Date: 2003-08-22 12:55+0800\n"
 "Last-Translator: Zhang Bo <boozhang@sdb.ac.cn>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr "全部账号"
 
 #: CVS/Base/browseaccounts.php:49 adminuser.php:36 browseaccounts.php:49
 msgid "Displaying from position:"
-msgstr ""
+msgstr "从此位置开始显示："
 
 #: CVS/Base/browseaccounts.php:55 CVS/Base/browseaccounts.php:242
 #: browseaccounts.php:55 browseaccounts.php:242 search.php:123 search.php:239
@@ -57,7 +57,7 @@ msgstr "后10个"
 #: browse.php:20 browseaccounts.php:91 editaccount.php:50 editalias.php:76
 #: search.php:52 search.php:149 search.php:253
 msgid "action"
-msgstr "操作"
+msgstr "执行操作"
 
 #: CVS/Base/browseaccounts.php:96 aliases.php:65 browseaccounts.php:96
 #: editaccount.php:54 newaccount.php:136 newalias.php:82 search.php:150
@@ -71,9 +71,8 @@ msgid "Username"
 msgstr "用户名"
 
 #: CVS/Base/browseaccounts.php:97 browseaccounts.php:97
-#, fuzzy
 msgid "Last login"
-msgstr "登录失败"
+msgstr "上次登录"
 
 #: CVS/Base/browseaccounts.php:97 browseaccounts.php:97 editaccount.php:68
 #: search.php:152
@@ -82,7 +81,7 @@ msgstr "已用邮箱容量"
 
 #: CVS/Base/browseaccounts.php:136 browseaccounts.php:136
 msgid "n/a"
-msgstr ""
+msgstr "无效或无法显示"
 
 #: CVS/Base/browseaccounts.php:146 browseaccounts.php:146 search.php:171
 msgid "Edit account"
@@ -110,7 +109,6 @@ msgid "Set catch all"
 msgstr "设置接收所有"
 
 #: CVS/Base/browseaccounts.php:181 browseaccounts.php:181 search.php:190
-#, fuzzy
 msgid "Forwards"
 msgstr "转发"
 
@@ -121,7 +119,7 @@ msgstr "使用中，共"
 
 #: CVS/Base/browseaccounts.php:221 browseaccounts.php:221 search.php:220
 msgid "Unable to retrieve quota"
-msgstr ""
+msgstr "找不到邮箱容量信息"
 
 #: CVS/Base/browseaccounts.php:224 browseaccounts.php:224 editaccount.php:155
 #: search.php:223
@@ -130,7 +128,7 @@ msgstr "未设置邮箱容量上限"
 
 #: CVS/Base/browseaccounts.php:236 browseaccounts.php:236 search.php:235
 msgid "No accounts found"
-msgstr "未找到该账号"
+msgstr "没有账号"
 
 #: adminuser.php:13
 msgid "Browse admins"
@@ -165,13 +163,12 @@ msgid "Delete adminuser"
 msgstr "删除管理员"
 
 #: adminuser.php:144
-#, fuzzy
 msgid "All domains"
-msgstr "域"
+msgstr "全部域"
 
 #: adminuser.php:148
 msgid "None"
-msgstr ""
+msgstr "无"
 
 #: adminuser.php:158 editadminuser.php:65 menu.inc.php:132 newadminuser.php:57
 #: newadminuser.php:207
@@ -185,26 +182,23 @@ msgstr "域管理员"
 
 #: adminuser.php:174
 msgid "No accounts fount"
-msgstr "没有该账号"
+msgstr "没有账号"
 
 #: adminuser.php:181
 msgid "Add administrator"
 msgstr "添加管理员"
 
 #: aliases.php:11
-#, fuzzy
 msgid "Browse aliases for domain"
-msgstr "浏览域中的用户"
+msgstr "浏览该域的别名"
 
 #: aliases.php:50
-#, fuzzy
 msgid "Total aliases"
-msgstr "所有管理员"
+msgstr "所有别名"
 
 #: aliases.php:55
-#, fuzzy
 msgid "Add new alias"
-msgstr "添加一个新域"
+msgstr "添加新别名"
 
 #: aliases.php:66 editalias.php:77 editemail.php:113 newemail.php:98
 #: search.php:255
@@ -212,14 +206,12 @@ msgid "Destination"
 msgstr "目标"
 
 #: aliases.php:91 search.php:273
-#, fuzzy
 msgid "Edit Alias"
-msgstr "编辑邮件地址"
+msgstr "编辑别名"
 
 #: aliases.php:92 search.php:274
-#, fuzzy
 msgid "Delete Alias"
-msgstr "删除邮件地址"
+msgstr "删除别名"
 
 #: auth.inc.php:70
 msgid "Web-cyradm is for authorized users only."
@@ -234,7 +226,6 @@ msgid "Push the back button in your browser to try again."
 msgstr "请在浏览器中按后退按钮再试"
 
 #: auth.inc.php:73
-#, fuzzy
 msgid " Your attempt to login has been stored."
 msgstr "你试图登录的动作已被记入日志"
 
@@ -256,7 +247,7 @@ msgstr "最大用户数"
 
 #: browse.php:42 search.php:61
 msgid "default quota per user"
-msgstr "用户缺省邮箱容量"
+msgstr "每用户缺省邮箱容量"
 
 #: browse.php:90 search.php:82
 msgid "Edit Domain"
@@ -272,7 +263,7 @@ msgstr "账号管理"
 
 #: browse.php:93 menu.inc.php:68 search.php:85
 msgid "Aliases"
-msgstr ""
+msgstr "别名"
 
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
@@ -288,29 +279,27 @@ msgstr "用来接收目的邮件地址不明确的邮件"
 
 #: catchall.php:46
 msgid "The currently defined user"
-msgstr ""
+msgstr "当前设置的用户"
 
 #: catchall.php:46
-#, fuzzy
 msgid "will not receiving any undefined emailadresses anymore"
-msgstr "用来接收目的邮件地址不明确的邮件"
+msgstr "不再接收任何目的邮件地址不明确的邮件"
 
 #: catchall.php:74
 msgid "The user"
-msgstr ""
+msgstr "用户"
 
 #: catchall.php:74
-#, fuzzy
 msgid "is allready defined to receive all undefined Emails."
-msgstr "用来接收目的邮件地址不明确的邮件"
+msgstr "应经被设置为接收所有目的地址不明确的邮件"
 
 #: catchall.php:76
 msgid "Do you want to remove the function \"catch all\" for the account"
-msgstr ""
+msgstr "你确定要为该用户取消“接收所有目的地址不明确邮件”的功能吗"
 
 #: catchall.php:127 newadminuser.php:197
 msgid "successfully added to Database"
-msgstr "已成功加入数据库"
+msgstr "已成功加入到数据库"
 
 #: catchall.php:133 editdomain.php:56 editemail.php:53 newdomain.php:255
 #: newemail.php:44 delete_catchall.php:37
@@ -318,9 +307,8 @@ msgid "Database error, please try again"
 msgstr "数据库错误，请再试"
 
 #: catchall.php:140 delete_catchall.php:44
-#, fuzzy
 msgid "Cancelled"
-msgstr "取消"
+msgstr "已取消"
 
 #: change_password.php:53
 msgid "Password changed"
@@ -348,7 +336,7 @@ msgstr "确认新密码"
 
 #: change_password.php:121 newaccount.php:243
 msgid "Passwords do not match"
-msgstr ""
+msgstr "两次输入的密码不一致"
 
 #: deleteaccount.php:25
 msgid "Delete an Account from the System"
@@ -368,9 +356,8 @@ msgid "Action cancelled, nothing deleted"
 msgstr "操作取消，未删除任何东西"
 
 #: deleteaccount.php:100
-#, fuzzy
 msgid "User deleted"
-msgstr "确定，删除"
+msgstr "该用户已被删除"
 
 #: deleteaccount.php:111 deletedomain.php:175
 msgid ""
@@ -379,24 +366,23 @@ msgstr "此操作危及安全，已被取消。你的行为已被记入日志。"
 
 #: deleteadminuser.php:17
 msgid "Delete an Admin account from the System"
-msgstr "从此系统中删除一个账号"
+msgstr "从此系统中删除一个管理员账号"
 
 #: deleteadminuser.php:21
 msgid "Do you really want to delete the Domain supervisor"
-msgstr "你确定要删除此域的管理员吗"
+msgstr "你确定要删除此域的管理员账号吗"
 
 #: deleteadminuser.php:90 editadminuser.php:276
 msgid "At least one Superuser is needed for Web-cyradm"
-msgstr ""
+msgstr "web-cyradm最少需要一个超级用户的账号"
 
 #: deleteadminuser.php:103
 msgid "Admin user deleted"
-msgstr ""
+msgstr "已经删除该管理员账号"
 
 #: deleteadminuser.php:116 editadminuser.php:299 newadminuser.php:226
-#, fuzzy
 msgid "Security violation detected, nothing deleted, attempt has been logged"
-msgstr "此操作危及安全，已被取消。你的行为已被记入日志。"
+msgstr "此操作危及安全，没有删除任何东西，操作已被记入日志。"
 
 #: deletedomain.php:28
 msgid "Delete a Domain from the System"
@@ -428,11 +414,11 @@ msgstr "已成功删除"
 
 #: deletealias.php:28
 msgid "Please confirm you want to remove"
-msgstr ""
+msgstr "请确认你要删除"
 
 #: deletealias.php:28
 msgid "from the alias"
-msgstr ""
+msgstr "从别名中"
 
 #: deletealias.php:30
 msgid "Yes"
@@ -440,19 +426,19 @@ msgstr "确定"
 
 #: deletealias.php:49
 msgid "Please confirm you want to remove the alias"
-msgstr ""
+msgstr "请确认你想删除该别名"
 
 #: deletealias.php:77
 msgid "Removed"
-msgstr ""
+msgstr "已删除"
 
 #: deletealias.php:77
 msgid "from"
-msgstr ""
+msgstr "从"
 
 #: deletealias.php:85
 msgid "Removed the alias"
-msgstr ""
+msgstr "删除别名"
 
 #: editaccount.php:21
 msgid "Email adresses defined for user"
@@ -496,58 +482,51 @@ msgstr "确认密码"
 
 #: editadminuser.php:155
 msgid "No Domain assigned yet"
-msgstr ""
+msgstr "尚未指定域"
 
 #: editadminuser.php:165
-#, fuzzy
 msgid "Add new domain to this admin"
-msgstr "为此域添加一个新管理员账号"
+msgstr "为该管理员增加新的有权限管理的域"
 
 #: editadminuser.php:223
 msgid "No such domain, create domain first"
-msgstr ""
+msgstr "没有该域，请先创建该域"
 
 #: editadminuser.php:231
 msgid "Admin already repsonsible for the domain"
-msgstr ""
+msgstr "管理员已经负责管理此域"
 
 #: editalias.php:27
 msgid "There was an error adding $dest to $alias: "
-msgstr ""
+msgstr "在把$dest加到$alias的过程中出现了一个错误："
 
 #: editalias.php:64
-#, fuzzy
 msgid "Editing alias"
-msgstr "编辑邮件地址"
+msgstr "编辑别名"
 
 #: editalias.php:68
-#, fuzzy
 msgid "Delete this alias"
-msgstr "删除邮件地址"
+msgstr "删除该别名"
 
 #: editalias.php:101
-#, fuzzy
 msgid "Cannot remove from account"
-msgstr "修改账号密码"
+msgstr "无法从账号中删除"
 
 #: editalias.php:105 editalias.php:109
-#, fuzzy
 msgid "Remove destination"
-msgstr "目标"
+msgstr "删除与之对应的目标邮件地址"
 
 #: editalias.php:125
 msgid "This alias has no destinations"
-msgstr ""
+msgstr "该别名没有与之对应的目标邮件地址"
 
 #: editalias.php:142
-#, fuzzy
 msgid "New destination"
-msgstr "目标"
+msgstr "新目标"
 
 #: editdomain.php:46
-#, fuzzy
 msgid "Successfully changed domain"
-msgstr "修改已成功"
+msgstr "域已修改成功"
 
 #: editdomain.php:92 newdomain.php:39
 msgid "Domainname"
@@ -559,12 +538,11 @@ msgstr "前缀"
 
 #: editdomain.php:123 newdomain.php:73
 msgid "Allow Free Names"
-msgstr ""
+msgstr "允许任意名字"
 
 #: editdomain.php:141 newdomain.php:90
-#, fuzzy
 msgid "Allow Free Mail Addresses"
-msgstr "新邮件地址"
+msgstr "允许任意邮件地址"
 
 #: editdomain.php:159 newdomain.php:102
 msgid "Maximum Accounts"
@@ -576,7 +554,7 @@ msgstr "缺省邮箱容量（千字节）"
 
 #: editdomain.php:202
 msgid "Your are not allowed to change domains!"
-msgstr "你未被授权修改域"
+msgstr "你未被授权修改域！"
 
 #: editemail.php:46
 msgid "Successfully changed"
@@ -586,7 +564,7 @@ msgstr "修改已成功"
 msgid ""
 "You can't edit this email address with 'Allow Free Mail Addressess' set to "
 "off!"
-msgstr ""
+msgstr "当‘允许任意邮件地址’被设置为‘关’时，不允许编辑该邮件地址！"
 
 #: editemail.php:95 newemail.php:77
 msgid "Emailadress"
@@ -610,7 +588,7 @@ msgstr "这里"
 
 #: forwardalias.php:68 forwardaccount.php:51
 msgid "Forward set"
-msgstr "设置邮件转发"
+msgstr "邮件转发已经设置好"
 
 #: forwardalias.php:70
 msgid "Failure in setting forward"
@@ -618,7 +596,7 @@ msgstr "设置邮件转发失败"
 
 #: forwardalias.php:73
 msgid "Wrong password"
-msgstr "确认密码"
+msgstr "输入密码错误"
 
 #: forwardalias.php:89 forwardalias.php:97 forwardalias.php:103
 #: forwardalias.php:107 forwardaccount.php:57
@@ -641,7 +619,7 @@ msgstr "不可能"
 msgid ""
 "You can't forward this email address with 'Allow Free Mail Addressess' set "
 "to off!"
-msgstr ""
+msgstr "当‘允许任意邮件地址’被设置为‘关’时，不允许对该邮件地址进行自动转发设置！"
 
 #: forwardalias.php:161
 msgid "Forward for emailadress"
@@ -653,7 +631,7 @@ msgstr "将邮件转发至"
 
 #: forwardalias.php:204
 msgid "(Seperate multiple values with ,)"
-msgstr ""
+msgstr "（不同邮件地址之间用逗号分隔）"
 
 #: forwardalias.php:210 forwardaccount.php:125
 msgid "Keep a copy in the user's mailbox"
@@ -665,29 +643,29 @@ msgstr "取消转发"
 
 #: index.php:23
 msgid "migrate.php exists! please delete or rename it"
-msgstr ""
+msgstr "文件migrate.php已经存在！请将其删除或改名"
 
 #: index.php:138
 msgid "web-cyradm has not yet been configured"
-msgstr ""
+msgstr "尚未配置web-cyradm"
 
 #: index.php:141
 msgid "Configuration steps:"
-msgstr ""
+msgstr "配置步骤："
 
 #: index.php:143
 msgid "copy the config file that comes with the distribution: "
-msgstr ""
+msgstr "拷贝发布包中的配置文件"
 
 #: index.php:146
 msgid "Edit the file config/conf.php to match your systems configuration"
-msgstr ""
+msgstr "根据你的系统需求，编辑config/conf.php文件"
 
 #: index.php:148
 msgid ""
 "Further information about how to configure Web-cyradm can be found at the "
 "following website:"
-msgstr ""
+msgstr "在以下网站中可以找到如何配置web-cyradm的详细信息："
 
 #: login.php:50
 msgid "Welcome to Web-cyradm"
@@ -699,7 +677,7 @@ msgstr "请输入认证信息"
 
 #: login.php:84
 msgid "Select language"
-msgstr ""
+msgstr "请选择语言"
 
 #: logout.php:52
 msgid "Thank you for using Web-cyradm"
@@ -710,17 +688,16 @@ msgid "You are logged out"
 msgstr "你已经注销"
 
 #: menu.inc.php:19
-#, fuzzy
 msgid "Superusers Menu"
-msgstr "超级用户"
+msgstr "超级用户菜单"
 
 #: menu.inc.php:23
 msgid "Domainmasters menu"
-msgstr "域管理者栏目"
+msgstr "域管理员菜单"
 
 #: menu.inc.php:31
 msgid "add new domain"
-msgstr "添加一个新域"
+msgstr "添加新域"
 
 #: menu.inc.php:38
 msgid "browse domains"
@@ -751,13 +728,12 @@ msgid "Your role is"
 msgstr "你的角色是"
 
 #: menu.inc.php:144
-#, fuzzy
 msgid "Current domain is"
-msgstr "浏览域"
+msgstr "当前域是"
 
 #: menu.inc.php:150
 msgid "No domain selected"
-msgstr ""
+msgstr "没有选择域"
 
 #: newaccount.php:13
 msgid "Add new Account to domain"
@@ -769,11 +745,11 @@ msgstr "transport未设置为cyrus, 无法创建账号"
 
 #: newaccount.php:55
 msgid "Sorry, no more account allowed for domain"
-msgstr "对不起，该域允许的最大用户数已经达到"
+msgstr "很遗憾，该域允许的最大用户数已经达到"
 
 #: newaccount.php:60
 msgid "Maximum allowed accounts is"
-msgstr "最大账号数是"
+msgstr "允许的最大账号数是"
 
 #: newaccount.php:137
 msgid "Quota"
@@ -781,7 +757,7 @@ msgstr "邮箱容量"
 
 #: newaccount.php:196
 msgid "Sorry, the username already exists"
-msgstr ""
+msgstr "很遗憾，该用户名已经存在"
 
 #: newaccount.php:221
 msgid "Account successfully added to the Database"
@@ -792,9 +768,8 @@ msgid "Account succesfully added to the IMAP Subsystem"
 msgstr "已成功将账号加入IMAP子系统"
 
 #: newadminuser.php:13
-#, fuzzy
 msgid "Add new administrator"
-msgstr "添加管理员"
+msgstr "添加新管理员"
 
 #: newadminuser.php:64
 msgid "Select \"Superuser\" for all domains"
@@ -802,37 +777,33 @@ msgstr "为所有的域选择超级管理员"
 
 #: newadminuser.php:132
 msgid "You must provide a username"
-msgstr ""
+msgstr "你必须提供一个用户名"
 
 #: newadminuser.php:145
 msgid "Passwords are empty or not equal."
-msgstr ""
+msgstr "密码为空或者两次输入的密码不一致。"
 
 #: newadminuser.php:157
 msgid "Username already exist"
-msgstr ""
+msgstr "该用户名已存在"
 
 #: newalias.php:15
-#, fuzzy
 msgid "Add new alias to domain"
-msgstr "为此域添加一个新管理员账号"
+msgstr "为此域添加一个新别名"
 
 #: newalias.php:55
-#, fuzzy
 msgid "Sorry, no more alias allowed for domain"
-msgstr "对不起，该域允许的最大用户数已经达到"
+msgstr "很遗憾，不允许为该域增加新的别名"
 
 #: newalias.php:60
-#, fuzzy
 msgid "Maximum allowed aliases is"
-msgstr "最大账号数是"
+msgstr "允许的最大别名数是"
 
 #: newdomain.php:15
 msgid "Add new domain"
 msgstr "添加一个新域"
 
 #: newdomain.php:140
-#, fuzzy
 msgid "Standard Mailboxes"
 msgstr "标准邮箱"
 
@@ -852,7 +823,7 @@ msgstr "除非你清楚要做什么，否则请不要改动它"
 
 #: newdomain.php:187
 msgid "Parameter"
-msgstr ""
+msgstr "参数"
 
 #: newdomain.php:245 newemail.php:34
 msgid "Successfully added"
@@ -867,26 +838,24 @@ msgid "New emailadress for user"
 msgstr "该用户的新邮件地址"
 
 #: search.php:48
-#, fuzzy
 msgid "Total domains matching"
-msgstr "所有管理员"
+msgstr "所有符合条件的域"
 
 #: search.php:110
 msgid "Total users matching"
-msgstr ""
+msgstr "所有符合条件的用户"
 
 #: search.php:118
 msgid "Displaying from position"
-msgstr ""
+msgstr "从此位置开始显示"
 
 #: search.php:245
 msgid "Total aliases matching"
-msgstr ""
+msgstr "所有符合条件的别名"
 
 #: search.php:247
-#, fuzzy
 msgid "No aliases found"
-msgstr "未找到该账号"
+msgstr "没有别名"
 
 #: setquota.php:26
 msgid "Setting individual Quota for user"
@@ -897,33 +866,30 @@ msgid "Submit"
 msgstr "提交"
 
 #: setquota.php:70
-#, fuzzy
 msgid "Quote for user"
-msgstr "未设置邮箱容量上限"
+msgstr "用户邮箱容量"
 
 #: setquota.php:74
 msgid "changed to"
-msgstr ""
+msgstr "已改为"
 
 #: timeout.php:33
 msgid "Your session timed out"
 msgstr "会话超时"
 
 #: vacation.php:71
-#, fuzzy
 msgid "Vacation notice set"
-msgstr "自动回复已取消"
+msgstr "自动回复已设置"
 
 #: vacation.php:73
 msgid "Failed to activate vacation"
-msgstr "启动自动回复失败"
+msgstr "启用自动回复失败"
 
 #: vacation.php:76
 msgid "Failure in modifying vacation notice"
-msgstr "修改自动回复信息失败"
+msgstr "修改自动回复消息失败"
 
 #: vacation.php:95
-#, fuzzy
 msgid "Vacation notice unset"
 msgstr "自动回复已取消"
 
@@ -933,58 +899,54 @@ msgstr "取消自动回复失败"
 
 #: vacation.php:101
 msgid "Vacation notice removed"
-msgstr "自动回复已取消"
+msgstr "自动回复消息内容已删除"
 
 #: vacation.php:103
 msgid "Failure in removing vacation notice"
-msgstr "取消自动回复失败"
+msgstr "删除自动回复信息内容失败"
 
 #: vacation.php:142
 msgid ""
 "You can't set Vacation Message for this email address with 'Allow Free Mail "
 "Addressess' set to off!"
-msgstr ""
+msgstr "当‘允许任意邮件地址’被设置为‘关’时，无法对该邮件地址进行自动回复设置！"
 
 #: vacation.php:152
 msgid "Vacation message for emailadress"
-msgstr "自动回复信息"
+msgstr "该邮件地址的自动回复信息"
 
 #: vacation.php:174
 msgid "Set vacation notice"
-msgstr "设置自动回复"
+msgstr "设置自动回复信息"
 
 #: vacation.php:178
 msgid "Remove vacation notice"
-msgstr "取消自动回复"
+msgstr "删除自动回复信息内容"
 
 #: validate.inc.php:74 validate.inc.php:87 validate.inc.php:134
 #: validate.inc.php:249
-#, fuzzy
 msgid "Security violation detected, attempt logged"
-msgstr "此操作危及安全，已被取消。你的行为已被记入日志。"
+msgstr "此操作危及安全，操作已被记入日志。"
 
 #: validate.inc.php:130
 msgid "Quota exeedes the maximum allowed qutoa for this domain."
-msgstr ""
+msgstr "邮箱容量超过了该域允许的最大邮箱容量。"
 
 #: forwardaccount.php:77
 msgid "Forward for account"
 msgstr "账号邮件转发"
 
 #: forwardaccount.php:93
-#, fuzzy
 msgid "Set forwarding to (one adress per line)"
-msgstr "将邮件转发至"
+msgstr "将邮件转发至（每行一个邮件地址）"
 
 #: delete_catchall.php:31
-#, fuzzy
 msgid "successfully deleted from the Database"
-msgstr "已成功加入数据库"
+msgstr "已成功地从数据库中删除"
 
 #: deleteemail.php:16
-#, fuzzy
 msgid "Delete emailadress from the System"
-msgstr "从本系统中删除一个邮件地址"
+msgstr "从本系统中删除邮件地址"
 
 #: deleteemail.php:23
 msgid "Do you really want to delete the emailadress for user"
@@ -999,9 +961,8 @@ msgid "Cancel"
 msgstr "取消"
 
 #: deleteemail.php:70
-#, fuzzy
 msgid "Emailadress deleted."
-msgstr "邮件地址"
+msgstr "邮件地址已删除"
 
 #~ msgid "successfully changed Database...."
 #~ msgstr "修改数据库成功"
