@@ -23,7 +23,6 @@
 	$cnt=$result->numRows($result);
 
         $query2="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username";
-//        $result2=mysql_db_query($MYSQL_DB,$query2);
 	$result2=$handle->query($query2);
 
 	
@@ -65,7 +64,6 @@
 	        print "<th colspan=\"6\">"._("action")."</th>";
 	        print "<th>"._("Email address")."</th>";
 	        print "<th>"._("Username")."</th>";
-//	        print "<th>"._("Password")."</th>";
 	        print "<th>"._("Quota used")."</th>";
 	        print "</tr>";
 
@@ -89,29 +87,17 @@
 		$result2=$handle->query($query2);
 		$cnt2=$result2->numRows($result2);
 
-//		for ($c2=0;$c2<$cnt2;$c2++){
-//			# Print All Emailadresses found for the account
-//			$row=$result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
-//			print $row['alias']."<br>";
-//			}
-		// Assuming username to alias is one to one. The original
-		// design is one to many.
 		$row=$result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		$alias = $row['alias'];
 
 	        print "\n<tr class=\"$cssrow\">";
 		print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">"._("Edit account")."</a></td>";
 	        print "\n<td><a href=\"index.php?action=change_password&domain=$domain&alias=$alias&username=$username\">"._("Change Password")."</a></td>";
-//	        print "\n<td><a href=\"index.php?action=set_vacation&domain=$domain&alias=$alias&username=$username\">"._("Vacation")."</a></td>";
 	        print "\n<td><a href=\"index.php?action=forwardaccount&domain=$domain&alias=$alias&username=$username\">"._("Forward")."</a></td>";
 	        print "\n<td><a href=\"index.php?action=deleteaccount&domain=$domain&username=$username\">"._("Delete account")."</a></td>";
 	        print "\n<td><a href=\"index.php?action=setquota&domain=$domain&username=$username\">"._("Set quota")."</a></td>";
 	        print "\n<td><a href=\"index.php?action=catch&domain=$domain&username=$username\">"._("Set catch all")."</a></td>";
 	        print "\n<td>";
-//		$query2="SELECT * FROM virtual WHERE username='$username'"; 
-//		$result2=$handle->query($query2);
-//
-//		$cnt2=$result2->numRows($result2);
 		
 		for ($c2=0;$c2<$cnt2;$c2++){
 			# Print All Emailadresses found for the account
@@ -121,9 +107,6 @@
 	
 	        print "</td>\n<td>";
 	        print $username;
-//	        print "</td>\n<td>";
-	//        print mysql_result($hnd,$c,'password');
-//		print "******";
 	        print "</td>\n<td>";
 
 		if ($DOMAIN_AS_PREFIX) {
