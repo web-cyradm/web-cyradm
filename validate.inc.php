@@ -16,7 +16,7 @@ $_get_vars = array(
 	'password', 'new_password', 'confirm_password', 'quota', 'maxaccounts',
 	'newdomain', 'email', 'alias', 'dest', 'newalias', 'newdest', 'confirmed',
 	'cancel', 'searchstring', 'transport', 'tparam', 'mode', 'forwards',
-	'metoo', 'freenames', 'freeaddress', 'LANG'
+	'metoo', 'vacation_text', 'freenames', 'freeaddress', 'LANG'
 );
 
 foreach ($_get_vars as $_get_var){

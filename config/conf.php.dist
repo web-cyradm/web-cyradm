@@ -17,7 +17,7 @@ $CYRUS = array(
 	'HOST'	=> 'localhost',
 	'PORT'	=> 143,
 	'ADMIN'	=> 'cyrus',
-	'PASS'	=> 'secrect'
+	'PASS'	=> 'secret'
 );
 
 /* DB_TYPE
