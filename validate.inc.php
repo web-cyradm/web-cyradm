@@ -131,6 +131,14 @@ function ValidPrefix($prefix) {
 //################## Validate input and verify users actions ##################
 if (! empty($action)){
 	switch ($action){
+################################ Check input if browse ################################################
+	case "browse":
+		if (!isset($_GET['orderby']) OR empty($_GET['orderby']) OR
+			!in_array($_GET['orderby'], array('domain_name', 'prefix', 'maxaccounts',
+							  'domainquota', 'quota'))){
+			$_GET['orderby'] = 'domain_name';
+		}
+		break;
 ############################## Check deleteaccount ##################################################
 	case "deleteaccount":
 		$query = "SELECT username FROM accountuser WHERE username='$username' AND domain_name='$domain'";
