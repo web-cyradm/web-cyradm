@@ -6,6 +6,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	exit();
 }
 
+# Connecting to database
+$handle =& DB::connect($DB['DSN'],true);
+if (DB::isError($handle)) {
+	die (_("Database error"));
+}
+
 #### Getting admin settings
 $query = "SELECT * from settings WHERE username='".$_SESSION['user']."'";
 $result = $handle->query($query);
