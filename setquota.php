@@ -94,7 +94,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							$used_domain_quota += $user_quota['qmax'];
 						}
 					}
-					$quota_left = $domain_quota - $used_domain_quota;
+					# All space - space used by all accounts + space used changed account
+					$quota_left = $domain_quota - $used_domain_quota + $q['qmax'];
 
 					if ($quota_left>0) {
 						if ($quota > $quota_left){
