@@ -32,7 +32,7 @@ $nls['aliases']['ru'] = 'ru_RU';
 $nls['aliases']['sl'] = 'sl_SI';
 $nls['aliases']['sv'] = 'sv_SE';
 $nls['aliases']['tr'] = 'tr_TR';
-//$nls['aliases']['uk'] = 'uk_UA';
+$nls['aliases']['uk'] = 'uk_UA';
 $nls['aliases']['zh'] = 'zh_CN';
 
 $nls['languages']['ar_OM'] = 'Arabic (&#x0627;&#x0644;&#x0639;&#x0631;&#x0628;&#x064a;&#x0629;)';
@@ -74,8 +74,7 @@ $nls['languages']['fi_FI'] = 'Suomea';
 $nls['languages']['sv_SE'] = 'Svenska';
 $nls['languages']['th_TH'] = 'Thai (&#x0e44;&#x0e17;&#x0e22;)';
 $nls['languages']['tr_TR'] = 'T&uuml;rk&ccedil;e';
-$nls['languages']['uk_UA'] = 'Ukranian (&#x0423;&#x043a;&#x0440;&#x0430;&#x0457;&#x043d;&#x0441;&#x044c;&#
-x043a;&#x0430;)';
+$nls['languages']['uk_UA'] = 'Ukranian (&#x0423;&#x043a;&#x0440;&#x0430;&#x0457;&#x043d;&#x0441;&#x044c;&#x043a;&#x0430;)';
 
 
 /**
