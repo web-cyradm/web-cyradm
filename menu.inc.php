@@ -25,10 +25,10 @@ if (! isset($domain)){
 				<?php print _("Domainmasters menu");?>
 			</td>
 			<td>
-				Search
-			</tr>
+				<?php print _("Search");?>
+			</td>
 
-<!-- 		</tr> -->
+ 		</tr>
 
 		<tr>
 			<td class="rootnavi">
