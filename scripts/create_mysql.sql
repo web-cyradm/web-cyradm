@@ -100,8 +100,7 @@ CREATE TABLE virtual (
   dest longtext,
   username varchar(50) NOT NULL default '',
   status int(11) NOT NULL default '1',
-  PRIMARY KEY  (alias),
-  UNIQUE KEY alias (alias)
+  KEY alias (alias)
 ) TYPE=MyISAM;
 
 CREATE TABLE log (
