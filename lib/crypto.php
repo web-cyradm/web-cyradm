@@ -123,7 +123,7 @@ class password{
 		switch ($encryption){
                 case "crypt":
 			case "1":
-			$password=crypt($password,substr($password,0,2));
+			$password=crypt($password,substr(md5(rand()),0,2));
 			break;
 			case "md5":
 			case "2":
