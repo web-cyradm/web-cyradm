@@ -1,3 +1,16 @@
+2002-09-06 16:45  luc
+
+	* lib/nls.php, locale/it/LC_MESSAGES/web-cyradm.mo,
+	locale/it/LC_MESSAGES/web-cyradm.po: 
+	
+	Added italian NLS 
+
+2002-09-06 13:24  luc
+
+	* ChangeLog: 
+	
+	Updated changelog 
+
 2002-09-06 13:23  luc
 
 	* ChangeLog: 
