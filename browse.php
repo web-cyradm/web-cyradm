@@ -58,13 +58,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
                                 $next = $_SESSION['domain_row_pos'] + $_SESSION['maxdisplay'];
 
                                 if ($_SESSION['domain_row_pos'] < $_SESSION['maxdisplay']){
-//					print "<td class=\"navi\"><a href=\"#\">"._("Previous entries")."</a></td>";
+					print "<td class=\"navi\"><a>"._("Previous entries")."</a></td>";
                                 } else {
 					print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=$prev\">"._("Previous entries") ."</a></td>";		
                                 }
 
 				if ($next>=$cnt){
-//					print "<td class=\"navi\"><a href=\"#\">"._("Next entries")."</a></td>";
+					print "<td class=\"navi\"><a>"._("Next entries")."</a></td>";
 				}
 				else {
 					print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=$next\">". _("Next entries")."</a></td>";
@@ -85,31 +85,31 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
                                         <th>
                                                 <!-- <?php print _("domainname");?> -->
-                                                <?php print "<a href=\"index.php?action=browse&orderby=domain_name\">".("domainname")."</a>";?>
+                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=domain_name\">".("domainname")."</a>";?>
                                         </th>
 
                                         <?php
                                         if (! $DOMAIN_AS_PREFIX){
                                                 ?>
                                                 <th>
-                                                        <?php print "<a href=\"index.php?action=browse&orderby=prefix\">"._("prefix")."</a>";?>
+                                                        <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=prefix\">"._("prefix")."</a>";?>
                                                 </th>
                                                 <?php
                                         }
                                         ?>
 
                                         <th>
-                                                <?php print "<a href=\"index.php?action=browse&orderby=maxaccounts\">".("max Accounts")."</a>";?>
+                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=maxaccounts\">".("max Accounts")."</a>";?>
                                         </th>
 
                                         <th>
                                                 <!-- <?php print _("Domain quota");?> -->
-                                                <?php print "<a href=\"index.php?action=browse&orderby=domainquota\">".("Domain quota")."</a>";?>
+                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=domainquota\">".("Domain quota")."</a>";?>
                                         </th>
 
                                         <th>
                                                 <!-- <?php print _("default quota per user");?> -->
-                                                <?php print "<a href=\"index.php?action=browse&orderby=quota\">".("default quota per user")."</a>";?>
+                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=quota\">".("default quota per user")."</a>";?>
                                         </th>
                                 </tr>
 
