@@ -34,7 +34,7 @@ else{
 			</tr>
 		
 			<tr>
-				<td><?php print _("Type") ?></td>
+				<td><?php print _("Admin Type") ?></td>
 				<td><select name="type">
 					<option value=0><?php print _("Superuser") ?></option>
 					<option selected value=1><?php print _("Domain Master") ?></option>
