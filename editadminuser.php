@@ -11,9 +11,11 @@ else{
 
 	if ($admintype==0){
 		$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-		$query="SELECT * from adminuser";
+		$query="SELECT * from adminuser WHERE username='$username'";
 		$result=mysql_db_query($MYSQL_DB,$query);
-		$password=mysql_result($result,0,'password');
+                $adminrow=mysql_fetch_array($result);
+                $password=$adminrow["password"];
+	//	$password=mysql_result($result,0,'password');
 		
 
 		if (!$confirmed){
@@ -29,7 +31,7 @@ else{
 		<table>
 			<tr>
 				<td>login</td>
-				<td><input class="inputfield" type="readonly" name="username" value="<?php print $username ?>" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
+				<td><input class="inputfield" type="text" name="newusername" value="<?php print $username ?>" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
 			</tr>
 		
 			<tr>
@@ -64,19 +66,19 @@ else{
 
 		else if ($confirmed){
 
-			$query="UPDATE adminuser SET password='$newpassword' , type='$type' WHERE username='$username'";
+			$query="UPDATE adminuser SET password='$newpassword' , type='$type', username='$newusername' WHERE username='$username'";
 
 			$result=mysql_db_query($MYSQL_DB,$query,$handle1);
 	
 			if ($type==0){
-				$query2="UPDATE domainadmin SET domain_name='*' WHERE adminuser='$username'";
+				$query2="UPDATE domainadmin SET domain_name='*', adminuser='$newusername' WHERE adminuser='$username'";
 			}
 			else{
-				$query2="UPDATE domainadmin SET domain_name='$domain' WHERE adminuser='$username'";
+				$query2="UPDATE domainadmin SET domain_name='$domain', adminuser='$newusername' WHERE adminuser='$username'";
 			}
 			$result2=mysql_db_query($MYSQL_DB,$query2,$handle1);
 
-			if ($result){
+			if ($result and $result2){
 				print "successfully changed Database....</br>";
 			}
 			else{
