@@ -35,6 +35,13 @@ else if ($cancel){
 
 else{
 
+$cyr_conn = new cyradm;
+$error=$cyr_conn -> imap_login();
+
+if ($error!=0){
+	die ("Error $error");
+}
+
 $handle=DB::connect($DSN, true);
 
 $query2="delete from virtual where username='$username'";
@@ -43,8 +50,6 @@ $hnd2=$handle->query($query2);
 $query3="delete from accountuser where username='$username'";
 $hnd3=$handle->query($query3);
 
-$cyr_conn = new cyradm;
-$cyr_conn -> imap_login();
 
 if ($DOMAIN_AS_PREFIX) {
 	print $cyr_conn -> deletemb("user/".$username);

@@ -6,8 +6,12 @@
 <?php
 
        $cyr_conn = new cyradm;
+		
+	$error=$cyr_conn -> imap_login();
 
-       $cyr_conn -> imap_login();
+	if ($error!=0){
+		die ("Error $error");
+	}
 
         print "<h3>"._("Browse accounts for domain")." <font color=red>$domain</font></h3>";
 	if (!isset($row_pos)){

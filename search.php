@@ -90,10 +90,6 @@ print "</table>";
 ############ And now show the users matching the search query ###########
 
 
-$cyr_conn = new cyradm;
-
-$cyr_conn -> imap_login();
-
 print "<h3>"._("Total usernames matching:")." ".$cnt3."</h3>";
 if (!isset($row_pos)){
 	$row_pos=0;

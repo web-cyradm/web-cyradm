@@ -135,10 +135,18 @@ else{
         }
    $query3.=",'$prefix','$domain')";
 
-	print $query3;
+//	print $query3;
 
 //	$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
 //	$result=mysql_db_query($MYSQL_DB,$query3,$handle1);
+
+	$cyr_conn = new cyradm;
+	$error=$cyr_conn -> imap_login();
+
+	if ($error!=0){
+		die ("Error $error");
+	}
+
 
 	$result=$handle->query($query3);
 
@@ -151,8 +159,6 @@ else{
 		print _("Account successfully added to the Database")."...</br>";
 	}
 
-	$cyr_conn = new cyradm;
-        $cyr_conn -> imap_login();
 
 	if ($DOMAIN_AS_PREFIX) {
 		$result=$cyr_conn->createmb("user/".$username);
