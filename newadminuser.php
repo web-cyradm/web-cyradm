@@ -60,8 +60,8 @@ else{
 	
 			$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadminuser','$password','$newadmintype')";
 
-			$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-			$result=mysql_db_query($MYSQL_DB,$query,$handle1);
+			$handle1=DB::connect($DSN,true);
+			$result=$handle1->query($query);
 	
 			if ($newadmintype==0){
 				print $newadminuser;
@@ -70,9 +70,9 @@ else{
 			else{
 				$query2="INSERT INTO domainadmin (domain_name , adminuser) values ('$domain' , '$newadminuser')";
 			}
-			$result2=mysql_db_query($MYSQL_DB,$query2,$handle1);
+			$result2=$handle1->query($query2);
 
-			if ($result){
+			if (!DB::isError($result)){
 				print "successfully added to Database....</br>";
 			}
 			else{

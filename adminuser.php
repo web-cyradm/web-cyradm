@@ -5,11 +5,11 @@
 <?php
 if ($admintype==0){
         $query="SELECT * FROM adminuser"; # where username='$user' ORDER BY username";
-        $handle=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-        $result=mysql_db_query($MYSQL_DB,$query);
-        $cnt=mysql_num_rows($result);
+        $handle=DB::connect($DSN, true);
+        $result=$handle->query($query);
+        $cnt=$result->numRows();
 
-        $total=mysql_num_rows($result);
+        $total=$result->numRows();
         $b=0;
         if ($cnt!=0){
                 print "Total accounts: ".$total."<p>";
@@ -60,19 +60,21 @@ if ($admintype==0){
                         $b=0;
                 }
 		
-                $username= mysql_result($result,$c,'username');
+		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, $c);
+                $username=$row['username'];
 		$query2="SELECT * from domainadmin WHERE adminuser='$username'";
-		$result2=mysql_db_query($MYSQL_DB,$query2);
+		$result2=$handle->query($query2);
 
-		$domainname= mysql_result($result2,0,'domain_name');
-                $type= mysql_result($result,$c,'type');
+		$row2=$result2->fetchRow(DB_FETCHMOD_ASSOC, 0);
+		$domainname=$row['domain_name'];
+                $type=$row['type'];
                 print "\n<tr class=\"$cssrow\">";
                 print "\n<td><a href=\"index.php?action=editadminuser&username=$username&domain=$domainname\">Edit adminuser</a></td>";
                 print "\n<td><a href=\"index.php?action=deleteadminuser&username=$username&domain=$domainname\">Delete adminuser</a></td>";
                 print "</td>\n<td>";
                 print $username;
                 print "</td>\n<td>";
-//                print mysql_result($result,$c,'password');
+//                print $row['password'];
                 print "******";
                 print "</td>\n<td>";
 		print $domainname;

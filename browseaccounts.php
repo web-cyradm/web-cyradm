@@ -13,17 +13,24 @@
 		$row_pos=0;
 	}
 	if (!isset($allowed_domains)){
-	        $query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username LIMIT $row_pos,10";
+
+######## If you are using PostgreSQL, please use the query which is commented out
+
+//	        $query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username OFFSET $row_pos LIMIT 10";
+                $query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username LIMIT $row_pos,10";
+
 	}
 	else{
-		$query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username LIMIT $row_pos,10";
+//		$query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username OFFSET $row_pos LIMIT 10";
+                $query="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username LIMIT $row_pos,10";
+
 	}
 	$handle=DB::connect($DSN, true);
 	$result=$handle->query($query);
 	$cnt=$result->numRows($result);
 
         $query2="SELECT * FROM accountuser where domain_name='$domain' ORDER BY username";
-        $result2=mysql_db_query($MYSQL_DB,$query2);
+//        $result2=mysql_db_query($MYSQL_DB,$query2);
 	$result2=$handle->query($query2);
 
 	

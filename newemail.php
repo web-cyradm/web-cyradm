@@ -8,11 +8,11 @@ if ($confirmed){
 
         $query="INSERT INTO virtual (alias,dest,username) VALUES('$alias@$domain','$dest','$username')";
 
-        $handle=mysql_connect ($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-        $result=mysql_db_query($MYSQL_DB,$query,$handle);
+        $handle=DB::connect($DSN, true);
+        $result=$handle->query($query);
 
 
-        if ($result){
+        if (!DB::isError($result)){
                 print "Sucessfully inserted";
 		include ("editaccount.php");
         }

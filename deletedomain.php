@@ -6,10 +6,10 @@
 
 if ($admintype==0){
 
-	$handle=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
+	$handle=DB::connect($DSN, true);
 	$query1="SELECT * FROM accountuser WHERE domain_name='$domain' order by username";
-	$result1=mysql_db_query($MYSQL_DB,$query1,$handle);
-	$cnt1=mysql_num_rows($result1);
+	$result1=$handle->query($query1);
+	$cnt1=$result1->numRows();
         
 
 	if (!$confirmed){
@@ -45,22 +45,23 @@ if ($admintype==0){
 		$cyr_conn = new cyradm;
 	        $cyr_conn -> imap_login();
 
-		# First Delete all stuff related to the domain from the mysql database
+		# First Delete all stuff related to the domain from the database
 	
 		$query2="DELETE FROM virtual WHERE domain_name='$domain'";
-		$hnd2=mysql_db_query($MYSQL_DB,$query2);
+		$hnd2=$handle->query($query2);
 
 		$query3="DELETE FROM accountuser WHERE domain_name='$domain'";
-		$hnd3=mysql_db_query($MYSQL_DB,$query3);
+		$hnd3=$handle->query($query3);
 
 		$query4="DELETE FROM domain WHERE domain_name='$domain'";
-		$hnd3=mysql_db_query($MYSQL_DB,$query4);
+		$hnd3=$handle->query($query4);
 
 		for ($i=0;$i<$cnt1;$i++){
 	
-			$username=mysql_result($result1,$i,"username");
+			$row = $result1->fetchRow(DB_FETCHMOD_ASSOC, $i);
+			$username=$row['username'];
 			$query5="DELETE FROM virtual WHERE username='$username'";
-			$result5=mysql_db_query($MYSQL_DB,$query5);
+			$result5=$handle->query($query5);
 
 			# And delete also the Usermailboxes from the cyrus system
 
@@ -74,15 +75,16 @@ if ($admintype==0){
 		}
 	
 		$query6="SELECT * FROM domainadmin WHERE domain_name='$domain'";
-		$result6=mysql_db_query($MYSQL_DB,$query6);
-		$cnt6=mysql_num_rows($result6);
+		$result6=$handle->query($query6);
+		$cnt6=$result6->numRows();
                 for ($i=0;$i<$cnt6;$i++){
-			$username=mysql_result($result6,$i,"adminuser");
+			$row=$result6->fetchRow($i);
+			$username=$row['adminuser'];
                         $query7="DELETE FROM adminuser where username='$username'";
-                        $result7=mysql_db_query($MYSQL_DB,$query7);
+                        $result7=$handle->query($query7);
                 } 
 		$query8="DELETE FROM domainadmin WHERE domain_name='$domain'";
-                $hnd8=mysql_db_query($MYSQL_DB,$query8); 
+                $hnd8=$handle->query($query8); 
 	print "<h3>Domain ".$domain." sucessfully deleted</h3>";
 
 	include ("browse.php");

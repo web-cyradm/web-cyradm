@@ -35,9 +35,9 @@ else if ($cancel){
 
 else{
 
-$handle=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
+$handle=DB::connect($DSN, true);
 $query="delete from virtual where alias='$alias'";
-$result=mysql_db_query($MYSQL_DB,$query,$handle);
+$result=$handle->query($query);
 
 include ("editaccount.php");
 

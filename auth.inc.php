@@ -6,18 +6,19 @@ $session_ok= $HTTP_SESSION_VARS['session_ok'];
 
 $login = $HTTP_POST_VARS['login'];
 $password = $HTTP_POST_VARS['password'];
-
 function authenticate($user, $pw) {
 	include ("config.inc.php");
+        include_once("DB.php");
 	global $handle;
 
 	$query="SELECT * FROM adminuser WHERE username='$user' AND password='$pw'";
-	$handle=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-	$result=mysql_db_query($MYSQL_DB,$query, $handle);
-	$cnt=mysql_num_rows($result);
+	$handle=DB::connect($DSN, true);
+	$result=$handle->query($query);
+	$cnt=$result->numRows();
 	if ($cnt){
-		$username=mysql_result($result,0,'username');
-		$password=mysql_result($result,0,'password');
+		$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+		$username=$row['username'];
+		$password=$row['password'];
 	}
 
 	if ($username==$user and $password==$pw){
@@ -57,7 +58,7 @@ if ($login!="" and $password!="") {
 		session_register("user");
 		$SID=session_id();
 		$query="UPDATE adminuser SET SID='$SID' WHERE username='$user'";
-		$result=mysql_db_query($MYSQL_DB,$query, $handle);
+		$result=$handle->query($query);
 		
 
 	 	header ("Location: index.php");

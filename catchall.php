@@ -5,7 +5,7 @@
 <?php
 print "<h3>Define a Account for receiving undefined adresses for domain <font color=red>$domain</font></h3>";
 
-#$result=mysql_db_query($MYSQL_DB,$query1,$handle1);
+// $result=mysql_db_query($MYSQL_DB,$query1,$handle1);
 
 
 if (!$confirmed){
@@ -39,9 +39,9 @@ else{
 	# And then add the new one	
 
 	$insertquery="INSERT INTO virtual  (alias , dest , username , status) values ('@$domain' , '$username' , '$username' , '1')";
-	$handle=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-	$result=mysql_query($deletequery,$handle);
-	$result=mysql_query($insertquery,$handle);
+	$handle=DB::connect($DSN, true);
+	$result=$handle->query($deletequery);
+	$result=$handle->query($insertquery);
 
 	if ($result){
 		print "successfully added to Database....</br>";

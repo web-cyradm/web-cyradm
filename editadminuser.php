@@ -10,11 +10,11 @@ if (!$domain or $domain=="new"){
 else{
 
 	if ($admintype==0){
-		$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
+		$handle1=DB::connect($DSN, true);
 		$query="SELECT * from adminuser WHERE username='$username'";
-		$result=mysql_db_query($MYSQL_DB,$query);
-                $adminrow=mysql_fetch_array($result);
-                $password=$adminrow["password"];
+		$result=$handle1->query($query);
+                $adminrow=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+                $password=$adminrow['password'];
 	//	$password=mysql_result($result,0,'password');
 		
 
@@ -68,7 +68,7 @@ else{
 
 			$query="UPDATE adminuser SET password='$newpassword' , type='$type', username='$newusername' WHERE username='$username'";
 
-			$result=mysql_db_query($MYSQL_DB,$query,$handle1);
+			$result=$handle1->query($query);
 	
 			if ($type==0){
 				$query2="UPDATE domainadmin SET domain_name='*', adminuser='$newusername' WHERE adminuser='$username'";
@@ -76,7 +76,7 @@ else{
 			else{
 				$query2="UPDATE domainadmin SET domain_name='$domain', adminuser='$newusername' WHERE adminuser='$username'";
 			}
-			$result2=mysql_db_query($MYSQL_DB,$query2,$handle1);
+			$result2=$handle1->query($query2);
 
 			if ($result and $result2){
 				print "successfully changed Database....</br>";

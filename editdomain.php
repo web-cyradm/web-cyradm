@@ -12,12 +12,12 @@ if ($admintype==0){
 	
 		$query2="UPDATE accountuser SET domain_name='$newdomain' WHERE domain_name='$domain'";
 
-	        $handle=mysql_connect ($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-	        $result=mysql_db_query($MYSQL_DB,$query,$handle);
-	        $result2=mysql_db_query($MYSQL_DB,$query2,$handle);
+	        $handle=DB::connect ($DSN,true);
+	        $result=$handle->query($query);
+	        $result2=$handle->query($query2);
 
 
-	        if ($result){
+	        if (!DB::isError($result)){
 	                print "Sucessfully changed";
 			include ("browse.php");
 	        }
@@ -33,12 +33,13 @@ if ($admintype==0){
 	if (!$confirmed){
 
 	        $query="select * from domain where domain_name='$domain'";
-	        $handle=mysql_connect ($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-	        $result=mysql_db_query($MYSQL_DB,$query,$handle);
-	        $domain=mysql_result($result,0,"domain_name");
-	        $prefix=mysql_result($result,0,"prefix");
-	        $maxaccounts=mysql_result($result,0,"maxaccounts");
-	        $quota=mysql_result($result,0,"quota");
+	        $handle=DB::connect($DSN,true);
+	        $result=$handle->query($query);
+		$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+	        $domain=$row['domain_name'];
+	        $prefix=$row['prefix'];
+	        $maxaccounts=$row['maxaccounts'];
+	        $quota=$row['quota'];
 
 	        ?>
 

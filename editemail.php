@@ -7,21 +7,22 @@
 if ($authorized){
 
 	$query="select * from virtual where alias='$alias'";
-	$handle=mysql_connect ($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-	$result=mysql_db_query($MYSQL_DB,$query,$handle);
-	$alias=mysql_result($result,0,"alias");
-	$dest=mysql_result($result,0,"dest");
-	$username=mysql_result($result,0,"username");
+	$handle=DB::connect($DSN, true);
+	$result=$handle->query($query);
+	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+	$alias=$row['alias'];
+	$dest=$row['dest'];
+	$username=$row['username'];
 
 	if ($confirmed){
 
 	        $query="UPDATE virtual SET alias='$newalias@$domain', dest='$dest' WHERE alias='$alias'";
 	
-	        $handle=mysql_connect ($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-	        $result=mysql_db_query($MYSQL_DB,$query,$handle);
+	        $handle=DB::connect($DSN, true);
+	        $result=$handle->query($query);
 
 
-	        if ($result){
+	        if (!DB::isError($result)){
 	                print "<h3>Sucessfully changed</h3>";
 			include ("editaccount.php");
 	        }

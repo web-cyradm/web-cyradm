@@ -34,8 +34,8 @@ $DB_HOST="localhost";
 $DB_NAME="mail";
 $DB_USER="mail";
 $DB_PASSWD="secret";
-
-$DSN="$DB_TYPE://$DB_USER:$DB_PASSWD@$DB_HOST/$DB_NAME";
+$DB_PROTOCOL="unix"; // set to "tcp" for TCP/IP
+$DSN="$DB_TYPE://$DB_USER:$DB_PASSWD@$DB_PROTOCOL+$DB_HOST/$DB_NAME";
 
 
 # The default timeout in seconds for a session, after that you have to login again

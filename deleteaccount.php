@@ -35,13 +35,13 @@ else if ($cancel){
 
 else{
 
-$handle=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
+$handle=DB::connect($DSN, true);
 
 $query2="delete from virtual where username='$username'";
-$hnd2=mysql_db_query($MYSQL_DB,$query2);
+$hnd2=$handle->query($query2);
 
 $query3="delete from accountuser where username='$username'";
-$hnd3=mysql_db_query($MYSQL_DB,$query3);
+$hnd3=$handle->query($query3);
 
 $cyr_conn = new cyradm;
 $cyr_conn -> imap_login();

@@ -11,9 +11,9 @@
 	print"<h3>Email adresses defined for user <font color=red>".$username."</font></h3>";
 
 	$query="select * from virtual where username='$username'";
-        mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-        $hnd=mysql_db_query($MYSQL_DB,$query);
-        $cnt=mysql_num_rows($hnd);
+        $handle=DB::connect($DSN, true);
+        $hnd=$handle->query($query);
+        $cnt=$hnd->numRows();
 	print "<table cellspacing=\"2\" cellpadding=\"0\"><tr>";
         print "<td class=\"navi\">";
 	print "<a href=\"index.php?action=newemail&domain=$domain&username=$username\">new&nbsp;email&nbsp;address&nbsp;for&nbsp;this&nbsp;user</a>";	
@@ -40,7 +40,10 @@
 		$cssrow="row2";
             $b=0;
           }
-	  $alias=mysql_result($hnd,$c,'alias');	
+	  $row=$hnd->fetchRow(DB_FETCHMOD_ASSOC, $c);
+//	  print $row[0];
+//	  $alias=$row['alias'];	
+	  $alias=$row[0];	
           print "<tr class=\"$cssrow\"> \n";
           print "<td><a href=\"index.php?action=editemail&domain=$domain&alias=$alias&username=$username\">Edit Emailadress</a></td>";
           print "<td><a href=\"index.php?action=deleteemail&domain=$domain&alias=$alias&username=$username\">Delete Emailadress</a></td>";
@@ -50,7 +53,8 @@
 
 	  if ($c==0) {
 		print "<td rowspan=\"$cnt\">";
-	        print mysql_result($hnd,$c,'dest');
+//	        print $row['dest'];
+	        print $row['1'];
 	        print "</td>\n<td rowspan=\"$cnt\">";
 		print "******";
 	        print "</td>\n<td rowspan=\"$cnt\">";
@@ -78,8 +82,6 @@
 
         }
         print "</table>";
-	print "<p>";
-	print "<a href=\"index.php?action=newemail&domain=$domain&username=$username\">New Email Adress</a>";
 
 
 

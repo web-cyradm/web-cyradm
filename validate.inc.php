@@ -28,15 +28,16 @@ $confirmed=$HTTP_GET_VARS['confirmed'];
 
 $query="SELECT * FROM domainadmin WHERE adminuser='$user'";
 $query2="SELECT type FROM adminuser WHERE username='$user'";
-$handle=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-$dummy=mysql_select_db($MYSQL_DB,$handle);
-$result=mysql_query($query,$handle);
-$result2=mysql_query($query2, $handle);
-$cnt=mysql_num_rows($result);
-$admintype=mysql_result($result2,0,0);
+$handle=DB::connect($DSN,true);
+$result=$handle->query($query);
+$result2=$handle->query($query2);
+$cnt=$result->numRows();
+$row=$result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
+$admintype=$row['type'];
 if ($admintype!=0){
-	$allowed_domains=mysql_result($result,0,'domain_name');
-	$domain=mysql_result($result,0,'domain_name');
+	$row=$result->fetchRow(DB_FETCHMOD_ASSOC, 0);
+	$allowed_domains=$row['domain_name'];
+	$domain=$row['domain_name'];
 }
 
 
@@ -59,8 +60,8 @@ function ValidateMail($email) {
 switch ($action){
 	case "deleteaccount":
 	$query="SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
-	$result3=mysql_db_query($MYSQL_DB,$query, $handle);
-	if (!mysql_num_rows($result3)){
+	$result3=$handle->query($query);
+	if (!$result3->numRows()){
 		$authorized=FALSE;
 	}
 	else{
@@ -71,17 +72,18 @@ switch ($action){
 	case "setquota":
 	$query="SELECT quota FROM domain WHERE domain_name='$domain'";
 	$query2="SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
-	$result4=mysql_db_query($MYSQL_DB,$query, $handle);
-	$result5=mysql_db_query($MYSQL_DB,$query2, $handle);
-	$quota2=mysql_result($result4,0,0);
-	if (mysql_num_rows($result5)){
+	$result4=$handle->query($query, $handle);
+	$result5=$handle->query($query2, $handle);
+	$row=$result4->fetchRow(DB_FETCHMODE_ASSOC, 0);
+	$quota2=$row['quota'];
+	if ($result5->numRows()){
        	        $authorized=TRUE;
 		if ($quota>$quota2){
 			Print "<h3>Quota exeedes $quota2, the maximum allowed qutoa for domain.</h3>";
 			$authorized=FALSE;
 		}
 	}
-	else if (!mysql_num_rows($result5)){
+	else if (!$result5->numRows()){
 			Print "<h3>Security violation detected, attempt logged</h3>";
 			$authorized=FALSE;
 
@@ -91,11 +93,12 @@ switch ($action){
 ################################## Check input if newemail ################################################
 	case "newemail":
 	$query="SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
-	$result=mysql_db_query($MYSQL_DB,$query, $handle);
+	$result=$handle->query($query, $handle);
 	
 	$valid_dest=eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$",$dest);
 	$valid_alias=eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$",$alias."@".$domain);
- 	$username2=mysql_result($result,0,'username');	
+	$row=$result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+ 	$username2=$row['username'];	
 	if ($confirmed){
 		if ($dest != $username2 and !$valid_dest){
 //		if ($dest != $username2 and !ValidateMail($dest)){
@@ -123,7 +126,7 @@ switch ($action){
 	case "editemail":
 		print $username;
 	        $query="SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
-	        $result=mysql_db_query($MYSQL_DB,$query, $handle);
+	        $result=$handle->query($query);
 		$valid_dest=eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$",$newdest);
 		$valid_alias=eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$",$newalias."@".$domain); 
         if ($confirmed){

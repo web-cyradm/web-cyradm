@@ -35,13 +35,13 @@ if ($admintype==0){
 
 	else{
 
-	$handle=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
+	$handle=DB::connect($DSN,true);
 
 	$query2="DELETE FROM adminuser WHERE username='$username'";
-	$hnd2=mysql_db_query($MYSQL_DB,$query2);
+	$hnd2=$handle->query($query2);
 
 	$query3="DELETE FROM domainadmin WHERE adminuser='$username'";
-	$hnd3=mysql_db_query($MYSQL_DB,$query3);
+	$hnd3=$handle->query($query3);
 
 	include ("adminuser.php");
 

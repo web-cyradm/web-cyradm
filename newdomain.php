@@ -59,10 +59,10 @@ if ($admintype==0){
 
 			$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota')";
 
-		        $handle=mysql_connect ($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
-		        $result=mysql_db_query($MYSQL_DB,$query,$handle);
+		        $handle=DB::connect ($DSN,true);
+		        $result=$handle->query($query);
 
-		        if ($result){
+		        if (!DB::isError($result)){
 		                print "Successfully added";
 				include ("browse.php");
 		        }
