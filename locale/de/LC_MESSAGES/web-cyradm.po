@@ -179,7 +179,7 @@ msgstr "Datenbankfehler"
 
 #: deleteaccount.php:19
 msgid "Delete an Account from the System"
-msgstr "L&ouml;schen eins Kontos vom System"
+msgstr "L&ouml;schen eines Kontos vom System"
 
 #: deleteaccount.php:21
 msgid "Do you really want to delete the user "
@@ -396,6 +396,10 @@ msgstr "Individuelle Speicherplatzbegrenzung f&uuml;r Konto"
 #: timeout.php:65
 msgid "Your session timed out"
 msgstr "Ihre Sitzung war zulange inaktiv"
+
+#: editadminuser.php:5
+msgid "Change admin user for domain"
+msgstr "Administrator &auml;ndern f&uuml;r Dom&auml;ne"
 
 #: Submit and cancel buttons
 msgid "Yes, delete"
