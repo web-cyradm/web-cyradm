@@ -190,49 +190,54 @@
 			       _("Sorry, the username already exists") . 
 			       "</h3><br>";
 			include WC_BASE . "/browseaccounts.php";
-		    } else {
+		} else {
+			if ($password == $confirm_password){
 				$pwd = new password;
 			        $password = $pwd->encrypt($password, $CRYPT);
-		    	$query3="INSERT INTO accountuser (username, password, prefix, domain_name) VALUES ('" . $username . "','" . $password . "','" . $prefix . "','" . $domain . "')";
+			    	$query3="INSERT INTO accountuser (username, password, prefix, domain_name) VALUES ('" . $username . "','" . $password . "','" . $prefix . "','" . $domain . "')";
 
-			$cyr_conn = new cyradm;
-			$error=$cyr_conn -> imap_login();
+				$cyr_conn = new cyradm;
+				$error=$cyr_conn -> imap_login();
 
-			if ($error!=0){
-				die ("Error $error");
-			}
+				if ($error!=0){
+					die ("Error $error");
+				}
 
-			$result=$handle->query($query3);
+				$result=$handle->query($query3);
 
-			$query4 = "INSERT INTO virtual (alias, dest, username, status) values ( '" . $email . "@" . $domain . "' , '$username' , '$username' , '1')";
+				$query4 = "INSERT INTO virtual (alias, dest, username, status) values ( '" . $email . "@" . $domain . "' , '$username' , '$username' , '1')";
 
-			$result2 = $handle->query($query4);
-
-			if ($result and $result2){
-				?>
-				<h3>
-					<?php print _("Account successfully added to the Database");?>:
-					<span style="color: red;">
+				$result2 = $handle->query($query4);
+	
+				if ($result and $result2){
+					?>
+					<h3>
+						<?php print _("Account successfully added to the Database");?>:
+						<span style="color: red;">
 						<?php echo $username;?>
-					</span>
-				</h3>
-				<?php
-			}
+						</span>
+					</h3>
+					<?php
+				}
 
-			$result=$cyr_conn->createmb("user" . $seperator . $username);
+				$result=$cyr_conn->createmb("user" . $seperator . $username);
 
-			if ($result){
-				?>
-				<h3>
-					<?php print _("Account succesfully added to the IMAP Subsystem");?>
-				</h3>
-				<?php
+				if ($result){
+					?>
+					<h3>
+						<?php print _("Account succesfully added to the IMAP Subsystem");?>
+					</h3>
+					<?php
+				}
+				print $cyr_conn->setacl("user" . $seperator . $username, $CYRUS['ADMIN'], "lrswipcda");
+				$result = $cyr_conn->setmbquota("user" . $seperator . $username, $quota);
+				include WC_BASE . "/browseaccounts.php";
 			}
-			print $cyr_conn->setacl("user" . $seperator . $username, $CYRUS['ADMIN'], "lrswipcda");
-			$result = $cyr_conn->setmbquota("user" . $seperator . $username, $quota);
-			include WC_BASE . "/browseaccounts.php";
-		    }
+			else{ # if password and confirm_password are not the same
+				print _("Passwords do not match");
+			}
 		}
+	}
 		?>
 	</td>
 </tr>
