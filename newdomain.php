@@ -4,9 +4,17 @@
 
 
 <?php
+
+// Specify location of translation tables
+bindtextdomain("newdomain", "./locale");
+
+// Choose domain
+textdomain("newdomain");
+
+
 if ($admintype==0){
 
-	print "<h3>Add new domain</h3>";
+	print "<h3>"._("Add new domain")."</h3>";
 
 	if (!$confirmed){
 	
@@ -18,13 +26,13 @@ if ($admintype==0){
 	<input type="hidden" name="confirmed" value="true">
 		<table>
 			<tr>
-			<td>Domainname</td>
+			<td><?php print _("Domainname") ?></td>
 			<td><input type="text" size="20" name="domain"></td>
 			</tr>
 			<?php
 				if (!$DOMAIN_AS_PREFIX) {
 					print "<tr>\n";
-				        print "<td>Prefix</td>\n";
+				        print "<td>"._("Prefix")."</td>\n";
 					print "<td><input type=\"text\" size=\"8\" name=\"prefix\"></td>\n";
 					print "</tr>\n";
 				}
@@ -33,15 +41,15 @@ if ($admintype==0){
 				} 
 			?>
 			<tr>
-			<td>Maximum Accounts</td>
+			<td><?php print _("Maximum Accounts") ?></td>
 			<td><input type="text" size="2" name="maxaccounts"></td>
 			</tr>
 			<tr>
-			<td>Default Quota in Kilobytes</td>
+			<td><?php print _("Default Quota in Kilobytes") ?></td>
 			<td><input type="text" size="5" name="quota" value="<?php print $DEFAULT_QUOTA ?>"></td>
 			</tr>
 			<tr>
-			<td><input type="submit"></td>
+			<td><input type="submit" value="<?php print _("Submit") ?>" ></td>
 			</tr>
 		</table>
 	</form>

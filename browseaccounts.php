@@ -4,11 +4,20 @@
         <td valign="top">
 
 <?php
+
+
+// Specify location of translation tables
+bindtextdomain("browseaccounts", "./locale");
+
+// Choose domain
+textdomain("browseaccounts");
+
+
        $cyr_conn = new cyradm;
 
        $cyr_conn -> imap_login();
 
-        print "<h3>Browse accounts for domain <font color=red>$domain</font></h3>";
+        print "<h3>"._("Browse accounts for domain")." <font color=red>$domain</font></h3>";
 	if (!isset($row_pos)){
 		$row_pos=0;
 	}
@@ -26,10 +35,10 @@
 	
         $b=0;
 	if ($cnt!=0){
-		print "Total accounts: ".$total."<p>";
+		print _("Total accounts").": ".$total."<p>";
 		print "<table cellspacing=\"2\" cellpadding=\"0\"><tr>";
 		print "<td class=\"navi\">";
-	        print "<a href=\"index.php?action=newaccount&domain=$domain&username=$username\">Add&nbsp;new&nbsp;account</a>";
+	        print "<a href=\"index.php?action=newaccount&domain=$domain&username=$username\">"._("Add new account")."</a>";
 		print "</td>";
 	
 
@@ -37,19 +46,19 @@
 		$next = $row_pos +10;
 
 		if ($row_pos<10){
-			print "<td class=\"navi\"><a href=\"#\">Previous&nbsp;10&nbsp;entries</a></td>";
+			print "<td class=\"navi\"><a href=\"#\">"._("Previous 10 entries")."</a></td>";
 		}
 		else {
 			print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$prev\">
-			Previous&nbsp;10&nbsp;entries</a></td>"; 	
+			"._("Previous 10 entries")."</a></td>"; 	
 		}
 
 		if ($next>$total){
-			print "<td class=\"navi\"><a href=\"#\">Next&nbsp;10&nbsp;entries</a></td>";
+			print "<td class=\"navi\"><a href=\"#\">"._("Next 10 entries")."</a></td>";
 		}
 		else {
 			print "<td class=\"navi\"><a href=\"index.php?action=accounts&domain=$domain&row_pos=$next\">
-			Next&nbsp;10&nbsp;entries</a></td>";
+			"._("Next 10 entries")."</a></td>";
 		}
 		print "</tr></table><p>";
 
@@ -57,11 +66,11 @@
 	        print "<table border=\"0\">\n";
 		print "<tbody>";
 	        print "<tr>";
-	        print "<th colspan=\"4\">actions</th>";
-	        print "<th>Email address</th>";
-	        print "<th>Username</th>";
-	        print "<th>Password</th>";
-	        print "<th>Quota used</th>";
+	        print "<th colspan=\"4\">"._("action")."</th>";
+	        print "<th>"._("Email address")."</th>";
+	        print "<th>"._("Username")."</th>";
+	        print "<th>"._("Password")."</th>";
+	        print "<th>"._("Quota used")."</th>";
 	        print "</tr>";
 
 
@@ -81,10 +90,10 @@
 		$username=$row['username'];
 
 	        print "\n<tr class=\"$cssrow\">";
-	        print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">Edit account</a></td>";
-	        print "\n<td><a href=\"index.php?action=deleteaccount&domain=$domain&username=$username\">Delete account</a></td>";
-	        print "\n<td><a href=\"index.php?action=setquota&domain=$domain&username=$username\">Set Quota</a></td>";
-	        print "\n<td><a href=\"index.php?action=catch&domain=$domain&username=$username\">Set Catch all</a></td>";
+	        print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">"._("Edit account")."</a></td>";
+	        print "\n<td><a href=\"index.php?action=deleteaccount&domain=$domain&username=$username\">"._("Delete account")."</a></td>";
+	        print "\n<td><a href=\"index.php?action=setquota&domain=$domain&username=$username\">"._("Set quota")."</a></td>";
+	        print "\n<td><a href=\"index.php?action=catch&domain=$domain&username=$username\">"._("Set catch all")."</a></td>";
 	        print "\n<td>";
 		$query2="SELECT * FROM virtual WHERE username='$username'"; 
 		$result2=$handle->query($query2);
@@ -114,11 +123,11 @@
 			$q_used=$quota[used];
 			$q_total=$quota[qmax];	
 			$q_percent=100*$q_used/$q_total;
-			print $quota[used]." Kbytes out of ";
+			print $quota[used]." Kbytes "._("out of")." ";
 			print $quota[qmax]." Kbytes (".sprintf("%.2f",$q_percent)." %)";
 		}
 		else{
-			print "Quota not set";
+			print _("Quota not set");
 		}
 
 
@@ -131,11 +140,11 @@
 
 		}
                 else{
-                        print "\nNo accounts found\n<p>";
+                        print "\n"._("No accounts found")."\n<p>";
 
 		print "<table><tr>";
 		print "<td class=\"navi\">\n";
-		print "<a href=\"index.php?action=newaccount&domain=$domain&username=$username\">Add&nbsp;new&nbsp;account</a>";
+		print "<a href=\"index.php?action=newaccount&domain=$domain&username=$username\">"._("Add new account")."</a>";
                 print "\n</td></tr></table>\n";
 
 	}
