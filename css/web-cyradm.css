@@ -48,9 +48,11 @@ a:hover {
 }
 .row1 {
 	background : #b4c6de;
+	vertical-align : top;
 }
 .row2 {
 	background : #CBCBCB;
+	vertical-align : top;
 }
 
 H3 {
@@ -72,7 +74,7 @@ TH {
 }
 
 TD {
-	font-size : 12px;	
+	font-size : 12px;
 }
 
 

@@ -35,6 +35,10 @@ if ($admintype==0){
 print "<td class=\"navi\">";
 print "<a href=\"index.php?action=accounts&domain=$domain\">"._("accounts")."</a></td>\n";
 
+# Temporary removed, subject to discuss
+#print "<td>&nbsp;</td><td class=\"navi\">";
+#print "<a href=\"index.php?action=aliases&domain=$domain\">"._("Aliases")."</a></td>\n";
+
 print "<td>&nbsp;</td><td class=\"navi\">";
 print "<a href=\"index.php\">"._("home")."</a></td>\n";
 

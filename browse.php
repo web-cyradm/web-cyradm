@@ -7,7 +7,7 @@ print "<td valign=\"top\"><h3>"._("Browse domains")."</h3>";
 print "<table border=0>";
 print "<tbody>";
 print "<tr>";
-print "<th colspan=3>". _("action")."</th>";
+print "<th colspan=4>". _("action")."</th>";
 print "<th>". _("domainname")."</th>";
 
 
@@ -66,6 +66,7 @@ else{
   print "<td><a href=\"index.php?action=editdomain&domain=$domain\">". gettext("Edit Domain")."</a></td>\n";
   print "<td><a href=\"index.php?action=deletedomain&domain=$domain\">". _("Delete Domain")."</a></td>\n";
   print "<td><a href=\"index.php?action=accounts&domain=$domain\">". _("accounts")."</a></td>\n";
+  print "<td><a href=\"index.php?action=aliases&domain=$domain\">". _("Aliases")."</a></td>\n";
   print "<td>";
   print $domain;
   print "</td>\n<td>";

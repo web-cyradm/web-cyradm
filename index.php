@@ -73,7 +73,8 @@ if ($_SESSION['session_ok'] === TRUE) {
 						    "change_password", "vacation",
 						    "forwardalias", "forwardaccount",
 						    "newemail", "deleteemail",
-						    "editemail"))){
+						    "editemail", "aliases", "newalias",
+						    "editalias", "deletealias"))){
 			include(sprintf('%s.php', $_GET['action']));
 		} else {
 			switch ($_GET['action']){
