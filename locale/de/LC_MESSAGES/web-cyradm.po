@@ -75,7 +75,7 @@ msgstr "Administrator hinzuf&uuml;gen"
 
 #: auth.inc.php:99
 msgid "Web-cyradm is for authorized users only."
-msgstr "Dies ist nur f&uuml;r autorisierte Benutzer."
+msgstr "Nur f&uuml;r berechtigte Benutzer."
 
 #: auth.inc.php:100
 msgid "Make sure you entered the right password."
@@ -83,7 +83,7 @@ msgstr "Stellen Sie sicher, dass Sie das richtige Passwort eingegeben haben."
 
 #: auth.inc.php:101
 msgid "Push the back button in your browser to try again."
-msgstr "Klicken Sie den \"Zurück\" Knopf in Ihrem Browser und probieren Sie nochmals."
+msgstr "Klicken Sie \"Zur&uuml;ck\" in Ihrem Browser und probieren Sie es nochmal."
 
 #: auth.inc.php:102
 msgid "Your attempt to login has been stored."
@@ -103,7 +103,7 @@ msgstr "Pr&auml;fix"
 
 #: browse.php:24
 msgid "max Accounts"
-msgstr "Maximale Anzahl Konti"
+msgstr "Maximale Anzahl Konten"
 
 #: browse.php:25
 msgid "default quota per user"
@@ -119,15 +119,15 @@ msgstr "Dom&auml;ne l&ouml;schen"
 
 #: browse.php:58 deletedomain.php:29 menu.inc.php:42
 msgid "accounts"
-msgstr "Konti"
+msgstr "Konten"
 
 #: browseaccounts.php:20
 msgid "Browse accounts for domain"
-msgstr "Konti der Dom&auml;ne"
+msgstr "Konten der Dom&auml;ne"
 
 #: browseaccounts.php:38 newaccount.php:48
 msgid "Total accounts"
-msgstr "Total Konti"
+msgstr "Anzahl Konten"
 
 #: browseaccounts.php:41 browseaccounts.php:147
 msgid "Add new account"
@@ -135,7 +135,7 @@ msgstr "Konto hinzuf&uuml;gen"
 
 #: browseaccounts.php:70 editaccount.php:32 newaccount.php:86
 msgid "Email address"
-msgstr "Emailadresse"
+msgstr "E-Mail-Adresse"
 
 #: browseaccounts.php:71 editaccount.php:33 login.php:79
 msgid "Username"
@@ -183,7 +183,7 @@ msgstr "Keine Speicherplatzbegrenzung"
 
 #: browseaccounts.php:143
 msgid "No accounts found"
-msgstr "Keine Konti gefunden"
+msgstr "Keine Konten gefunden"
 
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
@@ -220,15 +220,15 @@ msgstr "Passwort best&auml;tigen"
 
 #: change_password.php:29
 msgid "Password changed"
-msgstr "Passwort geändert"
+msgstr "Passwort ge;auml;ndert"
 
 #: change_password.php:32
 msgid "Failure in changing password."
-msgstr "Fehler beim Passwort ändern."
+msgstr "Fehler beim Passwort &auml;ndern."
 
 #: change_password.php:35
 msgid "New passwords are not equal. Password not changed"
-msgstr "Neues Password nicht bestätigt. Passwort wurde nicht gewechselt"
+msgstr "Neues Password nicht best&auml;tigt. Passwort wurde nicht gewechselt"
 
 #: deleteaccount.php:19
 msgid "Delete an Account from the System"
@@ -240,7 +240,7 @@ msgstr "M&ouml;chten Sie das Konto "
 
 #: deleteaccount.php:21
 msgid "with all its defined Emailadresses"
-msgstr "mit all seinen definierten Emailaddressen l&ouml;schen"
+msgstr "mit all seinen definierten E-Mail-Addressen l&ouml;schen"
 
 #: deleteaccount.php:40 deletedomain.php:47 deleteemail.php:39
 msgid "Action cancelled, nothing deleted"
@@ -252,7 +252,7 @@ msgstr "L&ouml;schen eines Administrators vom System"
 
 #: deleteadminuser.php:14
 msgid "Do you really want to delete the Domain supervisor"
-msgstr "M&ouml;chten Sie die Dom&auml;nenadministrator wirklich löschen"
+msgstr "M&ouml;chten Sie den Dom&auml;nenadministrator wirklich l&ouml;schen"
 
 #: deletedomain.php:24
 msgid "Delete a Domain from the System"
@@ -264,17 +264,15 @@ msgstr "M&ouml;chten Sie die Dom&auml;ne"
 
 #: deletedomain.php:26
 msgid "with all its defined accounts, admins, and emailadresses"
-msgstr "mit allen definierten Konti, Administratoren wirklich l&ouml;schen"
+msgstr "mit allen definierten Konten, Administratoren wirklich l&ouml;schen"
 
 #: deletedomain.php:27
 msgid "This can take a while depending on how many account have to be deleted"
-msgstr ""
-"Abh&auml;ngig von der Datenmenge die gel&ouml;scht werden muss, kann dies "
-"eine Weile dauern"
+msgstr "Abh&auml;ngig von der Datenmenge die gel&ouml;scht werden muss, kann dies eine Weile dauern"
 
 #: deletedomain.php:29
 msgid "Your action will delete"
-msgstr "Es werden"
+msgstr "Wenn Sie weitermachen wird gel&ouml;scht"
 
 #: deletedomain.php:94
 msgid "Domain"
@@ -290,25 +288,23 @@ msgstr "L&ouml;schen einer Emailadresse"
 
 #: deleteemail.php:19
 msgid "Do you really want to delete the emailadress for user"
-msgstr ""
-"M&ouml;chten Sie diese Emailadresse f&uuml;r das nachstehende Konto wirklich "
-"l&ouml;schen:"
+msgstr "M&ouml;chten Sie diese Emailadresse f&uuml;r das nachstehende Konto wirklich l&ouml;schen:"
 
 #: editaccount.php:17
 msgid "Email adresses defined for user"
-msgstr "Definierte Emailadressen f&uuml;r das Konto"
+msgstr "Definierte E-Mail-Adressen f&uuml;r das Konto"
 
 #: editaccount.php:25
 msgid "New email address"
-msgstr "Emailadresse hinzuf&uuml;gen"
+msgstr "E-Mail-Adresse hinzuf&uuml;gen"
 
 #: editaccount.php:52
 msgid "Edit Emailadress"
-msgstr "Emailadresse &auml;ndern"
+msgstr "E-Mail-Adresse &auml;ndern"
 
 #: editaccount.php:53
 msgid "Delete Emailadress"
-msgstr "Emailadresse l&ouml;schen"
+msgstr "E-Mail-Adresse l&ouml;schen"
 
 #: editadminuser.php:5
 msgid "Change admin user for domain"
@@ -316,7 +312,7 @@ msgstr "Administrator &auml;ndern f&uuml;r Dom&auml;ne"
 
 #: editadminuser.php:81
 msgid "successfully changed Database...."
-msgstr "Erfolgreich in der Datenbank eingef&uuml;gt"
+msgstr "Datenbank erfolgreich ge&auml;ndert"
 
 #: editadminuser.php:84 newadminuser.php:79
 msgid "Database error"
@@ -332,7 +328,7 @@ msgstr "Sie haben keine Berechtigung um Dom&auml;en zu bearbeiten"
 
 #: editemail.php:63 newemail.php:53
 msgid "Emailadress"
-msgstr "Emailadresse"
+msgstr "E-Mail-Adresse"
 
 #: editemail.php:68 newemail.php:58
 msgid "Destination"
@@ -344,11 +340,11 @@ msgstr "Willkommen bei Web-cyradm"
 
 #: login.php:69
 msgid "This is only for authorized users"
-msgstr "Dies ist nur f&uuml;r autorisierte Benutzer"
+msgstr "Nur f&uuml;r berechtigte Benutzer"
 
 #: login.php:70
 msgid "Please authenticate yourself"
-msgstr "Bitte authentifizieren Sie sich"
+msgstr "Bitte melden Sie sich an"
 
 #: logout.php:32
 msgid "Thank you for using Web-cyradm"
@@ -384,7 +380,7 @@ msgstr "Administratoren"
 
 #: menu.inc.php:45
 msgid "home"
-msgstr "Einstieg"
+msgstr "Start"
 
 #: menu.inc.php:48
 msgid "logout"
@@ -400,7 +396,7 @@ msgstr "Angemeldet als Benutzer"
 
 #: menu.inc.php:74
 msgid "Your role is"
-msgstr "Ihre Rolle ist"
+msgstr "Sie sind"
 
 #: menu.inc.php:76
 msgid "Superuser"
@@ -409,6 +405,14 @@ msgstr "Superuser"
 #: menu.inc.php:79
 msgid "Domain Master"
 msgstr "Dom&auml;nen Administrator"
+
+#: menu.inc.php:83
+msgid "Current domain is"
+msgstr "Aktuelle Dom&auml;ne"
+
+#: menu.inc.php:85
+msgid "No domain selected"
+msgstr "Noch keine Dom&auml;ne gew&auml;hlt"
 
 #: newaccount.php:14
 msgid "Add new Account to domain"
@@ -420,11 +424,11 @@ msgstr "Transport ist nicht cyrus, Konto kann nicht erstellt werden"
 
 #: newaccount.php:43
 msgid "Sorry, no more account allowed for domain"
-msgstr "Keine weiteren Konti f&uuml; erlaubt f&uuml;r die Dom&auml;ne"
+msgstr "Keine weiteren Konten erlaubt f&uuml;r die Dom&auml;ne"
 
 #: newaccount.php:43
 msgid "Maximum allowed accounts is"
-msgstr "Maximale Anzahl Konti"
+msgstr "Maximale Konten-Anzahl"
 
 #: newaccount.php:79
 msgid "Accountname"
@@ -448,7 +452,7 @@ msgstr "Konto erfolgreich dem IMAP Subsystem hinzugef&uuml;gt"
 
 #: newadminuser.php:6
 msgid "Add new admin user for domain"
-msgstr "F&uuml;ge neuen Administrator hinzu an Dom&auml;ne"
+msgstr "F&uuml;ge neuen Administrator f&uuml;r Dom&auml;ne hinzu"
 
 #: newadminuser.php:8
 msgid "Please select a domain first"
@@ -476,11 +480,11 @@ msgstr "Pr&auml;fix"
 
 #: newdomain.php:44
 msgid "Maximum Accounts"
-msgstr "Maximale Anzahl Konti"
+msgstr "Maximale Anzahl Konten"
 
 #: newdomain.php:41
 msgid "Default Quota in Kilobytes"
-msgstr "Standard Speicherplatzbegrenzung"
+msgstr "Standard Speicherplatz in KB"
 
 #: newdomain.php:47
 msgid "Standart Mailboxes"
@@ -488,7 +492,7 @@ msgstr "Standardmailboxen"
 
 #: newdomain.php:51
 msgid "emailadress where the default aliases should be mapped (empty means no mapping)"
-msgstr "Emailadresse an welche die Standardaliases weitergeleitet werden sollen (leer für keine Weiterleitung)"
+msgstr "E-Mail-Adresse an welche die Standardaliases weitergeleitet werden sollen (leer f&uuml;r keine Weiterleitung)"
 
 #: newdomain.php:59
 msgid "Mail transport"
@@ -496,7 +500,7 @@ msgstr "Mail Transport"
 
 #: newdomain.php:60
 msgid "Leave this as is, unless you know what you are doing"
-msgstr "Ändern Sie diese nur, wenn Sie sicher sind was Sie tun"
+msgstr "&Auml;ndern Sie dieses nur, wenn Sie sicher sind was Sie tun"
 
 #: newdomain.php:125
 msgid "You are not allowed to add new domains"
@@ -508,15 +512,15 @@ msgstr "Erfolgreich hinzugef&uuml;gt"
 
 #: newemail.php:41
 msgid "New emailadress for user"
-msgstr "Neue Emailaddresse f&uuml;r Konto"
+msgstr "Neue E-Mail-Addresse f&uuml;r Konto"
 
 #: setquota.php:25
 msgid "Setting individual Quota for user"
-msgstr "Individuelle Speicherplatzbegrenzung f&uuml;r Konto"
+msgstr "Speicherplatz f&uuml;r Konto"
 
 #: timeout.php:65
 msgid "Your session timed out"
-msgstr "Ihre Sitzung war zulange inaktiv"
+msgstr "Ihre Sitzung war zu lange inaktiv"
 
 #: Submit and cancel buttons
 msgid "Yes, delete"
@@ -537,9 +541,7 @@ msgstr "(Noch nicht unterst&uuml;tzt, wird ignoriert)"
 
 #: deleteaccount.php:64 editadminuser.php:94 newadminuser.php:89
 msgid "Security violation detected, action cancelled. Your attempt has been logged."
-msgstr ""
-"Sicherheits&uuml;berschreitung entdeckt, Aktion abgebrochen. Ihr Versuch "
-"wurde geloggt."
+msgstr "Sicherheits&uuml;berschreitung entdeckt, Aktion abgebrochen. Ihr Versuch wurde geloggt."
 
 #: failed.php:49
 msgid "Login failed"
@@ -551,7 +553,7 @@ msgstr "Weiterleitung f&uuml;r Konto"
 
 #: forwardalias.php:102
 msgid "Forward for emailadress"
-msgstr "Weiterleitung f&uuml;r Emailadresse"
+msgstr "Weiterleitung f&uuml;r E-Mail-Adresse"
 
 #: forwardsalias.php:52
 msgid "Forward set"
@@ -575,7 +577,7 @@ msgstr "Fehler beim Entfernen der Weiterleitung"
 
 #: forwardalias.php:149
 msgid "Set forwarding to"
-msgstr "Weiterleitung nach"
+msgstr "Weiterleitung an"
 
 #: forwardalias.php:151
 msgid "Keep a copy in the user's mailbox"
@@ -587,11 +589,11 @@ msgstr "Weiterleitung entfernen"
 
 #: vacation.php:120
 msgid "Vacation message for emailadress"
-msgstr "Abwesenheitsmeldung f&uuml;r Emailadresse"
+msgstr "Abwesenheitsmeldung f&uuml;r E-Mail-Adresse"
 
 #: vacation.php:132
 msgid "Set vacation notice"
-msgstr "Abwesenheitsmeldung installieren"
+msgstr "Abwesenheitsmeldung festlegen"
 
 #: vacation.php:134
 msgid "Remove vacation notice"
@@ -628,4 +630,3 @@ msgstr "Fehler beim Entfernen der Abwesenheitsmeldung"
 #: vacation:93 forwardalias:75
 msgid "Not possible"
 msgstr "Nicht m&ouml;glich"
-

@@ -18,8 +18,8 @@ if ($admintype==0){
 	<input type="hidden" name="confirmed" value="true">
 	<input type="hidden" name="username" value="<?php print $username?>">
 	<input type="hidden" name="domain" value="<?php print $domain?>">
-	<input type="submit" name="confirmed" value="Yes, delete">
-	<input type="submit" name="cancel" value="Cancel">
+	<input type="submit" name="confirmed" value="<?php print _("Yes, delete") ?>">
+	<input type="submit" name="cancel" value="<?php print _("Cancel") ?>">
 	</form>
 
 
@@ -56,4 +56,3 @@ else{
 
 ?>
 </td></tr>
-
