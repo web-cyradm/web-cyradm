@@ -1,5 +1,12 @@
 <?php
 
+// Specify location of translation tables
+bindtextdomain("web-cyradm", "./locale");
+
+// Choose domain
+textdomain("web-cyradm");
+
+
 ################# Temporary fix for PHP 4.2.0 a better solution has to found #######################
 $user= $HTTP_SESSION_VARS['user'];
 $adminuser= $HTTP_GET_VARS['adminuser'];
