@@ -222,9 +222,9 @@
 						$freenames = "NO";
 					}
 					if (! empty($freeaddress)){
-						$freenames = "YES";
+						$freeaddress = "YES";
 					} else {
-						$freenames = "NO";
+						$freeaddress = "NO";
 					}
 					$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, transport,freenames,freeaddress) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$trans', '$freenames', '$freeaddress')";
 					// END Andreas Kreisl : freenames
