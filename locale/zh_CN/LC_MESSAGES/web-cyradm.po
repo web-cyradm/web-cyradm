@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Web-cyradm 1.0\n"
@@ -12,294 +12,611 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=GB2312\n"
 "Content-Transfer-Encoding: 8bit\n"
+
 #: adminuser.php:12
 msgid "Browse admins"
 msgstr "浏览管理员"
+
 #: adminuser.php:24
 msgid "Total administrators"
 msgstr "所有管理员"
+
 #: adminuser.php:27
 msgid "Add administator"
 msgstr "添加管理员"
+
 #: adminuser.php:35 adminuser.php:39 browseaccounts.php:49
 #: browseaccounts.php:53
 msgid "Previous 10 entries"
 msgstr "前10个"
+
 #: adminuser.php:43 adminuser.php:47 browseaccounts.php:57
 #: browseaccounts.php:61
 msgid "Next 10 entries"
 msgstr "后10个"
+
 #: adminuser.php:53 browse.php:16 browseaccounts.php:69 editaccount.php:31
 msgid "action"
-msgstr "执行"
+msgstr "操作"
+
 #: adminuser.php:54
 msgid "Adminname"
 msgstr "管理员名"
+
 #: adminuser.php:55 browseaccounts.php:72 editaccount.php:34 login.php:89
 #: newaccount.php:96
 msgid "Password"
 msgstr "密码"
+
 #: adminuser.php:56
 msgid "domain"
 msgstr "域"
+
 #: adminuser.php:57
 msgid "admin type"
 msgstr "管理员类型"
+
 #: adminuser.php:81
 msgid "Edit adminuser"
 msgstr "编辑管理员信息"
+
 #: adminuser.php:82
 msgid "Delete adminuser"
 msgstr "删除管理员"
+
 #: adminuser.php:108
 msgid "No accounts fount"
 msgstr "没有该账号"
+
 #: adminuser.php:112
 msgid "Add administrator"
 msgstr "添加管理员"
+
+#: auth.inc.php:99
+msgid "Web-cyradm is for authorized users only."
+msgstr "仅授权用户可使用本系统"
+
+#: auth.inc.php:100
+msgid "Make sure you entered the right password."
+msgstr "请检查输入的密码是否正确"
+
+#: auth.inc.php:101
+msgid "Push the back button in your browser to try again."
+msgstr "请在浏览器中按后退按钮再试"
+
+#: auth.inc.php:102
+msgid "Your attempt to login has been stored."
+msgstr "你试图登录的动作已被记入日志"
+
 #: browse.php:12
 msgid "Browse domains"
-msgstr "浏览域信息"
+msgstr "浏览域"
+
 #: browse.php:17
 msgid "domainname"
 msgstr "域名"
+
 #: browse.php:21
 msgid "prefix"
 msgstr "前缀"
+
 #: browse.php:24
 msgid "max Accounts"
 msgstr "最大用户数"
+
 #: browse.php:25
 msgid "default quota per user"
-msgstr "用户缺省邮箱容量上限"
+msgstr "用户缺省邮箱容量"
+
 #: browse.php:56
 msgid "Edit Domain"
 msgstr "编辑域信息"
+
 #: browse.php:57
 msgid "Delete Domain"
 msgstr "删除域"
+
 #: browse.php:58 deletedomain.php:29 menu.inc.php:42
 msgid "accounts"
-msgstr "账号信息"
+msgstr "账号管理"
+
 #: browseaccounts.php:20
 msgid "Browse accounts for domain"
 msgstr "浏览域中的用户"
+
 #: browseaccounts.php:38 newaccount.php:48
 msgid "Total accounts"
 msgstr "全部账号"
+
 #: browseaccounts.php:41 browseaccounts.php:147
 msgid "Add new account"
 msgstr "添加新账号"
+
 #: browseaccounts.php:70 editaccount.php:32 newaccount.php:86
 msgid "Email address"
 msgstr "邮件地址"
+
 #: browseaccounts.php:71 editaccount.php:33 login.php:79
 msgid "Username"
 msgstr "用户名"
+
 #: browseaccounts.php:73 editaccount.php:35
 msgid "Quota used"
 msgstr "已用邮箱容量"
+
 #: browseaccounts.php:93
 msgid "Edit account"
-msgstr "编辑账号信息"
+msgstr "编辑账号"
+
 #: browseaccounts.php:94
 msgid "Delete account"
 msgstr "删除账号"
+
 #: browseaccounts.php:95
 msgid "Set quota"
-msgstr "设置容量上限"
+msgstr "设置邮箱容量"
+
 #: browseaccounts.php:96
 msgid "Set catch all"
 msgstr "设置接收所有"
+
+#: browseaccounts.php:99
+msgid "Change Password"
+msgstr "修改密码"
+
+#: browseaccounts.php:100
+msgid "Vacation"
+msgstr "自动回复"
+
+#: browseaccounts.php:101
+msgid "Forward"
+msgstr "转发"
+
 #: browseaccounts.php:126 editaccount.php:76
 msgid "out of"
-msgstr "出"
+msgstr "使用中，共"
+
 #: browseaccounts.php:130 editaccount.php:80
 msgid "Quota not set"
-msgstr "未设置容量上限"
+msgstr "未设置邮箱容量上限"
+
 #: browseaccounts.php:143
 msgid "No accounts found"
-msgstr "没有账号"
+msgstr "未找到该账号"
+
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
-msgstr "设置一个账号用来接收此域未指定收件人的所有邮件"
+msgstr "设置一个账号用来接收发往此域、但是目的邮件地址不明确的所有邮件"
+
 #: catchall.php:24
 msgid "Do you really want to define the user"
-msgstr "你确定要设置这个账号吗？"
+msgstr "你确定要设置这个用户吗？"
+
 #: catchall.php:24
 msgid "to receive all undefined emailadresses"
-msgstr "用来接收未指定的邮件地址"
-#: catchall.php:54
+msgstr "用来接收目的邮件地址不明确的邮件"
+
+#: catchall.php:54 newadminuser.php:76
 msgid "successfully added to Database"
 msgstr "已成功加入数据库"
-#: catchall.php:57 editemail.php:36 newemail.php:29
+
+#: catchall.php:57 editdomain.php:25 editemail.php:36 newemail.php:29
+#: newdomain.php:113
 msgid "Database error, please try again"
 msgstr "数据库错误，请再试"
+
+#: change_password.php:60
+msgid "Change password for account"
+msgstr "修改账号密码"
+
+#: change_password.php:72
+msgid "New password"
+msgstr "新密码"
+
+#: change_password.php:76
+msgid "Confirm new password"
+msgstr "确认新密码"
+
+#: change_password.php:29
+msgid "Password changed"
+msgstr "密码已修改"
+
+#: change_password.php:32
+msgid "Failure in changing password."
+msgstr "修改密码出错"
+
+#: change_password.php:35
+msgid "New passwords are not equal. Password not changed"
+msgstr "两次输入的密码不一致，密码未修改。"
+
 #: deleteaccount.php:19
 msgid "Delete an Account from the System"
 msgstr "从此系统中删除一个账号"
+
 #: deleteaccount.php:21
 msgid "Do you really want to delete the user "
-msgstr "你确定要删除此用户吗？"
+msgstr "你确定要删除此用户吗"
+
 #: deleteaccount.php:21
 msgid "with all its defined Emailadresses"
 msgstr "同时包含所有它定义的邮件地址"
+
 #: deleteaccount.php:40 deletedomain.php:47 deleteemail.php:39
 msgid "Action cancelled, nothing deleted"
-msgstr "动作取消，未删除任何东西"
+msgstr "操作取消，未删除任何东西"
+
+#: deleteadminuser.php:12
+msgid "Delete an Admin account from the System"
+msgstr "从此系统中删除一个账号"
+
+#: deleteadminuser.php:14
+msgid "Do you really want to delete the Domain supervisor"
+msgstr "你确定要删除此域的管理员吗"
+
 #: deletedomain.php:24
 msgid "Delete a Domain from the System"
 msgstr "从本系统中删除一个域"
+
 #: deletedomain.php:26
 msgid "Do you really want to delete the Domain"
-msgstr "你确定要删除此域吗？"
+msgstr "你确定要删除此域吗"
+
 #: deletedomain.php:26
 msgid "with all its defined accounts, admins, and emailadresses"
 msgstr "同时包含它之上所有的账号、管理员以及邮件地址"
+
 #: deletedomain.php:27
 msgid "This can take a while depending on how many account have to be deleted"
 msgstr "这所花的时间取决于要删除多少账号"
+
 #: deletedomain.php:29
 msgid "Your action will delete"
 msgstr "此操作将删除"
+
 #: deletedomain.php:94
 msgid "Domain"
 msgstr "域"
+
 #: deletedomain.php:94
 msgid "successfully deleted"
 msgstr "已成功删除"
+
 #: deleteemail.php:17
 msgid "Delete an emailadress from the System"
 msgstr "从本系统中删除一个邮件地址"
+
 #: deleteemail.php:19
 msgid "Do you really want to delete the emailadress for user"
-msgstr "你确定要删除该用户的这个邮件地址吗？"
+msgstr "你确定要删除该用户的这个邮件地址吗"
+
 #: editaccount.php:17
 msgid "Email adresses defined for user"
 msgstr "为此用户设定的邮件地址"
+
 #: editaccount.php:25
 msgid "New email address"
 msgstr "新邮件地址"
+
 #: editaccount.php:52
 msgid "Edit Emailadress"
 msgstr "编辑邮件地址"
+
 #: editaccount.php:53
 msgid "Delete Emailadress"
 msgstr "删除邮件地址"
-#: editemail.php:32
+
+#: editadminuser.php:5
+msgid "Change admin user for domain"
+msgstr "改变此域的管理员"
+
+#: editadminuser.php:81
+msgid "successfully changed Database...."
+msgstr "修改数据库成功"
+
+#: editadminuser.php:84 newadminuser.php:79
+msgid "Database error"
+msgstr "数据库错误"
+
+#: editdomain.php:21 editemail.php:32
 msgid "Successfully changed"
-msgstr "已成功改变"
+msgstr "修改已成功"
+
+#: editdomain.php:89
+msgid "Your are not allowed to change domains!"
+msgstr "你未被授权修改域"
+
 #: editemail.php:63 newemail.php:53
 msgid "Emailadress"
 msgstr "邮件地址"
+
 #: editemail.php:68 newemail.php:58
 msgid "Destination"
 msgstr "目标"
+
 #: login.php:68
 msgid "Welcome to Web-cyradm"
 msgstr "欢迎使用Web-cyradm"
+
 #: login.php:69
 msgid "This is only for authorized users"
 msgstr "仅授权用户可使用本系统"
+
 #: login.php:70
 msgid "Please authenticate yourself"
 msgstr "请输入认证信息"
+
 #: logout.php:32
 msgid "Thank you for using Web-cyradm"
 msgstr "感谢您使用Web-cyradm"
+
 #: logout.php:34
 msgid "You are logged out"
 msgstr "你已经注销"
+
 #: logout.php:36 timeout.php:67
 msgid "If you like to login click"
 msgstr "如果要登录，请点击"
+
 #: logout.php:36 timeout.php:67
 msgid "here"
 msgstr "这里"
+
 #: menu.inc.php:23
 msgid "Domainmasters menu"
 msgstr "域管理者栏目"
+
 #: menu.inc.php:27
 msgid "add new domain"
 msgstr "添加一个新域"
+
 #: menu.inc.php:30
 msgid "browse domains"
-msgstr "浏览域信息"
+msgstr "浏览域"
+
 #: menu.inc.php:33
 msgid "adminusers"
 msgstr "管理员"
+
 #: menu.inc.php:45
 msgid "home"
 msgstr "首页"
+
 #: menu.inc.php:48
 msgid "logout"
 msgstr "注销"
+
 #: menu.inc.php:53
 msgid "Search"
 msgstr "查找"
+
 #: menu.inc.php:69
 msgid "Logged in as user"
 msgstr "以用户身份登录"
+
 #: menu.inc.php:74
 msgid "Your role is"
 msgstr "你的角色是"
+
 #: menu.inc.php:76
 msgid "Superuser"
 msgstr "超级用户"
+
 #: menu.inc.php:79
 msgid "Domain Master"
 msgstr "域管理员"
+
 #: newaccount.php:14
 msgid "Add new Account to domain"
 msgstr "为此域添加一个新账号"
+
+#: newaccount.php:27
+msgid "transport is not cyrus, unable to create account"
+msgstr "transport未设置为cyrus, 无法创建账号"
+
+#: newaccount.php:43
+msgid "Sorry, no more account allowed for domain"
+msgstr "对不起，该域允许的最大用户数已经达到"
+
+#: newaccount.php:43
+msgid "Maximum allowed accounts is"
+msgstr "最大账号数是"
+
 #: newaccount.php:79
 msgid "Accountname"
 msgstr "账号名"
+
 #: newaccount.php:91
 msgid "Quota"
-msgstr "容量上限"
+msgstr "邮箱容量"
+
 #: newaccount.php:101
 msgid "Confirm Password"
 msgstr "确认密码"
+
 #: newaccount.php:139
 msgid "Account successfully added to the Database"
-msgstr "已成功将账号信息加入数据库"
+msgstr "已成功将账号加入数据库"
+
 #: newaccount.php:153
 msgid "Account succesfully added to the IMAP Subsystem"
-msgstr "已成功将账号信息加入IMAP子系统"
+msgstr "已成功将账号加入IMAP子系统"
+
+#: newadminuser.php:6
+msgid "Add new admin user for domain"
+msgstr "为此域添加一个新管理员账号"
+
+#: newadminuser.php:8
+msgid "Please select a domain first"
+msgstr "请先选择一个域"
+
+#: newadminuser.php:30
+msgid "Admin Type"
+msgstr "管理员类型"
+
+#: newadminuser.php:34
+msgid "Select \"Superuser\" for all domains"
+msgstr "为所有的域选择超级管理员"
+
 #: newdomain.php:17
 msgid "Add new domain"
 msgstr "添加一个新域"
+
 #: newdomain.php:29
 msgid "Domainname"
 msgstr "域名"
+
 #: newdomain.php:35
 msgid "Prefix"
 msgstr "前缀"
+
 #: newdomain.php:44
 msgid "Maximum Accounts"
 msgstr "最大账号数"
-#: newdomain.php:48
+
+#: newdomain.php:41
 msgid "Default Quota in Kilobytes"
-msgstr "缺省容量上限（千字节）"
+msgstr "缺省邮箱容量（千字节）"
+
+#: newdomain.php:47
+msgid "Standart Mailboxes"
+msgstr "标准邮箱"
+
+#: newdomain.php:51
+msgid ""
+"emailadress where the default aliases should be mapped (empty means no "
+"mapping)"
+msgstr "映射为缺省别名的邮件地址（空表示没有映射）"
+
+#: newdomain.php:59
+msgid "Mail transport"
+msgstr "邮件传递"
+
+#: newdomain.php:60
+msgid "Leave this as is, unless you know what you are doing"
+msgstr "除非你清楚要做什么，否则请不要改动它"
+
+#: newdomain.php:125
+msgid "You are not allowed to add new domains"
+msgstr "你无权添加新域"
+
 #: newemail.php:25
 msgid "Successfully added"
 msgstr "已成功添加"
+
 #: newemail.php:41
 msgid "New emailadress for user"
 msgstr "该用户的新邮件地址"
+
 #: setquota.php:25
 msgid "Setting individual Quota for user"
-msgstr "为该用户个别设置容量上限"
+msgstr "为该用户个别设置邮箱容量"
+
 #: timeout.php:65
 msgid "Your session timed out"
 msgstr "会话超时"
+
 #: Submit and cancel buttons
 msgid "Yes, delete"
 msgstr "确定，删除"
+
 msgid "Yes"
 msgstr "确定"
+
 msgid "Submit"
 msgstr "提交"
+
 msgid "Cancel"
 msgstr "取消"
+
+#: Error messages editdomain.php:61
+msgid "Not yet supported, change will be ignored"
+msgstr "目前尚未支持，改动将被忽略"
+
+#: deleteaccount.php:64 editadminuser.php:94 newadminuser.php:89
+msgid ""
+"Security violation detected, action cancelled. Your attempt has been logged."
+msgstr "此操作危及安全，已被取消。你的行为已被记入日志。"
+
+#: failed.php:49
+msgid "Login failed"
+msgstr "登录失败"
+
+#: forwardaccount.php:41
+msgid "Forward for account"
+msgstr "账号邮件转发"
+
+#: forwardalias.php:102
+msgid "Forward for emailadress"
+msgstr "邮件地址转发"
+
+#: forwardsalias.php:52
+msgid "Forward set"
+msgstr "设置邮件转发"
+
+#: forwardalias.php:53
+msgid "Failure in setting forward"
+msgstr "设置邮件转发失败"
+
+#: forwardsalias.php:54
+msgid "Wrong password"
+msgstr "确认密码"
+
+#: forwardsalias.php:68
+msgid "Forwarding removed"
+msgstr "已取消转发"
+
+#: forwardsalias.php:69
+msgid "Failure in removing forwarding"
+msgstr "取消邮件转发失败"
+
+#: forwardalias.php:149
+msgid "Set forwarding to"
+msgstr "将邮件转发至"
+
+#: forwardalias.php:151
+msgid "Keep a copy in the user's mailbox"
+msgstr "在用户邮箱内保留一份拷贝"
+
+#: forwardalias.php:152
+msgid "Remove forwarding"
+msgstr "取消转发"
+
+#: vacation.php:120
+msgid "Vacation message for emailadress"
+msgstr "自动回复信息"
+
+#: vacation.php:132
+msgid "Set vacation notice"
+msgstr "设置自动回复"
+
+#: vacation.php:134
+msgid "Remove vacation notice"
+msgstr "取消自动回复"
+
+#: vacation.php:59
+msgid "Failed to activate vacation"
+msgstr "启动自动回复失败"
+
+#: vacation.php:62
+msgid "Failure in modifying vacation notice"
+msgstr "修改自动回复信息失败"
+
+#: vacation.php:65 vacation.php:88 forwards.php:71
+msgid "Failed to login"
+msgstr "登录失败"
+
+#: vacation.php:78
+msgid "Failure in unseting vacation notice"
+msgstr "取消自动回复失败"
+
+#: vacation.php:82
+msgid "Vacation notice removed"
+msgstr "自动回复已取消"
+
+#: vacation.php:84
+msgid "Failure in removing vacation notice"
+msgstr "取消自动回复失败"
+
+#: vacation:93 forwardalias:75
+msgid "Not possible"
+msgstr "不可能"
