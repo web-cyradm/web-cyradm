@@ -21,17 +21,24 @@ if ($admintype==0){
 			<td>Domainname</td>
 			<td><input type="text" size="20" name="domain"></td>
 			</tr>
-			<tr>
-			<td>Prefix</td>
-			<td><input type="text" size="8" name="prefix"></td>
-			</tr>
+			<?php
+				if (!$DOMAIN_AS_PREFIX) {
+					print "<tr>\n";
+				        print "<td>Prefix</td>\n";
+					print "<td><input type=\"text\" size=\"8\" name=\"prefix\"></td>\n";
+					print "</tr>\n";
+				}
+				else {
+					print "<input type=\"hidden\" name=\"prefix\" value=\"to-be-overwritten-by-domain\">\n";
+				} 
+			?>
 			<tr>
 			<td>Maximum Accounts</td>
 			<td><input type="text" size="2" name="maxaccounts"></td>
 			</tr>
 			<tr>
 			<td>Default Quota in Kilobytes</td>
-			<td><input type="text" size="5" name="quota" value="20000"></td>
+			<td><input type="text" size="5" name="quota" value="<?php print $DEFAULT_QUOTA ?>"></td>
 			</tr>
 			<tr>
 			<td><input type="submit"></td>
@@ -46,6 +53,9 @@ if ($admintype==0){
 	else{
 
 		if ($authorized==TRUE){
+			if ($DOMAIN_AS_PREFIX) {
+				$prefix=$domain;
+			}
 
 			$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota')";
 
@@ -75,4 +85,5 @@ else{
 
 ?>
 </td></tr>
+
 
