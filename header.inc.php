@@ -13,7 +13,7 @@ header('Vary: Accept-Language');
 header('Content-type: text/html; charset=' . $charset);
 
 if (!isset($_SESSION['style'])){
-	$_SESSION['style'] = "web-cyradm";
+	$_SESSION['style'] = "default";
 }
 
 ?>
