@@ -1,0 +1,69 @@
+<h1>Migration from plain to crypt passwords in table accountusers</h1>
+
+<?php
+
+include ("config.inc.php");
+include ("DB.php");
+include ("lib/crypto.php");
+
+if ($CRYPT != "crypt"){
+        die ("Sorry, only crypt is supported, please check config.inc.php");
+}
+
+?>
+
+<h2>Please make a backup of your mysql-databases first!!!</h2>
+
+<pre>
+/etc/init.d/mysql.server stop
+
+cd /usr/local/mysql
+
+cp -rp var var-backup
+
+/etc/init.d/mysql.server start
+</pre>
+
+<?php
+
+if ($confirmed!="yes"){
+
+	?>
+
+	<h3>Type "yes" to confirm</h3>
+	<form action="migrate.php">
+	<input type="text" name="confirmed">
+	<input type="submit">
+	</form>
+
+	<?php
+}
+else if ($confirmed=="yes"){
+
+	$query="SELECT * from adminuser";
+	$handle=DB::connect ($DSN,true);
+	$result=$handle->query($query);
+	$cnt=$result->numRows($result);
+
+	$pwd=new password;
+
+	for ($c=0;$c<$cnt;$c++){
+		$row=$result->fetchRow(DB_FETCHMODE_ASSOC,$c);
+		$plainpassword=$row['password'];
+		$username=$row['username'];
+		$cryptpassword=$pwd->encrypt($plainpassword,$CRYPT);
+
+		$query="UPDATE adminuser SET password='$cryptpassword' WHERE username='$username'";
+
+		$handle=DB::connect ($DSN,true);
+		$result2=$handle->query($query);
+		if ($result2){
+			print "User <b>$username</b> successfully migrated<br>";
+		}
+
+	}
+
+}
+
+?>
+
