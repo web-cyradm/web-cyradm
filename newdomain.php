@@ -48,8 +48,7 @@ if ($admintype==0){
 			
 			<table>
 			<tr>
-			<td><?php print _("emailadress where the default aliases should be mapped 
-			(empty means no mapping)"); ?> </td>
+			<td><?php print _("emailadress where the default aliases should be mapped (empty means no mapping)"); ?> </td>
 			</tr> 
 			<tr><td><input type="text" name="defaultaliases">
 			</td>

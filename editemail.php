@@ -23,7 +23,7 @@ if ($authorized){
 
 
 	        if (!DB::isError($result)){
-	                print "<h3>"._("Sucessfully changed")."</h3>";
+	                print "<h3>"._("Successfully changed")."</h3>";
 			include ("editaccount.php");
 	        }
 	        else{
@@ -65,7 +65,7 @@ if ($authorized){
 
 
 	        <tr><td>
-	        <input type="submit" value="<?php _("Submit") ?>">
+	        <input type="submit" value="<?php print _("Submit") ?>">
 	        </td></tr>
 
 	        </table>
