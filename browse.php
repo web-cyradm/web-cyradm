@@ -1,19 +1,13 @@
 <!-- ############################## Start browse.php ###################################### -->
 <?php
 
-// Specify location of translation tables
-bindtextdomain("browse", "./locale");
-
-// Choose domain
-textdomain("browse");
-
 print "<tr>";
 print "<td width=\"10\">&nbsp; </td>";
 print "<td valign=\"top\"><h3>"._("Browse domains")."</h3>";  
 print "<table border=0>";
 print "<tbody>";
 print "<tr>";
-print "<th colspan=3>". _("actions")."</th>";
+print "<th colspan=3>". _("action")."</th>";
 print "<th>". _("domainname")."</th>";
 
 

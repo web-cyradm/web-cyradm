@@ -3,12 +3,6 @@
         <td valign="top">
 
 <?php
-// Specify location of translation tables
-bindtextdomain("setquota", "./locale");
-
-// Choose domain
-textdomain("setquota");
-
 if ($authorized){
         $cyr_conn = new cyradm;
        	$cyr_conn -> imap_login();

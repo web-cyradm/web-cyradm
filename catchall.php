@@ -3,13 +3,6 @@
         <td valign="top"> 
 
 <?php
-
-// Specify location of translation tables
-bindtextdomain("catchall", "./locale");
-
-// Choose domain
-textdomain("catchall");
-
 print "<h3>"._("Define a Account for receiving undefined adresses for domain")." <font color=red>$domain</font></h3>";
 
 // $result=mysql_db_query($MYSQL_DB,$query1,$handle1);

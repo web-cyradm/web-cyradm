@@ -4,12 +4,6 @@
 
 <?php
 
-	// Specify location of translation tables
-	bindtextdomain("editaccount", "./locale");
-
-	// Choose domain
-	textdomain("editaccount");
-
        $cyr_conn = new cyradm;
 
        $cyr_conn -> imap_login();
@@ -28,7 +22,7 @@
         $b=0;
         print "<table border=0>";
         print "<tr>";
-        print "<th colspan=\"2\">"._("Actions")."</th>";
+        print "<th colspan=\"2\">"._("action")."</th>";
         print "<th>"._("Email address")."</th>";
         print "<th>"._("Username")."</th>";
 	print "<th>"._("Password")."</th>";

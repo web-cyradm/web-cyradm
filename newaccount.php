@@ -4,13 +4,6 @@
 
 <?php
 
-// Specify location of translation tables
-bindtextdomain("newaccount", "./locale");
-
-// Choose domain
-textdomain("newaccount");
-
-
 print "<h3>"._("Add new Account to domain")." <font color=red>$domain</font></h3>";
 
 $query1="SELECT * from domain WHERE domain_name='$domain'";
@@ -136,7 +129,7 @@ else{
 	$result2=$handle->query($query4);
 
 	if ($result and $result2){
-		print _("Account successfully added to Database")."...</br>";
+		print _("Account successfully added to the Database")."...</br>";
 	}
 
 	$cyr_conn = new cyradm;
@@ -150,7 +143,7 @@ else{
 	}
 
 	if ($result){
-		print _("Account succesfully added to IMAP Subsystem");
+		print _("Account succesfully added to the IMAP Subsystem");
 	}
 
 	if ($DOMAIN_AS_PREFIX) {

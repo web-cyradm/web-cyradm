@@ -18,11 +18,11 @@ if ($admintype==0){
 
 
 	        if (!DB::isError($result)){
-	                print "Sucessfully changed";
+	                print _("Successfully changed");
 			include ("browse.php");
 	        }
 	        else{
-	                print "<p>Database error, please try again<p>";
+	                print "<p>"._("Database error, please try again")."<p>";
 	        }
 
 	}
@@ -53,27 +53,27 @@ if ($admintype==0){
 	        <table>
 
 	        <tr>
-	        <td>Domain</td>
+	        <td><?php print _("Domainname") ?></td>
 		<td><input type="text" size="30" name=newdomain value="<?php print $domain?>"></td>
 	        </tr>
 
 	        <tr>
-	        <td>Prefix (Not yet supported, change will be ignored)</td>
+	        <td><?php print _("Prefix") ?> (Not yet supported, change will be ignored)</td>
 	        <td><input type="text" size="30"  value="<?php print $prefix ?>"></td>
 	        </tr>
 
 	        <tr>
-	        <td width=150>Maximum Accounts</td>
+	        <td width=150><?php print _("Maximum Accounts") ?></td>
 	        <td><input type="text" size="4" name=maxaccounts value="<?php print $maxaccounts ?>"> </td>
 	        </tr>
 
 	        <tr>
-	        <td>Default Quota in Kilobytes</td>
+	        <td><?php print _("Default Quota in Kilobytes") ?></td>
 	        <td><input type="text" size="15" name=quota value="<?php print $quota ?>"></td>
 	        </tr>
 
 	        <tr><td>
-	        <input type="submit" value="Accept Changes">
+	        <input type="submit" value=<?php print _("Submit") ?>>
 	        </td></tr>
 
 	        </table>

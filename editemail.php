@@ -3,12 +3,6 @@
         <td valign="top">
 
 <?php
-	// Specify location of translation tables
-        bindtextdomain("editemail", "./locale");
-
-        // Choose domain
-        textdomain("editemail");
-
 
 if ($authorized){
 
@@ -71,7 +65,7 @@ if ($authorized){
 
 
 	        <tr><td>
-	        <input type="submit" value="<?php _("Accept Changes") ?>">
+	        <input type="submit" value="<?php _("Submit") ?>">
 	        </td></tr>
 
 	        </table>

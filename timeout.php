@@ -4,16 +4,6 @@
 <link rel="stylesheet" href="css/web-cyradm.css" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-<?php
-
-// Specify location of translation tables
-bindtextdomain("timeout", "./locale");
-
-// Choose domain
-textdomain("timeout");
-
-?>
-
 <script>
 <!--
 function setfocus() {

@@ -2,12 +2,6 @@
 
 <?php
 
-// Specify location of translation tables
-bindtextdomain("menu", "./locale");
-
-// Choose domain
-textdomain("menu");
-
 print "<!-- ############################## Begin Menu ############################################ -->";
 
 ############### Root menu first ##########

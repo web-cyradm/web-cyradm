@@ -5,14 +5,6 @@
 
 <?php
 
-
-// Specify location of translation tables
-bindtextdomain("browseaccounts", "./locale");
-
-// Choose domain
-textdomain("browseaccounts");
-
-
        $cyr_conn = new cyradm;
 
        $cyr_conn -> imap_login();

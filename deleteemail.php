@@ -4,13 +4,6 @@
 
 <?php
 
-// Specify location of translation tables
-bindtextdomain("deleteemail", "./locale");
-
-// Choose domain
-textdomain("deleteemail");
-
-
 if (!$confirmed){
 
 ?>

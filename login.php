@@ -8,12 +8,6 @@
 
 include ("config.inc.php");
 
-// Specify location of translation tables
-bindtextdomain("login", "./locale");
-
-// Choose domain
-textdomain("login");
-
 ?>
 
 <script>

@@ -4,12 +4,6 @@
 
 <?php
 
-// Specify location of translation tables
-bindtextdomain("deletedomain", "./locale");
-
-// Choose domain
-textdomain("deletedomain");
-
 if ($admintype==0){
 
 	$handle=DB::connect($DSN, true);
@@ -91,7 +85,7 @@ if ($admintype==0){
                 } 
 		$query8="DELETE FROM domainadmin WHERE domain_name='$domain'";
                 $hnd8=$handle->query($query8); 
-	print "<h3>Domain ".$domain." sucessfully deleted</h3>";
+	print "<h3>". _("Domain")." ".$domain." ". _("successfully deleted")."</h3>";
 
 	include ("browse.php");
 

@@ -3,12 +3,6 @@
         <td width="10">&nbsp; </td>
 <?php
 
-// Specify location of translation tables
-bindtextdomain("adminuser", "./locale");
-
-// Choose domain
-textdomain("adminuser");
-	
 print "<td valign=\"top\"><h3>"._("Browse admins")."</h3>";
 
 
@@ -78,22 +72,22 @@ if ($admintype==0){
 		$domainname=$row['domain_name'];
                 $type=$row['type'];
                 print "\n<tr class=\"$cssrow\">";
-                print "\n<td><a href=\"index.php?action=editadminuser&username=$username&domain=$domainname\">"._("Edit adminuser")."</a></td>";
-                print "\n<td><a href=\"index.php?action=deleteadminuser&username=$username&domain=$domainname\">"._("Delete adminuser")."</a></td>";
+                print "\n<td><a href=\"index.php?action=editadminuser&username=$username&domain=$domain\">"._("Edit adminuser")."</a></td>";
+                print "\n<td><a href=\"index.php?action=deleteadminuser&username=$username&domain=$domain\">"._("Delete adminuser")."</a></td>";
                 print "</td>\n<td>";
                 print $username;
                 print "</td>\n<td>";
 //                print $row['password'];
                 print "******";
                 print "</td>\n<td>";
-		print $domainname;
+		print $domain;
 
                 print "</td>\n<td>";
 		if ($type==0){
-			print "Superuser";
+			print _("Superuser");
 		}
 		else if ($type==1){
-			print "Domain Master";
+			print _("Domain Master");
 		}
 
 		print "&nbsp;</td>\n</tr>\n";

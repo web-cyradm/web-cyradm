@@ -5,13 +5,6 @@
 
 <?php
 
-// Specify location of translation tables
-bindtextdomain("newdomain", "./locale");
-
-// Choose domain
-textdomain("newdomain");
-
-
 if ($admintype==0){
 
 	print "<h3>"._("Add new domain")."</h3>";
@@ -71,7 +64,7 @@ if ($admintype==0){
 		        $result=$handle->query($query);
 
 		        if (!DB::isError($result)){
-		                print "Successfully added";
+		                print _("Successfully added");
 				include ("browse.php");
 		        }
 		        else{

@@ -1,7 +1,6 @@
           <tr>
         <td width="10">&nbsp; </td>
         <td valign="top"> 
-
 <?php
 print "<h3>change admin user for domain $domain</h3>";
 if (!$domain or $domain=="new"){
@@ -30,31 +29,31 @@ else{
 
 		<table>
 			<tr>
-				<td>login</td>
+				<td><?php print _("Accountname") ?></td>
 				<td><input class="inputfield" type="text" name="newusername" value="<?php print $username ?>" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
 			</tr>
 		
 			<tr>
-				<td>Type</td>
+				<td><?php print _("Type") ?></td>
 				<td><select name="type">
-					<option value=0>Superuser</option>
-					<option selected value=1>Domain supervisor</option>
+					<option value=0><?php print _("Superuser") ?></option>
+					<option selected value=1><?php print _("Domain Master") ?></option>
 				</select>
 
 		
 			<tr>
-				<td>Password</td>
+				<td><?php print _("Password") ?></td>
 				<td><input class="inputfield" type="password" value="<?php print $password ?>" name="newpassword" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
 			</tr>
 
 			<tr>
-				<td>Confirm Password</td>
+				<td><?php print _("Confirm Password") ?></td>
 				<td><input class="inputfield" type="password" name="confirm_password" value="<?php print $password ?>" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
 			</tr>
 	
 			<tr>
 				<td></td>
-				<td><input class="inputfield" type="submit"></td>
+				<td><input class="inputfield" type="submit" value="<?php print _("Submit") ?>"></td>
 			</tr>
 	
 

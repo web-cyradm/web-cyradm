@@ -3,13 +3,6 @@
         <td valign="top">
 <?php
 
-// Specify location of translation tables
-bindtextdomain("newemail", "./locale");
-
-// Choose domain
-textdomain("newemail");
-
-
 
 if ($authorized){
 
@@ -22,7 +15,7 @@ if ($confirmed){
 
 
         if (!DB::isError($result)){
-                print _("Sucessfully inserted");
+                print _("Successfully added");
 		include ("editaccount.php");
         }
         else{
