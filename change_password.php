@@ -16,7 +16,7 @@ if ($authorized){
 
 	if ($confirmed){
 
-		if ($new_password == $confirm_password) {
+		if ($new_password == $confirm_password && $new_password!="") {
 			$query="select * from accountuser where username='$dest'";
 		        $handle=DB::connect($DSN, true);
 		        $result=$handle->query($query);
