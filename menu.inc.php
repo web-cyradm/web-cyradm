@@ -67,7 +67,7 @@ if (! isset($domain)){
 		# Temporary removed, subject to discuss
 		<td class="navi">
 			<a href="index.php?action=aliases&amp;domain=<?php echo $domain;?>"
-			><?php print _("Aliases");?></a>
+			><?php print _("aliases");?></a>
 		</td>
 		-->
 
@@ -75,6 +75,12 @@ if (! isset($domain)){
 
 		<td class="navi">
 			<a href="index.php"><?php print _("home");?></a>
+		</td>
+
+		<td>&nbsp;</td>
+
+		<td class="navi">
+			<a href="index.php?action=setup"><?php print _("setup");?></a>
 		</td>
 
 		<td>&nbsp;</td>
