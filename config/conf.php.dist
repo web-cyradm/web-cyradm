@@ -78,7 +78,7 @@ $DOMAIN_AS_PREFIX = 0;
 # sql is the default
 $PASSWORD_CHANGE_METHOD = "sql"; 
 
- Turn up error reporting level. This overrides settings in your php.ini
+# Turn up error reporting level. This overrides settings in your php.ini
 #
 # E_ALL             - All errors and warnings
 # E_ERROR           - fatal run-time errors
