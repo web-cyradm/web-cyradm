@@ -103,6 +103,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			}
 			$_SESSION['style'] = $_GET['style'];
 			$_SESSION['maxdisplay'] = $_GET['maxdisplay'];
+			$_SESSION['domain_row_pos'] = 0;
 			$_SESSION['warnlevel'] = $_GET['warnlevel'];
 			$query = "UPDATE `settings` SET `style`='".$_SESSION['style']."', maxdisplay='".$_SESSION['maxdisplay']."', warnlevel='".$_SESSION['warnlevel']."' WHERE username='".$_SESSION['user']."'";
 			$handle->query($query);
