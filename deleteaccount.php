@@ -89,6 +89,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$query3 = "delete from accountuser where username='$username'";
 				$hnd3 = $handle->query($query3);
 
+				$query4 = "delete from log where user='$username'";
+				$hnd4 = $handle->query($query4);
+
 
 				if ($DOMAIN_AS_PREFIX) {
 					print $cyr_conn->deletemb("user/".$username);
