@@ -12,22 +12,26 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td valign="top">
 
 		<?php
-		if ($authorized){
+		if ($authorized) {
 			$cyr_conn = new cyradm;
-			$cyr_conn->imap_login();
+			$error = $cyr_conn->imap_login();
+
+			if ($error != 0) {
+				die ("Error: " . $error);
+			}
 
 			$_sep = '.';
 			if ($DOMAIN_AS_PREFIX) {
 				$_sep = '/';
 			}
-			$q = $cyr_conn->getquota("user" . $_sep . $username);
+			$q = $cyr_conn->getquota("user" . $_sep . $_GET['username']);
 
-			if (empty($confirmed)){
+			if (empty($_GET['confirmed'])) {
 				?>
 				<h3>
 					<?php print _("Setting individual Quota for user");?>:
 					<span style="color: red;">
-						<?php echo $username;?>
+						<?php echo $_GET['username'];?>
 					</span>
 				</h3>
 				<form action="index.php">
@@ -41,12 +45,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					
 					<input type="hidden"
 					name="domain"
-					value="<?php print $domain; ?>"
+					value="<?php print $_GET['domain']; ?>"
 					>
 					
 					<input type="hidden" 
 					name="username"
-					value="<?php print $username; ?>" >
+					value="<?php print $_GET['username']; ?>" >
 					
 					<input class="inputfield"
 					type="text"
@@ -59,37 +63,42 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					value="<?php 
 					print _("Submit"); ?>"
 					>
+
+					<input class="button"
+					type="submit"
+					name="cancel"
+					value="<?php print _("Cancel"); ?>"
+					>
 				</form>
 				<?php
-
+			} elseif (!empty($_GET['cancel'])) {
+				include WC_BASE . "/browseaccounts.php";
 			} else {
-				$query1 = "SELECT `prefix`,`domainquota` from domain WHERE domain_name='$domain'";
-
-				$handle = DB::connect($DB['DSN'], true);
-				if (DB::isError($handle)) {
+				$query = "SELECT `prefix`,`domainquota` FROM `domain` WHERE `domain_name`='".$_GET['domain']."'";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
 					die (_("Database error"));
 				}
-			
-				$result1 = $handle->query($query1);
-			
-				$row = $result1->fetchRow(DB_FETCHMODE_ASSOC, 0);
+				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			
 				$prefix = $row['prefix'];
 				$domain_quota = $row['domainquota'];
 
-//				$cyr_conn = new cyradm;
-//				$cyr_conn->imap_login();
 				// for change bigger->smaler or none->set we don't want domain quota checks
-				if ($domain_quota!=0 && $q['qmax']<$quota && $q['qmax']!="NOT-SET") {
+				if ($domain_quota!=0 && $q['qmax']<(int)$_GET['quota'] && $q['qmax']!="NOT-SET") {
 					$used_domain_quota = 0;
 
-					$query2 = "SELECT `username` FROM accountuser WHERE prefix='$prefix' ORDER BY `username`";
-					$result2 = $handle->query($query2);
-					$cnt2 = $result2->numRows($result2);
+					$query = "SELECT `username` FROM `accountuser` WHERE `prefix`='$prefix' ORDER BY `username`";
+					$result = $handle->query($query);
+					if (DB::isError($result)) {
+						die (_("Database error"));
+					}
 
-					for ($c2 = 0; $c2 < $cnt2; $c2++){
-						$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
-						$user_quota = $cyr_conn->getquota("user" . $_sep . $row2['username']);
+					$cnt = $result->numRows($result);
+
+					for ($c = 0; $c < $cnt; $c++) {
+						$row = $result->fetchRow(DB_FETCHMODE_ASSOC, $c);
+						$user_quota = $cyr_conn->getquota("user" . $_sep . $row['username']);
 						if ($user_quota['qmax'] != "NOT-SET"){
 							$used_domain_quota += $user_quota['qmax'];
 						}
@@ -98,8 +107,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$quota_left = $domain_quota - $used_domain_quota + $q['qmax'];
 
 					if ($quota_left>0) {
-						if ($quota > $quota_left){
-							$quota = $quota_left;
+						if ($_GET['quota'] > $quota_left){
+							$_GET['quota'] = $quota_left;
 								?>
 								<h3>
 									<?php print _("Quota exeeded");?>
@@ -107,14 +116,25 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 										<?php print _("New quota is");?>:
 									</span>
 									<span style="font-weight: bolder;">
-										<?php echo $quota;?>
+										<?php echo $_GET['quota'];?>
 									</span>
 								</h3>
 								<?php
 						}
-						print $cyr_conn->setmbquota("user" . $_sep . $username, $quota);
-					}
-					else {
+						$cyr_conn->setmbquota("user" . $_sep . $_GET['username'], $_GET['quota']);
+						?>
+						<h3>
+							<?php print _("Quote for user");?>
+							<span style="color: red;">
+								<?php echo $_GET['username'];?>
+							</span>
+							<?php print _("changed to");?>
+							<span style="color: red;">
+								<?php echo $_GET['quota'];?>
+							</span>
+						</h3>
+						<?php
+					} else {
 						?>
 						<h3>
 							<span style="color: red;">
@@ -124,29 +144,32 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							</span>
 						</h3>
 						<?php
-					}
-				} // End of if ($domain_quota!=0 && $q['qmax']<$quota && $q['qmax']!="NOT-SET")
-				else {
-					print $cyr_conn->setmbquota("user" . $_sep . $username, $quota);
+					} // End of if ($quota_left>0)
+				} else { // if ($domain_quota!=0 && $q['qmax']<$_GET['quota'] && $q['qmax']!="NOT-SET")
+					$cyr_conn->setmbquota("user" . $_sep . $_GET['username'], $_GET['quota']);
 					?>
 					<h3>
 						<?php print _("Quote for user");?>
 						<span style="color: red;">
-							<?php echo $username;?>
+							<?php echo $_GET['username'];?>
 						</span>
 						<?php print _("changed to");?>
 						<span style="color: red;">
-							<?php echo $quota;?>
+							<?php echo $_GET['quota'];?>
 						</span>
 					</h3>
 				<?php
-				}
+				} // End of if ($domain_quota!=0 && $q['qmax']<$_GET['quota'] && $q['qmax']!="NOT-SET")
 				include WC_BASE . "/browseaccounts.php";
-			}
-		}
-
-		print "<h3>".$err_msg."</h3>";
-
+			} // End of if (empty($_GET['confirmed']))
+		} else {
+			?>
+			<h3>
+				<? print $err_msg;?>
+			</h3>
+			<a href="index.php?action=accounts&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
+			<?php
+		} // End of if ($authorized)
 		?>
 	</td>
 </tr>
