@@ -8,9 +8,8 @@ print "<h3>"._("Define a Account for receiving undefined adresses for domain")."
 // $result=mysql_db_query($MYSQL_DB,$query1,$handle1);
 
 
+
 if (!$confirmed){
-
-
 
 	?>
 
@@ -28,9 +27,7 @@ if (!$confirmed){
 
 	<?php
 
-	}
-
-else{
+}elseif(($confirmed)and(!$cancel)){
 
 	# First Delete the entry from the database
 
@@ -50,9 +47,10 @@ else{
 		print "<p>"._("Database error, please try again")."<p>";
 	}
 
+}elseif($cancel){
+		print "<p>"._("Cancelled")."<p>";
+
 }
-
-
 ?>
 
 </td></tr>
