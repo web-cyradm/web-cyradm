@@ -21,7 +21,8 @@ $_get_vars = array(
 	'password', 'new_password', 'confirm_password', 'quota', 'maxaccounts',
 	'newdomain', 'email', 'alias', 'dest', 'newalias', 'newdest', 'confirmed',
 	'cancel', 'searchstring', 'transport', 'tparam', 'mode', 'forwards',
-	'metoo', 'vacation_text', 'freenames', 'freeaddress', 'LANG', 'delete_catchall'
+	'metoo', 'vacation_text', 'freenames', 'freeaddress', 'LANG', 'delete_catchall',
+	'newdomain'
 );
 
 $_post_vars = array(
