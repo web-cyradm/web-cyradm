@@ -210,7 +210,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				# If there is a new domain to add, lets insert it to the DB
 
-				if ($newdomain){
+				if (isset($newdomain)){
 
 					# Check if the domain to be added really exists
 
