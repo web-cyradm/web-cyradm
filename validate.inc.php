@@ -6,7 +6,6 @@
 // Choose domain
 //textdomain("web-cyradm");
 
-
 ################# Temporary fix for PHP 4.2.0 a better solution has to found #######################
 $user= $_SESSION['user'];
 
@@ -19,9 +18,19 @@ $_get_vars = array(
 	'metoo', 'vacation_text', 'freenames', 'freeaddress', 'LANG'
 );
 
+$_post_vars = array(
+	'confirmed', 'action'. 'domain', 'alias' , 'username', 'new_password', 
+	'confirm_password');
+
 foreach ($_get_vars as $_get_var){
 	if (isset($_GET[$_get_var])){
 		$$_get_var = $_GET[$_get_var];
+	}
+}
+
+foreach ($_post_vars as $_post_var){
+	if (isset($_POST[$post_var])){
+		$$_post_var = $_POST[$_post_var];
 	}
 }
 
@@ -188,6 +197,7 @@ if (! empty($action)){
 		} else {
 			$authorized=TRUE;
 		}
+
 		break;
 
 ######################################## Check new domain name ########################################

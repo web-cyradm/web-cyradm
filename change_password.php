@@ -18,7 +18,6 @@
 		$alias = $row['alias'];
 		$dest = $row['dest'];
 		$username = $row['username'];
-
 		if (! empty($confirmed) && ("true" == $confirmed)){
 			if ($new_password == $confirm_password && $new_password != ""){
 				$query = "select * from accountuser where username='$dest'";
@@ -55,7 +54,6 @@
 				}
 			}
 		}
-
 		if (empty($confirmed) || ($confirmed != "true")){
 //			$test = ereg ("",$alias,$result_array);
 
@@ -71,7 +69,8 @@
 				</span>
 			</h3>
 
-			<form action="index.php" method="get">
+			<!-- <form action="index.php" method="get"> -->
+			<form action="index.php" method="POST">
 
 				<input type="hidden" name="action" value="change_password">
 				<input type="hidden" name="confirmed" value="true">

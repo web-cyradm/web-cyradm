@@ -19,7 +19,7 @@
 		</h3>
 
 		<?php
-		$query = "select * from virtual where username='$username'";
+		$query = "SELECT * FROM virtual WHERE username='$username' AND alias != '$username'";
 		$handle = DB::connect($DB['DSN'], true);
 		if (DB::isError($handle)) {
 			die (_("Database error"));
