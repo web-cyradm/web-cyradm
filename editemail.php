@@ -3,6 +3,12 @@
         <td valign="top">
 
 <?php
+	// Specify location of translation tables
+        bindtextdomain("editemail", "./locale");
+
+        // Choose domain
+        textdomain("editemail");
+
 
 if ($authorized){
 
@@ -23,11 +29,11 @@ if ($authorized){
 
 
 	        if (!DB::isError($result)){
-	                print "<h3>Sucessfully changed</h3>";
+	                print "<h3>"._("Sucessfully changed")."</h3>";
 			include ("editaccount.php");
 	        }
 	        else{
-	                print "<p>Database error, please try again<p>";
+	                print "<p>"._("Database error, please try again")."<p>";
 	        }
 
 	}
@@ -54,18 +60,18 @@ if ($authorized){
 	        <table>
 
 	        <tr>
-	        <td>Emailadress</td>
+	        <td><?php print _("Emailadress") ?></td>
 		<td><input type="text" size="30" name=newalias value="<?php print $alias?>">@<?php print $domain?></td>
 	        </tr>
 
 	        <tr>
-	        <td width=150>Destination</td>
+	        <td width=150><?php print _("Destination") ?></td>
 	        <td><input type="text" size="30" name=dest value="<?php print $dest ?>"> </td>
 	        </tr>
 
 
 	        <tr><td>
-	        <input type="submit" value="Accept Changes">
+	        <input type="submit" value="<?php _("Accept Changes") ?>">
 	        </td></tr>
 
 	        </table>
