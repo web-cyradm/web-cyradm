@@ -78,15 +78,16 @@ CLASS="SECT2"
 ><A
 NAME="MYSQL-CONFIG-SECURING">4.1. Securing MySQL</H2
 ><P
->Because you are using MySQL to authenticate users, you need to restrict network access to Port 3306.</P
+>Because you are using MySQL to authenticate users, you need to restrict network access 
+	to Port 3306.</P
 ><P
->I suggest to just bind mysql to the loopback-interface 127.0.0.1. This makes sure nobody can connect to your
-	MySQL-Daemon via the network.</P
+>I suggest to just bind MySQL only to the loopback interface 127.0.0.1. 
+	This makes sure nobody can connect to your MySQL Daemon via the network.</P
 ><P
->	edit <TT
+>	Edit <TT
 CLASS="FILENAME"
 >/etc/init.d/mysql.server</TT
-> and edit line 107 as following:</P
+> and change line 107 as following:</P
 ><P
 >Original line:</P
 ><TABLE
@@ -128,7 +129,7 @@ CLASS="COMMAND"
 >/etc/init.d/mysql.server start</B
 ></P
 ><P
->To ensure the configuration-change was successful issue: <B
+>To ensure the configuration change was successful issue: <B
 CLASS="COMMAND"
 >netstat -an|grep LISTEN</B
 >. The 
@@ -155,36 +156,18 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="MYSQL-CREATE-DB">4.2. Create the databases and tables</H2
+NAME="MYSQL-RINETD">4.2. Setting up rinetd</H2
 ><P
->Now we need to create the database and tables for postfix and web-cyradm and add a user to the 
-		database</P
+>This step is only necessary if you run the mysql sever on another host than the mailserver. It allows
+	you to securely connect from another host by allowing only defined IP adresses.</P
 ><P
->		Web-cyradm comes with two SQL-files: <TT
+>The example used is from the view of the host serving the MySQL database. Lets assume your 
+	mailserver has the IP 192.168.0.100 and the MySQL host has 192.168.0.200</P
+><P
+>	Edit <TT
 CLASS="FILENAME"
->insertuser.sql</TT
-> and <TT
-CLASS="FILENAME"
->create.sql</TT
->
-		The first inserts the Database user to the database »mysql«, the second creates the database »mail« and
-		the needed tables.</P
-><P
->The password for the user "mail" in this example is "secret" please insert whatever 
-		user and password you like</P
-><P
->		First you must add the user by executing <B
-CLASS="COMMAND"
->/usr/local/mysql/bin/mysql &#60; insertuser.sql</B
->
-		After the new DB-user is successfully added, you need to reload mysql 
-		with <B
-CLASS="COMMAND"
->mysqladmin reload</B
->
-		</P
-><P
->To create the needed tables in the database:</P
+>/etc/rinetd.conf</TT
+> and add:</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -195,53 +178,15 @@ WIDTH="100%"
 COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
->/usr/local/mysql/bin/mysql mail -u mail -p &#60; \
-/usr/local/apache/htdocs/web-cyradm/scripts/create.sql</PRE
+>192.168.0.200 3306 127.0.0.1 3306
+allow 192.168.0.100</PRE
 ></FONT
 ></TD
 ></TR
 ></TABLE
 ><P
->		Now lets populate our tables, and insert the first admin-user. This user is needed to login
-		to Web-cyradm
-		</P
-><P
->		Execute <B
-CLASS="COMMAND"
->/usr/local/mysql/bin/mysql mail -u mail -p</B
-> And type the following SQL queries:
-		</P
-><TABLE
-BORDER="1"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><FONT
-COLOR="#000000"
-><PRE
-CLASS="SCREEN"
->INSERT INTO adminuser (username, password) VALUES ('admin', 'test');
-INSERT INTO domainadmin (domain_name,adminuser) VALUES ('*','admin');
-INSERT INTO accountuser (username, password) VALUES ('cyrus', 'secret');</PRE
-></FONT
-></TD
-></TR
-></TABLE
-><P
->The first query inserts the admin user into the database, the second one is needed that the cyrus user can
-be authenticated, use the same password like defined in <TT
-CLASS="FILENAME"
->/usr/local/apache/htdocs/web-cyradm/config.inc.php</TT
-></P
-><P
->Please note, this setup for web-cyradm is fully compatible with replex, another project. Please see  
-<A
-HREF="http://www.replex.org"
-TARGET="_top"
->http://www.replex.org</A
->
-for more details.</P
+>This means: The MySQL host is listening on 192.168.0.200 port 3306. If 192.168.0.100 
+	is attempting a connection, it is forwared to 127.0.0.1:3306. All other hosts are rejected. </P
 ></DIV
 ></DIV
 ><DIV

@@ -66,72 +66,245 @@ CLASS="SECT1"
 NAME="FAQ">11. Questions and Answers</H1
 ><P
 >	Here I answer the questions which I got from users. If you don't find an answer feel free to contact me</P
+><DIV
+CLASS="QANDASET"
+><DL
+><DT
+>1. <A
+HREF="faq.html#AEN767"
+>FAQ</A
+></DT
+><DD
+><DL
+><DT
+>11.1.1. <A
+HREF="faq.html#AEN770"
+>Does web-cyradm only support users like »test0001« ? I'd like to have a more descriptive username</A
+></DT
+><DT
+>11.1.2. <A
+HREF="faq.html#AEN776"
+>	web-cyradm complains about »Fatal error: Call to undefined function: bindtextdomain()
+ 	in /www/web-cyradm-0.5.3/index.php on line 46«, whats wrong?
+     </A
+></DT
+><DT
+>11.1.3. <A
+HREF="faq.html#AEN783"
+>	I got a error from Web-cyradm like this »Fatal error: Call to undefined function: query() in
+	/usr/local/httpd/htdocs/web-cyradm/auth.inc.php on line 17«
+	</A
+></DT
+><DT
+>11.1.4. <A
+HREF="faq.html#AEN789"
+>      Why MySQL and not LDAP?
+     </A
+></DT
+><DT
+>11.1.5. <A
+HREF="faq.html#AEN794"
+>      Why Postfix and not Qmail?
+     </A
+></DT
+><DT
+>11.1.6. <A
+HREF="faq.html#AEN799"
+>      I got a Error: "Temporary lookup failure"
+     </A
+></DT
+><DT
+>11.1.7. <A
+HREF="faq.html#AEN806"
+>      Does this HOWTO also work on other platforms?
+     </A
+></DT
+></DL
+></DD
+></DL
+><DIV
+CLASS="QANDADIV"
+><H3
+><A
+NAME="AEN767">1. FAQ</H3
+><DIV
+CLASS="QANDAENTRY"
+><DIV
+CLASS="QUESTION"
 ><P
-></P
-><UL
-><LI
+><A
+NAME="AEN770"><B
+>11.1.1. </B
+>Does web-cyradm only support users like »test0001« ? I'd like to have a more descriptive username</P
+></DIV
+><DIV
+CLASS="ANSWER"
 ><P
->	Q: Does web-cyradm only support users like »test0001« ? I'd like to have a more desciptive username
-	</P
-><P
->&#13;	</P
-><P
->	A: web-cyradm does also support usernames like »user.name.example.com« if you configure it.
+><B
+> </B
+>	web-cyradm does also support usernames like »user.name.example.com« if you configure it.
 	Your need to change config.inc.php and change the value of DOMAIN_AS_PREFIX to 1. then you need to add
 	»unixhierarchysep: yes« to your <TT
 CLASS="FILENAME"
 >/etc/imapd.conf</TT
 >
 	</P
-></LI
-><LI
+></DIV
+></DIV
+><DIV
+CLASS="QANDAENTRY"
+><DIV
+CLASS="QUESTION"
 ><P
->      Q: Why MySQL and not LDAP?
+><A
+NAME="AEN776"><B
+>11.1.2. </B
+>	web-cyradm complains about »Fatal error: Call to undefined function: bindtextdomain()
+ 	in /www/web-cyradm-0.5.3/index.php on line 46«, whats wrong?
      </P
+></DIV
+><DIV
+CLASS="ANSWER"
 ><P
->      A: Good question. LDAP is role-based and it would be indeed a better solution for such applications. Unfortunately LDAP
-      is very hard to set up. You have to make proper schemes etc. MySQL is the way strait ahead, it is very easy to handle and 
-      versatile. There is a PAM module available for LDAP, feel free to use it.
+><B
+> </B
+>	Web-cyradm needs gettext enabled PHP. Please compile PHP with the configure-option --with-gettext.
+	</P
+><P
+>	
+	gettext is needed for NLS (Native Language Support) which means
+	contributors can easily translate web-cyradm to there language. Fill in your Language in the file
+	<TT
+CLASS="FILENAME"
+>/usr/local/apache/htdocs/web-cyradm/locale/templates/web-cyradm.pot</TT
+> and send me
+	the file, then your language will be supported in the next CVS snapshot</P
+></DIV
+></DIV
+><DIV
+CLASS="QANDAENTRY"
+><DIV
+CLASS="QUESTION"
+><P
+><A
+NAME="AEN783"><B
+>11.1.3. </B
+>	I got a error from Web-cyradm like this »Fatal error: Call to undefined function: query() in
+	/usr/local/httpd/htdocs/web-cyradm/auth.inc.php on line 17«
+	</P
+></DIV
+><DIV
+CLASS="ANSWER"
+><P
+><B
+> </B
+>	Web-cyradm depends on PEAR for database abstraction. PEAR is included in recent PHP versions. Often
+	PEAR is a separate package, check out the package base of your distribution. I strongly suggest to update
+	to the most recent version of PHP anyway, because a lot of bugs have been fixed.</P
+><P
+>Another reason could be an authentication error with MySQL. Be sure the user »mail« has enought
+	rights to acccess the database and tables.</P
+></DIV
+></DIV
+><DIV
+CLASS="QANDAENTRY"
+><DIV
+CLASS="QUESTION"
+><P
+><A
+NAME="AEN789"><B
+>11.1.4. </B
+>      Why MySQL and not LDAP?
      </P
-></LI
-><LI
+></DIV
+><DIV
+CLASS="ANSWER"
 ><P
->      Q: Why Postfix and not Qmail?
+><B
+> </B
+>      Good question. LDAP is role-based and it would be indeed a better solution for such applications. 
+      Unfortunately LDAP is very hard to set up. You have to make proper schemes etc. MySQL is the 
+      way strait ahead, it is very easy to handle and versatile. There is a PAM module available 
+      for LDAP, feel free to use it.
      </P
+></DIV
+></DIV
+><DIV
+CLASS="QANDAENTRY"
+><DIV
+CLASS="QUESTION"
 ><P
->      A: Lots of people like to see such a setup with Qmail. The reason why is, Mysql-support is a hack and not in the
+><A
+NAME="AEN794"><B
+>11.1.5. </B
+>      Why Postfix and not Qmail?
+     </P
+></DIV
+><DIV
+CLASS="ANSWER"
+><P
+><B
+> </B
+>      Lots of people like to see such a setup with Qmail. The reason why is, Mysql-support is a hack and not in the
       included in the main source-tree. This could end up in a bad situation. Think if a security-hole is found in qmail
-      and the patch does not work with the corrected version. Postfix is supporting MySQL natively. Another (personal) reason is
-      that I find Postfix more sympatic (I don't know why)
+      and the patch does not work with the corrected version. Postfix is supporting MySQL natively. 
+      Another (personal) reason is that I find Postfix more sympatic (I don't know why)
      </P
-></LI
-><LI
+></DIV
+></DIV
+><DIV
+CLASS="QANDAENTRY"
+><DIV
+CLASS="QUESTION"
 ><P
->      Q: I got a Error: "Temporary lookup failure"
+><A
+NAME="AEN799"><B
+>11.1.6. </B
+>      I got a Error: "Temporary lookup failure"
      </P
+></DIV
+><DIV
+CLASS="ANSWER"
 ><P
->      A: Postfix cannot look up the alias table. Must common failure is that MySQL is not running, or there is a authentication
-      Error. Check <TT
+><B
+> </B
+>      Postfix cannot look up the alias table. Must common failure is that MySQL is not running, 
+      or there is a authentication Error. Check <TT
 CLASS="FILENAME"
 >/var/log/mail</TT
-> and <TT
+> and 
+      <TT
 CLASS="FILENAME"
 >/usr/local/mysql/var/&#60;hostname&#62;.err</TT
->
-      to track the error
+> to track the error.
      </P
-></LI
-><LI
+></DIV
+></DIV
+><DIV
+CLASS="QANDAENTRY"
+><DIV
+CLASS="QUESTION"
 ><P
->      Q: Does this HOWTO also work on other platforms?
+><A
+NAME="AEN806"><B
+>11.1.7. </B
+>      Does this HOWTO also work on other platforms?
      </P
+></DIV
+><DIV
+CLASS="ANSWER"
 ><P
->      A: Unsure. I personally compiled MySQL and Apache on AIX 4.3 and 5.1L (php does not run properly on AIX), 
-      Solaris 6/7/8 and HP-UX. Cyrus, pam_mysql and cyrus I never tried. On Solaris there is maybe a chance to get pam_mysql 
-      running. On AIX there is no PAM, but a similar mechanism. In short: Try it, and let me know if were successful
+><B
+> </B
+>      Unsure. I personally compiled MySQL and Apache on AIX 4.3 and 5.1L (php does not run properly on AIX), 
+      Solaris 6/7/8 and HP-UX. Cyrus, pam_mysql and cyrus I never tried. On Solaris there is maybe a 
+      chance to get pam_mysql running. On AIX there is no PAM, but a similar mechanism. In short: 
+      Try it, and let me know if were successful
      </P
-></LI
-></UL
+></DIV
+></DIV
+></DIV
+></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"

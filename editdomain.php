@@ -65,10 +65,12 @@ if ($admintype==0){
 		<td><input class="inputfield" type="text" size="30" name=newdomain value="<?php print $domain?>"></td>
 	        </tr>
 
+<!--
 	        <tr>
 	        <td><?php print _("Prefix"). " ". _("(Not yet supported, change will be ignored)") ?></td>
 	        <td><input class="inputfield" type="text" size="30"  value="<?php print $prefix ?>"></td>
 	        </tr>
+-->
 
 	        <tr>
 	        <td width=150><?php print _("Maximum Accounts") ?></td>

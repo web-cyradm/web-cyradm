@@ -78,8 +78,8 @@ CLASS="FILENAME"
 > and <TT
 CLASS="FILENAME"
 >master.cf</TT
->. Both needs
-	now our attention.</P
+>. 
+	Both needs your attention.</P
 ><DIV
 CLASS="SECT2"
 ><H2
@@ -128,12 +128,13 @@ CLASS="SCREEN"
 ><P
 >	A look to the cyrus man-pages <B
 CLASS="COMMAND"
->man deliver</B
+>man deliver </B
 >clears that issue:
 	</P
 ><P
->	The Postfix default setup uses a wrong path to the cyrus deliver, this is the first change.
-	The parameter »-r« Inserts a proper return path, without that mail rejected by sieve will be sent to cyrus at yourdomain.
+>	The Postfix default setup uses a wrong path to cyrus deliver, this is the first change.
+	The parameter »-r« Inserts a proper return path, without that mail rejected/retured by sieve will 
+	be sent to the cyrus user at yourdomain.
 	</P
 ></DIV
 ><DIV
@@ -164,8 +165,11 @@ CLASS="SCREEN"
 ><P
 >mydestination</P
 ><P
->Here you have to put all domainnames that are local (corresponding to sendmail's /etc/mail/sendmail.cw)
-If you have multiple domains separate them with comma</P
+>Here you have to put all domainnames that are local (corresponding to sendmail's 
+<TT
+CLASS="FILENAME"
+>/etc/mail/sendmail.cw)</TT
+>. If you have multiple domains separate them with comma.</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -183,10 +187,10 @@ CLASS="SCREEN"
 ></TR
 ></TABLE
 ><P
->relayhost</P
+>Relayhost</P
 ><P
 >Here you define where to deliver outgoing mails. If you do not provide any host. mails are delivered directly 
-to the destination smtp host. Usually your relayhosts are your providers smtp-server </P
+to the destination smtp host. Usually your relayhosts are your providers smtp-server.</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -203,10 +207,10 @@ CLASS="SCREEN"
 ></TR
 ></TABLE
 ><P
->mailtransport</P
+>Mailtransport</P
 ><P
->Here you define how the mails accepted for local delivery should be handled. In our situation mails should be 
-delivered by the cyrus delivery-program</P
+>Here you define how the mails accepted for local delivery should be handled. In your situation mails should be 
+delivered by the cyrus delivery-program.</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -240,8 +244,10 @@ CLASS="SCREEN"
 ></TR
 ></TABLE
 ><P
->Outgoing addresses should be rewritten from i.e test0002 at domain to user.name at virtualhost.com. This is important 
-if you like to use a webmail interface.</P
+>If you dont want to have a overriding /etc/postfix/virtual, skip the hash entry</P
+><P
+>Outgoing addresses should be rewritten from i.e test0002 at domain 
+to user.name at virtualhost.com. This is important if you like to use a webmail interface.</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -388,8 +394,9 @@ COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
 >smtpd_sasl_auth_enable = yes
-smtpd_recipient_restrictions = permit_sasl_authenticated, check_relay_domains
+smtpd_recipient_restrictions = permit_sasl_authenticated, permit_mynetworks, reject_unauth_destination
 smtpd_sasl_security_options = noanonymous
+smtpd_sasl_local_domain = example.com
 broken_sasl_auth_clients = yes</PRE
 ></FONT
 ></TD

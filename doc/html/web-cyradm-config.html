@@ -72,7 +72,8 @@ CLASS="SECT1"
 ><A
 NAME="WEB-CYRADM-CONFIG">8. Configuring Web-cyradm</H1
 ><P
->First copy the distributions config file</P
+>First copy the distributions config file, and create to logfile. The logfile must be owned by user 
+that runns the webserver. This is usually the user »nobody« or »wwwrun«.</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -96,7 +97,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN478">8.1. Cyrus setup</H2
+NAME="AEN565">8.1. Cyrus setup</H2
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -118,20 +119,23 @@ $CYRUS_PASSWORD="secret";</PRE
 ></TR
 ></TABLE
 ><P
->This should be self-explanatory. Please note there is no support for SSL connections at the moment, this is especially important 
-for users that what to like to have web-cyradm not on the same server where the cyrus-imapd resides.</P
+>This should be self-explanatory. Please note there is no support for SSL connections at the moment, 
+this is especially important for users that what to like to have web-cyradm not on the same server 
+where the cyrus-imapd resides.</P
 ></DIV
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN482">8.2. Database setup</H2
+NAME="AEN569">8.2. Database setup</H2
 ><P
->Please note: the database releated code is now being rewritten to use PEAR as a database abstraction. So in future
-	you will be able to also use PostgreSQL as database engine (with the patch for postfix). In meantime it is needed 
-	to setup the database setup twice (only for the CVS versions, release 2002-05-25_xx will just ignore the unused stuff).
-	</P
+>Since version 0.5.2 web-cyradm uses PEAR as a database abstraction layer. This adds more flexibility.
+	Currently supported databases are MySQL and PostgreSQL. Please note that for PostgreSQL there is a patch 
+	needed, because Postfix does not support PostgreSQL natively. I strongly suggest to use MySQL. 
+	I know MySQL has some restrictions on transaction and stuff, but it is natively in the Postfix code.</P
+><P
+>The entries should be self explenatory</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
@@ -142,57 +146,15 @@ WIDTH="100%"
 COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
->The MySQL stuff to be replaced after all files have PEAR implemented
+>$DB_TYPE="mysql";
 
-$MYSQL_HOST="localhost";</PRE
-></FONT
-></TD
-></TR
-></TABLE
-><P
->Put here the name of your mysql-server. Please note that if you use a mysql database on the same host as web-cyradm does,
-use »localhost« as the hostname if you followed the instructions at <A
-HREF="mysql-config.html"
->Section 4</A
->.
-
-<TABLE
-BORDER="1"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><FONT
-COLOR="#000000"
-><PRE
-CLASS="SCREEN"
->$MYSQL_DB="mail";
-$MYSQL_USER="mail";
-$MYSQL_PASSWD="secret";</PRE
-></FONT
-></TD
-></TR
-></TABLE
-></P
-><P
->This should be self-explanatory</P
-><TABLE
-BORDER="1"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><FONT
-COLOR="#000000"
-><PRE
-CLASS="SCREEN"
->/* DB_TYPE
+/* DB_TYPE
 
  Possible Values are:
  o mysql
  o pgsql
 
- To operate a mailsystem with postgreSQL you will need a patch for
+ To operate a mailsystem with PostgreSQL you will need a patch for
  Postfix.
 
  Other Databases needs to be supported by PAM and postfix
@@ -200,44 +162,28 @@ CLASS="SCREEN"
 */
 
 
-$DB_TYPE="mysql";
-
 $DB_HOST="localhost";
 $DB_NAME="mail";
 $DB_USER="mail";
-$DB_PASSWD="secret";&#13;</PRE
+$DB_PASSWD="secret";
+$DB_PROTOCOL="unix"; // set to "tcp" for TCP/IP
+$DSN="$DB_TYPE://$DB_USER:$DB_PASSWD@$DB_PROTOCOL+$DB_HOST/$DB_NAME";</PRE
 ></FONT
 ></TD
 ></TR
 ></TABLE
-><P
->This is the PEAR stuff with is only needed (at the moment) if you work with the CVS versions</P
-><TABLE
-BORDER="1"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><FONT
-COLOR="#000000"
-><PRE
-CLASS="SCREEN"
->$DSN="$DB_TYPE://$DB_USER:$DB_PASSWD@$DB_HOST/$DB_NAME";</PRE
-></FONT
-></TD
-></TR
-></TABLE
-><P
->And this variable is the final result of the PEAR configuration which is used by web-cyradm, please leave in untouched</P
 ></DIV
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN494">8.3. Default Quota</H2
+NAME="AEN574">8.3. Default Quota</H2
 ><P
->	The default quota to be used is set in the Variable »DEFAULT_QUOTA=20000« and is used when 
+>	The default quota to be used is set in the variable <TT
+CLASS="VARNAME"
+>DEFAULT_QUOTA=20000</TT
+> and is used when 
 	creating a new domain</P
 ></DIV
 ><DIV
@@ -245,29 +191,94 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN497">8.4. Crypted passwords</H2
+NAME="AEN578">8.4. Crypted passwords</H2
 ><P
->At the moment the handling of crypted passwords is not yet supported and will be implemented in 
-	one of the next major releases. In meantime please leave the value of the Variable $CRYPT=0</P
+>Web-cyradm supports the storage of encryted passwords. I strongly suggest, to use encryption.
+	There are two methods supported at the moment: Unix-compatible (crypt) and MySQL. 
+	The Unix-compatible encryption allows you to take over encrytped passwords from an 
+	existing <TT
+CLASS="FILENAME"
+>/etc/shadow</TT
+>. This should be preferred. 
+	</P
+><P
+>Unfortunately, MySQL uses a proprietary encryption method which is only available
+	when using MySQL. I'm currently thinking about dropping support for MySQL crypt, because it would only
+	work with MySQL and makes a migration to another database impossible. As soon as there is a method available
+	to re-engineer the MySQL crypt on PHP there will be a solution (Help needed in programming, legal contraints?)
+	</P
+><P
+>Check the variable <TT
+CLASS="VARNAME"
+>$CRYPT</TT
+> in the file <TT
+CLASS="FILENAME"
+>config.inc.php</TT
+>. 
+	Value »plain« means no encryption, »crypt« means Shadow compatible encryption, 
+	mysql means MySQL encryption.</P
+><DIV
+CLASS="CAUTION"
+><P
+></P
+><TABLE
+CLASS="CAUTION"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/caution.gif"
+HSPACE="5"
+ALT="Caution"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="CENTER"
+><B
+>Choose encryption method carefully</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Since the supported crypto-methods are all one-way encryptions, there will be NO WAY to migrate from
+	one to another. Note also, that this is a global variable, which means, it is used for all passwords,
+	including the password of the admin users. I STRONGLY suggest to use Unix Shadow compatible encryption,
+	because it makes you independant from any software vendor.</P
+></TD
+></TR
+></TABLE
+></DIV
 ></DIV
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN500">8.5. Usernames</H2
+NAME="AEN589">8.5. Usernames</H2
 ><P
->There are two schemas of usernames supported with are defined in the variable »DOMAIN_AS_PREFIX«. 
+>There are two schemas of usernames supported which are defined in the variable »DOMAIN_AS_PREFIX«. 
 	The default is to have a defined prefix ($DOMAIN_AS_PREFIX=0), i.e. »test« for the domain »expample.com«. 
 	With this scheme, the first user gets the username test0001, the second test0002 and incrementing.
 	</P
 ><P
->The other one is to have usernames like »hans.mueller.example.com«. If that case set $DOMAIN_AS_PREFIX=1</P
+>The other one is to have usernames like »hans.mueller.example.com«. 
+	If that case set $DOMAIN_AS_PREFIX=1</P
 ><P
 >At the moment you can not mix both schemas, evaluate carefully with scheme matches your needs best</P
 ><P
->If you choose to have $DOMAIN_AS_PREFIX=1, be sure you uncomment the option »unixhierarchysep: yes« like described
-	in <A
+>If you choose to have $DOMAIN_AS_PREFIX=1, be sure you uncomment the 
+	option <TT
+CLASS="OPTION"
+>unixhierarchysep: yes</TT
+> like described in <A
 HREF="cyrus-config.html#ETC-IMAPD"
 >Section 7.1.2</A
 ></P

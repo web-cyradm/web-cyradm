@@ -88,11 +88,11 @@ WIDTH="100%"
 COLOR="#000000"
 ><PRE
 CLASS="SCREEN"
->auth sufficient pam_mysql.so user=mail passwd=secret host=localhost db=mail table=accountuser usercolumn=username   passwdcolumn=password crypt=0
+>auth sufficient pam_mysql.so user=mail passwd=secret host=localhost db=mail table=accountuser usercolumn=username   passwdcolumn=password crypt=1
 
 auth sufficient pam_unix_auth.so
 
-account required pam_mysql.so user=mail passwd=secret host=localhost db=mail table=accountuser usercolumn=username passwdcolumn=password   crypt=0
+account required pam_mysql.so user=mail passwd=secret host=localhost db=mail table=accountuser usercolumn=username passwdcolumn=password   crypt=1
 
 account  sufficient       pam_unix_acct.so</PRE
 ></FONT
@@ -100,24 +100,18 @@ account  sufficient       pam_unix_acct.so</PRE
 ></TR
 ></TABLE
 ><P
->The lines containing pam_unix_auth.so and pam_unix_acct.so are only needed if you are 
-	migrating from wu-IMAP to cyrus. This way the users can be authenticate with its old unix-password 
-	and its new mysql-based password</P
+>The lines containing <TT
+CLASS="OPTION"
+>pam_unix_auth.so</TT
+> and <TT
+CLASS="OPTION"
+>pam_unix_acct.so</TT
+>
+	 are only needed if you are migrating from WU-IMAP to Cyrus. 
+	This allows you to authenticate with its old unix-password AND its new mysql-based password.</P
 ><P
->If you will use Cyrus also for POP-Service just <B
-CLASS="COMMAND"
->cp /etc/pam.d/imap /etc/pam.d/pop</B
->
-	For user that like to use also sieve, must also make a pam module for the sieve service with the following
-	entry: <B
-CLASS="COMMAND"
->cp /etc/pam.d/imap /etc/pam.d/sieve</B
-> Finally if you want to use SMTP authentication
-	you need to copy the same file: <B
-CLASS="COMMAND"
->cp /etc/pam.d/imap /etc/pam.d/smtp</B
->
-	</P
+>To use the other services provided by cyrus and smtp-authtication you need to copy the file
+	so that they match the service-ID</P
 ><TABLE
 BORDER="1"
 BGCOLOR="#E0E0E0"
