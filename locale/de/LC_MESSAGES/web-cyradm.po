@@ -107,7 +107,7 @@ msgstr "Maximale Anzahl Konti"
 
 #: browse.php:25
 msgid "default quota per user"
-msgstr "Standart Speicherplatz pro Konto"
+msgstr "Standard Speicherplatz pro Konto"
 
 #: browse.php:56
 msgid "Edit Domain"
@@ -480,7 +480,7 @@ msgstr "Maximale Anzahl Konti"
 
 #: newdomain.php:41
 msgid "Default Quota in Kilobytes"
-msgstr "Standart Speicherplatzbegrenzung"
+msgstr "Standard Speicherplatzbegrenzung"
 
 #: newdomain.php:47
 msgid "Standart Mailboxes"
