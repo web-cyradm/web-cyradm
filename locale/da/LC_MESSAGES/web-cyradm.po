@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: adminuser.php:12
@@ -20,11 +20,11 @@ msgstr "Gennemse Administratorer"
 
 #: adminuser.php:24
 msgid "Total administrators"
-msgstr "administratorer"
+msgstr "Administratorer"
 
 #: adminuser.php:27
 msgid "Add administator"
-msgstr "Tilfj Administrator"
+msgstr "Tilføj Administrator"
 
 #: adminuser.php:35 adminuser.php:39 browseaccounts.php:49
 #: browseaccounts.php:53
@@ -34,7 +34,7 @@ msgstr "Forrige 10"
 #: adminuser.php:43 adminuser.php:47 browseaccounts.php:57
 #: browseaccounts.php:61
 msgid "Next 10 entries"
-msgstr "Nste 10"
+msgstr "Næste 10"
 
 #: adminuser.php:53 browse.php:16 browseaccounts.php:69 editaccount.php:31
 msgid "action"
@@ -51,7 +51,7 @@ msgstr "Kodeord"
 
 #: adminuser.php:56
 msgid "domain"
-msgstr "domne"
+msgstr "domæne"
 
 #: adminuser.php:57
 msgid "admin type"
@@ -71,32 +71,31 @@ msgstr "Ingen konti fundet"
 
 #: adminuser.php:112
 msgid "Add administrator"
-msgstr "Tilfj administrator"
+msgstr "Tilføj administrator"
 
 #: auth.inc.php:99
-#, fuzzy
 msgid "Web-cyradm is for authorized users only."
 msgstr "Dette er kun for autoriserede brugere"
 
 #: auth.inc.php:100
 msgid "Make sure you entered the right password."
-msgstr ""
+msgstr "Verificer af du indtastede det rigtige kodeord."
 
 #: auth.inc.php:101
 msgid "Push the back button in your browser to try again."
-msgstr ""
+msgstr "Klik på tilbage knappen i din browser for at prøve igen."
 
 #: auth.inc.php:102
 msgid "Your attempt to login has been stored."
-msgstr ""
+msgstr "Dit forsøg på at logge ind er blevet gemt."
 
 #: browse.php:12
 msgid "Browse domains"
-msgstr "Gennemse domner"
+msgstr "Gennemse domæner"
 
 #: browse.php:17
 msgid "domainname"
-msgstr "Domnenavn"
+msgstr "Domænenavn"
 
 #: browse.php:21
 msgid "prefix"
@@ -112,11 +111,11 @@ msgstr "Standard quota per bruger"
 
 #: browse.php:56
 msgid "Edit Domain"
-msgstr "Rediger Domne"
+msgstr "Rediger Domæne"
 
 #: browse.php:57
 msgid "Delete Domain"
-msgstr "Slet Domne"
+msgstr "Slet Domæne"
 
 #: browse.php:58 deletedomain.php:29 menu.inc.php:42
 msgid "accounts"
@@ -124,7 +123,7 @@ msgstr "konti"
 
 #: browseaccounts.php:20
 msgid "Browse accounts for domain"
-msgstr "Gennemse konti for domnet"
+msgstr "Gennemse konti for domænet"
 
 #: browseaccounts.php:38 newaccount.php:48
 msgid "Total accounts"
@@ -156,25 +155,23 @@ msgstr "Slet konto"
 
 #: browseaccounts.php:95
 msgid "Set quota"
-msgstr "St quota"
+msgstr "Sæt quota"
 
 #: browseaccounts.php:96
 msgid "Set catch all"
 msgstr "lav til maildrop"
 
 #: browseaccounts.php:99
-#, fuzzy
 msgid "Change Password"
-msgstr "Verificer Kodeord"
+msgstr "Ændre Kodeord"
 
 #: browseaccounts.php:100
-#, fuzzy
 msgid "Vacation"
-msgstr "funktioner"
+msgstr "Ferie"
 
 #: browseaccounts.php:101
 msgid "Forward"
-msgstr ""
+msgstr "Frem"
 
 #: browseaccounts.php:126 editaccount.php:76
 msgid "out of"
@@ -190,7 +187,7 @@ msgstr "Ingen konti fundet"
 
 #: catchall.php:13
 msgid "Define a Account for receiving undefined adresses for domain"
-msgstr "Definer en konto for udefinerede adresser p domnet"
+msgstr "Definer en konto for udefinerede adresser på domænet"
 
 #: catchall.php:24
 msgid "Do you really want to define the user"
@@ -202,39 +199,36 @@ msgstr "til at modtage for alle udefinerede adresser"
 
 #: catchall.php:54 newadminuser.php:76
 msgid "successfully added to Database"
-msgstr "korrekt tilfjet til database"
+msgstr "korrekt tilføjet til database"
 
 #: catchall.php:57 editdomain.php:25 editemail.php:36 newemail.php:29
 #: newdomain.php:113
 msgid "Database error, please try again"
-msgstr "Database fejl, prv igen"
+msgstr "Database fejl, prøv igen"
 
 #: change_password.php:60
 msgid "Change password for account"
-msgstr ""
+msgstr "Ændre kodeorg for kontoen"
 
 #: change_password.php:72
-#, fuzzy
 msgid "New password"
-msgstr "Kodeord"
+msgstr "Ny Kodeord"
 
 #: change_password.php:76
-#, fuzzy
 msgid "Confirm new password"
 msgstr "Verificer Kodeord"
 
 #: change_password.php:29
-#, fuzzy
 msgid "Password changed"
-msgstr "Kodeord"
+msgstr "Kodeord ændret"
 
 #: change_password.php:32
 msgid "Failure in changing password."
-msgstr ""
+msgstr "Fejl ved ændring af kodeord."
 
 #: change_password.php:35
 msgid "New passwords are not equal. Password not changed"
-msgstr ""
+msgstr "De nye kodeord er ikke ens, kodeord uændret"
 
 #: deleteaccount.php:19
 msgid "Delete an Account from the System"
@@ -253,22 +247,20 @@ msgid "Action cancelled, nothing deleted"
 msgstr "sletning annuleret, ingenting slettet"
 
 #: deleteadminuser.php:12
-#, fuzzy
 msgid "Delete an Admin account from the System"
 msgstr "Slet en konto fra systemet"
 
 #: deleteadminuser.php:14
-#, fuzzy
 msgid "Do you really want to delete the Domain supervisor"
-msgstr "Vil du virkelig slette domnet"
+msgstr "Vil du virkelig slette domænet"
 
 #: deletedomain.php:24
 msgid "Delete a Domain from the System"
-msgstr "Slet et domne fra systemet"
+msgstr "Slet et domæne fra systemet"
 
 #: deletedomain.php:26
 msgid "Do you really want to delete the Domain"
-msgstr "Vil du virkelig slette domnet"
+msgstr "Vil du virkelig slette domænet"
 
 #: deletedomain.php:26
 msgid "with all its defined accounts, admins, and emailadresses"
@@ -276,7 +268,7 @@ msgstr "med alle dets definerede konti, admins og emailadresser"
 
 #: deletedomain.php:27
 msgid "This can take a while depending on how many account have to be deleted"
-msgstr "Dette kan tage et stykke tid, afhngigt af hvor konti der skal slettes"
+msgstr "Dette kan tage et stykke tid, afhængigt af hvor mange konti der skal slettes"
 
 #: deletedomain.php:29
 msgid "Your action will delete"
@@ -284,7 +276,7 @@ msgstr "Dit valg vil slette"
 
 #: deletedomain.php:94
 msgid "Domain"
-msgstr "domne"
+msgstr "domæne"
 
 #: deletedomain.php:94
 msgid "successfully deleted"
@@ -296,11 +288,11 @@ msgstr "Slet en emailadresse fra systemet"
 
 #: deleteemail.php:19
 msgid "Do you really want to delete the emailadress for user"
-msgstr "Vil du virkelig slette emailadresse for brugeren"
+msgstr "Vil du virkelig slette emailadressen for brugeren"
 
 #: editaccount.php:17
 msgid "Email adresses defined for user"
-msgstr "Emailadresse defineret for brugeren"
+msgstr "Emailadresser defineret for brugeren"
 
 #: editaccount.php:25
 msgid "New email address"
@@ -316,25 +308,23 @@ msgstr "Slet emailadresse"
 
 #: editadminuser.php:5
 msgid "Change admin user for domain"
-msgstr ""
+msgstr "Skift admin for domænet"
 
 #: editadminuser.php:81
-#, fuzzy
 msgid "successfully changed Database...."
-msgstr "korrekt tilfjet til database"
+msgstr "korrekt ændring af database"
 
 #: editadminuser.php:84 newadminuser.php:79
-#, fuzzy
 msgid "Database error"
-msgstr "Database fejl, prv igen"
+msgstr "Database fejl"
 
 #: editdomain.php:21 editemail.php:32
 msgid "Successfully changed"
-msgstr "Korrekt ndret"
+msgstr "Korrekt ændret"
 
 #: editdomain.php:89
 msgid "Your are not allowed to change domains!"
-msgstr ""
+msgstr "Du har ikke tilladelse til at ændre domæner!"
 
 #: editemail.php:63 newemail.php:53
 msgid "Emailadress"
@@ -354,7 +344,7 @@ msgstr "Dette er kun for autoriserede brugere"
 
 #: login.php:70
 msgid "Please authenticate yourself"
-msgstr "Autoriser venligst digselv"
+msgstr "Autoriser venligst dig selv"
 
 #: logout.php:32
 msgid "Thank you for using Web-cyradm"
@@ -374,15 +364,15 @@ msgstr "her"
 
 #: menu.inc.php:23
 msgid "Domainmasters menu"
-msgstr "Domnemesterens menu"
+msgstr "Domæne administratorens menu"
 
 #: menu.inc.php:27
 msgid "add new domain"
-msgstr "tilfj nyt domne"
+msgstr "tilføj nyt domne"
 
 #: menu.inc.php:30
 msgid "browse domains"
-msgstr "Gennemse domner"
+msgstr "Gennemse domæner"
 
 #: menu.inc.php:33
 msgid "adminusers"
@@ -398,7 +388,7 @@ msgstr "log af"
 
 #: menu.inc.php:53
 msgid "Search"
-msgstr "Sg"
+msgstr "Søg"
 
 #: menu.inc.php:69
 msgid "Logged in as user"
@@ -414,25 +404,23 @@ msgstr "Superbruger"
 
 #: menu.inc.php:79
 msgid "Domain Master"
-msgstr "Domnermester "
+msgstr "Domæne Administrator "
 
 #: newaccount.php:14
 msgid "Add new Account to domain"
-msgstr "Tilfj ny konti til domnet"
+msgstr "Tilføj ny konti til domænet"
 
 #: newaccount.php:27
 msgid "transport is not cyrus, unable to create account"
-msgstr ""
+msgstr "transporten er ikke cyrus, kan ikke oprette konto"
 
 #: newaccount.php:43
-#, fuzzy
 msgid "Sorry, no more account allowed for domain"
-msgstr "Gennemse konti for domnet"
+msgstr "Desværre, det er ikke tilladt at oprette flere konti på domænet"
 
 #: newaccount.php:43
-#, fuzzy
 msgid "Maximum allowed accounts is"
-msgstr "Max. konti"
+msgstr "Max. antal konti er"
 
 #: newaccount.php:79
 msgid "Accountname"
@@ -448,37 +436,35 @@ msgstr "Verificer Kodeord"
 
 #: newaccount.php:139
 msgid "Account successfully added to the Database"
-msgstr "Konto korrekt tilfjet til databasen"
+msgstr "Konto korrekt tilføjet til databasen"
 
 #: newaccount.php:153
 msgid "Account succesfully added to the IMAP Subsystem"
-msgstr "Konto korrekt tilfjet til IMAP undersystemet"
+msgstr "Konto korrekt tilføjet til IMAP undersystemet"
 
 #: newadminuser.php:6
-#, fuzzy
 msgid "Add new admin user for domain"
-msgstr "Tilfj ny konti til domnet"
+msgstr "Tilføj ny Admin til domænet"
 
 #: newadminuser.php:8
 msgid "Please select a domain first"
-msgstr ""
+msgstr "Vælg venligst først et domæne"
 
 #: newadminuser.php:30
-#, fuzzy
 msgid "Admin Type"
 msgstr "Admin type"
 
 #: newadminuser.php:34
 msgid "Select \"Superuser\" for all domains"
-msgstr ""
+msgstr "Vælg \"Superuser\" for alle domæner"
 
 #: newdomain.php:17
 msgid "Add new domain"
-msgstr "Tilfj nyt domne"
+msgstr "Tilføj nyt domæne"
 
 #: newdomain.php:29
 msgid "Domainname"
-msgstr "Domnenavn"
+msgstr "Domænenavn"
 
 #: newdomain.php:35
 msgid "Prefix"
@@ -494,29 +480,29 @@ msgstr "Standard Quota i Kilobytes"
 
 #: newdomain.php:47
 msgid "Standart Mailboxes"
-msgstr ""
+msgstr "Standard Postkasser"
 
 #: newdomain.php:51
 msgid ""
 "emailadress where the default aliases should be mapped (empty means no "
 "mapping)"
-msgstr ""
+msgstr "Email adresse hvor standard aliaset skal mappes (Blank betyder ingen mapning"
 
 #: newdomain.php:59
 msgid "Mail transport"
-msgstr ""
+msgstr "Mail transport"
 
 #: newdomain.php:60
 msgid "Leave this as is, unless you know what you are doing"
-msgstr ""
+msgstr "Lad denne være, med mindre du ved hvad du gør"
 
 #: newdomain.php:125
 msgid "You are not allowed to add new domains"
-msgstr ""
+msgstr "Du har ikke tilladelse til at tilføje nye domæner"
 
 #: newemail.php:25
 msgid "Successfully added"
-msgstr "Korrekt tilfjet"
+msgstr "Korrekt tilføjet"
 
 #: newemail.php:41
 msgid "New emailadress for user"
@@ -524,11 +510,11 @@ msgstr "Ny emailadresse for bruger"
 
 #: setquota.php:25
 msgid "Setting individual Quota for user"
-msgstr "Stter individuel Quora for bruger"
+msgstr "Sætter individuel Quora for bruger"
 
 #: timeout.php:65
 msgid "Your session timed out"
-msgstr "Din session er udlbet"
+msgstr "Din session er udløbet"
 
 #: Submit and cancel buttons
 msgid "Yes, delete"
@@ -538,107 +524,104 @@ msgid "Yes"
 msgstr "Ja"
 
 msgid "Submit"
-msgstr "Tilfj"
+msgstr "Tilføj"
 
 msgid "Cancel"
 msgstr "Annuler"
 
 #: Error messages editdomain.php:61
 msgid "Not yet supported, change will be ignored"
-msgstr ""
+msgstr "Ikke supporteret endnu, ændring vil blive ignoreret"
 
 #: deleteaccount.php:64 editadminuser.php:94 newadminuser.php:89
 msgid ""
 "Security violation detected, action cancelled. Your attempt has been logged."
-msgstr ""
+msgstr "Sikkerhedsbrud detekteret, handling annuleret. Dit forsøg er blevet gemt."
 
 #: failed.php:49
 msgid "Login failed"
-msgstr ""
+msgstr "Login fejlet"
 
 #: forwardaccount.php:41
-#, fuzzy
 msgid "Forward for account"
-msgstr "Konti"
+msgstr "Videresend for konto"
 
 #: forwardalias.php:102
-#, fuzzy
 msgid "Forward for emailadress"
-msgstr "Ny email adresse"
+msgstr "Videresend for emailadresse"
 
 #: forwardsalias.php:52
 msgid "Forward set"
-msgstr ""
+msgstr "Videresend sat"
 
 #: forwardalias.php:53
 msgid "Failure in setting forward"
-msgstr ""
+msgstr "Fejl i indstilling af videresend"
 
 #: forwardsalias.php:54
-#, fuzzy
 msgid "Wrong password"
-msgstr "Verificer Kodeord"
+msgstr "Forkert Kodeord"
 
 #: forwardsalias.php:68
 msgid "Forwarding removed"
-msgstr ""
+msgstr "Videresend fjernet"
 
 #: forwardsalias.php:69
 msgid "Failure in removing forwarding"
-msgstr ""
+msgstr "Fejl i fjernelse af videresendelse"
 
 #: forwardalias.php:149
 msgid "Set forwarding to"
-msgstr ""
+msgstr "Sæt videresend til"
 
 #: forwardalias.php:151
 msgid "Keep a copy in the user's mailbox"
-msgstr ""
+msgstr "Gem en kopi i brugerens postkasse"
 
 #: forwardalias.php:152
 msgid "Remove forwarding"
-msgstr ""
+msgstr "Fjern videresendelse"
 
 #: vacation.php:120
 msgid "Vacation message for emailadress"
-msgstr ""
+msgstr "Ferie besked for denne emailadresse"
 
 #: vacation.php:132
 msgid "Set vacation notice"
-msgstr ""
+msgstr "Sæt ferie besked"
 
 #: vacation.php:134
 msgid "Remove vacation notice"
-msgstr ""
+msgstr "Fjern ferie besked"
 
 #: vacation.php:58
 msgid "Vacation notice set"
-msgstr ""
+msgstr "Ferie besked sat"
 
 #: vacation.php:59
 msgid "Failed to activate vacation"
-msgstr ""
+msgstr "Fejl ved aktivering af Ferie"
 
 #: vacation.php:62
 msgid "Failure in modifying vacation notice"
-msgstr ""
+msgstr "Fejl ved ændring af ferie besked"
 
 #: vacation.php:65 vacation.php:88 forwards.php:71
 msgid "Failed to login"
-msgstr ""
+msgstr "Fejl ved login"
 
 #: vacation.php:78
 msgid "Failure in unseting vacation notice"
-msgstr ""
+msgstr "Fejl ved deaktivering af ferie besked"
 
 #: vacation.php:82
 msgid "Vacation notice removed"
-msgstr ""
+msgstr "Ferie besked fjernet"
 
 #: vacation.php:84
 msgid "Failure in removing vacation notice"
-msgstr ""
+msgstr "Fel ved fjernelse af ferie besked"
 
 #: vacation:93 forwardalias:75
 msgid "Not possible"
-msgstr ""
+msgstr "Ikke muligt"
