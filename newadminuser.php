@@ -23,12 +23,12 @@ else{
 		<table>
 			<tr>
 				<td>login</td>
-				<td><input class="inputfield" type="text" name="adminuser" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
+				<td><input class="inputfield" type="text" name="newadmin" onFocus="this.style.backgroundColor='#aaaaaa'"></td>
 			</tr>
 		
 			<tr>
 				<td>Type</td>
-				<td><select name="type">
+				<td><select name="newadmintype">
 					<option value=0>Superuser</option>
 					<option selected value=1>Domain supervisor</option>
 				</select> Select "Superuser" for all domains
@@ -58,16 +58,16 @@ else{
 
 		else if ($confirmed){
 	
-			$query="INSERT INTO adminuser (username , password , type ) VALUES ('$adminuser','$password','$type')";
+			$query="INSERT INTO adminuser (username , password , type ) VALUES ('$newadmin','$password','$newadmintype')";
 
 			$handle1=mysql_connect($MYSQL_HOST,$MYSQL_USER,$MYSQL_PASSWD);
 			$result=mysql_db_query($MYSQL_DB,$query,$handle1);
 	
-			if ($type==0){
-				$query2="INSERT INTO domainadmin (domain_name , adminuser) values ('*' , '$adminuser')";
+			if ($newadmintype==0){
+				$query2="INSERT INTO domainadmin (domain_name , adminuser) values ('*' , '$newadmin')";
 			}
 			else{
-				$query2="INSERT INTO domainadmin (domain_name , adminuser) values ('$domain' , '$adminuser')";
+				$query2="INSERT INTO domainadmin (domain_name , adminuser) values ('$domain' , '$newadmin')";
 			}
 			$result2=mysql_db_query($MYSQL_DB,$query2,$handle1);
 
