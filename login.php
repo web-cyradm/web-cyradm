@@ -77,13 +77,25 @@ function entsub() {
 		<td></td>
 		<td><font color="#999999"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><?php print _("Select language")?></td>
 		<td>
-<select size="1" name="LANG">
+<select size="1" name="LANG" onchange= "selectLang()">
+
+<script language="JavaScript" type="text/javascript">
+function selectLang()
+{
+    if (document.form1.login.value == '' &&
+        document.form1.password.value == '') {
+        var lang_page = 'index.php?LANG=' + document.form1.LANG[document.form1.LANG.selectedIndex].value;
+        self.location = lang_page;
+    }
+}
+
+</script>
 
 <?php
 
 foreach ($nls['aliases'] as $l){
 
-	if ($l == $DEFAULTLANG){
+	if ($l == $LANG){
 		print "<option selected>";
 	}
 	else{
@@ -116,4 +128,5 @@ foreach ($nls['aliases'] as $l){
 <?php
 include WC_BASE . "/footer.inc.php";
 
+?>
 
