@@ -22,6 +22,8 @@ CREATE TABLE accountuser (
   imap int(10) NOT NULL default '0',
   pop int(10) NOT NULL default '0',
   sieve int(10) NOT NULL default '0',
+  smtpauth int(10) NOT NULL default '0',
+  status int(10) NOT NULL default '0',
   UNIQUE KEY username (username)
 ) TYPE=MyISAM;
 # --------------------------------------------------------

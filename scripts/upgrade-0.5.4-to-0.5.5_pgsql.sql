@@ -2,11 +2,14 @@
 -- How to achive "AFTER quota"?
 ALTER TABLE domain ADD domainquota int;
 ALTER TABLE domain SET DEFAULT '0';
+UPDATE domain SET domainquota = DEFAULT;
+ALTER TABLE domain ALTER COLUMN domainquota SET NOT NULL;
+
 ALTER TABLE accountuser ADD imap int;
 ALTER TABLE accountuser ADD pop int;
 ALTER TABLE accountuser ADD sieve int;
-UPDATE domain SET domainquota = DEFAULT;
-ALTER TABLE domain ALTER COLUMN domainquota SET NOT NULL;
+ALTER TABLE accountuser ADD smtpauth int;
+ALTER TABLE accountuser ADD status int;
 
 CREATE TABLE settings (
   username varchar(50) PRIMARY KEY,

@@ -15,7 +15,9 @@ CREATE TABLE accountuser (
   domain_name varchar(255) NOT NULL default '',
   imap int NOT NULL default 0,
   pop int NOT NULL default 0,
-  sieve int NOT NULL default 0
+  sieve int NOT NULL default 0,
+  smtpauth int NOT NULL default 0,
+  status int NOT NULL default 0
 );
 
 CREATE TABLE adminuser (
