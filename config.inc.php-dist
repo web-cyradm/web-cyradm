@@ -1,6 +1,12 @@
 <?php
 
-$LANG="de_CH";
+# Set you language settings here
+#
+# Currently translated languages includes:
+#
+# de_CH (also okay for de_DE and de_AT)
+#
+$LANG="";
 setlocale(LC_ALL, $LANG);
 
 # The Cyrus login stuff
