@@ -120,6 +120,29 @@ function ValidateMail($email) {
 	}
 }
 
+function ValidDomain($domain) {
+	if (!eregi("^[[:alnum:]]([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](g|l|m|pa|t|u|v)?$",$domain)){
+		return FALSE;
+	} else {
+		return TRUE;
+	}
+}
+
+function ValidPrefix($prefix) {
+	global $DOMAIN_AS_PREFIX;
+	
+	if ($DOMAIN_AS_PREFIX) {
+		return ValidDomain($prefix);
+	} else {
+		if (!eregi("^[[:alnum:]_-]+$",$prefix)){
+			return FALSE;
+		} else {
+			return TRUE;
+		}
+	}
+	
+}
+
 if (! empty($action)){
 	switch ($action){
 ############################## Check deleteaccount ##################################################
@@ -284,16 +307,16 @@ if (! empty($action)){
 	case "newdomain":
 
 		if (! empty($confirmed)){
-			if (!$domain){
+			if ($DOMAIN_AS_PREFIX) {
+				$prefix = $domain;
+			}
+			if (!ValidDomain($domain)){
 				$authorized = FALSE;
 				$err_msg = "You must choose a valid domainname";
-			} elseif (!$prefix){
+			} elseif (!ValidPrefix($prefix)){
 				$authorized = FALSE;
 				$err_msg = "You must choose a valid prefix for your domain";
 			} else {
-				if ($DOMAIN_AS_PREFIX) {
-					$prefix = $domain;
-				}
 				$query = "SELECT domain_name FROM domain WHERE domain_name='$domain' OR prefix='$prefix'";
 				$result = $handle->query($query);
 				if ($result->numRows()){
@@ -307,13 +330,15 @@ if (! empty($action)){
 		break;
 ####################################### Check input if editdomain ####################################
 	case "editdomain":
-		$query = "SELECT domain_name FROM domain WHERE domain_name='$newdomain' AND domain_name!='$domain' OR prefix='$_GET[newprefix]' AND prefix!='$prefix'";
-		$result = $handle->query($query);
-		if ($result->numRows()){
-			$authorized = FALSE;
-			$err_msg = "Domain or prefix already exists";
-		} else {
-			$authorized = TRUE;
+		if (!empty($confirmed)){
+			$query = "SELECT domain_name FROM domain WHERE domain_name='$newdomain' AND domain_name!='$domain' OR prefix='$_GET[newprefix]' AND prefix!='$prefix'";
+			$result = $handle->query($query);
+			if ($result->numRows()){
+				$authorized = FALSE;
+				$err_msg = "Domain or prefix already exists";
+			} else {
+				$authorized = TRUE;
+			}
 		}
 		break;
 ##################################### Check input if changeadminpasswd ###############################
