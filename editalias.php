@@ -68,6 +68,7 @@ else {
 	<table cellspacing="2" cellpadding="0">
 	<tr>
 		<td class="navi"><a href="index.php?action=deletealias&domain=<?php echo $domain ?>&alias=<?php echo $alias ?>"><?php print _("Delete this alias");?></a></td>
+		<td class="navi"><a href="index.php?action=aliases&domain=<?php echo $domain ?>"><?php print _("Back to Aliases");?></a></td>
 		<td class="navi"><a href="<?php print( $prev_url ); ?>"><?php print _("Previous 10 entries");?></a></td>
 		<td class="navi"><a href="<?php print( $next_url ); ?>"><?php print _("Next 10 entries");?></a></td>
 	</tr>
