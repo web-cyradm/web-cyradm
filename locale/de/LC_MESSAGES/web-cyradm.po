@@ -982,3 +982,129 @@ msgstr "Abbrechen"
 #: deleteemail.php:70
 msgid "Emailadress deleted."
 msgstr "E-Mail-Adresse gelöscht"
+
+#: browse.php:77 browseaccounts.php:53
+msgid "First entry"
+msgstr "Erster Eintrag"
+
+#: browse.php:91 browse.php:93 browseaccounts.php:67 browseaccounts.php:70
+msgid "Last entry"
+msgstr "Letzter Eintrag"
+
+#: browse.php:80 browse.php:82 browseaccounts.php:60 browseaccounts.php:62
+msgid "Previous entries"
+msgstr "Vorherige Einträge"
+
+#: browse.php:86 browse.php:88 browseaccounts.php:66 browseaccounts.php:69
+msgid "Next entries"
+msgstr "Nächste Einträge"
+
+#: browse.php:132
+msgid "Domain quota"
+msgstr "Standard Speicherplatz pro Domäne"
+
+#: menu.inc.php:86
+msgid "settings"
+msgstr "Einstellungen"
+
+#: editdomain.php:206 newdomain.php:134
+msgid "Quota for Domain in Kilobytes"
+msgstr "Standard Speicherplatz für Domäne in KB"
+
+#: browse.php:55
+msgid "Total Domains:"
+msgstr "Domänen insgesamt:"
+
+#: browseaccounts.php:99
+msgid "services"
+msgstr "Dienste"
+
+#: browseaccounts.php:150 editservices.php:68 editservices.php:107
+msgid "Services"
+msgstr "Dienste"
+
+#: editaccount.php:23
+msgid "Email addresses defined for user"
+msgstr "E-Mail-Adressen von Benutzer"
+
+#: editservices.php:16
+msgid "Edit services for user"
+msgstr "Ändern der Dienste für Benutzer"
+
+#: editservices.php:72
+msgid "Fetch mail via IMAP client"
+msgstr "Mails via IMAP abholen"
+
+#: editservices.php:76
+msgid "Fetch mail via POP client"
+msgstr "Mails via POP abholen"
+
+#: editservices.php:80
+msgid "Set vacation message and filter rules with sieve"
+msgstr "Abwesenheitsnotizen und Filterregeln mit Sieve bearbeiten"
+
+#: editservices.php:85
+msgid "Send E-Mails via smtp authentication"
+msgstr "E-Mail Versand mit SMTP Authentifizierung"
+
+#: editservices.php:90:
+msgid "Receive E-Mails via smtp"
+msgstr "E-Mails über SMTP empfangen"
+
+#: editservices.php:98
+msgid "Change"
+msgstr "Ändern"
+
+#: settings.php:17
+msgid "Administration Settings"
+msgstr "Administrative Einstellungen"
+
+#: settings.php:30
+msgid "You can set all administrative settings."
+msgstr "Hier können Sie alle administrative Einstellungen ändern."
+
+#: settings.php:43
+msgid "Change password"
+msgstr "Passwort ändnern"
+
+#: settings.php:53
+msgid "Use this to change your admin password."
+msgstr "Hier können Sie Ihr Admin Passwort ändern."
+
+#: settings.php:23
+msgid "Display Preferences"
+msgstr "Anzeigeeinstellungen"
+
+#: settings.php:34
+msgid "You can change the way that Web-cyradm displays information to you."
+msgstr "Hier können Sie einstellen wie Web-Cyradm Ihnen die Informationen anzeigt."
+
+#: changeadminpasswd.php:28
+msgid "Old Password"
+msgstr "Altes Passwort"
+
+#: changeadminpasswd.php:43
+msgid "New Password"
+msgstr "Neues Passwort"
+
+#: display.php:36
+msgid "Color scheme"
+msgstr "Farbschema"
+
+#: display.php:58
+msgid "Number of domains displayed on page"
+msgstr "Anzahl der angezeigten Domänen die je Seite"
+
+#: display.php:74
+msgid "Number of accounts displayed on page"
+msgstr "Anzahl der angezeigten Accounts je Seite"
+
+#: display.php:90
+msgid "Quota usage warn level"
+msgstr "Warngrenze für Speicherplatzbegrenzung"
+
+#: display.php:17
+msgid "Display preferences for"
+msgstr "Anzeigeeinstellungen für Benutzer"
+
+
