@@ -25,6 +25,16 @@ a:hover {
 	color: white;
 }
 
+a.navilink:link,a.navilink:visited,a.navilink:active {
+	color : white;
+}
+
+a.navilink:hover {
+	color : black;
+	textdecoration : none;
+}
+
+
 .rootnavi {
         font-weight: bold;
         font-size: 12px;
@@ -36,6 +46,16 @@ a:hover {
         padding-bottom : 2px;
         padding-top : 2px;
 }
+
+a.rootnavilink:link,a.rootnavilink:visited,a.rootnavilink:active {
+	color : white;
+}
+
+a.rootnavilink:hover {
+	color : black;
+	textdecoration : none;
+}
+
 
 .banner {
 	border-bottom : 1px solid Black;

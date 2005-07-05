@@ -63,7 +63,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				if ($_SESSION['admintype']==0){
 					?>
 	                                <td class="navi">
-        	                                <a href="index.php?action=newdomain&domain=new"><?php print _("Add new domain");?></a>
+        	                                <a class="navilink" href="index.php?action=newdomain&domain=new"><?php print _("Add new domain");?></a>
                 	                </td>
 					<td width="20">&nbsp;</td>
                                 <?php
@@ -74,23 +74,23 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$last = $cnt - $_SESSION['maxdisplay'];
 
 
-				print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=0\">"._("First entry") ."</a></td>";		
+				print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=browse&row_pos=0\">"._("First entry") ."</a></td>";		
 	
                                 if ($_SESSION['domain_row_pos'] < $_SESSION['maxdisplay']){
-					print "<td class=\"navi\"><a>"._("Previous entries")."</a></td>";
+					print "<td class=\"navi\"><a class=\"navilink\">"._("Previous entries")."</a></td>";
                                 } else {
-					print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=$prev\">"._("Previous entries") ."</a></td>";		
+					print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=browse&row_pos=$prev\">"._("Previous entries") ."</a></td>";		
                                 }
 
 				if ($next>=$cnt){
 					print "<td class=\"navi\"><a>"._("Next entries")."</a></td>";
 				} else {
-					print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=$next\">". _("Next entries")."</a></td>";
+					print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=browse&row_pos=$next\">". _("Next entries")."</a></td>";
 				}
 				if ($cnt > $_SESSION['maxdisplay']){
-					print "<td class=\"navi\"><a href=\"index.php?action=browse&row_pos=$last\">"._("Last entry") ."</a></td>";
+					print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=browse&row_pos=$last\">"._("Last entry") ."</a></td>";
 				} else {
-					print "<td class=\"navi\"><a>"._("Last entry") ."</a></td>";
+					print "<td class=\"navi\"><a class=\"navilink\">"._("Last entry") ."</a></td>";
 				}			
                                 ?>
 

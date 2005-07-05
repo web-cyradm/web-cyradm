@@ -121,7 +121,7 @@ if (!isset($row_pos)){
 	if ($cnt!=0){
 		print "<table cellspacing=\"2\" cellpadding=\"0\"><tr>";
 		print "<td class=\"navi\">";
-		print "<a href=\"index.php?action=newaccount&domain=$domain\">"._("Add new account")."</a>";
+		print "<a class=\"navilink\" href=\"index.php?action=newaccount&domain=$domain\">"._("Add new account")."</a>";
 		print "</td>";
 
 
@@ -129,17 +129,17 @@ if (!isset($row_pos)){
 		$next = $row_pos +10;
 
 		if ($row_pos<10){
-			print "<td class=\"navi\"><a href=\"#\">"._("Previous 10 entries")."</a></td>";
+			print "<td class=\"navi\"><a class=\"navilink\" href=\"#\">"._("Previous 10 entries")."</a></td>";
 		}
 		else {
-			print "<td class=\"navi\"><a href=\"index.php?action=search&domain=$domain&row_pos=$prev&searchstring=$searchstring\">".
+			print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=search&domain=$domain&row_pos=$prev&searchstring=$searchstring\">".
 			_("Previous 10 entries") ."</a></td>";
 		}
 		if ($next>$total){
-			print "<td class=\"navi\"><a href=\"#\">"._("Next 10 entries")."</a></td>";
+			print "<td class=\"navi\"><a class=\"navilink\" href=\"#\">"._("Next 10 entries")."</a></td>";
 		}
 		else {
-			print "<td class=\"navi\"><a href=\"index.php?action=search&domain=$domain&row_pos=$next&searchstring=$searchstring\">".
+			print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=search&domain=$domain&row_pos=$next&searchstring=$searchstring\">".
 			_("Next 10 entries")."</a></td>";
 		}
 		print "</tr></table><p>";
@@ -244,7 +244,7 @@ if (!isset($row_pos)){
 
 		print "<table><tr>";
 		print "<td class=\"navi\">\n";
-		print "<a href=\"index.php?action=newaccount&domain=$domain\">"._("Add new account")."</a>";
+		print "<a class=\"navilink\" href=\"index.php?action=newaccount&domain=$domain\">"._("Add new account")."</a>";
 		print "\n</td></tr></table>\n";
 
 	}

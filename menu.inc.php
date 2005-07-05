@@ -32,21 +32,21 @@ if (! isset($domain)){
 
 		<tr>
 			<td class="rootnavi">
-				<a href="index.php?action=newdomain&amp;domain=new"
+				<a class="rootnavilink" href="index.php?action=newdomain&amp;domain=new"
 				><?php print _("add new domain");?></a>
 			</td>
 
 			<td>&nbsp;</td>
 
 			<td class="rootnavi">
-				<a href="index.php?action=browse"
+				<a class="rootnavilink" href="index.php?action=browse"
 				><?php print _("browse domains");?></a>
 			</td>
 
 			<td>&nbsp;</td>
 
 			<td class="rootnavi">
-				<a href="index.php?action=adminuser&amp;domain=<?php echo $domain;?>"
+				<a class="rootnavilink" href="index.php?action=adminuser&amp;domain=<?php echo $domain;?>"
 				><?php print _("adminusers");?></a>
 			</td>
 
@@ -60,7 +60,7 @@ if (! isset($domain)){
 		<!-- ################ And the supervisors menu ##### -->
 
 		<td class="navi">
-			<a href="index.php?action=accounts&amp;domain=<?php echo $domain;?>"
+			<a class="navilink" href="index.php?action=accounts&amp;domain=<?php echo $domain;?>"
 			><?php print _("accounts");?></a>
 		</td>
 
@@ -69,7 +69,7 @@ if (! isset($domain)){
 		<!--
 		# Temporary removed, subject to discuss
 		<td class="navi">
-			<a href="index.php?action=aliases&amp;domain=<?php echo $domain;?>"
+			<a class="navilink" href="index.php?action=aliases&amp;domain=<?php echo $domain;?>"
 			><?php print _("aliases");?></a>
 		</td>
 		-->
@@ -77,19 +77,19 @@ if (! isset($domain)){
 		<td>&nbsp;</td>
 
 		<td class="navi">
-			<a href="index.php"><?php print _("home");?></a>
+			<a class="navilink" href="index.php"><?php print _("home");?></a>
 		</td>
 
 		<td>&nbsp;</td>
 
 		<td class="navi">
-			<a href="index.php?action=settings"><?php print _("settings");?></a>
+			<a class="navilink" href="index.php?action=settings"><?php print _("settings");?></a>
 		</td>
 
 		<td>&nbsp;</td>
 
 		<td class="navi">
-			<a href="index.php?action=logout&amp;domain=<?php echo $domain;?>"
+			<a class="navilink" href="index.php?action=logout&amp;domain=<?php echo $domain;?>"
 			><?php print _("logout");?></a>
 		</td>
 

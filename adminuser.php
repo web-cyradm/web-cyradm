@@ -42,7 +42,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			<table cellspacing="2" cellpadding="0">
 				<tr>
 					<td class="navi">
-						<a href="index.php?action=newadminuser&amp;domain=<?php echo $domain; ?>"><?php print _("Add administator"); ?></a>
+						<a class="navilink" href="index.php?action=newadminuser&amp;domain=<?php echo $domain; ?>"><?php print _("Add administator"); ?></a>
 					</td>
 
 					<?php
@@ -61,11 +61,11 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					}
 					?>
 					<td class="navi">
-						<a href="<?php echo $_linkP; ?>"><?php print _("Previous 10 entries");?></a>
+						<a class="navilink" href="<?php echo $_linkP; ?>"><?php print _("Previous 10 entries");?></a>
 					</td>
 
 					<td class="navi">
-						<a href="<?php echo $_linkN; ?>"><?php print _("Next 10 entries");?></a>
+						<a class="navilink" href="<?php echo $_linkN; ?>"><?php print _("Next 10 entries");?></a>
 					</td>
 				</tr>
 			</table>

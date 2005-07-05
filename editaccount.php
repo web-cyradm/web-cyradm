@@ -40,7 +40,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		<table cellspacing="2" cellpadding="0">
 			<tr>
 				<td class="navi">
-					<a href="index.php?action=newemail&amp;domain=<?php echo $domain;?>&amp;username=<?php echo $username;?>"><?php
+					<a class="navilink" href="index.php?action=newemail&amp;domain=<?php echo $domain;?>&amp;username=<?php echo $username;?>"><?php
 					print _("New email address");?></a>
 				</td>
 			</tr>

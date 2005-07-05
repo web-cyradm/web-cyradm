@@ -53,10 +53,10 @@ else {
 	?><P>
 	<table cellspacing="2" cellpadding="0">
 	<tr>
-		<td class="navi"><a href="index.php?action=newalias&domain=<?php print $domain; ?>">
+		<td class="navi"><a class="navilink" href="index.php?action=newalias&domain=<?php print $domain; ?>">
 		<?php print _("Add new alias");?></a></td>
-		<td class="navi"><a href="<?php print( $prev_url ); ?>"><?php print _("Previous 10 entries");?></a></td>
-		<td class="navi"><a href="<?php print( $next_url ); ?>"><?php print _("Next 10 entries");?></a></td>
+		<td class="navi"><a class="navilink" href="<?php print( $prev_url ); ?>"><?php print _("Previous 10 entries");?></a></td>
+		<td class="navi"><a class="navilink" href="<?php print( $next_url ); ?>"><?php print _("Next 10 entries");?></a></td>
 	</tr>
 	</table>
 	<p>
