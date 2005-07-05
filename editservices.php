@@ -103,7 +103,9 @@ if ($confirmed){
 
 	$query_update="UPDATE accountuser SET imap='".$_GET['imap']."', pop='".$_GET['pop']."', sieve='".$_GET['sieve']."', smtpauth='".$_GET['smtpauth']."' WHERE username='".$_GET['username']."'";
 	$result2 = $handle->query($query_update);
-	if ($result){
+	$query_update_alias="UPDATE virtual SET status='".$_GET['smtp']."' WHERE username='".$_GET['username']."'";
+	$result3 = $handle->query($query_update_alias);
+	if ($result2 && $result3){
 		print _("Services successfully changed");
 	}
 
