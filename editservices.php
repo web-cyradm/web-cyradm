@@ -107,6 +107,11 @@ if ($confirmed){
 	$result3 = $handle->query($query_update_alias);
 	if ($result2 && $result3){
 		print _("Services successfully changed");
+		?><p>
+		<table><tr>
+		<td class="navi"><a href="index.php?action=accounts&domain=<?php echo $domain ?>"><?php print _("Back to accounts");?></a></td></tr></table>
+		<?php
+
 	}
 
 }
