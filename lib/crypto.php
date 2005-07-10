@@ -123,7 +123,17 @@ class password{
                 case "crypt":
 			case "crypt":
 			case "1":
-			$password=crypt($password,substr(md5(rand()),0,2));
+			/* Obviousely the right way of crypting passwords with salts does not work when checking passwords
+			against a stored one in the database. This affects changeadminpassword.php.
+
+			As a workaround, the salt will be the cleartext password.
+
+			In future it would be better to have a random salt and another solution for changadminpassword.php.
+			This would probably means to abstract adminusers and accountusers in crypto.php
+			*/
+			
+			#$password=crypt($password,substr(md5(rand()),0,2));
+			$password=crypt($password,$password);
 			break;
 			case "md5":
 			case "2":
