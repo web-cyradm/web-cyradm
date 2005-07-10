@@ -14,3 +14,5 @@ CREATE TABLE `settings` (
 ) TYPE=MyISAM;
 
 INSERT INTO `settings` (username) SELECT `username` FROM adminuser;
+
+ALTER TABLE `log` ADD INDEX `idx_log_user` ( `user` ); 
