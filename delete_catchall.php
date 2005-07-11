@@ -11,43 +11,38 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td width="10">&nbsp;</td>
 	<td valign="top">
 
-		<?php
-		if (! empty($confirmed) AND empty($cancel)){
-
-			# First Delete the entry from the database
-
-			$deletequery = "DELETE from virtual WHERE alias='@$domain'";
-
-			# And then add the new one
-
-			$handle=DB::connect($DB['DSN'], true);
-			if (DB::isError($handle)) {
+<?php
+	if ($authorized) {
+		if (!empty($_GET['confirmed']) AND empty($_GET['cancel'])){
+			$query = "DELETE from virtual WHERE alias='@".$_GET['domain']."'";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
 				die (_("Database error"));
-			}
-
-			$result = $handle->query($deletequery);
-
-			if ($result){
+			} else {
 				?>
 				<h3>
 					<?php print _("successfully deleted from the Database");?>
 				</h3>
 				<?php
-			} else {
-				?>
-				<h3>
-					<?php print _("Database error, please try again");?>
-				</h3>
-				<?php
+				include WC_BASE . "/browseaccounts.php";
 			}
-		} elseif (! empty($cancel)){
+		} elseif (!empty($_GET['cancel'])){
 			?>
 			<h3>
 				<?php print _("Cancelled");?>
 			</h3>
 			<?php
+			include WC_BASE . "/browseaccounts.php";
 		}
+	} else {
 		?>
+		 <h3>
+			 <?php print $err_msg;?>
+ 		 </h3>
+		 <a href="index.php?action=accounts&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
+		<?php
+	}
+?>
 	</td>
 </tr>
 <!-- #################### delete_catchall.php end #################### -->

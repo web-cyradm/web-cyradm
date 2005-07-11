@@ -14,27 +14,19 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		<h3>
 			<?php print _("Define a Account for receiving undefined adresses for domain");?>
 			<span style="color: red;">
-				<?php echo $domain;?>
+				<?php echo $_GET['domain'];?>
 			</span>
 		</h3>
-		<?php
-
-		if (empty($confirmed)){
-			$query = "SELECT * from virtual WHERE alias='@$domain'";
-			$handle=DB::connect($DB['DSN'], true);
-			if (DB::isError($handle)) {
-				die (_("Database error"));
-			}
-
+	<?php
+	if ($authorized) {
+		if (empty($_GET['confirmed'])){
+			$query = "SELECT * FROM virtual WHERE alias='@".$_GET['domain']."'";
 			$result = $handle->query($query);
 			$cnt = $result->numRows();
 			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			$current_username=$row['username'];
 
 			if (empty($cnt) OR $current_username != $username){
-
-
-
 				?>
 				<h3>
 					<?php print _("Do you really want to define the user");?>
@@ -57,18 +49,18 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					value="true">
 
 					<input type="hidden" name="domain"
-					value="<?php print $domain;?>">
+					value="<?php print $_GET['domain']; ?>">
 
 					<input type="hidden" name="username"
-					value="<?php print $username;?>">
+					value="<?php print $username; ?>">
 
 					<input class="button" type="submit"
 					name="confirmed"
-					value="<?php print _("Yes");?>">
+					value="<?php print _("Yes"); ?>">
 
 					<input class="button" type="submit"
 					name="cancel"
-					value="<?php print _("Cancel");?>">
+					value="<?php print _("Cancel"); ?>">
 				</form>
 				<?php
 			}
@@ -78,6 +70,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				print _("Do you want to remove the function \"catch all\" for the account");
 				print " &nbsp;".$current_username;
 				print "?";
+				print "</h3>";
 
 				?>
 				<form action="index.php" method="get">
@@ -88,62 +81,56 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					value="true">
 
 					<input type="hidden" name="domain"
-					value="<?php print $domain;?>">
+					value="<?php print $_GET['domain']; ?>">
 
 					<input type="hidden" name="username"
-					value="<?php print $username;?>">
+					value="<?php print $username; ?>">
 
 					<input class="button" type="submit"
 					name="confirmed"
-					value="<?php print _("Yes");?>">
+					value="<?php print _("Yes"); ?>">
 
 					<input class="button" type="submit"
 					name="cancel"
-					value="<?php print _("Cancel");?>">
+					value="<?php print _("Cancel"); ?>">
 				</form>
 			<?php
-
 			}
-
-		} elseif (! empty($confirmed) AND empty($cancel)){
+		} elseif (!empty($_GET['confirmed']) && empty($_GET['cancel'])){
 
 			# First Delete the entry from the database
-
-			$deletequery = "DELETE from virtual WHERE alias='@$domain'";
-
+			$query = "DELETE from virtual WHERE alias='@".$_GET['domain']."'";
+			$result = $handle->query($query);
 			# And then add the new one
-
-			$insertquery = "INSERT INTO virtual (alias, dest, username, status) values ('@$domain' , '$username' , '$username' , '1')";
-
-			$handle=DB::connect($DB['DSN'], true);
-			if (DB::isError($handle)) {
+			$query = "INSERT INTO virtual (alias, dest, username, status) values ('@".$_GET['domain']."' , '$username' , '$username' , '1')";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
 				die (_("Database error"));
-			}
-
-			$result = $handle->query($deletequery);
-			$result = $handle->query($insertquery);
-
-			if ($result){
-				?>
+			} else {
+			?>
 				<h3>
 					<?php print _("successfully added to Database");?>
 				</h3>
-				<?php
-			} else {
-				?>
-				<h3>
-					<?php print _("Database error, please try again");?>
-				</h3>
-				<?php
+			<?php
+				include WC_BASE . "/browseaccounts.php";
 			}
-		} elseif (! empty($cancel)){
+		} elseif (!empty($_GET['cancel'])){
 			?>
 			<h3>
 				<?php print _("Cancelled");?>
 			</h3>
 			<?php
+			include WC_BASE . "/browseaccounts.php";
 		}
-		?>
+	} else {
+	?>
+		<h3>
+			<?php print $err_msg;?>
+		</h3>
+		<a href="index.php?action=accounts&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
+	<?php
+	}
+	?>
 	</td>
 </tr>
 <!-- #################### catchall.php end #################### -->
