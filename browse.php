@@ -69,31 +69,27 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
                                 <?php
 				}
 				
-                                $prev = $_SESSION['domain_row_pos'] - $_SESSION['maxdisplay'];
-                                $next = $_SESSION['domain_row_pos'] + $_SESSION['maxdisplay'];
+				$prev = $_SESSION['domain_row_pos'] - $_SESSION['maxdisplay'];
+				if ($prev < 0 ) $prev = 0;
+				$next = $_SESSION['domain_row_pos'] + $_SESSION['maxdisplay'];
 				$last = $cnt - $_SESSION['maxdisplay'];
 
-
-				print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=browse&row_pos=0\">"._("First entry") ."</a></td>";		
-	
-                                if ($_SESSION['domain_row_pos'] < $_SESSION['maxdisplay']){
+                                if ($_SESSION['domain_row_pos'] <= 0){
+					print "<td class=\"navi\"><a class=\"navilink\">"._("First entry") ."</a></td>";		
 					print "<td class=\"navi\"><a class=\"navilink\">"._("Previous entries")."</a></td>";
                                 } else {
+					print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=browse&row_pos=0\">"._("First entry") ."</a></td>";		
 					print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=browse&row_pos=$prev\">"._("Previous entries") ."</a></td>";		
                                 }
 
 				if ($next>=$cnt){
 					print "<td class=\"navi\"><a>"._("Next entries")."</a></td>";
+					print "<td class=\"navi\"><a class=\"navilink\">"._("Last entry") ."</a></td>";
 				} else {
 					print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=browse&row_pos=$next\">". _("Next entries")."</a></td>";
-				}
-				if ($cnt > $_SESSION['maxdisplay']){
 					print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=browse&row_pos=$last\">"._("Last entry") ."</a></td>";
-				} else {
-					print "<td class=\"navi\"><a class=\"navilink\">"._("Last entry") ."</a></td>";
-				}			
+				}
                                 ?>
-
 
                         </tr>
                  </table> 
