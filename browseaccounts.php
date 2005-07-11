@@ -13,6 +13,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td valign="top">
 
 	<?php
+	if ($authorized) {
 	$cyr_conn = new cyradm;
 	$error = $cyr_conn -> imap_login();
 
@@ -305,7 +306,16 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		</table>
 		<?php
 	}
+	} else {
 	?>
+                        <h3>
+                                <?php print $err_msg;?>
+                        </h3>
+                        <a href="index.php?action=browse"><?php print _("Back");?></a>
+                        <?php
+	}
+	?>
+	</td>
 </tr>
 <!-- ##################################### End browseaccounts.php #################################### -->
 
