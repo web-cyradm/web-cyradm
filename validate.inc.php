@@ -776,9 +776,30 @@ if (! empty($action)){
 			}
 		}
 		break;
-######################################## Check on catch all setting ##################################
+############################################ Check input if catch ####################################
 	case "catch":
+		if (empty($_GET['domain']) || !ValidDomain($_GET['domain'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} elseif (empty($_GET['username']) || !ValidName($_GET['username'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} else {
+			$authorized = TRUE;
+		}
+		break;
+###################################### Check input if delete_catchall ################################
 	case "delete_catchall";
+		if (empty($_GET['domain']) || !ValidDomain($_GET['domain'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} elseif (empty($_GET['username']) || !ValidName($_GET['username'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} else {
+			$authorized = TRUE;
+		}
+		break;
 #OK######################################## Check input if aliases ###################################
 	case "aliases":
 		if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
