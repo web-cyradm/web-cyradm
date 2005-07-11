@@ -171,13 +171,16 @@ if (! empty($action)){
 #OK############################# Check input if accounts ##############################################
 	case "accounts":
 		if (!empty($_GET['domain']) AND !ValidDomain($_GET['domain'])) {
-			unset($_GET['domain']);
-		}
-		if (!empty($_GET['row_pos'])) {
-			settype($_GET['row_pos'],"int");
-		       	if ($_GET['row_pos'] < 0) {
-				unset($_GET['row_pos']);
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+		} else {
+			if (!empty($_GET['row_pos'])) {
+				settype($_GET['row_pos'],"int");
+			       	if ($_GET['row_pos'] < 0) {
+					unset($_GET['row_pos']);
+				}
 			}
+			$authorized = TRUE;
 		}
 		break;
 #OK########################### Check input if adminuser ###############################################
