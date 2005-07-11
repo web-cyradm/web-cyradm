@@ -16,13 +16,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		</h3>
 
 		<?php
-		if ($_SESSION['admintype'] == 0){
+		if ($authorized) {
 			$query = "SELECT * FROM adminuser";
-			$handle = DB::connect($DB['DSN'], true);
-			if (DB::isError($handle)) {
-				die (_("Database error"));
-			}
-			$row_pos = (empty($row_pos))?(0):($row_pos);
+			$row_pos = (empty($_GET['row_pos']))?(0):($_GET['row_pos']);
 
 			# Fist query is for displaying 
 			$result = $handle->limitQuery($query,$row_pos,10);
@@ -35,14 +31,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			?>
 			<p>
 				<?php print _("Total administrators") . ": " . $total;
-				print "<br>"._("Displaying from position:")." $row_pos";
+				print "<br>"._("Displaying from position:")." ".($row_pos+1);
 				?>
 			</p>
 
 			<table cellspacing="2" cellpadding="0">
 				<tr>
 					<td class="navi">
-						<a class="navilink" href="index.php?action=newadminuser&amp;domain=<?php echo $domain; ?>"><?php print _("Add administator"); ?></a>
+						<a class="navilink" href="index.php?action=newadminuser&amp;domain=<?php echo $_GET['domain']; ?>"><?php print _("Add administator"); ?></a>
 					</td>
 
 					<?php
@@ -52,12 +48,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					if ($row_pos < 10){
 						$_linkP = '#';
 					} else {
-						$_linkP = 'index.php?action=adminuser&amp;domain=' . $domain . '&amp;row_pos=' . $prev;
+						$_linkP = 'index.php?action=adminuser&amp;domain=' . $_GET['domain'] . '&amp;row_pos=' . $prev;
 					}
 					if ($next > $total){
 						$_linkN = '#';
 					} else {
-						$_linkN = 'index.php?action=adminuser&amp;domain=' . $domain . '&amp;row_pos=' . $next;
+						$_linkN = 'index.php?action=adminuser&amp;domain=' . $_GET['domain'] . '&amp;row_pos=' . $next;
 					}
 					?>
 					<td class="navi">
@@ -100,7 +96,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 						$row = $result->fetchRow(DB_FETCHMODE_ASSOC, $c);
 						$username = $row['username'];
-						$query2 = "SELECT * from domainadmin WHERE adminuser='$username'";
+						$query2 = "SELECT * FROM domainadmin WHERE adminuser='$username'";
 						$result2 = $handle->query($query2);
 						$cnt2 = $result2->numRows();
 
@@ -112,13 +108,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 						<tr class="<?php echo $cssrow;?>">
 							<td valign="middle">
-								<a href="index.php?action=editadminuser&username=<?php echo $username; ?>&domain=<?php echo $domain; ?>&row_pos=<?php print $row_pos;?>"><?php
+								<a href="index.php?action=editadminuser&username=<?php echo $username; ?>&domain=<?php echo $_GET['domain']; ?>&row_pos=<?php print $row_pos;?>"><?php
 								print _("Edit adminuser");
 								?></a>
 							</td>
 
 							<td valign="middle">
-								<a href="index.php?action=deleteadminuser&amp;username=<?php echo $username; ?>&amp;domain=<?php echo $domain; ?>"><?php
+								<a href="index.php?action=deleteadminuser&amp;username=<?php echo $username; ?>&amp;domain=<?php echo $_GET['domain']; ?>"><?php
 								print _("Delete adminuser");
 								?></a>
 							</td>
@@ -140,7 +136,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								if ($type==0){
 									print _("All domains");
 								}
-								if ($domainname=="" AND $type!=0){
+								if (empty($domainname) && $type!=0){
 									print "<font color=\"red\">";
 									print _("None");
 									print "</font>";
