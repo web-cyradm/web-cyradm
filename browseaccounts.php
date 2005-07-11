@@ -50,15 +50,16 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<td width="20">&nbsp;</td>
 
 				<?php
-				print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=accounts&domain=$domain&row_pos=0\">"._("First entry") ."</a></td>";
-
 				$prev = $_SESSION['account_row_pos'] - $_SESSION['account_maxdisplay'];
+				if ($prev < 0) $prev = 0;
 				$next = $_SESSION['account_row_pos'] + $_SESSION['account_maxdisplay'];
-				$last = $cnt - $_SESSION['maxdisplay'];
+				$last = $cnt - $_SESSION['account_maxdisplay'];
 				
-				if ($_SESSION['account_row_pos'] < $_SESSION['account_maxdisplay']){
+				if ($_SESSION['account_row_pos'] <= 0){
+					print "<td class=\"navi\"><a class=\"navilink\">"._("First entry") ."</a></td>";
 					print "<td class=\"navi\"><a class=\"navilink\">"._("Previous entries")."</a></td>";
 				} else {
+					print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=accounts&domain=$domain&row_pos=0\">"._("First entry") ."</a></td>";
 					print "<td class=\"navi\"><a class=\"navilink\" href=\"index.php?action=accounts&domain=".$_GET['domain']."&row_pos=".$prev."\">"._("Previous entries") ."</a></td>";
 				}
 
