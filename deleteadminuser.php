@@ -12,8 +12,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td valign="top">
 
 		<?php
-		if ($_SESSION['admintype']==0){
-			if (empty($confirmed)){
+		if ($authorized){
+			if (empty($_GET['confirmed'])){
 				?>
 				<h3>
 					<?php print _("Delete an Admin account from the System");?>
@@ -22,7 +22,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<h3>
 					<?php print _("Do you really want to delete the Domain supervisor");?>
 					<span style="color: red;">
-						<?php echo $username;?>
+						<?php echo $_GET['username'];?>
 					</span>
 				</h3>
 
@@ -42,13 +42,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<input
 					type="hidden"
 					name="username"
-					value="<?php echo $username; ?>"
+					value="<?php echo $_GET['username']; ?>"
 					>
 
 					<input
 					type="hidden"
 					name="domain"
-					value="<?php echo $domain; ?>"
+					value="<?php echo $_GET['domain']; ?>"
 					>
 
 					<input class="button" type="submit" name="confirmed" value="<?php print _("Yes, delete"); ?>">
@@ -56,63 +56,51 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<input class="button" type="submit" name="cancel" value="<?php print _("Cancel"); ?>" >
 				</form>
 				<?php
-			} elseif (! empty($cancel)){
+			} elseif (!empty($_GET['cancel'])){
 				?>
 				<h3>
 					<?php print _("Action cancelled, nothing deleted");?>
 				</h3>
 				<?php
+				include WC_BASE . "/adminuser.php";
 			} else {
-				$handle=DB::connect($DB['DSN'],true);
-				if (DB::isError($handle)) {
+				$query = "DELETE FROM adminuser WHERE username='".$_GET['username']."'";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
 					die (_("Database error"));
 				}
 
-				#Determine what type of admin should be deleted
-				$query="SELECT type FROM adminuser WHERE username='$username'";
-				$result= $handle->query($query);
-				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-				$type= $row['type'];
-
-				# Get the count of actual supersusers
-				$query="SELECT type FROM adminuser WHERE type='0'";
+				# The admin also needs to be deleted from the assigment table
+				$query = "DELETE FROM domainadmin WHERE adminuser='".$_GET['username']."'";
 				$result = $handle->query($query);
-				$cnt=$result->numRows();
-
-				if ($cnt==1 && $type==0){
-					# No Way! We cannot change the last Superuser to domainadmin!
-					die (_("At least one Superuser is needed for Web-cyradm"));
+				if (DB::isError($result)) {
+					die (_("Database error"));
 				}
 
-				# If not died, delete that brave admin
-				$query2 = "DELETE FROM adminuser WHERE username='$username'";
-				$hnd2 = $handle->query($query2);
-
-				# The admin also needs to be deleted from the assigment table
-				$query3 = "DELETE FROM domainadmin WHERE adminuser='$username'";
-				$hnd3 = $handle->query($query3);
-
 				# The admin also needs to be deleted from the settings table
-				$query4 = "DELETE FROM settings WHERE username='$username'";
-				$hnd4 = $handle->query($query4);
+				$query = "DELETE FROM settings WHERE username='".$_GET['username']."'";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
+					die (_("Database error"));
+				}
 
 				?>
 				<h3>
 					<?php print _("Admin user deleted");?>
 					:
 					<span style="color: red;">
-						<?php echo $username;?>
+						<?php echo $_GET['username'];?>
 					</span>
 				</h3>
 				<?php
-
 				include WC_BASE . "/adminuser.php";
 			}
 		} else {
 			?>
 			<h3>
-				<?php print _("Security violation detected, nothing deleted, attempt has been logged");?>
+				<?php print $err_msg;?>
 			</h3>
+			<a href="index.php?action=adminuser&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
 			<?php
 		}
 		?>
