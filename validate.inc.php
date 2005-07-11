@@ -156,12 +156,12 @@ if (! empty($action)){
 	switch ($action){
 #OK############################# Check input if browse ################################################
 	case "browse":
-		if (isset($_GET['orderby']) AND
+		if (!empty($_GET['orderby']) AND
 			!in_array($_GET['orderby'], array('domain_name', 'prefix', 'maxaccounts',
 							  'domainquota', 'quota'))){
 			unset($_GET['orderby']);
 		}
-		if (isset($_GET['row_pos'])) {
+		if (!empty($_GET['row_pos'])) {
 			settype($_GET['row_pos'],"int");
 		       	if ($_GET['row_pos'] < 0) {
 				unset($_GET['row_pos']);
@@ -170,14 +170,32 @@ if (! empty($action)){
 		break;
 #OK############################# Check input if accounts ##############################################
 	case "accounts":
-		if (isset($_GET['domain']) AND !ValidDomain($_GET['domain'])) {
+		if (!empty($_GET['domain']) AND !ValidDomain($_GET['domain'])) {
 			unset($_GET['domain']);
 		}
-		if (isset($_GET['row_pos'])) {
+		if (!empty($_GET['row_pos'])) {
 			settype($_GET['row_pos'],"int");
 		       	if ($_GET['row_pos'] < 0) {
 				unset($_GET['row_pos']);
 			}
+		}
+		break;
+#OK########################### Check input if adminuser ###############################################
+	case "adminuser":
+		if ($_SESSION['admintype'] != 0) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} else {
+			if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
+				unset($_GET['domain']);
+			}
+			if (!empty($_GET['row_pos'])) {
+				settype($_GET['row_pos'],"int");
+				if ($_GET['row_pos'] < 0) {
+					unset($_GET['row_pos']);
+				}
+			}
+			$authorized = TRUE;
 		}
 		break;
 #OK########################### Check input if newadminuser ###############################################
