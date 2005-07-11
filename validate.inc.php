@@ -776,7 +776,21 @@ if (! empty($action)){
 ######################################## Check on catch all setting ##################################
 	case "catch":
 	case "delete_catchall";
+#OK######################################## Check input if aliases ###################################
 	case "aliases":
+		if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} else {
+			if (!empty($_GET['row_pos'])) {				
+				settype($_GET['row_pos'],"int");
+				if ($_GET['row_pos'] < 0) {
+					unset($_GET['row_pos']);
+				}
+			}
+			$authorized = TRUE;
+		}
+		break;
 	case "newalias":
 ########################################## Check input if editalias ##################################
 	case "editalias":
