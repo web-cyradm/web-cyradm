@@ -267,7 +267,7 @@ if (! empty($action)){
 				$authorized = FALSE;
 				$err_msg = _("New passwords are not equal. Password not changed");
 			} else {
-				$query = "SELECT `type` from adminuser WHERE username='".$_POST['username']."'";
+				$query = "SELECT `type` FROM adminuser WHERE username='".$_POST['username']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
 					die (_("Database error"));
@@ -286,7 +286,7 @@ if (! empty($action)){
 						if (DB::isError($result)) {
 							die (_("Database error"));
 						}
-						$cnt = $result->numRows($result);
+						$cnt = $result->numRows();
 
 						# Check if only 1 superuser is defined, in case of requested change of a superuser
 						if ($cnt==1 && $type==0){
@@ -331,9 +331,58 @@ if (! empty($action)){
 			}
 		}
 		break;
-############################## Check input if deleteadminuser #############################################
+#OK########################### Check input if deleteadminuser #############################################
 	case "deleteadminuser":
-		$authorized = TRUE;
+		if ($_SESSION['admintype'] != 0) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} elseif (!isset($_GET['confirmed'])) {
+			if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
+				$authorized = FALSE;
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+			} elseif (!ValidName($_GET['username'])) {
+				$authorized = FALSE;
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+			} else {
+				$authorized = TRUE;
+			}
+		} elseif (!empty($_GET['cancel'])) {
+			$authorized = TRUE;
+		} else {
+			if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
+				$authorized = FALSE;
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+			} elseif (!ValidName($_GET['username'])) {
+				$authorized = FALSE;
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+			} else {
+				#Determine what type of admin should be deleted
+				$query = "SELECT `type` FROM adminuser WHERE username='".$_GET['username']."'";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
+					die (_("Database error"));
+				}
+				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+				$type = $row['type'];
+
+				# Query to get the count of superusers
+				$query = "SELECT `type` FROM adminuser WHERE type='0'";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
+					die (_("Database error"));
+				}
+				$cnt = $result->numRows();
+				
+				# Check if only 1 superuser is defined
+				if ($cnt==1 && $type==0){
+					# No Way! We cannot delete the last Superuser!
+					$authorized = FALSE;
+					$err_msg = _("At least one Superuser is needed for Web-cyradm");
+				} else {
+					$authorized = TRUE;
+				}
+			}
+		}
 		break;
 #OK############################# Check input if newaccount ################################################
 	case "newaccount":
