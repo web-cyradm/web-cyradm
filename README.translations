@@ -1,9 +1,7 @@
-Currently i18n is being implemented.
-
-German partially works
+Web-cyradm is fully i18n compiant thanks to GNU gettext.
 
 If you like to translate web-cyradm to your native language, you will find 
-the po-files in the directory po-templates.
+the pot-file in the directory locale/templates
 
 Here is an example how to work on that files:
 
@@ -22,7 +20,9 @@ use the following command:
 
 msgfmt -o blah.mo blah.po
 
-If you need some help, subscribe to the mailinglist web-cyradm@test.delouw.ch
+When you submit your new translation, please let me know what the correct Characterset is (e.g. ISO-8859-1 for Western Europe)
+
+If you need some help, subscribe to the mailinglist http://www.web-cyradm.org/mailman/listinfo/web-cyradm
 
 Thanks
 
