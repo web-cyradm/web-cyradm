@@ -4,7 +4,7 @@
 #
 #
 
-for i in cs da de es fr hu it nl pl pt ro ru sv tr zh_CN
+for i in cs da de en es fr hu it nb_NO nl no pl pt ro ru sl sv tr zh_CN
 
 do
 	chmod 644 ../locale/$i/LC_MESSAGES/web-cyradm.po
