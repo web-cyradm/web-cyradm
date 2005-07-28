@@ -1,16 +1,8 @@
-For Version 1.0
+For Version 0.5.6
 
-o Input validation
+o Storage of user and admin data such as Name, Adress etc.
+o Massmailing function for domains, superusers, all
 o Code cleanup
-o commenting the code 
-
---------------------
-
-For Version 1.1 (Development)
-
-o Support for sieve scripts to prevent spam
-o Vacation support (difficulties detected, maybe impossible
-o Delegation of some tasks to Domainmasters and users
-o Authentication
-o Managing folders
-o Managing ACL's 
+o Switching as much as possible to a drivermodel like used in horde as suggested.
+o Introduction of LDAP Support with the help of the above mentions drivermodel
+o Integration of AntiSPAM and AntiVIRUS configuration on user and domain base.
