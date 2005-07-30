@@ -24,7 +24,7 @@
 
 <revision>
 	<revnumber>1.3.0</revnumber>
-        <date>2005-07-07</date>
+        <date>2005-07-30</date>
         <authorinitials>ldl, mmu</authorinitials>
         <revremark>
 		Major rewrite for new version 0.5.5
