@@ -78,7 +78,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		<table border="0" width="98%">
 			<tbody>
 				<tr>
-					<th colspan="7">
+					<th colspan="5">
 						<?php print _("action");?>
 					</th>
 
@@ -144,17 +144,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<tr class="<?php echo $cssrow;?>">
 						<td align="center" valign="middle">
 							<a href="index.php?action=editaccount<?php echo $_dom_user; ?>"
+							><?php print _("Edit email addresses");?></a>
+						</td>
+
+						<td align="center" valign="middle">
+							<a href="index.php?action=editaccountnew<?php echo $_dom_user; ?>"
 							><?php print _("Edit account");?></a>
-						</td>
-
-						<td align="center" valign="middle">
-							<a href="index.php?action=editservices<?php echo $_dom_user; ?>"
-							><?php print _("Services");?></a>
-						</td>
-
-						<td align="center" valign="middle">
-							<a href="index.php?action=change_password<?php echo $_dom_user_alias; ?>"
-							><?php print _("Change Password");?></a>
 						</td>
 
 						<td align="center" valign="middle">
@@ -163,10 +158,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 						<td align="center" valign="middle">
 							<a href="index.php?action=deleteaccount<?php echo $_dom_user; ?>"> <?php print _("Delete account");?></a>
-						</td>
-
-						<td align="center" valign="middle">
-							<a href="index.php?action=setquota<?php echo $_dom_user; ?>"><?php print _("Set quota");?></a>
 						</td>
 
 						<td align="center" valign="middle">
