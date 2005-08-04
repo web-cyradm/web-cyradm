@@ -170,7 +170,7 @@ if (! empty($action)){
 		break;
 #OK############################# Check input if accounts ##############################################
 	case "accounts":
-		if (!empty($_GET['domain']) AND !ValidDomain($_GET['domain'])) {
+		if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 		} else {
@@ -513,6 +513,105 @@ if (! empty($action)){
 			}
 		}
 		break;
+#OK############################# Check input if editaccountnew ##################################################
+	case "editaccountnew":
+		if (empty($_POST['confirmed'])) {
+			if (!ValidDomain($_GET['domain']) || !ValidName($_GET['username'])) {
+				$authorized = FALSE;
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+			} else {
+				$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
+					die (_("Database error"));
+				}
+				if (!$result->numRows()) {
+					$authorized = FALSE;
+					logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+					$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+				} else {
+					$authorized = TRUE;
+				}
+			}
+		} elseif (!empty($_POST['cancel'])) {
+			$authorized = TRUE;
+		} else {
+			// Global checks
+			if (!ValidDomain($_POST['domain']) || !ValidName($_POST['username'])) {
+				$authorized = FALSE;
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+			} else {
+				$query = "SELECT username FROM accountuser WHERE username='".$_POST['username']."' AND domain_name='".$_POST['domain']."'";
+				$result = $handle->query($query);
+				if (DB::isError($result)) {
+					die (_("Database error"));
+				}
+				if (!$result->numRows()) {
+					$authorized = FALSE;
+					logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+					$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+				// Checks for setting password
+				} else {
+					if (!empty($_POST['new_password']) && !empty($_POST['confirm_password'])) {
+						if (!ValidPassword($_POST['new_password']) || !ValidPassword($_POST['confirm_password'])) {
+							$authorized = FALSE;
+							$err_msg = _("Password incorrect");
+						} elseif ($_POST['new_password'] != $_POST['confirm_password']) {
+							$authorized = FALSE;
+							$err_msg = _("New passwords are not equal. Password not changed");
+						}
+					}
+					// Checks for setting services
+					if (!empty($_POST['imap']) && $_POST['imap'] != 1) {
+						$_POST['imap'] = 1;
+					}
+					if (!empty($_POST['pop']) && $_POST['pop'] != 1) {
+						$_POST['pop'] = 1;
+					}
+					if (!empty($_POST['sieve']) && $_POST['sieve'] != 1) {
+						$_POST['sieve'] = 1;
+					}
+					if (!empty($_POST['smtpauth']) && $_POST['smtpauth'] != 1) {
+						$_POST['smtpauth'] = 1;
+					}
+					if (!empty($_POST['smtp']) && $_POST['smtp'] != 1) {
+						$_POST['smtp'] = 1;
+					}	
+				// Checks for setting quota
+					settype($_POST['quota'],"int");
+					if ($_POST['quota'] < 0) {
+						$authorized = FALSE;
+						$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+					} else {
+						$query = "SELECT quota FROM domain WHERE domain_name='".$_POST['domain']."'";
+						$result = $handle->query($query);
+						if (DB::isError($result)) {
+							die (_("Database error"));
+						}
+
+						$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+						$max_quota = $row['quota'];
+					
+						$query = "SELECT * FROM accountuser WHERE username='".$_POST['username']."' AND domain_name='".$_POST['domain']."'";
+						$result = $handle->query($query);
+						if (DB::isError($result)) {
+							die (_("Database error"));
+						}
+					
+						if ($result->numRows()) {
+							if (!empty($_POST['quota']) && $_POST['quota'] > $max_quota && $_SESSION['admintype']!=0) {
+								$authorized = FALSE;
+								$err_msg=_("Quota exeedes the maximum allowed quota for this domain.");
+							} else {
+								$authorized=TRUE;
+							}
+						}
+					}
+				}
+			}
+			$_GET['domain'] = $_POST['domain'];
+		}
+		break;
 #OK############################# Check input if setquota ##################################################
 	case "setquota":
 		if (!ValidDomain($_GET['domain']) || !ValidName($_GET['username'])) {
@@ -776,7 +875,7 @@ if (! empty($action)){
 			}
 		}
 		break;
-############################################ Check input if catch ####################################
+#OK######################################### Check input if catch ####################################
 	case "catch":
 		if (empty($_GET['domain']) || !ValidDomain($_GET['domain'])) {
 			$authorized = FALSE;
@@ -788,7 +887,7 @@ if (! empty($action)){
 			$authorized = TRUE;
 		}
 		break;
-###################################### Check input if delete_catchall ################################
+#OK################################### Check input if delete_catchall ################################
 	case "delete_catchall";
 		if (empty($_GET['domain']) || !ValidDomain($_GET['domain'])) {
 			$authorized = FALSE;
