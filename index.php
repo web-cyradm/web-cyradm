@@ -84,7 +84,9 @@ if ($wc_configured){
 
 	if ($_SESSION['session_ok'] === TRUE) {
 		require WC_BASE . "/validate.inc.php";
-		require WC_BASE . "/menu.inc.php";
+		if (empty($_GET['action']) || $_GET['action'] != 'logout') {
+			require WC_BASE . "/menu.inc.php";
+		}
 		require WC_BASE . "/lib/cyradm.php";
 
 //		if (empty($_GET['domain']) && (empty($_GET['action']) || (! in_array($_GET['action'], array('logout', 'adminuser', 'newdomain', 'editadminuser', 'newadminuser', 'search'))))){
@@ -100,7 +102,7 @@ if ($wc_configured){
 			# Only allow defined actions and include them
 
 			if (isset($_GET['action']) AND
-			    in_array($_GET['action'], array('logout', 'browse', 'editdomain',
+			    in_array($_GET['action'], array('logout', 'browse', 'editdomain', 'editaccountnew',
 							    'newdomain', "deletedomain",
 							    "adminuser", "newadminuser",
 							    "editadminuser", "deleteadminuser",
@@ -119,7 +121,7 @@ if ($wc_configured){
 			# For password related stuff we also need to allow POST vars for some actions
 
 			else if (isset($_POST['action']) AND
-				 in_array($_POST['action'], array('change_password', 'newaccount',
+				 in_array($_POST['action'], array('change_password', 'newaccount', 'editaccountnew',
 				 				  'newadminuser', 'editadminuser',
 								  'changeadminpasswd'))){
 				include sprintf('%s/%s.php', WC_BASE, $_POST['action']);
