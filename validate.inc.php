@@ -513,8 +513,8 @@ if (! empty($action)){
 			}
 		}
 		break;
-#OK############################# Check input if editaccountnew ##################################################
-	case "editaccountnew":
+#OK############################# Check input if manageaccount ##################################################
+	case "manageaccount":
 		if (empty($_POST['confirmed'])) {
 			if (!ValidDomain($_GET['domain']) || !ValidName($_GET['username'])) {
 				$authorized = FALSE;

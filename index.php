@@ -102,7 +102,7 @@ if ($wc_configured){
 			# Only allow defined actions and include them
 
 			if (isset($_GET['action']) AND
-			    in_array($_GET['action'], array('logout', 'browse', 'editdomain', 'editaccountnew',
+			    in_array($_GET['action'], array('logout', 'browse', 'editdomain', 'manageaccount',
 							    'newdomain', "deletedomain",
 							    "adminuser", "newadminuser",
 							    "editadminuser", "deleteadminuser",
@@ -121,7 +121,7 @@ if ($wc_configured){
 			# For password related stuff we also need to allow POST vars for some actions
 
 			else if (isset($_POST['action']) AND
-				 in_array($_POST['action'], array('change_password', 'newaccount', 'editaccountnew',
+				 in_array($_POST['action'], array('change_password', 'newaccount', 'manageaccount',
 				 				  'newadminuser', 'editadminuser',
 								  'changeadminpasswd'))){
 				include sprintf('%s/%s.php', WC_BASE, $_POST['action']);

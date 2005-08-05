@@ -148,7 +148,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						</td>
 
 						<td align="center" valign="middle">
-							<a href="index.php?action=editaccountnew<?php echo $_dom_user; ?>"
+							<a href="index.php?action=manageaccount<?php echo $_dom_user; ?>"
 							><?php print _("Edit account");?></a>
 						</td>
 
