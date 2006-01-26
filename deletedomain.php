@@ -93,7 +93,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					# First Delete all stuff related to the domain from the database
 
 
-					$query2="DELETE FROM virtual WHERE domain_name='$domain'";
+					$query2="DELETE FROM virtual WHERE alias LIKE '%@$domain'";
 					$hnd2=$handle->query($query2);
 
 					$query3="DELETE FROM accountuser WHERE domain_name='$domain'";
