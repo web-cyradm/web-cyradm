@@ -19,7 +19,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				die (_("Database error"));
 			}
 
-			$query1 = "SELECT * FROM accountuser WHERE domain_name='$domain' order by username";
+			$query1 = "SELECT * FROM accountuser WHERE domain_name='$domain' ORDER BY username";
 			$result1 = $handle->query($query1);
 			$cnt1 = $result1->numRows();
 
@@ -88,21 +88,21 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<?php
 				} else {
 					$cyr_conn = new cyradm;
-					$cyr_conn -> imap_login();
+					$cyr_conn->imap_login();
 
 					# First Delete all stuff related to the domain from the database
 
 
-					$query2="DELETE FROM virtual WHERE alias LIKE '%@$domain'";
-					$hnd2=$handle->query($query2);
+					$query2 = "DELETE FROM virtual WHERE alias LIKE '%@$domain'";
+					$hnd2 = $handle->query($query2);
 
-					$query3="DELETE FROM accountuser WHERE domain_name='$domain'";
-					$hnd3=$handle->query($query3);
+					$query3 = "DELETE FROM accountuser WHERE domain_name='$domain'";
+					$hnd3 = $handle->query($query3);
 
-					$query4="DELETE FROM domain WHERE domain_name='$domain'";
-					$hnd3=$handle->query($query4);
+					$query4 = "DELETE FROM domain WHERE domain_name='$domain'";
+					$hnd4 = $handle->query($query4);
 
-					for ($i=0;$i<$cnt1;$i++){
+					for ($i=0; $i<$cnt1; $i++){
 
 						$row = $result1->fetchRow(DB_FETCHMODE_ASSOC, $i);
 						$username = $row['username'];
@@ -120,9 +120,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 					# Finally the domain must be removed from the domainadmin table
 
-					$query6="SELECT * FROM domainadmin WHERE domain_name='$domain'";
-					$result6=$handle->query($query6);
-					$cnt6=$result6->numRows();
+					$query6 = "SELECT * FROM domainadmin WHERE domain_name='$domain'";
+					$result6 = $handle->query($query6);
+					$cnt6 = $result6->numRows();
 					for ($i=0; $i <= $cnt6; $i++){
 
 						# After getting the resulttable
@@ -144,13 +144,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							$query7 = "DELETE FROM adminuser where username='$username'";
 							$result7 = $handle->query($query7);
 						}
+					}
 
 						# Finally delete every entry
 						# with the domain to be deleted
 
 						$query8 = "DELETE FROM domainadmin where domain_name='$domain'";
 						$result8 = $handle->query($query8);
-					} 
 					?>
 					<h3>
 						<?php print _("Domain");?>
