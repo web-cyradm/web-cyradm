@@ -33,10 +33,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$query = "UPDATE domain SET domain_name='$newdomain', maxaccounts='$maxaccounts', quota='$quota', domainquota='$_GET[domainquota]', freenames='$freenames',freeaddress='$freeaddress',prefix='$_GET[newprefix]' WHERE domain_name='$domain'";
 				// END Andreas Kreisl : freenames
 
+				// update accounts to be associated to the new domain
 				$query2 = "UPDATE accountuser SET domain_name='$newdomain' WHERE domain_name='$domain'";
 
+				// update domainadmins to have rights transferred to the new domainname
 				$query3 = "UPDATE domainadmin SET domain_name='$newdomain' WHERE domain_name='$domain'";
 
+				// update accounts to be associated to the new domain
 				$query4 = "UPDATE virtual SET username='$newdomain' WHERE username='$domain'";
 
 				$handle = DB::connect ($DB['DSN'],true);
@@ -50,6 +53,22 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$result4 = $handle->query($query4);
 
 				if (!DB::isError($result)){
+
+					// ok, everything ok so far. now let's update all aliases and destinations to the new domainname.
+					
+					$query5 = "SELECT alias FROM virtual WHERE alias LIKE '%$domain'";
+					$result5 = $handle->query($query5);
+					
+					for($i = 0; $i < $result5->numRows(); $i++){
+						$resultrow = $result5->fetchRow();
+						$oldalias = $resultrow[0];
+						$newalias = preg_replace("/" . preg_quote($domain) . "/", $newdomain, $resultrow[0]);
+						$updatealias = "UPDATE virtual SET alias = '$newalias' WHERE alias = '$oldalias'";
+						$updateresult = $handle->query($updatealias);
+						$updatealias2 = "UPDATE virtual SET dest = '$newalias' WHERE dest = '$oldalias'";
+						$updateresult2 = $handle->query($updatealias2);
+					}
+
 					?>
 					<h3>
 						<?php print _("Successfully changed domain");?>:
