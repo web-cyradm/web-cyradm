@@ -18,7 +18,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		}
 
 		if ($authorized){
-			$query = "select * from virtual where alias='$alias'";
+			$query = "SELECT * FROM virtual WHERE alias='$alias'";
 			$result = $handle->query($query);
 			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			$dest = $row['dest'];
@@ -26,7 +26,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 			include WC_BASE . '/lib/sieve-php.lib';
 			include WC_BASE . '/lib/sieve_strs.php';
-			$query = "select * from accountuser where username='$dest'";
+			$query = "SELECT * FROM accountuser WHERE username='$dest'";
 			$handle = DB::connect($DB['DSN'], true);
 			if (DB::isError($handle)) {
 				die (_("Database error"));
@@ -130,7 +130,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 			if (empty($confirmed)){
 
-    				$query = "select * from domain where domain_name='$domain'";
+    				$query = "SELECT * FROM domain WHERE domain_name='$domain'";
 
 				$result = $handle->query($query);
 				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);

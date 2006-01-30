@@ -15,7 +15,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 	if ($authorized){
 		if (!empty($_POST['confirmed']) && ("true" == $_POST['confirmed'])) {
-			$query = "select password from accountuser where username='".$_POST['username']."'";
+			$query = "SELECT password FROM accountuser WHERE username='".$_POST['username']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
 				die (_("Database error"));

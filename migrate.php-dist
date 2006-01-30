@@ -40,7 +40,7 @@ if ($confirmed!="yes"){
 }
 else if ($confirmed=="yes"){
 
-	$query="SELECT * from adminuser";
+	$query="SELECT * FROM adminuser";
 	$handle=DB::connect ($DB['DSN'],true);
 	$result=$handle->query($query);
 	$cnt=$result->numRows($result);

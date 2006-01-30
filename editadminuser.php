@@ -14,7 +14,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<?php
 	if ($authorized){
 		if (empty($_POST['confirmed'])) {
-			$query = "SELECT `type` from adminuser WHERE username='".$_GET['username']."'";
+			$query = "SELECT `type` FROM adminuser WHERE username='".$_GET['username']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
 				die (_("Database error"));
@@ -179,7 +179,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			<?php
 		}
 		elseif (!empty($_POST['confirmed'])){
-				$query = "SELECT `type` from adminuser WHERE username='".$_POST['username']."'";
+				$query = "SELECT `type` FROM adminuser WHERE username='".$_POST['username']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
 					die (_("Database error"));
@@ -189,7 +189,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				if ($type != $_POST['newtype'] || $type = '1') {
 					# First delete and set new Domainresponsibilities
-					$query = "DELETE from domainadmin WHERE adminuser='".$_POST['username']."'";
+					$query = "DELETE FROM domainadmin WHERE adminuser='".$_POST['username']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
 						die (_("Database error"));

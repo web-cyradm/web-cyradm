@@ -99,7 +99,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		} elseif (!empty($_GET['confirmed']) && empty($_GET['cancel'])){
 
 			# First Delete the entry from the database
-			$query = "DELETE from virtual WHERE alias='@".$_GET['domain']."'";
+			$query = "DELETE FROM virtual WHERE alias='@".$_GET['domain']."'";
 			$result = $handle->query($query);
 			# And then add the new one
 			$query = "INSERT INTO virtual (alias, dest, username, status) values ('@".$_GET['domain']."' , '$username' , '$username' , '1')";

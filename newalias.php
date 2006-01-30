@@ -21,7 +21,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		</h3>
     <?php
                 require_once WC_BASE . '/config/conf.php';
-                $query1 = "SELECT * from domain WHERE domain_name='$domain'";
+                $query1 = "SELECT * FROM domain WHERE domain_name='$domain'";
 		
                 $handle = DB::connect($DB['DSN'], true);
                 if (DB::isError($handle)) {

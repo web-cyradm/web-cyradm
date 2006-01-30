@@ -15,7 +15,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<?php
 	if ($authorized) {
 	$cyr_conn = new cyradm;
-	$error = $cyr_conn -> imap_login();
+	$error = $cyr_conn->imap_login();
 
 	if ($error!=0){
 		die ("IMAP Error: ".$cyr_conn->geterror());
@@ -171,7 +171,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
 								print $row2['alias'] . "<br>";
 							}
-				                        $query4 = "select * from virtual where alias='" . $username . "'";
+				                        $query4 = "SELECT * FROM virtual WHERE alias='" . $username . "'";
 							$result4 = $handle->query($query4);
 							if (DB::isError($result4)) {
 								die (_("Database error"));

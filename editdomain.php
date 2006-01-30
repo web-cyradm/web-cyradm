@@ -97,7 +97,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		}
 
 		if (empty($confirmed)){
-				$query = "select * from domain where domain_name='$domain'";
+				$query = "SELECT * FROM domain WHERE domain_name='$domain'";
 				$handle = DB::connect($DB['DSN'],true);
 				if (DB::isError($handle)) {
 					die (_("Database error"));

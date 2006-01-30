@@ -32,11 +32,11 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 			if (! empty($_POST['forwardto']) && $_POST['setforward'] == "1"){
 				// delete all first
-				$query = "delete from virtual WHERE alias=" . $handle->quote($_GET['username']);
+				$query = "DELETE FROM virtual WHERE alias=" . $handle->quote($_GET['username']);
 				$result = $handle->query($query);
 				$forwards = explode("\n", $_POST['forwardto']);
 				reset ($forwards);
-				$query = "insert into virtual (alias,dest) VALUES (" . $handle->quote($_GET['username'])  . ", ";
+				$query = "INSERT INTO virtual (alias,dest) VALUES (" . $handle->quote($_GET['username'])  . ", ";
 				$q = array();
 				while (list(, $forward) = each($forwards)) {
 					// insert new forwards
@@ -52,12 +52,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				$result = $handle->query($query);
 				$msg = _("Forward set");
 			} elseif (! empty($_POST['setforward']) && $_POST['setforward'] == "2") {
-				$query = "delete from virtual WHERE alias=" . $handle->quote($_GET['username']);
+				$query = "DELETE FROM virtual WHERE alias=" . $handle->quote($_GET['username']);
 				$result = $handle->query($query);
 				$msg = _("Forwarding removed");
 			}
 
-			$query = "select * from virtual where alias=" . $handle->quote($_GET['username']);
+			$query = "SELECT * FROM virtual WHERE alias=" . $handle->quote($_GET['username']);
 			$result = $handle->query($query);
 			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			if (is_array($row)){

@@ -753,7 +753,7 @@ if (! empty($action)){
 		$query = "SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
 		$result = $handle->query($query);
 
-                $query2 = "select * from domain where domain_name='$domain'";
+                $query2 = "SELECT * FROM domain WHERE domain_name='$domain'";
 		$result2 = $handle->query($query2);
 		$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		$freeaddress=$row2['freeaddress'];

@@ -13,7 +13,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 <?php
 $cyr_conn = new cyradm;
-$error = $cyr_conn -> imap_login();
+$error = $cyr_conn->imap_login();
 
 if ($error!=0){
     die ("Error $error");
@@ -31,8 +31,8 @@ if ($_SESSION['admintype']==0) {
     }
 }
 
-$query="SELECT * FROM domain a where domain_name LIKE '%$searchstring%' and $allowed_domains1') ORDER BY domain_name";
-$query2="SELECT distinct a.username, a.domain_name FROM virtual as v, accountuser as a where ((v.username LIKE '%$searchstring%') or (v.alias LIKE '%$searchstring%')) and (v.username=a.username) and $allowed_domains1') ORDER BY username";
+$query="SELECT * FROM domain a WHERE domain_name LIKE '%$searchstring%' AND $allowed_domains1') ORDER BY domain_name";
+$query2="SELECT DISTINCT a.username, a.domain_name FROM virtual as v, accountuser as a WHERE ((v.username LIKE '%$searchstring%') OR (v.alias LIKE '%$searchstring%')) AND (v.username=a.username) AND $allowed_domains1') ORDER BY username";
 $query3="SELECT DISTINCT alias, username FROM virtual WHERE (((dest LIKE '%$searchstring%') OR (alias LIKE '%$searchstring%')) AND (dest <> username) AND (username<>'') ) AND $allowed_domains3') ORDER BY username";	
 $result=$handle->query($query);
 $result2=$handle->query($query2);
@@ -112,7 +112,7 @@ print "<h3>"._("Total users matching").": ".$total."</h3>";
 if (!isset($row_pos)){
 	$row_pos=0;
 	}
-        $query="SELECT distinct a.username, a.domain_name FROM virtual as v, accountuser as a where ((v.username LIKE '%$searchstring%') or (v.alias LIKE '%$searchstring%')) and (v.username=a.username) and $allowed_domains1') ORDER BY username";
+        $query="SELECT DISTINCT a.username, a.domain_name FROM virtual as v, accountuser as a WHERE ((v.username LIKE '%$searchstring%') OR (v.alias LIKE '%$searchstring%')) AND (v.username=a.username) AND $allowed_domains1') ORDER BY username";
 	$result=$handle->limitQuery($query,$row_pos,10);
 	$cnt=$result->numRows($result);
 
@@ -191,7 +191,7 @@ if (!isset($row_pos)){
 			$row=$result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
 			print $row['alias']."<br>";
 		}
-                $query4 = "select * from virtual where alias='" . $username . "'";
+                $query4 = "SELECT * FROM virtual WHERE alias='" . $username . "'";
                 $result4 = $handle->query($query4);
                 $row4 = $result4->fetchRow(DB_FETCHMODE_ASSOC, 0);
                 if (is_array($row4)){

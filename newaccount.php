@@ -14,9 +14,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<?php
 	if ($authorized){
 		if (empty($_POST['confirmed'])){
-			$query = "SELECT * from domain WHERE domain_name='".$_GET['domain']."'";
+			$query = "SELECT * FROM domain WHERE domain_name='".$_GET['domain']."'";
 		} else {
-			$query = "SELECT * from domain WHERE domain_name='".$_POST['domain']."'";
+			$query = "SELECT * FROM domain WHERE domain_name='".$_POST['domain']."'";
 		}
 		$result = $handle->query($query);
 		if (DB::isError($result)) {
@@ -57,7 +57,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			if ($domain_quota != 0) {
 				$used_domain_quota = 0;
 				$cyr_conn = new cyradm;
-				$error = $cyr_conn -> imap_login();
+				$error = $cyr_conn->imap_login();
 
 				if ($error != 0){
 					die ("IMAP Error: ".$cyr_conn->geterror());
@@ -267,7 +267,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			}
 
 			$cyr_conn = new cyradm;
-			$error = $cyr_conn -> imap_login();
+			$error = $cyr_conn->imap_login();
 			if ($error != 0) {
 				die ("Error $error");
 			}

@@ -13,7 +13,7 @@ if (DB::isError($handle)) {
 }
 
 #### Getting admin settings
-$query = "SELECT * from settings WHERE username='".$_SESSION['user']."'";
+$query = "SELECT * FROM settings WHERE username='".$_SESSION['user']."'";
 $result = $handle->query($query);
 $row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 $_SESSION['style'] = $row['style'];

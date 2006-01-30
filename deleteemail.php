@@ -58,7 +58,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				die (_("Database error"));
 			}
 
-			$query = "delete from virtual where alias='$alias'";
+			$query = "DELETE FROM virtual WHERE alias='$alias'";
 			$result = $handle->query($query);
 
 			?>

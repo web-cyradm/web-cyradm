@@ -16,13 +16,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		if (DB::isError($handle)){
 		    die (_("Database error"));
 		}
-		$query = "select * from domain where domain_name='$domain'";
+		$query = "SELECT * FROM domain WHERE domain_name='$domain'";
 		$result = $handle->query($query);
 		$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		$freeaddress=$row['freeaddress'];
 		if ($authorized){
 
-			$query = "select * from virtual where alias='$alias'";
+			$query = "SELECT * FROM virtual WHERE alias='$alias'";
 			$result = $handle->query($query);
 			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			$alias = $row['alias'];
