@@ -1,4 +1,4 @@
-<?
+<?php
 function logger($entry, $level = 'INFO') {
 	global $LOG_DIR;
 	global $LOG_LEVEL;

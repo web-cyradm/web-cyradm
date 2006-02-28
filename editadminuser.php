@@ -156,7 +156,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 									class="inputfield"
 									type="text"
 									name="newdomain"
-									value="<?print $_GET['domain'];?>"
+									value="<?php print $_GET['domain']; ?>"
 									onfocus="this.style.backgroundColor='#aaaaaa'">
 							<?php
 							} # End of if ($type == 0)

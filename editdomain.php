@@ -91,7 +91,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<h3>
 					<?php echo $err_msg;?>
 				</h3>
-				<?
+				<?php
 			} // End of if (authorized)
 
 		}

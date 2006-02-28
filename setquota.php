@@ -165,7 +165,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		} else {
 			?>
 			<h3>
-				<? print $err_msg;?>
+				<?php print $err_msg;?>
 			</h3>
 			<a href="index.php?action=accounts&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
 			<?php

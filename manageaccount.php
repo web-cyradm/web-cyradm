@@ -174,17 +174,17 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					</tr>
 					<tr>
 						<td><?php print _("Set vacation message and filter rules with sieve");?></td>
-						<td><input name="sieve" value="1" type="checkbox" <?print $sieve_checked?>></td>
+						<td><input name="sieve" value="1" type="checkbox" <?php print $sieve_checked; ?>></td>
 					</tr>
 
 					<tr>
 						<td><?php print _("Send E-Mails via smtp authentication");?></td>
-						<td><input name="smtpauth" value="1" type="checkbox" <?print $smtpauth_checked?>></td>
+						<td><input name="smtpauth" value="1" type="checkbox" <?php print $smtpauth_checked; ?>></td>
 					</tr>
 
 					<tr>
 						<td><?php print _("Receive E-Mails via smtp");?></td>
-						<td><input name="smtp" value="1" type="checkbox" <?print $smtp_checked?>></td>
+						<td><input name="smtp" value="1" type="checkbox" <?php print $smtp_checked; ?>></td>
 					</tr>
 
 					<tr>
@@ -362,7 +362,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		} else {
 			?>
 			<h3>
-				<? print $err_msg;?>
+				<?php print $err_msg; ?>
 			</h3>
 			<a href="index.php?action=accounts&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
 			<?php
