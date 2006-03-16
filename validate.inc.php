@@ -44,7 +44,7 @@ if ($_POST){
 // function ValdateEmail V0.2 2002-04-10 22:14
 function ValidateMail($email) {
 //     if(!eregi("^[0-9a-z]([-_.]?[0-9a-z])*$",$email)) {
-	if (!eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[[:alnum:]]([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](g|l|m|t|u|v|f|ro|fo|op|pa|me|seum)?$",$email)){
+	if (!eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[[:alnum:]]([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](f|g|l|m|t|u|v|z|ro|fo|op|pa|me|seum)?$",$email)){
 		return 0;
 	} else {
 		return 1;
@@ -52,7 +52,7 @@ function ValidateMail($email) {
 }
 
 function ValidMail($email) {
-	if (!eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[[:alnum:]]([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](g|l|m|t|u|v|f|ro|fo|op|pa|me|seum)?$",$email)){
+	if (!eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[[:alnum:]]([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](f|g|l|m|t|u|v|z|ro|fo|op|pa|me|seum)?$",$email)){
 		return FALSE;
 	} else {
 		return TRUE;
@@ -76,7 +76,7 @@ function ValidPassword($password) {
 }
 
 function ValidDomain($domain) {
-	if (!eregi("^[[:alnum:]]([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](g|l|m|t|u|v|f|ro|fo|op|pa|me|seum)?$",$domain)){
+	if (!eregi("^[[:alnum:]]([.-]?[[:alnum:]])*[.][a-wyz][[:alpha:]](f|g|l|m|t|u|v|z|ro|fo|op|pa|me|seum)?$",$domain)){
 		return FALSE;
 	} else {
 		return TRUE;
