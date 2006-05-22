@@ -288,7 +288,7 @@ if (! empty($action)){
 				$authorized = FALSE;
 				$err_msg = _("New passwords are not equal. Password not changed");
 			} else {
-				$query = "SELECT `type` FROM adminuser WHERE username='".$_POST['username']."'";
+				$query = "SELECT type FROM adminuser WHERE username='".$_POST['username']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
 					die (_("Database error"));
@@ -302,7 +302,7 @@ if (! empty($action)){
 						# Web-cyradm again
 
 						# Query to get the count of superusers
-						$query = "SELECT `type` FROM adminuser WHERE type='0'";
+						$query = "SELECT type FROM adminuser WHERE type='0'";
 						$result = $handle->query($query);
 						if (DB::isError($result)) {
 							die (_("Database error"));
@@ -378,7 +378,7 @@ if (! empty($action)){
 				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 			} else {
 				#Determine what type of admin should be deleted
-				$query = "SELECT `type` FROM adminuser WHERE username='".$_GET['username']."'";
+				$query = "SELECT type FROM adminuser WHERE username='".$_GET['username']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
 					die (_("Database error"));
@@ -387,7 +387,7 @@ if (! empty($action)){
 				$type = $row['type'];
 
 				# Query to get the count of superusers
-				$query = "SELECT `type` FROM adminuser WHERE type='0'";
+				$query = "SELECT type FROM adminuser WHERE type='0'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
 					die (_("Database error"));
@@ -684,7 +684,7 @@ if (! empty($action)){
 				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 			} else {
 				if (!empty($_GET['confirmed']) && empty($_GET['cancel'])) {
-			                $query = "SELECT `freeaddress` FROM `domain` WHERE `domain_name`='".$_GET['domain']."'";
+			                $query = "SELECT freeaddress FROM domain WHERE domain_name='".$_GET['domain']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
 						die (_("Database error"));
