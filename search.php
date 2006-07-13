@@ -112,7 +112,7 @@ print "<h3>"._("Total users matching").": ".$total."</h3>";
 if (!isset($row_pos)){
 	$row_pos=0;
 	}
-        $query="SELECT DISTINCT a.username, a.domain_name FROM virtual as v, accountuser as a WHERE ((v.username LIKE '%$searchstring%') OR (v.alias LIKE '%$searchstring%')) AND (v.username=a.username) AND $allowed_domains1') ORDER BY username";
+        $query="SELECT DISTINCT a.*, a.domain_name FROM virtual as v, accountuser as a WHERE ((v.username LIKE '%$searchstring%') OR (v.alias LIKE '%$searchstring%')) AND (v.username=a.username) AND $allowed_domains1') ORDER BY username";
 	$result=$handle->limitQuery($query,$row_pos,10);
 	$cnt=$result->numRows($result);
 
@@ -147,10 +147,11 @@ if (!isset($row_pos)){
 		print "<table border=\"0\">\n";
 		print "<tbody>";
 		print "<tr>";
-		print "<th colspan=\"6\">"._("action")."</th>";
+		print "<th colspan=\"5\">"._("action")."</th>";
 		print "<th>"._("Email address")."</th>";
 		print "<th>"._("Username")."</th>";
 		print "<th>"._("Quota used")."</th>";
+		print "<th>"._("services")."</th>";
 		print "</tr>";
 
 
@@ -168,17 +169,20 @@ if (!isset($row_pos)){
 		$row=$result->fetchRow(DB_FETCHMODE_ASSOC,$c);
 		$username=$row['username'];
 		$domain=$row['domain_name'];
+		$services = array();
+		$services['imap'] = $row['imap'];
+		$services['pop'] = $row['pop'];
+		$services['sieve'] = $row['sieve'];
+		$services['smtpauth'] = $row['smtpauth'];
 		$query2="SELECT * FROM virtual WHERE username='$username'";
 		$result2=$handle->query($query2);
 		$row2=$result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
 		$alias=$row2['alias'];
 		print "\n<tr class=\"$cssrow\">";
-		print "\n<td><a href=\"index.php?action=editaccount&domain=$domain&username=$username\">"._("Edit account")."</a></td>";
-		print "\n<td><a href=\"index.php?action=change_password&domain=$domain&username=$username&alias=$alias\">"._("Change Password")."</a></td>";
-		
+		print "\n<td><a href=\"index.php?action=editaccount&domain=".$domain."&username=".$username."\">"._("Edit email addresses")."</a></td>";
+		print "\n<td><a href=\"index.php?action=manageaccount&domain=".$domain."&username=".$username."\">"._("Edit account")."</a></td>";
 		print "\n<td><a href=\"index.php?action=forwardaccount&domain=$domain&username=$username&alias=$alias\">". _("Forward")."</a></td>";
 		print "\n<td><a href=\"index.php?action=deleteaccount&domain=$domain&username=$username\">"._("Delete account")."</a></td>";
-		print "\n<td><a href=\"index.php?action=setquota&domain=$domain&username=$username\">"._("Set quota")."</a></td>";
 		print "\n<td><a href=\"index.php?action=catch&domain=$domain&username=$username\">"._("Set catch all")."</a></td>";
 		print "\n<td>";
 		$query2="SELECT * FROM virtual WHERE username='$username'";
@@ -231,9 +235,41 @@ if (!isset($row_pos)){
                     print _("Quota not set");
                 }  
 
-		print "&nbsp;</td>\n</tr>\n";
-
-
+		print "&nbsp;</td>\n";
+		print '<td valign="middle">';
+		print '<table border=0 align="center">';
+		if($services['imap']==1){
+			print "<tr><td>imap</td><td><img src=\"images/checked.png\" alt=\"yes\" border=0></td></tr>";
+		}
+		else{
+			print "<tr><td>imap</td><td><img src=\"images/false.png\" alt=\"no\" border=0></td></tr>";
+		}
+		if($services['pop']==1){
+			print "<tr><td>pop</td><td><img src=\"images/checked.png\" alt=\"yes\" border=0></td></tr>";
+		}
+		else{
+			print "<tr><td>pop</td><td><img src=\"images/false.png\" alt=\"no\" border=0></td></tr>";
+		}
+		if($services['sieve']==1){
+			print "<tr><td>sieve</td><td><img src=\"images/checked.png\" alt=\"yes\" border=0></td></tr>";
+		}
+		else{
+			print "<tr><td>sieve</td><td><img src=\"images/false.png\" alt=\"no\" border=0></td></tr>";
+		}
+		if($services['smtpauth']==1){
+			print "<tr><td>smtpauth</td><td><img src=\"images/checked.png\" alt=\"yes\" border=0></td></tr>";
+		}
+		else{
+			print "<tr><td>smtpauth</td><td><img src=\"images/false.png\" alt=\"no\" border=0></td></tr>";
+		}
+		if($row2['status']==1){
+			print "<tr><td>smtp</td><td><img src=\"images/checked.png\" alt=\"yes\" border=0></td></tr>";
+		}
+		else{
+			print "<tr><td>smtp</td><td><img src=\"images/false.png\" alt=\"no\" border=0></td></tr>";
+		}
+		print "</table>\n</td>\n";
+		print "</tr>\n";
 		}
 		print "\n</tbody>\n";
 		print "</table>\n";
