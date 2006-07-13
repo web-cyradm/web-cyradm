@@ -27,7 +27,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$prev_url = "index.php?action=aliases&domain=".$_GET['domain']."&row_pos=".$prev;
 		}
 
-		if ($next > $alias_count) {
+		if ($next >= $alias_count) {
 			$next_url = "#";
 		} else {
 			$next_url = "index.php?action=aliases&domain=".$_GET['domain']."&row_pos=".$next;

@@ -50,7 +50,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					} else {
 						$_linkP = 'index.php?action=adminuser&amp;domain=' . $_GET['domain'] . '&amp;row_pos=' . $prev;
 					}
-					if ($next > $total){
+					if ($next >= $total){
 						$_linkN = '#';
 					} else {
 						$_linkN = 'index.php?action=adminuser&amp;domain=' . $_GET['domain'] . '&amp;row_pos=' . $next;
