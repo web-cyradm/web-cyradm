@@ -4,5 +4,5 @@ o Storage of user and admin data such as Name, Adress etc.
 o Massmailing function for domains, superusers, all
 o Code cleanup
 o Switching as much as possible to a drivermodel like used in horde as suggested.
-o Introduction of LDAP Support with the help of the above mentions drivermodel
+o Introduction of LDAP Support with the help of the above mentions drivermodel.
 o Integration of AntiSPAM and AntiVIRUS configuration on user and domain base.
