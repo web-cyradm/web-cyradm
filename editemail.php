@@ -31,9 +31,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 			if (! empty($confirmed)){
 			        if ($freeaddress!="YES") {
-	  				$query = "UPDATE virtual SET alias='$newalias@$domain', dest='$dest' WHERE alias='$alias'";
+	  				$query = "UPDATE virtual SET alias='$newalias@$domain', dest='$newdest' WHERE alias='$alias'";
 				} else {
-	  				$query = "UPDATE virtual SET alias='$newalias', dest='$dest' WHERE alias='$alias'";
+	  				$query = "UPDATE virtual SET alias='$newalias', dest='$newdest' WHERE alias='$alias'";
 				}
 				$handle = DB::connect($DB['DSN'], true);
 				if (DB::isError($handle)) {
@@ -118,7 +118,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							<td>
 								<input class="inputfield"
 								type="text" size="30"
-								name="dest" value="<?php echo $dest;?>">
+								name="newdest" value="<?php echo $dest;?>">
 							</td>
 						</tr>
 
