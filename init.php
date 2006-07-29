@@ -15,6 +15,9 @@ if (DB::isError($handle)) {
 #### Getting admin settings
 $query = "SELECT * FROM settings WHERE username='".$_SESSION['user']."'";
 $result = $handle->query($query);
+if (DB::isError($result)) {
+	die (_("Database error").": "._("Check scripts/upgrade-*.sql files."));
+}
 $row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 $_SESSION['style'] = $row['style'];
 $_SESSION['warnlevel'] = $row['warnlevel'];
