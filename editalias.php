@@ -7,8 +7,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 }
 ?>
 <!-- #################################### Start editalias.php ################################# -->
-<?php
+<tr>
+	<td width="10">&nbsp;</td>
 
+	<td valign="top">
+<?php
+if ($authorized) {
 if( isset( $_GET['create'] ) )
 {
 	$alias = $_GET['alias']."@".$_GET['domain'];
@@ -60,9 +64,6 @@ else {
 
 ?>
 
-<tr>
-	<td width="10">&nbsp;</td>
-	<td valign="top">
 	<h3><?php print _("Editing alias"); ?> <font color=red><?php echo $alias ?></font></h3>
 
 	<table cellspacing="2" cellpadding="0">
@@ -147,8 +148,16 @@ else
 	<input name="adddest" value="<?php print _("Submit");?>" class="button" type="submit">&nbsp;
 	<input name="reset" value="<?php echo _("Cancel");?>" class="button" type="reset">
 	</form>
-
+<?php
+} else { // if ($authorized)
+?>
+	<h3>
+		<?php echo $err_msg;?>
+	</h3>
+	<a href="index.php?action=newalias&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
+<?php
+}
+?>
 	</td>
 </tr>
-	
 <!-- ##################################### End editalias.php ################################## -->
