@@ -58,9 +58,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				die (_("Database error"));
 			}
 
-			$query = "DELETE FROM virtual WHERE alias='$alias'";
+			$query = "DELETE FROM virtual WHERE alias='$alias' AND username='".$_GET['username']."'";
 			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
 
+			#TODO: Removing forwards from sieve script
 			?>
 			<h3>
 				<?php print _("Emailadress deleted.");?>:
