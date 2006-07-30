@@ -710,8 +710,25 @@ if (! empty($action)){
 					} elseif (in_array($alias, $reserved)) {
 						$authorized = FALSE;	
 						$err_msg="Reserved Emailadress, request cancelled";
+					# Check to see if there's an email with the same name
 					} else {
-						$authorized = TRUE;
+						$query = "SELECT alias FROM virtual WHERE alias='";
+						if ($freeaddress != "YES") {
+							$query .= $alias."@".$domain."'";
+						} else {
+							$query .= $alias."'";
+						}
+						$result = $handle->query($query);
+						if (DB::isError($result)) {
+							die (_("Database error"));
+						}
+						$cnt = $result->numRows();
+						if ($cnt != 0) {
+							$authorized = FALSE;
+							$err_msg = _("Sorry, the emailadress already exists");
+						} else {
+							$authorized = TRUE;
+						}
 					}
 				} else {
 					$authorized=TRUE;
@@ -746,7 +763,73 @@ if (! empty($action)){
 ###########################  Check if change email-adress ####################################
 	## FIXME: make beter checks
 	case "editemail":
+		if (!ValidDomain($_GET['domain']) || !ValidName($_GET['username'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+		} else {
+			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
+			if (!$result->numRows()){
+				$authorized = FALSE;
+				logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+			} else {
+				if (!empty($_GET['confirmed']) && empty($_GET['cancel'])) {
+			                $query = "SELECT freeaddress FROM domain WHERE domain_name='".$_GET['domain']."'";
+					$result = $handle->query($query);
+					if (DB::isError($result)) {
+						die (_("Database error"));
+					}
+					$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+					$freeaddress = $row['freeaddress'];
 
+					$valid_dest  = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $newdest);
+					if ($freeaddress != "YES") {
+					    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $newalias."@".$domain);
+					} else {
+					    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $newalias);
+					}
+					if ($newdest != $_GET['username'] and !$valid_dest) {
+//					if ($newdest != $username2 and !ValidateMail($dest))
+						$authorized = FALSE;
+						$err_msg = _("Invalid destination");
+					} elseif (isset($newalias) && !$valid_alias) {
+//		  			elseif (!ValidateMail($newalias."@".$domain) and isset($newalias))
+						$authorized = FALSE;
+						$err_msg = _("Invalid email adress");
+					# Check for reserved addresses
+					} elseif (in_array($newalias, $reserved)) {
+						$authorized = FALSE;	
+						$err_msg="Reserved Emailadress, request cancelled";
+					} else {
+					# Check to see if there's an email with the same name
+						$query = "SELECT alias FROM virtual WHERE alias='";
+						if ($freeaddress != "YES") {
+							$query .= $_GET['newalias']."@".$domain."'";
+						} else {
+							$query .= $_GET['newalias']."'";
+						}
+						$result = $handle->query($query);
+						if (DB::isError($result)) {
+							die (_("Database error"));
+						}
+						$cnt = $result->numRows();
+						if ($cnt != 0) {
+							$authorized = FALSE;
+							$err_msg = _("Sorry, the emailadress already exists");
+						} else {
+							$authorized = TRUE;
+						}
+					}
+				} else {
+					$authorized = TRUE;
+				}
+			}
+		}
+		break;
 	case "vacation":
 	case "forwardaccount":
 	case "forwardalias":
@@ -765,7 +848,7 @@ if (! empty($action)){
 			} else {
 			    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias);
 			}
-			if ($newdest != $username2 and !$valid_dest){
+			if ($newdest != $_GET['username'] and !$valid_dest){
 				$authorized=FALSE;
 				$err_msg = "invalid destination";
 			} elseif (!$valid_alias and isset($newalias)){
