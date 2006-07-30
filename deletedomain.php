@@ -108,6 +108,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						$username = $row['username'];
 						$query5 = "DELETE FROM virtual WHERE username='$username'";
 						$result5 = $handle->query($query5);
+						# Removing forwards
+						$query6 = "DELETE FROM virtual WHERE alias='$username'";
+						$result6 = $handle->query($query6);
 
 						# And also delete the Usermailboxes from the cyrus system
 						if ($DOMAIN_AS_PREFIX){
