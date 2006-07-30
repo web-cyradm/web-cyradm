@@ -25,7 +25,7 @@ $_SESSION['warnlevel'] = $row['warnlevel'];
 $_SESSION['domain_row_pos'] = 0;
 $_SESSION['maxdisplay'] = $row['maxdisplay'];
 $_SESSION['domain_orderby'] = 'domain_name';
-$_SESSION['domain_orderby_desc'] = 'ASC';
+$_SESSION['domain_orderby_desc'] = 'asc';
 
 $_SESSION['account_row_pos'] = 0;
 $_SESSION['account_maxdisplay'] = $_SESSION['maxdisplay'];

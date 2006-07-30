@@ -19,13 +19,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 //		$_SESSION['domain_row_pos'] = $row_pos;
 		if (isset($_GET['orderby'])) {
 			if ($_SESSION['domain_orderby'] == $_GET['orderby']) {
-				if ($_SESSION['domain_orderby_desc']=="ASC") {
-					$_SESSION['domain_orderby_desc'] = "DESC";
+				if ($_SESSION['domain_orderby_desc']=="asc") {
+					$_SESSION['domain_orderby_desc'] = "desc";
 				} else {
-					$_SESSION['domain_orderby_desc'] = "ASC";
+					$_SESSION['domain_orderby_desc'] = "asc";
 				}
 			} else {
-				$_SESSION['domain_orderby_desc'] = "ASC";
+				$_SESSION['domain_orderby_desc'] = "asc";
 			}
 			$_SESSION['domain_orderby'] = $_GET['orderby'];
 		}
@@ -106,31 +106,42 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
                                         <th>
                                                 <!-- <?php print _("domainname");?> -->
-                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=domain_name\">"._("domainname")."</a><img src=\"images/arrow_sort_desc.png\" border=\"0\">";?>
+						<?php
+						print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=domain_name\">"._("domainname")."</a>";
+						if ($_SESSION['domain_orderby'] == 'domain_name') print "<img src=\"images/arrow_sort_".$_SESSION['domain_orderby_desc'].".png\" border=\"0\">";
+						?>
                                         </th>
 
                                         <?php
                                         if (! $DOMAIN_AS_PREFIX){
                                                 ?>
                                                 <th>
-                                                        <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=prefix\">"._("prefix")."</a>";?>
+						<?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=prefix\">"._("prefix")."</a>";
+						if ($_SESSION['domain_orderby'] == 'prefix') print "<img src=\"images/arrow_sort_".$_SESSION['domain_orderby_desc'].".png\" border=\"0\">";
+?>
                                                 </th>
                                                 <?php
                                         }
                                         ?>
 
                                         <th>
-                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=maxaccounts\">"._("max Accounts")."</a>";?>
+						<?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=maxaccounts\">"._("max Accounts")."</a>";
+						if ($_SESSION['domain_orderby'] == 'maxaccounts') print "<img src=\"images/arrow_sort_".$_SESSION['domain_orderby_desc'].".png\" border=\"0\">";
+?>
                                         </th>
 
                                         <th>
                                                 <!-- <?php print _("Domain quota");?> -->
-                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=domainquota\">"._("Domain quota")."</a>";?>
+						<?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=domainquota\">"._("Domain quota")."</a>";
+						if ($_SESSION['domain_orderby'] == 'domainquota') print "<img src=\"images/arrow_sort_".$_SESSION['domain_orderby_desc'].".png\" border=\"0\">";
+?>
                                         </th>
 
                                         <th>
                                                 <!-- <?php print _("default quota per user");?> -->
-                                                <?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=quota\">"._("default quota per user")."</a>";?>
+						<?php print "<a class=\"th_a\" href=\"index.php?action=browse&orderby=quota\">"._("default quota per user")."</a>";
+						if ($_SESSION['domain_orderby'] == 'quota') print "<img src=\"images/arrow_sort_".$_SESSION['domain_orderby_desc'].".png\" border=\"0\">";
+?>
                                         </th>
                                 </tr>
 
