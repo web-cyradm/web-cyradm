@@ -26,7 +26,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$dest = $row['dest'];
 			$username = $row['username'];
 
-			include WC_BASE . '/lib/sieve-php.lib';
+			include WC_BASE . '/lib/sieve-php.lib.php';
 			include WC_BASE . '/lib/sieve_strs.php';
 
 			$query = "SELECT * FROM accountuser WHERE username='$dest'";
@@ -38,7 +38,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$result = $handle->query($query);
 			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			$password = $row['password'];
-			$daemon = new sieve($CYRUS['HOST'],"2000", $username, $CYRUS['PASS'], $CYRUS['ADMIN']);
+			$daemon = new sieve($CYRUS['HOST'],"2000", $CYRUS['ADMIN'], $CYRUS['PASS'], $username);
 
 			if (! empty($confirmed)){
 				switch ($mode){

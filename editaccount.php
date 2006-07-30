@@ -12,9 +12,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td valign="top">
 
 		<?php
-		include WC_BASE . '/lib/sieve-php.lib';                                                                     
+		include WC_BASE . '/lib/sieve-php.lib.php';
                 include WC_BASE . '/lib/sieve_strs.php'; 
-		$daemon = new sieve($CYRUS['HOST'],"2000", $username, $CYRUS['PASS'], $CYRUS['ADMIN']);
+		$daemon = new sieve($CYRUS['HOST'],"2000", $CYRUS['ADMIN'], $CYRUS['PASS'], $username);
 		$cyr_conn = new cyradm;
 		$cyr_conn->imap_login();
 		?>
