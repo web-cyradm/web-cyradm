@@ -78,7 +78,7 @@ class cyradm
 	*/
 	function imap_login()
 	{
-		$this->fp = fsockopen($this->host, $this->port, &$errno, &$errstr);
+		$this->fp = fsockopen($this->host, $this->port, $errno, $errstr);
 		$this->error_msg = $errstr;
 		if(!$this->fp) {
 			echo "<br>ERRORNO: ($errno) <br>ERRSTR: ($errstr)<br><hr>\n";

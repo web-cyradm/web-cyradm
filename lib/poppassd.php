@@ -5,7 +5,7 @@
     var $err_str;
 
     function connect( $server, $port ) {
-        $this->fp = fsockopen($server, $port, &$err_no, &$err_str);
+        $this->fp = fsockopen($server, $port, $err_no, $err_str);
         if (!$this->fp) {
             $this->err_str = $err_str;
             return false;
