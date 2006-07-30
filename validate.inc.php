@@ -1008,7 +1008,15 @@ if (! empty($action)){
 			$authorized = TRUE;
 		}
 		break;
+#OK######################################## Check input if newalias ##################################
 	case "newalias":
+		if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} else {
+			$authorized = TRUE;
+		}
+		break;		
 ########################################## Check input if editalias ##################################
 	case "editalias":
 		# Check for reserved addresses
