@@ -833,39 +833,50 @@ if (! empty($action)){
 	case "vacation":
 	case "forwardaccount":
 	case "forwardalias":
-		$query = "SELECT * FROM accountuser WHERE username='$username' AND domain_name='$domain'";
-		$result = $handle->query($query);
-
-                $query2 = "SELECT * FROM domain WHERE domain_name='$domain'";
-		$result2 = $handle->query($query2);
-		$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
-		$freeaddress=$row2['freeaddress'];
-
-		if (! empty($confirmed) && ! empty($newdest) && ! empty($newalias)){
-			$valid_dest = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newdest);
-			if ($freeaddress != "YES") {
-			    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias."@".$domain);
-			} else {
-			    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias);
-			}
-			if ($newdest != $_GET['username'] and !$valid_dest){
-				$authorized=FALSE;
-				$err_msg = "invalid destination";
-			} elseif (!$valid_alias and isset($newalias)){
-				$authorized = FALSE;
-				$err_msg = "Invalid email adress";
-			} else {
-				$authorized = TRUE;
-			}
+		if (!ValidDomain($_GET['domain']) || !ValidName($_GET['username'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 		} else {
-			$authorized=TRUE;
-		}
-			# Check for reserved addresses
-		if (in_array($newalias, $reserved)) {
-			$authorized = FALSE;	
-			$err_msg="Reserved Emailadress, request cancelled";
-		}
+			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
+			if (!$result->numRows()){
+				$authorized = FALSE;
+				logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+			} else {
+				$query2 = "SELECT * FROM domain WHERE domain_name='$domain'";
+				$result2 = $handle->query($query2);
+				$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
+				$freeaddress=$row2['freeaddress'];
 
+				if (! empty($confirmed) && ! empty($newdest) && ! empty($newalias)){
+					$valid_dest = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newdest);
+					if ($freeaddress != "YES") {
+					    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias."@".$domain);
+					} else {
+					    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias);
+					}
+					if ($newdest != $_GET['username'] and !$valid_dest){
+						$authorized=FALSE;
+						$err_msg = "invalid destination";
+					} elseif (!$valid_alias and isset($newalias)){
+						$authorized = FALSE;
+						$err_msg = "Invalid email adress";
+					# Check for reserved addresses
+					} elseif (in_array($newalias, $reserved)) {
+						$authorized = FALSE;	
+						$err_msg="Reserved Emailadress, request cancelled";
+					} else {
+						$authorized = TRUE;
+					}
+				} else {
+					$authorized=TRUE;
+				}
+			}
+		}
 		break;
 ######################################## Check new domain name ########################################
 	case "newdomain":
@@ -1004,22 +1015,13 @@ if (! empty($action)){
 		if (in_array($alias, $reserved)) {
 			$authorized = FALSE;
 			$err_msg="Reserved Emailadress, request cancelled";
+		} else {
+			$authorized = TRUE;
 		}
 		break;		
 ##########################################
 	case "deletealias":
-	case "forwardalias":
 	case "deleteemail":
-	case "vacation":
-		$query3 = "SELECT domain_name FROM accountuser WHERE username='$username' AND domain_name='$domain'";
-		$result3 = $handle->query($query3);
-		$cnt3=$result3->numRows();
-
-		if (!$cnt3 and $username !=""){
-			print _("Security violation detected, attempt logged");
-			include WC_BASE . "/logout.php";
-			die ();
-		}
 		break;
 ######################################### If nothing matches ##########################################
 	default:
