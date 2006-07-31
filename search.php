@@ -34,7 +34,7 @@ if ($authorized) {
 
 
 	#####  Show matching Domains first #######
-	$query = "SELECT * FROM domain WHERE domain_name LIKE '%".$_GET['searchstring']."%' AND ".$allowed_domains1."') ORDER BY domain_name";
+	$query = "SELECT * FROM domain AS a WHERE domain_name LIKE '%".$_GET['searchstring']."%' AND ".$allowed_domains1."') ORDER BY domain_name";
 	$result = $handle->query($query);
 	$cnt = $result->numRows();
 
