@@ -488,7 +488,30 @@ if (! empty($action)){
 			}
 		}
 		break;
+#OK########################### Check input if editaccount ###############################################
 	case "editaccount":
+		if (!ValidDomain($_GET['domain'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+		} elseif (!ValidName($_GET['username'])) {
+			$authorized = FALSE;
+			logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+		} else {
+			# it's needed to defend users from not allowed domains
+			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
+			if (!$result->numRows()){
+				$authorized = FALSE;
+				logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+			} else {
+				$authorized = TRUE;
+			}
+		}
 		break;
 #OK########################### Check input if deleteaccount ###############################################
 	case "deleteaccount":
