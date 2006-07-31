@@ -1035,11 +1035,17 @@ if (! empty($action)){
 			$authorized = TRUE;
 		}
 		break;		
-########################################## Check input if editalias ##################################
+#OK####################################### Check input if editalias ##################################
 	case "editalias":
 		if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} elseif (empty($_GET['alias']) || !ValidMail($_GET['alias'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} elseif (!empty($_GET['adddest']) && ((empty($_GET['dest']) || !ValidMail($_GET['dest']) && !ValidName($_GET['dest'])))) {
+			$authorized = FALSE;
+			$err_msg = "invalid destination";
 		# Check for reserved addresses
 		} elseif (in_array($alias, $reserved)) {
 			$authorized = FALSE;
