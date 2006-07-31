@@ -25,7 +25,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				if ($freeaddress != "YES") {
 					$query = "INSERT INTO virtual (alias,dest,username) VALUES ('".$_GET['alias']."@".$_GET['domain']."','".$_GET['dest']."','".$_GET['username']."')";
 				} else {
-					$query = "INSERT INTO virtual (alias,dest,username) VALUES ('".$_GET['alias']."','".$_GET['dest']."','".$_GET['username']."')";
+					$query = "INSERT INTO virtual (alias,dest,username) VALUES ('".$_GET['alias']."@".$_GET['aliasdomain']."','".$_GET['dest']."','".$_GET['username']."')";
 				}
 				$result = $handle->query($query);
 
@@ -83,6 +83,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								<?php
 									if ($freeaddress != "YES") {
 										print "@".$_GET['domain'];
+									} else {
+										print "@";
+								?>
+										<input class="inputfield" type="text"
+										size="20" name="aliasdomain">
+								<?php
 									}
 								?>
 							</td>
@@ -119,7 +125,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				<h3>
 					<?php echo $err_msg;?>
 				</h3>
-				<a href="index.php?action=accounts&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
+				<a href="index.php?action=editaccount&domain=<?php echo $_GET['domain'];?>&username=<?php echo $_GET['username'];?>"><?php print _("Back");?></a>
 			<?php
 		}
 		?>
