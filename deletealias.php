@@ -6,88 +6,87 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	exit();
 }
 ?>
-<!-- #################################### Start newalias.php ################################# -->
+<!-- #################################### Start deletealias.php ################################# -->
 <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="top">
 
 <?php
-
-if( ! isset( $_GET['confirmed'] ) )
-{
-	if( isset( $_GET['dest'] ) )
-	{
-		// Removing a destination from an alias
-
+if ($authorized) {
+	if(empty($_GET['confirmed'])) {
+		if (!empty( $_GET['dest'])) {
+			// Removing a destination from an alias
 ?>
-
-
-	<form action="index.php" method="GET">
-	<input type="hidden" name="action" value="deletealias">
-	<input type="hidden" name="dest" value="<?php echo $_GET['dest'] ?>">
-	<input type="hidden" name="alias" value="<?php echo $_GET['alias'] ?>">
-	<input type="hidden" name="domain" value="<?php echo $_GET['domain'] ?>">
-	<?php print _("Please confirm you want to remove")?> <b><?php echo $_GET['dest'] ?></b> <?php print _("from the alias");?> <b><?php echo $_GET['alias'] ?></b>&nbsp;<p>
-	<input name="confirmed" class="button" value="<?php print _("Yes");?>" type="submit" class="button">&nbsp;
-	<input name="no" class="button" value="<?php print _("Cancel");?>" type="button" class="inputclass" onClick="history.go(-1)">
-	</form>
-	</td>
-</tr>	
+			<form action="index.php" method="GET">
+			<input type="hidden" name="action" value="deletealias">
+			<input type="hidden" name="confirmed" value="true">
+			<input type="hidden" name="dest" value="<?php echo $_GET['dest'] ?>">
+			<input type="hidden" name="alias" value="<?php echo $_GET['alias'] ?>">
+			<input type="hidden" name="domain" value="<?php echo $_GET['domain'] ?>">
+			<?php print _("Please confirm you want to remove")?> <b><?php echo $_GET['dest'] ?></b> <?php print _("from the alias");?> <b><?php echo $_GET['alias'] ?></b><br>
+			<input name="submit" class="button" value="<?php print _("Yes");?>" type="submit">&nbsp;
+			<input name="cancel" class="button" value="<?php print _("Cancel");?>" type="submit">
+			</form>
 <?php
 
-	}
-	else
-	{
-		// Removing the entire alias
-
+		} else {
+			// Removing the entire alias
 ?>
-
-	<form action="index.php" method="GET">
-	<input type="hidden" name="action" value="deletealias">
-	<input type="hidden" name="alias" value="<?php echo $_GET['alias'] ?>">
-	<input type="hidden" name="domain" value="<?php echo $_GET['domain'] ?>">
-	<?php print _("Please confirm you want to remove the alias");?> <b><?php echo $_GET['alias'] ?></b>&nbsp;
-	<input name="confirmed" class="button" value="<?php print _("Yes");?>" type="submit" class="inputclass">&nbsp;
-	<input name="no" class="button" value="<?php print _("Cancel");?>" type="button" class="inputclass" onClick="history.go(-1)">
-	</form>
+			<form action="index.php" method="GET">
+			<input type="hidden" name="action" value="deletealias">
+			<input type="hidden" name="confirmed" value="true">
+			<input type="hidden" name="alias" value="<?php echo $_GET['alias'] ?>">
+			<input type="hidden" name="domain" value="<?php echo $_GET['domain'] ?>">
+			<?php print _("Please confirm you want to remove the alias");?> <b><?php echo $_GET['alias'] ?></b><br>
+			<input name="submit" class="button" value="<?php print _("Yes");?>" type="submit">&nbsp;
+			<input name="cancel" class="button" value="<?php print _("Cancel");?>" type="submit">
+			</form>
+<?php
+		}
+	} elseif (!empty($_GET['confirmed']) && !empty($_GET['cancel'])) {
+		if (!empty($_GET['dest'])) {
+			include WC_BASE . "/editalias.php";
+		} else {
+			include WC_BASE . "/aliases.php";
+		}
+	} else {
+		if (!empty($_GET['dest'])) {
+			// Remove a destination
+			$query = "DELETE FROM virtual WHERE alias='".$_GET['alias']."' AND dest='".$_GET['dest']."' AND username = '".$_GET['domain']."'";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			} else {
+				print _("Removed")." <b>".$_GET['dest']."</b> "._("from")." <b>".$_GET['alias']."</b>.\n";
+				include WC_BASE . "/editalias.php";
+			}
+		} else {
+			// Removing an entire alias
+			$query = "DELETE FROM virtual WHERE alias = '".$_GET['alias']."' AND username = '".$_GET['domain']."'";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			} else {
+				print _("Removed the alias")." <b>".$_GET['alias']."</b>\n";
+				include WC_BASE . "/aliases.php";
+			}
+		}
+	}
+} else {
+?>
+			<h3>
+				<?php echo $err_msg;?>
+			</h3>
+<?php
+	if (!empty($_GET['dest'])) {
+		print '<a href="index.php?action=editalias&domain='.$_GET['domain'].'&alias='.$_GET['alias'].'&dest='.$_GET['dest'].'">'. _("Back").'</a>';
+	} else {
+		print '<a href="index.php?action=aliases&domain='.$_GET['domain'].'&alias='.$_GET['alias'].'">'. _("Back").'</a>';
+	}
+}
+?>
 	</td>
 </tr>	
-<?php
-
-	}
-
-}
-else
-{
-	// $confirmed is set, so do the dirty work
-	
-	$handle=DB::connect($DB['DSN'], true);
-	if (DB::isError($handle)) {
-		die ($handle->getMessage());
-	}
-	$domain = $_GET['domain'];
-	$alias = $_GET['alias'];
-
-	if( isset( $dest ) )
-	{
-		// Remove a destination
-		$dest = $_GET['dest'];
-		$query1 = "DELETE FROM virtual WHERE alias = '$alias' AND dest = '$dest' AND username = '$domain'";
-		$result1 = $handle->query( $query1 );
-		print( _("Removed")." <b>$dest</b> "._("from")." <b>$alias</b>.\n" );
-		include WC_BASE . "/editalias.php";
-	}
-	else
-	{
-		// Removing an entire alias
-		$query2 = "DELETE FROM virtual WHERE alias = '$alias' AND username = '$domain'";
-		$result2 = $handle->query( $query2 );
-		print( _("Removed the alias")." <b>$alias</b>\n" );
-		include WC_BASE . "/aliases.php";
-	}
-}
-
-?>
 
 
 	
