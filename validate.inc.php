@@ -847,6 +847,7 @@ if (! empty($action)){
 			}
 		}
 		break;
+########################### ####################################
 	case "vacation":
 	case "forwardaccount":
 	case "forwardalias":
@@ -1047,8 +1048,17 @@ if (! empty($action)){
 			$authorized = TRUE;
 		}
 		break;		
-##########################################
+#OK####################################### Check input if deletealias ##################################
 	case "deletealias":
+		if (!ValidDomain($_GET['domain']) || !ValidMail($_GET['alias'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+		} elseif (!empty($_GET['dest']) && !ValidMail($_GET['dest']) && !ValidName($_GET['dest'])) {
+			$authorized = FALSE;
+			$err_msg = "invalid destination";
+		} else {
+			$authorized = TRUE;
+		}
 		break;
 ######################################### If nothing matches ##########################################
 	default:
