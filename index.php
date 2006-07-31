@@ -110,21 +110,20 @@ if ($wc_configured){
 							    "adminuser", "newadminuser",
 							    "editadminuser", "deleteadminuser",
 							    "editaccount", "newaccount",
-							    "deleteaccount", "setquota",
-							    "change_password", "vacation",
+							    "deleteaccount", "vacation",
 							    "forwardalias", "forwardaccount",
 							    "newemail", "deleteemail",
 							    "editemail", "aliases", "newalias",
 							    "editalias", "deletealias", "search",
 							    "delete_catchall", "settings",
-							    "changeadminpasswd", "display", "editservices"))){
+							    "changeadminpasswd", "display"))){
 				include sprintf('%s/%s.php', WC_BASE, $_GET['action']);
 			}
 
 			# For password related stuff we also need to allow POST vars for some actions
 
 			else if (isset($_POST['action']) AND
-				 in_array($_POST['action'], array('change_password', 'newaccount', 'manageaccount',
+				 in_array($_POST['action'], array('newaccount', 'manageaccount',
 				 				  'newadminuser', 'editadminuser',
 								  'changeadminpasswd'))){
 				include sprintf('%s/%s.php', WC_BASE, $_POST['action']);
