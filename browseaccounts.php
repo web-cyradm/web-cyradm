@@ -121,8 +121,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						die (_("Database error"));
 					}
 					$cnt2 = $result2->numRows($result2);
-					$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
-					$alias = $row2['alias'];
 
 					$query3 = "SELECT * FROM log WHERE user='".$username."' ORDER BY time DESC";
 					$result3 = $handle->query($query3); 
@@ -138,7 +136,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					}
 					$_dom_user = sprintf('&amp;domain=%s&amp;username=%s',
 						$_GET['domain'], $username);
-					$_dom_user_alias = $_dom_user . '&amp;alias=' . $alias;
 					?>
 
 					<tr class="<?php echo $cssrow;?>">
@@ -153,7 +150,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						</td>
 
 						<td align="center" valign="middle">
-							<a href="index.php?action=forwardaccount<?php echo $_dom_user_alias; ?>"> <?php print _("Forward");?></a>
+							<a href="index.php?action=forwardaccount<?php echo $_dom_user; ?>"> <?php print _("Forward");?></a>
 						</td>
 
 						<td align="center" valign="middle">
