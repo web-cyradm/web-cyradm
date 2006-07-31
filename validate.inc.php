@@ -488,6 +488,8 @@ if (! empty($action)){
 			}
 		}
 		break;
+	case "editaccount":
+		break;
 #OK########################### Check input if deleteaccount ###############################################
 	case "deleteaccount":
 		if (!ValidDomain($_GET['domain'])) {
@@ -861,6 +863,8 @@ if (! empty($action)){
 			}
 		}
 		break;
+	case "deletedomain":
+		break;
 #OK################################## Check input if changeadminpasswd ###############################
 	case "changeadminpasswd":
 		if (isset($_POST['confirmed'])){
@@ -985,6 +989,16 @@ if (! empty($action)){
 			$authorized = FALSE;
 			$err_msg = "invalid destination";
 		} else {
+			$authorized = TRUE;
+		}
+		break;
+#Almost OK#################################### Check input if search ###################################
+	case "search":
+		if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} else {
+			#TODO: Validation of $_GET['searchstring']
 			$authorized = TRUE;
 		}
 		break;
