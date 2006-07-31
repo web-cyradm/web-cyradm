@@ -757,8 +757,7 @@ if (! empty($action)){
 			}
 		}
 		break;
-###########################  Check if change email-adress ####################################
-	## FIXME: make beter checks
+#OK########################  Check if change email-adress ####################################
 	case "editemail":
 		if (!ValidDomain($_GET['domain']) || !ValidName($_GET['username'])) {
 			$authorized = FALSE;
@@ -782,41 +781,42 @@ if (! empty($action)){
 					}
 					$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 					$freeaddress = $row['freeaddress'];
-
-					$valid_dest  = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $newdest);
 					if ($freeaddress != "YES") {
-					    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $newalias."@".$domain);
+						$valid_alias = ValidMail($_GET['newalias']."@".$_GET['domain']);
 					} else {
-					    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $newalias);
+						$valid_alias = ValidMail($_GET['newalias']."@".$_GET['aliasdomain']);
 					}
-					if ($newdest != $_GET['username'] and !$valid_dest) {
-//					if ($newdest != $username2 and !ValidateMail($dest))
+
+					if ($newdest != $_GET['username'] && !ValidMail($_GET['newdest'])) {
 						$authorized = FALSE;
 						$err_msg = _("Invalid destination");
-					} elseif (isset($newalias) && !$valid_alias) {
-//		  			elseif (!ValidateMail($newalias."@".$domain) and isset($newalias))
+					} elseif (!empty($_GET['newalias']) && !$valid_alias) {
 						$authorized = FALSE;
 						$err_msg = _("Invalid email adress");
 					# Check for reserved addresses
-					} elseif (in_array($newalias, $reserved)) {
+					} elseif (in_array($_GET['newalias'], $reserved)) {
 						$authorized = FALSE;	
 						$err_msg="Reserved Emailadress, request cancelled";
 					} else {
 					# Check to see if there's an email with the same name
-						$query = "SELECT alias FROM virtual WHERE alias='";
 						if ($freeaddress != "YES") {
-							$query .= $_GET['newalias']."@".$domain."'";
+							$fullalias = $_GET['newalias']."@".$_GET['domain'];
 						} else {
-							$query .= $_GET['newalias']."'";
+							$fullalias = $_GET['newalias']."@".$_GET['aliasdomain'];
 						}
-						$result = $handle->query($query);
-						if (DB::isError($result)) {
-							die (_("Database error"));
-						}
-						$cnt = $result->numRows();
-						if ($cnt != 0) {
-							$authorized = FALSE;
-							$err_msg = _("Sorry, the emailadress already exists");
+						if ($fullalias != $_GET['alias']) {
+							$query = "SELECT alias FROM virtual WHERE alias='".$fullalias."'";
+							$result = $handle->query($query);
+							if (DB::isError($result)) {
+								die (_("Database error"));
+							}
+							$cnt = $result->numRows();
+							if ($cnt != 0) {
+								$authorized = FALSE;
+								$err_msg = _("Sorry, the emailadress already exists");
+							} else {
+								$authorized = TRUE;
+							}
 						} else {
 							$authorized = TRUE;
 						}
