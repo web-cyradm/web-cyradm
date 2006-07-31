@@ -317,7 +317,7 @@ if (! empty($action)){
 						}
 					}
 				}
-# TO DO: Checks for array of domains $_POST['resp_domain']
+# TODO: Checks for array of domains $_POST['resp_domain']
 				//if (!empty($_POST['resp_domain'])) {
 				//}
 				# If domain is not set: that's all
@@ -667,7 +667,7 @@ if (! empty($action)){
 			}
 		}
 		break;
-################################## Check input if newemail ################################################
+#OK############################### Check input if newemail ################################################
 	case "newemail":
 		if (!ValidDomain($_GET['domain']) || !ValidName($_GET['username'])) {
 			$authorized = FALSE;
@@ -691,32 +691,29 @@ if (! empty($action)){
 					}
 					$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 					$freeaddress = $row['freeaddress'];
-
-					$valid_dest  = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $dest);
 					if ($freeaddress != "YES") {
-					    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $alias."@".$domain);
+						$valid_alias = ValidMail($_GET['alias']."@".$_GET['domain']);
 					} else {
-					    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,}(g|l|m|pa|t|u|v)?$", $alias);
+						$valid_alias = ValidMail($_GET['alias']."@".$_GET['aliasdomain']);
 					}
-					if ($dest != $_GET['username'] and !$valid_dest) {
-//					if ($dest != $username2 and !ValidateMail($dest))
+
+					if ($dest != $_GET['username'] && !ValidMail($_GET['dest'])) {
 						$authorized = FALSE;
 						$err_msg = _("Invalid destination");
-					} elseif (isset($alias) && !$valid_alias) {
-//		  			elseif (!ValidateMail($alias."@".$domain) and isset($alias))
+					} elseif (!empty($_GET['alias']) && !$valid_alias) {
 						$authorized = FALSE;
 						$err_msg = _("Invalid email adress");
 					# Check for reserved addresses
-					} elseif (in_array($alias, $reserved)) {
+					} elseif (in_array($_GET['alias'], $reserved)) {
 						$authorized = FALSE;	
 						$err_msg="Reserved Emailadress, request cancelled";
 					# Check to see if there's an email with the same name
 					} else {
 						$query = "SELECT alias FROM virtual WHERE alias='";
 						if ($freeaddress != "YES") {
-							$query .= $alias."@".$domain."'";
+							$query .= $_GET['alias']."@".$_GET['domain']."'";
 						} else {
-							$query .= $alias."'";
+							$query .= $_GET['alias']."@".$_GET['aliasdomain']."'";
 						}
 						$result = $handle->query($query);
 						if (DB::isError($result)) {
@@ -1019,8 +1016,11 @@ if (! empty($action)){
 		break;		
 ########################################## Check input if editalias ##################################
 	case "editalias":
+		if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
 		# Check for reserved addresses
-		if (in_array($alias, $reserved)) {
+		} elseif (in_array($alias, $reserved)) {
 			$authorized = FALSE;
 			$err_msg="Reserved Emailadress, request cancelled";
 		} else {
