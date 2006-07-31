@@ -10,55 +10,45 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="top">
-
-		<?php
-		if (empty($confirmed)){
+<?php
+if ($authorized) {
+		if (empty($_GET['confirmed'])){
 			?>
 			<h3>
 				<?php print _("Delete emailadress from the System");?>:
 				<span style="color: red;">
-					<?php echo $alias;?>
+					<?php echo $_GET['alias'];?>
 				</span>
 			</h3>
 
 			<h3>
 				<?php print _("Do you really want to delete the emailadress for user");?>
 				<span style="color: red;">
-					<?php echo $username;?>
+					<?php echo $_GET['username'];?>
 				</span>
 				?
 			</h3>
 
-			<form action="index.php">
-				<input type="hidden" name="action"
-				value="deleteemail">
-				<input type="hidden" name="confirmed"
-				value="true">
-				<input type="hidden" name="domain"
-				value="<?php print $domain?>">
-				<input type="hidden" name="username"
-				value="<?php print $username?>">
-				<input type="hidden" name="alias"
-				value="<?php print $alias?>">
-				
+			<form action="index.php" method="get">
+				<input type="hidden" name="action" value="deleteemail">
+				<input type="hidden" name="confirmed" value="true">
+				<input type="hidden" name="domain" value="<?php print $_GET['domain'];?>">
+				<input type="hidden" name="username" value="<?php print $_GET['username'];?>">
+				<input type="hidden" name="alias" value="<?php print $_GET['alias'];?>">
 				<input class="button" type="submit" name="confirmed" value="<?php print _("Yes, delete");?>">
 				
-				<input class="button" type="submit" name="cancel" value=" <?php print _("Cancel");?>"> </form>
-			<?php
-		} elseif (! empty($cancel)){
-			?>
+				<input class="button" type="submit" name="cancel" value=" <?php print _("Cancel");?>">
+			</form>
+		<?php
+		} elseif (!empty($_GET['confirmed']) && !empty($_GET['cancel'])) {
+		?>
 			<h3>
 				<?php print _("Action cancelled, nothing deleted");?>
 			</h3>
-			<?php
+		<?php
 			include WC_BASE . "/editaccount.php";
 		} else {
-			$handle = DB::connect($DB['DSN'], true);
-			if (DB::isError($handle)) {
-				die (_("Database error"));
-			}
-
-			$query = "DELETE FROM virtual WHERE alias='$alias' AND username='".$_GET['username']."'";
+			$query = "DELETE FROM virtual WHERE alias='".$_GET['alias']."' AND username='".$_GET['username']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
 				die (_("Database error"));
@@ -69,13 +59,21 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			<h3>
 				<?php print _("Emailadress deleted.");?>:
 				<span style="color: red;">
-					<?php echo $alias;?>
+					<?php echo $_GET['alias'];?>
 				</span>
 			</h3>
-			<?php
+		<?php
 			include WC_BASE . "/editaccount.php";
 		}
-		?>
+} else {
+?>
+		<h3>
+			<?php echo $err_msg;?>
+		</h3>
+		<a href="index.php?action=editaccount&domain=<?php echo $_GET['domain'];?>&username=<?php echo $_GET['username'];?>"><?php print _("Back");?></a>
+<?php
+}
+?>
 	</td>
 </tr>
 <!-- #################### deleteemail.php end #################### -->
