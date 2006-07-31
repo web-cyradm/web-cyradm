@@ -11,36 +11,32 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td width="10">&nbsp; </td>
 	<td valign="top">
 
-		<?php
-		include WC_BASE . '/lib/sieve-php.lib.php';
-                include WC_BASE . '/lib/sieve_strs.php'; 
-		$daemon = new sieve($CYRUS['HOST'],"2000", $CYRUS['ADMIN'], $CYRUS['PASS'], $username);
-		$cyr_conn = new cyradm;
-		$cyr_conn->imap_login();
-		?>
+<?php
+if ($authorized) {
+	include WC_BASE . '/lib/sieve-php.lib.php';
+	include WC_BASE . '/lib/sieve_strs.php'; 
+	$daemon = new sieve($CYRUS['HOST'],"2000", $CYRUS['ADMIN'], $CYRUS['PASS'], $_GET['username']);
+	$cyr_conn = new cyradm;
+	$cyr_conn->imap_login();
+?>
 
 		<h3>
 			<?php print _("Email addresses defined for user");?>
 			<span style="color: red;">
-				<?php echo $username;?>
+				<?php echo $_GET['username'];?>
 			</span>
 		</h3>
 
 		<?php
-		$query = "SELECT * FROM virtual WHERE username='$username'"; # AND alias != '$username'";
-		$handle = DB::connect($DB['DSN'], true);
-		if (DB::isError($handle)) {
-			die (_("Database error"));
-		}
-
-		$hnd = $handle->query($query);
-		$cnt = $hnd->numRows();
+		$query = "SELECT * FROM virtual WHERE username='".$_GET['username']."'"; # AND alias != '$username'";
+		$result = $handle->query($query);
+		$cnt = $result->numRows();
 		?>
 
 		<table cellspacing="2" cellpadding="0">
 			<tr>
 				<td class="navi">
-					<a class="navilink" href="index.php?action=newemail&amp;domain=<?php echo $domain;?>&amp;username=<?php echo $username;?>"><?php
+					<a class="navilink" href="index.php?action=newemail&amp;domain=<?php echo $_GET['domain'];?>&amp;username=<?php echo $_GET['username'];?>"><?php
 					print _("New email address");?></a>
 				</td>
 			</tr>
@@ -71,22 +67,18 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				</th>
 			</tr>
 
-			<?php
-			$b = 0;
-			for ($c = 0; $c < $cnt; $c++){
-				if ($b == 0){
-					$cssrow = 'row1';
-					$b = 1;
-				} else {
-					$cssrow = 'row2';
-					$b = 0;
-				}
+<?php
+					for ($c=0; $c < $cnt; $c++) {
+						if ($c%2==0){
+							$cssrow="row1";
+						} else {
+							$cssrow="row2";
+						}
+						$row = $result->fetchRow(DB_FETCHMODE_ASSOC, $c);
+						$alias = $row['alias'];
+?>
 
-				$row = $hnd->fetchRow(DB_FETCHMODE_ASSOC, $c);
-				$alias = $row['alias'];
-				?>
-
-				<tr class="<?php echo $cssrow;?>">
+					<tr class="<?php echo $cssrow;?>">
 					<?php
 					$_cols = array(
 						'editemail'	=> _("Edit Emailadress"),
@@ -97,7 +89,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					foreach ($_cols as $_action => $_txt){
 						?>
 						<td align="center" valign="middle">
-							<a href="<?php printf("index.php?action=%s&amp;domain=%s&amp;alias=%s&amp;username=%s", $_action, $domain, $alias, $username); ?>"><?php echo $_txt;?></a>
+							<a href="<?php printf("index.php?action=%s&amp;domain=%s&amp;alias=%s&amp;username=%s", $_action, $_GET['domain'], $alias, $_GET['username']); ?>"><?php echo $_txt;?></a>
 						</td>
 						<?php
 					}
@@ -135,14 +127,14 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					</td>
 
 					<?php
-					if ($c == 0){
+					if ($c == 0) {
 						?>
 						<td valign="middle" rowspan="<?php echo $cnt;?>">
 							<?php
 							if ($DOMAIN_AS_PREFIX){
-								$quota = $cyr_conn->getquota("user/" . $username);
+								$quota = $cyr_conn->getquota("user/" . $_GET['username']);
 							} else {
-								$quota = $cyr_conn->getquota("user." . $username);
+								$quota = $cyr_conn->getquota("user." . $_GET['username']);
 							}
 
 							if ($quota['used'] != 'NOT-SET'){
@@ -162,14 +154,22 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					}
 					?>
 				</tr>
-				<?php
+<?php
+
 			}
 			?>
 		</table>
+<?php
+} else {
+?>
+		<h3>
+			<?php print $err_msg;?>
+		</h3>
+		<a href="index.php?action=accounts&domain=<?php echo $_GET['domain'];?>"><?php print _("Back");?></a>
+<?php
+}
+?>
 	</td>
 </tr>
 
-</td></tr>
-
 <!-- #################### editaccount.php end #################### -->
-
