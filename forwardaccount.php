@@ -27,7 +27,7 @@ if ($authorized){
 			}
 			if (!empty($_GET['metoo'])){
 				$keep = ' checked ';
-				$q[] = $username;
+				$q[] = $_GET['username'];
 			} else {
 				$keep = '';
 			}
