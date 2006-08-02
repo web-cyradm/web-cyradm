@@ -11,38 +11,29 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td width="10">&nbsp;</td>
 	<td valign="top">
 
-		<?php
-		$handle = DB::connect($DB['DSN'], true);
-		if (DB::isError($handle)) {
-			die (_("Database error"));
-		}
-
-		if ($authorized){
-			$query = "SELECT * FROM virtual WHERE alias='$alias'";
+<?php
+if ($authorized){
+			$query = "SELECT * FROM virtual WHERE alias='".$_GET['alias']."'";
 			$result = $handle->query($query);
 			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			$dest = $row['dest'];
 			$username = $row['username'];
 
-			include WC_BASE . '/lib/sieve-php.lib.php';
-			include WC_BASE . '/lib/sieve_strs.php';
-			$query = "SELECT * FROM accountuser WHERE username='$dest'";
-			$handle = DB::connect($DB['DSN'], true);
-			if (DB::isError($handle)) {
-				die (_("Database error"));
-			}
-
+			$query = "SELECT * FROM accountuser WHERE username='".$dest."'";
 			$result = $handle->query($query);
 			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			$password = $row['password'];
-			$daemon = new sieve($CYRUS['HOST'],"2000", $CYRUS['ADMIN'], $CYRUS['PASS'], $username);
 
-			if (! empty($confirmed)){
-				switch ($mode) {
+			if (!empty($_GET['confirmed']) && empty($_GET['cancel'])){
+				include_once WC_BASE . '/lib/sieve-php.lib.php';
+				include_once WC_BASE . '/lib/sieve_strs.php';
+				$daemon = new sieve($CYRUS['HOST'],"2000", $CYRUS['ADMIN'], $CYRUS['PASS'], $username);
+
+				switch ($_GET['mode']) {
 				case 'set':
 					if ($daemon->sieve_login()){
 						$sieve_str = new sieve_strs;
-						$mess = $vacation_text;
+						$mess = $_GET['vacation_text'];
 						$mess2 = preg_replace ("/\s*$/s",'',$mess);
 						$mess3 = preg_replace ("/\r/",'',$mess2);
 						if (preg_match ("/subject.*\n(.*)$/iUs", $mess3, $matches)){
@@ -60,7 +51,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						} else {
 							$text = '';
 						}
-						$vacation_script = 'require "vacation"; vacation :days 1 :addresses ["'.$alias.'"] :subject "'.$subject.'" "'.$text."\";\n";
+						$vacation_script = 'require "vacation"; vacation :days 1 :addresses ["'.$_GET['alias'].'"] :subject "'.$subject.'" "'.$text."\";\n";
 						$old_script = $sieve_str->get_old_script($daemon);
 						if (preg_match("/redirect \".*$/siU", $old_script, $matches)){
 							$forwards_script = $matches[0];
@@ -123,53 +114,42 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<?php
 					break;
 				}
+				include WC_BASE . "/editaccount.php";
+			} elseif (!empty($_GET['confirmed']) && !empty($_GET['cancel'])){
+				include WC_BASE . "/editaccount.php";
+			} elseif (empty($_GET['confirmed'])) {
 
-				include WC_BASE . "/browseaccounts.php";
-			} // End of if (! empty($confirmed))
+				include_once WC_BASE . '/lib/sieve-php.lib.php';
+				include_once WC_BASE . '/lib/sieve_strs.php';
+				$daemon = new sieve($CYRUS['HOST'],"2000", $CYRUS['ADMIN'], $CYRUS['PASS'], $username);
 
-
-			if (empty($confirmed)){
-
-    				$query = "SELECT * FROM domain WHERE domain_name='$domain'";
-
+    				$query = "SELECT * FROM domain WHERE domain_name='".$_GET['domain']."'";
 				$result = $handle->query($query);
 				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 				$freeaddress = $row['freeaddress'];
-				if ($freeaddress!="YES") { 
-                            	    $alias_orig = $alias;
-				    $alias = spliti("@",$alias);
-				    $alias = $alias[0];
-				    $alias_new = $alias . "@" . $domain;
-				    if ($alias_new!=$alias_orig) {
+				if ($freeaddress!="YES") {
+                            	    $aliasname = spliti("@",$_GET['alias'],2);
+				    $aliasname = $aliasname[0];
+				    $alias_new = $aliasname."@".$_GET['domain'];
+				    if ($alias_new != $_GET['alias']) {
 					die ("<b>" . _("You can't set Vacation Message for this email address with 'Allow Free Mail Addressess' set to off!") . "</b>");
 				    }
 				}
-				
-				if (isset($result_array)){
-					print $result_array[0];
-				}
-
 				?>
 				<h3>
 					<?php print _("Vacation message for emailadress");?>
 					<span style="color: red;">
-						<?php
-						printf ("%s@%s", $alias, $domain);
-						?>
+						<?php echo $_GET['alias']; ?>
 					</span>
 				</h3>
 
 				<form action="index.php" method="get">
 
-					<input type="hidden" name="action"
-					value="vacation">
-					<input type="hidden" name="confirmed"
-					value="true">
-					<input type="hidden" name="domain"
-					value="<?php print $domain ?>"> 
-					<input type="hidden" name="alias" value="<?php print $alias; if ($freeaddress!="YES") { print "@" . $domain; } ?>"> 
-					<input type="hidden" name="username"
-					value="<?php echo $username;?>">
+					<input type="hidden" name="action" value="vacation">
+					<input type="hidden" name="confirmed" value="true">
+					<input type="hidden" name="domain" value="<?php print $_GET['domain']; ?>"> 
+					<input type="hidden" name="alias" value="<?php print $_GET['alias']; ?>"> 
+					<input type="hidden" name="username" value="<?php echo $_GET['username'];?>">
 
 					<input class="menu" type="radio"
 					name="mode" value="set" checked><?php
@@ -214,17 +194,22 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					type="submit"
 					value="<?php print _("Submit");?>"> 
 
+					<input class="button" name="cancel"
+					type="submit"
+					value="<?php print _("Cancel");?>"> 
+
 				</form>
-				<?php
-			} // End of if (empty($confirmed))
-		} else {
-			?>
-			<h3>
-				<?php echo $err_msg;?>
-			</h3>
-			<?php
-		} // End of if ($authorized)
-		?>
+<?php
+			}
+} else {
+?>
+	<h3>
+		<?php echo $err_msg;?>
+		<a href="index.php?action=editaccount&domain=<?php echo $_GET['domain'];?>&username=<?php echo $_GET['username'];?>"><?php print _("Back");?></a>
+	</h3>
+<?php
+} // End of if ($authorized)
+?>
 	</td>
 </tr>
 
