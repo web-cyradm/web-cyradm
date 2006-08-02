@@ -796,7 +796,28 @@ if (! empty($action)){
 		break;
 ########################### ####################################
 	case "vacation":
+#OK#########################  Check input if forwardaccount ####################################
 	case "forwardaccount":
+		if (!ValidDomain($_GET['domain']) || !ValidName($_GET['username'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+		} else {
+			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
+			if (!$result->numRows()){
+				$authorized = FALSE;
+				logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+			} else {
+				# TODO: Validation of $_GET['forwardto']
+				$authorized = TRUE;
+			}
+		}
+		break;
+########################### ####################################
 	case "forwardalias":
 		if (!ValidDomain($_GET['domain']) || !ValidName($_GET['username'])) {
 			$authorized = FALSE;
