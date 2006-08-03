@@ -10,21 +10,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="top">
+<?php
+if ($authorized) {
+	$query = "SELECT * FROM accountuser WHERE domain_name='".$_GET['domain']."' ORDER BY username";
+	$result1 = $handle->query($query);
+	$cnt1 = $result1->numRows();
 
-		<?php
-		if ($_SESSION['admintype'] == 0){
-
-			$handle = DB::connect($DB['DSN'], true);
-			if (DB::isError($handle)) {
-				die (_("Database error"));
-			}
-
-			$query1 = "SELECT * FROM accountuser WHERE domain_name='$domain' ORDER BY username";
-			$result1 = $handle->query($query1);
-			$cnt1 = $result1->numRows();
-
-
-			if (empty($confirmed)){
+			if (empty($_GET['confirmed'])) {
 				?>
 					<h3>
 						<?php print _("Delete a Domain from the System");?>
@@ -33,7 +25,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<h3>
 						<?php print _("Do you really want to delete the Domain");?> 
 						<span style="color: red;">
-							<?php echo $domain;?>
+							<?php echo $_GET['domain'];?>
 						</span>
 						<?php
 						print _("with all its defined accounts, admins, and emailadresses");
@@ -55,62 +47,48 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 
 					<form action="index.php" method="get">
-						<input type="hidden" 
-						name="action" 
-						value="deletedomain">
-						
-						<input type="hidden" 
-						name="confirmed" 
-						value="true">
-						
-						<input type="hidden" 
-						name="domain" 
-						value="<?php print $domain; ?>">
-						
-						<input 
-						class="button"
-						type="submit" 
-						name="confirmed" 
-						value="<?php print _("Yes, delete");?>">
+						<input type="hidden" name="action" value="deletedomain">
+						<input type="hidden" name="confirmed" value="true">
+						<input type="hidden" name="domain" value="<?php print $_GET['domain']; ?>">
 
-						<input
-						class="button"
-						type="submit"
-						name="cancel"
+						<input class="button"
+						type="submit" name="confirmed" 
+						value="<?php print _("Yes, delete");?>">
+						
+						<input class="button"
+						type="submit" name="cancel"
 						value="<?php print _("Cancel");?>">
 					</form>
 					<?php
-				} elseif (! empty($cancel)){
+			} elseif (!empty($_GET['confirmed']) && !empty($_GET['cancel'])) {
 					?>
 					<h3>
 						<?php print _("Action cancelled, nothing deleted");?>
 					</h3>
 					<?php
-				} else {
+					include WC_BASE . "/browse.php";
+			} elseif (!empty($_GET['confirmed']) && empty($_GET['cancel'])) {
 					$cyr_conn = new cyradm;
 					$cyr_conn->imap_login();
 
 					# First Delete all stuff related to the domain from the database
+					$query = "DELETE FROM virtual WHERE alias LIKE '%@".$_GET['domain']."'";
+					$result = $handle->query($query);
 
+					$query = "DELETE FROM accountuser WHERE domain_name='".$_GET['domain']."'";
+					$result = $handle->query($query);
 
-					$query2 = "DELETE FROM virtual WHERE alias LIKE '%@$domain'";
-					$hnd2 = $handle->query($query2);
+					$query = "DELETE FROM domain WHERE domain_name='".$_GET['domain']."'";
+					$result = $handle->query($query);
 
-					$query3 = "DELETE FROM accountuser WHERE domain_name='$domain'";
-					$hnd3 = $handle->query($query3);
-
-					$query4 = "DELETE FROM domain WHERE domain_name='$domain'";
-					$hnd4 = $handle->query($query4);
-
-					for ($i=0; $i<$cnt1; $i++){
-
+					for ($i=0; $i<$cnt1; $i++) {
 						$row = $result1->fetchRow(DB_FETCHMODE_ASSOC, $i);
 						$username = $row['username'];
-						$query5 = "DELETE FROM virtual WHERE username='$username'";
-						$result5 = $handle->query($query5);
+						$query = "DELETE FROM virtual WHERE username='".$username."'";
+						$result = $handle->query($query);
 						# Removing forwards
-						$query6 = "DELETE FROM virtual WHERE alias='$username'";
-						$result6 = $handle->query($query6);
+						$query = "DELETE FROM virtual WHERE alias='".$username."'";
+						$result = $handle->query($query);
 
 						# And also delete the Usermailboxes from the cyrus system
 						if ($DOMAIN_AS_PREFIX){
@@ -122,67 +100,52 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					}
 
 					# Finally the domain must be removed from the domainadmin table
+					$query = "SELECT * FROM domainadmin WHERE domain_name='".$_GET['domain']."'";
+					$result = $handle->query($query);
+					$cnt = $result->numRows();
+					for ($i=0; $i < $cnt; $i++) {
 
-					$query6 = "SELECT * FROM domainadmin WHERE domain_name='$domain'";
-					$result6 = $handle->query($query6);
-					$cnt6 = $result6->numRows();
-					for ($i=0; $i <= $cnt6; $i++){
-
-						# After getting the resulttable
-						# we search for the adminuser 
+						# After getting the resulttable we search for the adminuser 
 						# in each row
-
-						$row = $result6->fetchRow(DB_FETCHMODE_ASSOC,$i);
+						$row = $result->fetchRow(DB_FETCHMODE_ASSOC,$i);
 						$username = $row['adminuser'];
-						$query7 = "SELECT * FROM domainadmin where adminuser='$username'";
-						$result7 = $handle->query($query7);
-						$cnt7 = $result7->numRows();
 
-						# If the adminuser is only the
-						# admin for the domain to be
-						# deleted, then this adminuser
-						# also needs to be deleted
+						$query = "SELECT * FROM domainadmin where adminuser='".$username."'";
+						$result2 = $handle->query($query);
+						$cnt2 = $result1->numRows();
 
-						if ($cnt7 == 1){
-							$query7 = "DELETE FROM adminuser where username='$username'";
-							$result7 = $handle->query($query7);
+						# If the adminuser is only the admin for the domain to be
+						# deleted, then this adminuser also needs to be deleted
+						if ($cnt2 == 1){
+							$query = "DELETE FROM adminuser where username='".$username."'";
+							$result = $handle->query($query);
 						}
 					}
 
-						# Finally delete every entry
-						# with the domain to be deleted
-
-						$query8 = "DELETE FROM domainadmin where domain_name='$domain'";
-						$result8 = $handle->query($query8);
+					# Finally delete every entry with the domain to be deleted
+					$query = "DELETE FROM domainadmin where domain_name='".$_GET['domain']."'";
+					$result = $handle->query($query);
 					?>
 					<h3>
 						<?php print _("Domain");?>
 						<span style="color: red;">
-							<?php echo $domain;?>
+							<?php echo $_GET['domain']; ?>
 						</span>
 						<?php print _("successfully deleted");?>
 					</h3>
 					<?php
-					unset ($domain);
-					?>
-					<script type="text/javascript">
-						<!--
-						window.location.href = "index.php";
-						//-->
-					</script>
-					<?php
+					unset($_GET['domain']);
 					include WC_BASE . "/browse.php";
-				}
-		} else {
-			?>
-			<h3>
-				<?php
-				print _("Security violation detected, action cancelled. Your attempt has been logged.");
-				?>
-			</h3>
-			<?php
-		}
-		?>
+			} // End If (empty($_GET['confirmed']))
+} else {
+?>
+		<h3>
+			<?php print $err_msg;?>
+		</h3>
+		<a href="index.php?action=browse"><?php print _("Back");?></a>
+<?php
+}
+?>
 	</td>
 </tr>
 <!-- #################### deletedomain.php start #################### -->
