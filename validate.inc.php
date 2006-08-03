@@ -857,30 +857,51 @@ if (! empty($action)){
 			}
 		}
 		break;
-######################################## Check new domain name ########################################
+#OK##################################### Check new domain name ########################################
 	case "newdomain":
-		if (! empty($confirmed)){
-			if ($DOMAIN_AS_PREFIX) {
-				$prefix = $domain;
-			}
-			if (!ValidDomain($domain)){
-				$authorized = FALSE;
-				$err_msg = "You must choose a valid domainname";
-			} elseif (!ValidPrefix($prefix)){
-				$authorized = FALSE;
-				$err_msg = "You must choose a valid prefix for your domain";
-			} else {
-				$query = "SELECT domain_name FROM domain WHERE domain_name='$domain' OR prefix='$prefix'";
-				$result = $handle->query($query);
-				if (DB::isError($result)) {
-					die (_("Database error"));
-				}
-				if ($result->numRows()){
+		if ($_SESSION['admintype'] != 0) {
+			$authorized = FALSE;
+			logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} else {
+			if (!empty($_GET['confirmed'])){
+				settype($_GET['maxaccounts'],"int");
+				settype($_GET['quota'],"int");
+				settype($_GET['domainquota'],"int");
+				if ($_GET['maxaccounts'] < 0) {
 					$authorized = FALSE;
-					$err_msg = "Domain or prefix already exists";
+					$err_msg = "Value incorrect";
+				} elseif ($_GET['quota'] < 0) {
+					$authorized = FALSE;
+					$err_msg = "Value incorrect";
+				} elseif ($_GET['domainquota'] < 0) {
+					$authorized = FALSE;
+					$err_msg = "Value incorrect";
+				} elseif (!ValidDomain($_GET['domain'])){
+					$authorized = FALSE;
+					$err_msg = "You must choose a valid domainname";
+				} elseif (!empty($_GET['prefix']) && !ValidPrefix($_GET['prefix'])) {
+					$authorized = FALSE;
+					$err_msg = "You must choose a valid prefix for your domain";
+				} elseif (!in_array($_GET['transport'],array("cyrus","lmtp","smtp","uucp"))) {
+					$authorized = FALSE;
+					$err_msg = "You must choose a valid transport";
 				} else {
-					$authorized = TRUE;
+					# TODO: Validation of $_GET['tparam']
+					$query = "SELECT domain_name FROM domain WHERE domain_name='".$_GET['domain']."' OR prefix='".$_GET['prefix']."'";
+					$result = $handle->query($query);
+					if (DB::isError($result)) {
+						die (_("Database error"));
+					}
+					if ($result->numRows()){
+						$authorized = FALSE;
+						$err_msg = "Domain or prefix already exists";
+					} else {
+						$authorized = TRUE;
+					}
 				}
+			} else {
+				$authorized = TRUE;
 			}
 		}
 		break;
