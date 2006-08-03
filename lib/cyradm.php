@@ -167,7 +167,7 @@ class cyradm
 	*/
 	function getline()
 	{
-		$this->line = fgets($this->fp, 256);
+		$this->line = fgets($this->fp, 512);
 		return $this->line;
 	}
 
