@@ -13,8 +13,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		<table border="0" cellpadding="2" cellspacing="0" width="99%">
 			<tr>
 				<th align="left" valign="top" width="49%">
-					<a class="th_a" href="">
-					<?php print _("Administration Settings"); ?>
+					<a class="th_a" href="index.php?action=changeadminpasswd">
+					<?php print _("Change password"); ?>
 					</a>
 				</th>
 				<td align="left" valign="top" width="2%">&nbsp;</td>
@@ -27,7 +27,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 			<tr>
 				<td class="row1" align="left" valign="top" width="49%">
-					<?php print _("You can set all administrative settings."); ?>
+					<?php print _("Use this to change your admin password."); ?>
 				</td>
 				<td align="left" valign="top" width="2%">&nbsp;</td>
 				<td class="row1" align="left" valign="top" width="49%">
@@ -38,21 +38,21 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			<tr><td align="left" valign="top" height="2%">&nbsp;</td></tr>
 			
 			<tr>
-				<th align="left" valign="top" width="49%">
-					<a class="th_a" href="index.php?action=changeadminpasswd">
-					<?php print _("Change password"); ?>
+<!--				<th align="left" valign="top" width="49%">
+					<a class="th_a" href="">
+					<?php print _("Administration Settings"); ?>
 					</a>
 				</th>
-<!--				<td align="left" valign="top" width="2%">&nbsp;</td>
+				<td align="left" valign="top" width="2%">&nbsp;</td>
 				<th align="left" valign="top" width="49%">
 				</th> -->
 			</tr>
 
 			<tr>
-				<td class="row1" align="left" valign="top" width="49%">
-					<?php print _("Use this to change your admin password."); ?>
+<!--				<td class="row1" align="left" valign="top" width="49%">
+					<?php print _("You can set all administrative settings."); ?>
 				</td>
-<!--				<td align="left" valign="top" width="2%">&nbsp;</td>
+				<td align="left" valign="top" width="2%">&nbsp;</td>
 				<td class="row1" align="left" valign="top" width="49%">
 				</td> -->
 			</tr>
