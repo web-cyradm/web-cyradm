@@ -10,30 +10,18 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="top">
-		<?php
-		if ($_SESSION['admintype']==0){
-			?>
-			<h3>
-				<?php print _("Add new domain");?>
-			</h3>
-			<?php
-
-			if (empty($confirmed)){
-				?>
-				<form action="index.php" style="border: 0px double green;">
-					<input type="hidden" name="action" value="newdomain">
-					<input type="hidden" name="confirmed" value="true">
-					<?php
-					if ($DOMAIN_AS_PREFIX==1){
-						?>
-						<input type="hidden"
-						name="prefix"
-						value="to-be-overwritten-by-domain"
-						>
-						<?php
-					}
-					?>
-
+<?php
+if ($authorized) {
+?>
+		<h3>
+			<?php print _("Add new domain");?>
+		</h3>
+<?php
+	if (empty($_GET['confirmed'])){
+?>
+			<form action="index.php" method="get" style="border: 0px double green;">
+				<input type="hidden" name="action" value="newdomain">
+				<input type="hidden" name="confirmed" value="true">
 					<table>
 						<tr>
 							<td>
@@ -52,7 +40,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						</tr>
 
 						<?php
-						if ($DOMAIN_AS_PREFIX==0) {
+						if ($DOMAIN_AS_PREFIX == 0) {
 							?>
 							<tr>
 								<td>
@@ -223,75 +211,60 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 						</tr>
 					</table>
 				</form>
-				<?php
-			} else {
-				if ($authorized == TRUE){
-					if ($DOMAIN_AS_PREFIX) {
-						$prefix = $domain;
-					}
-
-					$trans = 'cyrus';
-					if ($transport != "cyrus"){
-						$trans = $transport . ":" . $tparam;
-					}
-					// START Andreas Kreisl : freenames
-					if (! empty($freenames)){
-						$freenames = "YES";
-					} else {
-						$freenames = "NO";
-					}
-					if (! empty($freeaddress)){
-						$freeaddress = "YES";
-					} else {
-						$freeaddress = "NO";
-					}
-					$query="INSERT INTO domain (domain_name, prefix, maxaccounts, quota, domainquota, transport,freenames,freeaddress) VALUES ('$domain', '$prefix', '$maxaccounts', '$quota', '$_GET[domainquota]', '$trans', '$freenames', '$freeaddress')";
-
-					// END Andreas Kreisl : freenames
-
-					$handle = DB::connect ($DB['DSN'],true);
-					if (DB::isError($handle)){
-						die (_("Database error"));
-					}
-
-					$result = $handle->query($query);
-
-					if (!DB::isError($result)){
-						?>
-						<h3>
-							<?php print _("Successfully added");?>:
-							<span style="color: red;">
-								<?php echo $domain;?>
-							</span>
-						</h3>
-						<?php
-						include WC_BASE . "/browse.php";
-					} else {
-						?>
-						<h3>
-							<?php print _("Database error, please try again");?>
-							<?php
-							echo get_var_dump($result);
-							?>
-						</h3>
-						<?php
-					}
-				} else {
-					?>
-					<h3>
-						<?php echo $err_msg;?>
-					</h3>
-					<?php
+<?php
+	} else { // If (empty($_GET['confirmed'])
+				if ($DOMAIN_AS_PREFIX) {
+					$_GET['prefix'] = $_GET['domain'];
 				}
-			}
-		} else {
-			?>
+
+				if ($_GET['transport'] != "cyrus") {
+					$trans = $_GET['transport'].":".$_GET['tparam'];
+				} else {
+					$trans = 'cyrus';
+				}
+				// START Andreas Kreisl : freenames
+				if (!empty($_GET['freenames'])) {
+					$freenames = "YES";
+				} else {
+					$freenames = "NO";
+				}
+				if (!empty($_GET['freeaddress'])) {
+					$freeaddress = "YES";
+				} else {
+					$freeaddress = "NO";
+				}
+				$query = "INSERT INTO domain (domain_name, prefix, maxaccounts, quota, domainquota, transport,freenames,freeaddress) VALUES ('".$_GET['domain']."', '".$_GET['prefix']."', '".$_GET['maxaccounts']."', '".$_GET['quota']."', '".$_GET['domainquota']."', '".$trans."', '".$freenames."', '".$freeaddress."')";
+				// END Andreas Kreisl : freenames
+
+				$result = $handle->query($query);
+				if (!DB::isError($result)){
+?>
+					<h3>
+						<?php print _("Successfully added");?>:
+						<span style="color: red;">
+							<?php echo $_GET['domain'];?>
+						</span>
+					</h3>
+<?php
+				} else {
+?>
+					<h3>
+						<?php print _("Database error, please try again");?>
+						<?php # echo get_var_dump($result); ?>
+					</h3>
+<?php
+				}
+				include WC_BASE . "/browse.php";
+	} // If (empty($_GET['confirmed'])
+} else { // If ($authorized)
+?>
 			<h3>
-				<?php print _("You are not allowed to add new domains");?>
+				<?php echo $err_msg;?>
 			</h3>
-			<?php
-		}
-		?>
+			<a href="index.php?action=browse"><?php print _("Back");?></a>
+<?php
+}
+?>
 	</td>
 </tr>
 
