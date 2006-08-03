@@ -952,8 +952,18 @@ if (! empty($action)){
 			}
 		}
 		break;
-####################################### Check input if deletedomain ##################################
+#OK#################################### Check input if deletedomain ##################################
 	case "deletedomain":
+		if ($_SESSION['admintype'] != 0) {
+			$authorized = FALSE;
+			logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
+			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
+		} elseif (!ValidDomain($_GET['domain'])) {
+			$authorized = FALSE;
+			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
+		} else {
+			$authorized = TRUE;
+		}
 		break;
 #OK################################## Check input if changeadminpasswd ###############################
 	case "changeadminpasswd":
