@@ -10,70 +10,73 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="top">
-
-	<?php
-
-	if ($_SESSION['admintype'] == 0){
-
-		if (! empty($confirmed)){
-			if ($authorized) {
-
+<?php
+if ($authorized) {
+		if (!empty($_GET['confirmed'])){
+				if ($DOMAIN_AS_PREFIX) {
+					$_GET['prefix'] = $_GET['domain'];
+				}
 				// START Andreas Kreisl : freenames
-				if (isset($freenames)){
-					$freenames="YES";
+				if (!empty($_GET['freenames'])){
+					$freenames = "YES";
 				} else {
-					$freenames="NO";
+					$freenames = "NO";
 				}
-				if (isset($freeaddress)){
-					$freeaddress="YES";
+				if (!empty($_GET['freeaddress'])){
+					$freeaddress = "YES";
 				} else {
-					$freeaddress="NO";
+					$freeaddress = "NO";
 				}
-
-				$query = "UPDATE domain SET domain_name='$newdomain', maxaccounts='$maxaccounts', quota='$quota', domainquota='$_GET[domainquota]', freenames='$freenames',freeaddress='$freeaddress',prefix='$_GET[newprefix]' WHERE domain_name='$domain'";
 				// END Andreas Kreisl : freenames
-
-				// update accounts to be associated to the new domain
-				$query2 = "UPDATE accountuser SET domain_name='$newdomain' WHERE domain_name='$domain'";
-
-				// update domainadmins to have rights transferred to the new domainname
-				$query3 = "UPDATE domainadmin SET domain_name='$newdomain' WHERE domain_name='$domain'";
-
-				// update accounts to be associated to the new domain
-				$query4 = "UPDATE virtual SET username='$newdomain' WHERE username='$domain'";
-
-				$handle = DB::connect ($DB['DSN'],true);
-				if (DB::isError($handle)) {
-					die (_("Database error"));
-				}
-
+				
+				$query_result = true;
+				$query = "UPDATE domain SET domain_name='".$_GET['newdomain']."', maxaccounts='".$_GET['maxaccounts']."', quota='".$_GET['quota']."', domainquota='".$_GET['domainquota']."', freenames='".$freenames."',freeaddress='".$freeaddress."',prefix='".$_GET['newprefix']."' WHERE domain_name='".$_GET['domain']."'";
 				$result = $handle->query($query);
-				$result2 = $handle->query($query2);
-				$result3 = $handle->query($query3);
-				$result4 = $handle->query($query4);
-
-				if (!DB::isError($result)){
-
-					// ok, everything ok so far. now let's update all aliases and destinations to the new domainname.
-					
-					$query5 = "SELECT alias FROM virtual WHERE alias LIKE '%$domain'";
-					$result5 = $handle->query($query5);
-					
-					for($i = 0; $i < $result5->numRows(); $i++){
-						$resultrow = $result5->fetchRow();
-						$oldalias = $resultrow[0];
-						$newalias = preg_replace("/" . preg_quote($domain) . "/", $newdomain, $resultrow[0]);
-						$updatealias = "UPDATE virtual SET alias = '$newalias' WHERE alias = '$oldalias'";
-						$updateresult = $handle->query($updatealias);
-						$updatealias2 = "UPDATE virtual SET dest = '$newalias' WHERE dest = '$oldalias'";
-						$updateresult2 = $handle->query($updatealias2);
+				if (DB::isError($result)){
+					$query_result = false;
+				}
+				if ($_GET['newdomain'] != $_GET['domain']) {
+					// update accounts to be associated to the new domain
+					$query = "UPDATE accountuser SET domain_name='".$_GET['newdomain']."' WHERE domain_name='".$_GET['domain']."'";
+					$result = $handle->query($query);
+					if (DB::isError($result)){
+						$query_result = false;
 					}
 
+					// update domainadmins to have rights transferred to the new domainname
+					$query = "UPDATE domainadmin SET domain_name='".$_GET['newdomain']."' WHERE domain_name='".$_GET['domain']."'";
+					$result = $handle->query($query);
+					if (DB::isError($result)){
+						$query_result = false;
+					}
+
+					// update aliases to be associated to the new domain
+					$query = "UPDATE virtual SET username='".$_GET['newdomain']."' WHERE username='".$_GET['domain']."'";
+					$result = $handle->query($query);
+					if (DB::isError($result)){
+						$query_result = false;
+					}
+					// ok, everything ok so far. now let's update all aliases and destinations to the new domainname.					
+					$query = "SELECT alias FROM virtual WHERE alias LIKE '%".$_GET['domain']."'";
+					$result = $handle->query($query);
+					$cnt = $result->numRows();
+					
+					for($i=0; $i < $cnt; $i++){
+						$row = $result->fetchRow();
+						$oldalias = $row['alias'];
+						$newalias = preg_replace("/".preg_quote($_GET['domain'])."/", $_GET['newdomain'], $oldalias);
+						$query = "UPDATE virtual SET alias = '".$newalias."' WHERE alias = '".$oldalias."'";
+						$result1 = $handle->query($query);
+						$query = "UPDATE virtual SET dest = '".$newalias."' WHERE dest = '".$oldalias."'";
+						$result2 = $handle->query($query);
+					}
+				}
+				if ($query_result) {
 					?>
 					<h3>
 						<?php print _("Successfully changed domain");?>:
 						<span style="color: red;">
-							<?php echo $domain;?>
+							<?php echo $_GET['domain']; ?>
 						</span>
 					</h3>
 					<?php
@@ -85,24 +88,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					</h3>
 					<?php
 				}
-			}
-			else {
-				?>
-				<h3>
-					<?php echo $err_msg;?>
-				</h3>
-				<?php
-			} // End of if (authorized)
-
-		}
-
-		if (empty($confirmed)){
-				$query = "SELECT * FROM domain WHERE domain_name='$domain'";
-				$handle = DB::connect($DB['DSN'],true);
-				if (DB::isError($handle)) {
-					die (_("Database error"));
-				}
-
+		} elseif (empty($_GET['confirmed'])) {
+				$query = "SELECT * FROM domain WHERE domain_name='".$_GET['domain']."'";
 				$result = $handle->query($query);
 				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 				$domain = $row['domain_name'];
@@ -121,10 +108,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<input type="hidden" name="confirmed" value="true">
 					<input type="hidden" name="domain" value="<?php print $domain ?>">
 					<input type="hidden" name="prefix" value="<?php print $prefix ?>">
-					<input type="hidden" name="id" value="<?php print $id ?>">
-
 					<table>
-
 						<tr>
 							<td>
 								<?php print _("Domainname");?>
@@ -138,7 +122,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								>
 							</td>
 						</tr>
-
+						<?php if ($DOMAIN_AS_PREFIX == 0) { ?>
 						<tr>
 							<td>
 								<?php print _("Prefix");?>
@@ -166,7 +150,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								type="checkbox"
 								name="freenames" 
 								<?php 
-								if ($freenames=="YES"){
+								if ($freenames == "YES") {
 									echo "checked";
 								}
 								?>
@@ -174,6 +158,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							</td>
 						</tr>
 						<!-- // END Andreas Kreisl : freenames -->
+						<?php
+						}
+						?>
 						<tr>
 							<td>
 								<?php print _("Allow Free Mail Addresses");?>
@@ -184,7 +171,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								type="checkbox"
 								name="freeaddress" 
 								<?php 
-								if ($freeaddress=="YES"){
+								if ($freeaddress == "YES") {
 									echo "checked";
 								}
 								?>
@@ -252,10 +239,11 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	} else {
 		?>
 		<h3>
-			<?php print _("Your are not allowed to change domains!");?>
+			<?php print $err_msg;?>
 		</h3>
+		<a href="index.php?action=browse"><?php print _("Back");?></a>
 		<?php
-	} // End of if ($_SESSION['admintype'] == 0)
+	} // End of if ($authorized)
 	?>
 	</td>
 </tr>
