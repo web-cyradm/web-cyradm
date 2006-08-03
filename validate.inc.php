@@ -836,9 +836,9 @@ if (! empty($action)){
 			}
 		}
 		break;
-########################### ####################################
+#OK######################## Check input if forwardalias ####################################
 	case "forwardalias":
-		if (!ValidDomain($_GET['domain']) || !ValidName($_GET['username'])) {
+		if (!ValidDomain($_GET['domain']) || !ValidName($_GET['username']) || !ValidMail($_GET['alias'])) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 		} else {
@@ -852,34 +852,8 @@ if (! empty($action)){
 				logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
 				$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 			} else {
-				$query2 = "SELECT * FROM domain WHERE domain_name='$domain'";
-				$result2 = $handle->query($query2);
-				$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, 0);
-				$freeaddress=$row2['freeaddress'];
-
-				if (! empty($confirmed) && ! empty($newdest) && ! empty($newalias)){
-					$valid_dest = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newdest);
-					if ($freeaddress != "YES") {
-					    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias."@".$domain);
-					} else {
-					    $valid_alias = eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-wyz][a-z](g|l|m|pa|t|u|v)?$", $newalias);
-					}
-					if ($newdest != $_GET['username'] and !$valid_dest){
-						$authorized=FALSE;
-						$err_msg = "invalid destination";
-					} elseif (!$valid_alias and isset($newalias)){
-						$authorized = FALSE;
-						$err_msg = "Invalid email adress";
-					# Check for reserved addresses
-					} elseif (in_array($newalias, $reserved)) {
-						$authorized = FALSE;	
-						$err_msg="Reserved Emailadress, request cancelled";
-					} else {
-						$authorized = TRUE;
-					}
-				} else {
-					$authorized=TRUE;
-				}
+				# TODO: Validation of $_GET['forwards']
+				$authorized = TRUE;
 			}
 		}
 		break;
