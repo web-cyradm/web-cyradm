@@ -9,50 +9,26 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 <!-- #################### forwardalias.php start #################### -->
 <tr>
 	<td width="10">&nbsp;</td>
-
 	<td valign="top">
 
-		<?php
-		$handle= DB::connect($DB['DSN'], true);
-		if (DB::isError($handle)) {
-			die (_("Database error"));
-		}
-		if ($authorized){
-
-			$query = "SELECT * FROM virtual WHERE alias='$alias'";
-
-			$result = $handle->query($query);
-			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-			$dest = $row['dest'];
-			$username = $row['username'];
-
-			include WC_BASE . '/lib/sieve-php.lib.php';
-			include WC_BASE . '/lib/sieve_strs.php';
-
-			$query = "SELECT * FROM accountuser WHERE username='$dest'";
-			$handle = DB::connect($DB['DSN'], true);
-			if (DB::isError($handle)) {
-				die (_("Database error"));
-			}
-
-			$result = $handle->query($query);
-			$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
-			$password = $row['password'];
-			$daemon = new sieve($CYRUS['HOST'],"2000", $CYRUS['ADMIN'], $CYRUS['PASS'], $username);
-
-			if (! empty($confirmed)){
-				switch ($mode){
+<?php
+if ($authorized){
+		if (!empty($_GET['confirmed']) && empty($_GET['cancel'])){
+			include_once WC_BASE . '/lib/sieve-php.lib.php';
+			include_once WC_BASE . '/lib/sieve_strs.php';
+			$daemon = new sieve($CYRUS['HOST'],"2000", $CYRUS['ADMIN'], $CYRUS['PASS'], $_GET['username']);
+				switch ($_GET['mode']){
 				case 'set':
 					if ($daemon->sieve_login()){
 						$sieve_str = new sieve_strs;
 						$forwards_script ='';
-						$forwardwhere = $forwards;
+						$forwardwhere = $_GET['forwards'];
 						while (preg_match ("/(.*),(.*$)/U",$forwardwhere, $matches)){
 							$forwards_script .= 'redirect "' . trim($matches[1]) . '";'."\n";
 							$forwardwhere = $matches[2];
 						}
 						$forwards_script .= 'redirect "' . trim($forwardwhere) . '";';
-						if (! empty($metoo) && $metoo == 'on'){
+						if (!empty($_GET['metoo']) && $_GET['metoo'] == 'on'){
 							$forwards_script .= "\nkeep;";
 						}
 						$forwards_script .= "\n";
@@ -127,42 +103,31 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<?php
 					break;
 				}
-
-				include WC_BASE . "/browseaccounts.php";
-				//	        if (!DB::isError($result)){
-				//	                print "<h3>"._("Sucessfully changed")."</h3>";
-				//			include WC_BASE . "/browseaccounts.php";
-				//	        }
-				//	        else{
-				//	                print "<p>"._("Database error, please try again")."<p>";
-				//	        }
-
-			} // End of if (! empty($confirmed))
-
-			if (empty($confirmed)){
-    				$query = "SELECT * FROM domain WHERE domain_name='$domain'";
-
+				include WC_BASE . "/editaccount.php";
+			} elseif (!empty($_GET['confirmed']) && !empty($_GET['cancel'])) {
+				include WC_BASE . "/editaccount.php";
+			} elseif (empty($_GET['confirmed'])){
+				include_once WC_BASE . '/lib/sieve-php.lib.php';
+				include_once WC_BASE . '/lib/sieve_strs.php';
+				$daemon = new sieve($CYRUS['HOST'],"2000", $CYRUS['ADMIN'], $CYRUS['PASS'], $_GET['username']);
+    				$query = "SELECT * FROM domain WHERE domain_name='".$_GET['domain']."'";
 				$result = $handle->query($query);
 				$row = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
 				$freeaddress = $row['freeaddress'];
-				if ($freeaddress!="YES") { 
-                            	    $alias_orig = $alias;
-				    $alias = spliti("@",$alias);
-				    $alias = $alias[0];
-				    $alias_new = $alias . "@" . $domain;
-				    if ($alias_new!=$alias_orig) {
-					die ("<b>" . _("You can't forward this email address with 'Allow Free Mail Addressess' set to off!") . "</b>");
-				    }
-				}
-				if (isset($result_array)){
-					print $result_array[0];
+				if ($freeaddress!="YES") {
+					$aliasname = spliti("@",$_GET['alias'],2);
+					$aliasname = $aliasname[0];
+					$alias_new = $aliasname."@".$_GET['domain'];
+					if ($alias_new != $_GET['alias']) {
+						die ("<b>" . _("You can't forward this email address with 'Allow Free Mail Addressess' set to off!") . "</b>");
+    					}
 				}
 				?>
 
 				<h3>
 					<?php print _("Forward for emailadress");?>
 					<span style="color: red;">
-						<?php echo sprintf ("%s@%s", $alias, $domain);?>
+						<?php echo $_GET['alias']; ?>
 					</span>
 				</h3>
 
@@ -170,9 +135,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 					<input type="hidden" name="action" value="forwardalias">
 					<input type="hidden" name="confirmed" value="true">
-					<input type="hidden" name="domain" value="<?php print $domain ?>"> 
-					<input type="hidden" name="alias" value="<?php print $alias; if ($freeaddress!="YES") { print "@" . $domain; } ?>"> 
-					<input type="hidden" name="username" value="<?php echo $username;?>">
+					<input type="hidden" name="domain" value="<?php print $_GET['domain']; ?>"> 
+					<input type="hidden" name="alias" value="<?php print $_GET['alias']; ?>"> 
+					<input type="hidden" name="username" value="<?php echo $_GET['username'];?>">
 
 					<?php
 					if ($daemon->sieve_login()){
@@ -221,17 +186,21 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					<input class="button" type="submit"
 					value="<?php print _("Submit")?>">
 
+					<input class="button" name="cancel"
+					type="submit"
+					value="<?php print _("Cancel");?>"> 
 				</form>
 				<?php
 			} // End of if (empty($confirmed))
-		} else {
-			?>
+} else {
+?>
 			<h3>
 				<?php echo $err_msg;?>
 			</h3>
-			<?php
-		}
-		?>
+			<a href="index.php?action=editaccount&domain=<?php echo $_GET['domain'];?>&username=<?php echo $_GET['username'];?>"><?php print _("Back");?></a>
+<?php
+}
+?>
 	</td>
 </tr>
 
