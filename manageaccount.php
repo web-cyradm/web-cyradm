@@ -269,7 +269,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				}
 				$q = $cyr_conn->getquota("user" . $_sep . $_POST['username']);
 				if ($q['qmax']!=$_POST['quota']) {
-				$query = "SELECT `prefix`,`domainquota` FROM `domain` WHERE `domain_name`='".$_POST['domain']."'";
+				$query = "SELECT prefix,domainquota FROM domain WHERE domain_name='".$_POST['domain']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
 					die (_("Database error"));
@@ -283,7 +283,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				if ($domain_quota!=0 && $q['qmax']<(int)$_POST['quota'] && $q['qmax']!="NOT-SET") {
 					$used_domain_quota = 0;
 
-					$query = "SELECT `username` FROM `accountuser` WHERE `prefix`='$prefix' ORDER BY `username`";
+					$query = "SELECT username FROM accountuser WHERE prefix='$prefix' ORDER BY username";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
 						die (_("Database error"));

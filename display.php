@@ -127,7 +127,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			$_SESSION['account_maxdisplay'] = $_GET['account_maxdisplay'];
 			$_SESSION['account_row_pos'] = 0;
 			$_SESSION['warnlevel'] = $_GET['warnlevel'];
-			$query = "UPDATE `settings` SET `style`='".$_SESSION['style']."', maxdisplay='".$_SESSION['maxdisplay']."', warnlevel='".$_SESSION['warnlevel']."' WHERE username='".$_SESSION['user']."'";
+			$query = "UPDATE settings SET style='".$_SESSION['style']."', maxdisplay='".$_SESSION['maxdisplay']."', warnlevel='".$_SESSION['warnlevel']."' WHERE username='".$_SESSION['user']."'";
 			$handle->query($query);
 		}
 		else {
