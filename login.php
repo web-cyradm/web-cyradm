@@ -136,9 +136,11 @@ foreach ($nls['aliases'] as $l){
 </table>
 
 </form> 
-
+<script type="text/javascript">
+<!--
+document.form1.login.focus();
+//-->
+</script>
 <?php
 include WC_BASE . "/footer.inc.php";
-
 ?>
-
