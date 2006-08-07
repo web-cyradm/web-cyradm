@@ -151,3 +151,19 @@ TD {
 	color : #ffffff;
 	font-weight: bold;
 }
+
+.quota_table {
+	border: solid 1px black;
+	background-color: white;
+	padding: 3 0 3 0;
+	margin-bottom: 2;
+	border-spacing: 0;
+}
+
+.quota_td {
+	width: 100px;
+	height: 15px;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}

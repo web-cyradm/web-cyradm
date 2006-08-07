@@ -199,7 +199,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 							<?php echo $lastlogin;?>
 						</td>
 
-						<td valign="middle">
+						<td valign="middle" align="center">
 							<?php
 							if ($DOMAIN_AS_PREFIX){
 								$quota = $cyr_conn->getquota("user/" . $username);
@@ -212,17 +212,20 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								$q_total = $quota['qmax'];
 								if (! $q_total == 0){
 									$q_percent = 100*$q_used/$q_total;
-
+									$b_img = 'green.gif';
 									if ($q_percent >= $_SESSION['warnlevel']){
-										printf ("<font color=red>");
+										$b_img = 'red.gif';
 									}
+									echo '<table class="quota_table">';
+									echo '<tr>';
+									echo '<td class="quota_td" style="background: url(\'images/'.$b_img.'\') repeat-y; background-position: '.((-100)+min(100,round($q_percent))).';">';
+									echo round($q_percent,2).'%</td>';
+									echo '</tr>';
+									echo '</table>';
 
-									printf ("%d MB %s %d MB (%.2f%%)",
+									printf ("%d MB %s %d MB",
 										$quota['used']/1024, _("out of"),
-										$quota['qmax']/1024, $q_percent);
-									if ($q_percent >= $_SESSION['warnlevel']){
-                                                                                printf ("</font>");
-                                                                        }
+										$quota['qmax']/1024);
 								} else {
 									print _("Unable to retrieve quota");
 								}
