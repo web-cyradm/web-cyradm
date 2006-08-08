@@ -7,6 +7,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 }
 ?>
 <!-- #################### newdomain.php start #################### -->
+<script>
+<!--
+	function display(url, nam, width, height) {
+                window.open(url,nam,'width=' + width + ',height=' + height + ',screenX=40,screenY=30,resizable=0,scrollbars=no,menubar=no,status=no,location=no,toolbar=no,top=220,left=180');
+}
+// -->
+</script>
 <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="top">
@@ -19,7 +26,7 @@ if ($authorized) {
 <?php
 	if (empty($_GET['confirmed'])){
 ?>
-			<form action="index.php" method="get" style="border: 0px double green;">
+			<form action="index.php" method="get" style="border: 0px double green;" name="mainform">
 				<input type="hidden" name="action" value="newdomain">
 				<input type="hidden" name="confirmed" value="true">
 					<table>
@@ -35,7 +42,7 @@ if ($authorized) {
 								class="inputfield" 
 								type="text" 
 								size="20" 
-								name="domain">
+								name="domain"> <a href="javascript:display('ace.php?domain='+document.mainform.domain.value+'&charset=<?php echo $charset; ?>','ACE',300,200);">Get ACE string</a>
 							</td>
 						</tr>
 

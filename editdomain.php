@@ -7,6 +7,13 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 }
 ?>
 <!-- #################### editdomain.php start #################### -->
+<script>
+<!--
+	function display(url, nam, width, height) {
+                window.open(url,nam,'width=' + width + ',height=' + height + ',screenX=40,screenY=30,resizable=0,scrollbars=no,menubar=no,status=no,location=no,toolbar=no,top=220,left=180');
+}
+// -->
+</script>
 <tr>
 	<td width="10">&nbsp;</td>
 	<td valign="top">
@@ -102,7 +109,7 @@ if ($authorized) {
 				// END Andreas Kreisl : freenames
 				$freeaddress=$row['freeaddress'];
 				?>
-				<form action="index.php" method="get">
+				<form action="index.php" method="get" name="mainform">
 
 					<input type="hidden" name="action" value="editdomain">
 					<input type="hidden" name="confirmed" value="true">
@@ -119,7 +126,7 @@ if ($authorized) {
 								type="text" size="30"
 								name="newdomain" 
 								value="<?php print $domain;?>"
-								>
+								> <a href="javascript:display('ace.php?newdomain='+document.mainform.newdomain.value+'&charset=<?php echo $charset; ?>','ACE',300,200);">Get ACE string</a>
 							</td>
 						</tr>
 						<?php if ($DOMAIN_AS_PREFIX == 0) { ?>
