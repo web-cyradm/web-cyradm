@@ -44,6 +44,7 @@ if (! isset($_SESSION['session_ok'])){
 			// Session has expired
 		#	$_SESSION['session_ok']	= FALSE;
 			$_SESSION['timestamp']	= -1;
+			$LANG = $_SESSION['LANG'];
 			include ("header.inc.php");
 			include ("timeout.php");
 			include ("footer.inc.php");
