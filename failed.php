@@ -5,14 +5,22 @@ include WC_BASE . "/config/conf.php";
 include WC_BASE . "/lib/nls.php";
 
 $browserlang=explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-$browserlang1=substr($browserlang[0], 0, 2);
-if ($nls['aliases'][$browserlang1]){
-        $LANG=$nls['aliases'][$browserlang1];
+if (isset($_GET['LANG'])) {
+	// Use Language setting from session
+	$LANG = $_GET['LANG'];
+} elseif (isset($nls['aliases'][substr($browserlang[0], 0, 2)])) {
+	// Get language from the browser
+	$LANG = $nls['aliases'][substr($browserlang[0], 0, 2)];
+} else {
+	// Fall back to default language
+	$LANG = $DEFAULTLANG;
+	$LANG = $nls['aliases'][substr($DEFAULTLANG,0,2)];
 }
+$charset = isset($nls["charsets"][$LANG])?$nls["charsets"][$LANG]:'iso-8859-1';
 
-
+header('Vary: Accept-Language');
+header('Content-type: text/html; charset=' . $charset);
 #include WC_BASE . "/header.inc.php";
-
 setlocale(LC_MESSAGES, "$LANG");
 putenv("LANG=$LANG");
 putenv("LANGUAGE=$LANG");
@@ -30,6 +38,7 @@ textdomain("web-cyradm");
 <html>
 	<head>
 		<title>Web-cyradm</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=<?php print $charset;?>">
 	</head>
 	<body bgcolor="#FFFFFF" text="#000000" style="margin: 0;">
 	<table width="100%" border="0" style="height: 100%;">

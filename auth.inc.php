@@ -41,7 +41,7 @@ if ($login && $password){
 	   $_SESSION = array();
 	   
 	   #include ("failed.php");
-	   header ("Location: failed.php");
+	   header ("Location: failed.php?LANG=".$LANG);
 	
      }
 } else {
