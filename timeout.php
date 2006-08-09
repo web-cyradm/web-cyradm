@@ -6,23 +6,6 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	exit();
 }
 
-
-if (isset($_SESSION['LANG'])){
-	// Use Language setting from session
-	$LANG = $_SESSION['LANG'];
-}
-
-elseif (isset($nls['aliases'][substr($browserlang[0], 0, 2)])){
-	// Get language from the browser
-	$LANG = $nls['aliases'][substr($browserlang[0], 0, 2)];
-
-} 
-else {
-	// Fall back to default language
-	//$LANG = $DEFAULTLANG;
-	$LANG = $nls['aliases'][substr($DEFAULTLANG,0,2)];
-}
-
 setlocale(LC_MESSAGES, $LANG);
 setlocale(LC_ALL, $LANG);
 putenv("LANG=" . $LANG);
@@ -33,7 +16,6 @@ bindtextdomain("web-cyradm", "./locale");
 
 // Choose domain
 textdomain("web-cyradm");
-
 ?>
 	<table width="100%" border="0" style="height: 80%;">
 		<tr>
