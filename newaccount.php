@@ -304,7 +304,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				</h3>
 				<?php
 			}
-			$result = $cyr_conn->setacl("user" . $seperator . $username, $CYRUS['ADMIN'], "lrswipcda");
+			$result = $cyr_conn->setacl("user" . $seperator . $username, $CYRUS['ADMIN'], $cyr_conn->allacl);
 			$result = $cyr_conn->setmbquota("user" . $seperator . $username, $_POST['quota']);
 			$_GET['domain'] = $_POST['domain'];
 			include WC_BASE . "/browseaccounts.php";

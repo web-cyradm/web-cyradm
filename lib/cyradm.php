@@ -46,6 +46,7 @@ class cyradm
 	var $port;
 	var $mbox;
 	var $list;
+	var $allacl;
 
 	var $admin;
 	var $pass;
@@ -68,6 +69,7 @@ class cyradm
 		$this->mbox	= $this->line	= $this->error_msg	= '';
 		$this->list	= array();
 		$this->fp	= 0;
+		$this->allacl	= 'lrswipcda';
 	} 
 
 
@@ -83,10 +85,17 @@ class cyradm
 		if(!$this->fp) {
 			echo "<br>ERRORNO: ($errno) <br>ERRSTR: ($errstr)<br><hr>\n";
 		} else {
+			$_cmd = '. capability';
+			$result = $this->command($_cmd);
+			foreach($result as $resline) {
+				if (eregi("(RIGHTS=){1}[texk]{4}",$resline)) {
+					$this->allacl = 'lrswipkxtecda';
+				}
+			}
 			$_cmd = sprintf('. login "%s" "%s"',
 				$this->admin, $this->pass);
 			$this->command($_cmd);
-			if ($this->error_msg!="No errors"){
+			if ($this->error_msg!="No errors") {
 				return 1;
 			}
 		}
@@ -242,14 +251,13 @@ class cyradm
 
 	function deletemb($mb_name)
 	{
-		$this->command(". setacl \"$mb_name\" $this->admin lrswipcda");
+		$this->command(". setacl \"$mb_name\" $this->admin $this->allacl");
 		$this->command(". delete \"$mb_name\"");
 	}
 
 	function renamemb($mb_name, $newmbname)
 	{
-		$all = "lrswipcda";
-		$this->setacl($mb_name, $this->admin,$all);
+		$this->setacl($mb_name, $this->admin,$this->allacl);
 		$this->command(". rename \"$mb_name\" \"$newmbname\"");
 		$this->deleteacl($newmbname, $this->admin);
 	}
@@ -263,13 +271,12 @@ class cyradm
 
 	function renameuser($from_mb_name, $to_mb_name)
 	{
-		$all = "lrswipcda"; 
 		$find_out = $split_res = array();
 		$owner = $oldowner = '';
 
 		/* Anlegen und Kopieren der INBOX */
 		$this->createmb($to_mb_name);
-		$this->setacl($to_mb_name, $this->admin,$all);     
+		$this->setacl($to_mb_name, $this->admin,$this->allacl);
 		$this->copymailsfromfolder($from_mb_name, $to_mb_name);
 
 		/* Quotas uebernehmen */  
@@ -300,7 +307,7 @@ class cyradm
 				$split_res[1] = str_replace("/",".",$split_res[1]);
 				$this->renamemb((str_replace("/",".",$find_out[$i])), ("$to_mb_name"."$split_res[1]"));
 				if ($owner) {
-					$this->setacl(("$to_mb_name"."$split_res[1]"),$owner,$all);
+					$this->setacl(("$to_mb_name"."$split_res[1]"),$owner,$this->allacl);
 				}
 				if ($oldowner) {
 					$this->deleteacl(("$to_mb_name"."$split_res[1]"),$oldowner);
@@ -316,10 +323,9 @@ class cyradm
 	function copymailsfromfolder($from_mb_name, $to_mb_name)
 	{
 		$com_ret = $find_out = array();
-		$all = "lrswipcda";
 		$mails = 0;
 
-		$this->setacl($from_mb_name, $this->admin,$all);
+		$this->setacl($from_mb_name, $this->admin,$this->allacl);
 		$com_ret = $this->command(". select $from_mb_name");
 		for ($i=0; $i < count($com_ret); $i++) {
 			if (strstr($com_ret[$i], "EXISTS")){ 
