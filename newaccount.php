@@ -238,10 +238,10 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 			if ($DOMAIN_AS_PREFIX){
 				$username = $_POST['email'].".".$_POST['domain'];
-				$seperator = '/';
+				$separator = '/';
 			} else {
 				$username = $_POST['username'];
-				$seperator = '.';
+				$separator = '.';
 			}
 
 			if ($domain_quota!=0){
@@ -295,7 +295,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				</h3>
 			<?php
 
-			$result = $cyr_conn->createmb("user" . $seperator . $username);
+			$result = $cyr_conn->createmb("user" . $separator . $username);
 
 			if ($result) {
 				?>
@@ -304,8 +304,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 				</h3>
 				<?php
 			}
-			$result = $cyr_conn->setacl("user" . $seperator . $username, $CYRUS['ADMIN'], $cyr_conn->allacl);
-			$result = $cyr_conn->setmbquota("user" . $seperator . $username, $_POST['quota']);
+			$result = $cyr_conn->setacl("user" . $separator . $username, $CYRUS['ADMIN'], $cyr_conn->allacl);
+			$result = $cyr_conn->setmbquota("user" . $separator . $username, $_POST['quota']);
 			$_GET['domain'] = $_POST['domain'];
 			include WC_BASE . "/browseaccounts.php";
 		} // End of if (empty($_POST['confirmed']))
