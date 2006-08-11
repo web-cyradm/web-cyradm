@@ -1056,7 +1056,7 @@ if (! empty($action)){
 		if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
-		} elseif (empty($_GET['alias']) || (!empty($_GET['create']) && !ValidMail($_GET['alias'].'@'.$_GET['domain']) || empty($_GET['create']) && !ValidMail($_GET['alias']))) {
+		} elseif (!empty($_GET['alias']) && (!empty($_GET['create']) && !ValidMail($_GET['alias'].'@'.$_GET['domain']) || empty($_GET['create']) && !ValidMail($_GET['alias']) && !ValidDomain(substr($_GET['alias'],1)))) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
 		} elseif (!empty($_GET['adddest']) && ((empty($_GET['dest']) || !ValidMail($_GET['dest']) && !ValidName($_GET['dest'])))) {
