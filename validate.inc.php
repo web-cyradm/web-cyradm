@@ -1056,7 +1056,7 @@ if (! empty($action)){
 		if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
-		} elseif (empty($_GET['alias']) || !ValidMail($_GET['alias'])) {
+		} elseif (empty($_GET['alias']) || (!empty($_GET['create']) && !ValidMail($_GET['alias'].'@'.$_GET['domain']) || empty($_GET['create']) && !ValidMail($_GET['alias']))) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
 		} elseif (!empty($_GET['adddest']) && ((empty($_GET['dest']) || !ValidMail($_GET['dest']) && !ValidName($_GET['dest'])))) {
@@ -1066,6 +1066,18 @@ if (! empty($action)){
 		} elseif (in_array($alias, $reserved)) {
 			$authorized = FALSE;
 			$err_msg="Reserved Emailadress, request cancelled";
+		} elseif (!empty($_GET['adddest'])) {
+			$query = "SELECT * FROM virtual WHERE alias='".$_GET['alias']."' AND dest='".$_GET['dest']."' AND username='".$_GET['domain']."'";
+			$result = $handle->query($query);
+			if (DB::isError($result)) {
+				die (_("Database error"));
+			}
+			if ($result->numRows()){
+				$authorized = FALSE;
+				$err_msg = "Alias already exists";
+			} else {
+				$authorized = TRUE;
+			}
 		} else {
 			$authorized = TRUE;
 		}
