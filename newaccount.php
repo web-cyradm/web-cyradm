@@ -34,6 +34,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		$freenames	= $row['freenames'];
 		// END Andreas Kreisl : freenames
 		$freeaddress    = $row['freeaddress'];
+		$folders	= $row['folders'];
 
 		if ($transport != "cyrus"){
 			print _("transport is not cyrus, unable to create account");
@@ -306,6 +307,20 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 			}
 			$result = $cyr_conn->setacl("user" . $separator . $username, $CYRUS['ADMIN'], $cyr_conn->allacl);
 			$result = $cyr_conn->setmbquota("user" . $separator . $username, $_POST['quota']);
+			$AUTOCREATE_MAILBOXES = array();
+			if (!empty($folders)) $AUTOCREATE_MAILBOXES = explode(',',$folders);
+			if(sizeof($AUTOCREATE_MAILBOXES) > 0) {
+				//log out of admin, log in as user
+				$cyr_conn->imap_logout();
+				$cyr_conn->imap_login($username, $_POST['password']);
+
+				//create and subscribe to each mailbox listed in AUTOCREATE_MAILBOXES
+				for($i=0; $i < sizeof($AUTOCREATE_MAILBOXES); $i++) {
+					$cyr_conn->createmb("user".$separator.$username.$separator.trim($AUTOCREATE_MAILBOXES[$i]));
+					$cyr_conn->command('. subscribe "user'.$separator.$username.$separator.trim($AUTOCREATE_MAILBOXES[$i]).'"');
+				}
+				$cyr_conn->imap_logout();
+			}
 			$_GET['domain'] = $_POST['domain'];
 			include WC_BASE . "/browseaccounts.php";
 		} // End of if (empty($_POST['confirmed']))

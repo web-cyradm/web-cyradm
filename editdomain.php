@@ -37,7 +37,7 @@ if ($authorized) {
 				// END Andreas Kreisl : freenames
 				
 				$query_result = true;
-				$query = "UPDATE domain SET domain_name='".$_GET['newdomain']."', maxaccounts='".$_GET['maxaccounts']."', quota='".$_GET['quota']."', domainquota='".$_GET['domainquota']."', freenames='".$freenames."',freeaddress='".$freeaddress."',prefix='".$_GET['newprefix']."' WHERE domain_name='".$_GET['domain']."'";
+				$query = "UPDATE domain SET domain_name='".$_GET['newdomain']."', maxaccounts='".$_GET['maxaccounts']."', quota='".$_GET['quota']."', domainquota='".$_GET['domainquota']."', freenames='".$freenames."',freeaddress='".$freeaddress."', folders='".$_GET['defaultfolders']."', prefix='".$_GET['newprefix']."' WHERE domain_name='".$_GET['domain']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)){
 					$query_result = false;
@@ -105,9 +105,10 @@ if ($authorized) {
 				$quota = $row['quota']; 
 				$domainquota = $row['domainquota'];
 				// START Andreas Kreisl : freenames
-				$freenames=$row['freenames']; 
+				$freenames = $row['freenames']; 
 				// END Andreas Kreisl : freenames
-				$freeaddress=$row['freeaddress'];
+				$freeaddress = $row['freeaddress'];
+				$folders = $row['folders'];
 				?>
 				<form action="index.php" method="get" name="mainform">
 
@@ -228,6 +229,25 @@ if ($authorized) {
 							</td>
 							
 						</tr>
+
+						<tr>
+							<td colspan="2">
+								<b><?php print _("Standard Folders");?></b>
+								<?php echo "<br>";
+								print _("Forders which are automaticaly created for every new account (comma separated list)");?>
+							</td>
+						</tr> 
+						
+						<tr>
+							<td colspan="2">
+								<input class="inputfield"
+								type="text" size="80"
+								name="defaultfolders"
+								value="<?php print $folders; ?>"
+								>
+							</td>
+						</tr>
+					</table>
 
 						<tr>
 							<td colspan="2" align="center">

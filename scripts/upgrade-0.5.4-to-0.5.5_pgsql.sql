@@ -5,6 +5,11 @@ ALTER TABLE domain SET DEFAULT '0';
 UPDATE domain SET domainquota = DEFAULT;
 ALTER TABLE domain ALTER COLUMN domainquota SET NOT NULL;
 
+ALTER TABLE domain ADD folders varchar(255);
+ALTER TABLE domain SET DEFAULT '';
+UPDATE domain SET folders = DEFAULT;
+ALTER TABLE domain ALTER COLUMN folders SET NOT NULL;
+
 ALTER TABLE accountuser ADD imap int;
 ALTER TABLE accountuser ADD pop int;
 ALTER TABLE accountuser ADD sieve int;

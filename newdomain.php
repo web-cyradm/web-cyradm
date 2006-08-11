@@ -146,6 +146,24 @@ if ($authorized) {
 							</td>
 						</tr>
 					</table>
+
+					<h4>
+						<?php print _("Standard Folders");?>
+					</h4>
+
+					<table>
+						<tr>
+							<td>
+								<?php print _("Forders which are automaticaly created for every new account (comma separated list)");?>
+							</td>
+						</tr> 
+						
+						<tr>
+							<td>
+								<input class="inputfield" type="text" name="defaultfolders" size="80">
+							</td>
+						</tr>
+					</table>
 <!-- 
 
 					<h4>
@@ -240,7 +258,7 @@ if ($authorized) {
 				} else {
 					$freeaddress = "NO";
 				}
-				$query = "INSERT INTO domain (domain_name, prefix, maxaccounts, quota, domainquota, transport,freenames,freeaddress) VALUES ('".$_GET['domain']."', '".$_GET['prefix']."', '".$_GET['maxaccounts']."', '".$_GET['quota']."', '".$_GET['domainquota']."', '".$trans."', '".$freenames."', '".$freeaddress."')";
+				$query = "INSERT INTO domain (domain_name, prefix, maxaccounts, quota, domainquota, transport,freenames,freeaddress,folders) VALUES ('".$_GET['domain']."', '".$_GET['prefix']."', '".$_GET['maxaccounts']."', '".$_GET['quota']."', '".$_GET['domainquota']."', '".$trans."', '".$freenames."', '".$freeaddress."','".$_GET['defaultfolders']."')";
 				// END Andreas Kreisl : freenames
 
 				$result = $handle->query($query);

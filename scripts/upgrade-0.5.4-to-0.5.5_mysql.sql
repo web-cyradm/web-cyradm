@@ -1,4 +1,5 @@
 ALTER TABLE `domain` ADD `domainquota` int(10) DEFAULT '0' NOT NULL AFTER `quota`;
+ALTER TABLE `domain` ADD `folders` varchar(255) NOT NULL DEFAULT '';
 
 ALTER TABLE `accountuser` ADD `imap` int(10) DEFAULT '1' NOT NULL AFTER `domain_name`;
 ALTER TABLE `accountuser` ADD `pop` int(10) DEFAULT '1' NOT NULL AFTER `imap`;
