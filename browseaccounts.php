@@ -115,7 +115,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$domain = $row['domain_name'];
 					$username = $row['username'];
 
-					$query2 = "SELECT * FROM virtual WHERE username='$username'"; # AND alias  !='$username'"; 
+					$query2 = "SELECT * FROM virtual WHERE dest='".$username."' AND username='".$username."'"; # AND alias  !='$username'"; 
 					$result2 = $handle->query($query2);
 					if (DB::isError($result2)) {
 						die (_("Database error"));
@@ -168,7 +168,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 								$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
 								print $row2['alias'] . "<br>";
 							}
-				                        $query4 = "SELECT * FROM virtual WHERE alias='" . $username . "'";
+				                        $query4 = "SELECT * FROM virtual WHERE alias='".$username."' AND username=''";
 							$result4 = $handle->query($query4);
 							if (DB::isError($result4)) {
 								die (_("Database error"));
