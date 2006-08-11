@@ -19,6 +19,7 @@
  Changes by Lukasz Marciniak <landm@ibi.pl>
  - Added geterror() to find out problems with conection to cyrus IMAP
  - Changed imap_login() and command() to work with geterror()
+ - Changed imap_login() to work with passed login and password
 
  Last Change on $Date$
 
@@ -78,8 +79,12 @@ class cyradm
 	# SOCKETLOGIN on Server via Telnet-Connection!
 	#
 	*/
-	function imap_login()
+	function imap_login($login='', $passwd='')
 	{
+		if (empty($login)) {
+			$login = $this->admin;
+			$passwd = $this->pass;
+		}
 		$this->fp = fsockopen($this->host, $this->port, $errno, $errstr);
 		$this->error_msg = $errstr;
 		if(!$this->fp) {
@@ -93,7 +98,7 @@ class cyradm
 				}
 			}
 			$_cmd = sprintf('. login "%s" "%s"',
-				$this->admin, $this->pass);
+				$login, $passwd);
 			$this->command($_cmd);
 			if ($this->error_msg!="No errors") {
 				return 1;
