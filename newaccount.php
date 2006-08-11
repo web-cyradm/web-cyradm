@@ -316,8 +316,12 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 
 				//create and subscribe to each mailbox listed in AUTOCREATE_MAILBOXES
 				for($i=0; $i < sizeof($AUTOCREATE_MAILBOXES); $i++) {
-					$cyr_conn->createmb("user".$separator.$username.$separator.trim($AUTOCREATE_MAILBOXES[$i]));
-					$cyr_conn->command('. subscribe "user'.$separator.$username.$separator.trim($AUTOCREATE_MAILBOXES[$i]).'"');
+					$new_folder = trim($AUTOCREATE_MAILBOXES[$i]);
+					//if (function_exists('mb_convert_encoding')) {
+					$new_folder = mb_convert_encoding($new_folder,"UTF7-IMAP",$charset);
+					//}
+					$cyr_conn->createmb("user".$separator.$username.$separator.$new_folder);
+					$cyr_conn->command('. subscribe "user'.$separator.$username.$separator.$new_folder.'"');
 				}
 				$cyr_conn->imap_logout();
 			}
