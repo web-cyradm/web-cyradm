@@ -13,6 +13,9 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 	<td valign="top">
 <?php
 if ($authorized) {
+	if (!empty($_GET['create'])) {
+		$_GET['alias'] = $_GET['alias']."@".$_GET['domain'];
+	}
 	if (!empty($_GET['adddest'])) {
 		$query = "INSERT INTO virtual (alias,dest,username) values ('".$_GET['alias']."', '".$_GET['dest']."', '".$_GET['domain']."')";
 		$result = $handle->query($query);
@@ -21,7 +24,7 @@ if ($authorized) {
 		}
 	}
 
-	$query = "SELECT dest, username FROM virtual WHERE alias = '".$_GET['alias']."'";
+	$query = "SELECT dest, username FROM virtual WHERE alias = '".$_GET['alias']."' AND username<>''";
 	$result = $handle->query($query);
 	$alias_count = $result->numRows($result);
 
