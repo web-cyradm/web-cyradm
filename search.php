@@ -178,7 +178,7 @@ if ($authorized) {
 				$row2 = $result2->fetchRow(DB_FETCHMODE_ASSOC, $c2);
 				print $row2['alias']."<br>";
 			}
-			$query3 = "SELECT dest FROM virtual WHERE alias='".$username."'";
+			$query3 = "SELECT dest FROM virtual WHERE alias='".$username."' AND username=''";
 			$result3 = $handle->query($query3);
 			$row = $result3->fetchRow(DB_FETCHMODE_ASSOC, 0);
 			if (is_array($row)) {
@@ -281,7 +281,7 @@ if ($authorized) {
 
 	################ And now show the matching aliases #######################
 	$query3 = "SELECT DISTINCT alias, username FROM virtual WHERE (((dest LIKE '%".$_GET['searchstring']."%') OR (alias LIKE '%".$_GET['searchstring']."%')) AND (dest <> username) AND (username<>'')) AND ".$allowed_domains3."') ORDER BY username";	
-	$result3 = $handle->query($query3);	
+	$result3 = $handle->query($query3);
 	$total = $result3->numRows();
 	print "<h3>"._("Total aliases matching").": ".$total."</h3>";
 	if ($total == 0) {
@@ -312,7 +312,7 @@ if ($authorized) {
                         <td><?php echo $alias; ?></td>
                         <td>
 <?php
-			$query4 = "SELECT dest FROM virtual WHERE alias='".$alias."'";
+			$query4 = "SELECT dest FROM virtual WHERE alias='".$alias."' AND username='".$domain."'";
 			$result4 = $handle->limitQuery($query4, 0, 3);
 			$num_dest = $result4->numRows ($result4);
 			for ($d=0; $d<$num_dest; $d++) {
@@ -322,7 +322,7 @@ if ($authorized) {
 				}
 				echo $row2['dest'];
 			}
-			$query5 = "SELECT COUNT(dest) FROM virtual WHERE alias='".$alias."'";
+			$query5 = "SELECT COUNT(dest) FROM virtual WHERE alias='".$alias."' AND username='".$domain."'";
 			$num_dests = $handle->getOne($query5);
 			if ($num_dests>3) {
 				print ", ... ";
