@@ -88,6 +88,17 @@ $CRYPT = "crypt";
 ####
 $DOMAIN_AS_PREFIX = 0;
 
+# EXPERIMENTAL
+# If you are using cyrus imap 2.2.x and wish to use usernames like
+# email addresses you can set option DOMAIN_AS_PREFIX to '1' and
+# FQUN to '1'. NOTE: you also have to add this lines to your
+# imapd.conf file:
+#### imapd.conf: ####
+# unixhierarchysep: yes
+# virtdomains: yes
+####
+$FQUN = 0;
+
 # At the moment, web-cyradm supports two methods of password change:
 # - through sql
 # - poppassd

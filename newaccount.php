@@ -238,7 +238,11 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 		} elseif (!empty($_POST['confirmed'])){
 
 			if ($DOMAIN_AS_PREFIX){
-				$username = $_POST['email'].".".$_POST['domain'];
+				if ($FQUN) {
+					$username = $_POST['email']."@".$_POST['domain'];
+				} else {
+					$username = $_POST['email'].".".$_POST['domain'];
+				}
 				$separator = '/';
 			} else {
 				$username = $_POST['username'];
