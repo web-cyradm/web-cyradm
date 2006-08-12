@@ -870,7 +870,7 @@ if (! empty($action)){
 				} elseif (!ValidDomain($_GET['domain'])){
 					$authorized = FALSE;
 					$err_msg = "You must choose a valid domainname";
-				} elseif (!empty($_GET['prefix']) && !ValidPrefix($_GET['prefix'])) {
+				} elseif (!($DOMAIN_AS_PREFIX) && (empty($_GET['prefix']) || !ValidPrefix($_GET['prefix']))) {
 					$authorized = FALSE;
 					$err_msg = "You must choose a valid prefix for your domain";
 				} elseif (!in_array($_GET['transport'],array("cyrus","lmtp","smtp","uucp"))) {
