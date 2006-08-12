@@ -324,8 +324,8 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					//if (function_exists('mb_convert_encoding')) {
 					$new_folder = mb_convert_encoding($new_folder,"UTF7-IMAP",$charset);
 					//}
-					$cyr_conn->createmb("user".$separator.$username.$separator.$new_folder);
-					$cyr_conn->command('. subscribe "user'.$separator.$username.$separator.$new_folder.'"');
+					$cyr_conn->createmb("INBOX".$separator.$new_folder);
+					$cyr_conn->command('. subscribe "INBOX'.$separator.$new_folder.'"');
 				}
 				$cyr_conn->imap_logout();
 			}
