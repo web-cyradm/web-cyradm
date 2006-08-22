@@ -261,10 +261,7 @@ class sieve {
     else{
             $this->error = EC_UNKNOWN;
             $this->error_raw = $this->line;
-	    print '<b><i>UNKNOWN ERROR (Please report this line to <a
-	    href="mailto:sieve-php-devel@lists.sourceforge.net">sieve-php-devel
-	    Mailing List</a> to include in future releases):
-	    '.$this->line.'</i></b><br>';
+	    print '<b><i>UNKNOWN ERROR (Please report this line to <a href="mailto:sieve-php-devel@lists.sourceforge.net">sieve-php-devel Mailing List</a> to include in future releases): '.$this->line.'</i></b><br>';
 
             return false;
     } /* end else */   

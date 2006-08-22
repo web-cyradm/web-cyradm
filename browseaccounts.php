@@ -115,7 +115,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 					$domain = $row['domain_name'];
 					$username = $row['username'];
 
-					$query2 = "SELECT * FROM virtual WHERE dest='".$username."' AND username='".$username."'"; # AND alias  !='$username'"; 
+					$query2 = "SELECT * FROM virtual WHERE dest='".$username."' AND username='".$username."'";
 					$result2 = $handle->query($query2);
 					if (DB::isError($result2)) {
 						die (_("Database error"));

@@ -59,7 +59,7 @@ if ($_SESSION['admintype'] != 0){
 		$allowed_domains[] = $row['domain_name'];
 	}
 	$_SESSION['allowed_domains'] = $allowed_domains;
-	#Fix me: It's unnecessary (duplicated with "if (!$cnt)").
+	//FIXME: It's unnecessary (duplicated with "if (!$cnt)").
 	if (sizeof($allowed_domains)==0){
 		print _("Security violation detected, attempt logged");
 		include WC_BASE . "/logout.php";

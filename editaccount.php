@@ -28,7 +28,7 @@ if ($authorized) {
 		</h3>
 
 		<?php
-		$query = "SELECT * FROM virtual WHERE username='".$_GET['username']."'"; # AND alias != '$username'";
+		$query = "SELECT * FROM virtual WHERE username='".$_GET['username']."'"; 
 		$result = $handle->query($query);
 		$cnt = $result->numRows();
 		?>

@@ -453,11 +453,7 @@ class cyradm
 				?>
 				<tr>
 					<td>
-						<a href="acl.php?username=<?php
-						echo urlencode($username);
-						?>&amp;folder=<?php
-						echo urlencode($folder_array[$l]);
-						?>">/<?php
+						<a href="acl.php?username=<?php echo urlencode($username); ?>&amp;folder=<?php echo urlencode($folder_array[$l]); ?>">/<?php
 						echo $folder_array[$l];
 						?></a>
 					</td>
