@@ -7,7 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-08-10 16:56+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-08-22 15:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,953 +16,1210 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: CVS/Base/browseaccounts.php:22 browseaccounts.php:22
-msgid "Browse accounts for domain"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:34 adminuser.php:21 browse.php:66
-#: browseaccounts.php:34 catchall.php:24 catchall.php:118
-#: change_password.php:19 change_password.php:32 change_password.php:42
-#: deleteaccount.php:83 deleteadminuser.php:74 deletedomain.php:17
-#: editaccount.php:31 editdomain.php:37 editdomain.php:67 editemail.php:15
-#: editemail.php:38 forwardalias.php:16 forwardalias.php:33 newaccount.php:26
-#: newadminuser.php:137 newadminuser.php:215 newalias.php:26 newdomain.php:237
-#: newemail.php:15 vacation.php:15 vacation.php:30 validate.inc.php:58
-#: lib/crypto.php:30 lib/crypto.php:110 lib/crypto.php:149
-#: forwardaccount.php:28 delete_catchall.php:23 deleteemail.php:62
+#: lib/crypto.php:30 lib/crypto.php:110 lib/crypto.php:160
+#: changeadminpasswd.php:97 editadminuser.php:20 editadminuser.php:123
+#: editadminuser.php:185 editadminuser.php:195 editadminuser.php:205
+#: editadminuser.php:213 editadminuser.php:225 editadminuser.php:235
+#: editadminuser.php:248 delete_catchall.php:20 browse.php:50
+#: browseaccounts.php:36 browseaccounts.php:121 browseaccounts.php:174
+#: newadminuser.php:137 newadminuser.php:143 newadminuser.php:151
+#: newadminuser.php:158 newalias.php:28 newaccount.php:23 newaccount.php:54
+#: newaccount.php:286 newaccount.php:292 deleteemail.php:54 catchall.php:108
+#: newemail.php:19 validate.inc.php:109 validate.inc.php:116
+#: validate.inc.php:224 validate.inc.php:240 validate.inc.php:284
+#: validate.inc.php:298 validate.inc.php:324 validate.inc.php:333
+#: validate.inc.php:374 validate.inc.php:383 validate.inc.php:444
+#: validate.inc.php:456 validate.inc.php:495 validate.inc.php:520
+#: validate.inc.php:541 validate.inc.php:562 validate.inc.php:605
+#: validate.inc.php:614 validate.inc.php:640 validate.inc.php:651
+#: validate.inc.php:681 validate.inc.php:706 validate.inc.php:717
+#: validate.inc.php:748 validate.inc.php:776 validate.inc.php:796
+#: validate.inc.php:817 validate.inc.php:838 validate.inc.php:884
+#: validate.inc.php:931 validate.inc.php:1073 init.php:12 init.php:19
+#: manageaccount.php:39 manageaccount.php:63 manageaccount.php:212
+#: manageaccount.php:223 manageaccount.php:275 manageaccount.php:289
+#: deleteadminuser.php:70 deleteadminuser.php:77 deleteadminuser.php:84
+#: deletealias.php:58 deletealias.php:68 deleteaccount.php:82
+#: deleteaccount.php:89 deleteaccount.php:95 deleteaccount.php:101
 msgid "Database error"
 msgstr ""
 
-#: CVS/Base/browseaccounts.php:48 browseaccounts.php:48 newaccount.php:68
-msgid "Total accounts"
+#: editalias.php:23
+msgid "There was an error adding "
 msgstr ""
 
-#: CVS/Base/browseaccounts.php:49 adminuser.php:36 browseaccounts.php:49
-msgid "Displaying from position:"
+#: editalias.php:23
+msgid " to "
 msgstr ""
 
-#: CVS/Base/browseaccounts.php:55 CVS/Base/browseaccounts.php:242
-#: browseaccounts.php:55 browseaccounts.php:242 search.php:123 search.php:239
-msgid "Add new account"
+#: editalias.php:23
+msgid "."
 msgstr ""
 
-#: CVS/Base/browseaccounts.php:78 adminuser.php:65 aliases.php:56
-#: browseaccounts.php:78 editalias.php:69 search.php:131 search.php:135
-msgid "Previous 10 entries"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:82 adminuser.php:69 aliases.php:57
-#: browseaccounts.php:82 editalias.php:70 search.php:138 search.php:142
-msgid "Next 10 entries"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:91 adminuser.php:78 aliases.php:64
-#: browse.php:20 browseaccounts.php:91 editaccount.php:50 editalias.php:76
-#: search.php:52 search.php:149 search.php:253
-msgid "action"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:96 aliases.php:65 browseaccounts.php:96
-#: editaccount.php:54 newaccount.php:136 newalias.php:82 search.php:150
-#: search.php:254
-msgid "Email address"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:96 browseaccounts.php:96 editaccount.php:63
-#: login.php:61 search.php:151
-msgid "Username"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:97 browseaccounts.php:97
-msgid "Last login"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:97 browseaccounts.php:97 editaccount.php:68
-#: search.php:152
-msgid "Quota used"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:136 browseaccounts.php:136
-msgid "n/a"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:146 browseaccounts.php:146 search.php:171
-msgid "Edit account"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:151 browseaccounts.php:151
-msgid "Change Password"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:155 browseaccounts.php:155 editaccount.php:58
-#: editaccount.php:91
-msgid "Forward"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:159 browseaccounts.php:159 search.php:172
-msgid "Delete account"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:163 browseaccounts.php:163 search.php:173
-msgid "Set quota"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:167 browseaccounts.php:167 search.php:174
-msgid "Set catch all"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:181 browseaccounts.php:181 search.php:190
-msgid "Forwards"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:218 browseaccounts.php:218 editaccount.php:152
-#: search.php:217
-msgid "out of"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:221 browseaccounts.php:221 search.php:220
-msgid "Unable to retrieve quota"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:224 browseaccounts.php:224 editaccount.php:155
-#: search.php:223
-msgid "Quota not set"
-msgstr ""
-
-#: CVS/Base/browseaccounts.php:236 browseaccounts.php:236 search.php:235
-msgid "No accounts found"
-msgstr ""
-
-#: adminuser.php:13
-msgid "Browse admins"
-msgstr ""
-
-#: adminuser.php:35
-msgid "Total administrators"
-msgstr ""
-
-#: adminuser.php:43
-msgid "Add administator"
-msgstr ""
-
-#: adminuser.php:82
-msgid "Adminname"
-msgstr ""
-
-#: adminuser.php:86
-msgid "domain"
-msgstr ""
-
-#: adminuser.php:90
-msgid "admin type"
-msgstr ""
-
-#: adminuser.php:119
-msgid "Edit adminuser"
-msgstr ""
-
-#: adminuser.php:125
-msgid "Delete adminuser"
-msgstr ""
-
-#: adminuser.php:144
-msgid "All domains"
-msgstr ""
-
-#: adminuser.php:148
-msgid "None"
-msgstr ""
-
-#: adminuser.php:158 editadminuser.php:65 menu.inc.php:132 newadminuser.php:57
-#: newadminuser.php:207
-msgid "Superuser"
-msgstr ""
-
-#: adminuser.php:160 editadminuser.php:76 menu.inc.php:134 newadminuser.php:61
-#: newadminuser.php:209
-msgid "Domain Master"
-msgstr ""
-
-#: adminuser.php:174
-msgid "No accounts fount"
-msgstr ""
-
-#: adminuser.php:181
-msgid "Add administrator"
-msgstr ""
-
-#: aliases.php:11
-msgid "Browse aliases for domain"
-msgstr ""
-
-#: aliases.php:50
-msgid "Total aliases"
-msgstr ""
-
-#: aliases.php:55
-msgid "Add new alias"
-msgstr ""
-
-#: aliases.php:66 editalias.php:77 editemail.php:113 newemail.php:98
-#: search.php:255
-msgid "Destination"
-msgstr ""
-
-#: aliases.php:91 search.php:273
-msgid "Edit Alias"
-msgstr ""
-
-#: aliases.php:92 search.php:274
-msgid "Delete Alias"
-msgstr ""
-
-#: auth.inc.php:70
-msgid "Web-cyradm is for authorized users only."
-msgstr ""
-
-#: auth.inc.php:71
-msgid "Make sure you entered the right password."
-msgstr ""
-
-#: auth.inc.php:72
-msgid "Push the back button in your browser to try again."
-msgstr ""
-
-#: auth.inc.php:73
-msgid " Your attempt to login has been stored."
-msgstr ""
-
-#: browse.php:13
-msgid "Browse domains"
-msgstr ""
-
-#: browse.php:24 search.php:53
-msgid "domainname"
-msgstr ""
-
-#: browse.php:31 search.php:57
-msgid "prefix"
-msgstr ""
-
-#: browse.php:38 search.php:60
-msgid "max Accounts"
-msgstr ""
-
-#: browse.php:42 search.php:61
-msgid "default quota per user"
-msgstr ""
-
-#: browse.php:90 search.php:82
-msgid "Edit Domain"
-msgstr ""
-
-#: browse.php:91 search.php:83
-msgid "Delete Domain"
-msgstr ""
-
-#: browse.php:92 deletedomain.php:51 menu.inc.php:59 search.php:84
-msgid "accounts"
-msgstr ""
-
-#: browse.php:93 menu.inc.php:68 search.php:85
-msgid "Aliases"
-msgstr ""
-
-#: catchall.php:13
-msgid "Define a Account for receiving undefined adresses for domain"
-msgstr ""
-
-#: catchall.php:38
-msgid "Do you really want to define the user"
-msgstr ""
-
-#: catchall.php:42
-msgid "to receive all undefined emailadresses"
-msgstr ""
-
-#: catchall.php:46
-msgid "The currently defined user"
-msgstr ""
-
-#: catchall.php:46
-msgid "will not receiving any undefined emailadresses anymore"
-msgstr ""
-
-#: catchall.php:74
-msgid "The user"
-msgstr ""
-
-#: catchall.php:74
-msgid "is allready defined to receive all undefined Emails."
-msgstr ""
-
-#: catchall.php:76
-msgid "Do you want to remove the function \"catch all\" for the account"
-msgstr ""
-
-#: catchall.php:127 newadminuser.php:197
-msgid "successfully added to Database"
-msgstr ""
-
-#: catchall.php:133 editdomain.php:56 editemail.php:53 newdomain.php:255
-#: newemail.php:44 delete_catchall.php:37
-msgid "Database error, please try again"
-msgstr ""
-
-#: catchall.php:140 delete_catchall.php:44
-msgid "Cancelled"
-msgstr ""
-
-#: change_password.php:53
-msgid "Password changed"
-msgstr ""
-
-#: change_password.php:56
-msgid "Failure in changing password."
-msgstr ""
-
-#: change_password.php:59 editadminuser.php:252
-msgid "New passwords are not equal. Password not changed"
-msgstr ""
-
-#: change_password.php:72
-msgid "Change password for account"
-msgstr ""
-
-#: change_password.php:91
-msgid "New password"
-msgstr ""
-
-#: change_password.php:101
-msgid "Confirm new password"
-msgstr ""
-
-#: change_password.php:121 newaccount.php:243
-msgid "Passwords do not match"
-msgstr ""
-
-#: deleteaccount.php:25
-msgid "Delete an Account from the System"
-msgstr ""
-
-#: deleteaccount.php:29
-msgid "Do you really want to delete the user "
-msgstr ""
-
-#: deleteaccount.php:33
-msgid "with all its defined Emailadresses"
-msgstr ""
-
-#: deleteaccount.php:69 deleteadminuser.php:68 deletedomain.php:84
-#: deleteemail.php:55
-msgid "Action cancelled, nothing deleted"
-msgstr ""
-
-#: deleteaccount.php:100
-msgid "User deleted"
-msgstr ""
-
-#: deleteaccount.php:111 deletedomain.php:175
-msgid ""
-"Security violation detected, action cancelled. Your attempt has been logged."
-msgstr ""
-
-#: deleteadminuser.php:17
-msgid "Delete an Admin account from the System"
-msgstr ""
-
-#: deleteadminuser.php:21
-msgid "Do you really want to delete the Domain supervisor"
-msgstr ""
-
-#: deleteadminuser.php:90 editadminuser.php:276
-msgid "At least one Superuser is needed for Web-cyradm"
-msgstr ""
-
-#: deleteadminuser.php:103
-msgid "Admin user deleted"
-msgstr ""
-
-#: deleteadminuser.php:116 editadminuser.php:299 newadminuser.php:226
-msgid "Security violation detected, nothing deleted, attempt has been logged"
-msgstr ""
-
-#: deletedomain.php:28
-msgid "Delete a Domain from the System"
-msgstr ""
-
-#: deletedomain.php:32
-msgid "Do you really want to delete the Domain"
-msgstr ""
-
-#: deletedomain.php:37
-msgid "with all its defined accounts, admins, and emailadresses"
-msgstr ""
-
-#: deletedomain.php:43
-msgid "This can take a while depending on how many account have to be deleted"
-msgstr ""
-
-#: deletedomain.php:47
-msgid "Your action will delete"
-msgstr ""
-
-#: deletedomain.php:154 newadminuser.php:101
-msgid "Domain"
-msgstr ""
-
-#: deletedomain.php:158
-msgid "successfully deleted"
-msgstr ""
-
-#: deletealias.php:28
-msgid "Please confirm you want to remove"
-msgstr ""
-
-#: deletealias.php:28
-msgid "from the alias"
-msgstr ""
-
-#: deletealias.php:30
-msgid "Yes"
-msgstr ""
-
-#: deletealias.php:49
-msgid "Please confirm you want to remove the alias"
-msgstr ""
-
-#: deletealias.php:77
-msgid "Removed"
-msgstr ""
-
-#: deletealias.php:77
-msgid "from"
-msgstr ""
-
-#: deletealias.php:85
-msgid "Removed the alias"
-msgstr ""
-
-#: editaccount.php:21
-msgid "Email adresses defined for user"
-msgstr ""
-
-#: editaccount.php:42
-msgid "New email address"
-msgstr ""
-
-#: editaccount.php:90
-msgid "Edit Emailadress"
-msgstr ""
-
-#: editaccount.php:92
-msgid "Vacation"
-msgstr ""
-
-#: editaccount.php:93
-msgid "Delete Emailadress"
-msgstr ""
-
-#: editadminuser.php:13
-msgid "Change admin user for domain"
-msgstr ""
-
-#: editadminuser.php:42 newaccount.php:106 newadminuser.php:36
-msgid "Accountname"
-msgstr ""
-
-#: editadminuser.php:52 newadminuser.php:51
-msgid "Admin Type"
-msgstr ""
-
-#: editadminuser.php:84 login.php:71 newaccount.php:138 newadminuser.php:71
-msgid "Password"
-msgstr ""
-
-#: editadminuser.php:100 newaccount.php:139 newadminuser.php:86
-msgid "Confirm Password"
-msgstr ""
-
-#: editadminuser.php:155
-msgid "No Domain assigned yet"
-msgstr ""
-
-#: editadminuser.php:165
-msgid "Add new domain to this admin"
-msgstr ""
-
-#: editadminuser.php:223
-msgid "No such domain, create domain first"
-msgstr ""
-
-#: editadminuser.php:231
-msgid "Admin already repsonsible for the domain"
-msgstr ""
-
-#: editalias.php:27
-msgid "There was an error adding $dest to $alias: "
-msgstr ""
-
-#: editalias.php:64
+#: editalias.php:49
 msgid "Editing alias"
 msgstr ""
 
-#: editalias.php:68
+#: editalias.php:53
 msgid "Delete this alias"
 msgstr ""
 
-#: editalias.php:101
+#: editalias.php:54
+msgid "Back to aliases"
+msgstr ""
+
+#: editalias.php:55 search.php:128 search.php:130 aliases.php:42
+#: adminuser.php:60
+msgid "Previous 10 entries"
+msgstr ""
+
+#: editalias.php:56 search.php:133 search.php:135 aliases.php:43
+#: adminuser.php:64
+msgid "Next 10 entries"
+msgstr ""
+
+#: editalias.php:61 browse.php:103 browseaccounts.php:82 editaccount.php:48
+#: search.php:48 search.php:142 search.php:294 aliases.php:50 adminuser.php:73
+msgid "action"
+msgstr ""
+
+#: editalias.php:62 search.php:296 aliases.php:52 editemail.php:106
+#: newemail.php:99
+msgid "Destination"
+msgstr ""
+
+#: editalias.php:76
 msgid "Cannot remove from account"
 msgstr ""
 
-#: editalias.php:105 editalias.php:109
+#: editalias.php:78
 msgid "Remove destination"
 msgstr ""
 
-#: editalias.php:125
+#: editalias.php:90
 msgid "This alias has no destinations"
 msgstr ""
 
-#: editalias.php:142
+#: editalias.php:102
 msgid "New destination"
 msgstr ""
 
-#: editdomain.php:46
-msgid "Successfully changed domain"
+#: editalias.php:113 delete_catchall.php:42 browseaccounts.php:305
+#: editaccount.php:168 vacation.php:218 search.php:344 newaccount.php:43
+#: newaccount.php:103 newaccount.php:118 newaccount.php:340 deleteemail.php:73
+#: catchall.php:130 editdomain.php:271 newdomain.php:289 deletedomain.php:145
+#: editemail.php:136 newemail.php:128 manageaccount.php:367
+#: deleteadminuser.php:103 deletealias.php:82 deletealias.php:84
+#: forwardalias.php:200 deleteaccount.php:124 forwardaccount.php:149
+msgid "Back"
 msgstr ""
 
-#: editdomain.php:92 newdomain.php:39
-msgid "Domainname"
+#: changeadminpasswd.php:17 manageaccount.php:108
+msgid "Change password for account"
 msgstr ""
 
-#: editdomain.php:106 newdomain.php:57
-msgid "Prefix"
+#: changeadminpasswd.php:28
+msgid "Old Password"
 msgstr ""
 
-#: editdomain.php:123 newdomain.php:73
-msgid "Allow Free Names"
+#: changeadminpasswd.php:43
+msgid "New Password"
 msgstr ""
 
-#: editdomain.php:141 newdomain.php:90
-msgid "Allow Free Mail Addresses"
+#: changeadminpasswd.php:59 editadminuser.php:95 newadminuser.php:89
+#: newaccount.php:198
+msgid "Confirm Password"
 msgstr ""
 
-#: editdomain.php:159 newdomain.php:102
-msgid "Maximum Accounts"
+#: changeadminpasswd.php:99
+msgid "Password not changed"
 msgstr ""
 
-#: editdomain.php:173 newdomain.php:117
-msgid "Default Quota in Kilobytes"
+#: changeadminpasswd.php:101
+msgid "Password successfully changed"
 msgstr ""
 
-#: editdomain.php:202
-msgid "Your are not allowed to change domains!"
+#: editadminuser.php:26
+msgid "Change admin user for domain"
 msgstr ""
 
-#: editemail.php:46
-msgid "Successfully changed"
+#: editadminuser.php:39 newadminuser.php:39 newaccount.php:165
+msgid "Accountname"
 msgstr ""
 
-#: editemail.php:68
-msgid ""
-"You can't edit this email address with 'Allow Free Mail Addressess' set to "
-"off!"
+#: editadminuser.php:49 newadminuser.php:54
+msgid "Admin Type"
 msgstr ""
 
-#: editemail.php:95 newemail.php:77
-msgid "Emailadress"
+#: editadminuser.php:61 newadminuser.php:60 newadminuser.php:174
+#: adminuser.php:151 menu.inc.php:141
+msgid "Superuser"
 msgstr ""
 
-#: failed.php:66
-msgid "Login failed"
+#: editadminuser.php:71 newadminuser.php:64 newadminuser.php:176
+#: adminuser.php:153 menu.inc.php:143
+msgid "Domain Master"
 msgstr ""
 
-#: failed.php:71 login.php:51
-msgid "This is only for authorized users"
+#: editadminuser.php:79 newadminuser.php:74 newaccount.php:197 login.php:82
+msgid "Password"
 msgstr ""
 
-#: failed.php:76 logout.php:62 timeout.php:38
-msgid "If you like to login click"
+#: editadminuser.php:116
+msgid "Responsible for all domains"
 msgstr ""
 
-#: failed.php:78 logout.php:64 timeout.php:40
-msgid "here"
+#: editadminuser.php:130
+msgid "Responsible for the following domains:"
 msgstr ""
 
-#: forwardalias.php:68 forwardaccount.php:51
-msgid "Forward set"
+#: editadminuser.php:146
+msgid "No Domain assigned yet"
 msgstr ""
 
-#: forwardalias.php:70
-msgid "Failure in setting forward"
+#: editadminuser.php:153
+msgid "Add new domain to this admin"
 msgstr ""
 
-#: forwardalias.php:73
-msgid "Wrong password"
+#: delete_catchall.php:24
+msgid "successfully deleted from the Database"
 msgstr ""
 
-#: forwardalias.php:89 forwardalias.php:97 forwardalias.php:103
-#: forwardalias.php:107 forwardaccount.php:57
-msgid "Forwarding removed"
+#: delete_catchall.php:32 catchall.php:120
+msgid "Cancelled"
 msgstr ""
 
-#: forwardalias.php:91 forwardalias.php:99
-msgid "Failure in removing forwarding"
+#: settings.php:17
+msgid "Change password"
 msgstr ""
 
-#: forwardalias.php:111 vacation.php:79 vacation.php:107
-msgid "Failed to login"
+#: settings.php:23
+msgid "Display Preferences"
 msgstr ""
 
-#: forwardalias.php:123 vacation.php:119
-msgid "Not possible"
+#: settings.php:30
+msgid "Use this to change your admin password."
 msgstr ""
 
-#: forwardalias.php:152
-msgid ""
-"You can't forward this email address with 'Allow Free Mail Addressess' set "
-"to off!"
+#: settings.php:34
+msgid "You can change the way that Web-cyradm displays information to you."
 msgstr ""
 
-#: forwardalias.php:161
-msgid "Forward for emailadress"
+#: settings.php:43
+msgid "Administration Settings"
 msgstr ""
 
-#: forwardalias.php:204
-msgid "Set forwarding to"
+#: settings.php:53
+msgid "You can set all administrative settings."
 msgstr ""
 
-#: forwardalias.php:204
-msgid "(Seperate multiple values with ,)"
+#: browse.php:15
+msgid "Browse domains"
 msgstr ""
 
-#: forwardalias.php:210 forwardaccount.php:125
-msgid "Keep a copy in the user's mailbox"
+#: browse.php:55
+msgid "Total Domains:"
 msgstr ""
 
-#: forwardalias.php:215 forwardaccount.php:139
-msgid "Remove forwarding"
+#: browse.php:56 browseaccounts.php:42 adminuser.php:34
+msgid "Displaying from position:"
 msgstr ""
 
-#: index.php:23
-msgid "migrate.php exists! please delete or rename it"
-msgstr ""
-
-#: index.php:138
-msgid "web-cyradm has not yet been configured"
-msgstr ""
-
-#: index.php:141
-msgid "Configuration steps:"
-msgstr ""
-
-#: index.php:143
-msgid "copy the config file that comes with the distribution: "
-msgstr ""
-
-#: index.php:146
-msgid "Edit the file config/conf.php to match your systems configuration"
-msgstr ""
-
-#: index.php:148
-msgid ""
-"Further information about how to configure Web-cyradm can be found at the "
-"following website:"
-msgstr ""
-
-#: login.php:50
-msgid "Welcome to Web-cyradm"
-msgstr ""
-
-#: login.php:52
-msgid "Please authenticate yourself"
-msgstr ""
-
-#: login.php:84
-msgid "Select language"
-msgstr ""
-
-#: logout.php:52
-msgid "Thank you for using Web-cyradm"
-msgstr ""
-
-#: logout.php:57
-msgid "You are logged out"
-msgstr ""
-
-#: menu.inc.php:19
-msgid "Superusers Menu"
-msgstr ""
-
-#: menu.inc.php:23
-msgid "Domainmasters menu"
-msgstr ""
-
-#: menu.inc.php:31
-msgid "add new domain"
-msgstr ""
-
-#: menu.inc.php:38
-msgid "browse domains"
-msgstr ""
-
-#: menu.inc.php:45
-msgid "adminusers"
-msgstr ""
-
-#: menu.inc.php:75
-msgid "home"
-msgstr ""
-
-#: menu.inc.php:82
-msgid "logout"
-msgstr ""
-
-#: menu.inc.php:90
-msgid "Search"
-msgstr ""
-
-#: menu.inc.php:114
-msgid "Logged in as user"
-msgstr ""
-
-#: menu.inc.php:126
-msgid "Your role is"
-msgstr ""
-
-#: menu.inc.php:144
-msgid "Current domain is"
-msgstr ""
-
-#: menu.inc.php:150
-msgid "No domain selected"
-msgstr ""
-
-#: newaccount.php:13
-msgid "Add new Account to domain"
-msgstr ""
-
-#: newaccount.php:43 newalias.php:43
-msgid "transport is not cyrus, unable to create account"
-msgstr ""
-
-#: newaccount.php:55
-msgid "Sorry, no more account allowed for domain"
-msgstr ""
-
-#: newaccount.php:60
-msgid "Maximum allowed accounts is"
-msgstr ""
-
-#: newaccount.php:137
-msgid "Quota"
-msgstr ""
-
-#: newaccount.php:196
-msgid "Sorry, the username already exists"
-msgstr ""
-
-#: newaccount.php:221
-msgid "Account successfully added to the Database"
-msgstr ""
-
-#: newaccount.php:234
-msgid "Account succesfully added to the IMAP Subsystem"
-msgstr ""
-
-#: newadminuser.php:13
-msgid "Add new administrator"
-msgstr ""
-
-#: newadminuser.php:64
-msgid "Select \"Superuser\" for all domains"
-msgstr ""
-
-#: newadminuser.php:132
-msgid "You must provide a username"
-msgstr ""
-
-#: newadminuser.php:145
-msgid "Passwords are empty or not equal."
-msgstr ""
-
-#: newadminuser.php:157
-msgid "Username already exist"
-msgstr ""
-
-#: newalias.php:15
-msgid "Add new alias to domain"
-msgstr ""
-
-#: newalias.php:55
-msgid "Sorry, no more alias allowed for domain"
-msgstr ""
-
-#: newalias.php:60
-msgid "Maximum allowed aliases is"
-msgstr ""
-
-#: newdomain.php:15
+#: browse.php:66 newdomain.php:24
 msgid "Add new domain"
 msgstr ""
 
-#: newdomain.php:140
+#: browse.php:78 browse.php:81 browseaccounts.php:60 browseaccounts.php:63
+msgid "First entry"
+msgstr ""
+
+#: browse.php:79 browse.php:82 browseaccounts.php:61 browseaccounts.php:64
+msgid "Previous entries"
+msgstr ""
+
+#: browse.php:86 browse.php:89 browseaccounts.php:68 browseaccounts.php:71
+msgid "Next entries"
+msgstr ""
+
+#: browse.php:87 browse.php:90 browseaccounts.php:69 browseaccounts.php:72
+msgid "Last entry"
+msgstr ""
+
+#: browse.php:108 browse.php:110 search.php:49
+msgid "domainname"
+msgstr ""
+
+#: browse.php:119 search.php:51
+msgid "prefix"
+msgstr ""
+
+#: browse.php:128 search.php:53
+msgid "max Accounts"
+msgstr ""
+
+#: browse.php:134 browse.php:135 search.php:54
+msgid "Domain quota"
+msgstr ""
+
+#: browse.php:141 browse.php:142 search.php:55
+msgid "default quota per user"
+msgstr ""
+
+#: browse.php:166 search.php:70
+msgid "Edit Domain"
+msgstr ""
+
+#: browse.php:167 search.php:71
+msgid "Delete Domain"
+msgstr ""
+
+#: browse.php:185 browse.php:188 search.php:74 search.php:76
+#: deletedomain.php:45 menu.inc.php:64
+msgid "accounts"
+msgstr ""
+
+#: browse.php:197 browse.php:200 search.php:79 search.php:81
+msgid "Aliases"
+msgstr ""
+
+#: browse.php:230 browseaccounts.php:233 editaccount.php:149 search.php:97
+#: search.php:237 editdomain.php:228 newdomain.php:138
+msgid "Quota not set"
+msgstr ""
+
+#: browseaccounts.php:25
+msgid "Browse accounts for domain"
+msgstr ""
+
+#: browseaccounts.php:41 newaccount.php:129
+msgid "Total accounts"
+msgstr ""
+
+#: browseaccounts.php:48 browseaccounts.php:293
+msgid "Add new account"
+msgstr ""
+
+#: browseaccounts.php:86 editaccount.php:52 newalias.php:84 search.php:143
+#: search.php:295 newaccount.php:195 aliases.php:51
+msgid "Email address"
+msgstr ""
+
+#: browseaccounts.php:90 editaccount.php:61 search.php:144 login.php:72
+msgid "Username"
+msgstr ""
+
+#: browseaccounts.php:94 search.php:145
+msgid "Last login"
+msgstr ""
+
+#: browseaccounts.php:94 editaccount.php:66 search.php:146
+msgid "Quota used"
+msgstr ""
+
+#: browseaccounts.php:101 search.php:147
+msgid "services"
+msgstr ""
+
+#: browseaccounts.php:135 search.php:209
+msgid "n/a"
+msgstr ""
+
+#: browseaccounts.php:144 search.php:166
+msgid "Edit email addresses"
+msgstr ""
+
+#: browseaccounts.php:149 search.php:167
+msgid "Edit account"
+msgstr ""
+
+#: browseaccounts.php:153 editaccount.php:56 editaccount.php:85 search.php:168
+msgid "Forward"
+msgstr ""
+
+#: browseaccounts.php:157 search.php:169
+msgid "Delete account"
+msgstr ""
+
+#: browseaccounts.php:161 search.php:170
+msgid "Set catch all"
+msgstr ""
+
+#: browseaccounts.php:179 search.php:185
+msgid "Forwards"
+msgstr ""
+
+#: browseaccounts.php:227 editaccount.php:146 search.php:228
+msgid "out of"
+msgstr ""
+
+#: browseaccounts.php:230 search.php:234
+msgid "Unable to retrieve quota"
+msgstr ""
+
+#: browseaccounts.php:287 search.php:279
+msgid "No accounts found"
+msgstr ""
+
+#: newadminuser.php:19
+msgid "Add new administrator"
+msgstr ""
+
+#: newadminuser.php:67
+msgid "Select \"Superuser\" for all domains"
+msgstr ""
+
+#: newadminuser.php:104 deletedomain.php:130
+msgid "Domain"
+msgstr ""
+
+#: newadminuser.php:164 catchall.php:112
+msgid "successfully added to Database"
+msgstr ""
+
+#: editaccount.php:24
+msgid "Email addresses defined for user"
+msgstr ""
+
+#: editaccount.php:40
+msgid "New email address"
+msgstr ""
+
+#: editaccount.php:84
+msgid "Edit Emailadress"
+msgstr ""
+
+#: editaccount.php:86
+msgid "Vacation"
+msgstr ""
+
+#: editaccount.php:87
+msgid "Delete Emailadress"
+msgstr ""
+
+#: newalias.php:17
+msgid "Add new alias to domain"
+msgstr ""
+
+#: newalias.php:45 newaccount.php:40
+msgid "transport is not cyrus, unable to create account"
+msgstr ""
+
+#: newalias.php:57
+msgid "Sorry, no more alias allowed for domain"
+msgstr ""
+
+#: newalias.php:62
+msgid "Maximum allowed aliases is"
+msgstr ""
+
+#: vacation.php:55
+msgid "Vacation notice set"
+msgstr ""
+
+#: vacation.php:57
+msgid "Failed to activate vacation"
+msgstr ""
+
+#: vacation.php:60
+msgid "Failure in modifying vacation notice"
+msgstr ""
+
+#: vacation.php:63 vacation.php:91 forwardalias.php:89
+msgid "Failed to login"
+msgstr ""
+
+#: vacation.php:79
+msgid "Vacation notice unset"
+msgstr ""
+
+#: vacation.php:81
+msgid "Failure in unseting vacation notice"
+msgstr ""
+
+#: vacation.php:85
+msgid "Vacation notice removed"
+msgstr ""
+
+#: vacation.php:87
+msgid "Failure in removing vacation notice"
+msgstr ""
+
+#: vacation.php:103 forwardalias.php:101
+msgid "Not possible"
+msgstr ""
+
+#: vacation.php:126
+msgid ""
+"You can't set Vacation Message for this email address with 'Allow Free Mail "
+"Addressess' set to off!"
+msgstr ""
+
+#: vacation.php:131
+msgid "Vacation message for emailadress"
+msgstr ""
+
+#: vacation.php:150
+msgid "Set vacation notice"
+msgstr ""
+
+#: vacation.php:157
+msgid "Remove vacation notice"
+msgstr ""
+
+#: vacation.php:188
+msgid "Subject"
+msgstr ""
+
+#: vacation.php:195
+msgid "Body"
+msgstr ""
+
+#: search.php:43
+msgid "Total domains matching"
+msgstr ""
+
+#: search.php:112
+msgid "Total users matching"
+msgstr ""
+
+#: search.php:120
+msgid "Displaying from position"
+msgstr ""
+
+#: search.php:286
+msgid "Total aliases matching"
+msgstr ""
+
+#: search.php:288
+msgid "No aliases found"
+msgstr ""
+
+#: search.php:310 aliases.php:70
+msgid "Edit Alias"
+msgstr ""
+
+#: search.php:311 aliases.php:71
+msgid "Delete Alias"
+msgstr ""
+
+#: newaccount.php:93
+msgid "Sorry, no more account allowed for domain"
+msgstr ""
+
+#: newaccount.php:98
+msgid "Maximum allowed accounts is"
+msgstr ""
+
+#: newaccount.php:108
+msgid "Sorry, no more disk space left for domain"
+msgstr ""
+
+#: newaccount.php:113
+msgid "Quota is"
+msgstr ""
+
+#: newaccount.php:123
+msgid "Add new Account to domain"
+msgstr ""
+
+#: newaccount.php:196 manageaccount.php:146
+msgid "Quota"
+msgstr ""
+
+#: newaccount.php:261 manageaccount.php:309 manageaccount.php:336
+msgid "Quota exeeded"
+msgstr ""
+
+#: newaccount.php:263 manageaccount.php:311
+msgid "New quota is"
+msgstr ""
+
+#: newaccount.php:296
+msgid "Account successfully added to the Database"
+msgstr ""
+
+#: newaccount.php:308
+msgid "Account succesfully added to the IMAP Subsystem"
+msgstr ""
+
+#: login.php:61
+msgid "Welcome to Web-cyradm"
+msgstr ""
+
+#: login.php:62 failed.php:75
+msgid "This is only for authorized users"
+msgstr ""
+
+#: login.php:63
+msgid "Please authenticate yourself"
+msgstr ""
+
+#: login.php:95
+msgid "Select language"
+msgstr ""
+
+#: logout.php:54
+msgid "Thank you for using Web-cyradm"
+msgstr ""
+
+#: logout.php:59
+msgid "You are logged out"
+msgstr ""
+
+#: logout.php:64 failed.php:80 timeout.php:51
+msgid "If you like to login click"
+msgstr ""
+
+#: logout.php:66 failed.php:82 timeout.php:53
+msgid "here"
+msgstr ""
+
+#: deleteemail.php:18
+msgid "Delete emailadress from the System"
+msgstr ""
+
+#: deleteemail.php:25
+msgid "Do you really want to delete the emailadress for user"
+msgstr ""
+
+#: deleteemail.php:46 deletedomain.php:66 deleteadminuser.php:62
+#: deleteaccount.php:65
+msgid "Action cancelled, nothing deleted"
+msgstr ""
+
+#: deleteemail.php:60
+msgid "Emailadress deleted."
+msgstr ""
+
+#: catchall.php:15
+msgid "Define a Account for receiving undefined adresses for domain"
+msgstr ""
+
+#: catchall.php:32
+msgid "Do you really want to define the user"
+msgstr ""
+
+#: catchall.php:36
+msgid "to receive all undefined emailadresses"
+msgstr ""
+
+#: catchall.php:40
+msgid "The currently defined user"
+msgstr ""
+
+#: catchall.php:40
+msgid "will not receiving any undefined emailadresses anymore"
+msgstr ""
+
+#: catchall.php:68
+msgid "The user"
+msgstr ""
+
+#: catchall.php:68
+msgid "is allready defined to receive all undefined Emails."
+msgstr ""
+
+#: catchall.php:70
+msgid "Do you want to remove the function \"catch all\" for the account"
+msgstr ""
+
+#: editdomain.php:84
+msgid "Successfully changed domain"
+msgstr ""
+
+#: editdomain.php:94 newdomain.php:277 editemail.php:42 newemail.php:45
+msgid "Database error, please try again"
+msgstr ""
+
+#: editdomain.php:122 newdomain.php:36
+msgid "Domainname"
+msgstr ""
+
+#: editdomain.php:136 newdomain.php:54
+msgid "Prefix"
+msgstr ""
+
+#: editdomain.php:153 newdomain.php:70
+msgid "Allow Free Names"
+msgstr ""
+
+#: editdomain.php:174 newdomain.php:87
+msgid "Allow Free Mail Addresses"
+msgstr ""
+
+#: editdomain.php:192 newdomain.php:99
+msgid "Maximum Accounts"
+msgstr ""
+
+#: editdomain.php:206 newdomain.php:114
+msgid "Default Quota in Kilobytes"
+msgstr ""
+
+#: editdomain.php:220 newdomain.php:129
+msgid "Quota for Domain in Kilobytes"
+msgstr ""
+
+#: editdomain.php:235 newdomain.php:151
+msgid "Standard Folders"
+msgstr ""
+
+#: editdomain.php:237 newdomain.php:157
+msgid ""
+"Forders which are automaticaly created for every new account (comma "
+"separated list)"
+msgstr ""
+
+#: aliases.php:13
+msgid "Browse aliases for domain"
+msgstr ""
+
+#: aliases.php:36
+msgid "Total aliases"
+msgstr ""
+
+#: aliases.php:41
+msgid "Add new alias"
+msgstr ""
+
+#: newdomain.php:170
 msgid "Standard Mailboxes"
 msgstr ""
 
-#: newdomain.php:146
+#: newdomain.php:176
 msgid ""
 "emailadress where the default aliases should be mapped (empty means no "
 "mapping)"
 msgstr ""
 
-#: newdomain.php:163
+#: newdomain.php:194
 msgid "Mail transport"
 msgstr ""
 
-#: newdomain.php:166
+#: newdomain.php:197
 msgid "Leave this as is, unless you know what you are doing"
 msgstr ""
 
-#: newdomain.php:187
+#: newdomain.php:218
 msgid "Parameter"
 msgstr ""
 
-#: newdomain.php:245 newemail.php:34
+#: newdomain.php:268 newemail.php:35
 msgid "Successfully added"
 msgstr ""
 
-#: newdomain.php:273
-msgid "You are not allowed to add new domains"
+#: failed.php:70
+msgid "Login failed"
+msgstr ""
+
+#: timeout.php:46
+msgid "Your session timed out"
+msgstr ""
+
+#: adminuser.php:15
+msgid "Browse admins"
+msgstr ""
+
+#: adminuser.php:33
+msgid "Total administrators"
+msgstr ""
+
+#: adminuser.php:41
+msgid "Add administator"
+msgstr ""
+
+#: adminuser.php:77
+msgid "Adminname"
+msgstr ""
+
+#: adminuser.php:81
+msgid "domain"
+msgstr ""
+
+#: adminuser.php:85
+msgid "admin type"
+msgstr ""
+
+#: adminuser.php:112
+msgid "Edit adminuser"
+msgstr ""
+
+#: adminuser.php:118
+msgid "Delete adminuser"
+msgstr ""
+
+#: adminuser.php:137
+msgid "All domains"
+msgstr ""
+
+#: adminuser.php:141
+msgid "None"
+msgstr ""
+
+#: deletedomain.php:22
+msgid "Delete a Domain from the System"
+msgstr ""
+
+#: deletedomain.php:26
+msgid "Do you really want to delete the Domain"
+msgstr ""
+
+#: deletedomain.php:31
+msgid "with all its defined accounts, admins, and emailadresses"
+msgstr ""
+
+#: deletedomain.php:37
+msgid "This can take a while depending on how many account have to be deleted"
+msgstr ""
+
+#: deletedomain.php:41
+msgid "Your action will delete"
+msgstr ""
+
+#: deletedomain.php:134
+msgid "successfully deleted"
+msgstr ""
+
+#: editemail.php:36
+msgid "Successfully changed"
+msgstr ""
+
+#: editemail.php:58
+msgid ""
+"You can't edit this email address with 'Allow Free Mail Addressess' set to "
+"off!"
+msgstr ""
+
+#: editemail.php:63
+msgid "Edit emailadress for user"
+msgstr ""
+
+#: editemail.php:80 newemail.php:77
+msgid "Emailadress"
 msgstr ""
 
 #: newemail.php:56
 msgid "New emailadress for user"
 msgstr ""
 
-#: search.php:48
-msgid "Total domains matching"
-msgstr ""
-
-#: search.php:110
-msgid "Total users matching"
-msgstr ""
-
-#: search.php:118
-msgid "Displaying from position"
-msgstr ""
-
-#: search.php:245
-msgid "Total aliases matching"
-msgstr ""
-
-#: search.php:247
-msgid "No aliases found"
-msgstr ""
-
-#: setquota.php:26
-msgid "Setting individual Quota for user"
-msgstr ""
-
-#: setquota.php:58
-msgid "Submit"
-msgstr ""
-
-#: setquota.php:70
-msgid "Quote for user"
-msgstr ""
-
-#: setquota.php:74
-msgid "changed to"
-msgstr ""
-
-#: timeout.php:33
-msgid "Your session timed out"
-msgstr ""
-
-#: vacation.php:71
-msgid "Vacation notice set"
-msgstr ""
-
-#: vacation.php:73
-msgid "Failed to activate vacation"
-msgstr ""
-
-#: vacation.php:76
-msgid "Failure in modifying vacation notice"
-msgstr ""
-
-#: vacation.php:95
-msgid "Vacation notice unset"
-msgstr ""
-
-#: vacation.php:97
-msgid "Failure in unseting vacation notice"
-msgstr ""
-
-#: vacation.php:101
-msgid "Vacation notice removed"
-msgstr ""
-
-#: vacation.php:103
-msgid "Failure in removing vacation notice"
-msgstr ""
-
-#: vacation.php:142
-msgid ""
-"You can't set Vacation Message for this email address with 'Allow Free Mail "
-"Addressess' set to off!"
-msgstr ""
-
-#: vacation.php:152
-msgid "Vacation message for emailadress"
-msgstr ""
-
-#: vacation.php:174
-msgid "Set vacation notice"
-msgstr ""
-
-#: vacation.php:178
-msgid "Remove vacation notice"
-msgstr ""
-
-#: validate.inc.php:74 validate.inc.php:87 validate.inc.php:134
-#: validate.inc.php:249
+#: validate.inc.php:121 validate.inc.php:138 init.php:41 init.php:64
 msgid "Security violation detected, attempt logged"
 msgstr ""
 
-#: validate.inc.php:130
-msgid "Quota exeedes the maximum allowed qutoa for this domain."
+#: validate.inc.php:165 validate.inc.php:202 validate.inc.php:209
+#: validate.inc.php:260 validate.inc.php:270 validate.inc.php:353
+#: validate.inc.php:356 validate.inc.php:365 validate.inc.php:368
+#: validate.inc.php:403 validate.inc.php:410 validate.inc.php:415
+#: validate.inc.php:485 validate.inc.php:489 validate.inc.php:500
+#: validate.inc.php:510 validate.inc.php:514 validate.inc.php:525
+#: validate.inc.php:536 validate.inc.php:546 validate.inc.php:557
+#: validate.inc.php:567 validate.inc.php:600 validate.inc.php:635
+#: validate.inc.php:645 validate.inc.php:701 validate.inc.php:711
+#: validate.inc.php:771 validate.inc.php:781 validate.inc.php:791
+#: validate.inc.php:801 validate.inc.php:812 validate.inc.php:822
+#: validate.inc.php:833 validate.inc.php:843 validate.inc.php:906
+#: validate.inc.php:953 validate.inc.php:1089
+msgid ""
+"Security violation detected, action cancelled. Your attempt has been logged."
 msgstr ""
 
-#: forwardaccount.php:77
+#: validate.inc.php:180 validate.inc.php:198 validate.inc.php:256
+#: validate.inc.php:349 validate.inc.php:855 validate.inc.php:903
+#: validate.inc.php:950 validate.inc.php:1010 validate.inc.php:1013
+#: validate.inc.php:1022 validate.inc.php:1025 validate.inc.php:1034
+#: validate.inc.php:1049 validate.inc.php:1058 validate.inc.php:1061
+#: validate.inc.php:1101
+msgid "Security violation detected, nothing deleted, attempt has been logged"
+msgstr ""
+
+#: validate.inc.php:212 validate.inc.php:263 validate.inc.php:273
+msgid "You must provide a username"
+msgstr ""
+
+#: validate.inc.php:215 validate.inc.php:276 validate.inc.php:420
+#: validate.inc.php:574
+msgid "Password incorrect"
+msgstr ""
+
+#: validate.inc.php:218 validate.inc.php:279 validate.inc.php:577
+#: validate.inc.php:966
+msgid "New passwords are not equal. Password not changed"
+msgstr ""
+
+#: validate.inc.php:228
+msgid "Username already exist"
+msgstr ""
+
+#: validate.inc.php:234 validate.inc.php:318 ace.php:41
+msgid "Invalid domain name"
+msgstr ""
+
+#: validate.inc.php:244 validate.inc.php:328
+msgid "No such domain"
+msgstr ""
+
+#: validate.inc.php:306 validate.inc.php:391
+msgid "At least one Superuser is needed for Web-cyradm"
+msgstr ""
+
+#: validate.inc.php:336
+msgid "Admin already repsonsible for the domain"
+msgstr ""
+
+#: validate.inc.php:423
+msgid "Passwords do not match"
+msgstr ""
+
+#: validate.inc.php:426 validate.inc.php:666 validate.inc.php:732
+msgid "Invalid email adress"
+msgstr ""
+
+#: validate.inc.php:429
+msgid "Invalid username"
+msgstr ""
+
+#: validate.inc.php:449
+msgid "Sorry, the username already exists"
+msgstr ""
+
+#: validate.inc.php:461 validate.inc.php:686 validate.inc.php:753
+msgid "Sorry, the emailadress already exists"
+msgstr ""
+
+#: validate.inc.php:476 validate.inc.php:620
+msgid "Quota exeedes the maximum allowed quota for this domain."
+msgstr ""
+
+#: validate.inc.php:663 validate.inc.php:729
+msgid "Invalid destination"
+msgstr ""
+
+#: init.php:19
+msgid "Check scripts/upgrade-*.sql files."
+msgstr ""
+
+#: display.php:17
+msgid "Display preferences for"
+msgstr ""
+
+#: display.php:26
+msgid "No template definitions found, please check your config file"
+msgstr ""
+
+#: display.php:36
+msgid "Color scheme"
+msgstr ""
+
+#: display.php:58
+msgid "Number of domains displayed on page"
+msgstr ""
+
+#: display.php:74
+msgid "Number of accounts displayed on page"
+msgstr ""
+
+#: display.php:90
+msgid "Quota usage warn level"
+msgstr ""
+
+#: display.php:121
+msgid "Reload page"
+msgstr ""
+
+#: manageaccount.php:81
+msgid "Additional information for account"
+msgstr ""
+
+#: manageaccount.php:90
+msgid "First name"
+msgstr ""
+
+#: manageaccount.php:99
+msgid "Last name"
+msgstr ""
+
+#: manageaccount.php:117
+msgid "New password"
+msgstr ""
+
+#: manageaccount.php:127
+msgid "Confirm new password"
+msgstr ""
+
+#: manageaccount.php:137
+msgid "Setting individual Quota for user"
+msgstr ""
+
+#: manageaccount.php:156
+msgid "Edit services for user"
+msgstr ""
+
+#: manageaccount.php:164
+msgid "Service"
+msgstr ""
+
+#: manageaccount.php:165
+msgid "Status"
+msgstr ""
+
+#: manageaccount.php:168
+msgid "Fetch mail via IMAP client"
+msgstr ""
+
+#: manageaccount.php:172
+msgid "Fetch mail via POP client"
+msgstr ""
+
+#: manageaccount.php:176
+msgid "Set vacation message and filter rules with sieve"
+msgstr ""
+
+#: manageaccount.php:181
+msgid "Send E-Mails via smtp authentication"
+msgstr ""
+
+#: manageaccount.php:186
+msgid "Receive E-Mails via smtp"
+msgstr ""
+
+#: manageaccount.php:225 manageaccount.php:231
+msgid "Password changed"
+msgstr ""
+
+#: manageaccount.php:234
+msgid "Failure in changing password."
+msgstr ""
+
+#: manageaccount.php:260
+msgid "Services successfully changed"
+msgstr ""
+
+#: manageaccount.php:262
+msgid "Services NOT changed"
+msgstr ""
+
+#: manageaccount.php:322 manageaccount.php:347
+msgid "Quote for user"
+msgstr ""
+
+#: manageaccount.php:326 manageaccount.php:351
+msgid "changed to"
+msgstr ""
+
+#: manageaccount.php:338
+msgid "Quota NOT changed"
+msgstr ""
+
+#: index.php:23
+msgid "migrate.php exists! please delete or rename it"
+msgstr ""
+
+#: index.php:156
+msgid "web-cyradm has not yet been configured"
+msgstr ""
+
+#: index.php:159
+msgid "Configuration steps:"
+msgstr ""
+
+#: index.php:161
+msgid "copy the config file that comes with the distribution: "
+msgstr ""
+
+#: index.php:164
+msgid "Edit the file config/conf.php to match your systems configuration"
+msgstr ""
+
+#: index.php:166
+msgid ""
+"Further information about how to configure Web-cyradm can be found at the "
+"following website:"
+msgstr ""
+
+#: auth.inc.php:49
+msgid "Web-cyradm is for authorized users only."
+msgstr ""
+
+#: auth.inc.php:50
+msgid "Make sure you entered the right password."
+msgstr ""
+
+#: auth.inc.php:51
+msgid "Push the back button in your browser to try again."
+msgstr ""
+
+#: auth.inc.php:52
+msgid " Your attempt to login has been stored."
+msgstr ""
+
+#: deleteadminuser.php:19
+msgid "Delete an Admin account from the System"
+msgstr ""
+
+#: deleteadminuser.php:23
+msgid "Do you really want to delete the Domain supervisor"
+msgstr ""
+
+#: deleteadminuser.php:89
+msgid "Admin user deleted"
+msgstr ""
+
+#: deletealias.php:26
+msgid "Please confirm you want to remove"
+msgstr ""
+
+#: deletealias.php:26
+msgid "from the alias"
+msgstr ""
+
+#: deletealias.php:40
+msgid "Please confirm you want to remove the alias"
+msgstr ""
+
+#: deletealias.php:60
+msgid "Removed"
+msgstr ""
+
+#: deletealias.php:60
+msgid "from"
+msgstr ""
+
+#: deletealias.php:70
+msgid "Removed the alias"
+msgstr ""
+
+#: menu.inc.php:21
+msgid "Superusers Menu"
+msgstr ""
+
+#: menu.inc.php:25
+msgid "Domainmasters menu"
+msgstr ""
+
+#: menu.inc.php:28
+msgid "Search"
+msgstr ""
+
+#: menu.inc.php:36
+msgid "add new domain"
+msgstr ""
+
+#: menu.inc.php:43
+msgid "browse domains"
+msgstr ""
+
+#: menu.inc.php:50
+msgid "adminusers"
+msgstr ""
+
+#: menu.inc.php:73
+msgid "aliases"
+msgstr ""
+
+#: menu.inc.php:80
+msgid "home"
+msgstr ""
+
+#: menu.inc.php:86
+msgid "settings"
+msgstr ""
+
+#: menu.inc.php:93
+msgid "logout"
+msgstr ""
+
+#: menu.inc.php:123
+msgid "Logged in as user"
+msgstr ""
+
+#: menu.inc.php:135
+msgid "Your role is"
+msgstr ""
+
+#: menu.inc.php:153
+msgid "Current domain is"
+msgstr ""
+
+#: menu.inc.php:159
+msgid "No domain selected"
+msgstr ""
+
+#: forwardalias.php:46 forwardaccount.php:36
+msgid "Forward set"
+msgstr ""
+
+#: forwardalias.php:48
+msgid "Failure in setting forward"
+msgstr ""
+
+#: forwardalias.php:51
+msgid "Wrong password"
+msgstr ""
+
+#: forwardalias.php:67 forwardalias.php:75 forwardalias.php:81
+#: forwardalias.php:85 forwardaccount.php:40
+msgid "Forwarding removed"
+msgstr ""
+
+#: forwardalias.php:69 forwardalias.php:77
+msgid "Failure in removing forwarding"
+msgstr ""
+
+#: forwardalias.php:122
+msgid ""
+"You can't forward this email address with 'Allow Free Mail Addressess' set "
+"to off!"
+msgstr ""
+
+#: forwardalias.php:128
+msgid "Forward for emailadress"
+msgstr ""
+
+#: forwardalias.php:171
+msgid "Set forwarding to"
+msgstr ""
+
+#: forwardalias.php:171
+msgid "(Seperate multiple values with ,)"
+msgstr ""
+
+#: forwardalias.php:177 forwardaccount.php:113
+msgid "Keep a copy in the user's mailbox"
+msgstr ""
+
+#: forwardalias.php:182 forwardaccount.php:127
+msgid "Remove forwarding"
+msgstr ""
+
+#: deleteaccount.php:20
+msgid "Delete an Account from the System"
+msgstr ""
+
+#: deleteaccount.php:24
+msgid "Do you really want to delete the user "
+msgstr ""
+
+#: deleteaccount.php:28
+msgid "with all its defined Emailadresses"
+msgstr ""
+
+#: deleteaccount.php:111
+msgid "User deleted"
+msgstr ""
+
+#: forwardaccount.php:62
 msgid "Forward for account"
 msgstr ""
 
-#: forwardaccount.php:93
+#: forwardaccount.php:81
 msgid "Set forwarding to (one adress per line)"
 msgstr ""
 
-#: delete_catchall.php:31
-msgid "successfully deleted from the Database"
+#: ace.php:33
+msgid ""
+"To use Internationalized Domain Names (IDNs) you should install Net_IDNA "
+"class from"
 msgstr ""
 
-#: deleteemail.php:16
-msgid "Delete emailadress from the System"
-msgstr ""
-
-#: deleteemail.php:23
-msgid "Do you really want to delete the emailadress for user"
-msgstr ""
-
-#: deleteemail.php:44
-msgid "Yes, delete"
-msgstr ""
-
-#: deleteemail.php:49
-msgid "Cancel"
-msgstr ""
-
-#: deleteemail.php:70
-msgid "Emailadress deleted."
+#: ace.php:34 ace.php:42
+msgid "Close"
 msgstr ""
