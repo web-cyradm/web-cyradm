@@ -878,6 +878,9 @@ if (! empty($action)){
 					$err_msg = "You must choose a valid transport";
 				} else {
 					# TODO: Validation of $_GET['tparam']
+					if ($DOMAIN_AS_PREFIX) {
+						$_GET['prefix'] = $_GET['domain'];
+					}
 					$query = "SELECT domain_name FROM domain WHERE domain_name='".$_GET['domain']."' OR prefix='".$_GET['prefix']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
