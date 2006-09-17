@@ -80,6 +80,7 @@ CREATE TABLE domain (
   transport varchar(255) NOT NULL default 'cyrus',
   freenames enum('YES','NO') NOT NULL default 'NO',
   freeaddress enum('YES','NO') NOT NULL default 'NO',
+  folders varchar(255) NOT NULL default '',
   PRIMARY KEY  (domain_name),
   UNIQUE KEY prefix (prefix)
 ) TYPE=MyISAM;
