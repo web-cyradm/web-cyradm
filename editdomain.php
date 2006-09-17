@@ -21,7 +21,7 @@ if ($ref!=$_SERVER['SCRIPT_FILENAME']){
 if ($authorized) {
 		if (!empty($_GET['confirmed'])){
 				if ($DOMAIN_AS_PREFIX) {
-					$_GET['prefix'] = $_GET['domain'];
+					$_GET['newprefix'] = $_GET['domain'];
 				}
 				// START Andreas Kreisl : freenames
 				if (!empty($_GET['freenames'])){
