@@ -1,432 +1,597 @@
 # Swedish translation of web-cyradm
 # Copyright (C) 2003 Free Software Foundation, Inc.
-# Anders Norrbring <anders@norrbring.biz>, 2004.
+# Anders Norrbring <anders@norrbring.se>, 2007.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: web-cyradm cvs-2003-01-31\n"
+"Project-Id-Version: web-cyradm 0.5.5-svn\n"
 "POT-Creation-Date: 2003-08-10 16:56+0200\n"
-"PO-Revision-Date: 2004-03-11 22:16+0100\n"
-"Last-Translator: Anders Norrbring <anders@norrbring.biz>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2007-01-08 20:31+0100\n"
+"Last-Translator: Anders Norrbring <anders@norrbring.se>\n"
+"Language-Team: Swedish <anders@norrbring.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
 
-#: CVS/Base/browseaccounts.php:22 browseaccounts.php:22
-msgid "Browse accounts for domain"
-msgstr "Bläddra bland konton efter domän"
-
-#: CVS/Base/browseaccounts.php:34 adminuser.php:21 browse.php:66
-#: browseaccounts.php:34 catchall.php:24 catchall.php:118
-#: change_password.php:19 change_password.php:32 change_password.php:42
-#: deleteaccount.php:83 deleteadminuser.php:74 deletedomain.php:17
-#: editaccount.php:31 editdomain.php:37 editdomain.php:67 editemail.php:15
-#: editemail.php:38 forwardalias.php:16 forwardalias.php:33 newaccount.php:26
-#: newadminuser.php:137 newadminuser.php:215 newalias.php:26 newdomain.php:237
-#: newemail.php:15 vacation.php:15 vacation.php:30 validate.inc.php:58
-#: lib/crypto.php:30 lib/crypto.php:110 lib/crypto.php:149
-#: forwardaccount.php:28 delete_catchall.php:23 deleteemail.php:62
-msgid "Database error"
-msgstr "Databasfel"
-
-#: CVS/Base/browseaccounts.php:48 browseaccounts.php:48 newaccount.php:68
-msgid "Total accounts"
-msgstr "Konton"
-
-#: CVS/Base/browseaccounts.php:49 adminuser.php:36 browseaccounts.php:49
-msgid "Displaying from position:"
-msgstr "Visar från position:"
-
-#: CVS/Base/browseaccounts.php:55 CVS/Base/browseaccounts.php:242
-#: browseaccounts.php:55 browseaccounts.php:242 search.php:123 search.php:239
-msgid "Add new account"
-msgstr "Nytt konto"
-
-#: CVS/Base/browseaccounts.php:78 adminuser.php:65 aliases.php:56
-#: browseaccounts.php:78 editalias.php:69 search.php:131 search.php:135
-msgid "Previous 10 entries"
-msgstr "Föregående 10 poster"
-
-#: CVS/Base/browseaccounts.php:82 adminuser.php:69 aliases.php:57
-#: browseaccounts.php:82 editalias.php:70 search.php:138 search.php:142
-msgid "Next 10 entries"
-msgstr "Nästa 10 poster"
-
-#: CVS/Base/browseaccounts.php:91 adminuser.php:78 aliases.php:64
-#: browse.php:20 browseaccounts.php:91 editaccount.php:50 editalias.php:76
-#: search.php:52 search.php:149 search.php:253
-msgid "action"
-msgstr "åtgärd"
-
-#: CVS/Base/browseaccounts.php:96 aliases.php:65 browseaccounts.php:96
-#: editaccount.php:54 newaccount.php:136 newalias.php:82 search.php:150
-#: search.php:254
-msgid "Email address"
-msgstr "E-postadress"
-
-#: CVS/Base/browseaccounts.php:96 browseaccounts.php:96 editaccount.php:63
-#: login.php:61 search.php:151
-msgid "Username"
-msgstr "Användarnamn"
-
-#: CVS/Base/browseaccounts.php:97 browseaccounts.php:97
-msgid "Last login"
-msgstr "Föregående inloggning"
-
-#: CVS/Base/browseaccounts.php:97 browseaccounts.php:97 editaccount.php:68
-#: search.php:152
-msgid "Quota used"
-msgstr "Använd kvot"
-
-#: CVS/Base/browseaccounts.php:136 browseaccounts.php:136
-msgid "n/a"
-msgstr "ej tillg."
-
-#: CVS/Base/browseaccounts.php:146 browseaccounts.php:146 search.php:171
-msgid "Edit account"
-msgstr "Redigera konto"
-
-#: CVS/Base/browseaccounts.php:151 browseaccounts.php:151
-msgid "Change Password"
-msgstr "Ändra lösenord"
-
-#: CVS/Base/browseaccounts.php:155 browseaccounts.php:155 editaccount.php:58
-#: editaccount.php:91
-msgid "Forward"
-msgstr "Vidarbefodran"
-
-#: CVS/Base/browseaccounts.php:159 browseaccounts.php:159 search.php:172
-msgid "Delete account"
-msgstr "Ta bort konto"
-
-#: CVS/Base/browseaccounts.php:163 browseaccounts.php:163 search.php:173
-msgid "Set quota"
-msgstr "Sätt kvot"
-
-#: CVS/Base/browseaccounts.php:167 browseaccounts.php:167 search.php:174
-msgid "Set catch all"
-msgstr "Sätt fånga-allt"
-
-#: CVS/Base/browseaccounts.php:181 browseaccounts.php:181 search.php:190
-msgid "Forwards"
-msgstr "Vidarbefodran"
-
-#: CVS/Base/browseaccounts.php:218 browseaccounts.php:218 editaccount.php:152
-#: search.php:217
-msgid "out of"
-msgstr "av"
-
-#: CVS/Base/browseaccounts.php:221 browseaccounts.php:221 search.php:220
-msgid "Unable to retrieve quota"
-msgstr "Kunde inte läsa kvot"
-
-#: CVS/Base/browseaccounts.php:224 browseaccounts.php:224 editaccount.php:155
-#: search.php:223
-msgid "Quota not set"
-msgstr "Ingen kvot satt"
-
-#: CVS/Base/browseaccounts.php:236 browseaccounts.php:236 search.php:235
-msgid "No accounts found"
-msgstr "Inga konton funna"
-
-#: adminuser.php:13
+#: adminuser.php:15
 msgid "Browse admins"
-msgstr "Lista administratörer"
+msgstr "Lista administrat&ouml;rer"
 
-#: adminuser.php:35
+#: adminuser.php:33
 msgid "Total administrators"
-msgstr "Administratörer"
+msgstr "Administrat&ouml;rer"
 
-#: adminuser.php:43
+#: adminuser.php:34
+#: browse.php:56
+#: browseaccounts.php:42
+msgid "Displaying from position:"
+msgstr "Visar fr&aring;n position:"
+
+#: adminuser.php:41
 msgid "Add administator"
-msgstr "Ny administratör"
+msgstr "Ny administrat&ouml;r"
 
-#: adminuser.php:82
+#: adminuser.php:60
+#: aliases.php:42
+#: editalias.php:72
+#: search.php:132
+#: search.php:136
+msgid "Previous 10 entries"
+msgstr "F&ouml;reg&aring;ende 10 poster"
+
+#: adminuser.php:64
+#: aliases.php:43
+#: editalias.php:73
+#: search.php:139
+#: search.php:143
+msgid "Next 10 entries"
+msgstr "N&auml;sta 10 poster"
+
+#: adminuser.php:73
+#: aliases.php:50
+#: browse.php:103
+#: browseaccounts.php:82
+#: editaccount.php:52
+#: editalias.php:79
+#: search.php:53
+#: search.php:150
+#: search.php:261
+msgid "action"
+msgstr "&aring;tg&auml;rd"
+
+#: adminuser.php:77
 msgid "Adminname"
 msgstr "Admin-namn"
 
-#: adminuser.php:86
+#: adminuser.php:81
 msgid "domain"
-msgstr "domän"
+msgstr "dom&auml;n"
 
-#: adminuser.php:90
+#: adminuser.php:85
 msgid "admin type"
 msgstr "admin-typ"
 
-#: adminuser.php:119
+#: adminuser.php:112
 msgid "Edit adminuser"
 msgstr "Redigera admin"
 
-#: adminuser.php:125
+#: adminuser.php:118
 msgid "Delete adminuser"
 msgstr "Ta bort admin"
 
-#: adminuser.php:144
+#: adminuser.php:137
 msgid "All domains"
-msgstr "Alla domäner"
+msgstr "Alla dom&auml;ner"
 
-#: adminuser.php:148
+#: adminuser.php:141
 msgid "None"
 msgstr "Ingen"
 
-#: adminuser.php:158 editadminuser.php:65 menu.inc.php:132 newadminuser.php:57
-#: newadminuser.php:207
+#: adminuser.php:151
+#: editadminuser.php:61
+#: menu.inc.php:143
+#: newadminuser.php:60
+#: newadminuser.php:174
 msgid "Superuser"
-msgstr "Superanvändare"
+msgstr "Superanv&auml;ndare"
 
-#: adminuser.php:160 editadminuser.php:76 menu.inc.php:134 newadminuser.php:61
-#: newadminuser.php:209
+#: adminuser.php:153
+#: editadminuser.php:71
+#: menu.inc.php:145
+#: newadminuser.php:64
+#: newadminuser.php:176
 msgid "Domain Master"
-msgstr "Domänadmin"
+msgstr "Dom&auml;nadmin"
 
-#: adminuser.php:174
-msgid "No accounts fount"
-msgstr "Inga konton funna"
-
-#: adminuser.php:181
-msgid "Add administrator"
-msgstr "Ny administratör"
-
-#: aliases.php:11
+#: aliases.php:13
 msgid "Browse aliases for domain"
-msgstr "Bläddra ibland alias efter domän"
+msgstr "Bl&auml;ddra bland alias efter dom&auml;n"
 
-#: aliases.php:50
+#: aliases.php:36
 msgid "Total aliases"
 msgstr "Totalt antal alias"
 
-#: aliases.php:55
+#: aliases.php:41
 msgid "Add new alias"
 msgstr "Nytt alias"
 
-#: aliases.php:66 editalias.php:77 editemail.php:113 newemail.php:98
-#: search.php:255
+#: aliases.php:51
+#: browseaccounts.php:86
+#: editaccount.php:56
+#: newaccount.php:194
+#: newalias.php:84
+#: search.php:151
+#: search.php:262
+msgid "Email address"
+msgstr "E-postadress"
+
+#: aliases.php:52
+#: editalias.php:80
+#: editemail.php:115
+#: newemail.php:93
+#: search.php:263
 msgid "Destination"
 msgstr "Destination"
 
-#: aliases.php:91 search.php:273
+#: aliases.php:70
+#: search.php:281
 msgid "Edit Alias"
 msgstr "Redigera alias"
 
-#: aliases.php:92 search.php:274
+#: aliases.php:71
+#: search.php:282
 msgid "Delete Alias"
 msgstr "Ta bort alias"
 
-#: auth.inc.php:70
+#: auth.inc.php:49
 msgid "Web-cyradm is for authorized users only."
-msgstr "Web-cyradm är endast till för auktoriserade användare."
+msgstr "Web-cyradm &auml;r endast till f&ouml;r auktoriserade anv&auml;ndare."
 
-#: auth.inc.php:71
+#: auth.inc.php:50
 msgid "Make sure you entered the right password."
-msgstr "Försäkra dig om att du matat in rätt lösenord."
+msgstr "F&ouml;rs&auml;kra dig om att du matat in r&auml;tt l&ouml;senord."
 
-#: auth.inc.php:72
+#: auth.inc.php:51
 msgid "Push the back button in your browser to try again."
-msgstr "Använd bakåt-knappen i din webbläsare och försök igen."
+msgstr "Anv&auml;nd bak&aring;t-knappen i din webbl&auml;sare och f&ouml;rs&ouml;k igen."
 
-#: auth.inc.php:73
+#: auth.inc.php:52
 msgid " Your attempt to login has been stored."
-msgstr "Ditt inloggningsförsök har lagrats."
+msgstr "Ditt inloggningsf&ouml;rs&ouml;k har lagrats."
 
-#: browse.php:13
+#: browse.php:15
 msgid "Browse domains"
-msgstr "Bläddra genom domäner"
+msgstr "Bl&auml;ddra bland dom&auml;ner"
 
-#: browse.php:24 search.php:53
+#: browse.php:50
+#: browseaccounts.php:36
+#: browseaccounts.php:121
+#: browseaccounts.php:186
+#: catchall.php:108
+#: change_password.php:21
+#: change_password.php:32
+#: changeadminpasswd.php:97
+#: delete_catchall.php:20
+#: deleteaccount.php:82
+#: deleteaccount.php:88
+#: deleteaccount.php:94
+#: deleteadminuser.php:70
+#: deleteadminuser.php:77
+#: deleteadminuser.php:84
+#: deletedomain.php:19
+#: deleteemail.php:58
+#: editaccount.php:33
+#: editadminuser.php:20
+#: editadminuser.php:123
+#: editadminuser.php:185
+#: editadminuser.php:195
+#: editadminuser.php:205
+#: editadminuser.php:213
+#: editadminuser.php:225
+#: editadminuser.php:235
+#: editadminuser.php:248
+#: editdomain.php:44
+#: editdomain.php:84
+#: editemail.php:17
+#: editemail.php:40
+#: editservices.php:26
+#: editservices.php:34
+#: forwardaccount.php:30
+#: forwardalias.php:18
+#: forwardalias.php:35
+#: init.php:12
+#: newaccount.php:23
+#: newaccount.php:53
+#: newaccount.php:281
+#: newaccount.php:287
+#: newadminuser.php:137
+#: newadminuser.php:143
+#: newadminuser.php:151
+#: newadminuser.php:158
+#: newalias.php:28
+#: newdomain.php:254
+#: newemail.php:19
+#: setquota.php:80
+#: setquota.php:94
+#: vacation.php:17
+#: vacation.php:32
+#: validate.inc.php:119
+#: validate.inc.php:126
+#: validate.inc.php:234
+#: validate.inc.php:250
+#: validate.inc.php:294
+#: validate.inc.php:308
+#: validate.inc.php:334
+#: validate.inc.php:343
+#: validate.inc.php:384
+#: validate.inc.php:393
+#: validate.inc.php:454
+#: validate.inc.php:466
+#: validate.inc.php:505
+#: validate.inc.php:525
+#: validate.inc.php:541
+#: validate.inc.php:550
+#: validate.inc.php:580
+#: validate.inc.php:591
+#: validate.inc.php:704
+#: validate.inc.php:721
+#: lib/crypto.php:30
+#: lib/crypto.php:110
+#: lib/crypto.php:160
+msgid "Database error"
+msgstr "Databasfel"
+
+#: browse.php:55
+msgid "Total Domains:"
+msgstr "Antal dom&auml;ner:"
+
+#: browse.php:66
+#: newdomain.php:17
+msgid "Add new domain"
+msgstr "Ny dom&auml;n"
+
+#: browse.php:78
+#: browse.php:81
+#: browseaccounts.php:60
+#: browseaccounts.php:63
+msgid "First entry"
+msgstr "F&ouml;rsta post"
+
+#: browse.php:79
+#: browse.php:82
+#: browseaccounts.php:61
+#: browseaccounts.php:64
+msgid "Previous entries"
+msgstr "F&ouml;reg&aring;ende poster"
+
+#: browse.php:86
+#: browse.php:89
+#: browseaccounts.php:68
+#: browseaccounts.php:71
+msgid "Next entries"
+msgstr "N&auml;sta poster"
+
+#: browse.php:87
+#: browse.php:90
+#: browseaccounts.php:69
+#: browseaccounts.php:72
+msgid "Last entry"
+msgstr "Sista post"
+
+#: browse.php:108
+#: browse.php:109
+#: search.php:54
 msgid "domainname"
-msgstr "domännamn"
+msgstr "dom&auml;nnamn"
 
-#: browse.php:31 search.php:57
+#: browse.php:116
+#: search.php:58
 msgid "prefix"
 msgstr "prefix"
 
-#: browse.php:38 search.php:60
+#: browse.php:123
+#: search.php:61
 msgid "max Accounts"
 msgstr "max konton"
 
-#: browse.php:42 search.php:61
+#: browse.php:127
+#: browse.php:128
+msgid "Domain quota"
+msgstr "Dom&auml;nkvot"
+
+#: browse.php:132
+#: browse.php:133
+#: search.php:62
 msgid "default quota per user"
-msgstr "standardkvot per användare"
+msgstr "standardkvot per anv&auml;ndare"
 
-#: browse.php:90 search.php:82
+#: browse.php:155
+#: search.php:83
 msgid "Edit Domain"
-msgstr "Redigera domän"
+msgstr "Redigera dom&auml;n"
 
-#: browse.php:91 search.php:83
+#: browse.php:156
+#: search.php:84
 msgid "Delete Domain"
-msgstr "Ta bort domän"
+msgstr "Ta bort dom&auml;n"
 
-#: browse.php:92 deletedomain.php:51 menu.inc.php:59 search.php:84
+#: browse.php:174
+#: browse.php:177
+#: deletedomain.php:53
+#: menu.inc.php:64
+#: search.php:85
 msgid "accounts"
 msgstr "konton"
 
-#: browse.php:93 menu.inc.php:68 search.php:85
+#: browse.php:186
+#: browse.php:189
+#: search.php:86
 msgid "Aliases"
 msgstr "Alias"
 
-#: catchall.php:13
+#: browse.php:219
+#: browseaccounts.php:242
+#: editaccount.php:157
+#: editdomain.php:214
+#: newdomain.php:143
+#: search.php:231
+msgid "Quota not set"
+msgstr "Ingen kvot satt"
+
+#: browseaccounts.php:25
+msgid "Browse accounts for domain"
+msgstr "Bl&auml;ddra bland konton efter dom&auml;n"
+
+#: browseaccounts.php:41
+#: newaccount.php:128
+msgid "Total accounts"
+msgstr "Konton"
+
+#: browseaccounts.php:48
+#: browseaccounts.php:302
+#: search.php:124
+#: search.php:247
+msgid "Add new account"
+msgstr "Nytt konto"
+
+#: browseaccounts.php:90
+#: editaccount.php:65
+#: login.php:72
+#: search.php:152
+msgid "Username"
+msgstr "Anv&auml;ndarnamn"
+
+#: browseaccounts.php:94
+msgid "Last login"
+msgstr "F&ouml;reg&aring;ende inloggning"
+
+#: browseaccounts.php:94
+#: editaccount.php:70
+#: search.php:153
+msgid "Quota used"
+msgstr "Anv&auml;nd kvot"
+
+#: browseaccounts.php:101
+msgid "services"
+msgstr "tj&auml;nster"
+
+#: browseaccounts.php:137
+msgid "n/a"
+msgstr "ej tillg."
+
+#: browseaccounts.php:147
+#: search.php:176
+msgid "Edit account"
+msgstr "Redigera konto"
+
+#: browseaccounts.php:152
+msgid "Services"
+msgstr "Tj&auml;nster"
+
+#: browseaccounts.php:157
+#: search.php:177
+msgid "Change Password"
+msgstr "&Auml;ndra l&ouml;senord"
+
+#: browseaccounts.php:161
+#: editaccount.php:60
+#: editaccount.php:93
+#: search.php:179
+msgid "Forward"
+msgstr "Vidarbefodran"
+
+#: browseaccounts.php:165
+#: search.php:180
+msgid "Delete account"
+msgstr "Ta bort konto"
+
+#: browseaccounts.php:169
+#: search.php:181
+msgid "Set quota"
+msgstr "S&auml;tt kvot"
+
+#: browseaccounts.php:173
+#: search.php:182
+msgid "Set catch all"
+msgstr "S&auml;tt f&aring;nga-allt"
+
+#: browseaccounts.php:191
+#: search.php:198
+msgid "Forwards"
+msgstr "Vidarbefodran"
+
+#: browseaccounts.php:233
+#: editaccount.php:154
+#: search.php:225
+msgid "out of"
+msgstr "av"
+
+#: browseaccounts.php:239
+#: search.php:228
+msgid "Unable to retrieve quota"
+msgstr "Kunde inte l&auml;sa kvot"
+
+#: browseaccounts.php:296
+#: search.php:243
+msgid "No accounts found"
+msgstr "Inga konton funna"
+
+#: browseaccounts.php:314
+#: catchall.php:130
+#: delete_catchall.php:42
+#: deleteaccount.php:117
+#: deleteadminuser.php:103
+#: newaccount.php:42
+#: newaccount.php:102
+#: newaccount.php:117
+#: newaccount.php:317
+#: newemail.php:122
+#: setquota.php:170
+msgid "Back"
+msgstr "Tillbaka"
+
+#: catchall.php:15
 msgid "Define a Account for receiving undefined adresses for domain"
-msgstr "Definiera ett konto för mottagning av odefinierade adresser i domänen"
+msgstr "Definiera ett konto f&ouml;r mottagning av odefinierade adresser i dom&auml;nen"
 
-#: catchall.php:38
+#: catchall.php:32
 msgid "Do you really want to define the user"
-msgstr "Vill du verkligen skapa användaren"
+msgstr "Vill du verkligen skapa anv&auml;ndaren"
 
-#: catchall.php:42
+#: catchall.php:36
 msgid "to receive all undefined emailadresses"
 msgstr "att ta emot alla odefinierade e-postadresser"
 
-#: catchall.php:46
+#: catchall.php:40
 msgid "The currently defined user"
-msgstr "Den nuvarande definierade användaren"
+msgstr "Den nuvarande definierade anv&auml;ndaren"
 
-#: catchall.php:46
+#: catchall.php:40
 msgid "will not receiving any undefined emailadresses anymore"
-msgstr "kommer inte att ta emot några odefinierade e-postadresser mer"
+msgstr "kommer inte att ta emot n&aring;gra odefinierade e-postadresser mer"
 
-#: catchall.php:74
+#: catchall.php:68
 msgid "The user"
-msgstr "Användaren"
+msgstr "Anv&auml;ndaren"
 
-#: catchall.php:74
+#: catchall.php:68
 msgid "is allready defined to receive all undefined Emails."
-msgstr "är redan uppsatt att ta emot odefinierade email"
+msgstr "&auml;r redan uppsatt att ta emot odefinierad e-post."
 
-#: catchall.php:76
+#: catchall.php:70
 msgid "Do you want to remove the function \"catch all\" for the account"
-msgstr "Vill du ta bort funktionen \"fånga allt\" från kontot"
+msgstr "Vill du ta bort funktionen \"f&aring;nga allt\" fr&aring;n kontot"
 
-#: catchall.php:127 newadminuser.php:197
+#: catchall.php:112
+#: newadminuser.php:164
 msgid "successfully added to Database"
-msgstr "tillägg i databasen lyckades"
+msgstr "till&auml;gg i databasen lyckades"
 
-#: catchall.php:133 editdomain.php:56 editemail.php:53 newdomain.php:255
-#: newemail.php:44 delete_catchall.php:37
-msgid "Database error, please try again"
-msgstr "Databasfel, prova igen"
-
-#: catchall.php:140 delete_catchall.php:44
+#: catchall.php:120
+#: delete_catchall.php:32
 msgid "Cancelled"
 msgstr "Avbruten"
 
-#: change_password.php:53
+#: change_password.php:37
+#: change_password.php:46
 msgid "Password changed"
-msgstr "Lösenord ändrat"
+msgstr "L&ouml;senord &auml;ndrat"
 
-#: change_password.php:56
+#: change_password.php:40
+msgid "Unknown error"
+msgstr "Ok&auml;nt fel"
+
+#: change_password.php:49
 msgid "Failure in changing password."
-msgstr "Kunde inte ändra lösenord."
+msgstr "Kunde inte &auml;ndra l&ouml;senord."
 
-#: change_password.php:59 editadminuser.php:252
-msgid "New passwords are not equal. Password not changed"
-msgstr "Nya lösenord stämmer inte överens. Lösenordet oförändrat"
-
-#: change_password.php:72
+#: change_password.php:59
+#: changeadminpasswd.php:17
 msgid "Change password for account"
-msgstr "Ändra kontots lösenord"
+msgstr "&Auml;ndra kontots l&ouml;senord"
 
-#: change_password.php:91
+#: change_password.php:76
 msgid "New password"
-msgstr "Nytt lösenord"
+msgstr "Nytt l&ouml;senord"
 
-#: change_password.php:101
+#: change_password.php:86
 msgid "Confirm new password"
-msgstr "Bekräfta nytt lösenord"
+msgstr "Bekr&auml;fta nytt l&ouml;senord"
 
-#: change_password.php:121 newaccount.php:243
-msgid "Passwords do not match"
-msgstr "Lösenorden matchar ej"
+#: changeadminpasswd.php:28
+msgid "Old Password"
+msgstr "Gammalt l&ouml;senord"
 
-#: deleteaccount.php:25
+#: changeadminpasswd.php:43
+msgid "New Password"
+msgstr "Nytt l&ouml;senord"
+
+#: changeadminpasswd.php:59
+#: editadminuser.php:95
+#: newaccount.php:197
+#: newadminuser.php:89
+msgid "Confirm Password"
+msgstr "Bekr&auml;fta l&ouml;senord"
+
+#: changeadminpasswd.php:99
+msgid "Password not changed"
+msgstr "L&ouml;senord &auml;ndrades ej"
+
+#: changeadminpasswd.php:101
+msgid "Password successfully changed"
+msgstr "L&ouml;senordet &auml;ndrat"
+
+#: delete_catchall.php:24
+msgid "successfully deleted from the Database"
+msgstr "radering fr&aring;n databasen lyckades"
+
+#: deleteaccount.php:20
 msgid "Delete an Account from the System"
-msgstr "Ta bort ett konto från systemet"
+msgstr "Ta bort ett konto fr&aring;n systemet"
 
-#: deleteaccount.php:29
+#: deleteaccount.php:24
 msgid "Do you really want to delete the user "
-msgstr "Vill du verkligen ta bort användaren "
+msgstr "Vill du verkligen ta bort anv&auml;ndaren "
 
-#: deleteaccount.php:33
+#: deleteaccount.php:28
 msgid "with all its defined Emailadresses"
 msgstr "med alla dess definierade e-postadresser"
 
-#: deleteaccount.php:69 deleteadminuser.php:68 deletedomain.php:84
-#: deleteemail.php:55
+#: deleteaccount.php:65
+#: deleteadminuser.php:62
+#: deletedomain.php:86
+#: deleteemail.php:51
 msgid "Action cancelled, nothing deleted"
-msgstr "Åtgärd avbruten, inget raderat"
+msgstr "&Aring;tg&auml;rd avbruten, inget raderat"
 
-#: deleteaccount.php:100
+#: deleteaccount.php:104
 msgid "User deleted"
-msgstr "Användare raderad"
+msgstr "Anv&auml;ndare raderad"
 
-#: deleteaccount.php:111 deletedomain.php:175
-msgid ""
-"Security violation detected, action cancelled. Your attempt has been logged."
-msgstr "Säkerhetsbrott, åtgärden avbruten. Ditt försök har loggats"
-
-#: deleteadminuser.php:17
+#: deleteadminuser.php:19
 msgid "Delete an Admin account from the System"
-msgstr "Ta bort ett admin-konto från systemet"
+msgstr "Ta bort ett admin-konto fr&aring;n systemet"
 
-#: deleteadminuser.php:21
+#: deleteadminuser.php:23
 msgid "Do you really want to delete the Domain supervisor"
-msgstr "Vill du verkligen radera domänens administratör"
+msgstr "Vill du verkligen radera dom&auml;nens administrat&ouml;r"
 
-#: deleteadminuser.php:90 editadminuser.php:276
-msgid "At least one Superuser is needed for Web-cyradm"
-msgstr "Åtminstonne en Superanvändare behövs för Web-cyradm"
-
-#: deleteadminuser.php:103
+#: deleteadminuser.php:89
 msgid "Admin user deleted"
-msgstr "Administratör raderad"
-
-#: deleteadminuser.php:116 editadminuser.php:299 newadminuser.php:226
-msgid "Security violation detected, nothing deleted, attempt has been logged"
-msgstr "Säkerhetsbrott, ingenting raderat. Ditt försök har loggats"
-
-#: deletedomain.php:28
-msgid "Delete a Domain from the System"
-msgstr "Ta bort en domän från systemet"
-
-#: deletedomain.php:32
-msgid "Do you really want to delete the Domain"
-msgstr "Vill du verkligen radera domänen"
-
-#: deletedomain.php:37
-msgid "with all its defined accounts, admins, and emailadresses"
-msgstr "med alla dess konton, administratörer och e-postadresser"
-
-#: deletedomain.php:43
-msgid "This can take a while depending on how many account have to be deleted"
-msgstr "Detta kan ta en stund beroende på hur många konton det finns"
-
-#: deletedomain.php:47
-msgid "Your action will delete"
-msgstr "Ditt val kommer att radera"
-
-#: deletedomain.php:154 newadminuser.php:101
-msgid "Domain"
-msgstr "Domänen"
-
-#: deletedomain.php:158
-msgid "successfully deleted"
-msgstr "har raderats"
-
-#: deletealias.php:28
-msgid "Please confirm you want to remove"
-msgstr "Bekräfta att du vill ta bort"
-
-#: deletealias.php:28
-msgid "from the alias"
-msgstr "från alias"
+msgstr "Administrat&ouml;r raderad"
 
 #: deletealias.php:30
-msgid "Yes"
-msgstr "Ja"
+msgid "Please confirm you want to remove"
+msgstr "Bekr&auml;fta att du vill ta bort"
+
+#: deletealias.php:30
+msgid "from the alias"
+msgstr "fr&aring;n alias"
 
 #: deletealias.php:49
 msgid "Please confirm you want to remove the alias"
-msgstr "Bekräfta att du vill ta bort aliaset"
+msgstr "Bekr&auml;fta att du vill ta bort aliaset"
 
 #: deletealias.php:77
 msgid "Removed"
@@ -434,553 +599,825 @@ msgstr "Borttaget"
 
 #: deletealias.php:77
 msgid "from"
-msgstr "från"
+msgstr "fr&aring;n"
 
 #: deletealias.php:85
 msgid "Removed the alias"
 msgstr "Alias borttaget"
 
-#: editaccount.php:21
-msgid "Email adresses defined for user"
-msgstr "E-postadress skapad för användare"
-
-#: editaccount.php:42
-msgid "New email address"
-msgstr "Ny e-postadress"
-
-#: editaccount.php:90
-msgid "Edit Emailadress"
-msgstr "Redigera e-postadress"
-
-#: editaccount.php:92
-msgid "Vacation"
-msgstr "Semester"
-
-#: editaccount.php:93
-msgid "Delete Emailadress"
-msgstr "Ta bort e-postadress"
-
-#: editadminuser.php:13
-msgid "Change admin user for domain"
-msgstr "Ändra admin-användare för domänen"
-
-#: editadminuser.php:42 newaccount.php:106 newadminuser.php:36
-msgid "Accountname"
-msgstr "Kontonamn"
-
-#: editadminuser.php:52 newadminuser.php:51
-msgid "Admin Type"
-msgstr "Admintyp"
-
-#: editadminuser.php:84 login.php:71 newaccount.php:138 newadminuser.php:71
-msgid "Password"
-msgstr "Lösenord"
-
-#: editadminuser.php:100 newaccount.php:139 newadminuser.php:86
-msgid "Confirm Password"
-msgstr "Bekräfta lösenord"
-
-#: editadminuser.php:155
-msgid "No Domain assigned yet"
-msgstr "Ingen domän tilldelad ännu"
-
-#: editadminuser.php:165
-msgid "Add new domain to this admin"
-msgstr "Lägg till ny domän till denna administratör"
-
-#: editadminuser.php:223
-msgid "No such domain, create domain first"
-msgstr "En sådan domän finns inte, skapa en först"
-
-#: editadminuser.php:231
-msgid "Admin already repsonsible for the domain"
-msgstr "Administratören är redan ansvarig för domänen"
-
-#: editalias.php:27
-msgid "There was an error adding $dest to $alias: "
-msgstr "Det gick inte att lägga till $dest till $alias: "
-
-#: editalias.php:64
-msgid "Editing alias"
-msgstr "Redigerar alias"
-
-#: editalias.php:68
-msgid "Delete this alias"
-msgstr "Ta bort detta alias"
-
-#: editalias.php:101
-msgid "Cannot remove from account"
-msgstr "Kan inte ta bort från konto"
-
-#: editalias.php:105 editalias.php:109
-msgid "Remove destination"
-msgstr "Ta bort destination"
-
-#: editalias.php:125
-msgid "This alias has no destinations"
-msgstr "Detta alias har inga destinationer"
-
-#: editalias.php:142
-msgid "New destination"
-msgstr "Ny destination"
-
-#: editdomain.php:46
-msgid "Successfully changed domain"
-msgstr "Domänen ändrad"
-
-#: editdomain.php:92 newdomain.php:39
-msgid "Domainname"
-msgstr "Domännamn"
-
-#: editdomain.php:106 newdomain.php:57
-msgid "Prefix"
-msgstr "Prefix"
-
-#: editdomain.php:123 newdomain.php:73
-msgid "Allow Free Names"
-msgstr "Tillåt fria namn"
-
-#: editdomain.php:141 newdomain.php:90
-msgid "Allow Free Mail Addresses"
-msgstr "Tillåt fria e-postadresser"
-
-#: editdomain.php:159 newdomain.php:102
-msgid "Maximum Accounts"
-msgstr "Maximalt antal konton"
-
-#: editdomain.php:173 newdomain.php:117
-msgid "Default Quota in Kilobytes"
-msgstr "Standardkvot i kilobyte"
-
-#: editdomain.php:202
-msgid "Your are not allowed to change domains!"
-msgstr "Du får inte ändra domäner!"
-
-#: editemail.php:46
-msgid "Successfully changed"
-msgstr "Ändrad"
-
-#: editemail.php:68
-msgid ""
-"You can't edit this email address with 'Allow Free Mail Addressess' set to "
-"off!"
-msgstr ""
-"Du kan inte ändra denna e-postadress med 'Tillåt fria adresser' avstängt!"
-
-#: editemail.php:95 newemail.php:77
-msgid "Emailadress"
-msgstr "E-postadress"
-
-#: failed.php:66
-msgid "Login failed"
-msgstr "Kunde inte logga in"
-
-#: failed.php:71 login.php:51
-msgid "This is only for authorized users"
-msgstr "Detta är bara till för auktoriserade användare"
-
-#: failed.php:76 logout.php:62 timeout.php:38
-msgid "If you like to login click"
-msgstr "Om du vill logga in klicka"
-
-#: failed.php:78 logout.php:64 timeout.php:40
-msgid "here"
-msgstr "här"
-
-#: forwardalias.php:68 forwardaccount.php:51
-msgid "Forward set"
-msgstr "Vidarbefodran satt"
-
-#: forwardalias.php:70
-msgid "Failure in setting forward"
-msgstr "Kunde inte sätta vidarbefodran"
-
-#: forwardalias.php:73
-msgid "Wrong password"
-msgstr "Fel lösenord"
-
-#: forwardalias.php:89 forwardalias.php:97 forwardalias.php:103
-#: forwardalias.php:107 forwardaccount.php:57
-msgid "Forwarding removed"
-msgstr "Vidarbefodran borttagen"
-
-#: forwardalias.php:91 forwardalias.php:99
-msgid "Failure in removing forwarding"
-msgstr "Kunde inte ta bort vidarbefodran"
-
-#: forwardalias.php:111 vacation.php:79 vacation.php:107
-msgid "Failed to login"
-msgstr "Kunde inte logga in"
-
-#: forwardalias.php:123 vacation.php:119
-msgid "Not possible"
-msgstr "Ej möjlig"
-
-#: forwardalias.php:152
-msgid ""
-"You can't forward this email address with 'Allow Free Mail Addressess' set "
-"to off!"
-msgstr ""
-"Du kan inte vidarebefodra denna e-postadress med 'Tillåt fria adresser' "
-"avstängd!"
-
-#: forwardalias.php:161
-msgid "Forward for emailadress"
-msgstr "Vidarbefodran för e-postadress"
-
-#: forwardalias.php:204
-msgid "Set forwarding to"
-msgstr "Sätt vidarbefodran till"
-
-#: forwardalias.php:204
-msgid "(Seperate multiple values with ,)"
-msgstr "(Separera flera värden med ,)"
-
-#: forwardalias.php:210 forwardaccount.php:125
-msgid "Keep a copy in the user's mailbox"
-msgstr "Behåll en kopia i användarens brevlåda"
-
-#: forwardalias.php:215 forwardaccount.php:139
-msgid "Remove forwarding"
-msgstr "Ta bort vidarbefodran"
-
-#: index.php:23
-msgid "migrate.php exists! please delete or rename it"
-msgstr "migrate.php existerar! Radera eller döp om den"
-
-#: index.php:138
-msgid "web-cyradm has not yet been configured"
-msgstr "web-cyradm har inte blivit konfigurerad än"
-
-#: index.php:141
-msgid "Configuration steps:"
-msgstr "Konfigurationssteg:"
-
-#: index.php:143
-msgid "copy the config file that comes with the distribution: "
-msgstr "kopiera konfigurationsfilen som kommer med distributionen: "
-
-#: index.php:146
-msgid "Edit the file config/conf.php to match your systems configuration"
-msgstr ""
-"Redigera filen config/conf.php för att passa ditt systems konfiguration"
-
-#: index.php:148
-msgid ""
-"Further information about how to configure Web-cyradm can be found at the "
-"following website:"
-msgstr ""
-"Ytterligare information om hur du konfigurerar Web-cyradm hittar du på "
-"följande webbsajt:"
-
-#: login.php:50
-msgid "Welcome to Web-cyradm"
-msgstr "Välkommen till Web-cyradm"
-
-#: login.php:52
-msgid "Please authenticate yourself"
-msgstr "Var vänlig att identifiera dig"
-
-#: login.php:84
-msgid "Select language"
-msgstr "Välj språk"
-
-#: logout.php:52
-msgid "Thank you for using Web-cyradm"
-msgstr "Tack för att du använder Web-cyradm"
-
-#: logout.php:57
-msgid "You are logged out"
-msgstr "Du har loggat ut"
-
-#: menu.inc.php:19
-msgid "Superusers Menu"
-msgstr "Superanvändares meny"
-
-#: menu.inc.php:23
-msgid "Domainmasters menu"
-msgstr "Domänadmins meny"
-
-#: menu.inc.php:31
-msgid "add new domain"
-msgstr "ny domän"
-
-#: menu.inc.php:38
-msgid "browse domains"
-msgstr "lista domäner"
-
-#: menu.inc.php:45
-msgid "adminusers"
-msgstr "admin-användare"
-
-#: menu.inc.php:75
-msgid "home"
-msgstr "hem"
-
-#: menu.inc.php:82
-msgid "logout"
-msgstr "logga ut"
-
-#: menu.inc.php:90
-msgid "Search"
-msgstr "Sök"
-
-#: menu.inc.php:114
-msgid "Logged in as user"
-msgstr "Inloggad som användare"
-
-#: menu.inc.php:126
-msgid "Your role is"
-msgstr "Din roll är"
-
-#: menu.inc.php:144
-msgid "Current domain is"
-msgstr "Nuvarande domän är"
-
-#: menu.inc.php:150
-msgid "No domain selected"
-msgstr "Ingen domän vald"
-
-#: newaccount.php:13
-msgid "Add new Account to domain"
-msgstr "Nytt konto i domänen"
-
-#: newaccount.php:43 newalias.php:43
-msgid "transport is not cyrus, unable to create account"
-msgstr "Kan inte skapa kontot med annan transport än Cyrus"
-
-#: newaccount.php:55
-msgid "Sorry, no more account allowed for domain"
-msgstr "Tyvärr, fler konton tillåts inte för domänen"
-
-#: newaccount.php:60
-msgid "Maximum allowed accounts is"
-msgstr "Maximalt antal konton är"
-
-#: newaccount.php:137
-msgid "Quota"
-msgstr "Kvot"
-
-#: newaccount.php:196
-msgid "Sorry, the username already exists"
-msgstr "Tyvärr, användarnamnet finns redan"
-
-#: newaccount.php:221
-msgid "Account successfully added to the Database"
-msgstr "Kontot har lagts till i databas"
-
-#: newaccount.php:234
-msgid "Account succesfully added to the IMAP Subsystem"
-msgstr "Kontot har lagts till i IMAP servern"
-
-#: newadminuser.php:13
-msgid "Add new administrator"
-msgstr "Ny administratör"
-
-#: newadminuser.php:64
-msgid "Select \"Superuser\" for all domains"
-msgstr "Välj \"Superanvändare\" för alla domäner"
-
-#: newadminuser.php:132
-msgid "You must provide a username"
-msgstr "Du måste ange ett användarnamn"
-
-#: newadminuser.php:145
-msgid "Passwords are empty or not equal."
-msgstr "Lösenorden är tomma eller ej lika."
-
-#: newadminuser.php:157
-msgid "Username already exist"
-msgstr "Användarnamnet finns redan"
-
-#: newalias.php:15
-msgid "Add new alias to domain"
-msgstr "Nytt alias för domän"
-
-#: newalias.php:55
-msgid "Sorry, no more alias allowed for domain"
-msgstr "Tyvärr, fler alias tillåts inte för domänen"
-
-#: newalias.php:60
-msgid "Maximum allowed aliases is"
-msgstr "Maximalt antal alias är"
-
-#: newdomain.php:15
-msgid "Add new domain"
-msgstr "Ny domän"
-
-#: newdomain.php:140
-msgid "Standard Mailboxes"
-msgstr "Standardbrevlådor"
-
-#: newdomain.php:146
-msgid ""
-"emailadress where the default aliases should be mapped (empty means no "
-"mapping)"
-msgstr ""
-"e-postadress dit standardalias ska mappas (tomt betyder ingen mappning)"
-
-#: newdomain.php:163
-msgid "Mail transport"
-msgstr "E-post transport"
-
-#: newdomain.php:166
-msgid "Leave this as is, unless you know what you are doing"
-msgstr "Lämna detta som det är, såvida du inte vet vad du gör"
-
-#: newdomain.php:187
-msgid "Parameter"
-msgstr "Parameter"
-
-#: newdomain.php:245 newemail.php:34
-msgid "Successfully added"
-msgstr "Skapad"
-
-#: newdomain.php:273
-msgid "You are not allowed to add new domains"
-msgstr "Du får inte skapa nya domäner"
-
-#: newemail.php:56
-msgid "New emailadress for user"
-msgstr "Ny e-postadress för användare"
-
-#: search.php:48
-msgid "Total domains matching"
-msgstr "Totalt antal domäner som matchar"
-
-#: search.php:110
-msgid "Total users matching"
-msgstr "Totalt antal användare som matchar"
-
-#: search.php:118
-msgid "Displaying from position"
-msgstr "Visar från position"
-
-#: search.php:245
-msgid "Total aliases matching"
-msgstr "Totalt antal alias som matchar"
-
-#: search.php:247
-msgid "No aliases found"
-msgstr "Inga alias funna"
-
-#: setquota.php:26
-msgid "Setting individual Quota for user"
-msgstr "Sätter individuell kvot för användare"
-
-#: setquota.php:58
-msgid "Submit"
-msgstr "Skicka"
-
-#: setquota.php:70
-msgid "Quote for user"
-msgstr "Användares kvot"
-
-#: setquota.php:74
-msgid "changed to"
-msgstr "ändrad till"
-
-#: timeout.php:33
-msgid "Your session timed out"
-msgstr "Din session har gått ut"
-
-#: vacation.php:71
-msgid "Vacation notice set"
-msgstr "Semestermeddelande satt"
-
-#: vacation.php:73
-msgid "Failed to activate vacation"
-msgstr "Kunde inte aktivera semester"
-
-#: vacation.php:76
-msgid "Failure in modifying vacation notice"
-msgstr "Kunde inte ändra semestermeddelande"
-
-#: vacation.php:95
-msgid "Vacation notice unset"
-msgstr "Semestermeddelande ej satt"
-
-#: vacation.php:97
-msgid "Failure in unseting vacation notice"
-msgstr "Kunde inte deaktivera semestermeddelande"
-
-#: vacation.php:101
-msgid "Vacation notice removed"
-msgstr "Semestermeddelande borttaget"
-
-#: vacation.php:103
-msgid "Failure in removing vacation notice"
-msgstr "Kunde inte ta bort semestermeddelande"
-
-#: vacation.php:142
-msgid ""
-"You can't set Vacation Message for this email address with 'Allow Free Mail "
-"Addressess' set to off!"
-msgstr ""
-"Du kan inte sätta semestermeddelande för denna e-postadress med 'Tillåt fria "
-"adresser' avstängt!"
-
-#: vacation.php:152
-msgid "Vacation message for emailadress"
-msgstr "Semestermeddelande för e-postadress"
-
-#: vacation.php:174
-msgid "Set vacation notice"
-msgstr "Sätt semestermeddelande"
-
-#: vacation.php:178
-msgid "Remove vacation notice"
-msgstr "Ta bort semestermeddelande"
-
-#: validate.inc.php:74 validate.inc.php:87 validate.inc.php:134
-#: validate.inc.php:249
-msgid "Security violation detected, attempt logged"
-msgstr "Säkerhetsbrott. Ditt försök har loggats"
-
-#: validate.inc.php:130
-msgid "Quota exeedes the maximum allowed qutoa for this domain."
-msgstr "Kvot överstiger maximalt tillåtna kvot för denna domän."
-
-#: forwardaccount.php:77
-msgid "Forward for account"
-msgstr "Vidarbefodran för konto"
-
-#: forwardaccount.php:93
-msgid "Set forwarding to (one adress per line)"
-msgstr "Sätt vidarbefodran till (en adress per rad)"
-
-#: delete_catchall.php:31
-msgid "successfully deleted from the Database"
-msgstr "radering från databasen lyckades"
-
-#: deleteemail.php:16
+#: deletedomain.php:30
+msgid "Delete a Domain from the System"
+msgstr "Ta bort en dom&auml;n fr&aring;n systemet"
+
+#: deletedomain.php:34
+msgid "Do you really want to delete the Domain"
+msgstr "Vill du verkligen radera dom&auml;nen"
+
+#: deletedomain.php:39
+msgid "with all its defined accounts, admins, and emailadresses"
+msgstr "med alla dess konton, administrat&ouml;rer och e-postadresser"
+
+#: deletedomain.php:45
+msgid "This can take a while depending on how many account have to be deleted"
+msgstr "Detta kan ta en stund beroende p&aring; hur m&aring;nga konton som m&aring;ste raderas"
+
+#: deletedomain.php:49
+msgid "Your action will delete"
+msgstr "Ditt &aring;tg&auml;rd kommer att radera"
+
+#: deletedomain.php:156
+#: newadminuser.php:104
+msgid "Domain"
+msgstr "Dom&auml;nen"
+
+#: deletedomain.php:160
+msgid "successfully deleted"
+msgstr "har raderats"
+
+#: deletedomain.php:177
+#: validate.inc.php:175
+#: validate.inc.php:212
+#: validate.inc.php:219
+#: validate.inc.php:270
+#: validate.inc.php:280
+#: validate.inc.php:363
+#: validate.inc.php:366
+#: validate.inc.php:375
+#: validate.inc.php:378
+#: validate.inc.php:413
+#: validate.inc.php:420
+#: validate.inc.php:425
+#: validate.inc.php:495
+#: validate.inc.php:499
+#: validate.inc.php:510
+#: validate.inc.php:520
+#: validate.inc.php:530
+#: validate.inc.php:536
+#: validate.inc.php:562
+#: validate.inc.php:575
+#: validate.inc.php:585
+msgid "Security violation detected, action cancelled. Your attempt has been logged."
+msgstr "S&auml;kerhetsbrott uppt&auml;ckt, &aring;tg&auml;rden avbruten. Ditt f&ouml;rs&ouml;k har loggats"
+
+#: deleteemail.php:18
 msgid "Delete emailadress from the System"
-msgstr "Radera e-postadress från systemet"
+msgstr "Radera e-postadress fr&aring;n systemet"
 
-#: deleteemail.php:23
+#: deleteemail.php:25
 msgid "Do you really want to delete the emailadress for user"
-msgstr "Vill du verkligen ta bort e-postadressen från användaren"
+msgstr "Vill du verkligen ta bort e-postadressen fr&aring;n anv&auml;ndaren"
 
-#: deleteemail.php:44
-msgid "Yes, delete"
-msgstr "Ja, radera"
-
-#: deleteemail.php:49
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: deleteemail.php:70
+#: deleteemail.php:66
 msgid "Emailadress deleted."
 msgstr "E-postadress raderad."
 
-#~ msgid "successfully changed Database...."
-#~ msgstr "Ändingar i databasen lyckades..."
+#: display.php:17
+msgid "Display preferences for"
+msgstr "Visa inst&auml;llningar f&ouml;r"
 
-#~ msgid "Add new admin user for domain"
-#~ msgstr "Nytt konto för användare i domänen"
+#: display.php:26
+msgid "No template definitions found, please check your config file"
+msgstr "Inga malldefinitioner hittades, kontrollera din konfigurationsfil"
 
-#~ msgid "Please select a domain first"
-#~ msgstr "Skapa en domän först"
+#: display.php:36
+msgid "Color scheme"
+msgstr "F&auml;rgschema"
 
-#~ msgid "Not yet supported, change will be ignored"
-#~ msgstr "Stöds ej än, förändringen kommer att ignoreras"
+#: display.php:58
+msgid "Number of domains displayed on page"
+msgstr "Antal dom&auml;ner att visa per sida"
+
+#: display.php:74
+msgid "Number of accounts displayed on page"
+msgstr "Antal konton att visa per sida"
+
+#: display.php:90
+msgid "Quota usage warn level"
+msgstr "Niv&aring; f&ouml;r kvotvarning"
+
+#: display.php:121
+msgid "Reload page"
+msgstr "Ladda om sidan"
+
+#: editaccount.php:23
+msgid "Email addresses defined for user"
+msgstr "E-postadresser definierade f&ouml;r anv&auml;ndare"
+
+#: editaccount.php:44
+msgid "New email address"
+msgstr "Ny e-postadress"
+
+#: editaccount.php:92
+msgid "Edit Emailadress"
+msgstr "Redigera e-postadress"
+
+#: editaccount.php:94
+msgid "Vacation"
+msgstr "Semester"
+
+#: editaccount.php:95
+msgid "Delete Emailadress"
+msgstr "Ta bort e-postadress"
+
+#: editadminuser.php:26
+msgid "Change admin user for domain"
+msgstr "&Auml;ndra admin-anv&auml;ndare f&ouml;r dom&auml;nen"
+
+#: editadminuser.php:39
+#: newaccount.php:164
+#: newadminuser.php:39
+msgid "Accountname"
+msgstr "Kontonamn"
+
+#: editadminuser.php:49
+#: newadminuser.php:54
+msgid "Admin Type"
+msgstr "Admintyp"
+
+#: editadminuser.php:79
+#: login.php:82
+#: newaccount.php:196
+#: newadminuser.php:74
+msgid "Password"
+msgstr "L&ouml;senord"
+
+#: editadminuser.php:116
+msgid "Responsible for all domains"
+msgstr "Ansvarig f&ouml;r alla dom&auml;ner"
+
+#: editadminuser.php:130
+msgid "Responsible for the following domains:"
+msgstr "Ansvarig f&ouml;r f&ouml;ljande dom&auml;ner:"
+
+#: editadminuser.php:146
+msgid "No Domain assigned yet"
+msgstr "Ingen dom&auml;n tilldelad &auml;nnu"
+
+#: editadminuser.php:153
+msgid "Add new domain to this admin"
+msgstr "L&auml;gg till ny dom&auml;n till denna administrat&ouml;r"
+
+#: editalias.php:29
+msgid "There was an error adding $dest to $alias: "
+msgstr "Det gick inte att l&auml;gga till $dest till $alias: "
+
+#: editalias.php:66
+msgid "Editing alias"
+msgstr "Redigerar alias"
+
+#: editalias.php:70
+msgid "Delete this alias"
+msgstr "Ta bort detta alias"
+
+#: editalias.php:71
+msgid "Back to aliases"
+msgstr "Tillbaka till alias"
+
+#: editalias.php:104
+msgid "Cannot remove from account"
+msgstr "Kan inte ta bort fr&aring;n konto"
+
+#: editalias.php:108
+#: editalias.php:112
+msgid "Remove destination"
+msgstr "Ta bort destination"
+
+#: editalias.php:128
+msgid "This alias has no destinations"
+msgstr "Detta alias har inga destinationer"
+
+#: editalias.php:145
+msgid "New destination"
+msgstr "Ny destination"
+
+#: editdomain.php:55
+msgid "Successfully changed domain"
+msgstr "Dom&auml;nen &auml;ndrad"
+
+#: editdomain.php:65
+#: editemail.php:55
+#: newdomain.php:272
+#: newemail.php:45
+msgid "Database error, please try again"
+msgstr "Databasfel, prova igen"
+
+#: editdomain.php:111
+#: newdomain.php:41
+msgid "Domainname"
+msgstr "Dom&auml;nnamn"
+
+#: editdomain.php:125
+#: newdomain.php:59
+msgid "Prefix"
+msgstr "Prefix"
+
+#: editdomain.php:142
+#: newdomain.php:75
+msgid "Allow Free Names"
+msgstr "Till&aring;t fria namn"
+
+#: editdomain.php:160
+#: newdomain.php:92
+msgid "Allow Free Mail Addresses"
+msgstr "Till&aring;t fria e-postadresser"
+
+#: editdomain.php:178
+#: newdomain.php:104
+msgid "Maximum Accounts"
+msgstr "Maximalt antal konton"
+
+#: editdomain.php:192
+#: newdomain.php:119
+msgid "Default Quota in Kilobytes"
+msgstr "Standardkvot i kilobytes"
+
+#: editdomain.php:206
+#: newdomain.php:134
+msgid "Quota for Domain in Kilobytes"
+msgstr "Kvot f&ouml;r dom&auml;n i kilobytes"
+
+#: editdomain.php:236
+msgid "Your are not allowed to change domains!"
+msgstr "Du f&aring;r inte &auml;ndra dom&auml;ner!"
+
+#: editemail.php:48
+msgid "Successfully changed"
+msgstr "&Auml;ndrad"
+
+#: editemail.php:70
+msgid "You can't edit this email address with 'Allow Free Mail Addressess' set to off!"
+msgstr "Du kan inte &auml;ndra denna e-postadress med 'Till&aring;t fria adresser' avst&auml;ngt!"
+
+#: editemail.php:97
+#: newemail.php:77
+msgid "Emailadress"
+msgstr "E-postadress"
+
+#: editservices.php:16
+msgid "Edit services for user"
+msgstr "Redigera tj&auml;nster f&ouml;r anv&auml;ndare"
+
+#: editservices.php:68
+msgid "Service"
+msgstr "Tj&auml;nst"
+
+#: editservices.php:69
+msgid "Status"
+msgstr "Status"
+
+#: editservices.php:72
+msgid "Fetch mail via IMAP client"
+msgstr "H&auml;mta e-post via IMAP-klient"
+
+#: editservices.php:76
+msgid "Fetch mail via POP client"
+msgstr "H&auml;mta e-post via POP-klient"
+
+#: editservices.php:80
+msgid "Set vacation message and filter rules with sieve"
+msgstr "S&auml;tta semester- och filterregler via sieve"
+
+#: editservices.php:85
+msgid "Send E-Mails via smtp authentication"
+msgstr "Skicka e-post via autentiserad SMTP"
+
+#: editservices.php:90
+msgid "Receive E-Mails via smtp"
+msgstr "Ta emot e-post via SMTP"
+
+#: editservices.php:109
+msgid "Services successfully changed"
+msgstr "Tj&auml;nster &auml;ndrades"
+
+#: editservices.php:112
+msgid "Back to accounts"
+msgstr "Tillbaka till konton"
+
+#: failed.php:61
+msgid "Login failed"
+msgstr "Kunde inte logga in"
+
+#: failed.php:66
+#: login.php:62
+msgid "This is only for authorized users"
+msgstr "Detta &auml;r bara till f&ouml;r auktoriserade anv&auml;ndare"
+
+#: failed.php:71
+#: logout.php:64
+#: timeout.php:69
+msgid "If you like to login click"
+msgstr "Om du vill logga in, klicka"
+
+#: failed.php:73
+#: logout.php:66
+#: timeout.php:71
+msgid "here"
+msgstr "h&auml;r"
+
+#: forwardaccount.php:53
+#: forwardalias.php:70
+msgid "Forward set"
+msgstr "Vidarbefodran satt"
+
+#: forwardaccount.php:57
+#: forwardalias.php:91
+#: forwardalias.php:99
+#: forwardalias.php:105
+#: forwardalias.php:109
+msgid "Forwarding removed"
+msgstr "Vidarbefodran borttagen"
+
+#: forwardaccount.php:77
+msgid "Forward for account"
+msgstr "Vidarbefodran f&ouml;r konto"
+
+#: forwardaccount.php:93
+msgid "Set forwarding to (one adress per line)"
+msgstr "S&auml;tt vidarbefodran till (en adress per rad)"
+
+#: forwardaccount.php:125
+#: forwardalias.php:212
+msgid "Keep a copy in the user's mailbox"
+msgstr "Beh&aring;ll en kopia i anv&auml;ndarens brevl&aring;da"
+
+#: forwardaccount.php:139
+#: forwardalias.php:217
+msgid "Remove forwarding"
+msgstr "Ta bort vidarbefodran"
+
+#: forwardalias.php:72
+msgid "Failure in setting forward"
+msgstr "Kunde inte s&auml;tta vidarbefodran"
+
+#: forwardalias.php:75
+msgid "Wrong password"
+msgstr "Fel l&ouml;senord"
+
+#: forwardalias.php:93
+#: forwardalias.php:101
+msgid "Failure in removing forwarding"
+msgstr "Kunde inte ta bort vidarbefodran"
+
+#: forwardalias.php:113
+#: vacation.php:81
+#: vacation.php:109
+msgid "Failed to login"
+msgstr "Kunde inte logga in"
+
+#: forwardalias.php:125
+#: vacation.php:121
+msgid "Not possible"
+msgstr "Ej m&ouml;jlig"
+
+#: forwardalias.php:154
+msgid "You can't forward this email address with 'Allow Free Mail Addressess' set to off!"
+msgstr "Du kan inte vidarebefodra denna e-postadress med 'Till&aring;t fria adresser' avst&auml;ngd!"
+
+#: forwardalias.php:163
+msgid "Forward for emailadress"
+msgstr "Vidarbefodran f&ouml;r e-postadress"
+
+#: forwardalias.php:206
+msgid "Set forwarding to"
+msgstr "S&auml;tt vidarbefodran till"
+
+#: forwardalias.php:206
+msgid "(Seperate multiple values with ,)"
+msgstr "(Separera flera v&auml;rden med ,)"
+
+#: index.php:23
+msgid "migrate.php exists! please delete or rename it"
+msgstr "migrate.php existerar! Radera eller d&ouml;p om den"
+
+#: index.php:152
+msgid "web-cyradm has not yet been configured"
+msgstr "web-cyradm har inte blivit konfigurerad &auml;n"
+
+#: index.php:155
+msgid "Configuration steps:"
+msgstr "Konfigurationssteg:"
+
+#: index.php:157
+msgid "copy the config file that comes with the distribution: "
+msgstr "kopiera konfigurationsfilen som kommer med distributionen: "
+
+#: index.php:160
+msgid "Edit the file config/conf.php to match your systems configuration"
+msgstr "Redigera filen config/conf.php f&ouml;r att passa ditt systems konfiguration"
+
+#: index.php:162
+msgid "Further information about how to configure Web-cyradm can be found at the following website:"
+msgstr "Ytterligare information om hur du konfigurerar Web-cyradm hittar du p&aring; f&ouml;ljande webbsajt:"
+
+#: init.php:38
+#: init.php:61
+#: validate.inc.php:131
+#: validate.inc.php:148
+#: validate.inc.php:837
+msgid "Security violation detected, attempt logged"
+msgstr "S&auml;kerhetsbrott uppt&auml;ckt. Ditt f&ouml;rs&ouml;k har loggats"
+
+#: login.php:61
+msgid "Welcome to Web-cyradm"
+msgstr "V&auml;lkommen till Web-cyradm"
+
+#: login.php:63
+msgid "Please authenticate yourself"
+msgstr "Var v&auml;nlig att identifiera dig"
+
+#: login.php:95
+msgid "Select language"
+msgstr "V&auml;lj spr&aring;k"
+
+#: logout.php:54
+msgid "Thank you for using Web-cyradm"
+msgstr "Tack f&ouml;r att du anv&auml;nder Web-cyradm"
+
+#: logout.php:59
+msgid "You are logged out"
+msgstr "Du &auml;r nu utloggad"
+
+#: menu.inc.php:21
+msgid "Superusers Menu"
+msgstr "Superanv&auml;ndares meny"
+
+#: menu.inc.php:25
+msgid "Domainmasters menu"
+msgstr "Dom&auml;nadmins meny"
+
+#: menu.inc.php:28
+#: menu.inc.php:101
+msgid "Search"
+msgstr "S&ouml;k"
+
+#: menu.inc.php:36
+msgid "add new domain"
+msgstr "ny dom&auml;n"
+
+#: menu.inc.php:43
+msgid "browse domains"
+msgstr "bl&auml;ddra dom&auml;ner"
+
+#: menu.inc.php:50
+msgid "adminusers"
+msgstr "admin-anv&auml;ndare"
+
+#: menu.inc.php:73
+msgid "aliases"
+msgstr "aliases"
+
+#: menu.inc.php:80
+msgid "home"
+msgstr "hem"
+
+#: menu.inc.php:86
+msgid "settings"
+msgstr "inst&auml;llningar"
+
+#: menu.inc.php:93
+msgid "logout"
+msgstr "logga ut"
+
+#: menu.inc.php:125
+msgid "Logged in as user"
+msgstr "Inloggad som anv&auml;ndare"
+
+#: menu.inc.php:137
+msgid "Your role is"
+msgstr "Din roll &auml;r"
+
+#: menu.inc.php:155
+msgid "Current domain is"
+msgstr "Nuvarande dom&auml;n &auml;r"
+
+#: menu.inc.php:161
+msgid "No domain selected"
+msgstr "Ingen dom&auml;n vald"
+
+#: newaccount.php:39
+#: newalias.php:45
+msgid "transport is not cyrus, unable to create account"
+msgstr "Kan inte skapa kontot med annan transport &auml;n Cyrus"
+
+#: newaccount.php:92
+msgid "Sorry, no more account allowed for domain"
+msgstr "Tyv&auml;rr, fler konton till&aring;ts inte f&ouml;r dom&auml;nen"
+
+#: newaccount.php:97
+msgid "Maximum allowed accounts is"
+msgstr "Maximalt antal konton &auml;r"
+
+#: newaccount.php:107
+msgid "Sorry, no more disk space left for domain"
+msgstr "Tyv&auml;rr, det finns inte mer diskutrymmer f&ouml;r dom&auml;nen"
+
+#: newaccount.php:112
+msgid "Quota is"
+msgstr "Kvoten &auml;r"
+
+#: newaccount.php:122
+msgid "Add new Account to domain"
+msgstr "Nytt konto i dom&auml;nen"
+
+#: newaccount.php:195
+msgid "Quota"
+msgstr "Kvot"
+
+#: newaccount.php:256
+#: setquota.php:114
+#: setquota.php:141
+msgid "Quota exeeded"
+msgstr "Kvoten &ouml;verskriden"
+
+#: newaccount.php:258
+#: setquota.php:116
+msgid "New quota is"
+msgstr "Ny kvot &auml;r"
+
+#: newaccount.php:291
+msgid "Account successfully added to the Database"
+msgstr "Kontot har lagts till i databas"
+
+#: newaccount.php:303
+msgid "Account succesfully added to the IMAP Subsystem"
+msgstr "Kontot har lagts till i IMAP servern"
+
+#: newadminuser.php:19
+msgid "Add new administrator"
+msgstr "Ny administrat&ouml;r"
+
+#: newadminuser.php:67
+msgid "Select \"Superuser\" for all domains"
+msgstr "V&auml;lj \"Superanv&auml;ndare\" f&ouml;r alla dom&auml;ner"
+
+#: newalias.php:17
+msgid "Add new alias to domain"
+msgstr "Nytt alias f&ouml;r dom&auml;n"
+
+#: newalias.php:57
+msgid "Sorry, no more alias allowed for domain"
+msgstr "Tyv&auml;rr, fler alias till&aring;ts inte f&ouml;r dom&auml;nen"
+
+#: newalias.php:62
+msgid "Maximum allowed aliases is"
+msgstr "Maximalt antal alias &auml;r"
+
+#: newdomain.php:157
+msgid "Standard Mailboxes"
+msgstr "Standardbrevl&aring;dor"
+
+#: newdomain.php:163
+msgid "emailadress where the default aliases should be mapped (empty means no mapping)"
+msgstr "e-postadress dit standardalias ska mappas (tomt betyder ingen mappning)"
+
+#: newdomain.php:181
+msgid "Mail transport"
+msgstr "E-post transport"
+
+#: newdomain.php:184
+msgid "Leave this as is, unless you know what you are doing"
+msgstr "L&auml;mna detta som det &auml;r, s&aring;vida du inte vet vad du g&ouml;r"
+
+#: newdomain.php:205
+msgid "Parameter"
+msgstr "Parameter"
+
+#: newdomain.php:262
+#: newemail.php:35
+msgid "Successfully added"
+msgstr "Tillagd"
+
+#: newdomain.php:290
+msgid "You are not allowed to add new domains"
+msgstr "Du f&aring;r inte skapa nya dom&auml;ner"
+
+#: newemail.php:56
+msgid "New emailadress for user"
+msgstr "Ny e-postadress f&ouml;r anv&auml;ndare"
+
+#: search.php:49
+msgid "Total domains matching"
+msgstr "Antal matchande dom&auml;ner"
+
+#: search.php:111
+msgid "Total users matching"
+msgstr "Antal matchande anv&auml;ndare"
+
+#: search.php:119
+msgid "Displaying from position"
+msgstr "Visar fr&aring;n position"
+
+#: search.php:253
+msgid "Total aliases matching"
+msgstr "Antal matchande alias"
+
+#: search.php:255
+msgid "No aliases found"
+msgstr "Inga alias funna"
+
+#: setquota.php:32
+msgid "Setting individual Quota for user"
+msgstr "S&auml;tter individuell kvot f&ouml;r anv&auml;ndare"
+
+#: setquota.php:64
+msgid "Submit"
+msgstr "Skicka"
+
+#: setquota.php:127
+#: setquota.php:152
+msgid "Quote for user"
+msgstr "Kvot f&ouml;r anv&auml;ndare"
+
+#: setquota.php:131
+#: setquota.php:156
+msgid "changed to"
+msgstr "&auml;ndrad till"
+
+#: setquota.php:143
+msgid "Quota NOT changed"
+msgstr "Kvoten INTE &auml;ndrad"
+
+#: settings.php:17
+msgid "Administration Settings"
+msgstr "Administrationsinst&auml;llningar"
+
+#: settings.php:23
+msgid "Display Preferences"
+msgstr "Visningsinst&auml;llningar"
+
+#: settings.php:30
+msgid "You can set all administrative settings."
+msgstr "H&auml;r &auml;ndrar du de administrativa inst&auml;llningarna."
+
+#: settings.php:34
+msgid "You can change the way that Web-cyradm displays information to you."
+msgstr "H&auml;r &auml;ndrar du utseendet p&aring; Web-cyradms visning"
+
+#: settings.php:43
+msgid "Change password"
+msgstr "&Auml;ndra l&ouml;senord"
+
+#: settings.php:53
+msgid "Use this to change your admin password."
+msgstr "Anv&auml;nd detta f&ouml;r att &auml;ndra ditt admin l&ouml;senord."
+
+#: timeout.php:64
+msgid "Your session timed out"
+msgstr "Din session har g&aring;tt ut"
+
+#: vacation.php:73
+msgid "Vacation notice set"
+msgstr "Semestermeddelande satt"
+
+#: vacation.php:75
+msgid "Failed to activate vacation"
+msgstr "Kunde inte aktivera semester"
+
+#: vacation.php:78
+msgid "Failure in modifying vacation notice"
+msgstr "Kunde inte &auml;ndra semestermeddelande"
+
+#: vacation.php:97
+msgid "Vacation notice unset"
+msgstr "Semestermeddelande ej satt"
+
+#: vacation.php:99
+msgid "Failure in unseting vacation notice"
+msgstr "Kunde inte deaktivera semestermeddelande"
+
+#: vacation.php:103
+msgid "Vacation notice removed"
+msgstr "Semestermeddelande borttaget"
+
+#: vacation.php:105
+msgid "Failure in removing vacation notice"
+msgstr "Kunde inte ta bort semestermeddelande"
+
+#: vacation.php:144
+msgid "You can't set Vacation Message for this email address with 'Allow Free Mail Addressess' set to off!"
+msgstr "Du kan inte s&auml;tta semestermeddelande f&ouml;r denna e-postadress med 'Till&aring;t fria adresser' avst&auml;ngt!"
+
+#: vacation.php:154
+msgid "Vacation message for emailadress"
+msgstr "Semestermeddelande f&ouml;r e-postadress"
+
+#: vacation.php:176
+msgid "Set vacation notice"
+msgstr "S&auml;tt semestermeddelande"
+
+#: vacation.php:180
+msgid "Remove vacation notice"
+msgstr "Ta bort semestermeddelande"
+
+#: validate.inc.php:190
+#: validate.inc.php:208
+#: validate.inc.php:266
+#: validate.inc.php:359
+#: validate.inc.php:783
+#: validate.inc.php:786
+#: validate.inc.php:795
+#: validate.inc.php:798
+#: validate.inc.php:807
+msgid "Security violation detected, nothing deleted, attempt has been logged"
+msgstr "S&auml;kerhetsbrott uppt&auml;ckt, ingenting raderat. Ditt f&ouml;rs&ouml;k har loggats"
+
+#: validate.inc.php:222
+#: validate.inc.php:273
+#: validate.inc.php:283
+msgid "You must provide a username"
+msgstr "Du m&aring;ste ange ett anv&auml;ndarnamn"
+
+#: validate.inc.php:225
+#: validate.inc.php:286
+#: validate.inc.php:430
+#: validate.inc.php:638
+msgid "Password incorrect"
+msgstr "Felaktigt l&ouml;senord"
+
+#: validate.inc.php:228
+#: validate.inc.php:289
+#: validate.inc.php:641
+#: validate.inc.php:739
+msgid "New passwords are not equal. Password not changed"
+msgstr "De nya l&ouml;senorden &auml;r inte lika. L&ouml;senordet of&ouml;r&auml;ndrat"
+
+#: validate.inc.php:238
+msgid "Username already exist"
+msgstr "Anv&auml;ndarnamnet finns redan"
+
+#: validate.inc.php:244
+#: validate.inc.php:328
+msgid "Invalid domain name"
+msgstr "Ogiltigt dom&auml;nnamn"
+
+#: validate.inc.php:254
+#: validate.inc.php:338
+msgid "No such domain"
+msgstr "Ingen s&aring;dan dom&auml;n"
+
+#: validate.inc.php:316
+#: validate.inc.php:401
+msgid "At least one Superuser is needed for Web-cyradm"
+msgstr "&Aring;tminstonne en superanv&auml;ndare beh&ouml;vs f&ouml;r Web-cyradm"
+
+#: validate.inc.php:346
+msgid "Admin already repsonsible for the domain"
+msgstr "Administrat&ouml;ren &auml;r redan ansvarig f&ouml;r dom&auml;nen"
+
+#: validate.inc.php:433
+msgid "Passwords do not match"
+msgstr "L&ouml;senorden matchar ej"
+
+#: validate.inc.php:436
+#: validate.inc.php:609
+msgid "Invalid email adress"
+msgstr "Ogiltig e-postadress"
+
+#: validate.inc.php:439
+msgid "Invalid username"
+msgstr "Ogiltigt anv&auml;ndarnamn"
+
+#: validate.inc.php:459
+msgid "Sorry, the username already exists"
+msgstr "Tyv&auml;rr, anv&auml;ndarnamnet finns redan"
+
+#: validate.inc.php:471
+msgid "Sorry, the emailadress already exists"
+msgstr "Tyv&auml;rr, e-postadressen finns redan"
+
+#: validate.inc.php:486
+#: validate.inc.php:556
+msgid "Quota exeedes the maximum allowed quota for this domain."
+msgstr "Kvoten &ouml;verstiger h&ouml;gsta till&aring;tna kvot f&ouml;r denna dom&auml;n."
+
+#: validate.inc.php:605
+msgid "Invalid destination"
+msgstr "Ogiltig destination"
+
+msgid "No accounts fount"
+msgstr "Inga konton funna"
+
+msgid "Add administrator"
+msgstr "Ny administrat&ouml;r"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "Email adresses defined for user"
+msgstr "E-postadress skapad f&ouml;r anv&auml;ndare"
+
+msgid "No such domain, create domain first"
+msgstr "En s&aring;dan dom&auml;n finns inte, skapa den f&ouml;rst"
+
+msgid "Passwords are empty or not equal."
+msgstr "L&ouml;senorden &auml;r tomma eller ej lika."
+
+msgid "Yes, delete"
+msgstr "Ja, radera"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "Change"
+msgstr "&Auml;ndra"
+
