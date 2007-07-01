@@ -10,9 +10,9 @@ session_start();
 
 $session_ok = $_SESSION['session_ok'];
 
-$login = $_POST['login'];
-$password = $_POST['login_password'];
-$LANG = $_POST['LANG'];
+$login = addslashes($_POST['login']);
+$password = addslashes($_POST['login_password']);
+$LANG = addslashes($_POST['LANG']);
 
 if ($login && $password){
      // Log access
