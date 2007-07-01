@@ -96,6 +96,18 @@ function ValidAdminType($type) {
 	}
 }
 
+function ValidAlias($domain,$alias) {
+	$atpos=strpos($alias,"@");
+	$alias_domain=strpos($alias,$domain);
+	if ($atpos && $alias_domain==0){
+		return FALSE;
+	}
+	else {
+		return TRUE;
+	}
+}
+	
+
 # Security precaution if register_globals = on
 $authorized = FALSE;
 # Load list of reserved Adresses into array
@@ -1056,20 +1068,29 @@ if (! empty($action)){
 		break;		
 #OK####################################### Check input if editalias ##################################
 	case "editalias":
+
 		if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
-		} elseif (!empty($_GET['alias']) && (!empty($_GET['create']) && !ValidMail($_GET['alias'].'@'.$_GET['domain']) || empty($_GET['create']) && !ValidMail($_GET['alias']) && !ValidDomain(substr($_GET['alias'],1)))) {
+		} 
+		elseif (!empty($_GET['alias']) && (!empty($_GET['create']) && !ValidMail($_GET['alias'].'@'.$_GET['domain']) || empty($_GET['create']) && !ValidMail($_GET['alias']) && !ValidDomain(substr($_GET['alias'],1)))) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
-		} elseif (!empty($_GET['adddest']) && ((empty($_GET['dest']) || !ValidMail($_GET['dest']) && !ValidName($_GET['dest'])))) {
+		} 
+                elseif (!ValidAlias($_GET['domain'],$_GET['alias'])){
+                        $authorized = FALSE;
+                        $err_msg = "Alias must be in the same domain";
+                }
+		elseif (!empty($_GET['adddest']) && ((empty($_GET['dest']) || !ValidMail($_GET['dest']) && !ValidName($_GET['dest'])))) {
 			$authorized = FALSE;
 			$err_msg = "invalid destination";
 		# Check for reserved addresses
-		} elseif (in_array($alias, $reserved)) {
+		} 
+		elseif (in_array($alias, $reserved)) {
 			$authorized = FALSE;
 			$err_msg="Reserved Emailadress, request cancelled";
-		} elseif (!empty($_GET['adddest'])) {
+		} 
+		elseif (!empty($_GET['adddest'])) {
 			$query = "SELECT * FROM virtual WHERE alias='".$_GET['alias']."' AND dest='".$_GET['dest']."' AND username='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
@@ -1078,10 +1099,12 @@ if (! empty($action)){
 			if ($result->numRows()){
 				$authorized = FALSE;
 				$err_msg = "Alias already exists";
-			} else {
+			} 
+			else {
 				$authorized = TRUE;
 			}
-		} else {
+		}
+		else {
 			$authorized = TRUE;
 		}
 		break;		
@@ -1090,10 +1113,16 @@ if (! empty($action)){
 		if (!ValidDomain($_GET['domain']) || !ValidMail($_GET['alias'])) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
-		} elseif (!empty($_GET['dest']) && !ValidMail($_GET['dest']) && !ValidName($_GET['dest'])) {
+		} 
+		elseif (!empty($_GET['dest']) && !ValidMail($_GET['dest']) && !ValidName($_GET['dest'])) {
 			$authorized = FALSE;
 			$err_msg = "invalid destination";
-		} else {
+		}
+		elseif (!ValidAlias($_GET['domain'],$_GET['alias'])){
+                        $authorized = FALSE;
+                        $err_msg = "Alias must be in the same domain";
+                }
+		else {
 			$authorized = TRUE;
 		}
 		break;
