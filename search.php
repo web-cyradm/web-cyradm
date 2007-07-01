@@ -34,7 +34,7 @@ if ($authorized) {
 
 
 	#####  Show matching Domains first #######
-	$query = "SELECT * FROM domain AS a WHERE domain_name LIKE '%".$_GET['searchstring']."%' AND ".$allowed_domains1."') ORDER BY domain_name";
+	$query = "SELECT * FROM domain AS a WHERE domain_name LIKE '%".addslashes($_GET['searchstring'])."%' AND ".$allowed_domains1."') ORDER BY domain_name";
 	$result = $handle->query($query);
 	$cnt = $result->numRows();
 
@@ -105,7 +105,7 @@ if ($authorized) {
 	print "</table>";
 
 	############ And now show the users matching the search query ###########
-	$query = "SELECT DISTINCT a.username, a.domain_name FROM virtual as v, accountuser as a WHERE ((v.username LIKE '%".$_GET['searchstring']."%') OR (v.alias LIKE '%".$_GET['searchstring']."%')) AND (v.username=a.username) AND ".$allowed_domains1."') ORDER BY username";
+	$query = "SELECT DISTINCT a.username, a.domain_name FROM virtual as v, accountuser as a WHERE ((v.username LIKE '%".addslashes($_GET['searchstring'])."%') OR (v.alias LIKE '%".addslashes($_GET['searchstring'])."%')) AND (v.username=a.username) AND ".$allowed_domains1."') ORDER BY username";
 	$result = $handle->query($query);
 	$total = $result->numRows();
 
@@ -113,7 +113,7 @@ if ($authorized) {
 	if (empty($row_pos)) {
 		$row_pos = 0;
 	}
-        $query = "SELECT DISTINCT a.* FROM virtual as v, accountuser as a WHERE ((v.username LIKE '%".$_GET['searchstring']."%') OR (v.alias LIKE '%".$_GET['searchstring']."%')) AND (v.username=a.username) AND ".$allowed_domains1."') ORDER BY username";
+        $query = "SELECT DISTINCT a.* FROM virtual as v, accountuser as a WHERE ((v.username LIKE '%".$_GET['searchstring']."%') OR (v.alias LIKE '%".addslashes($_GET['searchstring'])."%')) AND (v.username=a.username) AND ".$allowed_domains1."') ORDER BY username";
 	$result = $handle->limitQuery($query,$row_pos,10);
 	$cnt = $result->numRows();
 
