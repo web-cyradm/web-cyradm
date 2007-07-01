@@ -96,6 +96,18 @@ function ValidAdminType($type) {
 	}
 }
 
+function ValidAlias($domain,$alias) {
+	$atpos=strpos($alias,"@");
+	$alias_domain=strpos($alias,$domain);
+	if ($atpos && $alias_domain==0){
+		return FALSE;
+	}
+	else {
+		return TRUE;
+	}
+}
+	
+
 # Security precaution if register_globals = on
 $authorized = FALSE;
 # Load list of reserved Adresses into array
@@ -226,14 +238,14 @@ if (! empty($action)){
 				if ($result->numRows()){
 					$authorized = FALSE;
 					$err_msg = _("Username already exist");
-				// If domain is not set or admin will be superuser: that's all
+				# If domain is not set or admin will be superuser: that's all
 				} elseif (empty($_POST['newdomain']) || $_POST['newadmintype'] == 0) {
 					$authorized = TRUE;
 				} elseif (!ValidDomain($_POST['newdomain'])) {
 					$authorized = FALSE;
 					$err_msg = _("Invalid domain name");
 				} else {
-					// Check if domain already exists
+					# Check if domain already exists
 					$query="SELECT domain_name FROM domain WHERE domain_name='".$_POST['newdomain']."'";
 					$result= $handle->query($query);
 					if (DB::isError($result)) {
@@ -310,14 +322,14 @@ if (! empty($action)){
 # TODO: Checks for array of domains $_POST['resp_domain']
 				//if (!empty($_POST['resp_domain'])) {
 				//}
-				// If domain is not set: that's all
+				# If domain is not set: that's all
 				if (empty($_POST['newdomain']) || $_POST['newtype'] == 0) {
 					$authorized = TRUE;
 				} elseif (!ValidDomain($_POST['newdomain'])) {
 					$authorized = FALSE;
 					$err_msg = _("Invalid domain name");
 				} else {
-					// Check if domain already exists
+					# Check if domain already exists
 					$query = "SELECT domain_name FROM domain WHERE domain_name='".$_POST['newdomain']."'";
 					$result = $handle->query($query);
 					if (DB::isError($result)) {
@@ -437,7 +449,7 @@ if (! empty($action)){
 				if ($DOMAIN_AS_PREFIX){
 					$_POST['username'] = $_POST['email'];
 				}
-				// Check to see if there's an account with the same username
+				# Check to see if there's an account with the same username
 				$query = "SELECT * FROM accountuser WHERE username='".$_POST['username']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
@@ -449,7 +461,7 @@ if (! empty($action)){
 					$err_msg = _("Sorry, the username already exists");
 				}
 				
-				// Check to see if there's an email with the same name
+				# Check to see if there's an email with the same name
 				$query = "SELECT alias FROM virtual WHERE alias='".$_POST['email']."@".$_POST['domain']."'";
 				$result = $handle->query($query);
 				if (DB::isError($result)) {
@@ -488,7 +500,7 @@ if (! empty($action)){
 			logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
 			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 		} else {
-			// it's needed to defend users from not allowed domains
+			# it's needed to defend users from not allowed domains
 			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
@@ -513,7 +525,7 @@ if (! empty($action)){
 			logger(sprintf("SECURITY VIOLATION %s %s %s %s %s%s", $_SERVER['REMOTE_ADDR'], $_SESSION['user'], $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_METHOD'], "\n"),"WARN");
 			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 		} else {
-			// it's needed to defend users from not allowed domains
+			# it's needed to defend users from not allowed domains
 			$query = "SELECT username FROM accountuser WHERE username='".$_GET['username']."' AND domain_name='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
@@ -567,7 +579,7 @@ if (! empty($action)){
 					$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
 				// Checks for setting password
 				} else {
-					// That's ok if both passwords are empty
+					# That's ok if both passwords are empty
 					if (!empty($_POST['new_password']) && !empty($_POST['confirm_password'])) {
 						if (!ValidPassword($_POST['new_password']) || !ValidPassword($_POST['confirm_password'])) {
 							$authorized = FALSE;
@@ -668,7 +680,7 @@ if (! empty($action)){
 					} elseif (in_array($_GET['alias'], $reserved)) {
 						$authorized = FALSE;	
 						$err_msg="Reserved Emailadress, request cancelled";
-					// Check to see if there's an email with the same name
+					# Check to see if there's an email with the same name
 					} else {
 						$query = "SELECT alias FROM virtual WHERE alias='";
 						if ($freeaddress != "YES") {
@@ -735,7 +747,7 @@ if (! empty($action)){
 						$authorized = FALSE;	
 						$err_msg="Reserved Emailadress, request cancelled";
 					} else {
-					// Check to see if there's an email with the same name
+					# Check to see if there's an email with the same name
 						if ($freeaddress != "YES") {
 							$fullalias = $_GET['newalias']."@".$_GET['domain'];
 						} else {
@@ -1056,20 +1068,29 @@ if (! empty($action)){
 		break;		
 #OK####################################### Check input if editalias ##################################
 	case "editalias":
+
 		if (!empty($_GET['domain']) && !ValidDomain($_GET['domain'])) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
-		} elseif (!empty($_GET['alias']) && (!empty($_GET['create']) && !ValidMail($_GET['alias'].'@'.$_GET['domain']) || empty($_GET['create']) && !ValidMail($_GET['alias']) && !ValidDomain(substr($_GET['alias'],1)))) {
+		} 
+		elseif (!empty($_GET['alias']) && (!empty($_GET['create']) && !ValidMail($_GET['alias'].'@'.$_GET['domain']) || empty($_GET['create']) && !ValidMail($_GET['alias']) && !ValidDomain(substr($_GET['alias'],1)))) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, nothing deleted, attempt has been logged");
-		} elseif (!empty($_GET['adddest']) && ((empty($_GET['dest']) || !ValidMail($_GET['dest']) && !ValidName($_GET['dest'])))) {
+		} 
+                elseif (!ValidAlias($_GET['domain'],$_GET['alias'])){
+                        $authorized = FALSE;
+                        $err_msg = "Alias must be in the same domain";
+                }
+		elseif (!empty($_GET['adddest']) && ((empty($_GET['dest']) || !ValidMail($_GET['dest']) && !ValidName($_GET['dest'])))) {
 			$authorized = FALSE;
 			$err_msg = "invalid destination";
 		# Check for reserved addresses
-		} elseif (in_array($alias, $reserved)) {
+		} 
+		elseif (in_array($alias, $reserved)) {
 			$authorized = FALSE;
 			$err_msg="Reserved Emailadress, request cancelled";
-		} elseif (!empty($_GET['adddest'])) {
+		} 
+		elseif (!empty($_GET['adddest'])) {
 			$query = "SELECT * FROM virtual WHERE alias='".$_GET['alias']."' AND dest='".$_GET['dest']."' AND username='".$_GET['domain']."'";
 			$result = $handle->query($query);
 			if (DB::isError($result)) {
@@ -1078,10 +1099,12 @@ if (! empty($action)){
 			if ($result->numRows()){
 				$authorized = FALSE;
 				$err_msg = "Alias already exists";
-			} else {
+			} 
+			else {
 				$authorized = TRUE;
 			}
-		} else {
+		}
+		else {
 			$authorized = TRUE;
 		}
 		break;		
@@ -1090,10 +1113,16 @@ if (! empty($action)){
 		if (!ValidDomain($_GET['domain']) || !ValidMail($_GET['alias'])) {
 			$authorized = FALSE;
 			$err_msg = _("Security violation detected, action cancelled. Your attempt has been logged.");
-		} elseif (!empty($_GET['dest']) && !ValidMail($_GET['dest']) && !ValidName($_GET['dest'])) {
+		} 
+		elseif (!empty($_GET['dest']) && !ValidMail($_GET['dest']) && !ValidName($_GET['dest'])) {
 			$authorized = FALSE;
 			$err_msg = "invalid destination";
-		} else {
+		}
+		elseif (!ValidAlias($_GET['domain'],$_GET['alias'])){
+                        $authorized = FALSE;
+                        $err_msg = "Alias must be in the same domain";
+                }
+		else {
 			$authorized = TRUE;
 		}
 		break;
