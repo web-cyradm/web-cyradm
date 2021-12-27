@@ -23,7 +23,10 @@ $CYRUS = array(
 
  Possible Values are:
  o mysql
+ o mysqli
  o pgsql
+
+ Please note mysql does not work under CentOS 8, use mysqli instead
 
  To operate a mailsystem with postgreSQL you will need a patch for
  Postfix.
@@ -32,7 +35,7 @@ $CYRUS = array(
 */
 
 $DB = array(
-	'TYPE'	=> 'mysql',
+	'TYPE'	=> 'mysqli',
 	'USER'	=> 'mail',
 	'PASS'	=> 'secret',
 	'PROTO'	=> 'unix',	// set to "tcp" for TCP/IP
@@ -40,9 +43,18 @@ $DB = array(
 	'NAME'	=> 'mail'
 );
 
+# For mysql and postgres
 $DB['DSN'] = sprintf('%s://%s:%s@%s+%s/%s', 	$DB['TYPE'], $DB['USER'],
 						$DB['PASS'], $DB['PROTO'],
 						$DB['HOST'], $DB['NAME']);
+# For mysqli
+ $DB["DSN"]    = array(
+    'phptype'  => $DB['TYPE'],
+    'username' => $DB['USER'],
+    'password' => $DB['PASS'],
+    'hostspec' => $DB['HOST'],
+    'database' => $DB['NAME']
+);
 
 # Where should web-cyradm write its log to?
 $LOG_DIR = "/var/log/web-cyradm/";
