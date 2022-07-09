@@ -24,7 +24,7 @@ CREATE TABLE accountuser (
   sieve int(10) NOT NULL default '1',
   smtpauth int(10) NOT NULL default '1',
   UNIQUE KEY username (username)
-) TYPE=MyISAM;
+);
 # --------------------------------------------------------
 
 #
@@ -38,7 +38,7 @@ CREATE TABLE adminuser (
   SID varchar(255) NOT NULL default '',
   home varchar(255) NOT NULL default '',
   PRIMARY KEY  (username)
-) TYPE=MyISAM;
+);
 # --------------------------------------------------------
 
 #
@@ -51,7 +51,7 @@ CREATE TABLE settings (
   `maxdisplay` int(4) NOT NULL default '15',
   `warnlevel` int(3) NOT NULL default '90',
   PRIMARY KEY  (username)
-) TYPE=MyISAM;
+);
 # --------------------------------------------------------
 
 #
@@ -64,7 +64,7 @@ CREATE TABLE alias (
   username varchar(50) NOT NULL default '',
   status int(11) NOT NULL default '1',
   PRIMARY KEY  (alias)
-) TYPE=MyISAM;
+);
 # --------------------------------------------------------
 
 #
@@ -83,7 +83,7 @@ CREATE TABLE domain (
   folders varchar(255) NOT NULL default '',
   PRIMARY KEY  (domain_name),
   UNIQUE KEY prefix (prefix)
-) TYPE=MyISAM;
+);
 # --------------------------------------------------------
 
 #
@@ -93,7 +93,7 @@ CREATE TABLE domain (
 CREATE TABLE domainadmin (
   domain_name varchar(255) NOT NULL default '',
   adminuser varchar(255) NOT NULL default ''
-) TYPE=MyISAM;
+);
 # --------------------------------------------------------
 
 #
@@ -104,10 +104,10 @@ CREATE TABLE search (
   search_id varchar(255) NOT NULL default '',
   search_sql text NOT NULL,
   perpage int(11) NOT NULL default '0',
-  timestamp timestamp(14) NOT NULL,
+  timestamp timestamp NOT NULL,
   PRIMARY KEY  (search_id),
   KEY search_id (search_id)
-) TYPE=MyISAM;
+);
 # --------------------------------------------------------
 
 #
@@ -120,7 +120,7 @@ CREATE TABLE virtual (
   username varchar(50) NOT NULL default '',
   status int(11) NOT NULL default '1',
   KEY alias (alias)
-) TYPE=MyISAM;
+);
 
 CREATE TABLE log (
   id int(11) NOT NULL auto_increment,
@@ -130,7 +130,7 @@ CREATE TABLE log (
   time datetime NOT NULL default '2000-00-00 00:00:00',
   pid varchar(255) NOT NULL default '',
   PRIMARY KEY  (id)
-) TYPE=MyISAM;
+);
 
 INSERT INTO adminuser (username, password) VALUES ('admin', ENCRYPT('test'));
 INSERT INTO domainadmin (domain_name,adminuser) VALUES ('*','admin');
